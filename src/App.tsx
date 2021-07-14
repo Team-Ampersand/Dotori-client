@@ -1,6 +1,6 @@
 import React from "react";
 import { GlobalStyle, Positioner, ContentWrapper } from "./Style/GlobalStyle";
-import Router from "./router";
+import Router from "./Router";
 import { BrowserRouter } from "react-router-dom";
 import { SidebarPage } from "./Pages";
 
