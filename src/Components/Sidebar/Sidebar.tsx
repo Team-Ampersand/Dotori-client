@@ -48,11 +48,6 @@ const sidebarMenuData = [
                 menuTitle: "학교 홈페이지"
             },
             {
-                router: "/slack",
-                menuIcon: "Slack",
-                menuTitle: "학교 슬랙"
-            },
-            {
                 router: "/bug",
                 menuIcon: "Bug",
                 menuTitle: "버그 제보"
@@ -83,6 +78,6 @@ const Sidebar: React.FC = () => {
             {mappingSidebarMenu}
         </S.Postioner>
     )
-}
+} 
 
 export default Sidebar;
