@@ -1,15 +1,24 @@
 import React from 'react';
 import * as S from './Style';
-import { BetaBanner, NotebookBanner } from '../../Components';
+import { BetaBanner, NotebookBanner, SongBanner } from '../../Components';
+import { MatchType } from '../../Utils/GlobalType';
 
 interface BannerProps {
-    nowUrl: string
+    match: MatchType
 }
 
-const BannerContainer : React.FC<BannerProps> = ({ nowUrl }) => {
+const CompareBanner = (nowUrl: string) => {
+    switch (nowUrl) {
+        case '/laptop': return <NotebookBanner />
+        case '/song': return <SongBanner />
+        default: return <BetaBanner />
+    }
+}
+
+const BannerContainer: React.FC<BannerProps> = ({ match }) => {
     return (
         <S.Postioner>
-            {nowUrl === "/laptop" ? <NotebookBanner /> : <BetaBanner />}
+            {CompareBanner(match.path)}
         </S.Postioner>
     )
 }
