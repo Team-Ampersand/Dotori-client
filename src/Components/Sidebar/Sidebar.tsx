@@ -31,11 +31,6 @@ const sidebarMenuData = [
                 router: "/point",
                 menuIcon: "Point",
                 menuTitle: "상벌점"
-            },
-            {
-                router: "/setting",
-                menuIcon: "Setting",
-                menuTitle: "설정"
             }
         ]
     },
