@@ -11,7 +11,7 @@ export const LinkWrapper = styled(Link)`
     width: 100%;
     align-items: center;
     ${props => props.replace ? 'color: #0F4C81' : 'color: #BBBBBE'};
-    margin-bottom: 18%;
+    margin-bottom: 28%;
 
     svg {
         width: 25px;
@@ -21,7 +21,7 @@ export const LinkWrapper = styled(Link)`
 `
 
 export const MenuTitle = styled.span`
-    font-size: 20px;
+    font-size: 22px;
     font-weight: bold;
     margin-left: 21px;
 `

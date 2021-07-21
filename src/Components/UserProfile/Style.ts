@@ -158,6 +158,7 @@ export const Policy = styled.div`
     justify-content: center;
     margin-top: 20px;
 
+
     span {
         color: #222222;
         font-size: 12px;
@@ -171,6 +172,10 @@ export const Policy = styled.div`
             color: #217ECE;
             font-weight: 500;
             cursor: pointer;
+        }
+
+        a {
+            text-decoration: none;
         }
     }
 `

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const Postioner = styled.nav`
     width: 15rem;
-    height: 100vh;
+    height: 85vh;
     background-color: #fff;
     display: flex;
     flex-direction: column;
