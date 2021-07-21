@@ -58,9 +58,11 @@ const UserProfile: React.FC<ProfileProps> = ({ logoutFunc, userProfile }) => {
                 <EventList eventObject={SampleData}/>
             </S.Footer>
             <S.Policy>
-                <span>© 2019 GSM. All Rights Reserved.</span>
+                <span>© 2021 Ampersand. All Rights Reserved.</span>
                 <p>
-                    <strong>개인정보취급방침</strong> | <strong>이용약관</strong> | <strong>라이선스</strong> | <strong>Github</strong>
+                    <a href="#" target="_blank"><strong>About</strong></a> | 
+                    <a href="https://github.com/Team-Ampersand/Dotori-client/blob/master/LICENSE" target="_blank"><strong> License</strong></a> | 
+                    <a href="https://github.com/Team-Ampersand" target="_blank"><strong> Github and issue</strong></a>
                 </p>
             </S.Policy>
         </S.Postioner>

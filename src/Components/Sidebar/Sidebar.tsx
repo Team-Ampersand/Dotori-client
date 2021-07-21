@@ -34,21 +34,6 @@ const sidebarMenuData = [
             }
         ]
     },
-    {
-        menuName: "subMenu",
-        menuLists: [
-            {
-                router: "/school",
-                menuIcon: "School",
-                menuTitle: "학교 홈페이지"
-            },
-            {
-                router: "/bug",
-                menuIcon: "Bug",
-                menuTitle: "버그 제보"
-            }
-        ]
-    }
 ]
 
 const Sidebar: React.FC = () => {
