@@ -6,7 +6,7 @@ interface NoticeProps {
   match: MatchType
 }
 
-const NoticePage = () => {
+const NoticePage: React.FC<NoticeProps> = ({ match }) => {
   return (
     <div>
       
