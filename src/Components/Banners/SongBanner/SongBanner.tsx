@@ -1,5 +1,5 @@
 import React from 'react';
-import { IilustBeta } from '../../../Assets/Svg';
+import { IllustSong } from '../../../Assets/Svg';
 import * as S from '../BannerStyle';
 
 const SongBanner: React.FC = () => {
@@ -9,7 +9,7 @@ const SongBanner: React.FC = () => {
                 <h2>자신이 듣고 싶은 음악을 마음껏 신청하세요.</h2>
             </S.TextWrapper>
             <S.IlustWrapper>
-                <IilustBeta />
+                <IllustSong />
             </S.IlustWrapper>
         </S.Postioner>
     )

@@ -9,6 +9,7 @@ import Slack from './Slack';
 import Song from './Song';
 import IilustNotebook from './IiustNotebook';
 import IilustBeta from './IilustBeta';
+import IllustSong from './IllustSong';
 import Logout from './Logout';
 import User from './User';
 import More from './More';
@@ -23,6 +24,7 @@ export {
     Setting,
     Slack,
     Song,
+    IllustSong,
     IilustNotebook,
     IilustBeta,
     Logout,
