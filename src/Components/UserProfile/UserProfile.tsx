@@ -3,7 +3,7 @@ import * as S from './Style';
 import { Logout, Point, User } from '../../Assets/Svg';
 import { EventList } from '..';
 
-type UserProfile = {
+type UserProfileType = {
     name: string,
     grade: string,
     class: string
@@ -11,7 +11,7 @@ type UserProfile = {
 
 interface ProfileProps {
     logoutFunc: () => void,
-    userProfile: UserProfile
+    userProfile: UserProfileType
 }
 
 const SampleData = {
