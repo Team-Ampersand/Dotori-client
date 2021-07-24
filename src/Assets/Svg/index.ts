@@ -7,8 +7,8 @@ import School from './School';
 import Setting from './Setting';
 import Slack from './Slack';
 import Song from './Song';
-import IilustNotebook from './IiustNotebook';
-import IilustBeta from './IilustBeta';
+import IllustNotebook from './IllustNotebook';
+import IllustBeta from './IllustBeta';
 import IllustSong from './IllustSong';
 import Logout from './Logout';
 import User from './User';
@@ -25,8 +25,8 @@ export {
     Slack,
     Song,
     IllustSong,
-    IilustNotebook,
-    IilustBeta,
+    IllustNotebook,
+    IllustBeta,
     Logout,
     User,
     More

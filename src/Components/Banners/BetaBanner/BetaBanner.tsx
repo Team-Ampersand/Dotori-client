@@ -1,5 +1,5 @@
 import React from 'react';
-import { IilustBeta } from '../../../Assets/Svg';
+import { IllustBeta } from '../../../Assets/Svg';
 import * as S from '../BannerStyle';
 
 const BetaBanner: React.FC = () => {
@@ -10,7 +10,7 @@ const BetaBanner: React.FC = () => {
                 <span>정식 서비스 : 2020년 1학기 예정</span>
             </S.TextWrapper>
             <S.IlustWrapper>
-                <IilustBeta />
+                <IllustBeta />
             </S.IlustWrapper>
         </S.Postioner>
     )

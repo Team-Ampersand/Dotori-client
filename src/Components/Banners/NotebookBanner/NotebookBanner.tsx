@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { IilustNotebook } from '../../../Assets/Svg';
+import { IllustNotebook } from '../../../Assets/Svg';
 import * as G from '../BannerStyle';
 import * as S from './Style';
 import { ManufactureDate } from '../../../Utils/ManufactureDate';
@@ -25,7 +25,7 @@ const NotebookBanner: React.FC = () => {
                 }
             </G.TextWrapper>
             <G.IlustWrapper>
-                <IilustNotebook />
+                <IllustNotebook />
             </G.IlustWrapper>
         </S.Postioner>
     )
