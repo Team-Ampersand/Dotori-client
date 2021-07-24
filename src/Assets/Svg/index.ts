@@ -13,6 +13,7 @@ import IllustSong from './IllustSong';
 import Logout from './Logout';
 import User from './User';
 import More from './More';
+import IllustHome from './IllustHome';
 
 export {
     Home,
@@ -27,6 +28,7 @@ export {
     IllustSong,
     IllustNotebook,
     IllustBeta,
+    IllustHome,
     Logout,
     User,
     More
