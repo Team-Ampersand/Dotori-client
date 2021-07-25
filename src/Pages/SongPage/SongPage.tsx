@@ -3,19 +3,19 @@ import { MatchType } from '../../Utils/GlobalType';
 import { PageTemplate } from '..';
 import { SongRequest, TodaySong } from '../../Components';
 
-type RequestSongPayload = {
+interface SongProps {
+    match: MatchType
+}
+
+type RequestSongPlayLoad = {
     music: string;
     singer: string;
     link: string;
 }
 
-interface SongProps {
-    match: MatchType
-}
-
 const SongPage: React.FC<SongProps> = ({ match }) => {
 
-    const onSubmit = (form : RequestSongPayload) => {
+    const onSubmit = (form : RequestSongPlayLoad) => {
         console.log(form);
     }
 
