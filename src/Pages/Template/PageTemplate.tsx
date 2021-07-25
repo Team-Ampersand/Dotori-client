@@ -18,6 +18,8 @@ const returnPageType = (routerName: string) => {
       return "노트북 대여";
     case '/song':
       return '기상음악';
+    case '/notice':
+      return '공지사항';
     default:
       break;
   }
@@ -29,6 +31,8 @@ const returnValueType = (nowUrl: string) => {
       return "laptop";
     case '/song':
       return "song";
+    case '/notice':
+      return "notice"; 
     default:
       return 0;
   }

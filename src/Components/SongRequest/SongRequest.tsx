@@ -45,9 +45,9 @@ const SongRequest: React.FC<SubmitFormProps> = ({ onSubmit }) => {
             })
                 .then(response => {
                     console.log(response)
-                    if (response.status == 201) {
+                    if (response.status === 201) {
                         alert("음악 신청에 성공하였습니다!");
-                    } else if (response.status == 400) {
+                    } else if (response.status === 400) {
                         alert("유저 토큰 인증 과정 중 오류 발생");
                     } else {
                         alert("Error");
