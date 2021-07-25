@@ -11,6 +11,7 @@ const CompareBanner = (nowUrl: string) => {
     switch (nowUrl) {
         case '/laptop': return <NotebookBanner />
         case '/song': return <SongBanner />
+        case '/notice': return;
         default: return <BetaBanner />
     }
 }
