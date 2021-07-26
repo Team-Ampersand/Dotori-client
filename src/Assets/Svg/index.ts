@@ -7,11 +7,13 @@ import School from './School';
 import Setting from './Setting';
 import Slack from './Slack';
 import Song from './Song';
-import IilustNotebook from './IiustNotebook';
-import IilustBeta from './IilustBeta';
+import IllustNotebook from './IllustNotebook';
+import IllustBeta from './IllustBeta';
+import IllustSong from './IllustSong';
 import Logout from './Logout';
 import User from './User';
 import More from './More';
+import IllustHome from './IllustHome';
 
 export {
     Home,
@@ -23,8 +25,10 @@ export {
     Setting,
     Slack,
     Song,
-    IilustNotebook,
-    IilustBeta,
+    IllustSong,
+    IllustNotebook,
+    IllustBeta,
+    IllustHome,
     Logout,
     User,
     More
