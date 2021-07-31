@@ -7,6 +7,7 @@ import NoticePage from './NoticePage/NoticePage';
 import AdminLaptopListPage from './AdminLaptopListPage/AdminLaptopListPage';
 import SongPage from './SongPage/SongPage';
 import AdminSongListPage from './AdminSongListPage/AdminSongListPage';
+import SigninPage from 'Pages/SigninPage/SigninPage';
 
 export { 
     SidebarPage,
@@ -17,5 +18,6 @@ export {
     NoticePage,
     AdminLaptopListPage,
     SongPage,
-    AdminSongListPage
+    AdminSongListPage,
+    SigninPage
 };
