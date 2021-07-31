@@ -1,5 +1,9 @@
 import styled, { createGlobalStyle, GlobalStyleComponent, DefaultTheme } from 'styled-components';
 
+interface StyleProps {
+  current?:String;
+}
+
 export const GlobalStyle: GlobalStyleComponent<{}, DefaultTheme> = createGlobalStyle`
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -47,3 +51,6 @@ export const ContentWrapper = styled.div`
   background-color: #EDEDED;
   height: 100vh;
 `
+export const SidebarWrapper = styled.div<StyleProps>`
+  display: ${(props) => props.current === "/signin" ? "none" : "flex"};
+`;

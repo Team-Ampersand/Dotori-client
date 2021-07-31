@@ -1,17 +1,18 @@
 import React from "react";
-import { GlobalStyle, Positioner, ContentWrapper } from "./Style/GlobalStyle";
+import { GlobalStyle, Positioner, ContentWrapper, SidebarWrapper } from "./Style/GlobalStyle";
 import Router from "./Router";
 import { BrowserRouter } from "react-router-dom";
 import { SidebarPage } from "./Pages";
 
 
 const App: React.FC = () => {
-
   return (
     <BrowserRouter>
         <GlobalStyle />
         <Positioner>
-          <SidebarPage />
+          <SidebarWrapper current={window.location.pathname}>
+            <SidebarPage />
+          </SidebarWrapper>
           <ContentWrapper>
             <Router />
           </ContentWrapper>
