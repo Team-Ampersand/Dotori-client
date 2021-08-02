@@ -21,6 +21,7 @@ import LaptopTable from './LaptopTable/LaptopTable'
 import SongRequest from './SongRequest/SongRequest';
 import TodaySong from './TodaySong/TodaySong';
 import RequestedSongs from './RequestedSongs/RequestedSongs';
+import Input from './Input/Input';
 
 export {
     Sidebar,
@@ -45,5 +46,6 @@ export {
     LaptopTable,
     SongRequest,
     TodaySong,
-    RequestedSongs
+    RequestedSongs,
+    Input
 }; 
