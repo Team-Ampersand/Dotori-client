@@ -14,6 +14,8 @@ import BoardItem from './BoardItem/BoardItem';
 import LaptopRoom from './LaptopRoom/LaptopRoom';
 import RoomItem from './RoomItem/RoomItem';
 import NoticeBoard from './NoticeBoard/NoticeBoard'
+import NoticeBoardList from './NoticeBoardList/NoticeBoardList';
+import NoticeBoardItem from './NoticeBoardItem/NoticeBoardItem';
 import LaptopSeats from './LaptopSeats/LaptopSeats';
 import LaptopSeat from './LaptopSeat/LaptopSeat';
 import ChangeLaptopType from './ChangeLaptopType/ChangeLaptopType';
@@ -38,6 +40,8 @@ export {
     BoardList,
     BoardItem,
     NoticeBoard,
+    NoticeBoardList,
+    NoticeBoardItem,
     LaptopRoom,
     RoomItem,
     LaptopSeats,
