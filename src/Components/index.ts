@@ -22,6 +22,8 @@ import SongRequest from './SongRequest/SongRequest';
 import TodaySong from './TodaySong/TodaySong';
 import RequestedSongs from './RequestedSongs/RequestedSongs';
 import Input from './Input/Input';
+import LoginForm from './LoginForm/LoginForm';
+import Button from './Button/Button';
 
 export {
     Sidebar,
@@ -47,5 +49,7 @@ export {
     SongRequest,
     TodaySong,
     RequestedSongs,
-    Input
+    Input,
+    LoginForm,
+    Button
 }; 
