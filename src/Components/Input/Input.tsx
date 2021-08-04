@@ -1,10 +1,11 @@
 import React from 'react'
+import * as S from "./Style"
 
-const Input = () => {
+const Input = ({ item }) => {
     return (
-        <div>
-            
-        </div>
+        <S.Positioner>
+            <S.InputStyle placeholder={item.name} type={item.type}/>
+        </S.Positioner>
     )
 }
 
