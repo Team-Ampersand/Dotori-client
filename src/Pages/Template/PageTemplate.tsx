@@ -53,7 +53,14 @@ const ChangeType = (match: MatchType, isActive: boolean, setIsActive:React.Dispa
 }
 
 const BannerStatus = (match: MatchType, children: React.ReactNode, isActive: boolean) => {
-  if (!isActive) {
+  if (returnValueType(match.path) === "notice") {
+    return (
+      <>
+        <BannerPage match={match} />
+        <S.Content>{children}</S.Content>
+      </>)
+    ;
+  } else if (!isActive) {
     return (<>
       <S.Banner>
         <BannerPage match={match} />

@@ -9,18 +9,30 @@ interface BannerProps {
 
 const CompareBanner = (nowUrl: string) => {
     switch (nowUrl) {
-        case '/laptop': return <NotebookBanner />
-        case '/song': return <SongBanner />
+        case '/laptop': return (
+            <S.Postioner>
+                <NotebookBanner /> 
+            </S.Postioner>
+        );
+        case '/song': return (
+            <S.Postioner>
+                <SongBanner />
+            </S.Postioner>
+        );
         case '/notice': return;
-        default: return <BetaBanner />
+        default: return (
+            <S.Postioner>
+                <BetaBanner />
+            </S.Postioner>
+        );
     }
 }
 
 const BannerContainer: React.FC<BannerProps> = ({ match }) => {
     return (
-        <S.Postioner>
+        <>
             {CompareBanner(match.path)}
-        </S.Postioner>
+        </>
     )
 }
 
