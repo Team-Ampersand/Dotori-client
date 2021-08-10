@@ -8,6 +8,7 @@ import AdminLaptopListPage from './AdminLaptopListPage/AdminLaptopListPage';
 import SongPage from './SongPage/SongPage';
 import AdminSongListPage from './AdminSongListPage/AdminSongListPage';
 import SigninPage from 'Pages/SigninPage/SigninPage';
+import SignupPage from './SignupPage/SignupPage';
 
 export { 
     SidebarPage,
@@ -19,5 +20,6 @@ export {
     AdminLaptopListPage,
     SongPage,
     AdminSongListPage,
-    SigninPage
+    SigninPage,
+    SignupPage
 };
