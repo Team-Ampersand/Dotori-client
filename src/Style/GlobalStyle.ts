@@ -52,5 +52,5 @@ export const ContentWrapper = styled.div`
   height: 100vh;
 `
 export const SidebarWrapper = styled.div<StyleProps>`
-  display: ${(props) => props.current === "/signin" ? "none" : "flex"};
+  display: ${(props) => props.current === "/signin" || "/signup" ? "none" : "flex"};
 `;
