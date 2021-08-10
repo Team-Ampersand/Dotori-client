@@ -46,3 +46,15 @@ export const FindContainer = styled.div`
         color: #3A4C98;
     }
 `;
+
+export const SignupContainer = styled.div`
+    margin-top: 1vh;
+    span {
+        color: #969696;
+    }
+    a {
+        margin-left: 5px;
+        text-decoration: none;
+        color: #3A4C98;
+    }
+`;
