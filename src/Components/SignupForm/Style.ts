@@ -37,6 +37,7 @@ export const SelectContainer = styled.div`
         border-radius: 10px;
         outline: none;
         border: 2px solid #617BE3;
+        padding-left: 0.5vw;
     }
     span{
         color: #617BE3;
