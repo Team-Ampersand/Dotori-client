@@ -1,7 +1,7 @@
 import styled, { createGlobalStyle, GlobalStyleComponent, DefaultTheme } from 'styled-components';
 
 interface StyleProps {
-  current?:String;
+  current:String;
 }
 
 export const GlobalStyle: GlobalStyleComponent<{}, DefaultTheme> = createGlobalStyle`
@@ -52,5 +52,5 @@ export const ContentWrapper = styled.div`
   height: 100vh;
 `
 export const SidebarWrapper = styled.div<StyleProps>`
-  display: ${(props) => props.current === "/signin" ? "none" : "flex"};
+  display: ${(props) => {if(props.current === "/signin") return "none"; else if(props.current === "/signup") return "none"; else return "flex";}};
 `;

@@ -6,7 +6,7 @@ const Button = () => {
     return (
         <>
             <S.ButtonStyle>
-                로그인
+                {window.location.pathname === "/signin" ? "로그인" : "회원가입"}
                 <S.ArrowWrapper>
                     <LoginArrow />
                 </S.ArrowWrapper>

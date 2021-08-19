@@ -30,6 +30,10 @@ const LoginForm = () => {
                     <S.CheckBox type="checkbox" />
                     <span>아이디 저장</span>
                 </S.SaveContainer>
+                <S.SignupContainer>
+                    <span>아직 계정이 없으신가요?</span>
+                    <Link to="/signup">회원가입</Link>
+                </S.SignupContainer>
                 <S.FindContainer>
                     <span>비밀번호를 잊으셨나요?</span>
                     <Link to="/password-change">비밀번호 찾기</Link>

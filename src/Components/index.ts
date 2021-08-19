@@ -26,6 +26,7 @@ import RequestedSongs from './RequestedSongs/RequestedSongs';
 import Input from './Input/Input';
 import LoginForm from './LoginForm/LoginForm';
 import Button from './Button/Button';
+import SignupForm from './SignupForm/SignupForm'; 
 
 export {
     Sidebar,
@@ -55,5 +56,6 @@ export {
     RequestedSongs,
     Input,
     LoginForm,
-    Button
+    Button,
+    SignupForm
 }; 
