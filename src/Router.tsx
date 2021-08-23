@@ -6,7 +6,7 @@ const Router: React.FC = () => {
   return (
     <>
       <Route exact path="/" component={HomePage} />
-      <Route path="/laptop" component={LaptopPage} />
+      <Route path="/selfstudy" component={LaptopPage} />
       <Route path="/notice" component={NoticePage} />
       <Route path="/notice/write" component={() => <div>공지사항 작성 페이지</div>} />
       <Route path="/song" component={SongPage} />

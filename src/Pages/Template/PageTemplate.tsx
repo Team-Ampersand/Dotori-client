@@ -14,8 +14,8 @@ const returnPageType = (routerName: string) => {
   switch (routerName) {
     case "/":
       return "홈";
-    case "/laptop":
-      return "노트북 대여";
+    case "/selfstudy":
+      return "자습신청";
     case '/song':
       return '기상음악';
     case '/notice':
@@ -27,8 +27,8 @@ const returnPageType = (routerName: string) => {
 
 const returnValueType = (nowUrl: string) => {
   switch (nowUrl) {
-    case "/laptop":
-      return "laptop";
+    case "/selfstudy":
+      return "selfstudy";
     case '/song':
       return "song";
     case '/notice':
@@ -39,7 +39,7 @@ const returnValueType = (nowUrl: string) => {
 }
 
 const ChangeType = (match: MatchType, isActive: boolean, setIsActive:React.Dispatch<React.SetStateAction<boolean>>) => {
-  if (match.path === "/laptop") {
+  if (match.path === "/selfstudy") {
     return <ChangeLaptopType
       active={isActive}
       setActive={(value: boolean) => setIsActive(value)}
@@ -67,7 +67,7 @@ const BannerStatus = (match: MatchType, children: React.ReactNode, isActive: boo
       </S.Banner>
       <S.Content>{children}</S.Content>
     </>);
-  } else if (returnValueType(match.path) === "laptop") {
+  } else if (returnValueType(match.path) === "selfstudy") {
     return (<AdminLaptopListPage match={match} />);
   } else if (returnValueType(match.path) === "song") {
     return (<AdminSongListPage match={match} />);
