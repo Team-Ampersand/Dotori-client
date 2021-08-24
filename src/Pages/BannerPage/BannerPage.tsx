@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './Style';
-import { BetaBanner, NotebookBanner, SongBanner } from '../../Components';
+import { BetaBanner, SongBanner } from '../../Components';
 import { MatchType } from '../../Utils/GlobalType';
 
 interface BannerProps {
@@ -9,11 +9,6 @@ interface BannerProps {
 
 const CompareBanner = (nowUrl: string) => {
     switch (nowUrl) {
-        case '/laptop': return (
-            <S.Postioner>
-                <NotebookBanner /> 
-            </S.Postioner>
-        );
         case '/song': return (
             <S.Postioner>
                 <SongBanner />

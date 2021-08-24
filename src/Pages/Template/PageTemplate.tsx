@@ -3,8 +3,8 @@ import * as S from "./Style";
 import BannerPage from "../BannerPage/BannerPage";
 import { MatchType } from "../../Utils/GlobalType";
 import { ManufactureDate } from "../../Utils/ManufactureDate";
-import { ChangeLaptopType, ChangeSongType } from "../../Components";
-import { AdminLaptopListPage, AdminSongListPage } from "../";
+import { ChangeSongType } from "../../Components";
+import { AdminSongListPage } from "../";
 
 interface TemplateProps {
   match: MatchType;
@@ -40,10 +40,6 @@ const returnValueType = (nowUrl: string) => {
 
 const ChangeType = (match: MatchType, isActive: boolean, setIsActive:React.Dispatch<React.SetStateAction<boolean>>) => {
   if (match.path === "/selfstudy") {
-    return <ChangeLaptopType
-      active={isActive}
-      setActive={(value: boolean) => setIsActive(value)}
-    />;
   } else if (match.path === "/song") {
     return <ChangeSongType
       active={isActive}
@@ -68,7 +64,7 @@ const BannerStatus = (match: MatchType, children: React.ReactNode, isActive: boo
       <S.Content>{children}</S.Content>
     </>);
   } else if (returnValueType(match.path) === "selfstudy") {
-    return (<AdminLaptopListPage match={match} />);
+    return (<div></div>);
   } else if (returnValueType(match.path) === "song") {
     return (<AdminSongListPage match={match} />);
   }

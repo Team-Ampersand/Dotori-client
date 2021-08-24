@@ -15,10 +15,6 @@ interface ProfileProps {
 }
 
 const SampleData = {
-    laptop: {
-        laptopRoom: "LAB 4실",
-        laptopSeat: "12"
-    },
     song: {
         songAuthor: "아이유",
         songName: "Blueming",
