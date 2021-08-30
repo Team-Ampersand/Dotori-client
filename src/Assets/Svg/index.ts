@@ -16,6 +16,7 @@ import More from './More';
 import IllustHome from './IllustHome';
 import DotoriLogo from './DotoriLogo';
 import LoginArrow from './LoginArrow';
+import Profile from './Profile';
 
 export {
     Home,
@@ -35,5 +36,6 @@ export {
     User,
     More,
     DotoriLogo,
-    LoginArrow
+    LoginArrow,
+    Profile
 }
