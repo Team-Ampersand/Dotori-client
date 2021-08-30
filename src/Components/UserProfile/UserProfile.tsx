@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './Style';
-import { Logout, Point, User } from '../../Assets/Svg';
+import { Logout, Point, User, Profile } from '../../Assets/Svg';
 import { EventList } from '..';
 
 type UserProfileType = {
@@ -34,7 +34,7 @@ const UserProfile: React.FC<ProfileProps> = ({ logoutFunc, userProfile }) => {
             </S.Header>
             <S.Content>
                 <S.UserWrapper>
-                    <User />
+                    <Profile />
                     <div>
                         <span className="name">{userProfile.name}</span>
                         <span className="grade">{userProfile.grade}-{userProfile.class}</span>
