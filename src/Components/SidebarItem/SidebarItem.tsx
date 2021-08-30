@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import * as S from './Style';
 import { useRouterNameChangeMenuImage } from '../../Utils/ChangeImage';
 
@@ -13,7 +13,7 @@ interface SidebarItemProps {
 
 const SidebarItem: React.FC<SidebarItemProps> = ({ router, menuIcon, menuTitle, currentRouter, setCurrnentRouter }) => {
     return (
-        <S.LinkWrapper to={router} onClick={() => setCurrnentRouter(router)} replace={currentRouter === router}>
+        <S.LinkWrapper to={router} onClick={() => setCurrnentRouter(router)} sidebarColor={window.location.pathname === router}>
             {useRouterNameChangeMenuImage(menuIcon)}
             <S.MenuTitle>{menuTitle}</S.MenuTitle>
         </S.LinkWrapper>
