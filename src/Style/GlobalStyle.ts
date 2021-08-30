@@ -28,7 +28,9 @@ export const GlobalStyle: GlobalStyleComponent<{}, DefaultTheme> = createGlobalS
   button:focus {
     outline: none;
   }
-
+  input:focus::-webkit-input-placeholder{
+    color:transparent;
+  }
   button {
       cursor: pointer;
       outline: none;
