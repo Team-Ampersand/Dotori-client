@@ -20,6 +20,7 @@ import Input from './Input/Input';
 import LoginForm from './LoginForm/LoginForm';
 import Button from './Button/Button';
 import SignupForm from './SignupForm/SignupForm'; 
+import Selfstudyboard from './Selfstudyboard/Selfstudyboard';
 
 export {
     Sidebar,
@@ -43,5 +44,6 @@ export {
     Input,
     LoginForm,
     Button,
-    SignupForm
+    SignupForm,
+    Selfstudyboard
 }; 
