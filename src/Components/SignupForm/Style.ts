@@ -56,3 +56,41 @@ export const SigninContainer = styled.div`
         color: #3A4C98;
     }
 `;
+
+export const QuestionContainer = styled.div`
+    margin-top: 1vh;
+    display: flex;
+    flex-direction: column;
+    span{
+        font-size: 1.1rem;
+        margin: 0 auto;
+        color: #617BE3;
+        font-weight: bold;
+    }
+`;
+
+export const EmailContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    input {
+        width: 24vw;
+        margin-right: 1.33vh;
+    }
+    button {
+        width: 4.3vw;
+        margin-top: 2vh;
+        height: 5.5vh;
+        border-radius: 9px;
+        outline: none;
+        border: none;
+        background-color: #617BE3;
+        color: #fff;
+        transition: 0.5s;
+    }
+    button:hover{
+        background-color: #fff;
+        color: #617BE3;
+        border: 2px solid #617BE3;
+    }
+`;

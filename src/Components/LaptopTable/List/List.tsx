@@ -21,7 +21,7 @@ interface ListProps {
 
 const onlyCompareThisHeader = (match: MatchType) => {
   switch (match.path) {
-    case "/laptop":
+    case "/selfstudy":
       return LaptopHeader;
     default:
       break;

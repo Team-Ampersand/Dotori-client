@@ -1,13 +1,16 @@
 import styled from "styled-components";
 
+type StyleProps = {
+    displayed? : boolean;
+}
+
 export const Positioner = styled.div`
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
 `;
 
-export const InputStyle = styled.input`
+export const InputStyle = styled.input<StyleProps>`
     width: 29vw;
     height: 5vh;
     border-radius: 10px;
@@ -16,4 +19,5 @@ export const InputStyle = styled.input`
     padding-left: 10px;
     margin-top: 2vh;
     font-size: 16px;
+    display: ${(props) => props.displayed === true ? "none" : "flex"};
 `;
