@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PageTemplate } from '..'
 import { MatchType } from '../../Utils/GlobalType';
+import { LaptopTable } from '../../Components';
 import * as S from './Style';
 
 interface LaptopProps {
@@ -10,7 +11,9 @@ interface LaptopProps {
 const LaptopContainer: React.FC<LaptopProps> = ({ match }) => {
 
     return (
-        <div></div>
+        <PageTemplate match={match}>
+            <LaptopTable match={match}/>
+        </PageTemplate>
     )
 }
 
