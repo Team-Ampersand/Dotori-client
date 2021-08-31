@@ -58,7 +58,7 @@ export const SigninContainer = styled.div`
 `;
 
 export const QuestionContainer = styled.div`
-    margin-top: 1vh;
+    margin-top: 2vh;
     display: flex;
     flex-direction: column;
     span{
