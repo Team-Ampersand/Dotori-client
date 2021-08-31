@@ -7,7 +7,7 @@ const BetaBanner: React.FC = () => {
         <S.Postioner>
             <S.TextWrapper>
                 <h2>Beta 서비스 중입니다.</h2>
-                <span>정식 서비스 : 2020년 1학기 예정</span>
+                <span>정식 서비스 : 2022년 1학기 예정</span>
             </S.TextWrapper>
             <S.IlustWrapper>
                 <IllustBeta />
