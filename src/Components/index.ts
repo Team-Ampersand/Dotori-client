@@ -13,41 +13,43 @@ import BoardList from './BoardList/BoardList';
 import BoardItem from './BoardItem/BoardItem';
 import LaptopRoom from './LaptopRoom/LaptopRoom';
 import RoomItem from './RoomItem/RoomItem';
-import NoticeBoard from './NoticeBoard/NoticeBoard'
+import NoticeBoard from './NoticeBoard/NoticeBoard';
 import NoticeBoardItem from './NoticeBoardItem/NoticeBoardItem';
+import NoticeWrite from './NoticeWrite/NoticeWrite';
 import LaptopSeats from './LaptopSeats/LaptopSeats';
 import LaptopSeat from './LaptopSeat/LaptopSeat';
 import ChangeLaptopType from './ChangeLaptopType/ChangeLaptopType';
 import ChangeSongType from './ChangeSongType/ChangeSongType';
-import LaptopTable from './LaptopTable/LaptopTable'
+import LaptopTable from './LaptopTable/LaptopTable';
 import SongRequest from './SongRequest/SongRequest';
 import TodaySong from './TodaySong/TodaySong';
 import RequestedSongs from './RequestedSongs/RequestedSongs';
 
 export {
-    Sidebar,
-    SidebarList,
-    SidebarItem,
-    BetaBanner,
-    SongBanner,
-    NotebookBanner,
-    UserProfile,
-    EventList,
-    LaptopEvent,
-    SongEvent,
-    Board,
-    BoardList,
-    BoardItem,
-    NoticeBoard,
-    NoticeBoardItem,
-    LaptopRoom,
-    RoomItem,
-    LaptopSeats,
-    LaptopSeat,
-    ChangeLaptopType,
-    ChangeSongType,
-    LaptopTable,
-    SongRequest,
-    TodaySong,
-    RequestedSongs
-}; 
+	Sidebar,
+	SidebarList,
+	SidebarItem,
+	BetaBanner,
+	SongBanner,
+	NotebookBanner,
+	UserProfile,
+	EventList,
+	LaptopEvent,
+	SongEvent,
+	Board,
+	BoardList,
+	BoardItem,
+	NoticeBoard,
+	NoticeBoardItem,
+	NoticeWrite,
+	LaptopRoom,
+	RoomItem,
+	LaptopSeats,
+	LaptopSeat,
+	ChangeLaptopType,
+	ChangeSongType,
+	LaptopTable,
+	SongRequest,
+	TodaySong,
+	RequestedSongs,
+};
