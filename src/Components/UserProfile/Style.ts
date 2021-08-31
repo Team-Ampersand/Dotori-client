@@ -30,7 +30,7 @@ export const LogoutWrapper = styled.div`
     span {
         font-size: 18px;
         margin-left: 13px;
-        color: #8B8B8B;
+        color: #fc2c2c;
     }
 `
 
