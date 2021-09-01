@@ -4,36 +4,38 @@ import { BetaBanner, NotebookBanner, SongBanner } from '../../Components';
 import { MatchType } from '../../Utils/GlobalType';
 
 interface BannerProps {
-    match: MatchType
+	match: MatchType;
 }
 
 const CompareBanner = (nowUrl: string) => {
-    switch (nowUrl) {
-        case '/laptop': return (
-            <S.Postioner>
-                <NotebookBanner /> 
-            </S.Postioner>
-        );
-        case '/song': return (
-            <S.Postioner>
-                <SongBanner />
-            </S.Postioner>
-        );
-        case '/notice': return;
-        default: return (
-            <S.Postioner>
-                <BetaBanner />
-            </S.Postioner>
-        );
-    }
-}
+	switch (nowUrl) {
+		case '/laptop':
+			return (
+				<S.Postioner>
+					<NotebookBanner />
+				</S.Postioner>
+			);
+		case '/song':
+			return (
+				<S.Postioner>
+					<SongBanner />
+				</S.Postioner>
+			);
+		case '/notice':
+			return;
+		case '/notice/write':
+			return;
+		default:
+			return (
+				<S.Postioner>
+					<BetaBanner />
+				</S.Postioner>
+			);
+	}
+};
 
 const BannerContainer: React.FC<BannerProps> = ({ match }) => {
-    return (
-        <>
-            {CompareBanner(match.path)}
-        </>
-    )
-}
+	return <>{CompareBanner(match.path)}</>;
+};
 
 export default BannerContainer;
