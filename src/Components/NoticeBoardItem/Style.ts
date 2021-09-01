@@ -1,7 +1,16 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { darken } from 'polished';
 
-interface StyleProps {
+interface EditProps {
+	edit: boolean;
+}
+
+interface AuthorProps {
 	AuthorColor: string;
+}
+
+interface BtnProps {
+	BtnColor: string;
 }
 
 export const Container = styled.div`
@@ -12,43 +21,71 @@ export const Container = styled.div`
 	border-radius: 20px;
 	margin-top: 2.7vh;
 	margin-left: 2vw;
-	position: relative;
 	cursor: pointer;
+	display: flex;
+	flex-direction: row;
 	&:hover {
-		border-left: 2px solid rgba(0, 0, 0, 0.25);
-		border-right: 2px solid rgba(0, 0, 0, 0.25);
+		background-color: ${darken(0.05, '#fff')};
 	}
 `;
 
-export const AuthorStyle = styled.div<StyleProps>`
+export const AuthorStyle = styled.div<AuthorProps>`
 	span {
 		color: ${(props) => props.AuthorColor};
-		font-size: 1.5rem;
+		font-size: 1.5em;
 		font-weight: bold;
 	}
-	position: absolute;
-	padding-top: 2.2vh;
-	left: 1.2vw;
+	margin-left: 1.5vw;
+	margin-top: 2.2vh;
 `;
 
 export const TitleStyle = styled.div`
 	span {
 		color: #000;
-		font-weight: bold;
-		font-size: 1.375rem;
+		font-size: 1.375em;
 	}
-	position: absolute;
-	padding-top: 2.45vh;
-	left: 9.75vw;
+	margin-left: 2.4vw;
+	margin-top: 2.45vh;
 `;
 
-export const DateStyle = styled.div`
+export const DateStyle = styled.div<EditProps>`
 	span {
 		color: #ababab;
-		font-size: 1.125rem;
+		font-size: 1.125em;
 		font-weight: bold;
 	}
-	position: absolute;
-	padding-top: 2.7vh;
-	right: 1.95vw;
+	margin-left: 54vw;
+	margin-top: 2.7vh;
+	${(props) =>
+		props.edit &&
+		css`
+			display: none;
+		`}
+`;
+
+export const BtnWrapper = styled.div<EditProps>`
+	margin-left: 48.7vw;
+	margin-top: 1.68vh;
+	${(props) =>
+		!props.edit &&
+		css`
+			display: none;
+		`}
+`;
+
+export const Btn = styled.button<BtnProps>`
+	width: 4.4vw;
+	height: 3.6vh;
+	margin-left: 0.7vw;
+	border-radius: 10px;
+	background-color: transparent;
+	border: 2px solid ${(props) => props.BtnColor};
+	outline: none;
+	font-size: 1.25em;
+	color: ${(props) => props.BtnColor};
+	font-weight: bold;
+	&:hover {
+		background-color: ${(props) => props.BtnColor};
+		color: #fff;
+	}
 `;
