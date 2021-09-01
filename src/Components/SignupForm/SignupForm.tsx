@@ -37,7 +37,7 @@ const GradeData = [
     },
 ]
 
-const SignupForm = () => {
+const SignupForm: React.FC = () => {
     const [clicked, setClicked] = useState(true)
     return (
         <S.Positioner>

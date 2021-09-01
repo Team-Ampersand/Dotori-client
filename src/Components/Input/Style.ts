@@ -17,7 +17,7 @@ export const InputStyle = styled.input<StyleProps>`
     outline: none;
     border: 2px solid #617BE3;
     padding-left: 10px;
-    margin-top: 2vh;
+    margin-top: 1vh;
     font-size: 16px;
     display: ${(props) => props.displayed === true ? "none" : "flex"};
 `;
