@@ -23,7 +23,11 @@ const NoticeWritePage: React.FC<NoticeWriteProps> = ({ match }) => {
 
 	return (
 		<PageTemplate match={match}>
-			<NoticeWrite board_key={i} authorColor={returnAuthorColor(author)!} />
+			<NoticeWrite
+				board_key={i}
+				authorColor={returnAuthorColor(author)!}
+				writeMode={'create'}
+			/>
 		</PageTemplate>
 	);
 };
