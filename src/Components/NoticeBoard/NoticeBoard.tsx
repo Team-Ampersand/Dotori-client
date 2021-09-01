@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as S from './Style';
 import NoticeBoardItem from '../NoticeBoardItem/NoticeBoardItem';
-import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const noticeDummyData = [
 	{
@@ -36,29 +36,38 @@ const noticeDummyData = [
 
 const NoticeBoard: React.FC = () => {
 	const pageNumbers: Array<number> = [];
-	for (let i = 2; i <= 7; i++) {
+	for (let i = 1; i <= 5; i++) {
 		pageNumbers.push(i);
 	}
 
+	const [editState, setEditState] = useState(false);
+	const onToggle = () => setEditState(!editState);
+
 	return (
-		<div>
+		<>
 			<S.Positioner>
+				<S.BtnWrapper>
+					<Link to={'/notice/write'}>
+						<S.Btn>작성</S.Btn>
+					</Link>
+					<S.Btn onClick={onToggle}>{editState ? '완료' : '편집'}</S.Btn>
+				</S.BtnWrapper>
 				<S.Container>
 					{noticeDummyData.map((noticeItem) => (
 						<NoticeBoardItem
 							board_key={noticeItem.board_key}
 							author={noticeItem.author}
+							editState={editState}
 						/>
 					))}
 					<S.PageUl>
-						<S.PageLi>1</S.PageLi>
 						{pageNumbers.map((numbers) => (
 							<S.PageLi>{numbers}</S.PageLi>
 						))}
 					</S.PageUl>
 				</S.Container>
 			</S.Positioner>
-		</div>
+		</>
 	);
 };
 
