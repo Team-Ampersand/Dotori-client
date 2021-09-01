@@ -34,7 +34,7 @@ export const Container = styled.div`
 	background-color: white;
 	text-align: center;
 	width: 50%;
-	height: 800px;
+	height: 72.7vh;
 `;
 
 export const Title = styled.div<StyleProps>`
@@ -49,7 +49,6 @@ export const Title = styled.div<StyleProps>`
 	width: 100%;
 	height: 8%;
 	overflow: auto;
-	padding-top: 5px;
 `;
 
 export const Close = styled.div`
