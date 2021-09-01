@@ -14,6 +14,9 @@ import Logout from './Logout';
 import User from './User';
 import More from './More';
 import IllustHome from './IllustHome';
+import DotoriLogo from './DotoriLogo';
+import LoginArrow from './LoginArrow';
+import Profile from './Profile';
 
 export {
     Home,
@@ -31,5 +34,8 @@ export {
     IllustHome,
     Logout,
     User,
-    More
+    More,
+    DotoriLogo,
+    LoginArrow,
+    Profile
 }

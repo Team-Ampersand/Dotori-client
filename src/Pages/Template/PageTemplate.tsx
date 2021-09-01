@@ -3,8 +3,8 @@ import * as S from './Style';
 import BannerPage from '../BannerPage/BannerPage';
 import { MatchType } from '../../Utils/GlobalType';
 import { ManufactureDate } from '../../Utils/ManufactureDate';
-import { ChangeLaptopType, ChangeSongType } from '../../Components';
-import { AdminLaptopListPage, AdminSongListPage } from '../';
+import { ChangeSongType } from '../../Components';
+import { AdminSongListPage } from '../';
 
 interface TemplateProps {
 	match: MatchType;
@@ -14,14 +14,12 @@ const returnPageType = (routerName: string) => {
 	switch (routerName) {
 		case '/':
 			return '홈';
-		case '/laptop':
-			return '노트북 대여';
+		case '/selfstudy':
+			return '자습신청';
 		case '/song':
 			return '기상음악';
 		case '/notice':
 			return '공지사항';
-		case '/notice/write':
-			return '공지사항 작성';
 		default:
 			break;
 	}
@@ -29,14 +27,12 @@ const returnPageType = (routerName: string) => {
 
 const returnValueType = (nowUrl: string) => {
 	switch (nowUrl) {
-		case '/laptop':
-			return 'laptop';
+		case '/selfstudy':
+			return 'selfstudy';
 		case '/song':
 			return 'song';
 		case '/notice':
 			return 'notice';
-		case '/notice/write':
-			return 'notice write';
 		default:
 			return 0;
 	}
@@ -47,13 +43,7 @@ const ChangeType = (
 	isActive: boolean,
 	setIsActive: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
-	if (match.path === '/laptop') {
-		return (
-			<ChangeLaptopType
-				active={isActive}
-				setActive={(value: boolean) => setIsActive(value)}
-			/>
-		);
+	if (match.path === '/selfstudy') {
 	} else if (match.path === '/song') {
 		return (
 			<ChangeSongType
@@ -69,7 +59,7 @@ const BannerStatus = (
 	children: React.ReactNode,
 	isActive: boolean
 ) => {
-	if (returnValueType(match.path) === 'notice' || 'notice write') {
+	if (returnValueType(match.path) === 'notice') {
 		return (
 			<>
 				<BannerPage match={match} />
@@ -85,8 +75,8 @@ const BannerStatus = (
 				<S.Content>{children}</S.Content>
 			</>
 		);
-	} else if (returnValueType(match.path) === 'laptop') {
-		return <AdminLaptopListPage match={match} />;
+	} else if (returnValueType(match.path) === 'selfstudy') {
+		return <div></div>;
 	} else if (returnValueType(match.path) === 'song') {
 		return <AdminSongListPage match={match} />;
 	}

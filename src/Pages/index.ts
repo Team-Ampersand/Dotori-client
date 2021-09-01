@@ -5,9 +5,10 @@ import PageTemplate from './Template/PageTemplate';
 import LaptopPage from './LaptopPage/LaptopPage';
 import NoticePage from './NoticePage/NoticePage';
 import NoticeWritePage from './NoticeWritePage/NoticeWritePage';
-import AdminLaptopListPage from './AdminLaptopListPage/AdminLaptopListPage';
 import SongPage from './SongPage/SongPage';
 import AdminSongListPage from './AdminSongListPage/AdminSongListPage';
+import SigninPage from 'Pages/SigninPage/SigninPage';
+import SignupPage from './SignupPage/SignupPage';
 
 export {
 	SidebarPage,
@@ -17,7 +18,8 @@ export {
 	LaptopPage,
 	NoticePage,
 	NoticeWritePage,
-	AdminLaptopListPage,
 	SongPage,
 	AdminSongListPage,
+	SigninPage,
+	SignupPage,
 };

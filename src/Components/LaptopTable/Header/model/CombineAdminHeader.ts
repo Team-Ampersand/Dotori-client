@@ -1,5 +1,5 @@
 export const LaptopHeader = {
-    "label" : "노트북 대여 관리자",
+    "label" : "자습 신청 관리자",
     "list" : [
        
         {

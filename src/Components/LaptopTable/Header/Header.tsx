@@ -9,7 +9,7 @@ interface HeaderProps {
 
 const onlyCompareThisHeader = (match: MatchType) => {
 	switch (match.path) {
-		case '/laptop':
+		case '/selfstudy':
 			return LaptopHeader;
 		case '/song':
 			return SongHeader;
@@ -26,7 +26,7 @@ const mappingAdminHeader = (match: MatchType) =>
 const Header: React.FC<HeaderProps> = ({ match }) => {
 	return (
 		<>
-			{match.path === '/laptop' ? (
+			{match.path == '/selfstudy' ? (
 				<S.Postioner>{mappingAdminHeader(match)}</S.Postioner>
 			) : (
 				<S.SongPostioner>{mappingAdminHeader(match)}</S.SongPostioner>

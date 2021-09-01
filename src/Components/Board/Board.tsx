@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './Style';
 import { BoardObj } from '../../Utils/GlobalType';
-import { BoardList } from '..';
+import { BoardList, Selfstudyboard } from '..';
 
 interface BoardProps {
     boardPostList: BoardObj[]
@@ -16,6 +16,7 @@ const Board: React.FC<BoardProps> = ({ boardPostList }) => {
     return (
         <S.Postioner>
             {mappingBoardList(boardPostList)}
+            <Selfstudyboard />
         </S.Postioner>
     )
 }

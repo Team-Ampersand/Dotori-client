@@ -18,9 +18,9 @@ const sidebarMenuData = [
 				menuTitle: '공지사항',
 			},
 			{
-				router: '/laptop',
-				menuIcon: 'Laptop',
-				menuTitle: '노트북 대여',
+				router: '/selfstudy',
+				menuIcon: 'Selfstudy',
+				menuTitle: '자습신청',
 			},
 			{
 				router: '/song',

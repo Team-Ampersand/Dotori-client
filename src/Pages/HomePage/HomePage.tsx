@@ -4,7 +4,7 @@ import BannerPage from '../BannerPage/BannerPage';
 import { MatchType } from '../../Utils/GlobalType';
 import { ManufactureDate } from '../../Utils/ManufactureDate';
 import { PageTemplate } from '..';
-import { UserProfile, Board } from '../../Components';
+import { UserProfile, Selfstudyboard} from '../../Components';
 
 interface HomeProps {
     match: MatchType
@@ -47,16 +47,6 @@ const samplePost = [
             {id: 2, title: "Test", date: "2020년 00월 00일"},
         ]
     },
-    {
-        title: "사실 아무것도 없다!",
-        id: 'none',
-        list: [
-            {id: 1, title: "Test", date: "2020년 00월 00일"},
-            {id: 2, title: "Test", date: "2020년 00월 00일"},
-            {id: 2, title: "Test", date: "2020년 00월 00일"},
-            {id: 2, title: "Test", date: "2020년 00월 00일"},
-        ]
-    }
 ]
 
 const HomeContainer: React.FC<HomeProps> = ({ match }) => {
@@ -65,7 +55,7 @@ const HomeContainer: React.FC<HomeProps> = ({ match }) => {
             <S.UserProfile>
                 <UserProfile logoutFunc={() => alert("로그아웃")} userProfile={testProfile} />
             </S.UserProfile>
-            <Board boardPostList={samplePost} />
+            <Selfstudyboard />
         </PageTemplate>
     )
 }

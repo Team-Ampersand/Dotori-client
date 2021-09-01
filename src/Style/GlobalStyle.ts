@@ -4,6 +4,10 @@ import styled, {
 	DefaultTheme,
 } from 'styled-components';
 
+interface StyleProps {
+	current: String;
+}
+
 export const GlobalStyle: GlobalStyleComponent<
 	{},
 	DefaultTheme
@@ -31,7 +35,9 @@ export const GlobalStyle: GlobalStyleComponent<
   button:focus {
     outline: none;
   }
-
+  input:focus::-webkit-input-placeholder{
+    color:transparent;
+  }
   button {
       cursor: pointer;
       outline: none;
@@ -51,7 +57,14 @@ export const Positioner = styled.div`
 
 export const ContentWrapper = styled.div`
 	display: inline-block;
-	width: calc(100% - 15rem);
+	width: 100%;
 	background-color: #ededed;
 	height: 100vh;
+`;
+export const SidebarWrapper = styled.div<StyleProps>`
+	display: ${(props) => {
+		if (props.current === '/signin') return 'none';
+		else if (props.current === '/signup') return 'none';
+		else return 'flex';
+	}};
 `;
