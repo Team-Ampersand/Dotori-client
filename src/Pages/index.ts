@@ -4,20 +4,22 @@ import BannerPage from './BannerPage/BannerPage';
 import PageTemplate from './Template/PageTemplate';
 import LaptopPage from './LaptopPage/LaptopPage';
 import NoticePage from './NoticePage/NoticePage';
+import NoticeWritePage from './NoticeWritePage/NoticeWritePage';
 import SongPage from './SongPage/SongPage';
 import AdminSongListPage from './AdminSongListPage/AdminSongListPage';
 import SigninPage from 'Pages/SigninPage/SigninPage';
 import SignupPage from './SignupPage/SignupPage';
 
-export { 
-    SidebarPage,
-    HomePage,
-    BannerPage,
-    PageTemplate,
-    LaptopPage,
-    NoticePage,
-    SongPage,
-    AdminSongListPage,
-    SigninPage,
-    SignupPage
+export {
+	SidebarPage,
+	HomePage,
+	BannerPage,
+	PageTemplate,
+	LaptopPage,
+	NoticePage,
+	NoticeWritePage,
+	SongPage,
+	AdminSongListPage,
+	SigninPage,
+	SignupPage,
 };
