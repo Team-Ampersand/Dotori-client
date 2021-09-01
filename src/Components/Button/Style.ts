@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ButtonStyle = styled.button`
-    margin-top: 4vh;
+    margin-top: 2vh;
     width: 29.5vw;
     height: 5.5vh;
     border-radius: 10px;
