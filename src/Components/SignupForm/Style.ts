@@ -28,7 +28,7 @@ export const GradeWrapper = styled.div`
 `;
 
 export const SelectContainer = styled.div`
-    margin-top: 2vh;
+    margin-top: 1.5vh;
     select {
         margin-left: 2vw;
         width: 23.5vw;
@@ -58,7 +58,7 @@ export const SigninContainer = styled.div`
 `;
 
 export const QuestionContainer = styled.div`
-    margin-top: 1vh;
+    margin-top: 1.5vh;
     display: flex;
     flex-direction: column;
     span{
@@ -79,7 +79,7 @@ export const EmailContainer = styled.div`
     }
     button {
         width: 4.3vw;
-        margin-top: 2vh;
+        margin-top: 1vh;
         height: 5.5vh;
         border-radius: 9px;
         outline: none;

@@ -36,7 +36,7 @@ const LoginForm = () => {
                 </S.SignupContainer>
                 <S.FindContainer>
                     <span>비밀번호를 잊으셨나요?</span>
-                    <Link to="/password-change">비밀번호 찾기</Link>
+                    <Link to="/password">비밀번호 찾기</Link>
                 </S.FindContainer>
             </S.Positioner>
         </>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+
 import {
 	HomePage,
 	LaptopPage,
@@ -8,6 +9,7 @@ import {
 	SigninPage,
 	SignupPage,
 	NoticeWritePage,
+	PwChangePage
 } from './Pages';
 
 const Router: React.FC = () => {
@@ -20,6 +22,7 @@ const Router: React.FC = () => {
 			<Route path="/song" component={SongPage} />
 			<Route path="/signin" component={SigninPage} />
 			<Route path="/signup" component={SignupPage} />
+			<Route path="/password" component={PwChangePage} />
 		</>
 	);
 };

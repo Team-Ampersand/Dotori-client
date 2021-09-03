@@ -9,6 +9,7 @@ import SongPage from './SongPage/SongPage';
 import AdminSongListPage from './AdminSongListPage/AdminSongListPage';
 import SigninPage from 'Pages/SigninPage/SigninPage';
 import SignupPage from './SignupPage/SignupPage';
+import PwChangePage from './PwChangePage/PwChangePage';
 
 export {
 	SidebarPage,
@@ -22,4 +23,5 @@ export {
 	AdminSongListPage,
 	SigninPage,
 	SignupPage,
+    PwChangePage
 };
