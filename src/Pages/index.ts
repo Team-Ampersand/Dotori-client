@@ -23,4 +23,5 @@ export {
 	AdminSongListPage,
 	SigninPage,
 	SignupPage,
+    PwChangePage
 };

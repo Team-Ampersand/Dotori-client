@@ -49,4 +49,5 @@ export {
 	Button,
 	SignupForm,
 	Selfstudyboard,
+    PasswordForm
 };
