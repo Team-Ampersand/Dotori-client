@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import * as S from './Style';
-import { useRouterNameChangeMenuImage } from '../../Utils/ChangeImage';
+import React from "react";
+import * as S from "./Style";
+import { useRouterNameChangeMenuImage } from "../../Utils/ChangeImage";
 
 interface SidebarItemProps {
 	router: string;

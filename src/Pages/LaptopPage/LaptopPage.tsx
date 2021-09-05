@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import { PageTemplate } from '..';
-import { MatchType } from '../../Utils/GlobalType';
-import { LaptopTable } from '../../Components';
-import * as S from './Style';
+import React from "react";
+import { PageTemplate } from "..";
+import { MatchType } from "../../Utils/GlobalType";
+import { LaptopTable } from "../../Components";
 
 interface LaptopProps {
 	match: MatchType;

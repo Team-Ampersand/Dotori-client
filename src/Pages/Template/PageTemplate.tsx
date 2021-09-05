@@ -22,6 +22,8 @@ const returnPageType = (routerName: string) => {
 			return "공지사항";
 		case "/notice/write":
 			return "공지사항 작성";
+		case "/point":
+			return "상벌점 관리";
 		default:
 			break;
 	}
@@ -37,6 +39,8 @@ const returnValueType = (nowUrl: string) => {
 			return "notice";
 		case "/notice/write":
 			return "notice write";
+		case "/point":
+			return "point";
 		default:
 			return 0;
 	}
@@ -63,7 +67,7 @@ const BannerStatus = (
 	children: React.ReactNode,
 	isActive: boolean
 ) => {
-	if (returnValueType(match.path) === "notice" || "notice write") {
+	if (returnValueType(match.path) === "notice" || "notice write" || "point") {
 		return (
 			<>
 				<BannerPage match={match} />
