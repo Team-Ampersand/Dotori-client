@@ -1,7 +1,7 @@
-import React from 'react';
-import * as S from './Style';
-import { MatchType } from '../../../Utils/GlobalType';
-import { LaptopHeader, SongHeader } from './model/CombineAdminHeader';
+import React from "react";
+import * as S from "./Style";
+import { MatchType } from "../../../Utils/GlobalType";
+import { LaptopHeader, SongHeader } from "./model/CombineAdminHeader";
 
 interface HeaderProps {
 	match: MatchType;
@@ -9,9 +9,9 @@ interface HeaderProps {
 
 const onlyCompareThisHeader = (match: MatchType) => {
 	switch (match.path) {
-		case '/selfstudy':
+		case "/selfstudy":
 			return LaptopHeader;
-		case '/song':
+		case "/song":
 			return SongHeader;
 		default:
 			break;
@@ -26,7 +26,7 @@ const mappingAdminHeader = (match: MatchType) =>
 const Header: React.FC<HeaderProps> = ({ match }) => {
 	return (
 		<>
-			{match.path == '/selfstudy' ? (
+			{match.path === "/selfstudy" ? (
 				<S.Postioner>{mappingAdminHeader(match)}</S.Postioner>
 			) : (
 				<S.SongPostioner>{mappingAdminHeader(match)}</S.SongPostioner>

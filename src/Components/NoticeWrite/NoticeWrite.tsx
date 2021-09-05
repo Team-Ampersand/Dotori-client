@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import * as S from './Style';
-import { Prompt, useHistory } from 'react-router-dom';
-import { useBeforeunload } from 'react-beforeunload';
+import React, { useState } from "react";
+import * as S from "./Style";
+import { Prompt, useHistory } from "react-router-dom";
+import { useBeforeunload } from "react-beforeunload";
 
 interface NoticeWriteProps {
 	board_key: number;
@@ -14,7 +14,7 @@ const NoticeWrite: React.FC<NoticeWriteProps> = ({
 	authorColor,
 	writeMode,
 }) => {
-	const [state, setState] = useState('');
+	const [state, setState] = useState("");
 	const getContent = (e) => {
 		setState(e.target.value);
 	};
@@ -28,7 +28,8 @@ const NoticeWrite: React.FC<NoticeWriteProps> = ({
 
 	const createNotice = async () => {
 		await confirm();
-		await history.push('/notice');
+		await history.push("/notice");
+		console.log(state);
 	};
 
 	useBeforeunload((e) => {
@@ -39,7 +40,7 @@ const NoticeWrite: React.FC<NoticeWriteProps> = ({
 		<>
 			<Prompt
 				when={shouldConfirmState}
-				message={'주의! 변경사항이 저장되지 않을 수 있습니다.'}
+				message={"주의! 변경사항이 저장되지 않을 수 있습니다."}
 			/>
 			<S.Positioner>
 				<S.Container>
@@ -49,7 +50,7 @@ const NoticeWrite: React.FC<NoticeWriteProps> = ({
 						onChange={getContent}
 					/>
 					<S.BtnWrapper>
-						<S.DeleteBtn onClick={() => history.push('/notice')}>
+						<S.DeleteBtn onClick={() => history.push("/notice")}>
 							취소
 						</S.DeleteBtn>
 						<S.Btn onClick={createNotice}>생성</S.Btn>
