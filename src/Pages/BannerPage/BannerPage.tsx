@@ -19,6 +19,8 @@ const CompareBanner = (nowUrl: string) => {
 			return;
 		case "/notice/write":
 			return;
+		case "/point":
+			return;
 		default:
 			return (
 				<S.Postioner>

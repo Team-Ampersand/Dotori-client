@@ -1,19 +1,17 @@
 import React from "react";
 import { MatchType } from "../../Utils/GlobalType";
 import PageTemplate from "Pages/Template/PageTemplate";
-import { NoticeBoard } from "../../Components";
-import * as S from "./Style";
 
-interface NoticeProps {
+interface PointProps {
 	match: MatchType;
 }
 
-const NoticePage: React.FC<NoticeProps> = ({ match }) => {
+const PointPage: React.FC<PointProps> = ({ match }) => {
 	return (
 		<PageTemplate match={match}>
-			<NoticeBoard />
+			<div />
 		</PageTemplate>
 	);
 };
 
-export default NoticePage;
+export default PointPage;
