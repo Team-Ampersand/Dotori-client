@@ -1,8 +1,8 @@
 import React from "react";
 import * as S from "./Style";
 import { MatchType } from "Utils/GlobalType";
-import TableHeader from "../LaptopTable/Header/Header";
-import { SongHeader } from "../LaptopTable/Header/model/CombineAdminHeader";
+import TableHeader from "../SelfstudyTable/Header/Header";
+import { SongHeader } from "../SelfstudyTable/Header/model/CombineAdminHeader";
 
 type SongObj = {
 	id: number;

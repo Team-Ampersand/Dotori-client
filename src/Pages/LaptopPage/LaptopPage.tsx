@@ -1,7 +1,7 @@
 import React from "react";
 import { PageTemplate } from "..";
 import { MatchType } from "../../Utils/GlobalType";
-import { LaptopTable } from "../../Components";
+import { SelfstudyTable } from "../../Components";
 
 interface LaptopProps {
 	match: MatchType;
@@ -10,7 +10,7 @@ interface LaptopProps {
 const LaptopContainer: React.FC<LaptopProps> = ({ match }) => {
 	return (
 		<PageTemplate match={match}>
-			<LaptopTable match={match} />
+			<SelfstudyTable match={match} />
 		</PageTemplate>
 	);
 };
