@@ -13,7 +13,7 @@ import NoticeBoard from './NoticeBoard/NoticeBoard';
 import NoticeBoardItem from './NoticeBoardItem/NoticeBoardItem';
 import NoticeWrite from './NoticeWrite/NoticeWrite';
 import ChangeSongType from './ChangeSongType/ChangeSongType';
-import LaptopTable from './LaptopTable/LaptopTable';
+import SelfstudyTable from './SelfstudyTable/SelfstudyTable';
 import SongRequest from './SongRequest/SongRequest';
 import TodaySong from './TodaySong/TodaySong';
 import RequestedSongs from './RequestedSongs/RequestedSongs';
@@ -40,7 +40,7 @@ export {
 	NoticeBoardItem,
 	NoticeWrite,
 	ChangeSongType,
-	LaptopTable,
+	SelfstudyTable,
 	SongRequest,
 	TodaySong,
 	RequestedSongs,

@@ -101,7 +101,7 @@ interface TableProps {
     match: MatchType
 }
 
-const LaptopTable : React.FC<TableProps> = ({ match }) => {
+const SelfstudyTable : React.FC<TableProps> = ({ match }) => {
     return (
         <S.Postioner>
             <TableHeader match={match} />
@@ -112,4 +112,4 @@ const LaptopTable : React.FC<TableProps> = ({ match }) => {
     )
 }
 
-export default LaptopTable;
+export default SelfstudyTable;
