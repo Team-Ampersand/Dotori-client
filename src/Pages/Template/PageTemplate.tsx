@@ -67,7 +67,7 @@ const BannerStatus = (
 	children: React.ReactNode,
 	isActive: boolean
 ) => {
-	if (returnValueType(match.path) === "notice" || "notice write" || "point") {
+	if (returnValueType(match.path) === "notice" || "notice write" || "point" || "selfstudy") {
 		return (
 			<>
 				<BannerPage match={match} />
