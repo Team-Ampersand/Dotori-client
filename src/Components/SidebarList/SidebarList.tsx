@@ -16,14 +16,6 @@ interface SidebarListProps {
 	setCurrnentRouter: (currentRouter: string) => void;
 }
 
-
-
-const returnSidebarColor = (router : string) => {
-	if(window.location.pathname === router) return true;
-	else return false;
-}
-
-
 const SidebarList: React.FC<SidebarListProps> = ({
 	menuName,
 	menuDataLists,
