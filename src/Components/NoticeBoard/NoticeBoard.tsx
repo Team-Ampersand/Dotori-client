@@ -55,6 +55,7 @@ const NoticeBoard: React.FC = () => {
 				<S.Container>
 					{noticeDummyData.map((noticeItem) => (
 						<NoticeBoardItem
+							key={noticeItem.board_key}
 							board_key={noticeItem.board_key}
 							author={noticeItem.author}
 							editState={editState}

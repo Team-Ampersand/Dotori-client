@@ -12,6 +12,8 @@ import BoardItem from './BoardItem/BoardItem';
 import NoticeBoard from './NoticeBoard/NoticeBoard';
 import NoticeBoardItem from './NoticeBoardItem/NoticeBoardItem';
 import NoticeWrite from './NoticeWrite/NoticeWrite';
+import Point from './Point/Point';
+import Classification from './Classification/Classification';
 import ChangeSongType from './ChangeSongType/ChangeSongType';
 import SelfstudyTable from './SelfstudyTable/SelfstudyTable';
 import SongRequest from './SongRequest/SongRequest';
@@ -39,6 +41,8 @@ export {
 	NoticeBoard,
 	NoticeBoardItem,
 	NoticeWrite,
+	Point,
+	Classification,
 	ChangeSongType,
 	SelfstudyTable,
 	SongRequest,
@@ -49,5 +53,5 @@ export {
 	Button,
 	SignupForm,
 	Selfstudyboard,
-    PasswordForm
+	PasswordForm,
 };
