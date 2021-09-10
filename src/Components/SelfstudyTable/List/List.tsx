@@ -54,7 +54,7 @@ const List: React.FC<ListProps> = ({ userObj, match }) => {
 				<div style={{ flex: onlyCompareThisHeader(match)!.list[3].flex }}>
 					{item.num}
 				</div>
-				<div style={{ flex: onlyCompareThisHeader(match)!.list[4].flex }}>
+				{/* <div style={{ flex: onlyCompareThisHeader(match)!.list[4].flex }}>
 					{item.laptopRoom}
 				</div>
 				<div style={{ flex: onlyCompareThisHeader(match)!.list[5].flex }}>
@@ -64,8 +64,8 @@ const List: React.FC<ListProps> = ({ userObj, match }) => {
 					<S.StatusWrapper status={item.status}>
 						<span>{item.status ? "이용가능" : "적발"}</span>
 					</S.StatusWrapper>
-				</div>
-				<div style={{ flex: onlyCompareThisHeader(match)!.list[7].flex }}>
+				</div> */}
+				{/* <div style={{ flex: onlyCompareThisHeader(match)!.list[7].flex }}>
 					{item.bringTime}
 				</div>
 				<div style={{ flex: onlyCompareThisHeader(match)!.list[8].flex }}>
@@ -82,7 +82,7 @@ const List: React.FC<ListProps> = ({ userObj, match }) => {
 					>
 						<span>{item.status ? "적발신고" : "적발"}</span>
 					</S.DetectedLaptop>
-				</div>
+				</div> */}
 			</S.Wrapper>
 		));
 
