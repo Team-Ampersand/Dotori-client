@@ -7,17 +7,9 @@ export const LaptopHeader = {
             "flex": 1
         },
         {
-            "label": "학년",
+            "label": "학번",
             "flex": 1
-        },
-        {
-            "label": "반",
-            "flex": 1
-        },
-        {
-            "label": "번호",
-            "flex": 1
-        },
+        }
         // {
         //     "label": "학습실",
         //     "flex": 3

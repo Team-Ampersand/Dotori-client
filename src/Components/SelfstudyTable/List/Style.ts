@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
     width: 100%;
     display: flex;
     flex-direction: row;
-    border-bottom: 2px solid #a0a0a0a0;
+    border-top: 2px solid #a0a0a0a0;
 
     &:last-child {
         border-bottom: none;

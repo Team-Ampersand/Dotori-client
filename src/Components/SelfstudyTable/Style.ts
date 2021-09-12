@@ -15,7 +15,6 @@ export const TableHeader = styled.div`
     div { 
         display: flex;
         flex: 1;
-        border: 1px solid black;
     }
 `
 
@@ -29,8 +28,6 @@ export const Content = styled.div`
     align-items: center;
     -ms-overflow-style: none;
     scrollbar-width: none;
-
-    border: 2px solid #a0a0a0a0;
     border-radius: 5px;
 
     div {
