@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./Style";
-import { Classification } from "Components";
+import { Classification, StuPoint } from "Components";
 
 const PointDummyData = [
 	{
@@ -135,6 +135,18 @@ const Point: React.FC = () => {
 	return (
 		<S.Positioner>
 			<Classification />
+			<S.scoreBoard>
+				<ul>
+					{PointDummyData.map((stu) => (
+						<StuPoint
+							key={stu.id}
+							stuNum={stu.stuNum}
+							name={stu.name}
+							point={stu.point}
+						/>
+					))}
+				</ul>
+			</S.scoreBoard>
 		</S.Positioner>
 	);
 };

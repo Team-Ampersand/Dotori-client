@@ -1,36 +1,10 @@
 import styled from "styled-components";
 
-// export const BtnWrapper = styled.div`
-// 	display: flex;
-// 	flex-direction: column;
-// 	margin-top: 10px;
-// `;
-
-// export const RowWrapper = styled.div`
-// 	display: row;
-// `;
-
-// export const Btn = styled.button`
-// 	width: 120px;
-// 	height: 50px;
-// 	margin: 7px;
-// 	outline: none;
-// 	border: none;
-// 	border-radius: 10px;
-// 	background-color: gray;
-// 	color: #fff;
-// 	font-size: 20px;
-// 	font-weight: bold;
-// 	&:hover {
-// 		background-color: #0f4c81;
-// 	}
-// `;
-
 export const SelectWrapper = styled.div`
 	display: flex;
 	flex-direction: row;
 	background-color: #fff;
-	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
 	width: 500px;
 	height: 70px;
 	border-radius: 20px;

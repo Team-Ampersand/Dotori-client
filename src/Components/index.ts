@@ -13,6 +13,7 @@ import NoticeBoard from './NoticeBoard/NoticeBoard';
 import NoticeBoardItem from './NoticeBoardItem/NoticeBoardItem';
 import NoticeWrite from './NoticeWrite/NoticeWrite';
 import Point from './Point/Point';
+import StuPoint from './StuPoint/StuPoint';
 import Classification from './Classification/Classification';
 import ChangeSongType from './ChangeSongType/ChangeSongType';
 import SelfstudyTable from './SelfstudyTable/SelfstudyTable';
@@ -42,6 +43,7 @@ export {
 	NoticeBoardItem,
 	NoticeWrite,
 	Point,
+	StuPoint,
 	Classification,
 	ChangeSongType,
 	SelfstudyTable,
