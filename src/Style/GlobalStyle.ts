@@ -1,10 +1,17 @@
-import styled, { createGlobalStyle, GlobalStyleComponent, DefaultTheme } from 'styled-components';
+import styled, {
+	createGlobalStyle,
+	GlobalStyleComponent,
+	DefaultTheme,
+} from 'styled-components';
 
 interface StyleProps {
-  current:String;
+	current: String;
 }
 
-export const GlobalStyle: GlobalStyleComponent<{}, DefaultTheme> = createGlobalStyle`
+export const GlobalStyle: GlobalStyleComponent<
+	{},
+	DefaultTheme
+> = createGlobalStyle`
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -28,7 +35,9 @@ export const GlobalStyle: GlobalStyleComponent<{}, DefaultTheme> = createGlobalS
   button:focus {
     outline: none;
   }
-
+  input:focus::-webkit-input-placeholder{
+    color:transparent;
+  }
   button {
       cursor: pointer;
       outline: none;
@@ -38,19 +47,25 @@ export const GlobalStyle: GlobalStyleComponent<{}, DefaultTheme> = createGlobalS
 
   html {
     overflow: hidden;
+    font-size: 16px;
   }
 `;
 
 export const Positioner = styled.div`
-  display: flex;
-`
+	display: flex;
+`;
 
 export const ContentWrapper = styled.div`
-  display: inline-block;
-  width: 100%;
-  background-color: #EDEDED;
-  height: 100vh;
-`
+	display: inline-block;
+	width: 100%;
+	background-color: #ededed;
+	height: 100vh;
+`;
 export const SidebarWrapper = styled.div<StyleProps>`
-  display: ${(props) => {if(props.current === "/signin") return "none"; else if(props.current === "/signup") return "none"; else return "flex";}};
+	display: ${(props) => {
+		if (props.current === '/signin') return 'none';
+		else if (props.current === '/signup') return 'none';
+    else if (props.current === '/password') return 'none';
+		else return 'flex';
+	}};
 `;

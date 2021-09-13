@@ -8,7 +8,7 @@ export const useRouterNameChangeMenuImage = (routerName: String) => {
             return <Home />
         case "Notice":
             return <Notice />
-        case "Laptop":
+        case "Selfstudy":
             return <Laptop />
         case "Song":
             return <Song />
