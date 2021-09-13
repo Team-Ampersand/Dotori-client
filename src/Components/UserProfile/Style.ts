@@ -19,12 +19,10 @@ export const Header = styled.div`
 `
 
 export const LogoutWrapper = styled.div`
-    width: 100%;
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin-right: 26px;
+    margin-left: 280px;
     cursor: pointer;
 
     span {

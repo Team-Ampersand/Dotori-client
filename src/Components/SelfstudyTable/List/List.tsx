@@ -6,12 +6,6 @@ import { LaptopHeader } from "../Header/model/CombineAdminHeader";
 type User = {
 	name: string;
 	grade: number;
-	class: number;
-	num: number;
-	laptopRoom: string;
-	seat: number;
-	status: boolean;
-	bringTime: string;
 };
 
 interface ListProps {
@@ -47,14 +41,15 @@ const List: React.FC<ListProps> = ({ userObj, match }) => {
 				</div>
 				<div style={{ flex: onlyCompareThisHeader(match)!.list[1].flex }}>
 					{item.grade}
-				</div>
+				 </div>
+				{/*
 				<div style={{ flex: onlyCompareThisHeader(match)!.list[2].flex }}>
 					{item.class}
 				</div>
 				<div style={{ flex: onlyCompareThisHeader(match)!.list[3].flex }}>
 					{item.num}
-				</div>
-				<div style={{ flex: onlyCompareThisHeader(match)!.list[4].flex }}>
+				</div> */}
+				{/* <div style={{ flex: onlyCompareThisHeader(match)!.list[4].flex }}>
 					{item.laptopRoom}
 				</div>
 				<div style={{ flex: onlyCompareThisHeader(match)!.list[5].flex }}>
@@ -64,8 +59,8 @@ const List: React.FC<ListProps> = ({ userObj, match }) => {
 					<S.StatusWrapper status={item.status}>
 						<span>{item.status ? "이용가능" : "적발"}</span>
 					</S.StatusWrapper>
-				</div>
-				<div style={{ flex: onlyCompareThisHeader(match)!.list[7].flex }}>
+				</div> */}
+				{/* <div style={{ flex: onlyCompareThisHeader(match)!.list[7].flex }}>
 					{item.bringTime}
 				</div>
 				<div style={{ flex: onlyCompareThisHeader(match)!.list[8].flex }}>
@@ -82,7 +77,7 @@ const List: React.FC<ListProps> = ({ userObj, match }) => {
 					>
 						<span>{item.status ? "적발신고" : "적발"}</span>
 					</S.DetectedLaptop>
-				</div>
+				</div> */}
 			</S.Wrapper>
 		));
 

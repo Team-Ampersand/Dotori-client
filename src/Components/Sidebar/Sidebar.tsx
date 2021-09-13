@@ -37,7 +37,7 @@ const sidebarMenuData = [
 ];
 
 const Sidebar: React.FC = () => {
-	const [currentRouter, setCurrentRouter] = useState('/');
+	const [currentRouter, setCurrentRouter] = useState(window.location.pathname);
 	const mappingSidebarMenu = useMemo(() => {
 		return sidebarMenuData.map((menuData) => (
 			<SidebarList
