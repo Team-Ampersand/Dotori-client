@@ -4,7 +4,7 @@ export const SelectWrapper = styled.div`
 	display: flex;
 	flex-direction: row;
 	background-color: #fff;
-	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
 	width: 500px;
 	height: 70px;
 	border-radius: 20px;
