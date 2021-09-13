@@ -22,7 +22,7 @@ export const LogoutWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin-left: 26vh;
+    margin-left: 280px;
     cursor: pointer;
 
     span {
