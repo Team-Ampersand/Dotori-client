@@ -32,6 +32,11 @@ const sidebarMenuData = [
 				menuIcon: 'Point',
 				menuTitle: '상벌점',
 			},
+			{
+				router: '/authorization',
+				menuIcon: 'More',
+				menuTitle: '학생 정보',
+			},
 		],
 	},
 ];
