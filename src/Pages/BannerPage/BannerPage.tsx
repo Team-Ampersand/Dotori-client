@@ -1,7 +1,7 @@
-import React from "react";
-import * as S from "./Style";
-import { BetaBanner, SongBanner } from "../../Components";
-import { MatchType } from "../../Utils/GlobalType";
+import React from 'react';
+import * as S from './Style';
+import { BetaBanner, SongBanner } from '../../Components';
+import { MatchType } from '../../Utils/GlobalType';
 
 interface BannerProps {
 	match: MatchType;
@@ -9,19 +9,21 @@ interface BannerProps {
 
 const CompareBanner = (nowUrl: string) => {
 	switch (nowUrl) {
-		case "/song":
+		case '/song':
 			return (
 				<S.Postioner>
 					<SongBanner />
 				</S.Postioner>
 			);
-		case "/notice":
+		case '/notice':
 			return;
-		case "/notice/write":
+		case '/notice/write':
 			return;
-		case "/selfstudy":
+		case '/selfstudy':
 			return;
-		case "/point":
+		case '/point':
+			return;
+		case '/authorization':
 			return;
 		default:
 			return (
