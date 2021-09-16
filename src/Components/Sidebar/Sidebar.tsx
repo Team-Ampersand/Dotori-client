@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import * as S from './Style';
 import SidebarList from '../SidebarList/SidebarList';
-import Logo from '../../Assets/logo.png';
+import Logo from 'Assets/Svg/Logo';
 
 const sidebarMenuData = [
 	{
@@ -58,7 +58,9 @@ const Sidebar: React.FC = () => {
 	return (
 		<S.Postioner>
 			<S.LogoWrapper>
-				<S.Logo src={Logo} />
+				{/* <S.Logo> */}
+				<Logo />
+				{/* </S.Logo> */}
 			</S.LogoWrapper>
 			{mappingSidebarMenu}
 		</S.Postioner>
