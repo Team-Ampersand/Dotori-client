@@ -7,7 +7,6 @@ export const Postioner = styled.div`
     align-items: center;
     justify-content: center;
     padding: 2.679% 2.381%;
-
 `
 
 export const Wrapper = styled.div`
@@ -43,6 +42,7 @@ export const Content = styled.div`
     display: flex;
     width: 100%;
     height: 100%;
+    margin-top: 1.5vh;
 `
 
 export const UserProfile = styled.div`

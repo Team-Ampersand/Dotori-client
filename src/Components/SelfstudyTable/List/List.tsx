@@ -41,7 +41,7 @@ const List: React.FC<ListProps> = ({ userObj, match }) => {
 				</div>
 				<div style={{ flex: onlyCompareThisHeader(match)!.list[1].flex }}>
 					{item.grade}
-				</div>
+				 </div>
 				{/*
 				<div style={{ flex: onlyCompareThisHeader(match)!.list[2].flex }}>
 					{item.class}
