@@ -1,8 +1,7 @@
 import React from "react";
-import * as S from "./Style";
 import { PageTemplate } from "..";
 import { MatchType } from "../../Utils/GlobalType";
-import { SelfstudyTable, Classification } from "../../Components";
+import { SelfstudyTable } from "../../Components";
 
 interface LaptopProps {
 	match: MatchType;
@@ -11,10 +10,7 @@ interface LaptopProps {
 const LaptopContainer: React.FC<LaptopProps> = ({ match }) => {
 	return (
 		<PageTemplate match={match}>
-			<S.Positioner>
-				<Classification />
-				<SelfstudyTable match={match} />
-			</S.Positioner>
+			<SelfstudyTable match={match} />
 		</PageTemplate>
 	);
 };
