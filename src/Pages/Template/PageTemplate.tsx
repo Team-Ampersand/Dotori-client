@@ -46,28 +46,18 @@ const returnValueType = (nowUrl: string) => {
 	}
 };
 
-const ChangeType = (
-	match: MatchType,
-	isActive: boolean,
-	setIsActive: React.Dispatch<React.SetStateAction<boolean>>
-) => {
-	if (match.path === "/selfstudy") {
-	} else if (match.path === "/song") {
-		return (
-			<ChangeSongType
-				active={isActive}
-				setActive={(value: boolean) => setIsActive(value)}
-			/>
-		);
-	}
-};
-
 const BannerStatus = (
 	match: MatchType,
 	children: React.ReactNode,
 	isActive: boolean
 ) => {
-	if (returnValueType(match.path) === "notice" || "notice write" || "point" || "selfstudy") {
+	if (
+        returnValueType(match.path) === 'notice' ||
+        'notice write' ||
+        'point' ||
+        'selfstudy' ||
+        'song'
+    ) {
 		return (
 			<>
 				<BannerPage match={match} />
@@ -83,15 +73,13 @@ const BannerStatus = (
 				<S.Content>{children}</S.Content>
 			</>
 		);
-	} else if (returnValueType(match.path) === "selfstudy") {
-		return <div></div>;
-	} else if (returnValueType(match.path) === "song") {
-		return <AdminSongListPage match={match} />;
 	}
 };
 
 const PageTemplate: React.FC<TemplateProps> = ({ match, children }) => {
 	const [isActive, setIsActive] = useState(false);
+
+	console.log(isActive)
 
 	return (
 		<S.Postioner>
@@ -102,7 +90,6 @@ const PageTemplate: React.FC<TemplateProps> = ({ match, children }) => {
 						{ManufactureDate("Y")}년 {ManufactureDate("M")}월{" "}
 						{ManufactureDate("D")}일 {ManufactureDate("W")}요일
 					</strong>
-					{ChangeType(match, isActive, setIsActive)}
 				</S.Title>
 				{BannerStatus(match, children, isActive)}
 			</S.Wrapper>

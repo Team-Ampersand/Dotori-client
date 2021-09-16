@@ -52,13 +52,15 @@ const testProfile = {
 const HomeContainer: React.FC<HomeProps> = ({ match }) => {
 	return (
 		<PageTemplate match={match}>
-			<S.UserProfile>
-				<UserProfile
-					logoutFunc={() => alert("로그아웃")}
-					userProfile={testProfile}
-				/>
-			</S.UserProfile>
-			<Selfstudyboard />
+			<S.Positioner>
+				<S.UserProfile>
+					<UserProfile
+						logoutFunc={() => alert("로그아웃")}
+						userProfile={testProfile}
+					/>
+				</S.UserProfile>
+				<Selfstudyboard />
+			</S.Positioner>
 		</PageTemplate>
 	);
 };
