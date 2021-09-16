@@ -26,7 +26,7 @@ const SidebarList: React.FC<SidebarListProps> = ({
 	useEffect(() => {
 		window.onpopstate = () => {
 			setCurrnentRouter(window.location.pathname);
-		}
+		};
 	},[currentRouter, setCurrnentRouter])
 
 	const MappingSidebarItem = menuDataLists.map((item) => (
