@@ -58,7 +58,7 @@ const ChangeType = (
 				active={isActive}
 				setActive={(value: boolean) => setIsActive(value)}
 			/>
-		);
+		)
 	}
 };
 
@@ -67,7 +67,7 @@ const BannerStatus = (
 	children: React.ReactNode,
 	isActive: boolean
 ) => {
-	if (returnValueType(match.path) === "notice" || "notice write" || "point" || "selfstudy") {
+	if (returnValueType(match.path) === "notice" || "notice write" || "point" || "selfstudy" || "song") {
 		return (
 			<>
 				<BannerPage match={match} />
@@ -85,13 +85,15 @@ const BannerStatus = (
 		);
 	} else if (returnValueType(match.path) === "selfstudy") {
 		return <div></div>;
-	} else if (returnValueType(match.path) === "song") {
-		return <AdminSongListPage match={match} />;
+	// } else if (returnValueType(match.path) === "song") {
+	// 	return <AdminSongListPage match={match} />;
 	}
 };
 
 const PageTemplate: React.FC<TemplateProps> = ({ match, children }) => {
 	const [isActive, setIsActive] = useState(false);
+
+	console.log(isActive)
 
 	return (
 		<S.Postioner>

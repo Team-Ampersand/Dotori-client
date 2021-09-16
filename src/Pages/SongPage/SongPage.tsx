@@ -2,6 +2,7 @@ import React from 'react';
 import { MatchType } from '../../Utils/GlobalType';
 import { PageTemplate } from '..';
 import { SongRequest, TodaySong } from '../../Components';
+import * as S from './Style';
 
 interface SongProps {
     match: MatchType
@@ -21,8 +22,10 @@ const SongPage: React.FC<SongProps> = ({ match }) => {
 
     return (
         <PageTemplate match={match}>
-            <TodaySong />
-            <SongRequest onSubmit={onSubmit} />
+            <S.Positioner>
+                <TodaySong />
+                <SongRequest onSubmit={onSubmit} />
+            </S.Positioner>
         </PageTemplate>
     );
 }
