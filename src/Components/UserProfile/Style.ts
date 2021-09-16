@@ -20,8 +20,8 @@ export const Header = styled.div`
 
 export const LogoutWrapper = styled.div`
     display: flex;
-    align-items: center;
     justify-content: flex-end;
+    margin-top: 20px;
     margin-left: 280px;
     cursor: pointer;
 
