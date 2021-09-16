@@ -1,7 +1,6 @@
 import React from "react";
 import * as S from "./Style";
 import { Logout, Point, Profile } from "../../Assets/Svg";
-import { EventList } from "..";
 
 type UserProfileType = {
 	name: string;
@@ -51,10 +50,6 @@ const UserProfile: React.FC<ProfileProps> = ({ logoutFunc, userProfile }) => {
 					<sub>-5</sub>
 				</S.PointWrapper>
 			</S.Content>
-			<S.Footer>
-				<S.Label>나의 이벤트</S.Label>
-				<EventList eventObject={SampleData} />
-			</S.Footer>
 			<S.Policy>
 				<span>© 2021 Ampersand. All Rights Reserved.</span>
 				<p>

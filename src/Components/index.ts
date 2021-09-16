@@ -4,8 +4,6 @@ import SidebarItem from './SidebarItem/SidebarItem';
 import BetaBanner from './Banners/BetaBanner/BetaBanner';
 import SongBanner from './Banners/SongBanner/SongBanner';
 import UserProfile from './UserProfile/UserProfile';
-import EventList from './EventList/EventList';
-import SongEvent from './EventItem/SongEvent/SongEvent';
 import Board from './Board/Board';
 import BoardList from './BoardList/BoardList';
 import BoardItem from './BoardItem/BoardItem';
@@ -29,6 +27,7 @@ import Button from './Button/Button';
 import SignupForm from './SignupForm/SignupForm';
 import Selfstudyboard from './Selfstudyboard/Selfstudyboard';
 import PasswordForm from './PasswordForm/PasswordForm';
+import SongItem from './SongItem/SongItem';
 
 export {
 	Sidebar,
@@ -37,8 +36,6 @@ export {
 	BetaBanner,
 	SongBanner,
 	UserProfile,
-	EventList,
-	SongEvent,
 	Board,
 	BoardList,
 	BoardItem,
@@ -62,4 +59,5 @@ export {
 	SignupForm,
 	Selfstudyboard,
 	PasswordForm,
+	SongItem
 };
