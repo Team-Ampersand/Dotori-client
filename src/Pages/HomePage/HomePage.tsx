@@ -11,7 +11,7 @@ interface HomeProps {
 }
 
 const testProfile = {
-	name: '권희준',
+	name: '송시현',
 	grade: '2',
 	class: '2',
 };

@@ -64,7 +64,7 @@ export const PointProgress = styled.div`
 
 export const ActiveProgress = styled.div<StyleProps>`
 	position: absolute;
-	width: 15px;
+	width: 90%;
 	height: 9px;
 	border-radius: 20px;
 	background-color: ${(props) => props.statusColor};
