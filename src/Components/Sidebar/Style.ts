@@ -11,14 +11,7 @@ export const Postioner = styled.nav`
 `;
 
 export const LogoWrapper = styled.div`
-	flex: 1.5;
-	width: calc(100% - 40px);
 	display: flex;
 	align-items: center;
-	margin-left: 40px;
-`;
-
-export const Logo = styled.img`
-	width: 150px;
-	height: 32px;
+	margin-top: 50px;
 `;

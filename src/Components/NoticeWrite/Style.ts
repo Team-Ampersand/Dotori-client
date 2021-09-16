@@ -57,16 +57,17 @@ export const Btn = styled.button`
 	width: 7.8vw;
 	height: 4.5vh;
 	margin: 1.8vh 1vw 1.8vh 1vw;
-	background-color: #fff;
+	background-color: #0f4c81;
 	box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
-	border: 2px solid #495057;
+	border: 2px solid #0f4c81;
 	border-radius: 10px;
 	font-size: 1.25rem;
 	font-weight: bold;
-	color: #495057;
+	color: #fff;
 	&:hover {
-		background-color: #495057;
-		color: #fff;
+		background-color: #fff;
+		color: #0f4c81;
+		border: 2px solid #0f4c81;
 	}
 `;
 
@@ -74,16 +75,17 @@ export const DeleteBtn = styled.button`
 	width: 7.8vw;
 	height: 4.5vh;
 	margin: 1.8vh 1vw 1.8vh 1vw;
-	background-color: #fff;
+	background-color: #f03e3e;
 	border: none;
 	border: 2px solid #f03e3e;
 	border-radius: 10px;
 	box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
 	font-size: 1.25rem;
 	font-weight: bold;
-	color: #f03e3e;
+	color: #fff;
 	&:hover {
-		background-color: #f03e3e;
-		color: #fff;
+		background-color: #fff;
+		color: #f03e3e;
+		border: 2px solid #f03e3e;
 	}
 `;
