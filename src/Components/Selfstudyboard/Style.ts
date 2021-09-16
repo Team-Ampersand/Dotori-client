@@ -11,7 +11,6 @@ export const Positioner = styled.div`
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
-    margin-left: 1.3vw;
 `;
 
 export const StudyHeader = styled.div`

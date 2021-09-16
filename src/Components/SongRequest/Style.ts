@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Postioner = styled.div`
-    flex: 0.5;
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,7 +12,7 @@ export const Postioner = styled.div`
             margin: 3.5% 6.5%;
             margin-right: auto;
             font-weight: bold;
-            font-size: 30px;
+            font-size: 26px;
         }
 `;
 
@@ -20,9 +20,7 @@ export const InputWrapper = styled.div`
     display: flex;
     flex: 1;
     flex-direction: column;
-    margin-left:1%;
-    background-color: #ffffff;
-
+    margin-top: 15vh;
     @media (max-height: 950px) {
         max-height: 500px;
     }
@@ -55,6 +53,7 @@ export const InputWrapper = styled.div`
     }
     input {
         margin-left: 4%;
+        padding-left: 10px;
         width: 90%;
         height: 65px;
         font-size: 20px;
@@ -66,13 +65,14 @@ export const InputWrapper = styled.div`
         margin-top: 50px;
         margin-left: 291px;
         margin-right: 310px;
-        width: 180px;
-        height: 70px;
+        width: 160px;
+        height: 50px;
         border: 0;
         outline: 0;
         align-items: center;
         background: #617BE3;
         border-radius: 10px;
+        font-size: 16px;
         color: white;
 
         @media (max-height: 950px) {

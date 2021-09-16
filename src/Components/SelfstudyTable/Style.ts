@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 export const Postioner = styled.div`
     width: 100%;
-    height: 100%;
+    height: 78%;
+    background-color: #fff;
+    border-radius: 20px;
 `
 
 export const TableHeader = styled.div`
@@ -19,19 +21,19 @@ export const TableHeader = styled.div`
 `
 
 export const Content = styled.div`
-    width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     overflow-y: auto;
-    
-    height: 86.5%;
+    height: 100%;
+    justify-content: space-around;
     align-items: center;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    border-radius: 5px;
+    border-radius: 10px;
+    margin-top: 6vh;
 
     div {
-        width: 100%;
-        min-height: 75px;
+        width: 30vw;
+        height: 75px;
     }
 `
