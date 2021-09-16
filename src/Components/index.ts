@@ -28,6 +28,7 @@ import SignupForm from './SignupForm/SignupForm';
 import Selfstudyboard from './Selfstudyboard/Selfstudyboard';
 import PasswordForm from './PasswordForm/PasswordForm';
 import SongItem from './SongItem/SongItem';
+import MealBoard from './MealBoard/MealBoard';
 
 export {
 	Sidebar,
@@ -59,5 +60,6 @@ export {
 	SignupForm,
 	Selfstudyboard,
 	PasswordForm,
-	SongItem
+	SongItem,
+	MealBoard,
 };
