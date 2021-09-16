@@ -1,36 +1,36 @@
-import React, { useState } from "react";
-import * as S from "./Style";
-import NoticeBoardItem from "../NoticeBoardItem/NoticeBoardItem";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import * as S from './Style';
+import NoticeBoardItem from '../NoticeBoardItem/NoticeBoardItem';
+import { Link } from 'react-router-dom';
 
 const noticeDummyData = [
 	{
 		board_key: 1,
-		author: "teacher",
+		author: 'teacher',
 	},
 	{
 		board_key: 2,
-		author: "teacher",
+		author: 'teacher',
 	},
 	{
 		board_key: 3,
-		author: "student",
+		author: 'student',
 	},
 	{
 		board_key: 4,
-		author: "teacher",
+		author: 'teacher',
 	},
 	{
 		board_key: 5,
-		author: "student",
+		author: 'student',
 	},
 	{
 		board_key: 6,
-		author: "student",
+		author: 'student',
 	},
 	{
 		board_key: 7,
-		author: "teacher",
+		author: 'teacher',
 	},
 ];
 
@@ -47,10 +47,10 @@ const NoticeBoard: React.FC = () => {
 		<>
 			<S.Positioner>
 				<S.BtnWrapper>
-					<Link to={"/notice/write"}>
+					<Link to={'/notice/write'}>
 						<S.Btn>작성</S.Btn>
 					</Link>
-					<S.Btn onClick={onToggle}>{editState ? "완료" : "편집"}</S.Btn>
+					<S.Btn onClick={onToggle}>{editState ? '완료' : '편집'}</S.Btn>
 				</S.BtnWrapper>
 				<S.Container>
 					{noticeDummyData.map((noticeItem) => (

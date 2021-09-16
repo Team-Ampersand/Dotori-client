@@ -18,6 +18,9 @@ import SelfstudyTable from './SelfstudyTable/SelfstudyTable';
 import SongRequest from './SongRequest/SongRequest';
 import TodaySong from './TodaySong/TodaySong';
 import RequestedSongs from './RequestedSongs/RequestedSongs';
+import Authorzation from './Authorzation/Authorzation';
+import ChangeInput from './ChangeInput/ChangeInput';
+import ChangeSelet from './ChangeSelect/ChangeSelect';
 import Input from './Input/Input';
 import LoginForm from './LoginForm/LoginForm';
 import Button from './Button/Button';
@@ -47,6 +50,9 @@ export {
 	SongRequest,
 	TodaySong,
 	RequestedSongs,
+	Authorzation,
+	ChangeInput,
+	ChangeSelet,
 	Input,
 	LoginForm,
 	Button,

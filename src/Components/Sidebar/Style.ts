@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Postioner = styled.nav`
 	width: 15rem;
