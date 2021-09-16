@@ -23,10 +23,10 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
 		<S.Container>
 			<S.StuInfoWrapper>
 				<S.StuNumStyle>
-					<ChangeInput init={stuNum} edit={editState} />
+					<ChangeInput init={stuNum} edit={editState} type="number" />
 				</S.StuNumStyle>
 				<S.NameStyle>
-					<ChangeInput init={name} edit={editState} />
+					<ChangeInput init={name} edit={editState} type="text" />
 				</S.NameStyle>
 				<S.AuthorityStyle>
 					<ChangeSelect init={authority} edit={editState} />
