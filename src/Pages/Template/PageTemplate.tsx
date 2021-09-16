@@ -60,6 +60,7 @@ const BannerStatus = (
 		'notice write' ||
 		'point' ||
 		'selfstudy' ||
+		'song' ||
 		'student info'
 	) {
 		return (
