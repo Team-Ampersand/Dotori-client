@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import * as S from './Style';
+import ChangeInput from '../ChangeInput/ChangeInput';
+import ChangeSelect from '../ChangeSelect/ChangeSelect';
 
 interface StuAuthorityItemProps {
-	stuNum: number;
+	stuNum: string;
 	name: string;
 	authority: string;
 }
@@ -13,7 +15,6 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
 	authority,
 }) => {
 	const [editState, setEditState] = useState(false);
-	const onToggle = () => setEditState(!editState);
 
 	const onConfirm = () => {
 		setEditState(!editState);
@@ -21,11 +22,17 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
 	return (
 		<S.Container>
 			<S.StuInfoWrapper>
-				<S.StuNumStyle>{stuNum}</S.StuNumStyle>
-				<S.NameStyle>{name}</S.NameStyle>
-				<S.AuthorityStyle>{authority}</S.AuthorityStyle>
+				<S.StuNumStyle>
+					<ChangeInput init={stuNum} edit={editState} />
+				</S.StuNumStyle>
+				<S.NameStyle>
+					<ChangeInput init={name} edit={editState} />
+				</S.NameStyle>
+				<S.AuthorityStyle>
+					<ChangeSelect init={authority} edit={editState} />
+				</S.AuthorityStyle>
 			</S.StuInfoWrapper>
-			<S.EditBtn edit={editState} onClick={onToggle}>
+			<S.EditBtn edit={editState} onClick={() => setEditState(!editState)}>
 				수정
 			</S.EditBtn>
 			<S.BtnWrapper edit={editState}>
