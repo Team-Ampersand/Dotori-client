@@ -1,6 +1,6 @@
-import React from "react";
-import * as S from "./Style";
-import { Logout, Point, Profile } from "../../Assets/Svg";
+import React from 'react';
+import * as S from './Style';
+import { Logout, Point, Profile } from '../../Assets/Svg';
 
 type UserProfileType = {
 	name: string;
@@ -12,15 +12,6 @@ interface ProfileProps {
 	logoutFunc: () => void;
 	userProfile: UserProfileType;
 }
-
-const SampleData = {
-	song: {
-		songAuthor: "아이유",
-		songName: "Blueming",
-		arriTime: "7:30 ~ 7:35",
-		thumbnailKey: "D1PvIWdJ8xo",
-	},
-};
 
 const UserProfile: React.FC<ProfileProps> = ({ logoutFunc, userProfile }) => {
 	return (
@@ -59,7 +50,7 @@ const UserProfile: React.FC<ProfileProps> = ({ logoutFunc, userProfile }) => {
 						rel="noreferrer"
 					>
 						<strong>About</strong>
-					</a>{" "}
+					</a>{' '}
 					|
 					<a
 						href="https://github.com/Team-Ampersand/Dotori-client/blob/master/LICENSE"
@@ -67,7 +58,7 @@ const UserProfile: React.FC<ProfileProps> = ({ logoutFunc, userProfile }) => {
 						rel="noreferrer"
 					>
 						<strong> License</strong>
-					</a>{" "}
+					</a>{' '}
 					|
 					<a
 						href="https://github.com/Team-Ampersand"
