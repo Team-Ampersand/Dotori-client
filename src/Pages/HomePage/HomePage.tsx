@@ -1,19 +1,19 @@
-import React from "react";
-import * as S from "./Style";
+import React from 'react';
+import * as S from './Style';
 // import BannerPage from '../BannerPage/BannerPage';
-import { MatchType } from "../../Utils/GlobalType";
+import { MatchType } from '../../Utils/GlobalType';
 // import { ManufactureDate } from '../../Utils/ManufactureDate';
-import { PageTemplate } from "..";
-import { UserProfile, Selfstudyboard } from "../../Components";
+import { PageTemplate } from '..';
+import { UserProfile, Selfstudyboard, MealBoard } from '../../Components';
 
 interface HomeProps {
 	match: MatchType;
 }
 
 const testProfile = {
-	name: "권희준",
-	grade: "2",
-	class: "3",
+	name: '권희준',
+	grade: '2',
+	class: '2',
 };
 
 // const samplePost = [
@@ -55,11 +55,16 @@ const HomeContainer: React.FC<HomeProps> = ({ match }) => {
 			<S.Positioner>
 				<S.UserProfile>
 					<UserProfile
-						logoutFunc={() => alert("로그아웃")}
+						logoutFunc={() => alert('로그아웃')}
 						userProfile={testProfile}
 					/>
 				</S.UserProfile>
-				<Selfstudyboard />
+				<S.Selfstudyboard>
+					<Selfstudyboard />
+				</S.Selfstudyboard>
+				<S.MealBoard>
+					<MealBoard />
+				</S.MealBoard>
 			</S.Positioner>
 		</PageTemplate>
 	);
