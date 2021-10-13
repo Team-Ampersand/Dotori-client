@@ -20,18 +20,9 @@ const returnParamValue = () => {
 };
 
 const Button: React.FC = () => {
-	const history = useHistory();
 	return (
 		<>
-			<S.ButtonStyle
-				onClick={() => {
-					alert(
-						`${returnButtonValue(window.location.pathname)}에 성공하셨습니다.`
-					);
-					history.push(returnParamValue());
-					window.location.reload();
-				}}
-			>
+			<S.ButtonStyle>
 				{returnButtonValue(window.location.pathname)}
 				<S.ArrowWrapper>
 					<LoginArrow />
