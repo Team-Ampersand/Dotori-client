@@ -31,6 +31,7 @@ const StuPoint: React.FC<StuPointProps> = ({ stuNum, name, point }) => {
 					placeholder="상벌점을 입력하세요.."
 					type="number"
 					onChange={getPoint}
+					value={givePoint}
 				/>
 				<S.PointBtn onClick={grantPoint}>상벌점 부여</S.PointBtn>
 			</S.StuPointContainer>

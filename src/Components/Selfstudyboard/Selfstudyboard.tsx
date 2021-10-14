@@ -4,7 +4,7 @@ import { ManufactureDate } from '../../Utils/ManufactureDate';
 import { Link } from 'react-router-dom';
 
 const Room = {
-	currentRoom: 44,
+	currentRoom: 13,
 	roomMax: 50,
 };
 
@@ -23,7 +23,7 @@ const returnButton = (isClicked, SetisClicked) => {
 		return (
 			<S.StudyButton
 				onClick={() => {
-					alert('자습이 신청됐습니다.');
+					alert('자습이 신청되었습니다.');
 					SetisClicked(false);
 					console.log(isClicked);
 				}}
@@ -36,7 +36,7 @@ const returnButton = (isClicked, SetisClicked) => {
 		return (
 			<S.StudyButton
 				onClick={() => {
-					alert('자습이 신청됐습니다.');
+					alert('자습이 취소되었습니다.');
 					SetisClicked(true);
 					console.log(isClicked);
 				}}
