@@ -9,7 +9,7 @@ export const Positioner = styled.div`
 
 export const UserProfile = styled.div`
 	display: flex;
-	width: 20%;
+	width: 25%;
 	height: 100%;
 	min-width: 403px;
 	background-color: #fff;
@@ -17,7 +17,7 @@ export const UserProfile = styled.div`
 `;
 
 export const MealBoard = styled.div`
-	width: 35%;
+	width: 30%;
 	height: 100%;
 	background-color: #fff;
 	border-radius: 20px;

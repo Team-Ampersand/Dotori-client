@@ -10,7 +10,8 @@ export const Positioner = styled.div<StyleProps>`
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-	background-color: ${(props) => (props.Clicked ? '#fff' : '#92B3B7')};
+	background-color: #fff; //${(props) => (props.Clicked ? '#fff' : '#e7f5ff')};
+	border: 3px solid ${(props) => (props.Clicked ? '#fff' : '#617be3')};
 	border-radius: 20px;
 `;
 
@@ -64,7 +65,7 @@ export const PointProgress = styled.div`
 
 export const ActiveProgress = styled.div<StyleProps>`
 	position: absolute;
-	width: 90%;
+	width: 24%;
 	height: 9px;
 	border-radius: 20px;
 	background-color: ${(props) => props.statusColor};
@@ -75,9 +76,11 @@ export const StudyButton = styled.button<StyleProps>`
 	height: 7vh;
 	border: none;
 	background-color: ${(props) => (props.Clicked ? '#617be3' : '#fff')};
-	color: ${(props) => (props.Clicked ? '#fff' : '#333')};
+	color: ${(props) => (props.Clicked ? '#fff' : '#617be3')};
+	border: 2px solid ${(props) => (props.Clicked ? '#fff' : '#617be3')};
 	border-radius: 10px;
 	margin-top: 12.5vh;
 	font-size: 20px;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	font-weight: bold;
+	// box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
