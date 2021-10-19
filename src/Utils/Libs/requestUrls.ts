@@ -21,3 +21,15 @@ export const MemberController = {
 		return '/delete';
 	},
 };
+
+// 멤버 자습신청 관리
+export const selfStudyController = {
+	// 자습신청
+	apply: () => {
+		return '/member/selfstudy';
+	},
+	// 자습신청
+	cancel: () => {
+		return '/member/cancel/selfstudy';
+	},
+};

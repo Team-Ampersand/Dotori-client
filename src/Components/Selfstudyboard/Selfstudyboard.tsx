@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import * as S from './Style';
 import { ManufactureDate } from '../../Utils/ManufactureDate';
 import { Link } from 'react-router-dom';
+import selfStudy from '../../Api/selfStudy';
 
 const Room = {
 	currentRoom: 13,
@@ -18,6 +19,15 @@ const returnRoomStatusNumber = (compareMax: number, compareMin: number) => {
 	}
 };
 
+const studyApply = async () => {
+	try {
+		const res = await selfStudy.apply();
+		return res;
+	} catch (e: any) {
+		throw e;
+	}
+};
+
 const returnButton = (isClicked, SetisClicked) => {
 	if (isClicked) {
 		return (
@@ -25,7 +35,7 @@ const returnButton = (isClicked, SetisClicked) => {
 				onClick={() => {
 					alert('자습이 신청되었습니다.');
 					SetisClicked(false);
-					console.log(isClicked);
+					studyApply();
 				}}
 				Clicked={isClicked}
 			>

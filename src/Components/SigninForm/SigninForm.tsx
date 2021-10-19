@@ -28,9 +28,8 @@ const TrySignin = () => {
 
 			localStorage.setItem('Dotori_accessToken', res.data.data.accessToken);
 			localStorage.setItem('Dotori_refreshToken', res.data.data.refreshToken);
-
 			setLogged(true);
-		} catch (e) {
+		} catch (e: any) {
 			alert(
 				e.message === 'Error: Request failed with status code 404'
 					? '올바르지 않은 아이디 또는 비밀번호입니다.'
