@@ -2,31 +2,32 @@ import React, { useState } from 'react';
 import { DotoriLogo } from 'Assets/Svg';
 import * as S from './Style';
 import { Link } from 'react-router-dom';
-import { HasToken } from '../../Atoms/';
+import { HasToken } from '../../Atoms';
 import { useSetRecoilState } from 'recoil';
 import member from '../../Api/member';
 import { setCookie } from '../../Utils/Cookie';
 
-const TryLogin = () => {
+const TrySignin = () => {
 	const [id, setId] = useState('');
 	const [password, setPassword] = useState('');
 	const setLogged = useSetRecoilState(HasToken);
 
-	const onLogin = async () => {
+	const onSignin = async () => {
 		try {
 			const res = await member.signin(id, password);
-			const { accessToken } = res.data.data.accessToken;
-			const { refreshToken } = res.data.data.refreshToken;
 
-			setCookie('Dotori_accessToken', accessToken, {
-				path: '/',
-				secure: true,
-			});
+			// setCookie('Dotori_accessToken', res.data.data.accessToken, {
+			// 	path: '/',
+			// 	secure: true,
+			// });
 
-			setCookie('Dotori_refreshToken', refreshToken, {
-				path: '/',
-				secure: true,
-			});
+			// setCookie('Dotori_refreshToken', res.data.data.refreshToken, {
+			// 	path: '/',
+			// 	secure: true,
+			// });
+
+			localStorage.setItem('Dotori_accessToken', res.data.data.accessToken);
+			localStorage.setItem('Dotori_refreshToken', res.data.data.refreshToken);
 
 			setLogged(true);
 		} catch (e) {
@@ -37,11 +38,11 @@ const TryLogin = () => {
 			);
 		}
 	};
-	return [setId, setPassword, onLogin];
+	return [setId, setPassword, onSignin];
 };
 
-const LoginForm: React.FC = () => {
-	const [setId, setPassword, onLogin] = TryLogin();
+const SigninForm: React.FC = () => {
+	const [setId, setPassword, onSignin] = TrySignin();
 	return (
 		<>
 			<S.Positioner>
@@ -62,11 +63,10 @@ const LoginForm: React.FC = () => {
 				/>
 				<S.ButtonStyle
 					onClick={() => {
-						onLogin('');
+						onSignin('');
 					}}
 				>
 					로그인
-					<S.ArrowWrapper />
 				</S.ButtonStyle>
 				<S.Line />
 				<S.SaveContainer>
@@ -86,4 +86,4 @@ const LoginForm: React.FC = () => {
 	);
 };
 
-export default LoginForm;
+export default SigninForm;

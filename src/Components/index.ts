@@ -22,7 +22,7 @@ import Authorzation from './Authorzation/Authorzation';
 import ChangeInput from './ChangeInput/ChangeInput';
 import ChangeSelet from './ChangeSelect/ChangeSelect';
 import Input from './Input/Input';
-import LoginForm from './LoginForm/LoginForm';
+import LoginForm from './SigninForm/SigninForm';
 import Button from './Button/Button';
 import SignupForm from './SignupForm/SignupForm';
 import Selfstudyboard from './Selfstudyboard/Selfstudyboard';
