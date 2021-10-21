@@ -33,3 +33,11 @@ export const selfStudyController = {
 		return '/member/cancel/selfstudy';
 	},
 };
+
+// 공지사항 관리
+export const noticeController = {
+	// admin 공지사항 작성
+	adminWrite: () => {
+		return '/admin/board';
+	},
+};

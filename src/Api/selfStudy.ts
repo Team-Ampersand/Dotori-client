@@ -8,7 +8,6 @@ class selfStudy {
 				method: 'PUT',
 				url: selfStudyController.apply(),
 			});
-			console.log('자습신청완료');
 		} catch (e: any) {
 			throw new Error(e);
 		}
