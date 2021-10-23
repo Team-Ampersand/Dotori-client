@@ -36,6 +36,11 @@ export const selfStudyController = {
 
 // 공지사항 관리
 export const noticeController = {
+	// admin
+	// admin 공지사항 조회
+	getNotice: () => {
+		return '/admin/board';
+	},
 	// admin 공지사항 작성
 	adminWrite: () => {
 		return '/admin/board';

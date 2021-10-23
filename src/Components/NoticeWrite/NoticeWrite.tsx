@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as S from './Style';
 import { Prompt, useHistory } from 'react-router-dom';
 import { useBeforeunload } from 'react-beforeunload';
-import notice from '../../Api/noticeWrite';
+import notice from '../../Api/notice';
 
 interface NoticeWriteProps {
 	board_key: number;
