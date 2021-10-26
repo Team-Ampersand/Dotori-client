@@ -1,35 +1,37 @@
 /* eslint-disable no-restricted-globals */
-import React, { useState } from "react";
-import * as S from "./Style";
-import Modal from "../Modal/Modal";
+import React, { useState } from 'react';
+import * as S from './Style';
+import Modal from '../Modal/Modal';
 
 interface NoticeBoardItemProps {
 	board_key: number;
 	author: string;
+	title: string;
 	editState: boolean;
 }
 
 const returnAuthorColor = (authorType: string) => {
 	switch (authorType) {
-		case "teacher":
-			return "#7D78D1";
-		case "student":
-			return "#FF8C8C";
+		case 'teacher':
+			return '#7D78D1';
+		case 'student':
+			return '#FF8C8C';
 	}
 };
 
 const returnAuthorValue = (authorType: string) => {
 	switch (authorType) {
-		case "teacher":
-			return "사감선생님";
-		case "student":
-			return "자치위원회";
+		case 'teacher':
+			return '사감선생님';
+		case 'student':
+			return '자치위원회';
 	}
 };
 
 const NoticeBoardItem: React.FC<NoticeBoardItemProps> = ({
 	board_key,
 	author,
+	title,
 	editState,
 }) => {
 	const [modalState, setModalState] = useState(false);
@@ -49,8 +51,8 @@ const NoticeBoardItem: React.FC<NoticeBoardItemProps> = ({
 
 	const onDelete = (e) => {
 		e.stopPropagation();
-		if (confirm("정말 삭제하시겠습니까 ?") === true) {
-			alert("삭제되었습니다.");
+		if (confirm('정말 삭제하시겠습니까 ?') === true) {
+			alert('삭제되었습니다.');
 		}
 	};
 
@@ -61,7 +63,7 @@ const NoticeBoardItem: React.FC<NoticeBoardItemProps> = ({
 					<span>[{returnAuthorValue(author)!}]</span>
 				</S.AuthorStyle>
 				<S.TitleStyle>
-					<span>이건 테스트 제목입니다.</span>
+					<span>{title}</span>
 				</S.TitleStyle>
 				<S.DateStyle edit={editState}>
 					<span>20040619</span>

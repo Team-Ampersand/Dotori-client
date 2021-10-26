@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import * as S from './Style';
 import { Prompt, useHistory } from 'react-router-dom';
 import { useBeforeunload } from 'react-beforeunload';
