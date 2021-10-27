@@ -17,7 +17,7 @@ class Member {
 			throw new Error(e);
 		}
 	}
-	async signup(email: string, password: string, name: string, stuId: number) {
+	async signup(email: string, password: string, name: string, stuId: string) {
 		try {
 			const data = {
 				email: email,
