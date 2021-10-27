@@ -1,8 +1,8 @@
-import React from "react";
-import * as S from "./Style";
-import { PageTemplate } from "..";
-import { MatchType } from "../../Utils/GlobalType";
-import { SelfstudyTable, Classification } from "../../Components";
+import React from 'react';
+import * as S from './Style';
+import { PageTemplate } from '..';
+import { MatchType } from '../../Utils/GlobalType';
+import { SelfstudyTable, Classification, Sidebar } from '../../Components';
 
 interface LaptopProps {
 	match: MatchType;
@@ -10,12 +10,15 @@ interface LaptopProps {
 
 const LaptopContainer: React.FC<LaptopProps> = ({ match }) => {
 	return (
-		<PageTemplate match={match}>
-			<S.Positioner>
-				<Classification />
-				<SelfstudyTable match={match} />
-			</S.Positioner>
-		</PageTemplate>
+		<S.Positioner>
+			<Sidebar />
+			<PageTemplate match={match}>
+				<S.Container>
+					<Classification />
+					<SelfstudyTable match={match} />
+				</S.Container>
+			</PageTemplate>
+		</S.Positioner>
 	);
 };
 

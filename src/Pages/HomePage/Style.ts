@@ -4,7 +4,6 @@ export const Positioner = styled.div`
 	width: 100%;
 	height: 100%;
 	display: flex;
-	justify-content: space-between;
 `;
 
 export const UserProfile = styled.div`
@@ -26,4 +25,11 @@ export const MealBoard = styled.div`
 export const Selfstudyboard = styled.div`
 	width: 35%;
 	height: 100%;
+`;
+
+export const Container = styled.div`
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
 `;
