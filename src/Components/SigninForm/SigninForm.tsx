@@ -15,10 +15,22 @@ const TrySignin = () => {
 	const setLogged = useSetRecoilState(HasToken);
 
 	const onRefresh = async () => {
-		refresh
-			.refresh()
-			.then(onSignin)
-			.catch((e) => e);
+		const res = await refresh.refresh();
+
+		axios.defaults.headers.common['Authorizaion'] =
+			res.data.data.NewAccessToken;
+		localStorage.setItem('Dotori_refreshToken', res.data.data.NewRefreshToken);
+
+		console.log('새로운 토큰이 발행되었습니다');
+		console.log(localStorage.getItem('Dotori_refreshToken'));
+		console.log(
+			localStorage.getItem('Dotori_refreshToken') ===
+				res.data.data.NewRefreshToken
+				? '발행됨'
+				: '발행 실패'
+		);
+
+		setTimeout(onRefresh, 3540000);
 	};
 
 	const onSignin = async () => {
@@ -39,7 +51,7 @@ const TrySignin = () => {
 				res.data.data.accessToken;
 			localStorage.setItem('Dotori_refreshToken', res.data.data.refreshToken);
 
-			setTimeout(onRefresh, 354000);
+			setTimeout(onRefresh, 3540000);
 			setLogged(true);
 		} catch (e) {
 			alert(

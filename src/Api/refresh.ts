@@ -4,7 +4,7 @@ import RequestApi from 'Utils/Libs/requestApi';
 class Refresh {
 	async refresh() {
 		try {
-			RequestApi({
+			return await RequestApi({
 				method: 'GET',
 				url: RefreshTokenController.refresh(),
 			});
