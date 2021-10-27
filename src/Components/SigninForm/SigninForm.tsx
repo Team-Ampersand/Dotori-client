@@ -30,7 +30,7 @@ const TrySignin = () => {
 				: '발행 실패'
 		);
 
-		setTimeout(onRefresh, 3540000);
+		setTimeout(onRefresh, 3420000);
 	};
 
 	const onSignin = async () => {
@@ -51,7 +51,7 @@ const TrySignin = () => {
 				res.data.data.accessToken;
 			localStorage.setItem('Dotori_refreshToken', res.data.data.refreshToken);
 
-			setTimeout(onRefresh, 3540000);
+			setTimeout(onRefresh, 3420000);
 			setLogged(true);
 		} catch (e) {
 			alert(
