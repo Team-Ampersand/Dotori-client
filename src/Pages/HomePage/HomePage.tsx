@@ -61,10 +61,7 @@ const HomeContainer: React.FC<HomeProps> = ({ match }) => {
 			<PageTemplate match={match}>
 				<S.Container>
 					<S.UserProfile>
-						<UserProfile
-							logoutFunc={() => alert('로그아웃')}
-							userProfile={testProfile}
-						/>
+						<UserProfile userProfile={testProfile} />
 					</S.UserProfile>
 					<S.Selfstudyboard>
 						<Selfstudyboard />

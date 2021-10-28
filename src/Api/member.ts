@@ -34,6 +34,16 @@ class Member {
 			throw new Error(e);
 		}
 	}
+	async logout() {
+		try {
+			return await RequestApi({
+				method: 'DELETE',
+				url: MemberController.logout(),
+			});
+		} catch (e: any) {
+			throw new Error(e);
+		}
+	}
 }
 
 export default new Member();
