@@ -17,7 +17,7 @@ const TrySignin = () => {
 	const onRefresh = async () => {
 		const res = await refresh.refresh();
 
-		axios.defaults.headers.common['Authorizaion'] =
+		axios.defaults.headers.common['Authorization'] =
 			res.data.data.NewAccessToken;
 		localStorage.setItem('Dotori_refreshToken', res.data.data.NewRefreshToken);
 
