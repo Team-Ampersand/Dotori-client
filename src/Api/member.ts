@@ -17,7 +17,7 @@ class Member {
 			throw new Error(e);
 		}
 	}
-	async signup(email: string, password: string, name: string, stuId: number) {
+	async signup(email: string, password: string, name: string, stuId: string) {
 		try {
 			const data = {
 				email: email,
@@ -29,6 +29,16 @@ class Member {
 				method: 'POST',
 				url: MemberController.signup(),
 				data: data,
+			});
+		} catch (e: any) {
+			throw new Error(e);
+		}
+	}
+	async logout() {
+		try {
+			return await RequestApi({
+				method: 'DELETE',
+				url: MemberController.logout(),
 			});
 		} catch (e: any) {
 			throw new Error(e);

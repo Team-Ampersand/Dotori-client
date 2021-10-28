@@ -1,6 +1,10 @@
 import React from 'react';
 import * as S from './Style';
 import { Logout, Point, Profile } from '../../Assets/Svg';
+import member from '../../Api/member';
+import { useSetRecoilState } from 'recoil';
+import { HasToken } from '../../Atoms';
+import { useHistory } from 'react-router';
 
 type UserProfileType = {
 	name: string;
@@ -9,15 +13,35 @@ type UserProfileType = {
 };
 
 interface ProfileProps {
-	logoutFunc: () => void;
 	userProfile: UserProfileType;
 }
 
-const UserProfile: React.FC<ProfileProps> = ({ logoutFunc, userProfile }) => {
+const TryLogout = () => {
+	const setLogged = useSetRecoilState(HasToken);
+	const history = useHistory();
+
+	const onLogout = async () => {
+		try {
+			const res = await member.logout();
+			if (res.data.success) {
+				localStorage.removeItem('Dotori_refreshToken');
+
+				setLogged(false);
+				history.push('/signin');
+			}
+		} catch (e) {
+			alert(e);
+		}
+	};
+	return [onLogout];
+};
+
+const UserProfile: React.FC<ProfileProps> = ({ userProfile }) => {
+	const [onLogout] = TryLogout();
 	return (
 		<S.Postioner>
 			<S.Header>
-				<S.LogoutWrapper onClick={logoutFunc} data-test="test-logout">
+				<S.LogoutWrapper onClick={onLogout} data-test="test-logout">
 					<Logout />
 					<span>로그아웃</span>
 				</S.LogoutWrapper>

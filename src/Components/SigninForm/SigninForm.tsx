@@ -5,12 +5,33 @@ import { Link } from 'react-router-dom';
 import { HasToken } from '../../Atoms';
 import { useSetRecoilState } from 'recoil';
 import member from '../../Api/member';
+import refresh from '../../Api/refresh';
 import { setCookie } from '../../Utils/Cookie';
+import axios from 'axios';
 
 const TrySignin = () => {
 	const [id, setId] = useState('');
 	const [password, setPassword] = useState('');
 	const setLogged = useSetRecoilState(HasToken);
+
+	const onRefresh = async () => {
+		const res = await refresh.refresh();
+
+		axios.defaults.headers.common['Authorization'] =
+			res.data.data.NewAccessToken;
+		localStorage.setItem('Dotori_refreshToken', res.data.data.NewRefreshToken);
+
+		console.log('새로운 토큰이 발행되었습니다');
+		console.log(localStorage.getItem('Dotori_refreshToken'));
+		console.log(
+			localStorage.getItem('Dotori_refreshToken') ===
+				res.data.data.NewRefreshToken
+				? '발행됨'
+				: '발행 실패'
+		);
+
+		setTimeout(onRefresh, 3420000);
+	};
 
 	const onSignin = async () => {
 		try {
@@ -21,14 +42,16 @@ const TrySignin = () => {
 			// 	secure: true,
 			// });
 
-			// setCookie('Dotori_refreshToken', res.data.data.refreshToken, {
+			// setCookie('Dotori_refreshToken', res.dat da.data.refreshToken, {
 			// 	path: '/',
 			// 	secure: true,
 			// });
 
-			localStorage.setItem('Dotori_accessToken', res.data.data.accessToken);
+			axios.defaults.headers.common['Authorization'] =
+				res.data.data.accessToken;
 			localStorage.setItem('Dotori_refreshToken', res.data.data.refreshToken);
 
+			setTimeout(onRefresh, 3420000);
 			setLogged(true);
 		} catch (e) {
 			alert(
@@ -61,13 +84,16 @@ const SigninForm: React.FC = () => {
 					displayed={false}
 					onChange={({ target: { value } }) => setPassword(value)}
 				/>
-				<S.ButtonStyle
-					onClick={() => {
-						onSignin('');
-					}}
-				>
-					로그인
-				</S.ButtonStyle>
+				<Link to="/">
+					<S.ButtonStyle
+						onClick={() => {
+							onSignin('');
+						}}
+					>
+						로그인
+					</S.ButtonStyle>
+				</Link>
+
 				<S.Line />
 				<S.SaveContainer>
 					<S.CheckBox type="checkbox" />

@@ -4,7 +4,12 @@ import * as S from './Style';
 import { MatchType } from '../../Utils/GlobalType';
 // import { ManufactureDate } from '../../Utils/ManufactureDate';
 import { PageTemplate } from '..';
-import { UserProfile, Selfstudyboard, MealBoard } from '../../Components';
+import {
+	UserProfile,
+	Selfstudyboard,
+	MealBoard,
+	Sidebar,
+} from '../../Components';
 
 interface HomeProps {
 	match: MatchType;
@@ -51,22 +56,22 @@ const testProfile = {
 
 const HomeContainer: React.FC<HomeProps> = ({ match }) => {
 	return (
-		<PageTemplate match={match}>
-			<S.Positioner>
-				<S.UserProfile>
-					<UserProfile
-						logoutFunc={() => alert('로그아웃')}
-						userProfile={testProfile}
-					/>
-				</S.UserProfile>
-				<S.Selfstudyboard>
-					<Selfstudyboard />
-				</S.Selfstudyboard>
-				<S.MealBoard>
-					<MealBoard />
-				</S.MealBoard>
-			</S.Positioner>
-		</PageTemplate>
+		<S.Positioner>
+			<Sidebar />
+			<PageTemplate match={match}>
+				<S.Container>
+					<S.UserProfile>
+						<UserProfile userProfile={testProfile} />
+					</S.UserProfile>
+					<S.Selfstudyboard>
+						<Selfstudyboard />
+					</S.Selfstudyboard>
+					<S.MealBoard>
+						<MealBoard />
+					</S.MealBoard>
+				</S.Container>
+			</PageTemplate>
+		</S.Positioner>
 	);
 };
 
