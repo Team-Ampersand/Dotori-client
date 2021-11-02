@@ -1,6 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { BASE_URL, BASE_HEADER } from '../Config/Config.json';
-import { getCookie } from '../Cookie';
 
 export interface HasToken {
 	HasToken?: boolean;
@@ -12,8 +11,6 @@ const RequestApi = async (
 ) => {
 	let refreshToken: string | null = null;
 	if (!condition.HasToken) {
-		// accessToken = getCookie('Dotori_accessToken');
-		// refreshToken = getCookie('Dotori_refreshToken');
 		refreshToken = localStorage.getItem('Dotori_refreshToken');
 	}
 	try {
