@@ -61,7 +61,7 @@ const HomeContainer: React.FC<HomeProps> = ({ match }) => {
 			<PageTemplate match={match}>
 				<S.Container>
 					<S.UserProfile>
-						<UserProfile userProfile={testProfile} />
+						<UserProfile />
 					</S.UserProfile>
 					<S.Selfstudyboard>
 						<Selfstudyboard />
