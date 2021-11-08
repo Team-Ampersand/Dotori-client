@@ -1,59 +1,45 @@
 import React, { useState } from 'react';
 import { DotoriLogo } from 'Assets/Svg';
 import * as S from './Style';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { HasToken } from '../../Atoms';
 import { useSetRecoilState } from 'recoil';
 import member from '../../Api/member';
 import refresh from '../../Api/refresh';
-import { setCookie } from '../../Utils/Cookie';
-import axios from 'axios';
 
 const TrySignin = () => {
 	const [id, setId] = useState('');
 	const [password, setPassword] = useState('');
 	const setLogged = useSetRecoilState(HasToken);
+	const history = useHistory();
 
 	const onRefresh = async () => {
-		const res = await refresh.refresh();
+		try {
+			const res = await refresh.refresh();
 
-		axios.defaults.headers.common['Authorization'] =
-			res.data.data.NewAccessToken;
-		localStorage.setItem('Dotori_refreshToken', res.data.data.NewRefreshToken);
-
-		console.log('새로운 토큰이 발행되었습니다');
-		console.log(localStorage.getItem('Dotori_refreshToken'));
-		console.log(
-			localStorage.getItem('Dotori_refreshToken') ===
+			localStorage.setItem('Dotori_accessToken', res.data.data.NewAccessToken);
+			localStorage.setItem(
+				'Dotori_refreshToken',
 				res.data.data.NewRefreshToken
-				? '발행됨'
-				: '발행 실패'
-		);
-
-		setTimeout(onRefresh, 3420000);
+			);
+			setTimeout(onRefresh, 1800000);
+		} catch (e) {
+			alert('장시간 자리에서 비워 로그아웃 되었습니다. 다시 로그인 해주세요');
+			history.push('/signin');
+		}
 	};
 
 	const onSignin = async () => {
 		try {
 			const res = await member.signin(id, password);
 
-			// setCookie('Dotori_accessToken', res.data.data.accessToken, {
-			// 	path: '/',
-			// 	secure: true,
-			// });
-
-			// setCookie('Dotori_refreshToken', res.dat da.data.refreshToken, {
-			// 	path: '/',
-			// 	secure: true,
-			// });
-
-			axios.defaults.headers.common['Authorization'] =
-				res.data.data.accessToken;
+			localStorage.setItem('Dotori_accessToken', res.data.data.accessToken);
 			localStorage.setItem('Dotori_refreshToken', res.data.data.refreshToken);
 
-			setTimeout(onRefresh, 3420000);
 			setLogged(true);
-		} catch (e) {
+			history.push('/');
+			setTimeout(onRefresh, 1800000);
+		} catch (e: any) {
 			alert(
 				e.message === 'Error: Request failed with status code 404'
 					? '올바르지 않은 아이디 또는 비밀번호입니다.'
@@ -84,16 +70,13 @@ const SigninForm: React.FC = () => {
 					displayed={false}
 					onChange={({ target: { value } }) => setPassword(value)}
 				/>
-				<Link to="/">
-					<S.ButtonStyle
-						onClick={() => {
-							onSignin('');
-						}}
-					>
-						로그인
-					</S.ButtonStyle>
-				</Link>
-
+				<S.ButtonStyle
+					onClick={() => {
+						onSignin('');
+					}}
+				>
+					로그인
+				</S.ButtonStyle>
 				<S.Line />
 				<S.SaveContainer>
 					<S.CheckBox type="checkbox" />

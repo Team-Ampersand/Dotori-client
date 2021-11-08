@@ -40,3 +40,9 @@ export const RefreshTokenController = {
 		return '/refresh';
 	},
 };
+
+export const MyPageController = {
+	home: () => {
+		return '/home';
+	},
+};

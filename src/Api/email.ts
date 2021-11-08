@@ -2,12 +2,12 @@ import RequestApi from '../Utils/Libs/requestApi';
 import { EmailController } from '../Utils/Libs/requestUrls';
 
 class Email {
-	async auth(email: string) {
+	auth(email: string) {
 		try {
 			const data = {
 				email: email,
 			};
-			return await RequestApi({
+			return RequestApi({
 				method: 'POST',
 				url: EmailController.auth(),
 				data: data,
@@ -17,12 +17,12 @@ class Email {
 		}
 	}
 
-	async authCheck(emailCode: string) {
+	authCheck(emailCode: string) {
 		try {
 			const data = {
 				key: emailCode,
 			};
-			return await RequestApi({
+			return RequestApi({
 				method: 'POST',
 				url: EmailController.authcheck(),
 				data: data,
