@@ -15,45 +15,6 @@ interface HomeProps {
 	match: MatchType;
 }
 
-const testProfile = {
-	name: '송시현',
-	grade: '2',
-	class: '2',
-};
-
-// const samplePost = [
-// 	{
-// 		title: "기숙사 공지사항",
-// 		id: "domitory",
-// 		list: [
-// 			{ id: 1, title: "Test", date: "2020년 00월 00일" },
-// 			{ id: 2, title: "Test", date: "2020년 00월 00일" },
-// 			{ id: 2, title: "Test", date: "2020년 00월 00일" },
-// 			{ id: 2, title: "Test", date: "2020년 00월 00일" },
-// 		],
-// 	},
-// 	{
-// 		title: "대나무 숲 게시글",
-// 		id: "forest",
-// 		list: [
-// 			{ id: 1, title: "Test", date: "2020년 00월 00일" },
-// 			{ id: 2, title: "Test", date: "2020년 00월 00일" },
-// 			{ id: 2, title: "Test", date: "2020년 00월 00일" },
-// 			{ id: 2, title: "Test", date: "2020년 00월 00일" },
-// 		],
-// 	},
-// 	{
-// 		title: "기상음악",
-// 		id: "song",
-// 		list: [
-// 			{ id: 1, title: "Test", date: "2020년 00월 00일" },
-// 			{ id: 2, title: "Test", date: "2020년 00월 00일" },
-// 			{ id: 2, title: "Test", date: "2020년 00월 00일" },
-// 			{ id: 2, title: "Test", date: "2020년 00월 00일" },
-// 		],
-// 	},
-// ];
-
 const HomeContainer: React.FC<HomeProps> = ({ match }) => {
 	return (
 		<S.Positioner>
