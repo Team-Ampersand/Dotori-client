@@ -10,8 +10,7 @@ export const Positioner = styled.div<StyleProps>`
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-	background-color: #fff; //${(props) => (props.Clicked ? '#fff' : '#e7f5ff')};
-	border: 3px solid ${(props) => (props.Clicked ? '#fff' : '#617be3')};
+	${(props) => (props.Clicked ? '' : 'border: 1px solid #617be3')};
 	border-radius: 20px;
 `;
 
