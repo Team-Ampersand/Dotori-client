@@ -23,6 +23,8 @@ export const Header = styled.div`
 `;
 
 export const LogoutWrapper = styled.div`
+	width: 200px;
+	height: 100px;
 	display: flex;
 	justify-content: flex-end;
 
