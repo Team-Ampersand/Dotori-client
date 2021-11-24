@@ -84,8 +84,6 @@ const BannerStatus = (
 const PageTemplate: React.FC<TemplateProps> = ({ match, children }) => {
 	const [isActive, setIsActive] = useState(false);
 
-	console.log(isActive)
-
 	return (
 		<S.Postioner>
 			<S.Wrapper>
