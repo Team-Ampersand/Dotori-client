@@ -22,32 +22,20 @@ const HomeContainer: React.FC<HomeProps> = ({ match }) => {
 	const [logged, setLogged] = useRecoilState(HasToken);
 	return (
 		<S.Positioner>
-			{logged ? (
-				() => {
-					alert('로그아웃 되었습니다. 다시 로그인 해주세요!');
-					history.push('/signin');
-					localStorage.removeItem('Dotori_accessToken');
-					localStorage.removeItem('Dotori_refreshToken');
-					setLogged(false);
-				}
-			) : (
-				<>
-					<Sidebar />
-					<PageTemplate match={match}>
-						<S.Container>
-							<S.UserProfile>
-								<UserProfile />
-							</S.UserProfile>
-							<S.Selfstudyboard>
-								<Selfstudyboard />
-							</S.Selfstudyboard>
-							<S.MealBoard>
-								<MealBoard />
-							</S.MealBoard>
-						</S.Container>
-					</PageTemplate>
-				</>
-			)}
+			<Sidebar />
+			<PageTemplate match={match}>
+				<S.Container>
+					<S.UserProfile>
+						<UserProfile />
+					</S.UserProfile>
+					<S.Selfstudyboard>
+						<Selfstudyboard />
+					</S.Selfstudyboard>
+					<S.MealBoard>
+						<MealBoard />
+					</S.MealBoard>
+				</S.Container>
+			</PageTemplate>
 		</S.Positioner>
 	);
 };
