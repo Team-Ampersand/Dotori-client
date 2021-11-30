@@ -63,7 +63,7 @@ const NoticeBoard: React.FC = () => {
           <S.Btn onClick={onToggle}>{editState ? "완료" : "편집"}</S.Btn>
         </S.BtnWrapper>
         <S.Container>
-          <S.ItemWrapper>
+          <div>
             {[...board].reverse() &&
               [...board]
                 .reverse()
@@ -77,7 +77,7 @@ const NoticeBoard: React.FC = () => {
                     editState={editState}
                   />
                 ))}
-          </S.ItemWrapper>
+          </div>
           <S.PageBtnWrapper>
             {/* <S.PageBtn onClick={prevClick}>{"<"}</S.PageBtn>
             <S.PageBtn onClick={nextClick}>{">"}</S.PageBtn> */}
