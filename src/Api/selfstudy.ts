@@ -38,6 +38,13 @@ class SelfStudy {
 			url: MemberSelfstudyController.classLookup(parseInt(classID), role),
 		});
 	}
+	async studystatus() {
+		const role = await rolelookup();
+		return RequestApi({
+			method: 'GET',
+			url: MemberSelfstudyController.studyStatus(role),
+		});
+	}
 }
 
 export default new SelfStudy();

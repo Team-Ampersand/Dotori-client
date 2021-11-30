@@ -77,4 +77,8 @@ export const MemberSelfstudyController = {
 	countStudy: (role: string) => {
 		return `/${role}/selfstudy/count`;
 	},
+	//자습신청 여부 조회
+	studyStatus: (role: string) => {
+		return `/${role}/selfstudy/status`;
+	},
 };

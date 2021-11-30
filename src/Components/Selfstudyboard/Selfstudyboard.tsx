@@ -21,6 +21,25 @@ const studycount = async () => {
 	}
 };
 
+const studyStatus = async () => {
+	const role = await rolelookup();
+	if (role === 'admin') {
+		const res = {
+			data: {
+				data: 'admin',
+			},
+		};
+		return res;
+	} else {
+		try {
+			const res = await selfstudy.studystatus();
+			return res;
+		} catch (e) {
+			alert(e);
+		}
+	}
+};
+
 const applyStudy = async (SetisClicked) => {
 	try {
 		await selfstudy.selfstudy();
@@ -53,8 +72,8 @@ const returnRoomStatusNumber = (compareMax: number, compareMin: number) => {
 	}
 };
 
-const returnButton = (isClicked: boolean, SetisClicked) => {
-	if (isClicked) {
+const returnButton = (isClicked: string, SetisClicked) => {
+	if (isClicked === 'CAN') {
 		return (
 			<S.StudyButton
 				onClick={() => {
@@ -66,7 +85,7 @@ const returnButton = (isClicked: boolean, SetisClicked) => {
 				자습신청
 			</S.StudyButton>
 		);
-	} else {
+	} else if (isClicked === 'APPLIED') {
 		return (
 			<S.StudyButton
 				onClick={() => {
@@ -77,16 +96,35 @@ const returnButton = (isClicked: boolean, SetisClicked) => {
 				자습취소
 			</S.StudyButton>
 		);
+	} else if (isClicked === 'CANT') {
+		return (
+			<S.StudyButton
+				Clicked={isClicked}
+				onClick={() => {
+					alert(
+						'이미 자습신청을 하신 후 취소하여 다시 자습을 신청 할 수 없습니다.'
+					);
+				}}
+			>
+				자습불가
+			</S.StudyButton>
+		);
+	} else if (isClicked === 'admin') {
+		return <p>사감 선생님은 자습신청을 하지 않으셔도 됩니다.</p>;
 	}
 };
 
 const Selfstudyboard: React.FC = () => {
-	const [IsClicked, SetisClicked] = useRecoilState(isClicked);
+	const [IsClicked, SetisClicked] = useState('');
 	const [count, setCount] = useState(0);
 	useEffect(() => {
 		studycount().then((res) => {
 			setCount(res?.data.data);
 		});
+		studyStatus().then((res) => {
+			SetisClicked(res?.data.data);
+		});
+		console.log(IsClicked);
 	}, []);
 	return (
 		<S.Positioner Clicked={IsClicked}>
