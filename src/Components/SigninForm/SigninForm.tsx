@@ -48,51 +48,52 @@ const TrySignin = () => {
 		}
 	};
 	return [setId, setPassword, onSignin];
+
 };
 
 const SigninForm: React.FC = () => {
-	const [setId, setPassword, onSignin] = TrySignin();
-	return (
-		<>
-			<S.Positioner>
-				<S.LogoWrapper>
-					<DotoriLogo />
-				</S.LogoWrapper>
-				<S.InputStyle
-					placeholder="아이디"
-					type="text"
-					displayed={false}
-					onChange={({ target: { value } }) => setId(value)}
-				/>
-				<S.InputStyle
-					placeholder="비밀번호"
-					type="password"
-					displayed={false}
-					onChange={({ target: { value } }) => setPassword(value)}
-				/>
-				<S.ButtonStyle
-					onClick={() => {
-						onSignin('');
-					}}
-				>
-					로그인
-				</S.ButtonStyle>
-				<S.Line />
-				<S.SaveContainer>
-					<S.CheckBox type="checkbox" />
-					<span>아이디 저장</span>
-				</S.SaveContainer>
-				<S.SignupContainer>
-					<span>아직 계정이 없으신가요?</span>
-					<Link to="/signup">회원가입</Link>
-				</S.SignupContainer>
-				<S.FindContainer>
-					<span>비밀번호를 잊으셨나요?</span>
-					<Link to="/password">비밀번호 찾기</Link>
-				</S.FindContainer>
-			</S.Positioner>
-		</>
-	);
+  const [setId, setPassword, onSignin] = TrySignin();
+  return (
+    <>
+      <S.Positioner>
+        <S.LogoWrapper>
+          <DotoriLogo />
+        </S.LogoWrapper>
+        <S.InputStyle
+          placeholder="아이디"
+          type="text"
+          displayed={false}
+          onChange={({ target: { value } }) => setId(value)}
+        />
+        <S.InputStyle
+          placeholder="비밀번호"
+          type="password"
+          displayed={false}
+          onChange={({ target: { value } }) => setPassword(value)}
+        />
+        <S.ButtonStyle
+          onClick={() => {
+            onSignin("");
+          }}
+        >
+          로그인
+        </S.ButtonStyle>
+        <S.Line />
+        <S.SaveContainer>
+          <S.CheckBox type="checkbox" />
+          <span>아이디 저장</span>
+        </S.SaveContainer>
+        <S.SignupContainer>
+          <span>아직 계정이 없으신가요?</span>
+          <Link to="/signup">회원가입</Link>
+        </S.SignupContainer>
+        <S.FindContainer>
+          <span>비밀번호를 잊으셨나요?</span>
+          <Link to="/password">비밀번호 찾기</Link>
+        </S.FindContainer>
+      </S.Positioner>
+    </>
+  );
 };
 
 export default SigninForm;
