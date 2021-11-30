@@ -8,21 +8,22 @@ export const Positioner = styled.div`
 `;
 
 export const Container = styled.div`
-	width: 84vw;
+	width: 100%;
 	height: 79vh;
 	margin-top: 1.8vh;
 	background: #fff;
 	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 `;
 
 export const PageUl = styled.ul`
 	display: flex;
 	justify-content: space-around;
-	margin-left: 37vw;
 	margin-top: 2.7vh;
 	width: 11.7vw;
 	list-style: none;
-	text-align: center;
 `;
 
 export const PageLi = styled.li`

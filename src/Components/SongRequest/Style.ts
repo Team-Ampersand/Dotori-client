@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 
 export const Postioner = styled.div`
-	width: 50%;
-	height: 80%;
+	width: 49%;
+	height: 100%;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 	background-color: #ffffff;
 	border-radius: 20px;
 	label {
@@ -17,22 +16,20 @@ export const Postioner = styled.div`
 `;
 
 export const InputWrapper = styled.div`
+	width: 100%;
+	height: 100%;
 	display: flex;
-	flex: 1;
 	flex-direction: column;
-	margin-top: 15vh;
+	align-items: center;
+	justify-content: center;
 
 	p {
-		margin-left: 35px;
-		margin-top: 4%;
-		margin-bottom: 1rem;
 		font-weight: bold;
 		font-size: 18px;
 		line-height: 24px;
+		margin-bottom: 1vh;
 	}
 	input {
-		margin-left: 4%;
-		padding-left: 10px;
 		width: 90%;
 		height: 65px;
 		font-size: 20px;
@@ -41,9 +38,7 @@ export const InputWrapper = styled.div`
 		border-radius: 15px;
 	}
 	button {
-		margin-top: 50px;
-		margin-left: 291px;
-		margin-right: 310px;
+		margin-top: 1vh;
 		width: 160px;
 		height: 50px;
 		border: 0;

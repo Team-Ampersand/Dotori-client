@@ -9,6 +9,7 @@ interface BtnProps {
 }
 
 export const Container = styled.li`
+	width: 95%;
 	list-style: none;
 	margin: 30px 40px;
 	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
