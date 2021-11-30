@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import * as S from './Style';
-import selfstudy from 'Api/selfstudy';
+import selfstudy from 'Api/selfStudy';
 import { useSetRecoilState } from 'recoil';
 import { list } from 'Atoms';
 import role from 'Api/role';

@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import * as S from './Style';
 import { ManufactureDate } from '../../Utils/ManufactureDate';
 import { Link } from 'react-router-dom';
-import selfstudy from '../../Api/selfstudy';
-import { isClicked } from '../../Atoms';
+import selfstudy from 'Api/selfStudy';
 import { useRecoilState } from 'recoil';
 import { rolelookup } from 'Utils/Libs/roleLookup';
 

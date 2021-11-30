@@ -1,3 +1,3 @@
-import { HasToken, isClicked, list } from './AtomContainer';
+import { HasToken, list } from './AtomContainer';
 
-export { HasToken, isClicked, list };
+export { HasToken, list };
