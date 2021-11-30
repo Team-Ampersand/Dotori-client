@@ -1,95 +1,91 @@
-import React, { useEffect, useState } from 'react';
-import * as S from './Style';
-import NoticeBoardItem from '../NoticeBoardItem/NoticeBoardItem';
-import { Link } from 'react-router-dom';
-import notice from '../../Api/notice';
-
-const noticeDummyData = [
-	{
-		board_key: 1,
-		author: 'teacher',
-	},
-	{
-		board_key: 2,
-		author: 'teacher',
-	},
-	{
-		board_key: 3,
-		author: 'student',
-	},
-	{
-		board_key: 4,
-		author: 'teacher',
-	},
-	{
-		board_key: 5,
-		author: 'student',
-	},
-	{
-		board_key: 6,
-		author: 'student',
-	},
-	{
-		board_key: 7,
-		author: 'teacher',
-	},
-];
+import React, { useEffect, useState } from "react";
+import * as S from "./Style";
+import NoticeBoardItem from "../NoticeBoardItem/NoticeBoardItem";
+import { Link } from "react-router-dom";
+import notice from "../../Api/notice";
 
 interface board {
-	boardKey: number;
-	boardTitle: string;
-	author: string;
-	createDate: string;
+  id: number;
+  title: string;
+  roles: Array<any>;
+  createdDate: string;
 }
 
 const NoticeBoard: React.FC = () => {
-	const [board, setBoard] = useState<board[]>([]);
+  const [board, setBoard] = useState<board[]>([]);
 
-	const getNotice = async () => {
-		return await notice.adminGetNotice();
-	};
+  const getNotice = async () => {
+    return await notice.adminGetNotice();
+  };
+  const getNoticeDetail = async (page) => {
+    return await notice.adminGetNoticeDetail(page);
+  };
 
-	useEffect(() => {
-		getNotice().then((res) => setBoard(res.data.content));
-	}, []);
+  const [change, setChange] = useState();
 
-	const pageNumbers: Array<number> = [];
-	for (let i = 1; i <= 5; i++) {
-		pageNumbers.push(i);
-	}
+  useEffect(() => {
+    getNotice().then(async (res) => {
+      if (res.data.code === 1) {
+        let i = res.data.data.totalPages;
+        console.log(i);
+        getNoticeDetail(i - 1).then((re) => setBoard(re.data.data.content));
+        setChange(i);
+      }
+    });
+  }, [change]);
 
-	const [editState, setEditState] = useState(false);
-	const onToggle = () => setEditState(!editState);
+  // const prevClick = () => {
+  //   setRenderPage(renderPage + 1)s;
+  //   console.log(renderPage - 1);
+  //   getNotice(renderPage - 1).then((res) => set Board(res.data.data.content));
+  //   window.location.reload();
+  // };
 
-	return (
-		<>
-			<S.Positioner>
-				<S.BtnWrapper>
-					<Link to={'/notice/write'}>
-						<S.Btn>작성</S.Btn>
-					</Link>
-					<S.Btn onClick={onToggle}>{editState ? '완료' : '편집'}</S.Btn>
-				</S.BtnWrapper>
-				<S.Container>
-					{board &&
-						board.map((noticeItem) => (
-							<NoticeBoardItem
-								key={noticeItem.boardKey}
-								board_key={noticeItem.boardKey}
-								author={noticeItem.author}
-								title={noticeItem.boardTitle}
-								editState={editState}
-							/>
-						))}
-					<S.PageUl>
-						{pageNumbers.map((numbers) => (
-							<S.PageLi>{numbers}</S.PageLi>
-						))}
-					</S.PageUl>
-				</S.Container>
-			</S.Positioner>
-		</>
-	);
+  // const nextClick = () => {
+  //   setRenderPage(renderPage - 1);
+  //   console.log(renderPage - 1);
+  //   getNotice(renderPage - 1).then((res) => setBoard(res.data.data.content));
+  //   window.location.reload();
+  // };
+
+  const [editState, setEditState] = useState(false);
+  const onToggle = () => {
+    setEditState(!editState);
+  };
+
+  return (
+    <>
+      <S.Positioner>
+        <S.BtnWrapper>
+          <Link to={"/notice/write"}>
+            <S.Btn>작성</S.Btn>
+          </Link>
+          <S.Btn onClick={onToggle}>{editState ? "완료" : "편집"}</S.Btn>
+        </S.BtnWrapper>
+        <S.Container>
+          <S.ItemWrapper>
+            {[...board].reverse() &&
+              [...board]
+                .reverse()
+                .map((noticeItem) => (
+                  <NoticeBoardItem
+                    key={noticeItem.id}
+                    board_key={noticeItem.id}
+                    author={noticeItem.roles}
+                    title={noticeItem.title}
+                    createdDate={noticeItem.createdDate}
+                    editState={editState}
+                  />
+                ))}
+          </S.ItemWrapper>
+          <S.PageBtnWrapper>
+            {/* <S.PageBtn onClick={prevClick}>{"<"}</S.PageBtn>
+            <S.PageBtn onClick={nextClick}>{">"}</S.PageBtn> */}
+          </S.PageBtnWrapper>
+        </S.Container>
+      </S.Positioner>
+    </>
+  );
 };
 
 export default NoticeBoard;
