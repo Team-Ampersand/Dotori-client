@@ -88,10 +88,6 @@ const UserProfile: React.FC = () => {
 					<sub>{profile?.point}</sub>
 				</S.PointWrapper>
 			</S.Content>
-			<S.Footer>
-				<S.Label>나의 이벤트</S.Label>
-				<EventList eventObject={SampleData} />
-			</S.Footer>
 			<S.Policy>
 				<span>© 2021 Ampersand. All Rights Reserved.</span>
 				<p>
