@@ -23,7 +23,6 @@ export const PlaylistContainer = styled.div`
 `;
 
 export const SongContainer = styled.div`
-	margin-top: 2vh;
 	overflow-y: auto;
 	overflow-x: hidden;
 
