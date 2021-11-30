@@ -5105,7 +5105,7 @@ filter-obj@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/filter-obj/-/filter-obj-1.1.0.tgz#9b311112bc6c6127a16e016c6c5d7f19e0805c5b"
   integrity sha1-mzERErxsYSehbgFsbF1/GeCAXFs=
-
+  
 finalhandler@~1.1.2:
   version "1.1.2"
   resolved "https://registry.npmjs.org/finalhandler/-/finalhandler-1.1.2.tgz"
@@ -9039,6 +9039,7 @@ query-string@^4.1.0:
     object-assign "^4.1.0"
     strict-uri-encode "^1.0.0"
 
+
 query-string@^7.0.1:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/query-string/-/query-string-7.0.1.tgz#45bd149cf586aaa582dffc7ec7a8ad97dd02f75d"
@@ -9375,6 +9376,11 @@ readdirp@~3.6.0:
   integrity sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==
   dependencies:
     picomatch "^2.2.1"
+
+recoil-persist@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/recoil-persist/-/recoil-persist-4.0.0.tgz#03496afd3c742cefbc19fdb1cae0408cd1e0b424"
+  integrity sha512-hJFWxAFYpEMF1/rdF+AjBQABWuERFMWoJ5Ag1vJKG1Aj1603MuBmk3epaz8rU/Jy4IUBRkFibl6zFrvwhRhCew==
 
 recoil@^0.3.1:
   version "0.3.1"

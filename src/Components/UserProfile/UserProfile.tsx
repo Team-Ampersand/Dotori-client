@@ -20,16 +20,12 @@ const TryLogout = () => {
 
 	const onLogout = async () => {
 		try {
-			const res = await member.logout();
-			if (res.data.success) {
-				localStorage.removeItem('Dotori_accessToken');
-				localStorage.removeItem('Dotori_refreshToken');
+			await member.logout();
+			localStorage.removeItem('Dotori_accessToken');
+			localStorage.removeItem('Dotori_refreshToken');
 
-				setLogged(false);
-				history.push('/signin');
-			} else {
-				alert('로그아웃에 실패하였습니다.');
-			}
+			setLogged(false);
+			history.push('/signin');
 		} catch (e) {
 			alert(e);
 		}
@@ -45,11 +41,24 @@ const myPage = async () => {
 const UserProfile: React.FC = () => {
 	const [profile, setProfile] = useState<UserProfileType>();
 	const [onLogout] = TryLogout();
+	const history = useHistory();
 
 	useEffect(() => {
-		myPage().then((res) => {
-			setProfile(res.data.data);
-		});
+		myPage()
+			.then((res) => {
+				setProfile(res.data.data);
+			})
+			.catch((e) => {
+				if (e.response.status === 401) {
+					history.push('/signin');
+					alert(
+						'장시간 자리에서 비워 로그아웃 되었습니다. 다시 로그인 해주세요.'
+					);
+					localStorage.removeItem('Dotori_accessToken');
+					localStorage.removeItem('Dotori_refreshToken');
+					window.location.reload();
+				}
+			});
 	}, []);
 	return (
 		<S.Postioner>

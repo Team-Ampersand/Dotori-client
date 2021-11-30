@@ -14,19 +14,18 @@ interface BtnProps {
 }
 
 export const Container = styled.div`
-  width: 80vw;
-  height: 7.3vh;
-  background-color: #fff;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
-  margin-top: 2.7vh;
-  margin-left: 2vw;
-  cursor: pointer;
-  display: flex;
-  flex-direction: row;
-  &:hover {
-    background-color: ${darken(0.05, "#fff")};
-  }
+	width: 98%;
+	height: 7.3vh;
+	background-color: #fff;
+	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+	border-radius: 20px;
+	margin-top: 2.7vh;
+	cursor: pointer;
+	display: flex;
+	flex-direction: row;
+	&:hover {
+		background-color: ${darken(0.05, '#fff')};
+	}
 `;
 
 export const AuthorStyle = styled.div<AuthorProps>`

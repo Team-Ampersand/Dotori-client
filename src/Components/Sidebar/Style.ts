@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Postioner = styled.nav`
-	width: 20rem;
+	width: 300px;
 	background-color: #fff;
 	display: flex;
 	flex-direction: column;

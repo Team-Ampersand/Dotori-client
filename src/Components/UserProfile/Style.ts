@@ -5,15 +5,14 @@ export const Postioner = styled.div`
 	height: 100%;
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 `;
 
 export const Header = styled.div`
-	flex: 1;
 	display: flex;
 	justify-content: flex-end;
 	margin-top: 20px;
 	margin-right: 20px;
-	cursor: pointer;
 
 	svg {
 		fill: #8b8b8b;
@@ -23,9 +22,10 @@ export const Header = styled.div`
 `;
 
 export const LogoutWrapper = styled.div`
+	width: 100px;
 	display: flex;
 	justify-content: flex-end;
-
+	cursor: pointer;
 	span {
 		font-size: 18px;
 		margin-left: 13px;
@@ -137,7 +137,6 @@ export const ActiveProgress = styled.div`
 `;
 
 export const Footer = styled.div`
-	flex: 4;
 	margin: 0px 26px;
 	display: flex;
 	flex-direction: column;
@@ -149,12 +148,12 @@ export const Label = styled.span`
 `;
 
 export const Policy = styled.div`
-	flex: 0.8;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	margin-top: 20px;
+	margin-bottom: 20px;
 
 	span {
 		color: #222222;

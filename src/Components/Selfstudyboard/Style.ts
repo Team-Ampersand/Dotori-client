@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 type StyleProps = {
 	statusColor?: string;
-	Clicked?: boolean;
+	Clicked?: string;
 };
 
 export const Positioner = styled.div<StyleProps>`
@@ -10,8 +10,17 @@ export const Positioner = styled.div<StyleProps>`
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-	background-color: #fff; //${(props) => (props.Clicked ? '#fff' : '#e7f5ff')};
-	border: 3px solid ${(props) => (props.Clicked ? '#fff' : '#617be3')};
+	border: 2px solid
+		${(props) => {
+			if (props.Clicked === 'CAN') {
+				return '#fff';
+			} else if (props.Clicked === 'APPLIED') {
+				return '#617be3';
+			} else if (props.Clicked === 'CANT') {
+				return '#fc2c2c';
+			}
+		}};
+	background-color: #fff;
 	border-radius: 20px;
 `;
 
@@ -52,6 +61,11 @@ export const StudyContent = styled.div`
 		font-weight: bold;
 		margin-top: 11vh;
 	}
+	p {
+		font-size: 18px;
+		font-weight: 500;
+		margin-top: 11vh;
+	}
 `;
 
 export const PointProgress = styled.div`
@@ -75,9 +89,34 @@ export const StudyButton = styled.button<StyleProps>`
 	width: 12vw;
 	height: 7vh;
 	border: none;
-	background-color: ${(props) => (props.Clicked ? '#617be3' : '#fff')};
-	color: ${(props) => (props.Clicked ? '#fff' : '#617be3')};
-	border: 2px solid ${(props) => (props.Clicked ? '#fff' : '#617be3')};
+	background-color: ${(props) => {
+		if (props.Clicked === 'CAN') {
+			return '#617be3';
+		} else if (props.Clicked === 'APPLIED') {
+			return '#fff';
+		} else if (props.Clicked === 'CANT') {
+			return '#fc2c2c';
+		}
+	}};
+	color: ${(props) => {
+		if (props.Clicked === 'CAN') {
+			return '#fff';
+		} else if (props.Clicked === 'APPLIED') {
+			return '#617be3';
+		} else if (props.Clicked === 'CANT') {
+			return '#fff';
+		}
+	}};
+	border: 2px solid
+		${(props) => {
+			if (props.Clicked === 'CAN') {
+				return '#fff';
+			} else if (props.Clicked === 'APPLIED') {
+				return '#617be3';
+			} else if (props.Clicked === 'CANT') {
+				return '#fff';
+			}
+		}};
 	border-radius: 10px;
 	margin-top: 12.5vh;
 	font-size: 20px;

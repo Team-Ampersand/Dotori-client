@@ -3,8 +3,6 @@ import * as S from './Style';
 import BannerPage from '../BannerPage/BannerPage';
 import { MatchType } from '../../Utils/GlobalType';
 import { ManufactureDate } from '../../Utils/ManufactureDate';
-import { ChangeSongType } from '../../Components';
-import { AdminSongListPage } from '../';
 
 interface TemplateProps {
 	match: MatchType;
@@ -83,8 +81,6 @@ const BannerStatus = (
 
 const PageTemplate: React.FC<TemplateProps> = ({ match, children }) => {
 	const [isActive, setIsActive] = useState(false);
-
-	console.log(isActive)
 
 	return (
 		<S.Postioner>

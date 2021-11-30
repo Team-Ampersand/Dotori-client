@@ -82,8 +82,44 @@ export const RefreshTokenController = {
 	},
 };
 
+//유저 프로필
 export const MyPageController = {
 	home: () => {
 		return '/home';
+	},
+};
+
+//권한 조회
+export const RoleController = {
+	role: () => {
+		return '/current/role';
+	},
+};
+
+//자습신청
+export const MemberSelfstudyController = {
+	//자습신청
+	selfStudy: (role: string) => {
+		return `/${role}/selfstudy`;
+	},
+	//자습취소
+	cancelStudy: (role: string) => {
+		return `/${role}/cancel/selfstudy`;
+	},
+	//신청조회
+	studyLookup: (role: string) => {
+		return `/${role}/selfstudy`;
+	},
+	//반별 신청 조회
+	classLookup: (classId: number, role: string) => {
+		return `/${role}/selfstudy/${classId}`;
+	},
+	//현재 신청 현황 수 조회
+	countStudy: (role: string) => {
+		return `/${role}/selfstudy/count`;
+	},
+	//자습신청 여부 조회
+	studyStatus: (role: string) => {
+		return `/${role}/selfstudy/status`;
 	},
 };

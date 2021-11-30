@@ -1,8 +1,6 @@
 import React from 'react';
 import * as S from './Style';
-// import BannerPage from '../BannerPage/BannerPage';
 import { MatchType } from '../../Utils/GlobalType';
-// import { ManufactureDate } from '../../Utils/ManufactureDate';
 import { PageTemplate } from '..';
 import {
 	UserProfile,
@@ -10,12 +8,17 @@ import {
 	MealBoard,
 	Sidebar,
 } from '../../Components';
+import { HasToken } from '../../Atoms';
+import { useHistory } from 'react-router';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 
 interface HomeProps {
 	match: MatchType;
 }
 
 const HomeContainer: React.FC<HomeProps> = ({ match }) => {
+	const history = useHistory();
+	const [logged, setLogged] = useRecoilState(HasToken);
 	return (
 		<S.Positioner>
 			<Sidebar />

@@ -8,24 +8,22 @@ export const Positioner = styled.div`
 `;
 
 export const Container = styled.div`
-  position: relative;
-  width: 84vw;
-  height: 79vh;
-  margin-top: 1.8vh;
-  background: #fff;
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+	width: 100%;
+	height: 79vh;
+	margin-top: 1.8vh;
+	background: #fff;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 `;
 
-export const PageBtnWrapper = styled.div`
-  position: absolute;
-  display: flex;
-  justify-content: space-around;
-  bottom: 2.7vh;
-  width: 11.7vw;
-  text-align: center;
+export const PageUl = styled.ul`
+	display: flex;
+	justify-content: space-around;
+	margin-top: 2.7vh;
+	width: 11.7vw;
+	list-style: none;
 `;
 
 export const PageBtn = styled.div`

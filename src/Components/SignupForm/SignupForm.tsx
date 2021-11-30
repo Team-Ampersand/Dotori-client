@@ -20,20 +20,26 @@ const TrySignup = () => {
 			await member.signup(id, password, name, stuId);
 			history.push('/signin');
 		} catch (e) {
-			alert('무언가 잘못 되었습니다. 고쳐보세요');
+			alert(e);
 		}
 	};
 
 	const emailCertify = async () => {
 		try {
 			await email.auth(id);
-		} catch (e) {}
+			alert('인증번호가 위의 이메일로 전송 되었습니다.');
+		} catch (e) {
+			alert(e);
+		}
 	};
 
 	const authCheck = async () => {
 		try {
 			await email.authCheck(emailCode);
-		} catch (e) {}
+			alert('인증이 완료 되었습니다.');
+		} catch (e) {
+			alert(e);
+		}
 	};
 
 	return {
