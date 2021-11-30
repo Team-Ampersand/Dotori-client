@@ -43,11 +43,15 @@ const TrySignin = () => {
 			history.push('/');
 			setTimeout(onRefresh, 1800000);
 		} catch (e: any) {
-			alert(
-				e.message === 'Error: Request failed with status code 404'
-					? '올바르지 않은 아이디 또는 비밀번호입니다.'
-					: '로그인 에러가 발생하였습니다.' + e
-			);
+			if (e.message === 'Request failed with status code 409') {
+				alert('아이디 혹은 비번이 틀렸습니다.');
+				console.log(e.message);
+			} else if (e.message === 'Request failed with status code 404') {
+				alert('존재 하지 않는 로그인 정보입니다.');
+				console.log(e.message);
+			} else {
+				alert(e);
+			}
 		}
 	};
 	return [setId, setPassword, onSignin];
