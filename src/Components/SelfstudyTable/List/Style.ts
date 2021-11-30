@@ -2,16 +2,14 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
     width: 100%;
-    height: 100%;
     display: flex;
-    background-color: #fff;
-	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
-    margin-top: 2.7vh;
-    margin-bottom: 2vh;
+    flex-direction: row;
+    border-top: 2px solid #a0a0a0a0;
+
     &:last-child {
         border-bottom: none;
     }
+
     div {
         font-size: 18px;
         color: #000;

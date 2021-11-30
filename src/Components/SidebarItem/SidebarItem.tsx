@@ -21,7 +21,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
 		<S.LinkWrapper
 			to={router}
 			onClick={() => setCurrnentRouter(router)}
-			sidebarcolor={currentRouter === router}
+			sidebarColor={currentRouter === router}
 		>
 			{useRouterNameChangeMenuImage(menuIcon)}
 			<S.MenuTitle>{menuTitle}</S.MenuTitle>

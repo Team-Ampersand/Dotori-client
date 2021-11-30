@@ -23,6 +23,7 @@ const SidebarList: React.FC<SidebarListProps> = ({
 	setCurrnentRouter,
 }) => {
 	useEffect(() => {
+		console.log(window.location.pathname);
 		window.onpopstate = () => {
 			setCurrnentRouter(window.location.pathname);
 		};
