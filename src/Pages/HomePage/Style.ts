@@ -25,8 +25,6 @@ export const MealBoard = styled.div`
 export const Selfstudyboard = styled.div`
 	width: 35%;
 	height: 100%;
-	background-color: #fff;
-	border-radius: 20px;
 `;
 
 export const Container = styled.div`
