@@ -1,6 +1,5 @@
 import React from 'react';
 import * as S from './Style';
-// import BannerPage from '../BannerPage/BannerPage';
 import { MatchType } from '../../Utils/GlobalType';
 import { PageTemplate } from '..';
 import {
