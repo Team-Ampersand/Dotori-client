@@ -76,6 +76,7 @@ const BannerStatus = (
 				<S.Content>{children}</S.Content>
 			</>
 		);
+	}
 };
 
 const PageTemplate: React.FC<TemplateProps> = ({ match, children }) => {
