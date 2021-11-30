@@ -19,8 +19,6 @@ export const Container = styled.div`
   flex-wrap: wrap;
 `;
 
-export const ItemWrapper = styled.div``;
-
 export const PageBtnWrapper = styled.div`
   position: absolute;
   display: flex;
