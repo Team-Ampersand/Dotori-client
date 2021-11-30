@@ -14,12 +14,6 @@ export const HasToken = atom<boolean>({
 	default: false,
 });
 
-export const isClicked = atom<boolean>({
-	key: 'isClicked',
-	default: true,
-	effects_UNSTABLE: [persistAtom],
-});
-
 export const list = atom<User[]>({
 	key: 'list',
 	default: [{ id: '', stdNum: '', username: '' }],
