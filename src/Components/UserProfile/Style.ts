@@ -10,6 +10,10 @@ export const Postioner = styled.div`
 export const Header = styled.div`
 	flex: 1;
 	display: flex;
+	justify-content: flex-end;
+	margin-top: 20px;
+	margin-right: 20px;
+	cursor: pointer;
 
 	svg {
 		fill: #8b8b8b;
@@ -21,9 +25,6 @@ export const Header = styled.div`
 export const LogoutWrapper = styled.div`
 	display: flex;
 	justify-content: flex-end;
-	margin-top: 20px;
-	margin-left: 280px;
-	cursor: pointer;
 
 	span {
 		font-size: 18px;

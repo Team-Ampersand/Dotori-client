@@ -1,23 +1,60 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import * as S from './Style';
 import { Logout, Point, Profile } from '../../Assets/Svg';
+import member from '../../Api/member';
+import mypage from '../../Api/mypage';
+import { useSetRecoilState } from 'recoil';
+import { HasToken } from '../../Atoms';
+import { useHistory } from 'react-router';
 
 type UserProfileType = {
-	name: string;
-	grade: string;
-	class: string;
+	id: number;
+	username: string;
+	stuNum: string;
+	point: number;
 };
 
-interface ProfileProps {
-	logoutFunc: () => void;
-	userProfile: UserProfileType;
-}
+const TryLogout = () => {
+	const setLogged = useSetRecoilState(HasToken);
+	const history = useHistory();
 
-const UserProfile: React.FC<ProfileProps> = ({ logoutFunc, userProfile }) => {
+	const onLogout = async () => {
+		try {
+			const res = await member.logout();
+			if (res.data.success) {
+				localStorage.removeItem('Dotori_accessToken');
+				localStorage.removeItem('Dotori_refreshToken');
+
+				setLogged(false);
+				history.push('/signin');
+			} else {
+				alert('로그아웃에 실패하였습니다.');
+			}
+		} catch (e) {
+			alert(e);
+		}
+	};
+	return [onLogout];
+};
+
+const myPage = async () => {
+	const res = await mypage.mypage();
+	return res;
+};
+
+const UserProfile: React.FC = () => {
+	const [profile, setProfile] = useState<UserProfileType>();
+	const [onLogout] = TryLogout();
+
+	useEffect(() => {
+		myPage().then((res) => {
+			setProfile(res.data.data);
+		});
+	}, []);
 	return (
 		<S.Postioner>
 			<S.Header>
-				<S.LogoutWrapper onClick={logoutFunc} data-test="test-logout">
+				<S.LogoutWrapper onClick={onLogout} data-test="test-logout">
 					<Logout />
 					<span>로그아웃</span>
 				</S.LogoutWrapper>
@@ -26,9 +63,10 @@ const UserProfile: React.FC<ProfileProps> = ({ logoutFunc, userProfile }) => {
 				<S.UserWrapper>
 					<Profile />
 					<div>
-						<span className="name">{userProfile.name}</span>
+						<span className="name">{profile?.username}</span> <br />
 						<span className="grade">
-							{userProfile.grade}-{userProfile.class}
+							{profile?.stuNum.substr(0, 1)}-{profile?.stuNum.substr(1, 1)},{' '}
+							{profile?.stuNum.substr(2, 4)}번
 						</span>
 					</div>
 				</S.UserWrapper>
@@ -38,7 +76,7 @@ const UserProfile: React.FC<ProfileProps> = ({ logoutFunc, userProfile }) => {
 					<S.PointProgress>
 						<S.ActiveProgress />
 					</S.PointProgress>
-					<sub>-5</sub>
+					<sub>{profile?.point}</sub>
 				</S.PointWrapper>
 			</S.Content>
 			<S.Policy>

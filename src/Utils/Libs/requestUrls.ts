@@ -62,3 +62,28 @@ export const noticeController = {
     return `/admin/board/${boardId}`;
   },
 };
+
+//이메일 인증
+export const EmailController = {
+	//이메일로 key값 받기
+	auth: () => {
+		return '/auth';
+	},
+	//위에서 받은 key값 인증
+	authcheck: () => {
+		return '/auth/check';
+	},
+};
+
+//토큰 재발급
+export const RefreshTokenController = {
+	refresh: () => {
+		return '/refresh';
+	},
+};
+
+export const MyPageController = {
+	home: () => {
+		return '/home';
+	},
+};

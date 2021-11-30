@@ -1,51 +1,54 @@
-import React, { useState } from "react";
-import { DotoriLogo } from "Assets/Svg";
-import * as S from "./Style";
-import { Link } from "react-router-dom";
-import { HasToken } from "../../Atoms";
-import { useSetRecoilState } from "recoil";
-import member from "../../Api/member";
-import { setCookie } from "../../Utils/Cookie";
+import React, { useState } from 'react';
+import { DotoriLogo } from 'Assets/Svg';
+import * as S from './Style';
+import { Link, useHistory } from 'react-router-dom';
+import { HasToken } from '../../Atoms';
+import { useSetRecoilState } from 'recoil';
+import member from '../../Api/member';
+import refresh from '../../Api/refresh';
 
 const TrySignin = () => {
-  const [id, setId] = useState("");
-  const [password, setPassword] = useState("");
-  const setLogged = useSetRecoilState(HasToken);
+	const [id, setId] = useState('');
+	const [password, setPassword] = useState('');
+	const setLogged = useSetRecoilState(HasToken);
+	const history = useHistory();
 
-  const onRefresh = async () => {
-    try {
-      const res = await refresh.refresh();
+	const onRefresh = async () => {
+		try {
+			const res = await refresh.refresh();
 
-      localStorage.setItem("Dotori_accessToken", res.data.data.NewAccessToken);
-      localStorage.setItem(
-        "Dotori_refreshToken",
-        res.data.data.NewRefreshToken
-      );
-      setTimeout(onRefresh, 1800000);
-    } catch (e) {
-      alert("장시간 자리에서 비워 로그아웃 되었습니다. 다시 로그인 해주세요");
-      history.push("/signin");
-    }
-  };
+			localStorage.setItem('Dotori_accessToken', res.data.data.NewAccessToken);
+			localStorage.setItem(
+				'Dotori_refreshToken',
+				res.data.data.NewRefreshToken
+			);
+			setTimeout(onRefresh, 1800000);
+		} catch (e) {
+			alert('장시간 자리에서 비워 로그아웃 되었습니다. 다시 로그인 해주세요');
+			history.push('/signin');
+		}
+	};
 
-  const onSignin = async () => {
-    try {
-      const res = await member.signin(id, password);
+	const onSignin = async () => {
+		try {
+			const res = await member.signin(id, password);
 
-      localStorage.setItem("Dotori_accessToken", res.data.data.accessToken);
-      localStorage.setItem("Dotori_refreshToken", res.data.data.refreshToken);
-      setLogged(true);
-      history.push("/");
-      setTimeout(onRefresh, 1800000);
-    } catch (e: any) {
-      alert(
-        e.message === "Error: Request failed with status code 404"
-          ? "올바르지 않은 아이디 또는 비밀번호입니다."
-          : "로그인 에러가 발생하였습니다." + e
-      );
-    }
-  };
-  return [setId, setPassword, onSignin];
+			localStorage.setItem('Dotori_accessToken', res.data.data.accessToken);
+			localStorage.setItem('Dotori_refreshToken', res.data.data.refreshToken);
+
+			setLogged(true);
+			history.push('/');
+			setTimeout(onRefresh, 1800000);
+		} catch (e: any) {
+			alert(
+				e.message === 'Error: Request failed with status code 404'
+					? '올바르지 않은 아이디 또는 비밀번호입니다.'
+					: '로그인 에러가 발생하였습니다.' + e
+			);
+		}
+	};
+	return [setId, setPassword, onSignin];
+
 };
 
 const SigninForm: React.FC = () => {

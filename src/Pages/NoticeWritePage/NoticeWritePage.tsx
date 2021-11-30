@@ -1,7 +1,8 @@
-import React from "react";
-import { MatchType } from "../../Utils/GlobalType";
-import PageTemplate from "Pages/Template/PageTemplate";
-import { NoticeWrite } from "../../Components";
+import React from 'react';
+import { MatchType } from '../../Utils/GlobalType';
+import PageTemplate from 'Pages/Template/PageTemplate';
+import { NoticeWrite, Sidebar } from '../../Components';
+import * as S from './Style';
 
 interface NoticeWriteProps {
   match: MatchType;
@@ -10,6 +11,7 @@ interface NoticeWriteProps {
 const NoticeWritePage: React.FC<NoticeWriteProps> = ({ match }) => {
   return (
     <PageTemplate match={match}>
+      <Sidebar />
       <NoticeWrite />
     </PageTemplate>
   );

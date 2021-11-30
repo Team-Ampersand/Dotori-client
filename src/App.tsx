@@ -16,9 +16,6 @@ const App: React.FC = () => {
 			<BrowserRouter>
 				<GlobalStyle />
 				<Positioner>
-					<SidebarWrapper current={window.location.pathname}>
-						<SidebarPage />
-					</SidebarWrapper>
 					<ContentWrapper>
 						<Router />
 					</ContentWrapper>
