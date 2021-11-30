@@ -5,34 +5,16 @@ import { NoticeWrite, Sidebar } from '../../Components';
 import * as S from './Style';
 
 interface NoticeWriteProps {
-	match: MatchType;
+  match: MatchType;
 }
 
-const returnAuthorColor = (authorType: string) => {
-	switch (authorType) {
-		case 'teacher':
-			return '#7D78D1';
-		case 'student':
-			return '#FF8C8C';
-	}
-};
-
 const NoticeWritePage: React.FC<NoticeWriteProps> = ({ match }) => {
-	let i = 1;
-	let author = 'teacher';
-
-	return (
-		<S.Positioner>
-			<Sidebar />
-			<PageTemplate match={match}>
-				<NoticeWrite
-					board_key={i}
-					authorColor={returnAuthorColor(author)!}
-					writeMode={'create'}
-				/>
-			</PageTemplate>
-		</S.Positioner>
-	);
+  return (
+    <PageTemplate match={match}>
+      <Sidebar />
+      <NoticeWrite />
+    </PageTemplate>
+  );
 };
 
 export default NoticeWritePage;
