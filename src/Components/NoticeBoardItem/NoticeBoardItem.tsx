@@ -9,14 +9,17 @@ interface NoticeBoardItemProps {
   title: string;
   createdDate: string;
   editState: boolean;
+  role: string;
 }
 
 const returnAuthorColor = (authorType: string) => {
   switch (authorType) {
     case "ROLE_ADMIN":
       return "#7D78D1";
-    case "ROLE_MEMBER":
+    case "ROLE_COUNCILLOR":
       return "#FF8C8C";
+    case "ROLE_DEVELOPER":
+      return "#0F4C81";
   }
 };
 
@@ -24,8 +27,10 @@ const returnAuthorValue = (authorType: string) => {
   switch (authorType) {
     case "ROLE_ADMIN":
       return "사감선생님";
-    case "ROLE_MEMBER":
+    case "ROLE_COUNCILLOR":
       return "자치위원회";
+    case "ROLE_DEVELOPER":
+      return "도토리";
   }
 };
 
@@ -35,6 +40,7 @@ const NoticeBoardItem: React.FC<NoticeBoardItemProps> = ({
   title,
   createdDate,
   editState,
+  role,
 }) => {
   const [modalState, setModalState] = useState<boolean>(false);
 
@@ -49,8 +55,8 @@ const NoticeBoardItem: React.FC<NoticeBoardItemProps> = ({
 
   const [updateState, setUpdateState] = useState<boolean>(false);
 
-  const deleteNotice = (boardId) => {
-    return notice.adminDeleteNotice(boardId);
+  const deleteNotice = async (boardId) => {
+    return notice.adminDeleteNotice(role, boardId);
   };
 
   const onModify = (e) => {
@@ -96,6 +102,7 @@ const NoticeBoardItem: React.FC<NoticeBoardItemProps> = ({
         authorColor={returnAuthorColor(author[0])!}
         updateState={updateState}
         setUpdateState={setUpdateState}
+        role={role}
       />
     </>
   );

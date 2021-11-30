@@ -8,22 +8,22 @@ export const Positioner = styled.div`
 `;
 
 export const Container = styled.div`
-	width: 100%;
-	height: 79vh;
-	margin-top: 1.8vh;
-	background: #fff;
-	border-radius: 10px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  width: 100%;
+  height: 79vh;
+  margin-top: 1.8vh;
+  background: #fff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const PageUl = styled.ul`
-	display: flex;
-	justify-content: space-around;
-	margin-top: 2.7vh;
-	width: 11.7vw;
-	list-style: none;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2.7vh;
+  width: 11.7vw;
+  list-style: none;
 `;
 
 export const PageBtn = styled.div`
@@ -37,8 +37,12 @@ export const PageBtn = styled.div`
   }
 `;
 
-export const BtnWrapper = styled.div`
-  display: flex;
+interface BtnWrapProps {
+  isMember: boolean;
+}
+
+export const BtnWrapper = styled.div<BtnWrapProps>`
+  display: ${(prop) => (prop.isMember ? "none" : "flex")};
   justify-content: flex-end;
   height: 3.6vh;
 `;

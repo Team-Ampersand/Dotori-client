@@ -9,6 +9,7 @@ interface ModalProps {
   authorColor: string;
   updateState: boolean;
   setUpdateState: (e: any) => void;
+  role: string;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -18,12 +19,13 @@ const Modal: React.FC<ModalProps> = ({
   authorColor,
   updateState,
   setUpdateState,
+  role,
 }) => {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
 
-  const getNoticeItem = (boardId) => {
-    return notice.adminGetNoticeItem(boardId);
+  const getNoticeItem = async (boardId) => {
+    return notice.adminGetNoticeItem(role, boardId);
   };
 
   useEffect(() => {
@@ -41,7 +43,7 @@ const Modal: React.FC<ModalProps> = ({
   const [updateContent, setUpdateContent] = useState<string>("");
 
   const onUpdate = async (e) => {
-    await notice.adminUpdateNotice(board_key, updateTitle, updateContent);
+    await notice.adminUpdateNotice(role, board_key, updateTitle, updateContent);
     closeModal(e);
     setUpdateState(false);
     window.location.reload();

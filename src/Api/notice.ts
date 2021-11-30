@@ -2,37 +2,37 @@ import { noticeController } from "Utils/Libs/requestUrls";
 import RequestApi from "Utils/Libs/requestApi";
 
 class notice {
-  async adminGetNotice() {
+  async adminGetNotice(role: string) {
     try {
       return await RequestApi({
         method: "get",
-        url: noticeController.getNotice(),
+        url: noticeController.getNotice(role),
       });
     } catch (e: any) {
       throw new Error(e);
     }
   }
-  async adminGetNoticeDetail(page: number) {
+  async adminGetNoticeDetail(role: string, page: number) {
     try {
       return await RequestApi({
         method: "get",
-        url: noticeController.getNoticeDetail(page),
+        url: noticeController.getNoticeDetail(role, page),
       });
     } catch (e: any) {
       throw new Error(e);
     }
   }
-  async adminGetNoticeItem(boardId) {
+  async adminGetNoticeItem(role: string, boardId: number) {
     try {
       return await RequestApi({
         method: "get",
-        url: noticeController.getNoticeItem(boardId),
+        url: noticeController.getNoticeItem(role, boardId),
       });
     } catch (e: any) {
       throw new Error(e);
     }
   }
-  async adminWrite(title: string, content: string) {
+  async adminWrite(role: string, title: string, content: string) {
     try {
       const data = {
         title: title,
@@ -40,24 +40,24 @@ class notice {
       };
       return await RequestApi({
         method: "POST",
-        url: noticeController.adminNoticeWrite(),
+        url: noticeController.adminNoticeWrite(role),
         data: data,
       });
     } catch (e: any) {
       throw new Error(e);
     }
   }
-  async adminDeleteNotice(boardId) {
+  async adminDeleteNotice(role: string, boardId: number) {
     try {
       return await RequestApi({
         method: "DELETE",
-        url: noticeController.deleteNotice(boardId),
+        url: noticeController.deleteNotice(role, boardId),
       });
     } catch (e: any) {
       throw new Error(e);
     }
   }
-  async adminUpdateNotice(boardId, title, content) {
+  async adminUpdateNotice(role: string, boardId: number, title, content) {
     try {
       const data = {
         title: title,
@@ -65,7 +65,7 @@ class notice {
       };
       return await RequestApi({
         method: "PUT",
-        url: noticeController.updateNotice(boardId),
+        url: noticeController.updateNotice(role, boardId),
         data: data,
       });
     } catch (e: any) {

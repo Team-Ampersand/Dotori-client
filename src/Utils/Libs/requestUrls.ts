@@ -38,88 +38,88 @@ export const selfStudyController = {
 export const noticeController = {
   // admin
   // admin 공지사항 전체 조회
-  getNotice: () => {
-    return "/admin/board";
+  getNotice: (role: string) => {
+    return `/${role}/board`;
   },
   // admin 공지사항 페이지별 조회
-  getNoticeDetail: (page: number) => {
-    return `/admin/board?page=${page}`;
+  getNoticeDetail: (role: string, page: number) => {
+    return `/${role}/board?page=${page}`;
   },
   // admin 공지사항 작성
-  adminNoticeWrite: () => {
-    return "/admin/board";
+  adminNoticeWrite: (role: string) => {
+    return `/${role}/board`;
   },
   // admin 공지사항 개별 조회
-  getNoticeItem: (boardId) => {
-    return `/admin/board/${boardId}`;
+  getNoticeItem: (role: string, boardId: number) => {
+    return `/${role}/board/${boardId}`;
   },
   // admin 공지사항 삭제
-  deleteNotice: (boardId) => {
-    return `/admin/board/${boardId}`;
+  deleteNotice: (role: string, boardId: number) => {
+    return `/${role}/board/${boardId}`;
   },
   // 공지사항 수정
-  updateNotice: (boardId) => {
-    return `/admin/board/${boardId}`;
+  updateNotice: (role: string, boardId: number) => {
+    return `/${role}/board/${boardId}`;
   },
 };
 
 //이메일 인증
 export const EmailController = {
-	//이메일로 key값 받기
-	auth: () => {
-		return '/auth';
-	},
-	//위에서 받은 key값 인증
-	authcheck: () => {
-		return '/auth/check';
-	},
+  //이메일로 key값 받기
+  auth: () => {
+    return "/auth";
+  },
+  //위에서 받은 key값 인증
+  authcheck: () => {
+    return "/auth/check";
+  },
 };
 
 //토큰 재발급
 export const RefreshTokenController = {
-	refresh: () => {
-		return '/refresh';
-	},
+  refresh: () => {
+    return "/refresh";
+  },
 };
 
 //유저 프로필
 export const MyPageController = {
-	home: () => {
-		return '/home';
-	},
+  home: () => {
+    return "/home";
+  },
 };
 
 //권한 조회
 export const RoleController = {
-	role: () => {
-		return '/current/role';
-	},
+  role: () => {
+    return "/current/role";
+  },
 };
 
 //자습신청
 export const MemberSelfstudyController = {
-	//자습신청
-	selfStudy: (role: string) => {
-		return `/${role}/selfstudy`;
-	},
-	//자습취소
-	cancelStudy: (role: string) => {
-		return `/${role}/cancel/selfstudy`;
-	},
-	//신청조회
-	studyLookup: (role: string) => {
-		return `/${role}/selfstudy`;
-	},
-	//반별 신청 조회
-	classLookup: (classId: number, role: string) => {
-		return `/${role}/selfstudy/${classId}`;
-	},
-	//현재 신청 현황 수 조회
-	countStudy: (role: string) => {
-		return `/${role}/selfstudy/count`;
-	},
-	//자습신청 여부 조회
-	studyStatus: (role: string) => {
-		return `/${role}/selfstudy/status`;
-	},
+  //자습신청
+  selfStudy: (role: string) => {
+    return `/${role}/selfstudy`;
+  },
+  //자습취소
+  cancelStudy: (role: string) => {
+    return `/${role}/cancel/selfstudy`;
+  },
+  //신청조회
+  studyLookup: (role: string) => {
+    return `/${role}/selfstudy`;
+  },
+  //반별 신청 조회
+  classLookup: (classId: number, role: string) => {
+    return `/${role}/selfstudy/${classId}`;
+  },
+  //현재 신청 현황 수 조회
+  countStudy: (role: string) => {
+    return `/${role}/selfstudy/count`;
+  },
+  //자습신청 여부 조회
+  studyStatus: (role: string) => {
+    return `/${role}/selfstudy/status`;
+  },
 };
