@@ -63,50 +63,8 @@ export const DinnerWrapper = styled.span<StyleProps>`
 	}};
 `;
 
-export const Breakfast = styled.div`
-	width: 50%;
-	height: 50%;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	text-align: center;
-	border-radius: 25px;
-
-	p {
-		font-size: 20px;
-	}
-	span {
-		margin-bottom: 1vh;
-		font-size: 40px;
-		display: flex;
-		justify-content: center;
-		font-weight: bold;
-	}
-`;
-
-export const Launch = styled.div`
-	width: 50%;
-	height: 50%;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	text-align: center;
-	border-radius: 25px;
-
-	p {
-		font-size: 20px;
-	}
-	span {
-		margin-bottom: 1vh;
-		font-size: 40px;
-		display: flex;
-		justify-content: center;
-		font-weight: bold;
-	}
-`;
-
-export const Dinner = styled.div`
-	width: 50%;
+export const Meal = styled.div`
+	width: 100%;
 	height: 50%;
 	display: flex;
 	flex-direction: column;
