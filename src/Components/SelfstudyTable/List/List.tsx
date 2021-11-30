@@ -5,12 +5,15 @@ import { LaptopHeader } from '../Header/model/CombineAdminHeader';
 import selfstudy from '../../../Api/selfstudy';
 import { useRecoilState } from 'recoil';
 import { list } from 'Atoms';
+import { useHistory } from 'react-router';
 
-const returnUserObj = async () => {
+const ReturnUserObj = async () => {
 	try {
 		const res = await selfstudy.lookupstudy();
 		return res;
-	} catch (e) {}
+	} catch (e: any) {
+		alert(e);
+	}
 };
 
 interface ListProps {
@@ -28,11 +31,24 @@ const onlyCompareThisHeader = (match: MatchType) => {
 
 const List: React.FC<ListProps> = ({ match }) => {
 	const [userlist, setUserList] = useRecoilState(list);
+	const history = useHistory();
 
 	useEffect(() => {
-		returnUserObj().then((res) => {
-			setUserList(res?.data.data);
-		});
+		ReturnUserObj()
+			.then((res) => {
+				setUserList(res?.data.data);
+			})
+			.catch((e) => {
+				if (e.response.status === 401) {
+					history.push('/signin');
+					alert(
+						'장시간 자리에서 비워 로그아웃 되었습니다. 다시 로그인 해주세요.'
+					);
+					localStorage.removeItem('Dotori_accessToken');
+					localStorage.removeItem('Dotori_refreshToken');
+					window.location.reload();
+				}
+			});
 	}, [setUserList]);
 
 	return (
