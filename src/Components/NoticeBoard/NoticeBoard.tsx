@@ -17,11 +17,11 @@ const NoticeBoard: React.FC = () => {
 
   const getNotice = async () => {
     const role = await rolelookup();
-    return await notice.adminGetNotice(role);
+    return await notice.getNotice(role);
   };
   const getNoticeDetail = async (page: number) => {
     const role = await rolelookup();
-    return await notice.adminGetNoticeDetail(role, page);
+    return await notice.getNoticeDetail(role, page);
   };
 
   const [change, setChange] = useState();

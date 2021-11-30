@@ -56,7 +56,7 @@ const NoticeBoardItem: React.FC<NoticeBoardItemProps> = ({
   const [updateState, setUpdateState] = useState<boolean>(false);
 
   const deleteNotice = async (boardId) => {
-    return notice.adminDeleteNotice(role, boardId);
+    return notice.noticeDelete(role, boardId);
   };
 
   const onModify = (e) => {

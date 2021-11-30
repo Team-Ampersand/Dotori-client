@@ -25,7 +25,7 @@ const Modal: React.FC<ModalProps> = ({
   const [content, setContent] = useState<string>("");
 
   const getNoticeItem = async (boardId) => {
-    return notice.adminGetNoticeItem(role, boardId);
+    return notice.getNoticeItem(role, boardId);
   };
 
   useEffect(() => {
@@ -43,7 +43,7 @@ const Modal: React.FC<ModalProps> = ({
   const [updateContent, setUpdateContent] = useState<string>("");
 
   const onUpdate = async (e) => {
-    await notice.adminUpdateNotice(role, board_key, updateTitle, updateContent);
+    await notice.noticeUpdate(role, board_key, updateTitle, updateContent);
     closeModal(e);
     setUpdateState(false);
     window.location.reload();

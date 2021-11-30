@@ -2,7 +2,7 @@ import { noticeController } from "Utils/Libs/requestUrls";
 import RequestApi from "Utils/Libs/requestApi";
 
 class notice {
-  async adminGetNotice(role: string) {
+  async getNotice(role: string) {
     try {
       return await RequestApi({
         method: "get",
@@ -12,7 +12,7 @@ class notice {
       throw new Error(e);
     }
   }
-  async adminGetNoticeDetail(role: string, page: number) {
+  async getNoticeDetail(role: string, page: number) {
     try {
       return await RequestApi({
         method: "get",
@@ -22,7 +22,7 @@ class notice {
       throw new Error(e);
     }
   }
-  async adminGetNoticeItem(role: string, boardId: number) {
+  async getNoticeItem(role: string, boardId: number) {
     try {
       return await RequestApi({
         method: "get",
@@ -32,7 +32,7 @@ class notice {
       throw new Error(e);
     }
   }
-  async adminWrite(role: string, title: string, content: string) {
+  async noticeWrite(role: string, title: string, content: string) {
     try {
       const data = {
         title: title,
@@ -40,24 +40,24 @@ class notice {
       };
       return await RequestApi({
         method: "POST",
-        url: noticeController.adminNoticeWrite(role),
+        url: noticeController.noticeWrite(role),
         data: data,
       });
     } catch (e: any) {
       throw new Error(e);
     }
   }
-  async adminDeleteNotice(role: string, boardId: number) {
+  async noticeDelete(role: string, boardId: number) {
     try {
       return await RequestApi({
         method: "DELETE",
-        url: noticeController.deleteNotice(role, boardId),
+        url: noticeController.noticeDelete(role, boardId),
       });
     } catch (e: any) {
       throw new Error(e);
     }
   }
-  async adminUpdateNotice(role: string, boardId: number, title, content) {
+  async noticeUpdate(role: string, boardId: number, title, content) {
     try {
       const data = {
         title: title,
@@ -65,7 +65,7 @@ class notice {
       };
       return await RequestApi({
         method: "PUT",
-        url: noticeController.updateNotice(role, boardId),
+        url: noticeController.noticeUpdate(role, boardId),
         data: data,
       });
     } catch (e: any) {

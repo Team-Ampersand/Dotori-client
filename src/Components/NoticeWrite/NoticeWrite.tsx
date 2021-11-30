@@ -27,7 +27,7 @@ const NoticeWrite: React.FC = () => {
     await confirm();
     try {
       const role = await rolelookup();
-      const res = await notice.adminWrite(role, title, content);
+      const res = await notice.noticeWrite(role, title, content);
       await history.push("/notice");
       return res;
     } catch (e: any) {

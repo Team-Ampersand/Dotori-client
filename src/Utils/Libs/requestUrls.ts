@@ -36,29 +36,28 @@ export const selfStudyController = {
 
 // 공지사항 관리
 export const noticeController = {
-  // admin
-  // admin 공지사항 전체 조회
+  // 공지사항 전체 조회
   getNotice: (role: string) => {
     return `/${role}/board`;
   },
-  // admin 공지사항 페이지별 조회
+  // 공지사항 페이지별 조회
   getNoticeDetail: (role: string, page: number) => {
     return `/${role}/board?page=${page}`;
   },
-  // admin 공지사항 작성
-  adminNoticeWrite: (role: string) => {
+  // 공지사항 작성
+  noticeWrite: (role: string) => {
     return `/${role}/board`;
   },
-  // admin 공지사항 개별 조회
+  // 공지사항 개별 조회
   getNoticeItem: (role: string, boardId: number) => {
     return `/${role}/board/${boardId}`;
   },
-  // admin 공지사항 삭제
-  deleteNotice: (role: string, boardId: number) => {
+  // 공지사항 삭제
+  noticeDelete: (role: string, boardId: number) => {
     return `/${role}/board/${boardId}`;
   },
   // 공지사항 수정
-  updateNotice: (role: string, boardId: number) => {
+  noticeUpdate: (role: string, boardId: number) => {
     return `/${role}/board/${boardId}`;
   },
 };
