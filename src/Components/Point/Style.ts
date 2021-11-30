@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Positioner = styled.div`
 	height: 100%;
@@ -8,10 +8,10 @@ export const Positioner = styled.div`
 `;
 
 export const scoreBoard = styled.div`
-	margin-top: 50px;
+	margin-top: 20px;
 	border-radius: 20px;
 	width: 1720px;
-	height: 770px;
+	height: 830px;
 	background-color: #fff;
 	overflow: scroll;
 `;

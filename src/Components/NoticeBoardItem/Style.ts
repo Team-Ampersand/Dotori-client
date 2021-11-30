@@ -14,13 +14,12 @@ interface BtnProps {
 }
 
 export const Container = styled.div`
-	width: 80vw;
+	width: 98%;
 	height: 7.3vh;
 	background-color: #fff;
 	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
 	border-radius: 20px;
 	margin-top: 2.7vh;
-	margin-left: 2vw;
 	cursor: pointer;
 	display: flex;
 	flex-direction: row;
@@ -54,7 +53,8 @@ export const DateStyle = styled.div<EditProps>`
 		font-size: 1.125em;
 		font-weight: bold;
 	}
-	margin-left: 54vw;
+	position: fixed;
+	margin-left: 70vw;
 	margin-top: 2.7vh;
 	${(props) =>
 		props.edit &&
@@ -64,7 +64,8 @@ export const DateStyle = styled.div<EditProps>`
 `;
 
 export const BtnWrapper = styled.div<EditProps>`
-	margin-left: 48.7vw;
+	position: fixed;
+	margin-left: 65vw;
 	margin-top: 1.68vh;
 	${(props) =>
 		!props.edit &&

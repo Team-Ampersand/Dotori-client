@@ -1,0 +1,10 @@
+{
+  "BASE_URL": "http://10.120.72.245:8084/v1",
+  "BASE_HEADER": {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Headers": "Content-Type,Authorization",
+    "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE",
+    "Access-Control-Alllow-Credentials": true,
+    "Content-Type": "application/json"
+  }
+}

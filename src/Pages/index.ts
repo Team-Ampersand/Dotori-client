@@ -8,22 +8,24 @@ import NoticeWritePage from "./NoticeWritePage/NoticeWritePage";
 import SongPage from "./SongPage/SongPage";
 import AdminSongListPage from "./AdminSongListPage/AdminSongListPage";
 import PointPage from "./PointPage/PointPage";
+import AuthorizationPage from "./AuthorizationPage/AuthorizationPage";
 import SigninPage from "Pages/SigninPage/SigninPage";
 import SignupPage from "./SignupPage/SignupPage";
 import PwChangePage from "./PwChangePage/PwChangePage";
 
 export {
-	SidebarPage,
-	HomePage,
-	BannerPage,
-	PageTemplate,
-	LaptopPage,
-	NoticePage,
-	NoticeWritePage,
-	SongPage,
-	AdminSongListPage,
-	PointPage,
-	SigninPage,
-	SignupPage,
-	PwChangePage,
+  SidebarPage,
+  HomePage,
+  BannerPage,
+  PageTemplate,
+  LaptopPage,
+  NoticePage,
+  NoticeWritePage,
+  SongPage,
+  AdminSongListPage,
+  PointPage,
+  AuthorizationPage,
+  SigninPage,
+  SignupPage,
+  PwChangePage,
 };

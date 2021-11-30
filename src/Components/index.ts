@@ -20,12 +20,17 @@ import SelfstudyTable from './SelfstudyTable/SelfstudyTable';
 import SongRequest from './SongRequest/SongRequest';
 import TodaySong from './TodaySong/TodaySong';
 import RequestedSongs from './RequestedSongs/RequestedSongs';
+import Authorzation from './Authorzation/Authorzation';
+import ChangeInput from './ChangeInput/ChangeInput';
+import ChangeSelet from './ChangeSelect/ChangeSelect';
 import Input from './Input/Input';
-import LoginForm from './LoginForm/LoginForm';
+import LoginForm from './SigninForm/SigninForm';
 import Button from './Button/Button';
 import SignupForm from './SignupForm/SignupForm';
 import Selfstudyboard from './Selfstudyboard/Selfstudyboard';
 import PasswordForm from './PasswordForm/PasswordForm';
+import SongItem from './SongItem/SongItem';
+import MealBoard from './MealBoard/MealBoard';
 
 export {
 	Sidebar,
@@ -50,10 +55,15 @@ export {
 	SongRequest,
 	TodaySong,
 	RequestedSongs,
+	Authorzation,
+	ChangeInput,
+	ChangeSelet,
 	Input,
 	LoginForm,
 	Button,
 	SignupForm,
 	Selfstudyboard,
 	PasswordForm,
+	SongItem,
+	MealBoard,
 };

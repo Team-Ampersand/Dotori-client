@@ -1,10 +1,8 @@
-import React, { useState } from "react";
-import * as S from "./Style";
-import BannerPage from "../BannerPage/BannerPage";
-import { MatchType } from "../../Utils/GlobalType";
-import { ManufactureDate } from "../../Utils/ManufactureDate";
-import { ChangeSongType } from "../../Components";
-import { AdminSongListPage } from "../";
+import React, { useState } from 'react';
+import * as S from './Style';
+import BannerPage from '../BannerPage/BannerPage';
+import { MatchType } from '../../Utils/GlobalType';
+import { ManufactureDate } from '../../Utils/ManufactureDate';
 
 interface TemplateProps {
 	match: MatchType;
@@ -12,18 +10,20 @@ interface TemplateProps {
 
 const returnPageType = (routerName: string) => {
 	switch (routerName) {
-		case "/":
-			return "홈";
-		case "/selfstudy":
-			return "자습신청";
-		case "/song":
-			return "기상음악";
-		case "/notice":
-			return "공지사항";
-		case "/notice/write":
-			return "공지사항 작성";
-		case "/point":
-			return "상벌점 관리";
+		case '/':
+			return '홈';
+		case '/selfstudy':
+			return '자습신청';
+		case '/song':
+			return '기상음악';
+		case '/notice':
+			return '공지사항';
+		case '/notice/write':
+			return '공지사항 작성';
+		case '/point':
+			return '상벌점 관리';
+		case '/authorization':
+			return '학생 정보';
 		default:
 			break;
 	}
@@ -31,34 +31,20 @@ const returnPageType = (routerName: string) => {
 
 const returnValueType = (nowUrl: string) => {
 	switch (nowUrl) {
-		case "/selfstudy":
-			return "selfstudy";
-		case "/song":
-			return "song";
-		case "/notice":
-			return "notice";
-		case "/notice/write":
-			return "notice write";
-		case "/point":
-			return "point";
+		case '/selfstudy':
+			return 'selfstudy';
+		case '/song':
+			return 'song';
+		case '/notice':
+			return 'notice';
+		case '/notice/write':
+			return 'notice write';
+		case '/point':
+			return 'point';
+		case '/authorization':
+			return 'student info';
 		default:
 			return 0;
-	}
-};
-
-const ChangeType = (
-	match: MatchType,
-	isActive: boolean,
-	setIsActive: React.Dispatch<React.SetStateAction<boolean>>
-) => {
-	if (match.path === "/selfstudy") {
-	} else if (match.path === "/song") {
-		return (
-			<ChangeSongType
-				active={isActive}
-				setActive={(value: boolean) => setIsActive(value)}
-			/>
-		);
 	}
 };
 
@@ -67,7 +53,14 @@ const BannerStatus = (
 	children: React.ReactNode,
 	isActive: boolean
 ) => {
-	if (returnValueType(match.path) === "notice" || "notice write" || "point" || "selfstudy") {
+	if (
+		returnValueType(match.path) === 'notice' ||
+		'notice write' ||
+		'point' ||
+		'selfstudy' ||
+		'song' ||
+		'student info'
+	) {
 		return (
 			<>
 				<BannerPage match={match} />
@@ -83,10 +76,6 @@ const BannerStatus = (
 				<S.Content>{children}</S.Content>
 			</>
 		);
-	} else if (returnValueType(match.path) === "selfstudy") {
-		return <div></div>;
-	} else if (returnValueType(match.path) === "song") {
-		return <AdminSongListPage match={match} />;
 	}
 };
 
@@ -99,10 +88,9 @@ const PageTemplate: React.FC<TemplateProps> = ({ match, children }) => {
 				<S.Title>
 					{returnPageType(match.path)}
 					<strong>
-						{ManufactureDate("Y")}년 {ManufactureDate("M")}월{" "}
-						{ManufactureDate("D")}일 {ManufactureDate("W")}요일
+						{ManufactureDate('Y')}년 {ManufactureDate('M')}월{' '}
+						{ManufactureDate('D')}일 {ManufactureDate('W')}요일
 					</strong>
-					{ChangeType(match, isActive, setIsActive)}
 				</S.Title>
 				{BannerStatus(match, children, isActive)}
 			</S.Wrapper>

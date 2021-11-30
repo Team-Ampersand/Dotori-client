@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import * as S from "./Style";
+import React, { useState } from 'react';
+import * as S from './Style';
 
 interface StuPointProps {
 	stuNum: number;
@@ -8,14 +8,17 @@ interface StuPointProps {
 }
 
 const StuPoint: React.FC<StuPointProps> = ({ stuNum, name, point }) => {
-	const [stuPoint, setStuPoint] = useState("");
+	const [givePoint, setGivePoint] = useState('');
 	const getPoint = (e) => {
-		setStuPoint(e.target.value);
+		setGivePoint(e.target.value);
 	};
 
-	const givePoint = () => {
-		console.log(stuPoint);
-		setStuPoint("");
+	const [stuPoint, setStuPoint] = useState(point);
+
+	const grantPoint = () => {
+		let tmp = stuPoint;
+		setStuPoint((tmp += Number(givePoint)));
+		setGivePoint('');
 	};
 
 	return (
@@ -23,9 +26,14 @@ const StuPoint: React.FC<StuPointProps> = ({ stuNum, name, point }) => {
 			<S.StuPointContainer>
 				<S.StuNumStyle>{stuNum}</S.StuNumStyle>
 				<S.NameStyle>{name}</S.NameStyle>
-				<S.PointStyle>{point}</S.PointStyle>
-				<S.PointInput placeholder="상벌점을 입력하세요.." onChange={getPoint} />
-				<S.PointBtn onClick={givePoint}>상벌점 부여</S.PointBtn>
+				<S.PointStyle>{stuPoint}</S.PointStyle>
+				<S.PointInput
+					placeholder="상벌점을 입력하세요.."
+					type="number"
+					onChange={getPoint}
+					value={givePoint}
+				/>
+				<S.PointBtn onClick={grantPoint}>상벌점 부여</S.PointBtn>
 			</S.StuPointContainer>
 		</>
 	);
