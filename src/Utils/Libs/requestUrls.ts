@@ -122,3 +122,11 @@ export const MemberSelfstudyController = {
     return `/${role}/selfstudy/status`;
   },
 };
+
+// 학생 정보 변경
+export const StuInfoController = {
+  // 반별 학생정보 조회
+  getClassStuInfo: (role: string, classId: number) => {
+    return `/${role}/info/${classId}`;
+  },
+};
