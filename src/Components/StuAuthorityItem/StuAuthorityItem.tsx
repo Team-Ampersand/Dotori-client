@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "./Style";
 import ChangeInput from "../ChangeInput/ChangeInput";
 import ChangeSelect from "../ChangeSelect/ChangeSelect";
@@ -17,6 +17,8 @@ const returnRoleValue = (roleType: string) => {
       return "도토리";
     case "ROLE_MEMBER":
       return "학생";
+    default:
+      return "";
   }
 };
 
@@ -25,6 +27,8 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
   name,
   authority,
 }) => {
+  useEffect(() => {});
+
   const [editState, setEditState] = useState(false);
 
   const onConfirm = () => {
@@ -40,7 +44,7 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
           <ChangeInput init={name} edit={editState} type="text" />
         </S.NameStyle>
         <S.AuthorityStyle>
-          <ChangeSelect init={authority} edit={editState} />
+          <ChangeSelect init={returnRoleValue(authority)} edit={editState} />
         </S.AuthorityStyle>
       </S.StuInfoWrapper>
       <S.EditBtn edit={editState} onClick={() => setEditState(!editState)}>
