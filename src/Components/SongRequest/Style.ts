@@ -28,6 +28,7 @@ export const InputWrapper = styled.div`
 		font-size: 18px;
 		line-height: 24px;
 		margin-bottom: 1vh;
+		margin-top: 2vh;
 	}
 	input {
 		width: 90%;
