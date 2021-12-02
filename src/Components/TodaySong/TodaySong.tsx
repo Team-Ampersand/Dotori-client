@@ -1,56 +1,79 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import * as S from './Style';
 import { SongItem } from '../';
+import music from 'Api/music';
 
-const TestSong = [
-	{
-		thumbnail: 'https://img.youtube.com/vi/Ec7TN_11az8/hqdefault.jpg',
-		title: 'Stay',
-		author: '임창규',
-	},
-	{
-		thumbnail: 'https://img.youtube.com/vi/JBfr9C6kIvE/hqdefault.jpg',
-		title: '가을 안부',
-		author: '김태민',
-	},
-	{
-		thumbnail: 'https://img.youtube.com/vi/83xBPCw5hh4/hqdefault.jpg',
-		title: 'Rockstar',
-		author: '노경준',
-	},
-	{
-		thumbnail: 'https://img.youtube.com/vi/t3WB54UwCSc/hqdefault.jpg',
-		title: '너의 이름은 ost 풀 사운드트랙 [고음질]',
-		author: '배태현',
-	},
-	{
-		thumbnail: 'https://img.youtube.com/vi/83xBPCw5hh4/hqdefault.jpg',
-		title: 'Rockstar',
-		author: 'DaBaby',
-	},
-	{
-		thumbnail: 'https://img.youtube.com/vi/83xBPCw5hh4/hqdefault.jpg',
-		title: 'Rockstar',
-		author: 'DaBaby',
-	},
-	{
-		thumbnail: 'https://img.youtube.com/vi/83xBPCw5hh4/hqdefault.jpg',
-		title: 'Rockstar',
-		author: 'DaBaby',
-	},
-	{
-		thumbnail: 'https://img.youtube.com/vi/83xBPCw5hh4/hqdefault.jpg',
-		title: 'Rockstar',
-		author: 'DaBaby',
-	},
-];
+type list = {
+	id: number;
+	url: string;
+	username: string;
+	createdDate: Date;
+};
+
+const musicLookup = async () => {
+	try {
+		const res = await music.musicLookup();
+		return res;
+	} catch (e) {
+		alert(e);
+	}
+};
+
+const todayMusic = async () => {
+	try {
+		const res = await music.todayMusic();
+		return res;
+	} catch (e) {
+		alert(e);
+	}
+};
 
 const TodaySong: React.FC = () => {
+	const [all, setAll] = useState(true);
+	const [today, setToday] = useState(false);
+	const [list, setList] = useState<list[]>([]);
+	useEffect(() => {
+		musicLookup().then((res) => {
+			setList(res?.data.data);
+		});
+	}, []);
+
 	return (
 		<S.Postioner>
-			<S.PlaylistContainer>WEEK PLAYLIST</S.PlaylistContainer>
+			<S.PlaylistContainer>
+				<h3>WEEK PLAYLIST</h3>
+				<S.BtnWrapper>
+					<S.AllWrapper
+						onClick={() => {
+							musicLookup().then((res) => {
+								setList(res?.data.data);
+								setAll(true);
+								setToday(false);
+							});
+						}}
+						isClicked={all}
+					>
+						전체
+					</S.AllWrapper>
+					<S.TodayWrapper
+						onClick={() => {
+							todayMusic().then((res) => {
+								setList(res?.data.data);
+								setAll(false);
+								setToday(true);
+							});
+						}}
+						isClicked={today}
+					>
+						오늘
+					</S.TodayWrapper>
+				</S.BtnWrapper>
+			</S.PlaylistContainer>
 			<S.SongContainer>
-				<SongItem songObj={TestSong} />
+				{list &&
+					[...list].reverse().map((data, ix) => {
+						return <SongItem songObj={data} key={`${ix}`} />;
+					})}
 			</S.SongContainer>
 		</S.Postioner>
 	);
