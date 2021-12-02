@@ -71,8 +71,8 @@ const TodaySong: React.FC = () => {
 			</S.PlaylistContainer>
 			<S.SongContainer>
 				{list &&
-					[...list].reverse().map((data, ix) => {
-						return <SongItem songObj={data} key={`${ix}`} />;
+					[...list].reverse().map((data, idx) => {
+						return <SongItem songObj={data} key={`${idx}`} />;
 					})}
 			</S.SongContainer>
 		</S.Postioner>
