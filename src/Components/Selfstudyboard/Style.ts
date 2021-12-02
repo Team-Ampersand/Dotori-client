@@ -3,11 +3,12 @@ import styled from 'styled-components';
 type StyleProps = {
 	statusColor?: string;
 	Clicked?: string;
+	count?: number;
 };
 
 export const Positioner = styled.div<StyleProps>`
 	width: 100%;
-	height: 100%;
+	height: 99.4%;
 	display: flex;
 	flex-direction: column;
 	border: 2px solid
@@ -79,7 +80,7 @@ export const PointProgress = styled.div`
 
 export const ActiveProgress = styled.div<StyleProps>`
 	position: absolute;
-	width: 24%;
+	width: ${(props) => props.count! * 2}%;
 	height: 9px;
 	border-radius: 20px;
 	background-color: ${(props) => props.statusColor};

@@ -71,13 +71,12 @@ const returnRoomStatusNumber = (compareMax: number, compareMin: number) => {
 	}
 };
 
-const returnButton = (isClicked: string, SetisClicked) => {
+const returnButton = (isClicked: string, SetisClicked, count) => {
 	if (isClicked === 'CAN') {
 		return (
 			<S.StudyButton
 				onClick={() => {
 					applyStudy(SetisClicked);
-					console.log(isClicked);
 				}}
 				Clicked={isClicked}
 			>
@@ -95,7 +94,7 @@ const returnButton = (isClicked: string, SetisClicked) => {
 				자습취소
 			</S.StudyButton>
 		);
-	} else if (isClicked === 'CANT') {
+	} else if (isClicked === 'CANT' || count === 50) {
 		return (
 			<S.StudyButton
 				Clicked={isClicked}
@@ -123,8 +122,7 @@ const Selfstudyboard: React.FC = () => {
 		studyStatus().then((res) => {
 			SetisClicked(res?.data.data);
 		});
-		console.log(IsClicked);
-	}, []);
+	}, [IsClicked, count]);
 	return (
 		<S.Positioner Clicked={IsClicked}>
 			<S.StudyHeader>
@@ -145,10 +143,11 @@ const Selfstudyboard: React.FC = () => {
 				</span>
 				<S.PointProgress>
 					<S.ActiveProgress
-						statusColor={returnRoomStatusNumber(Room.roomMax, Room.currentRoom)}
+						statusColor={returnRoomStatusNumber(Room.roomMax, count)}
+						count={count}
 					/>
 				</S.PointProgress>
-				{returnButton(IsClicked, SetisClicked)}
+				{returnButton(IsClicked, SetisClicked, count)}
 			</S.StudyContent>
 		</S.Positioner>
 	);
