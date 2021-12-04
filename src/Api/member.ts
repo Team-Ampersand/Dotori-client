@@ -44,6 +44,60 @@ class Member {
 			throw new Error(e);
 		}
 	}
+	delete(email: string, password: string) {
+		try {
+			const data = {
+				email: email,
+				password: password,
+			};
+			return RequestApi({
+				method: 'POST',
+				url: MemberController.delete(),
+				data: data,
+			});
+		} catch (e) {}
+	}
+	passwordChange(currentPassword: string, newPassword: string) {
+		try {
+			const data = {
+				currentPassword: currentPassword,
+				newPassword: newPassword,
+			};
+			return RequestApi({
+				method: 'POST',
+				url: MemberController.change(),
+				data: data,
+			});
+		} catch (e: any) {
+			throw new Error(e);
+		}
+	}
+	authPassword(email: string) {
+		try {
+			const data = {
+				email: email,
+			};
+			return RequestApi({
+				method: 'POST',
+				url: MemberController.authPassword(),
+				data: data,
+			});
+		} catch (e: any) {
+			throw new Error(e);
+		}
+	}
+	findPassword(email: string, key: string, newPassword: string) {
+		const data = {
+			email: email,
+			key: key,
+			newPassword: newPassword,
+		};
+		return RequestApi({
+			method: 'POST',
+			url: MemberController.findPassword(),
+			data: data,
+		});
+	}
 }
 
 export default new Member();
