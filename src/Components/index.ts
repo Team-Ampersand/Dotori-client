@@ -31,6 +31,7 @@ import Selfstudyboard from './Selfstudyboard/Selfstudyboard';
 import PasswordForm from './PasswordForm/PasswordForm';
 import SongItem from './SongItem/SongItem';
 import MealBoard from './MealBoard/MealBoard';
+import Withdrawl from 'Components/Withdrawl/Withdrawl';
 
 export {
 	Sidebar,
@@ -66,4 +67,5 @@ export {
 	PasswordForm,
 	SongItem,
 	MealBoard,
+	Withdrawl,
 };
