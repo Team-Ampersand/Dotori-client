@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import * as S from './Style';
 import { SongItem } from '../';
 import music from 'Api/music';
+import { useHistory } from 'react-router';
 
 type list = {
 	id: number;
@@ -29,13 +30,26 @@ const todayMusic = async () => {
 };
 
 const TodaySong: React.FC = () => {
+	const history = useHistory();
 	const [all, setAll] = useState(true);
 	const [today, setToday] = useState(false);
 	const [list, setList] = useState<list[]>([]);
 	useEffect(() => {
-		musicLookup().then((res) => {
-			setList(res?.data.data);
-		});
+		musicLookup()
+			.then((res) => {
+				setList(res?.data.data);
+			})
+			.catch((e) => {
+				if (e.response.status === 401) {
+					history.push('/signin');
+					alert(
+						'장시간 자리에서 비워 로그아웃 되었습니다. 다시 로그인 해주세요.'
+					);
+					localStorage.removeItem('Dotori_accessToken');
+					localStorage.removeItem('Dotori_refreshToken');
+					window.location.reload();
+				}
+			});
 	}, []);
 
 	return (

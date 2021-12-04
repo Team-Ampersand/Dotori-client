@@ -34,6 +34,7 @@ export const LogoutWrapper = styled.div`
 `;
 
 export const Content = styled.div`
+	height: 60%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -43,6 +44,7 @@ export const Content = styled.div`
 
 export const UserWrapper = styled.div`
 	width: 100%;
+	height: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -151,7 +153,7 @@ export const Policy = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: flex-end;
 	margin-top: 20px;
 	margin-bottom: 20px;
 
@@ -173,5 +175,17 @@ export const Policy = styled.div`
 		a {
 			text-decoration: none;
 		}
+	}
+`;
+
+export const MemberControl = styled.div`
+	height: 10%;
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-end;
+	a {
+		text-decoration: none;
+		color: #bbbbbe;
+		font-weight: 500;
 	}
 `;

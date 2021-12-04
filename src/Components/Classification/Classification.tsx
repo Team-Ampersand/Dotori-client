@@ -3,8 +3,6 @@ import * as S from './Style';
 import selfstudy from 'Api/selfStudy';
 import { useSetRecoilState } from 'recoil';
 import { list } from 'Atoms';
-import role from 'Api/role';
-import { rolelookup } from 'Utils/Libs/roleLookup';
 
 const Classification: React.FC = () => {
 	const [stuGrade, setStuGrade] = useState('');
@@ -24,7 +22,7 @@ const Classification: React.FC = () => {
 			}
 		} catch (e: any) {
 			alert(
-				e.message === 'Error: Request failed with status code 404'
+				e.message === 'Request failed with status code 404'
 					? stuGrade + '학년' + stuClass + '반에는 신청한 학생이 없습니다'
 					: e
 			);

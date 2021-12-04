@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import selfstudy from 'Api/selfStudy';
 import { useRecoilState } from 'recoil';
 import { rolelookup } from 'Utils/Libs/roleLookup';
+import { getCookie } from 'Utils/Cookie';
 
 const Room = {
 	currentRoom: 13,
@@ -21,7 +22,7 @@ const studycount = async () => {
 };
 
 const studyStatus = async () => {
-	const role = await rolelookup();
+	const role = getCookie('role');
 	if (role === 'admin') {
 		const res = {
 			data: {

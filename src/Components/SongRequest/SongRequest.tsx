@@ -1,26 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './Style';
 import music from 'Api/music';
-import { rolelookup } from 'Utils/Libs/roleLookup';
-
-const returnRole = async () => {
-	const role = await rolelookup();
-	if (role === 'admin') {
-		const res = {
-			data: {
-				data: 'admin',
-			},
-		};
-		return res;
-	} else {
-		const res = {
-			data: {
-				data: '',
-			},
-		};
-		return res;
-	}
-};
+import { getCookie } from 'Utils/Cookie';
 
 const musicApply = async (musicUrl: string) => {
 	try {
@@ -33,7 +14,8 @@ const musicApply = async (musicUrl: string) => {
 	}
 };
 
-const returnBtn = (url: string, role, setUrl) => {
+const returnBtn = (url: string, setUrl) => {
+	const role = getCookie('role');
 	if (role === 'admin') {
 		return (
 			<>
@@ -70,18 +52,13 @@ const returnBtn = (url: string, role, setUrl) => {
 
 const SongRequest: React.FC = () => {
 	const [url, setUrl] = useState<string>('');
-	const [role, setRole] = useState('');
-
-	useEffect(() => {
-		returnRole().then((res) => setRole(res?.data.data));
-	}, []);
 
 	return (
 		<S.Postioner>
 			<label>기상음악 신청</label>
 			<S.InputWrapper>
 				<p>URL 주소</p>
-				{returnBtn(url, role, setUrl)}
+				{returnBtn(url, setUrl)}
 			</S.InputWrapper>
 		</S.Postioner>
 	);

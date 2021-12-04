@@ -6,6 +6,8 @@ import mypage from '../../Api/mypage';
 import { useSetRecoilState } from 'recoil';
 import { HasToken } from '../../Atoms';
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
+import { deleteCookie } from 'Utils/Cookie';
 
 type UserProfileType = {
 	id: number;
@@ -21,8 +23,9 @@ const TryLogout = () => {
 	const onLogout = async () => {
 		try {
 			await member.logout();
-			localStorage.removeItem('Dotori_accessToken');
-			localStorage.removeItem('Dotori_refreshToken');
+			deleteCookie('Dotori_accessToken');
+			deleteCookie('Dotori_refreshToken');
+			deleteCookie('role');
 
 			setLogged(false);
 			history.push('/signin');
@@ -79,15 +82,11 @@ const UserProfile: React.FC = () => {
 						</span>
 					</div>
 				</S.UserWrapper>
-				<S.PointWrapper>
-					<Point />
-					<span>상벌점</span>
-					<S.PointProgress>
-						<S.ActiveProgress />
-					</S.PointProgress>
-					<sub>{profile?.point}</sub>
-				</S.PointWrapper>
 			</S.Content>
+			<S.MemberControl>
+				<Link to={'/change/password'}>비밀번호 변경</Link>
+				<Link to={'/withdrawl'}>회원 탈퇴</Link>
+			</S.MemberControl>
 			<S.Policy>
 				<span>© 2021 Ampersand. All Rights Reserved.</span>
 				<p>
