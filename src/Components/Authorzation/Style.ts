@@ -59,7 +59,7 @@ export const AuthorizationBoard = styled.ul`
   margin-top: 20px;
   border-radius: 20px;
   width: 100%;
-  height: 80%;
+  height: 90%;
   background-color: #fff;
   list-style: none;
   overflow: scroll;
