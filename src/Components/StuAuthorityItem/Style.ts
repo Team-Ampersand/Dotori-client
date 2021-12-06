@@ -46,7 +46,7 @@ export const AuthorityStyle = styled.div`
   width: 100px;
 `;
 
-export const EditBtn = styled.button<EditProps>`
+export const EditBtn = styled.button`
   width: 90px;
   height: 45px;
   margin-right: 70px;
@@ -56,11 +56,7 @@ export const EditBtn = styled.button<EditProps>`
   border: none;
   border-radius: 10px;
   background-color: #0f4c81;
-  ${(props) =>
-    props.edit &&
-    css`
-      display: none;
-    `}
+
   &:hover {
     border: 2px solid #0f4c81;
     color: #0f4c81;

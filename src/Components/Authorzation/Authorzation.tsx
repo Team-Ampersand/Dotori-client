@@ -25,7 +25,6 @@ const Authorzation: React.FC = () => {
   const onSubmit = () => {
     try {
       getClassStuInfo().then((res) => {
-        console.log(res.data.data);
         setStudentList(res.data.data);
       });
     } catch (e: any) {
@@ -64,14 +63,16 @@ const Authorzation: React.FC = () => {
         <S.Btn onClick={onSubmit}>검색</S.Btn>
       </S.SelectWrapper>
       <S.AuthorizationBoard>
-        {studentList.map((stu) => (
-          <StuAuthorityItem
-            key={stu.id}
-            stuNum={String(stu.stdNum)}
-            name={stu.username}
-            authority={stu.roles[0]}
-          />
-        ))}
+        {studentList &&
+          studentList.map((stu) => (
+            <StuAuthorityItem
+              key={stu.id}
+              stuId={stu.id}
+              stuNum={String(stu.stdNum)}
+              name={stu.username}
+              authority={stu.roles[0]}
+            />
+          ))}
       </S.AuthorizationBoard>
     </S.Positioner>
   );

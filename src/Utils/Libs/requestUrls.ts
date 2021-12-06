@@ -129,4 +129,16 @@ export const StuInfoController = {
   getClassStuInfo: (role: string, classId: number) => {
     return `/${role}/info/${classId}`;
   },
+  // 학번 변경
+  updateStuNum: (role: string) => {
+    return `/${role}/info/stunum`;
+  },
+  // 이름 변경
+  updateStuName: (role: string) => {
+    return `/${role}/info/username`;
+  },
+  // 권한 변경
+  updateStuRole: (role: string) => {
+    return `/${role}/info/role`;
+  },
 };
