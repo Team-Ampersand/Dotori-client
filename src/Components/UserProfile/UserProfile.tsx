@@ -10,15 +10,15 @@ import { Link } from 'react-router-dom';
 import { deleteCookie } from 'Utils/Cookie';
 
 type UserProfileType = {
-	id: number;
-	username: string;
-	stuNum: string;
-	point: number;
+  id: number;
+  username: string;
+  stuNum: string;
+  point: number;
 };
 
 const TryLogout = () => {
-	const setLogged = useSetRecoilState(HasToken);
-	const history = useHistory();
+  const setLogged = useSetRecoilState(HasToken);
+  const history = useHistory();
 
 	const onLogout = async () => {
 		try {
@@ -38,15 +38,15 @@ const TryLogout = () => {
 };
 
 const myPage = async () => {
-	const res = await mypage.mypage();
-	return res;
+  const res = await mypage.mypage();
+  return res;
 };
 
 const UserProfile: React.FC = () => {
-	const [profile, setProfile] = useState<UserProfileType>();
-	const [onLogout] = TryLogout();
-	const history = useHistory();
-
+  const [profile, setProfile] = useState<UserProfileType>();
+  const [onLogout] = TryLogout();
+  const history = useHistory();
+  
 	useEffect(() => {
 		myPage()
 			.then((res) => {

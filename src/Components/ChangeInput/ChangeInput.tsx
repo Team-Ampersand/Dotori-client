@@ -1,27 +1,23 @@
-import React, { useState } from 'react';
-import * as S from './Style';
+import React, { useState } from "react";
+import * as S from "./Style";
 
 interface TextInputProps {
-	init: string;
-	edit: boolean;
-	type: string;
+  init: string;
+  type: string;
 }
 
-const ChangeInput: React.FC<TextInputProps> = ({ init, edit, type }) => {
-	const [text, setText] = useState(init);
-	const handleChange = (e) => {
-		setText(e.target.value);
-	};
+const ChangeInput: React.FC<TextInputProps> = ({ init, type }) => {
+  const [text, setText] = useState(init);
 
-	return (
-		<>
-			{edit ? (
-				<S.Input type={type} value={text} onChange={(e) => handleChange(e)} />
-			) : (
-				<>{text}</>
-			)}
-		</>
-	);
+  const handleChange = (e) => {
+    setText(e.target.value);
+  };
+
+  return (
+    <>
+      <S.Input type={type} value={text} onChange={(e) => handleChange(e)} />
+    </>
+  );
 };
 
 export default ChangeInput;
