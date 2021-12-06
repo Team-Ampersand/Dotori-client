@@ -40,20 +40,20 @@ const studyStatus = async () => {
 	}
 };
 
-const applyStudy = async (SetisClicked) => {
+const applyStudy = async (setStatus) => {
 	try {
 		await selfstudy.selfstudy();
-		SetisClicked(false);
+		setStatus(false);
 		alert('자습 신청이 완료 되었습니다!');
 	} catch (e) {
 		alert('이미 자습신청을 하셨거나 할 수 없는 상태입니다.' + e);
 	}
 };
 
-const cancleStudy = async (SetisClicked) => {
+const cancleStudy = async (setStatus) => {
 	try {
 		await selfstudy.cancelstudy();
-		SetisClicked(true);
+		setStatus(true);
 		alert(
 			'자습 신청이 취소 되었습니다. 오늘 하루동안 다시 신청이 불가능 합니다.'
 		);
@@ -72,33 +72,33 @@ const returnRoomStatusNumber = (compareMax: number, compareMin: number) => {
 	}
 };
 
-const returnButton = (isClicked: string, SetisClicked, count) => {
-	if (isClicked === 'CAN') {
+const returnButton = (status: string, setStatus, count) => {
+	if (status === 'CAN') {
 		return (
 			<S.StudyButton
 				onClick={() => {
-					applyStudy(SetisClicked);
+					applyStudy(setStatus);
 				}}
-				Clicked={isClicked}
+				Clicked={status}
 			>
 				자습신청
 			</S.StudyButton>
 		);
-	} else if (isClicked === 'APPLIED') {
+	} else if (status === 'APPLIED') {
 		return (
 			<S.StudyButton
 				onClick={() => {
-					cancleStudy(SetisClicked);
+					cancleStudy(setStatus);
 				}}
-				Clicked={isClicked}
+				Clicked={status}
 			>
 				자습취소
 			</S.StudyButton>
 		);
-	} else if (isClicked === 'CANT' || count === 50) {
+	} else if (status === 'CANT' || count === 50) {
 		return (
 			<S.StudyButton
-				Clicked={isClicked}
+				Clicked={status}
 				onClick={() => {
 					alert(
 						'이미 자습신청을 하신 후 취소하여 다시 자습을 신청 할 수 없습니다.'
@@ -108,24 +108,24 @@ const returnButton = (isClicked: string, SetisClicked, count) => {
 				자습불가
 			</S.StudyButton>
 		);
-	} else if (isClicked === 'admin') {
+	} else if (status === 'admin') {
 		return <p>사감 선생님은 자습신청을 하지 않으셔도 됩니다.</p>;
 	}
 };
 
 const Selfstudyboard: React.FC = () => {
-	const [IsClicked, SetisClicked] = useState('');
+	const [status, setStatus] = useState('');
 	const [count, setCount] = useState(0);
 	useEffect(() => {
 		studycount().then((res) => {
 			setCount(res?.data.data);
 		});
 		studyStatus().then((res) => {
-			SetisClicked(res?.data.data);
+			setStatus(res?.data.data);
 		});
-	}, [IsClicked, count]);
+	}, []);
 	return (
-		<S.Positioner Clicked={IsClicked}>
+		<S.Positioner Clicked={status}>
 			<S.StudyHeader>
 				<h2>자습신청</h2>
 				<div>
@@ -148,7 +148,7 @@ const Selfstudyboard: React.FC = () => {
 						count={count}
 					/>
 				</S.PointProgress>
-				{returnButton(IsClicked, SetisClicked, count)}
+				{returnButton(status, setStatus, count)}
 			</S.StudyContent>
 		</S.Positioner>
 	);
