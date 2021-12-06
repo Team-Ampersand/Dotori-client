@@ -124,3 +124,23 @@ export const MusicController = {
 		return `/${role}/music/${id}`;
 	},
 };
+
+// 학생 정보 변경
+export const StuInfoController = {
+  // 반별 학생정보 조회
+  getClassStuInfo: (role: string, classId: number) => {
+    return `/${role}/info/${classId}`;
+  },
+  // 학번 변경
+  updateStuNum: (role: string) => {
+    return `/${role}/info/stunum`;
+  },
+  // 이름 변경
+  updateStuName: (role: string) => {
+    return `/${role}/info/username`;
+  },
+  // 권한 변경
+  updateStuRole: (role: string) => {
+    return `/${role}/info/role`;
+  },
+};

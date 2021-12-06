@@ -1,48 +1,48 @@
-import React, { useEffect, useState } from 'react';
-import * as S from './Style';
-import { Logout, Point, Profile } from '../../Assets/Svg';
-import member from '../../Api/member';
-import mypage from '../../Api/mypage';
-import { useSetRecoilState } from 'recoil';
-import { HasToken } from '../../Atoms';
-import { useHistory } from 'react-router';
+import React, { useEffect, useState } from "react";
+import * as S from "./Style";
+import { Logout, Point, Profile } from "../../Assets/Svg";
+import member from "../../Api/member";
+import mypage from "../../Api/mypage";
+import { useSetRecoilState } from "recoil";
+import { HasToken } from "../../Atoms";
+import { useHistory } from "react-router";
 
 type UserProfileType = {
-	id: number;
-	username: string;
-	stuNum: string;
-	point: number;
+  id: number;
+  username: string;
+  stuNum: string;
+  point: number;
 };
 
 const TryLogout = () => {
-	const setLogged = useSetRecoilState(HasToken);
-	const history = useHistory();
+  const setLogged = useSetRecoilState(HasToken);
+  const history = useHistory();
 
-	const onLogout = async () => {
-		try {
-			await member.logout();
-			localStorage.removeItem('Dotori_accessToken');
-			localStorage.removeItem('Dotori_refreshToken');
+  const onLogout = async () => {
+    try {
+      await member.logout();
+      localStorage.removeItem("Dotori_accessToken");
+      localStorage.removeItem("Dotori_refreshToken");
 
-			setLogged(false);
-			history.push('/signin');
-		} catch (e) {
-			alert(e);
-		}
-	};
-	return [onLogout];
+      setLogged(false);
+      history.push("/signin");
+    } catch (e) {
+      alert(e);
+    }
+  };
+  return [onLogout];
 };
 
 const myPage = async () => {
-	const res = await mypage.mypage();
-	return res;
+  const res = await mypage.mypage();
+  return res;
 };
 
 const UserProfile: React.FC = () => {
-	const [profile, setProfile] = useState<UserProfileType>();
-	const [onLogout] = TryLogout();
-	const history = useHistory();
-
+  const [profile, setProfile] = useState<UserProfileType>();
+  const [onLogout] = TryLogout();
+  const history = useHistory();
+  
 	useEffect(() => {
 		myPage()
 			.then((res) => {
