@@ -4,7 +4,7 @@ import { MatchType } from '../../../Utils/GlobalType';
 import { LaptopHeader } from '../Header/model/CombineAdminHeader';
 import selfstudy from 'Api/selfStudy';
 import { useRecoilState } from 'recoil';
-import { list } from 'Atoms';
+import { list, HasToken } from 'Atoms';
 import { useHistory } from 'react-router';
 import { deleteCookie } from 'Utils/Cookie';
 
@@ -32,6 +32,7 @@ const onlyCompareThisHeader = (match: MatchType) => {
 
 const List: React.FC<ListProps> = ({ match }) => {
 	const [userlist, setUserList] = useRecoilState(list);
+	const [logged, setLogged] = useRecoilState(HasToken);
 	const history = useHistory();
 
 	useEffect(() => {
@@ -50,6 +51,7 @@ const List: React.FC<ListProps> = ({ match }) => {
 					deleteCookie('Dotori_refreshToken');
 					deleteCookie('role');
 
+					setLogged(false);
 					window.location.reload();
 				}
 			});

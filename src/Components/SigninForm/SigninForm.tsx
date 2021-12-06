@@ -38,7 +38,6 @@ const TrySignin = () => {
 
 			setLogged(false);
 			history.push('/signin');
-			window.location.reload();
 		}
 	};
 
@@ -54,24 +53,20 @@ const TrySignin = () => {
 				path: '/',
 				secure: true,
 			});
-
-			const role = await rolelookup();
-
-			setCookie('role', role, {
+			setCookie('role', await rolelookup(), {
 				path: '/',
 				secure: true,
 			});
 
 			setLogged(true);
 			history.push('/');
+			window.location.reload();
 			setTimeout(onRefresh, 1800000);
 		} catch (e: any) {
 			if (e.message === 'Request failed with status code 409') {
 				alert('아이디 혹은 비번이 틀렸습니다.');
-				console.log(e.message);
 			} else if (e.message === 'Request failed with status code 404') {
 				alert('존재 하지 않는 로그인 정보입니다.');
-				console.log(e.message);
 			} else {
 				alert(e);
 			}

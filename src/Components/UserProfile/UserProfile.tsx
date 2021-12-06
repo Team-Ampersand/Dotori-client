@@ -29,6 +29,7 @@ const TryLogout = () => {
 
 			setLogged(false);
 			history.push('/signin');
+			window.location.reload();
 		} catch (e) {
 			alert(e);
 		}
@@ -53,7 +54,6 @@ const UserProfile: React.FC = () => {
 			})
 			.catch((e) => {
 				if (e.response.status === 401) {
-					history.push('/signin');
 					alert(
 						'장시간 자리에서 비워 로그아웃 되었습니다. 다시 로그인 해주세요.'
 					);
@@ -62,6 +62,7 @@ const UserProfile: React.FC = () => {
 					deleteCookie('Dotori_refreshToken');
 					deleteCookie('role');
 
+					history.push('/signin');
 					window.location.reload();
 				}
 			});
