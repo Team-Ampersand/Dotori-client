@@ -39,7 +39,7 @@ const List: React.FC<ListProps> = ({ match }) => {
 				setUserList(res?.data.data);
 			})
 			.catch((e) => {
-				if (e.response.status === 401) {
+				if (e.message === 'Request failed with status code 401') {
 					history.push('/signin');
 					alert(
 						'장시간 자리에서 비워 로그아웃 되었습니다. 다시 로그인 해주세요.'

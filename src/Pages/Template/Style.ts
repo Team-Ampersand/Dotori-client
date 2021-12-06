@@ -42,6 +42,7 @@ export const Content = styled.div`
 	display: flex;
 	width: 100%;
 	height: 100%;
+	overflow: hidden;
 `;
 
 export const UserProfile = styled.div`
