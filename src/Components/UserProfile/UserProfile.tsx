@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
-import * as S from "./Style";
-import { Logout, Point, Profile } from "../../Assets/Svg";
-import member from "../../Api/member";
-import mypage from "../../Api/mypage";
-import { useSetRecoilState } from "recoil";
-import { HasToken } from "../../Atoms";
-import { useHistory } from "react-router";
+import React, { useEffect, useState } from 'react';
+import * as S from './Style';
+import { Logout, Point, Profile } from '../../Assets/Svg';
+import member from '../../Api/member';
+import mypage from '../../Api/mypage';
+import { useSetRecoilState } from 'recoil';
+import { HasToken } from '../../Atoms';
+import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
+import { deleteCookie } from 'Utils/Cookie';
 
 type UserProfileType = {
   id: number;
@@ -18,19 +20,21 @@ const TryLogout = () => {
   const setLogged = useSetRecoilState(HasToken);
   const history = useHistory();
 
-  const onLogout = async () => {
-    try {
-      await member.logout();
-      localStorage.removeItem("Dotori_accessToken");
-      localStorage.removeItem("Dotori_refreshToken");
+	const onLogout = async () => {
+		try {
+			await member.logout();
+			deleteCookie('Dotori_accessToken');
+			deleteCookie('Dotori_refreshToken');
+			deleteCookie('role');
 
-      setLogged(false);
-      history.push("/signin");
-    } catch (e) {
-      alert(e);
-    }
-  };
-  return [onLogout];
+			setLogged(false);
+			history.push('/signin');
+			window.location.reload();
+		} catch (e) {
+			alert(e);
+		}
+	};
+	return [onLogout];
 };
 
 const myPage = async () => {
@@ -50,12 +54,15 @@ const UserProfile: React.FC = () => {
 			})
 			.catch((e) => {
 				if (e.response.status === 401) {
-					history.push('/signin');
 					alert(
 						'장시간 자리에서 비워 로그아웃 되었습니다. 다시 로그인 해주세요.'
 					);
-					localStorage.removeItem('Dotori_accessToken');
-					localStorage.removeItem('Dotori_refreshToken');
+
+					deleteCookie('Dotori_accessToken');
+					deleteCookie('Dotori_refreshToken');
+					deleteCookie('role');
+
+					history.push('/signin');
 					window.location.reload();
 				}
 			});
@@ -79,15 +86,11 @@ const UserProfile: React.FC = () => {
 						</span>
 					</div>
 				</S.UserWrapper>
-				<S.PointWrapper>
-					<Point />
-					<span>상벌점</span>
-					<S.PointProgress>
-						<S.ActiveProgress />
-					</S.PointProgress>
-					<sub>{profile?.point}</sub>
-				</S.PointWrapper>
 			</S.Content>
+			<S.MemberControl>
+				<Link to={'/change/password'}>비밀번호 변경</Link>
+				<Link to={'/withdrawl'}>회원 탈퇴</Link>
+			</S.MemberControl>
 			<S.Policy>
 				<span>© 2021 Ampersand. All Rights Reserved.</span>
 				<p>

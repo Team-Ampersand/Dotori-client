@@ -3,6 +3,7 @@ import * as S from './Style';
 import axios from 'axios';
 import { rolelookup } from 'Utils/Libs/roleLookup';
 import music from 'Api/music';
+import { getCookie } from 'Utils/Cookie';
 
 type SongItemObj = {
 	id: number;
@@ -47,18 +48,13 @@ const deleteMusic = async (id: number) => {
 
 const SongItem: React.FC<SongProps> = ({ songObj }) => {
 	const [title, setTitle] = useState('');
-	const [role, setRole] = useState('');
 	const videoId = youtube_parser(songObj.url);
-
-	const returnRole = async () => {
-		setRole(await rolelookup());
-	};
+	const role = getCookie('role');
 
 	useEffect(() => {
 		songTitle(videoId).then((res) => {
 			setTitle(res?.data.items[0].snippet.title);
 		});
-		returnRole();
 	}, [videoId]);
 
 	return (

@@ -4,8 +4,9 @@ import { MatchType } from '../../../Utils/GlobalType';
 import { LaptopHeader } from '../Header/model/CombineAdminHeader';
 import selfstudy from 'Api/selfStudy';
 import { useRecoilState } from 'recoil';
-import { list } from 'Atoms';
+import { list, HasToken } from 'Atoms';
 import { useHistory } from 'react-router';
+import { deleteCookie } from 'Utils/Cookie';
 
 const ReturnUserObj = async () => {
 	try {
@@ -31,6 +32,7 @@ const onlyCompareThisHeader = (match: MatchType) => {
 
 const List: React.FC<ListProps> = ({ match }) => {
 	const [userlist, setUserList] = useRecoilState(list);
+	const [logged, setLogged] = useRecoilState(HasToken);
 	const history = useHistory();
 
 	useEffect(() => {
@@ -44,8 +46,12 @@ const List: React.FC<ListProps> = ({ match }) => {
 					alert(
 						'장시간 자리에서 비워 로그아웃 되었습니다. 다시 로그인 해주세요.'
 					);
-					localStorage.removeItem('Dotori_accessToken');
-					localStorage.removeItem('Dotori_refreshToken');
+
+					deleteCookie('Dotori_accessToken');
+					deleteCookie('Dotori_refreshToken');
+					deleteCookie('role');
+
+					setLogged(false);
 					window.location.reload();
 				}
 			});
