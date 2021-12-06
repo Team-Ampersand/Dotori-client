@@ -22,12 +22,10 @@ const TrySignin = () => {
 			setCookie('Dotori_accessToken', res.data.data.NewAccessToken, {
 				path: '/',
 				secure: true,
-				sameSite: 'none',
 			});
 			setCookie('Dotori_refreshToken', res.data.data.NewRefreshToken, {
 				path: '/',
 				secure: true,
-				sameSite: 'none',
 			});
 
 			setTimeout(onRefresh, 1800000);
@@ -51,19 +49,17 @@ const TrySignin = () => {
 			setCookie('Dotori_accessToken', res.data.data.accessToken, {
 				path: '/',
 				secure: true,
-				sameSite: 'none',
 			});
 			setCookie('Dotori_refreshToken', res.data.data.refreshToken, {
 				path: '/',
 				secure: true,
-				sameSite: 'none',
 			});
+
 			const role = await rolelookup();
 
 			setCookie('role', role, {
 				path: '/',
 				secure: true,
-				sameSite: 'none',
 			});
 
 			setLogged(true);
