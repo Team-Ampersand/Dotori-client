@@ -6,6 +6,7 @@ import selfstudy from 'Api/selfStudy';
 import { useRecoilState } from 'recoil';
 import { list } from 'Atoms';
 import { useHistory } from 'react-router';
+import { deleteCookie } from 'Utils/Cookie';
 
 const ReturnUserObj = async () => {
 	try {
@@ -44,8 +45,11 @@ const List: React.FC<ListProps> = ({ match }) => {
 					alert(
 						'장시간 자리에서 비워 로그아웃 되었습니다. 다시 로그인 해주세요.'
 					);
-					localStorage.removeItem('Dotori_accessToken');
-					localStorage.removeItem('Dotori_refreshToken');
+
+					deleteCookie('Dotori_accessToken');
+					deleteCookie('Dotori_refreshToken');
+					deleteCookie('role');
+
 					window.location.reload();
 				}
 			});

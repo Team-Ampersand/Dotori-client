@@ -3,6 +3,7 @@ import * as S from './Style';
 import { SongItem } from '../';
 import music from 'Api/music';
 import { useHistory } from 'react-router';
+import { deleteCookie } from 'Utils/Cookie';
 
 type list = {
 	id: number;
@@ -15,9 +16,7 @@ const musicLookup = async () => {
 	try {
 		const res = await music.musicLookup();
 		return res;
-	} catch (e) {
-		alert(e);
-	}
+	} catch (e) {}
 };
 
 const todayMusic = async () => {
@@ -40,13 +39,16 @@ const TodaySong: React.FC = () => {
 				setList(res?.data.data);
 			})
 			.catch((e) => {
-				if (e.response.status === 401) {
+				if (e.message === 'Request failed with status code 401') {
 					history.push('/signin');
 					alert(
 						'장시간 자리에서 비워 로그아웃 되었습니다. 다시 로그인 해주세요.'
 					);
-					localStorage.removeItem('Dotori_accessToken');
-					localStorage.removeItem('Dotori_refreshToken');
+
+					deleteCookie('Dotori_accessToken');
+					deleteCookie('Dotori_refreshToken');
+					deleteCookie('role');
+
 					window.location.reload();
 				}
 			});

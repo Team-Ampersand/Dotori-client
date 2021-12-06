@@ -57,8 +57,11 @@ const UserProfile: React.FC = () => {
 					alert(
 						'장시간 자리에서 비워 로그아웃 되었습니다. 다시 로그인 해주세요.'
 					);
-					localStorage.removeItem('Dotori_accessToken');
-					localStorage.removeItem('Dotori_refreshToken');
+
+					deleteCookie('Dotori_accessToken');
+					deleteCookie('Dotori_refreshToken');
+					deleteCookie('role');
+
 					window.location.reload();
 				}
 			});
