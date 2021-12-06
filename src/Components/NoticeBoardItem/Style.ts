@@ -14,7 +14,7 @@ interface BtnProps {
 }
 
 export const Container = styled.div`
-  width: 98%;
+  width: 95%;
   height: 7.3vh;
   background-color: #fff;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
@@ -23,6 +23,7 @@ export const Container = styled.div`
   cursor: pointer;
   display: flex;
   flex-direction: row;
+  align-items: center;
   &:hover {
     background-color: ${darken(0.05, "#fff")};
   }
@@ -34,9 +35,10 @@ export const AuthorStyle = styled.div<AuthorProps>`
     font-size: 1.5em;
     font-weight: bold;
   }
-  width: 130px;
-  margin-left: 1.5vw;
-  margin-top: 2.2vh;
+  display: flex;
+  justify-content: center;
+  /* border: 1px solid red; */
+  width: 20%;
 `;
 
 export const TitleStyle = styled.div`
@@ -44,8 +46,11 @@ export const TitleStyle = styled.div`
     color: #000;
     font-size: 1.375em;
   }
-  margin-left: 2.4vw;
-  margin-top: 2.45vh;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  /* border: 1px solid blue; */
+  width: 65%;
 `;
 
 export const DateStyle = styled.div<EditProps>`
@@ -54,9 +59,11 @@ export const DateStyle = styled.div<EditProps>`
     font-size: 1.125em;
     font-weight: bold;
   }
-  position: fixed;
-  margin-left: 70vw;
-  margin-top: 2.7vh;
+  display: flex;
+  justify-content: center;
+  /* border: 1px solid black; */
+  width: 15%;
+
   ${(props) =>
     props.edit &&
     css`
