@@ -123,7 +123,7 @@ const Selfstudyboard: React.FC = () => {
 		studyStatus().then((res) => {
 			setStatus(res?.data.data);
 		});
-	}, []);
+	}, [status]);
 	return (
 		<S.Positioner Clicked={status}>
 			<S.StudyHeader>
