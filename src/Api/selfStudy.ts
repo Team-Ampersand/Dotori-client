@@ -1,48 +1,43 @@
-import { rolelookup } from 'Utils/Libs/roleLookup';
 import RequestApi from '../Utils/Libs/requestApi';
-import { MemberSelfstudyController } from '../Utils/Libs/requestUrls';
+import { SelfstudyController } from '../Utils/Libs/requestUrls';
+import { getCookie } from 'Utils/Cookie';
 
 class SelfStudy {
-	async selfstudy() {
-		const role = await rolelookup();
+	role = getCookie('role');
+	selfstudy() {
 		return RequestApi({
 			method: 'PUT',
-			url: MemberSelfstudyController.selfStudy(role),
+			url: SelfstudyController.selfStudy(this.role),
 		});
 	}
-	async lookupstudy() {
-		const role = await rolelookup();
+	lookupstudy() {
 		return RequestApi({
 			method: 'GET',
-			url: MemberSelfstudyController.selfStudy(role),
+			url: SelfstudyController.selfStudy(this.role),
 		});
 	}
-	async cancelstudy() {
-		const role = await rolelookup();
+	cancelstudy() {
 		return RequestApi({
 			method: 'PUT',
-			url: MemberSelfstudyController.cancelStudy(role),
+			url: SelfstudyController.cancelStudy(this.role),
 		});
 	}
-	async countstudy() {
-		const role = await rolelookup();
+	countstudy() {
 		return RequestApi({
 			method: 'GET',
-			url: MemberSelfstudyController.countStudy(role),
+			url: SelfstudyController.countStudy(this.role),
 		});
 	}
-	async classlookup(classID: string) {
-		const role = await rolelookup();
+	classlookup(classID: string) {
 		return RequestApi({
 			method: 'GET',
-			url: MemberSelfstudyController.classLookup(parseInt(classID), role),
+			url: SelfstudyController.classLookup(parseInt(classID), this.role),
 		});
 	}
-	async studystatus() {
-		const role = await rolelookup();
+	studystatus() {
 		return RequestApi({
 			method: 'GET',
-			url: MemberSelfstudyController.studyStatus(role),
+			url: SelfstudyController.studyStatus(this.role),
 		});
 	}
 }

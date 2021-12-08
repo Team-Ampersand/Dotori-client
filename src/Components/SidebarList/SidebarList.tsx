@@ -6,6 +6,7 @@ interface SidebarItemArrayProps {
 	router: string;
 	menuIcon: string;
 	menuTitle: string;
+	show: boolean;
 }
 
 //** Props */
@@ -23,7 +24,6 @@ const SidebarList: React.FC<SidebarListProps> = ({
 	setCurrnentRouter,
 }) => {
 	useEffect(() => {
-		console.log(window.location.pathname);
 		window.onpopstate = () => {
 			setCurrnentRouter(window.location.pathname);
 		};
@@ -34,6 +34,7 @@ const SidebarList: React.FC<SidebarListProps> = ({
 			router={item.router}
 			menuIcon={item.menuIcon}
 			menuTitle={item.menuTitle}
+			show={item.show}
 			currentRouter={currentRouter}
 			setCurrnentRouter={setCurrnentRouter}
 			key={`sidebar-item-${item.menuIcon}`}

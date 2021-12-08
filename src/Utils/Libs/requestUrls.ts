@@ -1,66 +1,60 @@
 //멤버 관리
 export const MemberController = {
-  // 로그인
-  signin: () => {
-    return "/signin";
-  },
-  // 회원 가입
-  signup: () => {
-    return "/signup";
-  },
-  // 로그아웃
-  logout: () => {
-    return "/logout";
-  },
-  // 비밀번호 변경
-  change: () => {
-    return "/change/password";
-  },
-  // 회원탈퇴
-  delete: () => {
-    return "/delete";
-  },
-};
-
-// 멤버 자습신청 관리
-export const selfStudyController = {
-  // 자습신청
-  apply: () => {
-    return "/member/selfstudy";
-  },
-  // 자습신청
-  cancel: () => {
-    return "/member/cancel/selfstudy";
-  },
+	// 로그인
+	signin: () => {
+		return '/signin';
+	},
+	// 회원 가입
+	signup: () => {
+		return '/signup';
+	},
+	// 로그아웃
+	logout: () => {
+		return '/logout';
+	},
+	// 비밀번호 변경
+	change: () => {
+		return '/change/password';
+	},
+	// 회원탈퇴
+	delete: () => {
+		return '/delete';
+	},
+	//비밀번호 찾기 전 이메일로 인증번호 보내기
+	authPassword: () => {
+		return '/send/change/password/authkey';
+	},
+	findPassword: () => {
+		return '/verified/auth/change/password';
+	},
 };
 
 // 공지사항 관리
 export const noticeController = {
-  // admin
-  // admin 공지사항 전체 조회
-  getNotice: () => {
-    return "/admin/board";
-  },
-  // admin 공지사항 페이지별 조회
-  getNoticeDetail: (page: number) => {
-    return `/admin/board?page=${page}`;
-  },
-  // admin 공지사항 작성
-  adminNoticeWrite: () => {
-    return "/admin/board";
-  },
-  // admin 공지사항 개별 조회
-  getNoticeItem: (boardId) => {
-    return `/admin/board/${boardId}`;
-  },
-  // admin 공지사항 삭제
-  deleteNotice: (boardId) => {
-    return `/admin/board/${boardId}`;
-  },
-  // 공지사항 수정
-  updateNotice: (boardId) => {
-    return `/admin/board/${boardId}`;
-  },
+	// 공지사항 전체 조회
+	getNotice: (role: string) => {
+		return `/${role}/board`;
+	},
+	// 공지사항 페이지별 조회
+	getNoticeDetail: (role: string, page: number) => {
+		return `/${role}/board?page=${page}`;
+	},
+	// 공지사항 작성
+	noticeWrite: (role: string) => {
+		return `/${role}/board`;
+	},
+	// 공지사항 개별 조회
+	getNoticeItem: (role: string, boardId: number) => {
+		return `/${role}/board/${boardId}`;
+	},
+	// 공지사항 삭제
+	noticeDelete: (role: string, boardId: number) => {
+		return `/${role}/board/${boardId}`;
+	},
+	// 공지사항 수정
+	noticeUpdate: (role: string, boardId: number) => {
+		return `/${role}/board/${boardId}`;
+	},
 };
 
 //이메일 인증
@@ -97,7 +91,7 @@ export const RoleController = {
 };
 
 //자습신청
-export const MemberSelfstudyController = {
+export const SelfstudyController = {
 	//자습신청
 	selfStudy: (role: string) => {
 		return `/${role}/selfstudy`;
@@ -122,4 +116,38 @@ export const MemberSelfstudyController = {
 	studyStatus: (role: string) => {
 		return `/${role}/selfstudy/status`;
 	},
+};
+
+//기상송 신청
+export const MusicController = {
+	//음악 신청(post) or 조회(get)
+	music: (role: string) => {
+		return `/${role}/music`;
+	},
+	todayMusic: (role: string) => {
+		return `/${role}/music/current`;
+	},
+	deleteMusic: (role: string, id: number) => {
+		return `/${role}/music/${id}`;
+	},
+};
+
+// 학생 정보 변경
+export const StuInfoController = {
+  // 반별 학생정보 조회
+  getClassStuInfo: (role: string, classId: number) => {
+    return `/${role}/info/${classId}`;
+  },
+  // 학번 변경
+  updateStuNum: (role: string) => {
+    return `/${role}/info/stunum`;
+  },
+  // 이름 변경
+  updateStuName: (role: string) => {
+    return `/${role}/info/username`;
+  },
+  // 권한 변경
+  updateStuRole: (role: string) => {
+    return `/${role}/info/role`;
+  },
 };

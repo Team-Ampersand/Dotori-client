@@ -5,8 +5,8 @@ type StyleProps = {
 };
 
 export const Positioner = styled.div`
-	width: 35vw;
-	height: 100px;
+	width: 95%;
+	height: 150px;
 	background-color: #fff;
 	margin: 0 auto;
 	border-radius: 20px;
@@ -14,24 +14,28 @@ export const Positioner = styled.div`
 	display: flex;
 	align-items: center;
 	margin-bottom: 3vh;
+	justify-content: space-evenly;
 `;
 
 export const ImgContainer = styled.div<StyleProps>`
-	width: 90px;
+	width: 120px;
 	height: 90px;
-	background-size: 90px 90px;
+	background-size: 120px 90px;
 	border-radius: 25px;
 	background-image: url(${(props) => {
-		return props.thumbnail;
+		return `https://img.youtube.com/vi/${props.thumbnail}/sddefault.jpg`;
 	}});
 	background-repeat: no-repeat;
-	margin: 3vw;
 `;
 
 export const TitleContainer = styled.span`
 	font-size: 20px;
 	font-weight: 600;
 	color: #333;
+	a {
+		text-decoration: none;
+		color: #333;
+	}
 `;
 
 export const AuthorContainer = styled.span`
@@ -40,7 +44,14 @@ export const AuthorContainer = styled.span`
 `;
 
 export const Container = styled.div`
+	width: 50%;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
+`;
+
+export const DeleteContainer = styled.div`
+	font-size: 20px;
+	cursor: pointer;
+	color: #fc2c2c;
 `;

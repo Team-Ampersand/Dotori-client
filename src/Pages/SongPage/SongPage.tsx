@@ -8,24 +8,14 @@ interface SongProps {
 	match: MatchType;
 }
 
-type RequestSongPlayLoad = {
-	music: string;
-	singer: string;
-	link: string;
-};
-
 const SongPage: React.FC<SongProps> = ({ match }) => {
-	const onSubmit = (form: RequestSongPlayLoad) => {
-		console.log(form);
-	};
-
 	return (
 		<S.Positioner>
 			<Sidebar />
 			<PageTemplate match={match}>
 				<S.Container>
 					<TodaySong />
-					<SongRequest onSubmit={onSubmit} />
+					<SongRequest />
 				</S.Container>
 			</PageTemplate>
 		</S.Positioner>

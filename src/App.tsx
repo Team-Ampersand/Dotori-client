@@ -3,18 +3,21 @@ import { GlobalStyle, Positioner, ContentWrapper } from './Style/GlobalStyle';
 import Router from './Router';
 import { BrowserRouter } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
+import { CookiesProvider } from 'react-cookie';
 
 const App: React.FC = () => {
 	return (
 		<RecoilRoot>
-			<BrowserRouter>
-				<GlobalStyle />
-				<Positioner>
-					<ContentWrapper>
-						<Router />
-					</ContentWrapper>
-				</Positioner>
-			</BrowserRouter>
+			<CookiesProvider>
+				<BrowserRouter>
+					<GlobalStyle />
+					<Positioner>
+						<ContentWrapper>
+							<Router />
+						</ContentWrapper>
+					</Positioner>
+				</BrowserRouter>
+			</CookiesProvider>
 		</RecoilRoot>
 	);
 };

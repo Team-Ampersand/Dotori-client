@@ -1,10 +1,8 @@
-import React from 'react'
-import { PasswordForm } from '../../Components'
+import React from 'react';
+import { PasswordForm } from '../../Components';
 
 const PwChangePage: React.FC = () => {
-    return (
-        <PasswordForm/>
-    )
-}
+	return <PasswordForm />;
+};
 
-export default PwChangePage
+export default PwChangePage;

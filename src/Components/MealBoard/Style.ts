@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 type StyleProps = {
-	Clicked: boolean;
+	Clicked: number;
 };
 
 export const Positioner = styled.div`
@@ -49,17 +49,17 @@ export const MealContainer = styled.div`
 
 export const BreakfastWrapper = styled.span<StyleProps>`
 	color: ${(props) => {
-		return props.Clicked ? '#333' : '#8b8b8b';
+		return props.Clicked === 0 ? '#333' : '#8b8b8b';
 	}};
 `;
 export const LaunchWrapper = styled.span<StyleProps>`
 	color: ${(props) => {
-		return props.Clicked ? '#333' : '#8b8b8b';
+		return props.Clicked === 1 ? '#333' : '#8b8b8b';
 	}};
 `;
 export const DinnerWrapper = styled.span<StyleProps>`
 	color: ${(props) => {
-		return props.Clicked ? '#333' : '#8b8b8b';
+		return props.Clicked === 2 ? '#333' : '#8b8b8b';
 	}};
 `;
 

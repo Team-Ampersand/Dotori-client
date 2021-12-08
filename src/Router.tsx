@@ -12,6 +12,8 @@ import {
   PointPage,
   AuthorizationPage,
   PwChangePage,
+  WithdrawlPage,
+  NotFoundPage,
 } from "./Pages";
 
 const Router: React.FC = () => {
@@ -25,8 +27,11 @@ const Router: React.FC = () => {
       <Route path="/point" component={PointPage} />
       <Route path="/signin" component={SigninPage} />
       <Route path="/signup" component={SignupPage} />
-      <Route path="/password" component={PwChangePage} />
+      <Route exact path="/password" component={PwChangePage} />
       <Route path="/authorization" component={AuthorizationPage} />
+      <Route path="/Withdrawl" component={WithdrawlPage} />
+      <Route path="/change/password" component={PwChangePage} />
+      <Route component={NotFoundPage} />
     </>
   );
 };

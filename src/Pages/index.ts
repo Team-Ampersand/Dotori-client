@@ -12,6 +12,8 @@ import AuthorizationPage from "./AuthorizationPage/AuthorizationPage";
 import SigninPage from "Pages/SigninPage/SigninPage";
 import SignupPage from "./SignupPage/SignupPage";
 import PwChangePage from "./PwChangePage/PwChangePage";
+import WithdrawlPage from "Pages/WithdrawlPage/WithdrawlPage";
+import NotFoundPage from "./NotFoundPage/NotFoundPage";
 
 export {
   SidebarPage,
@@ -28,4 +30,6 @@ export {
   SigninPage,
   SignupPage,
   PwChangePage,
+  WithdrawlPage,
+  NotFoundPage,
 };

@@ -21,8 +21,9 @@ import SongRequest from './SongRequest/SongRequest';
 import TodaySong from './TodaySong/TodaySong';
 import RequestedSongs from './RequestedSongs/RequestedSongs';
 import Authorzation from './Authorzation/Authorzation';
+import InfoUpdateModal from './InfoUpdateModal/InfoUpdateModal';
 import ChangeInput from './ChangeInput/ChangeInput';
-import ChangeSelet from './ChangeSelect/ChangeSelect';
+import ChangeSelect from './ChangeSelect/ChangeSelect';
 import Input from './Input/Input';
 import LoginForm from './SigninForm/SigninForm';
 import Button from './Button/Button';
@@ -31,6 +32,7 @@ import Selfstudyboard from './Selfstudyboard/Selfstudyboard';
 import PasswordForm from './PasswordForm/PasswordForm';
 import SongItem from './SongItem/SongItem';
 import MealBoard from './MealBoard/MealBoard';
+import Withdrawl from 'Components/Withdrawl/Withdrawl';
 
 export {
 	Sidebar,
@@ -57,7 +59,7 @@ export {
 	RequestedSongs,
 	Authorzation,
 	ChangeInput,
-	ChangeSelet,
+	ChangeSelect,
 	Input,
 	LoginForm,
 	Button,
@@ -66,4 +68,6 @@ export {
 	PasswordForm,
 	SongItem,
 	MealBoard,
+	Withdrawl,
+  InfoUpdateModal,
 };
