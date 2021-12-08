@@ -4,9 +4,10 @@ import * as S from './Style';
 import member from 'Api/member';
 import { useHistory } from 'react-router';
 
-const authPassword = async (id: string) => {
+const authPassword = async (id: string, setDisabled) => {
 	try {
 		await member.authPassword(id);
+		setDisabled(true);
 		alert('이메일을 확인해주세요!');
 	} catch (e: any) {
 		if (e.message === 'Request failed with status code 400') {
@@ -56,11 +57,13 @@ const returnPassworForm = (
 	setPassword,
 	setKey,
 	setNewPw,
+	setDisabled,
 	key,
 	id,
 	clicked,
 	password,
 	newPw,
+	disabled,
 	history
 ) => {
 	if (window.location.pathname === '/password') {
@@ -72,16 +75,18 @@ const returnPassworForm = (
 						type="text"
 						displayed={false}
 						onChange={({ target: { value } }) => setId(value)}
+						disabled={disabled}
 					/>
 					<button
 						onClick={() => {
 							if (id === '') {
 								alert('이메일을 입력하지 않았습니다.');
 							} else {
-								authPassword(id);
+								authPassword(id, setDisabled);
 								setClicked(false);
 							}
 						}}
+						disabled={disabled}
 					>
 						인증
 					</button>
@@ -141,6 +146,7 @@ const PasswordForm: React.FC = () => {
 	const [password, setPassword] = useState('');
 	const [newPw, setNewPw] = useState('');
 	const [clicked, setClicked] = useState(true);
+	const [disabled, setDisabled] = useState(false);
 
 	return (
 		<S.Positioner>
@@ -151,11 +157,13 @@ const PasswordForm: React.FC = () => {
 				setPassword,
 				setKey,
 				setNewPw,
+				setDisabled,
 				key,
 				id,
 				clicked,
 				password,
 				newPw,
+				disabled,
 				history
 			)}
 		</S.Positioner>
