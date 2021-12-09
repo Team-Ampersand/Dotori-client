@@ -6,6 +6,7 @@ type StyleProps = {
 
 export const Postioner = styled.div`
 	width: 49%;
+	min-width: 345px;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
