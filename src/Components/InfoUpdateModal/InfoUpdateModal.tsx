@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { rolelookup } from "Utils/Libs/roleLookup";
 import * as S from "./Style";
 import stuInfo from "../../Api/stuInfo";
@@ -23,6 +23,11 @@ const InfoUpdateModal: React.FC<ModalProps> = ({
   const [updateStuNum, setUpdateStuNum] = useState(stuNum);
   const [updateName, setUpdateName] = useState(name);
   const [updateRole, setUpdateRole] = useState(role);
+
+  useEffect(() => {
+    window.history.pushState({ page: "modal" }, document.title);
+    window.addEventListener("popstate", closeModal);
+  });
 
   const returnRoleValue = (role) => {
     if (role === "자치위원") return "ROLE_COUNCILLOR";
