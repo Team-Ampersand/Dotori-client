@@ -9,7 +9,9 @@ class stuInfo {
         url: StuInfoController.getClassStuInfo(role, classId),
       });
     } catch (e: any) {
-      throw Error(e);
+      if (e.message === "Request failed with status code 404") {
+        alert("해당 반에 등록된 학생 정보가 없습니다.");
+      } else return;
     }
   }
   async updateStuNum(role: string, stuId: number, stuNum: string) {
@@ -24,7 +26,9 @@ class stuInfo {
         data: data,
       });
     } catch (e: any) {
-      throw Error(e);
+      if (e.message === "Request failed with status code 409") {
+        return;
+      } else throw Error(e);
     }
   }
   async updateStuName(role: string, stuId: number, stuName: string) {
@@ -39,7 +43,9 @@ class stuInfo {
         data: data,
       });
     } catch (e: any) {
-      throw Error(e);
+      if (e.message === "Request failed with status code 409") {
+        return;
+      } else throw Error(e);
     }
   }
   async updateStuRole(role: string, stuId: number, stuRole: string) {
@@ -54,7 +60,9 @@ class stuInfo {
         data: data,
       });
     } catch (e: any) {
-      throw Error(e);
+      if (e.message === "Request failed with status code 409") {
+        return;
+      } else throw Error(e);
     }
   }
 }
