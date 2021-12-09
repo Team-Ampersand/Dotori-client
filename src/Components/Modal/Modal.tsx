@@ -37,6 +37,8 @@ const Modal: React.FC<ModalProps> = ({
         setUpdateTitle(res.title);
         setUpdateContent(res.content);
       });
+    window.history.pushState({ page: "modal" }, document.title);
+    window.addEventListener("popstate", (e) => closeModal(e));
   }, []);
 
   const [updateTitle, setUpdateTitle] = useState<string>("");

@@ -23,13 +23,15 @@ const Authorzation: React.FC = () => {
   const [stuClass, setStuClass] = useState("");
 
   const onSubmit = () => {
-    try {
-      getClassStuInfo().then((res) => {
-        setStudentList(res.data.data);
-      });
-    } catch (e: any) {
-      throw Error(e);
-    }
+    if (parseInt(stuGrade + stuClass) > 0) {
+      try {
+        getClassStuInfo().then((res) => {
+          res && setStudentList(res.data.data);
+        });
+      } catch (e: any) {
+        throw Error(e);
+      }
+    } else return;
   };
 
   return (
@@ -41,7 +43,9 @@ const Authorzation: React.FC = () => {
           }}
           value={stuGrade}
         >
-          <S.Option value="0">선택</S.Option>
+          <S.Option value="" selected disabled hidden>
+            선택
+          </S.Option>
           <S.Option value="1">1</S.Option>
           <S.Option value="2">2</S.Option>
           <S.Option value="3">3</S.Option>
@@ -53,7 +57,9 @@ const Authorzation: React.FC = () => {
           }}
           value={stuClass}
         >
-          <S.Option value="0">선택</S.Option>
+          <S.Option value="" selected disabled hidden>
+            선택
+          </S.Option>
           <S.Option value="1">1</S.Option>
           <S.Option value="2">2</S.Option>
           <S.Option value="3">3</S.Option>
