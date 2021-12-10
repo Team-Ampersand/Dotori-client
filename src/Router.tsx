@@ -14,12 +14,14 @@ import {
   PwChangePage,
   WithdrawlPage,
   NotFoundPage,
+  PromotionPage,
 } from "./Pages";
 
 const Router: React.FC = () => {
   return (
     <>
-      <Route exact path="/" component={HomePage} />
+      <Route exact path="/" component={PromotionPage} />
+      <Route exact path="/home" component={HomePage} />
       <Route path="/selfstudy" component={LaptopPage} />
       <Route exact path="/notice" component={NoticePage} />
       <Route path="/notice/write" component={NoticeWritePage} />

@@ -1,5 +1,4 @@
 import * as S from "./Style";
-import { Link } from "react-router-dom";
 import Logo from "Assets/Svg/Logo";
 
 const NotFoundPage: React.FC = () => {
