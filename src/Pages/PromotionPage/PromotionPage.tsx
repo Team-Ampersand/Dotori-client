@@ -19,13 +19,13 @@ const TryLogout = (setLogged) => {
 			alert(e);
 		}
 	};
-	return [onLogout];
+	return onLogout;
 };
 
 const PromotionPage: React.FC = () => {
 	const setLogged = useSetRecoilState(HasToken);
 
-	const [onLogout] = TryLogout(setLogged);
+	const onLogout = TryLogout(setLogged);
 
 	return (
 		<>
