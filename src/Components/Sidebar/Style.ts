@@ -13,4 +13,5 @@ export const LogoWrapper = styled.div`
 	display: flex;
 	align-items: center;
 	margin-top: 50px;
+	cursor: pointer;
 `;
