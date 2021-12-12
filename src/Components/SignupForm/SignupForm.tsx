@@ -17,10 +17,16 @@ const TrySignup = () => {
 
 	const onSignup = async () => {
 		try {
+			if (password !== repassword)
+				return alert('입력한 비밀번호가 서로 다릅니다.');
 			await member.signup(id, password, name, stuId);
 			history.push('/signin');
-		} catch (e) {
-			alert(e);
+		} catch (e: any) {
+			alert(
+				e.message === 'Request failed with status code 409'
+					? '이미 가입된 유저입니다'
+					: e
+			);
 		}
 	};
 
@@ -33,9 +39,10 @@ const TrySignup = () => {
 		}
 	};
 
-	const authCheck = async () => {
+	const authCheck = async (setDisabled) => {
 		try {
 			await email.authCheck(emailCode);
+			setDisabled(true);
 			alert('인증이 완료 되었습니다.');
 		} catch (e) {
 			alert(e);
@@ -58,6 +65,7 @@ const TrySignup = () => {
 
 const SignupForm: React.FC = () => {
 	const [clicked, setClicked] = useState(true);
+	const [disabled, setDisabled] = useState(false);
 	const {
 		setId,
 		id,
@@ -79,6 +87,7 @@ const SignupForm: React.FC = () => {
 					type="text"
 					displayed={false}
 					onChange={(e) => setId(e.target.value)}
+					disabled={disabled}
 				/>
 				<button
 					onClick={() => {
@@ -89,6 +98,7 @@ const SignupForm: React.FC = () => {
 							emailCertify();
 						}
 					}}
+					disabled={disabled}
 				>
 					인증
 				</button>
@@ -99,12 +109,14 @@ const SignupForm: React.FC = () => {
 					type="text"
 					displayed={clicked}
 					onChange={(e) => setEmailCode(e.target.value)}
+					disabled={disabled}
 				/>
 				<S.CertifyButton
 					displayed={clicked}
 					onClick={() => {
-						authCheck();
+						authCheck(setDisabled);
 					}}
+					disabled={disabled}
 				>
 					확인
 				</S.CertifyButton>
@@ -149,6 +161,3 @@ const SignupForm: React.FC = () => {
 };
 
 export default SignupForm;
-function value(value: any) {
-	throw new Error('Function not implemented.');
-}

@@ -2,46 +2,49 @@ import React, { useMemo, useState } from 'react';
 import * as S from './Style';
 import SidebarList from '../SidebarList/SidebarList';
 import Logo from 'Assets/Svg/Logo';
+import { getCookie } from 'Utils/Cookie';
+import { useHistory } from 'react-router';
 
 const sidebarMenuData = [
 	{
 		menuName: 'mainMenu',
 		menuLists: [
 			{
-				router: '/',
+				router: '/home',
 				menuIcon: 'Home',
 				menuTitle: '홈',
+				show: true,
 			},
 			{
 				router: '/notice',
 				menuIcon: 'Notice',
 				menuTitle: '공지사항',
+				show: true,
 			},
 			{
 				router: '/selfstudy',
 				menuIcon: 'Selfstudy',
 				menuTitle: '자습신청',
+				show: true,
 			},
 			{
 				router: '/song',
 				menuIcon: 'Song',
 				menuTitle: '기상음악',
-			},
-			{
-				router: '/point',
-				menuIcon: 'Point',
-				menuTitle: '상벌점',
+				show: true,
 			},
 			{
 				router: '/authorization',
 				menuIcon: 'More',
 				menuTitle: '학생 정보',
+				show: getCookie('role') === 'admin' ? true : false,
 			},
 		],
 	},
 ];
 
 const Sidebar: React.FC = () => {
+	const history = useHistory();
 	const [currentRouter, setCurrentRouter] = useState(window.location.pathname);
 	const mappingSidebarMenu = useMemo(() => {
 		return sidebarMenuData.map((menuData) => (
@@ -57,7 +60,11 @@ const Sidebar: React.FC = () => {
 
 	return (
 		<S.Postioner>
-			<S.LogoWrapper>
+			<S.LogoWrapper
+				onClick={() => {
+					history.push('/home');
+				}}
+			>
 				{/* <S.Logo> */}
 				<Logo />
 				{/* </S.Logo> */}

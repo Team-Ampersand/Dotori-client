@@ -3,8 +3,6 @@ import * as S from './Style';
 import { ManufactureDate } from '../../Utils/ManufactureDate';
 import { Link } from 'react-router-dom';
 import selfstudy from 'Api/selfStudy';
-import { useRecoilState } from 'recoil';
-import { rolelookup } from 'Utils/Libs/roleLookup';
 import { getCookie } from 'Utils/Cookie';
 
 const Room = {
@@ -16,8 +14,11 @@ const studycount = async () => {
 	try {
 		const res = await selfstudy.countstudy();
 		return res;
-	} catch (e) {
-		alert(e);
+	} catch (e: any) {
+		if (e.message === 'Request failed with status code 401') {
+		} else {
+			alert(e);
+		}
 	}
 };
 
@@ -34,8 +35,11 @@ const studyStatus = async () => {
 		try {
 			const res = await selfstudy.studystatus();
 			return res;
-		} catch (e) {
-			alert(e);
+		} catch (e: any) {
+			if (e.message === 'Request failed with status code 401') {
+			} else {
+				alert(e);
+			}
 		}
 	}
 };
@@ -46,7 +50,7 @@ const applyStudy = async (setStatus) => {
 		setStatus(false);
 		alert('자습 신청이 완료 되었습니다!');
 	} catch (e) {
-		alert('이미 자습신청을 하셨거나 할 수 없는 상태입니다.' + e);
+		alert('이미 자습신청을 하셨거나 할 수 없는 상태입니다.\n' + e);
 	}
 };
 
@@ -58,7 +62,7 @@ const cancleStudy = async (setStatus) => {
 			'자습 신청이 취소 되었습니다. 오늘 하루동안 다시 신청이 불가능 합니다.'
 		);
 	} catch (e) {
-		alert('자습취소를 하실수 없는 상태입니다' + e);
+		alert('자습취소를 하실수 없는 상태입니다\n' + e);
 	}
 };
 
@@ -123,7 +127,7 @@ const Selfstudyboard: React.FC = () => {
 		studyStatus().then((res) => {
 			setStatus(res?.data.data);
 		});
-	}, []);
+	}, [status]);
 	return (
 		<S.Positioner Clicked={status}>
 			<S.StudyHeader>

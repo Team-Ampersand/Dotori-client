@@ -3,17 +3,27 @@ import * as S from './Style';
 import { MatchType } from '../../../Utils/GlobalType';
 import { LaptopHeader } from '../Header/model/CombineAdminHeader';
 import selfstudy from 'Api/selfStudy';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import { list, HasToken } from 'Atoms';
 import { useHistory } from 'react-router';
 import { deleteCookie } from 'Utils/Cookie';
 
-const ReturnUserObj = async () => {
+const ReturnUserObj = async (history, setLogged) => {
 	try {
 		const res = await selfstudy.lookupstudy();
 		return res;
 	} catch (e: any) {
-		alert(e);
+		if (e.message === 'Request failed with status code 401') {
+			history.push('/signin');
+			alert('장시간 자리에서 비워 로그아웃 되었습니다. 다시 로그인 해주세요.');
+
+			deleteCookie('Dotori_accessToken');
+			deleteCookie('Dotori_refreshToken');
+			deleteCookie('role');
+
+			setLogged(false);
+			window.location.reload();
+		}
 	}
 };
 
@@ -32,36 +42,20 @@ const onlyCompareThisHeader = (match: MatchType) => {
 
 const List: React.FC<ListProps> = ({ match }) => {
 	const [userlist, setUserList] = useRecoilState(list);
-	const [logged, setLogged] = useRecoilState(HasToken);
+	const setLogged = useSetRecoilState(HasToken);
 	const history = useHistory();
 
 	useEffect(() => {
-		ReturnUserObj()
-			.then((res) => {
-				setUserList(res?.data.data);
-			})
-			.catch((e) => {
-				if (e.message === 'Request failed with status code 401') {
-					history.push('/signin');
-					alert(
-						'장시간 자리에서 비워 로그아웃 되었습니다. 다시 로그인 해주세요.'
-					);
-
-					deleteCookie('Dotori_accessToken');
-					deleteCookie('Dotori_refreshToken');
-					deleteCookie('role');
-
-					setLogged(false);
-					window.location.reload();
-				}
-			});
+		ReturnUserObj(history, setLogged).then((res) => {
+			setUserList(res?.data.data);
+		});
 	}, [setUserList]);
 
 	return (
 		<>
 			{userlist &&
-				userlist.map((item, ix) => (
-					<S.Wrapper key={`${ix}`}>
+				userlist.map((item, idx) => (
+					<S.Wrapper key={`${idx}`}>
 						<div style={{ flex: onlyCompareThisHeader(match)!.list[0].flex }}>
 							{item.username}
 						</div>

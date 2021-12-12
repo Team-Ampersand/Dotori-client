@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import * as S from "./Style";
 import { Prompt, useHistory } from "react-router-dom";
 import { useBeforeunload } from "react-beforeunload";
@@ -31,7 +31,10 @@ const NoticeWrite: React.FC = () => {
       await history.push("/notice");
       return res;
     } catch (e: any) {
-      throw e;
+      console.log(e.message);
+      if (e.message === "Error: Request failed with status code 400") {
+        alert("제목과 내용을 입력해주세요.");
+      }
     }
   };
 
