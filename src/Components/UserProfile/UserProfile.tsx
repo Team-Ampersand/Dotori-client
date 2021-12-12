@@ -10,15 +10,15 @@ import { Link } from 'react-router-dom';
 import { deleteCookie } from 'Utils/Cookie';
 
 type UserProfileType = {
-  id: number;
-  username: string;
-  stuNum: string;
-  point: number;
+	id: number;
+	username: string;
+	stuNum: string;
+	point: number;
 };
 
 const TryLogout = () => {
-  const setLogged = useSetRecoilState(HasToken);
-  const history = useHistory();
+	const setLogged = useSetRecoilState(HasToken);
+	const history = useHistory();
 
 	const onLogout = async () => {
 		try {
@@ -28,25 +28,25 @@ const TryLogout = () => {
 			deleteCookie('role');
 
 			setLogged(false);
-			history.push('/signin');
+			history.push('/');
 			window.location.reload();
 		} catch (e) {
 			alert(e);
 		}
 	};
-	return [onLogout];
+	return onLogout;
 };
 
 const myPage = async () => {
-  const res = await mypage.mypage();
-  return res;
+	const res = await mypage.mypage();
+	return res;
 };
 
 const UserProfile: React.FC = () => {
-  const [profile, setProfile] = useState<UserProfileType>();
-  const [onLogout] = TryLogout();
-  const history = useHistory();
-  
+	const [profile, setProfile] = useState<UserProfileType>();
+	const onLogout = TryLogout();
+	const history = useHistory();
+
 	useEffect(() => {
 		myPage()
 			.then((res) => {
@@ -54,9 +54,7 @@ const UserProfile: React.FC = () => {
 			})
 			.catch((e) => {
 				if (e.response.status === 401) {
-					alert(
-						'장시간 자리에서 비워 로그아웃 되었습니다. 다시 로그인 해주세요.'
-					);
+					alert('로그아웃 되었습니다. 다시 로그인 해주세요.');
 
 					deleteCookie('Dotori_accessToken');
 					deleteCookie('Dotori_refreshToken');

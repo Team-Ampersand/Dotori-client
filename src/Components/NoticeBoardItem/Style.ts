@@ -72,9 +72,6 @@ export const DateStyle = styled.div<EditProps>`
 `;
 
 export const BtnWrapper = styled.div<EditProps>`
-  position: fixed;
-  margin-left: 65vw;
-  margin-top: 1.68vh;
   ${(props) =>
     !props.edit &&
     css`

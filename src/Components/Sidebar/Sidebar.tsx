@@ -3,13 +3,14 @@ import * as S from './Style';
 import SidebarList from '../SidebarList/SidebarList';
 import Logo from 'Assets/Svg/Logo';
 import { getCookie } from 'Utils/Cookie';
+import { useHistory } from 'react-router';
 
 const sidebarMenuData = [
 	{
 		menuName: 'mainMenu',
 		menuLists: [
 			{
-				router: '/',
+				router: '/home',
 				menuIcon: 'Home',
 				menuTitle: '홈',
 				show: true,
@@ -43,6 +44,7 @@ const sidebarMenuData = [
 ];
 
 const Sidebar: React.FC = () => {
+	const history = useHistory();
 	const [currentRouter, setCurrentRouter] = useState(window.location.pathname);
 	const mappingSidebarMenu = useMemo(() => {
 		return sidebarMenuData.map((menuData) => (
@@ -58,7 +60,11 @@ const Sidebar: React.FC = () => {
 
 	return (
 		<S.Postioner>
-			<S.LogoWrapper>
+			<S.LogoWrapper
+				onClick={() => {
+					history.push('/home');
+				}}
+			>
 				{/* <S.Logo> */}
 				<Logo />
 				{/* </S.Logo> */}
