@@ -9,15 +9,17 @@ const returnMealdata = async (mealCode: number, setList) => {
 			'YMD'
 		)}`
 	);
-	const result = res.data.mealServiceDietInfo[1].row[
-		mealCode
-	].DDISH_NM.toString()
-		.replace(/[*<br/>0-9a-z.()]/g, '0')
-		.split('0')
-		.filter((value) => {
-			return value !== '';
-		});
-	const mealTime = res.data.mealServiceDietInfo[1].row[mealCode].MMEAL_SC_NM;
+	const result = !!res.data.mealServiceDietInfo[1].row[mealCode]
+		? res.data.mealServiceDietInfo[1].row[mealCode].DDISH_NM.toString()
+				.replace(/[*<br/>0-9a-z.()]/g, '0')
+				.split('0')
+				.filter((value) => {
+					return value !== '';
+				})
+		: [];
+	const mealTime = !!res.data.mealServiceDietInfo[1].row[mealCode]
+		? res.data.mealServiceDietInfo[1].row[mealCode].MMEAL_SC_NM
+		: '급식이 없어요';
 
 	setList([
 		{
