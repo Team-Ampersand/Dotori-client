@@ -94,3 +94,19 @@ export const InputStyle = styled.input<StyleProps>`
 	font-size: 16px;
 	display: ${(props) => (props.displayed === true ? 'none' : 'flex')};
 `;
+
+export const InputWrapper = styled.div`
+	position: relative;
+	label {
+		opacity: 0.5;
+		position: absolute;
+		top: 25px;
+		left: 65px;
+	}
+	@media screen and (max-height: 766px) {
+		label {
+			top: 18px;
+			left: 65px;
+		}
+	} ;
+`;

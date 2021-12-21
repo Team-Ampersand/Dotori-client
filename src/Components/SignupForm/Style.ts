@@ -107,17 +107,17 @@ export const InputStyle = styled.input<StyleProps>`
 	padding-left: 10px;
 	margin-top: 1vh;
 	font-size: 16px;
-	display: ${(props) => (props.displayed === true ? 'none' : 'flex')};
+	display: ${(props) => (props.displayed ? 'none' : 'flex')};
 `;
 
-export const ButtonStyle = styled.button`
+export const ButtonStyle = styled.button<StyleProps>`
 	margin-top: 2vh;
 	width: 29.5vw;
 	height: 5.5vh;
 	border-radius: 10px;
 	outline: none;
 	border: none;
-	background-color: #617be3;
+	background-color: ${(props) => (props.displayed ? '#617be3' : '#e5e5e5')};
 	color: #fff;
 	font-size: 18px;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -131,7 +131,7 @@ export const ArrowWrapper = styled.div`
 `;
 
 export const CertifyButton = styled.button<StyleProps>`
-	display: ${(props) => (props.displayed === true ? 'none' : '')};
+	display: ${(props) => (props.displayed ? 'none' : '')};
 	width: 4.3vw;
 	margin-top: 1vh;
 	height: 5.5vh;
@@ -141,4 +141,26 @@ export const CertifyButton = styled.button<StyleProps>`
 	background-color: #617be3;
 	color: #fff;
 	transition: 0.5s;
+`;
+
+export const InputWrapper = styled.div`
+	position: relative;
+	label {
+		display: none;
+		opacity: 0.5;
+		position: absolute;
+		top: 27px;
+		left: 65px;
+		transition: all 0.5s ease;
+	}
+	input:focus + label,
+	input:valid + label {
+		display: flex;
+	}
+	@media screen and (max-height: 766px) {
+		label {
+			top: 18px;
+			left: 65px;
+		}
+	} ;
 `;
