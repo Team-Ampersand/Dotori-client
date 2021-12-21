@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './Style';
-import { Logout, Point, Profile } from '../../Assets/Svg';
+import { Logout, Profile } from '../../Assets/Svg';
 import member from '../../Api/member';
 import mypage from '../../Api/mypage';
 import { useSetRecoilState } from 'recoil';
@@ -29,6 +29,7 @@ const TryLogout = () => {
 
 			setLogged(false);
 			history.push('/');
+			alert('로그아웃 되었습니다.');
 			window.location.reload();
 		} catch (e) {
 			alert(e);

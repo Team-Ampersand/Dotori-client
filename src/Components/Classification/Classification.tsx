@@ -15,6 +15,8 @@ const Classification: React.FC = () => {
 				if (stuGrade + stuClass === '00') {
 					const res = await selfstudy.lookupstudy();
 					setClassLookup(res.data.data);
+				} else if (stuGrade + stuClass === '') {
+					alert('아무것도 선택하지 않으셨어요');
 				} else {
 					const res = await selfstudy.classlookup(stuGrade + stuClass);
 					setClassLookup(res.data.data);

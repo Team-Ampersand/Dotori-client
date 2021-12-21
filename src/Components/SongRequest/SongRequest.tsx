@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import * as S from './Style';
 import music from 'Api/music';
 import { getCookie } from 'Utils/Cookie';
@@ -9,7 +9,7 @@ const musicApply = async (musicUrl: string) => {
 		alert('노래가 신청되었습니다.');
 	} catch (e: any) {
 		e.message === 'Request failed with status code 409'
-			? alert('이미 노래를 신청해 신청 하실 수 없습니다.')
+			? alert('이미 노래를 신청 해 신청 하실 수 없습니다.')
 			: alert(e);
 	}
 };
@@ -37,10 +37,27 @@ const returnBtn = (url: string, setUrl) => {
 					placeholder="url을 입력하세요."
 					type="text"
 					onChange={({ target: { value } }) => setUrl(value)}
+					onKeyPress={(e) => {
+						if (e.key === 'Enter') {
+							if (CheckUrl(url)) {
+								musicApply(url).then(() => {
+									window.location.reload();
+								});
+							} else {
+								alert('유튜브 링크만 추가하실 수 있습니다.');
+							}
+						}
+					}}
 				/>
 				<button
 					onClick={() => {
-						musicApply(url);
+						if (CheckUrl(url)) {
+							musicApply(url).then(() => {
+								window.location.reload();
+							});
+						} else {
+							alert('유튜브 링크만 추가하실 수 있습니다.');
+						}
 					}}
 				>
 					신청하기
@@ -66,8 +83,7 @@ const SongRequest: React.FC = () => {
 
 export const CheckUrl = (url) => {
 	let regex =
-		/(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/;
-
+		/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/;
 	return regex.test(url);
 };
 

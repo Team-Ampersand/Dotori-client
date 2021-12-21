@@ -57,7 +57,7 @@ const TodaySong: React.FC = () => {
 	return (
 		<S.Postioner>
 			<S.PlaylistContainer>
-				<h3>WEEK PLAYLIST</h3>
+				<h3>{all ? 'Week Playlist' : 'Today Playlist'}</h3>
 				<S.BtnWrapper>
 					<S.AllWrapper
 						onClick={() => {
