@@ -31,20 +31,24 @@ const InfoUpdateModal: React.FC<ModalProps> = ({
 
   const returnRoleValue = (role) => {
     if (role === "자치위원") return "ROLE_COUNCILLOR";
+    if (role === "개발자") return "ROLE_DEVELOPER";
     return "ROLE_MEMBER";
   };
 
   const stuNumUpdate = async () => {
     const role = await rolelookup();
     await stuInfo.updateStuNum(role, stuId, updateStuNum);
+    alert("학번이 변경되었습니다.");
   };
   const stuNameUpdate = async () => {
     const role = await rolelookup();
     await stuInfo.updateStuName(role, stuId, updateName);
+    alert("이름이 변경되었습니다.");
   };
   const stuRoleUpdate = async () => {
     const role = await rolelookup();
     await stuInfo.updateStuRole(role, stuId, returnRoleValue(updateRole));
+    alert("권한이 변경되었습니다.");
   };
 
   const onCancle = () => {
@@ -55,6 +59,7 @@ const InfoUpdateModal: React.FC<ModalProps> = ({
   };
   const onComplete = async () => {
     closeModal();
+    window.location.reload();
   };
 
   return modalState ? (
@@ -90,6 +95,7 @@ const InfoUpdateModal: React.FC<ModalProps> = ({
                 </option>
                 <option value="학생">학생</option>
                 <option value="자치위원">자치위원</option>
+                <option value="개발자">개발자</option>
               </S.StuRoleSelect>
               <S.UpdateBtn onClick={stuRoleUpdate}>권한 수정</S.UpdateBtn>
             </S.ChangerItem>

@@ -61,7 +61,7 @@ export const StuNameInput = styled.input`
 
 export const StuRoleSelect = styled.select`
   width: 100px;
-  height: 30px;
+  height: 35px;
   text-align: center;
   font-size: 24px;
 `;
