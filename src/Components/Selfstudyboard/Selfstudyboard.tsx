@@ -77,7 +77,10 @@ const returnRoomStatusNumber = (compareMax: number, compareMin: number) => {
 };
 
 const returnButton = (status: string, setStatus, count) => {
-	if (status === 'CAN') {
+	let today: string = ManufactureDate('W');
+	let can = ['월', '화', '수', '목'];
+	let cant = ['금', '토', '일'];
+	if (status === 'CAN' && can.indexOf(today)) {
 		return (
 			<S.StudyButton
 				onClick={() => {
@@ -92,14 +95,16 @@ const returnButton = (status: string, setStatus, count) => {
 		return (
 			<S.StudyButton
 				onClick={() => {
-					cancleStudy(setStatus);
+					if (window.confirm('자습을 취소 하시겠습니까?'))
+						cancleStudy(setStatus);
+					else alert('자습이 취소되지 않았습니다.');
 				}}
 				Clicked={status}
 			>
 				자습취소
 			</S.StudyButton>
 		);
-	} else if (status === 'CANT' || count === 50) {
+	} else if (status === 'CANT' || count === 50 || cant.indexOf(today)) {
 		return (
 			<S.StudyButton
 				Clicked={status}

@@ -13,13 +13,27 @@ const TrySignup = () => {
 	const [name, setName] = useState('');
 	const [password, setPassword] = useState('');
 	const [repassword, setRePassword] = useState('');
+	const [clicked, setClicked] = useState(true);
+	const [disabled, setDisabled] = useState(false);
 	const history = useHistory();
 
 	const onSignup = async () => {
 		try {
+			if (!disabled) {
+				return alert('이메일 인증 이후 회원가입을 진행해주세요');
+			}
+			if (id === '') return alert('이메일이 입력되지 않았습니다.');
+			else if (emailCode === '')
+				return alert('이메일코드가 입력되지 않았습니다.');
+			else if (name === '') return alert('이름이 입력되지 않았습니다.');
+			else if (stuId === '') return alert('학번이 입력되지 않았습니다.');
+			else if (password === '') return alert('비밀번호가 입력되지 않았습니다.');
+			else if (repassword === '')
+				return alert('비밀번호가 재입력이 입력되지 않았습니다.');
 			if (password !== repassword)
 				return alert('입력한 비밀번호가 서로 다릅니다.');
-			await member.signup(id, password, name, stuId);
+			await member.signup(id + '@gsm.hs.kr', password, name, stuId);
+			alert('회원가입이 되었습니다.');
 			history.push('/signin');
 		} catch (e: any) {
 			alert(
@@ -32,20 +46,30 @@ const TrySignup = () => {
 
 	const emailCertify = async () => {
 		try {
-			await email.auth(id);
+			await email.auth(id + '@gsm.hs.kr');
 			alert('인증번호가 위의 이메일로 전송 되었습니다.');
-		} catch (e) {
-			alert(e);
+		} catch (e: any) {
+			alert(
+				e.message === 'Request failed with status code 409'
+					? '이미 가입된 유저입니다'
+					: e
+			);
+			setClicked(true);
 		}
 	};
 
 	const authCheck = async (setDisabled) => {
 		try {
+			if (emailCode === '') {
+				return alert('아무것도 입력하지 않으셨습니다');
+			}
 			await email.authCheck(emailCode);
 			setDisabled(true);
 			alert('인증이 완료 되었습니다.');
-		} catch (e) {
-			alert(e);
+		} catch (e: any) {
+			e.message === 'Request failed with status code 409'
+				? alert('인증키가 일치 하지 않습니다.')
+				: alert(e);
 		}
 	};
 
@@ -60,12 +84,14 @@ const TrySignup = () => {
 		onSignup,
 		emailCertify,
 		authCheck,
+		clicked,
+		setClicked,
+		disabled,
+		setDisabled,
 	};
 };
 
 const SignupForm: React.FC = () => {
-	const [clicked, setClicked] = useState(true);
-	const [disabled, setDisabled] = useState(false);
 	const {
 		setId,
 		id,
@@ -77,18 +103,27 @@ const SignupForm: React.FC = () => {
 		onSignup,
 		emailCertify,
 		authCheck,
+		clicked,
+		setClicked,
+		disabled,
+		setDisabled,
 	} = TrySignup();
 	return (
 		<S.Positioner>
 			<DotoriLogo />
 			<S.EmailContainer>
-				<S.InputStyle
-					placeholder="이메일을 입력하세요"
-					type="text"
-					displayed={false}
-					onChange={(e) => setId(e.target.value)}
-					disabled={disabled}
-				/>
+				<S.InputWrapper>
+					<S.InputStyle
+						placeholder="이메일을 입력하세요"
+						type="text"
+						displayed={false}
+						onChange={(e) => setId(e.target.value)}
+						disabled={disabled}
+						maxLength={6}
+						required
+					/>
+					<label>@gsm.hs.kr</label>
+				</S.InputWrapper>
 				<button
 					onClick={() => {
 						if (id === '') {
@@ -144,11 +179,16 @@ const SignupForm: React.FC = () => {
 				type="password"
 				displayed={false}
 				onChange={(e) => setRePassword(e.target.value)}
+				onKeyPress={(e) => {
+					if (e.key === 'Enter') onSignup();
+				}}
 			/>
 			<S.ButtonStyle
 				onClick={() => {
 					onSignup();
 				}}
+				disabled={!disabled}
+				displayed={disabled}
 			>
 				회원가입
 			</S.ButtonStyle>

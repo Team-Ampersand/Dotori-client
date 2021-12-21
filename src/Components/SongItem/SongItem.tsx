@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './Style';
 import axios from 'axios';
-import { rolelookup } from 'Utils/Libs/roleLookup';
 import music from 'Api/music';
 import { getCookie } from 'Utils/Cookie';
 
 type SongItemObj = {
+	createdDate: Date;
 	id: number;
 	url: string;
 	username: string;
@@ -45,6 +45,20 @@ const deleteMusic = async (id: number) => {
 		alert(e);
 	}
 };
+const leftPad = (value) => {
+	if (value >= 10) {
+		return value;
+	}
+	return `0${value}`;
+};
+
+const dateFormat = (createdDate: Date) => {
+	const date = new Date(createdDate);
+	const year = date.getFullYear();
+	const month = leftPad(date.getMonth() + 1);
+	const day = leftPad(date.getDate());
+	return [year, month, day].join('-');
+};
 
 const SongItem: React.FC<SongProps> = ({ songObj }) => {
 	const [title, setTitle] = useState('');
@@ -67,13 +81,16 @@ const SongItem: React.FC<SongProps> = ({ songObj }) => {
 					</a>
 				</S.TitleContainer>
 				<S.AuthorContainer>{songObj.username}</S.AuthorContainer>
+				<S.AuthorContainer>{dateFormat(songObj.createdDate)}</S.AuthorContainer>
 			</S.Container>
 			{role === 'member' ? (
 				''
 			) : (
 				<S.DeleteContainer
 					onClick={() => {
-						deleteMusic(songObj.id);
+						window.confirm('삭제 하시겠습니까?')
+							? deleteMusic(songObj.id)
+							: alert('삭제 하지 않았습니다.');
 					}}
 				>
 					❌
