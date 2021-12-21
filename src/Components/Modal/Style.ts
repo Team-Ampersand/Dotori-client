@@ -28,7 +28,7 @@ export const Overlay = styled.div`
 export const Container = styled.div`
   position: relative;
   top: 0px;
-  padding: 0 auto;
+  padding: 0;
   border-radius: 20px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   background-color: white;
@@ -67,12 +67,11 @@ export const Close = styled.div`
 `;
 
 export const Content = styled.div`
-  margin: 30px 10px 10px 10px;
+  margin: 30px 20px 20px 20px;
   font-size: 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-left: 50px;
   textarea {
     resize: none;
     font-size: 20px;
