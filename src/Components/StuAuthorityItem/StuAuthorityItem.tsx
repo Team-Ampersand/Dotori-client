@@ -30,9 +30,9 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
 }) => {
   const [editState, setEditState] = useState(false);
 
-  const onConfirm = () => {
-    setEditState(!editState);
-  };
+  // const onConfirm = () => {
+  //   setEditState(!editState);
+  // };
 
   const closeModal = () => {
     setEditState(false);

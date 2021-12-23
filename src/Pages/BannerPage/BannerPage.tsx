@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./Style";
-import { BetaBanner, SongBanner } from "../../Components";
+import { BetaBanner } from "../../Components";
 import { MatchType } from "../../Utils/GlobalType";
 
 interface BannerProps {
