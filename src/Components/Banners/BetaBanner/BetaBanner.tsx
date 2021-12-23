@@ -25,7 +25,6 @@ const BetaBanner: React.FC = () => {
     }
   }, []);
 
-  let i = 0;
   return (
     <S.Postioner>
       {clean ? (
