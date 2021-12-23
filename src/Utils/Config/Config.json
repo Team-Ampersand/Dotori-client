@@ -5,6 +5,7 @@
     "Access-Control-Allow-Headers": "Content-Type,Authorization",
     "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE",
     "Access-Control-Alllow-Credentials": true,
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
+    "Cache-Control": "no-store"
   }
 }

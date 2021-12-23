@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { rolelookup } from "Utils/Libs/roleLookup";
 import * as S from "./Style";
 import stuInfo from "../../Api/stuInfo";
+import { getCookie } from "Utils/Cookie";
 
 interface ModalProps {
   modalState: boolean;
@@ -36,17 +36,17 @@ const InfoUpdateModal: React.FC<ModalProps> = ({
   };
 
   const stuNumUpdate = async () => {
-    const role = await rolelookup();
+    const role = await getCookie("role");
     await stuInfo.updateStuNum(role, stuId, updateStuNum);
     alert("학번이 변경되었습니다.");
   };
   const stuNameUpdate = async () => {
-    const role = await rolelookup();
+    const role = await getCookie("role");
     await stuInfo.updateStuName(role, stuId, updateName);
     alert("이름이 변경되었습니다.");
   };
   const stuRoleUpdate = async () => {
-    const role = await rolelookup();
+    const role = await getCookie("role");
     await stuInfo.updateStuRole(role, stuId, returnRoleValue(updateRole));
     alert("권한이 변경되었습니다.");
   };

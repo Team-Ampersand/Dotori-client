@@ -37,12 +37,8 @@ export const PageBtn = styled.div`
   }
 `;
 
-interface BtnWrapProps {
-  isMember: boolean;
-}
-
-export const BtnWrapper = styled.div<BtnWrapProps>`
-  display: ${(prop) => (prop.isMember ? "none" : "flex")};
+export const BtnWrapper = styled.div`
+  display: flex;
   justify-content: flex-end;
   height: 3.6vh;
 `;
