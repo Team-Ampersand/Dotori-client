@@ -21,7 +21,6 @@ const returnBtn = (
 	songInput: React.LegacyRef<HTMLInputElement> | undefined
 ) => {
 	const today = ManufactureDate('W');
-	let can = ['월', '화', '수', '목', '일'];
 	let cant = ['금', '토'];
 	const role = getCookie('role');
 	if (role === 'admin') {
