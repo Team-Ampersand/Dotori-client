@@ -17,6 +17,10 @@ const Classification: React.FC = () => {
 					setClassLookup(res.data.data);
 				} else if (stuGrade + stuClass === '') {
 					alert('아무것도 선택하지 않으셨어요');
+				} else if (stuGrade === '') {
+					alert('학년을 선택해주세요');
+				} else if (stuClass === '') {
+					alert('반을 선택해주세요');
 				} else {
 					const res = await selfstudy.classlookup(stuGrade + stuClass);
 					setClassLookup(res.data.data);
