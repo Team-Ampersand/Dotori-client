@@ -108,13 +108,8 @@ export const SelfstudyController = {
 	classLookup: (classId: number, role: string) => {
 		return `/${role}/selfstudy/${classId}`;
 	},
-	//현재 신청 현황 수 조회
-	countStudy: (role: string) => {
-		return `/${role}/selfstudy/count`;
-	},
-	//자습신청 여부 조회
-	studyStatus: (role: string) => {
-		return `/${role}/selfstudy/status`;
+	studyInfo: (role: string) => {
+		return `/${role}/selfstudy/info`;
 	},
 };
 
@@ -134,20 +129,20 @@ export const MusicController = {
 
 // 학생 정보 변경
 export const StuInfoController = {
-  // 반별 학생정보 조회
-  getClassStuInfo: (role: string, classId: number) => {
-    return `/${role}/info/${classId}`;
-  },
-  // 학번 변경
-  updateStuNum: (role: string) => {
-    return `/${role}/info/stunum`;
-  },
-  // 이름 변경
-  updateStuName: (role: string) => {
-    return `/${role}/info/username`;
-  },
-  // 권한 변경
-  updateStuRole: (role: string) => {
-    return `/${role}/info/role`;
-  },
+	// 반별 학생정보 조회
+	getClassStuInfo: (role: string, classId: number) => {
+		return `/${role}/info/${classId}`;
+	},
+	// 학번 변경
+	updateStuNum: (role: string) => {
+		return `/${role}/info/stunum`;
+	},
+	// 이름 변경
+	updateStuName: (role: string) => {
+		return `/${role}/info/username`;
+	},
+	// 권한 변경
+	updateStuRole: (role: string) => {
+		return `/${role}/info/role`;
+	},
 };
