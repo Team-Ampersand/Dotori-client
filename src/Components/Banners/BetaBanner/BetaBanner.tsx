@@ -25,7 +25,6 @@ const BetaBanner: React.FC = () => {
     }
   }, []);
 
-  let i = 0;
   return (
     <S.Postioner>
       {clean ? (
@@ -34,6 +33,7 @@ const BetaBanner: React.FC = () => {
           <span>
             오늘의 청소학년은 <strong>{grade}학년</strong> 입니다.
           </span>
+          {<h4>오늘은 여학생 청소하는 날입니다.</h4>}
         </S.TextWrapper>
       ) : (
         <S.TextWrapper>
