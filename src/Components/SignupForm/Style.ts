@@ -150,17 +150,21 @@ export const InputWrapper = styled.div`
 		opacity: 0.5;
 		position: absolute;
 		top: 27px;
-		left: 65px;
+		left: 70px;
 		transition: all 0.5s ease;
 	}
 	input:focus + label,
 	input:valid + label {
 		display: flex;
 	}
+	@media screen and (min-height: 1073px) {
+		label {
+			top: 30px;
+		}
+	}
 	@media screen and (max-height: 766px) {
 		label {
 			top: 18px;
-			left: 65px;
 		}
 	} ;
 `;

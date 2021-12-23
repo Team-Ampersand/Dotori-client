@@ -13,11 +13,19 @@ export const Positioner = styled.div<StyleProps>`
 	flex-direction: column;
 	border: 2px solid
 		${(props) => {
-			if (props.Clicked === 'CAN') {
+			if (
+				props.Clicked === 'CAN' &&
+				new Date().getHours() >= 20 &&
+				new Date().getHours() < 22
+			) {
 				return '#fff';
 			} else if (props.Clicked === 'APPLIED') {
 				return '#617be3';
-			} else if (props.Clicked === 'CANT') {
+			} else if (
+				props.Clicked === 'CANT' ||
+				new Date().getHours() < 20 ||
+				new Date().getHours() > 22
+			) {
 				return '#fc2c2c';
 			}
 		}};
@@ -91,30 +99,54 @@ export const StudyButton = styled.button<StyleProps>`
 	height: 7vh;
 	border: none;
 	background-color: ${(props) => {
-		if (props.Clicked === 'CAN') {
+		if (
+			props.Clicked === 'CAN' &&
+			new Date().getHours() >= 20 &&
+			new Date().getHours() < 22
+		) {
 			return '#617be3';
 		} else if (props.Clicked === 'APPLIED') {
 			return '#fff';
-		} else if (props.Clicked === 'CANT') {
+		} else if (
+			props.Clicked === 'CANT' ||
+			new Date().getHours() < 20 ||
+			new Date().getHours() > 22
+		) {
 			return '#fc2c2c';
 		}
 	}};
 	color: ${(props) => {
-		if (props.Clicked === 'CAN') {
+		if (
+			props.Clicked === 'CAN' &&
+			new Date().getHours() >= 20 &&
+			new Date().getHours() < 22
+		) {
 			return '#fff';
 		} else if (props.Clicked === 'APPLIED') {
 			return '#617be3';
-		} else if (props.Clicked === 'CANT') {
+		} else if (
+			props.Clicked === 'CANT' ||
+			new Date().getHours() < 20 ||
+			new Date().getHours() > 22
+		) {
 			return '#fff';
 		}
 	}};
 	border: 2px solid
 		${(props) => {
-			if (props.Clicked === 'CAN') {
+			if (
+				props.Clicked === 'CAN' &&
+				new Date().getHours() >= 20 &&
+				new Date().getHours() < 22
+			) {
 				return '#fff';
 			} else if (props.Clicked === 'APPLIED') {
 				return '#617be3';
-			} else if (props.Clicked === 'CANT') {
+			} else if (
+				props.Clicked === 'CANT' ||
+				new Date().getHours() < 20 ||
+				new Date().getHours() > 22
+			) {
 				return '#fff';
 			}
 		}};
