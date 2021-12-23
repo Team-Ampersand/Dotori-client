@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { DotoriLogo } from 'Assets/Svg';
 import * as S from './Style';
 import { Link, useHistory } from 'react-router-dom';
@@ -38,17 +38,24 @@ const TrySignin = () => {
 
 			setLogged(false);
 			history.push('/signin');
+			window.location.reload();
 		}
 	};
 
 	const onSignin = async () => {
 		try {
+			if (id === '') {
+				return alert('이메일을 입력해주세요.');
+			} else if (password === '') {
+				return alert('비밀번호를 입력해주세요.');
+			}
 			const res = await member.signin(id + '@gsm.hs.kr', password);
 
 			setCookie('Dotori_accessToken', res.data.data.accessToken, {
 				path: '/',
 				secure: true,
 			});
+
 			setCookie('Dotori_refreshToken', res.data.data.refreshToken, {
 				path: '/',
 				secure: true,
@@ -60,15 +67,12 @@ const TrySignin = () => {
 
 			setLogged(true);
 			history.push('/home');
-			window.location.reload();
 			setTimeout(onRefresh, 1800000);
 		} catch (e: any) {
 			if (e.message === 'Request failed with status code 409') {
 				alert('비밀번호가 올바르지 않습니다.');
 			} else if (e.message === 'Request failed with status code 404') {
 				alert('해당 이메일에 해당하는 학생을 찾을 수 없습니다.');
-			} else if (e.message === 'Request failed with status code 400') {
-				alert('Email 혹은 Password가 공백입니다.');
 			} else {
 				alert(e);
 			}
@@ -79,6 +83,7 @@ const TrySignin = () => {
 
 const SigninForm: React.FC = () => {
 	const [setId, setPassword, onSignin] = TrySignin();
+
 	return (
 		<>
 			<S.Positioner>

@@ -35,10 +35,10 @@ export const InputStyle = styled.input<StyleProps>`
 	padding-left: 10px;
 	margin-top: 1vh;
 	font-size: 16px;
-	display: ${(props) => (props.displayed === true ? 'none' : 'flex')};
+	display: ${(props) => (props.displayed ? 'none' : 'flex')};
 `;
 
-export const EmailContainer = styled.div`
+export const EmailContainer = styled.div<StyleProps>`
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -61,5 +61,25 @@ export const EmailContainer = styled.div`
 		background-color: #fff;
 		color: #617be3;
 		border: 2px solid #617be3;
+	}
+`;
+
+export const InputWrapper = styled.div`
+	position: relative;
+	label {
+		opacity: 0.5;
+		position: absolute;
+		top: 25px;
+		left: 70px;
+	}
+	@media screen and (min-height: 1073px) {
+		label {
+			top: 30px;
+		}
+	}
+	@media screen and (max-height: 766px) {
+		label {
+			top: 18px;
+		}
 	}
 `;

@@ -34,8 +34,21 @@ type listtype = {
 	meal: [];
 };
 
+const returnMealcode = () => {
+	let hours = new Date().getHours();
+	if (hours > 19) {
+		return 0;
+	} else if (hours < 8 && hours >= 0) {
+		return 0;
+	} else if (hours >= 8 && hours < 13) {
+		return 1;
+	} else {
+		return 2;
+	}
+};
+
 const MealBoard: React.FC = () => {
-	const [mealCode, setMealCode] = useState(0);
+	const [mealCode, setMealCode] = useState(returnMealcode());
 	const [list, setList] = useState([]);
 
 	useEffect(() => {
