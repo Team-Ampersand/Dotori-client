@@ -70,7 +70,7 @@ export const InputWrapper = styled.div`
 		opacity: 0.5;
 		position: absolute;
 		top: 25px;
-		left: 65px;
+		left: 70px;
 	}
 	@media screen and (min-height: 1073px) {
 		label {
@@ -80,7 +80,6 @@ export const InputWrapper = styled.div`
 	@media screen and (max-height: 766px) {
 		label {
 			top: 18px;
-			left: 65px;
 		}
 	}
 `;
