@@ -3,41 +3,39 @@ import { SelfstudyController } from '../Utils/Libs/requestUrls';
 import { getCookie } from 'Utils/Cookie';
 
 class SelfStudy {
-	role = getCookie('role');
-	selfstudy() {
+	async selfstudy() {
+		const role = await getCookie('role');
 		return RequestApi({
 			method: 'PUT',
-			url: SelfstudyController.selfStudy(this.role),
+			url: SelfstudyController.selfStudy(role),
 		});
 	}
-	lookupstudy() {
+	async lookupstudy() {
+		const role = await getCookie('role');
 		return RequestApi({
 			method: 'GET',
-			url: SelfstudyController.selfStudy(this.role),
+			url: SelfstudyController.selfStudy(role),
 		});
 	}
-	cancelstudy() {
+	async cancelstudy() {
+		const role = await getCookie('role');
 		return RequestApi({
 			method: 'PUT',
-			url: SelfstudyController.cancelStudy(this.role),
+			url: SelfstudyController.cancelStudy(role),
 		});
 	}
-	countstudy() {
+	async classlookup(classID: string) {
+		const role = await getCookie('role');
 		return RequestApi({
 			method: 'GET',
-			url: SelfstudyController.countStudy(this.role),
+			url: SelfstudyController.classLookup(parseInt(classID), role),
 		});
 	}
-	classlookup(classID: string) {
+	async studyinfo() {
+		const role = await getCookie('role');
 		return RequestApi({
 			method: 'GET',
-			url: SelfstudyController.classLookup(parseInt(classID), this.role),
-		});
-	}
-	studystatus() {
-		return RequestApi({
-			method: 'GET',
-			url: SelfstudyController.studyStatus(this.role),
+			url: SelfstudyController.studyInfo(role),
 		});
 	}
 }
