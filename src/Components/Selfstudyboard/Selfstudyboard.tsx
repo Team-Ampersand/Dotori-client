@@ -10,54 +10,29 @@ const Room = {
 	roomMax: 50,
 };
 
-const studycount = async () => {
+const studyInfo = async () => {
 	try {
-		const res = await selfstudy.countstudy();
+		const res = await selfstudy.studyinfo();
 		return res;
-	} catch (e: any) {
-		if (e.message === 'Request failed with status code 401') {
-		} else {
-			alert(e);
-		}
+	} catch (e) {
+		alert(e);
 	}
 };
 
-const studyStatus = async () => {
-	const role = getCookie('role');
-	if (role === 'admin') {
-		const res = {
-			data: {
-				data: 'admin',
-			},
-		};
-		return res;
-	} else {
-		try {
-			const res = await selfstudy.studystatus();
-			return res;
-		} catch (e: any) {
-			if (e.message === 'Request failed with status code 401') {
-			} else {
-				alert(e);
-			}
-		}
-	}
-};
-
-const applyStudy = async (setStatus) => {
+const applyStudy = async (setInfo, count) => {
 	try {
 		await selfstudy.selfstudy();
-		setStatus(false);
+		setInfo({ count: count + 1, selfStudy_status: 'APPLIED' });
 		alert('자습 신청이 완료 되었습니다!');
 	} catch (e) {
 		alert('이미 자습신청을 하셨거나 할 수 없는 상태입니다.\n' + e);
 	}
 };
 
-const cancleStudy = async (setStatus) => {
+const cancleStudy = async (setInfo, count) => {
 	try {
 		await selfstudy.cancelstudy();
-		setStatus(true);
+		setInfo({ count: count - 1, selfStudy_status: 'CANT' });
 		alert(
 			'자습 신청이 취소 되었습니다. 오늘 하루동안 다시 신청이 불가능 합니다.'
 		);
@@ -76,15 +51,17 @@ const returnRoomStatusNumber = (compareMax: number, compareMin: number) => {
 	}
 };
 
-const returnButton = (status: string, setStatus, count) => {
+const returnButton = (status: string, setInfo, count) => {
 	let today: string = ManufactureDate('W');
 	let can = ['월', '화', '수', '목'];
 	let cant = ['금', '토', '일'];
-	if (status === 'CAN' && can.indexOf(today)) {
+	if (getCookie('role') === 'admin') {
+		return <p>사감 선생님은 자습신청을 하지 않으셔도 됩니다.</p>;
+	} else if (status === 'CAN' && can.indexOf(today) !== -1) {
 		return (
 			<S.StudyButton
 				onClick={() => {
-					applyStudy(setStatus);
+					applyStudy(setInfo, count);
 				}}
 				Clicked={status}
 			>
@@ -95,16 +72,16 @@ const returnButton = (status: string, setStatus, count) => {
 		return (
 			<S.StudyButton
 				onClick={() => {
-					if (window.confirm('자습을 취소 하시겠습니까?'))
-						cancleStudy(setStatus);
-					else alert('자습이 취소되지 않았습니다.');
+					if (window.confirm('자습을 취소 하시겠습니까?')) {
+						cancleStudy(setInfo, count);
+					} else alert('자습이 취소되지 않았습니다.');
 				}}
 				Clicked={status}
 			>
 				자습취소
 			</S.StudyButton>
 		);
-	} else if (status === 'CANT' || count === 50 || cant.indexOf(today)) {
+	} else if (status === 'CANT' || count >= 50 || cant.indexOf(today) !== -1) {
 		return (
 			<S.StudyButton
 				Clicked={status}
@@ -117,24 +94,18 @@ const returnButton = (status: string, setStatus, count) => {
 				자습불가
 			</S.StudyButton>
 		);
-	} else if (status === 'admin') {
-		return <p>사감 선생님은 자습신청을 하지 않으셔도 됩니다.</p>;
 	}
 };
 
 const Selfstudyboard: React.FC = () => {
-	const [status, setStatus] = useState('');
-	const [count, setCount] = useState(0);
+	const [info, setInfo] = useState({ count: '0', selfStudy_status: '' });
 	useEffect(() => {
-		studycount().then((res) => {
-			setCount(res?.data.data);
+		studyInfo().then((res) => {
+			setInfo(res?.data.data);
 		});
-		studyStatus().then((res) => {
-			setStatus(res?.data.data);
-		});
-	}, [status]);
+	}, []);
 	return (
-		<S.Positioner Clicked={status}>
+		<S.Positioner Clicked={info.selfStudy_status}>
 			<S.StudyHeader>
 				<h2>자습신청</h2>
 				<div>
@@ -149,18 +120,21 @@ const Selfstudyboard: React.FC = () => {
 					{ManufactureDate('D')}일 {ManufactureDate('W')}요일
 				</strong>
 				<span>
-					{count}/{Room.roomMax}
+					{parseInt(info.count)}/{Room.roomMax}
 				</span>
 				<S.PointProgress>
 					<S.ActiveProgress
-						statusColor={returnRoomStatusNumber(Room.roomMax, count)}
-						count={count}
+						statusColor={returnRoomStatusNumber(
+							Room.roomMax,
+							parseInt(info.count)
+						)}
+						count={parseInt(info.count)}
 					/>
 				</S.PointProgress>
-				{returnButton(status, setStatus, count)}
+				{returnButton(info.selfStudy_status, setInfo, parseInt(info.count))}
 			</S.StudyContent>
 		</S.Positioner>
 	);
 };
 
-export default Selfstudyboard;
+export default React.memo(Selfstudyboard);
