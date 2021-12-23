@@ -55,9 +55,16 @@ const returnButton = (status: string, setInfo, count) => {
 	let today: string = ManufactureDate('W');
 	let can = ['월', '화', '수', '목'];
 	let cant = ['금', '토', '일'];
+	let hours = new Date().getHours();
+	console.log(hours);
 	if (getCookie('role') === 'admin') {
 		return <p>사감 선생님은 자습신청을 하지 않으셔도 됩니다.</p>;
-	} else if (status === 'CAN' && can.indexOf(today) !== -1) {
+	} else if (
+		status === 'CAN' &&
+		can.indexOf(today) !== -1 &&
+		hours >= 20 &&
+		hours < 22
+	) {
 		return (
 			<S.StudyButton
 				onClick={() => {
@@ -81,7 +88,13 @@ const returnButton = (status: string, setInfo, count) => {
 				자습취소
 			</S.StudyButton>
 		);
-	} else if (status === 'CANT' || count >= 50 || cant.indexOf(today) !== -1) {
+	} else if (
+		status === 'CANT' ||
+		count >= 50 ||
+		cant.indexOf(today) !== -1 ||
+		hours < 20 ||
+		hours > 22
+	) {
 		return (
 			<S.StudyButton
 				Clicked={status}
