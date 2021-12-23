@@ -86,8 +86,9 @@ class Member {
 			throw new Error(e);
 		}
 	}
-	findPassword(newPassword: string) {
+	findPassword(newPassword: string, emailCode: string) {
 		const data = {
+			key: emailCode,
 			newPassword: newPassword,
 		};
 		return RequestApi({
