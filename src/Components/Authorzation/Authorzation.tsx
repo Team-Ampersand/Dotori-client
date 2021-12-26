@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import * as S from "./Style";
 import StuAuthorityItem from "Components/StuAuthorityItem/StuAuthorityItem";
-import { rolelookup } from "Utils/Libs/roleLookup";
 import stuInfo from "Api/stuInfo";
 
 interface studentList {
@@ -15,7 +14,7 @@ const Authorzation: React.FC = () => {
   const [studentList, setStudentList] = useState<studentList[]>([]);
 
   const getClassStuInfo = async () => {
-    const role = await rolelookup();
+    const role = await localStorage.getItem("role");
     return await stuInfo.getClassStuInfo(role, parseInt(stuGrade + stuClass));
   };
 
