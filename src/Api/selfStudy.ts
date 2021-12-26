@@ -6,19 +6,19 @@ class SelfStudy {
 	async selfstudy() {
 		return RequestApi({
 			method: 'PUT',
-			url: SelfstudyController.selfStudy(localStorage.getItem('role')!),
+			url: SelfstudyController.selfStudy(localStorage.getItem('role')),
 		});
 	}
 	async lookupstudy() {
 		return RequestApi({
 			method: 'GET',
-			url: SelfstudyController.selfStudy(localStorage.getItem('role')!),
+			url: SelfstudyController.selfStudy(localStorage.getItem('role')),
 		});
 	}
 	async cancelstudy() {
 		return RequestApi({
 			method: 'PUT',
-			url: SelfstudyController.cancelStudy(localStorage.getItem('role')!),
+			url: SelfstudyController.cancelStudy(localStorage.getItem('role')),
 		});
 	}
 	async classlookup(classID: string) {
@@ -33,7 +33,7 @@ class SelfStudy {
 	async studyinfo() {
 		return RequestApi({
 			method: 'GET',
-			url: SelfstudyController.studyInfo(localStorage.getItem('role')!),
+			url: SelfstudyController.studyInfo(localStorage.getItem('role')),
 		});
 	}
 }
