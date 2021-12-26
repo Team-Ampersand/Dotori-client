@@ -3,14 +3,14 @@ import RequestApi from 'Utils/Libs/requestApi';
 import { MusicController } from 'Utils/Libs/requestUrls';
 
 class Music {
-	async music(musicUrl: string) {
+	music(musicUrl: string) {
 		try {
 			const data = {
 				musicUrl: musicUrl,
 			};
 			return RequestApi({
 				method: 'POST',
-				url: MusicController.music(await getCookie('role')),
+				url: MusicController.music(localStorage.getItem('role')!),
 				data: data,
 			});
 		} catch (e: any) {
@@ -21,7 +21,7 @@ class Music {
 		try {
 			return RequestApi({
 				method: 'GET',
-				url: MusicController.music(await getCookie('role')),
+				url: MusicController.music(localStorage.getItem('role')!),
 			});
 		} catch (e: any) {
 			throw new Error(e);
@@ -31,7 +31,7 @@ class Music {
 		try {
 			return RequestApi({
 				method: 'GET',
-				url: MusicController.todayMusic(await getCookie('role')),
+				url: MusicController.todayMusic(localStorage.getItem('role')!),
 			});
 		} catch (e: any) {
 			throw new Error(e);
@@ -41,7 +41,7 @@ class Music {
 		try {
 			return RequestApi({
 				method: 'DELETE',
-				url: MusicController.deleteMusic(await getCookie('role'), id),
+				url: MusicController.deleteMusic(localStorage.getItem('role')!, id),
 			});
 		} catch (e: any) {
 			throw new Error(e);
