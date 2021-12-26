@@ -93,22 +93,22 @@ export const RoleController = {
 //자습신청
 export const SelfstudyController = {
 	//자습신청
-	selfStudy: (role: string) => {
+	selfStudy: (role: string | null) => {
 		return `/${role}/selfstudy`;
 	},
 	//자습취소
-	cancelStudy: (role: string) => {
+	cancelStudy: (role: string | null) => {
 		return `/${role}/cancel/selfstudy`;
 	},
 	//신청조회
-	studyLookup: (role: string) => {
+	studyLookup: (role: string | null) => {
 		return `/${role}/selfstudy`;
 	},
 	//반별 신청 조회
-	classLookup: (classId: number, role: string) => {
+	classLookup: (classId: number, role: string | null) => {
 		return `/${role}/selfstudy/${classId}`;
 	},
-	studyInfo: (role: string) => {
+	studyInfo: (role: string | null) => {
 		return `/${role}/selfstudy/info`;
 	},
 };
@@ -116,13 +116,13 @@ export const SelfstudyController = {
 //기상송 신청
 export const MusicController = {
 	//음악 신청(post) or 조회(get)
-	music: (role: string) => {
+	music: (role: string | null) => {
 		return `/${role}/music`;
 	},
-	todayMusic: (role: string) => {
+	todayMusic: (role: string | null) => {
 		return `/${role}/music/current`;
 	},
-	deleteMusic: (role: string, id: number) => {
+	deleteMusic: (role: string | null, id: number) => {
 		return `/${role}/music/${id}`;
 	},
 };
