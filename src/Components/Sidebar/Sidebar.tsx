@@ -37,7 +37,10 @@ const sidebarMenuData = [
 				router: '/authorization',
 				menuIcon: 'More',
 				menuTitle: '학생 정보',
-				show: getCookie('role') === 'admin' ? true : false,
+				show:
+					getCookie('role') === 'admin' || getCookie('role') === 'developer'
+						? true
+						: false,
 			},
 		],
 	},
