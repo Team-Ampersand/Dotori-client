@@ -10,7 +10,7 @@ class Music {
 			};
 			return RequestApi({
 				method: 'POST',
-				url: MusicController.music(localStorage.getItem('role')!),
+				url: MusicController.music(localStorage.getItem('role')),
 				data: data,
 			});
 		} catch (e: any) {
@@ -21,7 +21,7 @@ class Music {
 		try {
 			return RequestApi({
 				method: 'GET',
-				url: MusicController.music(localStorage.getItem('role')!),
+				url: MusicController.music(localStorage.getItem('role')),
 			});
 		} catch (e: any) {
 			throw new Error(e);
@@ -31,7 +31,7 @@ class Music {
 		try {
 			return RequestApi({
 				method: 'GET',
-				url: MusicController.todayMusic(localStorage.getItem('role')!),
+				url: MusicController.todayMusic(localStorage.getItem('role')),
 			});
 		} catch (e: any) {
 			throw new Error(e);
@@ -41,7 +41,7 @@ class Music {
 		try {
 			return RequestApi({
 				method: 'DELETE',
-				url: MusicController.deleteMusic(localStorage.getItem('role')!, id),
+				url: MusicController.deleteMusic(localStorage.getItem('role'), id),
 			});
 		} catch (e: any) {
 			throw new Error(e);
