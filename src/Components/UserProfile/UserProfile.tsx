@@ -31,8 +31,20 @@ const TryLogout = () => {
 			history.push('/');
 			alert('로그아웃 되었습니다.');
 			window.location.reload();
-		} catch (e) {
-			alert(e);
+		} catch (e: any) {
+			if (e.message === 'Request failed with status code 401') {
+				alert('로그아웃 되었습니다. 다시 로그인 해주세요.');
+
+				// deleteCookie('Dotori_accessToken');
+				// deleteCookie('Dotori_refreshToken');
+				// deleteCookie('role');
+
+				localStorage.removeItem('Dotori_accessToken');
+				localStorage.removeItem('Dotori_refreshToken');
+				localStorage.removeItem('role');
+
+				window.location.reload();
+			}
 		}
 	};
 	return onLogout;
