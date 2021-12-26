@@ -72,14 +72,10 @@ const SongItem: React.FC<SongProps> = ({ songObj }) => {
 	}, [videoId]);
 
 	return (
-		<S.Positioner>
+		<S.Positioner href={songObj.url} target="_blank" rel="noreferrer">
 			<S.ImgContainer thumbnail={videoId} />
 			<S.Container>
-				<S.TitleContainer>
-					<a href={songObj.url} target="_blank" rel="noreferrer">
-						{title}
-					</a>
-				</S.TitleContainer>
+				<S.TitleContainer>{title}</S.TitleContainer>
 				<S.AuthorContainer>{songObj.username}</S.AuthorContainer>
 				<S.AuthorContainer>{dateFormat(songObj.createdDate)}</S.AuthorContainer>
 			</S.Container>
@@ -87,10 +83,11 @@ const SongItem: React.FC<SongProps> = ({ songObj }) => {
 				''
 			) : (
 				<S.DeleteContainer
-					onClick={() => {
+					onClick={(e) => {
+						e.preventDefault();
 						window.confirm('삭제 하시겠습니까?')
 							? deleteMusic(songObj.id)
-							: alert('삭제 하지 않았습니다.');
+							: alert('삭제 하지 않았어요.');
 					}}
 				>
 					❌

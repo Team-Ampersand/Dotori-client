@@ -39,6 +39,9 @@ export const InputWrapper = styled.div`
 		box-sizing: border-box;
 		border-radius: 15px;
 	}
+	input:focus::-webkit-input-placeholder {
+		color: gray;
+	}
 	button {
 		margin-top: 1vh;
 		width: 160px;

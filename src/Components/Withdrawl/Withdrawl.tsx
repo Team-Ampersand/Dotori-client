@@ -42,9 +42,13 @@ const Withdrawl: React.FC = () => {
 						onWithdrawl(id, password).then(() => {
 							alert('회원탈퇴가 되었습니다.');
 
-							deleteCookie('Dotori_accessToken');
-							deleteCookie('Dotori_refreshToken');
-							deleteCookie('role');
+							// deleteCookie('Dotori_accessToken');
+							// deleteCookie('Dotori_refreshToken');
+							// deleteCookie('role');
+
+							localStorage.removeItem('Dotori_accessToken');
+							localStorage.removeItem('Dotori_refreshToken');
+							localStorage.removeItem('role');
 
 							history.push('/signin');
 							window.location.reload();

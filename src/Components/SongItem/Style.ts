@@ -4,7 +4,7 @@ type StyleProps = {
 	thumbnail: string;
 };
 
-export const Positioner = styled.div`
+export const Positioner = styled.a`
 	width: 95%;
 	height: 150px;
 	background-color: #fff;
@@ -13,8 +13,9 @@ export const Positioner = styled.div`
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 	display: flex;
 	align-items: center;
-	margin-bottom: 3vh;
 	justify-content: space-evenly;
+	margin-bottom: 3vh;
+	text-decoration: none;
 `;
 
 export const ImgContainer = styled.div<StyleProps>`
@@ -32,9 +33,10 @@ export const TitleContainer = styled.span`
 	font-size: 20px;
 	font-weight: 600;
 	color: #333;
+
 	a {
-		text-decoration: none;
 		color: #333;
+		text-decoration: none;
 	}
 `;
 
