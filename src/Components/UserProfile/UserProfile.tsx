@@ -23,9 +23,13 @@ const TryLogout = () => {
 	const onLogout = async () => {
 		try {
 			await member.logout();
-			deleteCookie('Dotori_accessToken');
-			deleteCookie('Dotori_refreshToken');
-			deleteCookie('role');
+			// deleteCookie('Dotori_accessToken');
+			// deleteCookie('Dotori_refreshToken');
+			// deleteCookie('role');
+
+			localStorage.removeItem('Dotori_accessToken');
+			localStorage.removeItem('Dotori_refreshToken');
+			localStorage.removeItem('role');
 
 			setLogged(false);
 			history.push('/');

@@ -3,7 +3,6 @@ import * as S from "./Style";
 import NoticeBoardItem from "../NoticeBoardItem/NoticeBoardItem";
 import { Link } from "react-router-dom";
 import notice from "Api/notice";
-import { getCookie } from "Utils/Cookie";
 
 interface board {
   id: number;
@@ -16,18 +15,18 @@ const NoticeBoard: React.FC = () => {
   const [board, setBoard] = useState<board[]>([]);
 
   const getNotice = async () => {
-    const role = await getCookie("role");
+    const role = await localStorage.getItem("role");
     return await notice.getNotice(role);
   };
   const getNoticeDetail = async (page: number) => {
-    const role = await getCookie("role");
+    const role = await localStorage.getItem("role");
     return await notice.getNoticeDetail(role, page);
   };
 
-  const [role, setRole] = useState<string>("");
+  const [role, setRole] = useState<string | null>("");
 
   const settingRole = async () => {
-    const role = await getCookie("role");
+    const role = await localStorage.getItem("role");
     setRole(role);
   };
 

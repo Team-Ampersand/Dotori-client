@@ -2,7 +2,7 @@ import { noticeController } from "Utils/Libs/requestUrls";
 import RequestApi from "Utils/Libs/requestApi";
 
 class notice {
-  async getNotice(role: string) {
+  async getNotice(role: string | null) {
     try {
       return await RequestApi({
         method: "get",
@@ -12,7 +12,7 @@ class notice {
       throw new Error(e);
     }
   }
-  async getNoticeDetail(role: string, page: number) {
+  async getNoticeDetail(role: string | null, page: number) {
     try {
       return await RequestApi({
         method: "get",
@@ -22,7 +22,7 @@ class notice {
       throw new Error(e);
     }
   }
-  async getNoticeItem(role: string, boardId: number) {
+  async getNoticeItem(role: string | null, boardId: number) {
     try {
       return await RequestApi({
         method: "get",
@@ -32,7 +32,7 @@ class notice {
       throw new Error(e);
     }
   }
-  async noticeWrite(role: string, title: string, content: string) {
+  async noticeWrite(role: string | null, title: string, content: string) {
     try {
       const data = {
         title: title,
@@ -47,7 +47,7 @@ class notice {
       throw new Error(e);
     }
   }
-  async noticeDelete(role: string, boardId: number) {
+  async noticeDelete(role: string | null, boardId: number) {
     try {
       return await RequestApi({
         method: "DELETE",
@@ -57,7 +57,7 @@ class notice {
       throw new Error(e);
     }
   }
-  async noticeUpdate(role: string, boardId: number, title, content) {
+  async noticeUpdate(role: string | null, boardId: number, title, content) {
     try {
       const data = {
         title: title,

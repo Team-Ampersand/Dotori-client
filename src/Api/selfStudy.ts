@@ -4,38 +4,36 @@ import { getCookie } from 'Utils/Cookie';
 
 class SelfStudy {
 	async selfstudy() {
-		const role = await getCookie('role');
 		return RequestApi({
 			method: 'PUT',
-			url: SelfstudyController.selfStudy(role),
+			url: SelfstudyController.selfStudy(localStorage.getItem('role')!),
 		});
 	}
 	async lookupstudy() {
-		const role = await getCookie('role');
 		return RequestApi({
 			method: 'GET',
-			url: SelfstudyController.selfStudy(role),
+			url: SelfstudyController.selfStudy(localStorage.getItem('role')!),
 		});
 	}
 	async cancelstudy() {
-		const role = await getCookie('role');
 		return RequestApi({
 			method: 'PUT',
-			url: SelfstudyController.cancelStudy(role),
+			url: SelfstudyController.cancelStudy(localStorage.getItem('role')!),
 		});
 	}
 	async classlookup(classID: string) {
-		const role = await getCookie('role');
 		return RequestApi({
 			method: 'GET',
-			url: SelfstudyController.classLookup(parseInt(classID), role),
+			url: SelfstudyController.classLookup(
+				parseInt(classID),
+				localStorage.getItem('role')!
+			),
 		});
 	}
 	async studyinfo() {
-		const role = await getCookie('role');
 		return RequestApi({
 			method: 'GET',
-			url: SelfstudyController.studyInfo(role),
+			url: SelfstudyController.studyInfo(localStorage.getItem('role')!),
 		});
 	}
 }
