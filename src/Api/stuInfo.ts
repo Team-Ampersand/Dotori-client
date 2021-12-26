@@ -2,7 +2,7 @@ import { StuInfoController } from "Utils/Libs/requestUrls";
 import RequestApi from "Utils/Libs/requestApi";
 
 class stuInfo {
-  async getClassStuInfo(role: string, classId: number) {
+  async getClassStuInfo(role: string | null, classId: number) {
     try {
       return await RequestApi({
         method: "GET",
@@ -14,7 +14,7 @@ class stuInfo {
       } else return;
     }
   }
-  async updateStuNum(role: string, stuId: number, stuNum: string) {
+  async updateStuNum(role: string | null, stuId: number, stuNum: string) {
     try {
       const data = {
         receiverId: stuId,
@@ -31,7 +31,7 @@ class stuInfo {
       } else throw Error(e);
     }
   }
-  async updateStuName(role: string, stuId: number, stuName: string) {
+  async updateStuName(role: string | null, stuId: number, stuName: string) {
     try {
       const data = {
         receiverId: stuId,
@@ -48,7 +48,7 @@ class stuInfo {
       } else throw Error(e);
     }
   }
-  async updateStuRole(role: string, stuId: number, stuRole: string) {
+  async updateStuRole(role: string | null, stuId: number, stuRole: string) {
     try {
       const data = {
         receiverId: stuId,

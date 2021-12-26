@@ -9,7 +9,7 @@ interface NoticeBoardItemProps {
   title: string;
   createdDate: string;
   editState: boolean;
-  role: string;
+  role: string | null;
 }
 
 const returnAuthorColor = (authorType: string) => {
