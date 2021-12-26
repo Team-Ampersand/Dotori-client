@@ -3,7 +3,6 @@ import * as S from "./Style";
 import { Prompt, useHistory } from "react-router-dom";
 import { useBeforeunload } from "react-beforeunload";
 import notice from "../../Api/notice";
-import { getCookie } from "Utils/Cookie";
 
 const NoticeWrite: React.FC = () => {
   const [title, setTitle] = useState("");
@@ -26,7 +25,7 @@ const NoticeWrite: React.FC = () => {
   const createNotice = async () => {
     await confirm();
     try {
-      const role = await getCookie("role");
+      const role = await localStorage.getItem("role");
       const res = await notice.noticeWrite(role, title, content);
       await history.push("/notice");
       return res;

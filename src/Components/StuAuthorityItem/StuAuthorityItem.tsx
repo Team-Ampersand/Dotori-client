@@ -46,7 +46,6 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
           <S.AuthorityStyle>{returnRoleValue(authority)}</S.AuthorityStyle>
         </S.StuInfoWrapper>
         <S.EditBtn onClick={() => setEditState(!editState)}>수정</S.EditBtn>
-
         <InfoUpdateModal
           modalState={editState}
           closeModal={closeModal}
