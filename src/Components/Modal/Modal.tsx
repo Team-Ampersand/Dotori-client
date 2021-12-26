@@ -9,7 +9,7 @@ interface ModalProps {
   authorColor: string;
   updateState: boolean;
   setUpdateState: (e: any) => void;
-  role: string;
+  role: string | null;
 }
 
 const Modal: React.FC<ModalProps> = ({
