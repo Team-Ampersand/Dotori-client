@@ -5,14 +5,14 @@ import { getCookie } from 'Utils/Cookie';
 import { ManufactureDate } from 'Utils/ManufactureDate';
 
 const musicApply = async (musicUrl: string) => {
-  try {
-    await music.music(musicUrl);
-    alert("노래가 신청되었습니다.");
-  } catch (e: any) {
-    e.message === "Request failed with status code 409"
-      ? alert("이미 노래를 신청 해 신청 하실 수 없습니다.")
-      : alert(e);
-  }
+	try {
+		await music.music(musicUrl);
+		alert('노래가 신청되었습니다.');
+	} catch (e: any) {
+		e.message === 'Request failed with status code 409'
+			? alert('이미 노래를 신청 해 신청 하실 수 없습니다.')
+			: alert(e);
+	}
 };
 
 const returnBtn = (
@@ -22,7 +22,7 @@ const returnBtn = (
 ) => {
 	const today = ManufactureDate('W');
 	let cant = ['금', '토'];
-	const role = getCookie('role');
+	const role = localStorage.getItem('role');
 	if (role === 'admin') {
 		return (
 			<>
@@ -93,7 +93,7 @@ const returnBtn = (
 };
 
 const SongRequest: React.FC = () => {
-  const [url, setUrl] = useState<string>("");
+	const [url, setUrl] = useState<string>('');
 	const songInput = useRef<HTMLInputElement>(null);
 
 	useEffect(() => {
@@ -114,9 +114,9 @@ const SongRequest: React.FC = () => {
 };
 
 export const CheckUrl = (url) => {
-  let regex =
-    /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/;
-  return regex.test(url);
+	let regex =
+		/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/;
+	return regex.test(url);
 };
 
 export default SongRequest;

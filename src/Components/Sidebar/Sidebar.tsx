@@ -38,7 +38,8 @@ const sidebarMenuData = [
 				menuIcon: 'More',
 				menuTitle: '학생 정보',
 				show:
-					getCookie('role') === 'admin' || getCookie('role') === 'developer'
+					localStorage.getItem('role') === 'admin' ||
+					localStorage.getItem('role') === 'developer'
 						? true
 						: false,
 			},
