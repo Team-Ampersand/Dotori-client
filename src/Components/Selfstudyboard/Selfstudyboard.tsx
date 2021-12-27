@@ -57,13 +57,13 @@ const returnButton = (status: string, setInfo, count) => {
 	let cant = ['금', '토', '일'];
 	let hours = new Date().getHours();
 	console.log(hours);
-	if (getCookie('role') === 'admin') {
+	if (localStorage.getItem('role') === 'admin') {
 		return <p>사감 선생님은 자습신청을 하지 않으셔도 됩니다.</p>;
 	} else if (
 		status === 'CAN' &&
-		can.indexOf(today) !== -1
-		// && hours >= 20 &&
-		// hours < 22
+		can.indexOf(today) !== -1 &&
+		hours >= 20 &&
+		hours < 22
 	) {
 		return (
 			<S.StudyButton
@@ -91,17 +91,15 @@ const returnButton = (status: string, setInfo, count) => {
 	} else if (
 		status === 'CANT' ||
 		count >= 50 ||
-		cant.indexOf(today) !== -1
-		// || hours < 20 ||
-		// hours > 22
+		cant.indexOf(today) !== -1 ||
+		hours < 20 ||
+		hours > 22
 	) {
 		return (
 			<S.StudyButton
 				Clicked={status}
 				onClick={() => {
-					alert(
-						'이미 자습신청을 하신 후 취소하여 다시 자습을 신청 할 수 없습니다.'
-					);
+					alert('아직 자습을 신청하실 수 있는 시간이 아닙니다.');
 				}}
 			>
 				자습불가

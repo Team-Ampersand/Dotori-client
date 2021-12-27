@@ -63,7 +63,7 @@ const dateFormat = (createdDate: Date) => {
 const SongItem: React.FC<SongProps> = ({ songObj }) => {
 	const [title, setTitle] = useState('');
 	const videoId = youtube_parser(songObj.url);
-	const role = getCookie('role');
+	const role = localStorage.getItem('role');
 
 	useEffect(() => {
 		songTitle(videoId).then((res) => {
