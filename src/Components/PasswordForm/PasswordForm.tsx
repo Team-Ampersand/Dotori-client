@@ -1,9 +1,9 @@
-import { DotoriLogo } from "Assets/Svg";
-import React, { useState } from "react";
-import * as S from "./Style";
-import member from "Api/member";
-import { useHistory } from "react-router";
-import { History } from "history";
+import { DotoriLogo } from 'Assets/Svg';
+import React, { useState } from 'react';
+import * as S from './Style';
+import member from 'Api/member';
+import { useHistory } from 'react-router';
+import { History } from 'history';
 
 const authPassword = async (id: string, setDisabled, setDisplayed) => {
 	try {
@@ -33,17 +33,17 @@ const findPassword = async (newPw: string, emailCode, history) => {
 };
 
 const changePassword = async (password: string, newPw: string, history) => {
-  try {
-    await member.passwordChange(password, newPw);
-    alert("비밀번호가 변경되었습니다.");
-    history.push("/home");
-  } catch (e: any) {
-    alert(
-      e.message === "Request failed with status code 409"
-        ? alert("현재 비밀번호가 다릅니다.")
-        : alert("개발자에게 문의 해주세요!" + e)
-    );
-  }
+	try {
+		await member.passwordChange(password, newPw);
+		alert('비밀번호가 변경되었습니다.');
+		history.push('/home');
+	} catch (e: any) {
+		alert(
+			e.message === 'Request failed with status code 409'
+				? alert('현재 비밀번호가 다릅니다.')
+				: alert('개발자에게 문의 해주세요!' + e)
+		);
+	}
 };
 
 const returnPassworForm = (
@@ -143,7 +143,7 @@ const returnPassworForm = (
 				/>
 				<S.ButtonStyle
 					onClick={() => {
-						if (newPw === repassword) alert('입력한 비밀번호가 서로 다릅니다.');
+						if (newPw !== repassword) alert('입력한 비밀번호가 서로 다릅니다.');
 						else changePassword(password, newPw, history);
 					}}
 				>
