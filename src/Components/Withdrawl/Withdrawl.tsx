@@ -5,9 +5,21 @@ import member from 'Api/member';
 import { useHistory } from 'react-router';
 import { deleteCookie } from 'Utils/Cookie';
 
-const onWithdrawl = async (id: string, password: string) => {
+const onWithdrawl = async (id: string, password: string, history) => {
 	try {
 		await member.delete(id, password);
+		alert('회원탈퇴가 되었습니다.');
+
+		// deleteCookie('Dotori_accessToken');
+		// deleteCookie('Dotori_refreshToken');
+		// deleteCookie('role');
+
+		localStorage.removeItem('Dotori_accessToken');
+		localStorage.removeItem('Dotori_refreshToken');
+		localStorage.removeItem('role');
+
+		history.push('/signin');
+		window.location.reload();
 	} catch (e) {
 		alert(e);
 	}
@@ -39,20 +51,7 @@ const Withdrawl: React.FC = () => {
 							'정말로 회원탈퇴 하시겠습니까?\n회원탈퇴로 인한 불이익은 Dotori 개발팀에서 책임지지 않습니다.'
 						)
 					) {
-						onWithdrawl(id, password).then(() => {
-							alert('회원탈퇴가 되었습니다.');
-
-							// deleteCookie('Dotori_accessToken');
-							// deleteCookie('Dotori_refreshToken');
-							// deleteCookie('role');
-
-							localStorage.removeItem('Dotori_accessToken');
-							localStorage.removeItem('Dotori_refreshToken');
-							localStorage.removeItem('role');
-
-							history.push('/signin');
-							window.location.reload();
-						});
+						onWithdrawl(id, password, history);
 					} else {
 						alert('잘 생각하셨습니다!');
 						history.push('/');

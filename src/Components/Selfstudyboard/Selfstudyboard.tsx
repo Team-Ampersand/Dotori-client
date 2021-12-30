@@ -56,7 +56,6 @@ const returnButton = (status: string, setInfo, count) => {
 	let can = ['월', '화', '수', '목'];
 	let cant = ['금', '토', '일'];
 	let hours = new Date().getHours();
-	console.log(hours);
 	if (localStorage.getItem('role') === 'admin') {
 		return <p>사감 선생님은 자습신청을 하지 않으셔도 됩니다.</p>;
 	} else if (
