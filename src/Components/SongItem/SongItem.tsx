@@ -63,7 +63,7 @@ const dateFormat = (createdDate: Date) => {
 const SongItem: React.FC<SongProps> = ({ songObj }) => {
 	const [title, setTitle] = useState('');
 	const videoId = youtube_parser(songObj.url);
-	const role = getCookie('role');
+	const role = localStorage.getItem('role');
 
 	useEffect(() => {
 		songTitle(videoId).then((res) => {
@@ -79,9 +79,7 @@ const SongItem: React.FC<SongProps> = ({ songObj }) => {
 				<S.AuthorContainer>{songObj.username}</S.AuthorContainer>
 				<S.AuthorContainer>{dateFormat(songObj.createdDate)}</S.AuthorContainer>
 			</S.Container>
-			{role === 'member' ? (
-				''
-			) : (
+			{role === 'admin' || role === 'developer' || role === 'councillor' ? (
 				<S.DeleteContainer
 					onClick={(e) => {
 						e.preventDefault();
@@ -92,6 +90,8 @@ const SongItem: React.FC<SongProps> = ({ songObj }) => {
 				>
 					❌
 				</S.DeleteContainer>
+			) : (
+				''
 			)}
 		</S.Positioner>
 	);

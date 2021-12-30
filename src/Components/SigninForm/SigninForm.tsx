@@ -8,6 +8,7 @@ import member from '../../Api/member';
 import refresh from '../../Api/refresh';
 import { setCookie, deleteCookie } from 'Utils/Cookie';
 import { rolelookup } from 'Utils/Libs/roleLookup';
+import useSWR from 'swr';
 
 const TrySignin = () => {
 	const [id, setId] = useState('');
@@ -76,6 +77,7 @@ const TrySignin = () => {
 
 			setLogged(true);
 			history.push('/home');
+			window.location.reload();
 		} catch (e: any) {
 			if (e.message === 'Request failed with status code 409') {
 				alert('비밀번호가 올바르지 않습니다.');

@@ -5,6 +5,10 @@ import Logo from 'Assets/Svg/Logo';
 import { getCookie } from 'Utils/Cookie';
 import { useHistory } from 'react-router';
 
+const returnShow = () => {
+	return localStorage.getItem('role');
+};
+
 const sidebarMenuData = [
 	{
 		menuName: 'mainMenu',
@@ -38,7 +42,7 @@ const sidebarMenuData = [
 				menuIcon: 'More',
 				menuTitle: '학생 정보',
 				show:
-					getCookie('role') === 'admin' || getCookie('role') === 'developer'
+					returnShow() === 'admin' || returnShow() === 'developer'
 						? true
 						: false,
 			},
@@ -72,7 +76,15 @@ const Sidebar: React.FC = () => {
 				<Logo />
 				{/* </S.Logo> */}
 			</S.LogoWrapper>
-			{mappingSidebarMenu}
+			{sidebarMenuData.map((menuData) => (
+				<SidebarList
+					menuDataLists={menuData.menuLists}
+					menuName={menuData.menuName}
+					currentRouter={currentRouter}
+					setCurrnentRouter={setCurrentRouter}
+					key={`sidebar-${menuData.menuName}`}
+				/>
+			))}
 		</S.Postioner>
 	);
 };
