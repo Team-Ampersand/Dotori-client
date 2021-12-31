@@ -59,10 +59,10 @@ const returnButton = (status: string, setInfo, count) => {
 	if (localStorage.getItem('role') === 'admin') {
 		return <p>사감 선생님은 자습신청을 하지 않으셔도 됩니다.</p>;
 	} else if (
-		status === 'CAN'
-		// && can.indexOf(today) !== -1
-		// && hours >= 20 &&
-		// hours < 22
+		status === 'CAN' &&
+		can.indexOf(today) !== -1 &&
+		hours >= 20 &&
+		hours < 22
 	) {
 		return (
 			<S.StudyButton
@@ -89,10 +89,10 @@ const returnButton = (status: string, setInfo, count) => {
 		);
 	} else if (
 		status === 'CANT' ||
-		count >= 50
-		// || cant.indexOf(today) !== -1 ||
-		//hours < 20 ||
-		//hours > 22
+		count >= 50 ||
+		cant.indexOf(today) !== -1 ||
+		hours < 20 ||
+		hours > 22
 	) {
 		return (
 			<S.StudyButton
