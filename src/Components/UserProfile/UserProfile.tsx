@@ -94,7 +94,7 @@ const UserProfile: React.FC = () => {
 				<S.UserWrapper>
 					<Profile />
 					<div>
-						<span className="name">{profile?.username}</span> <br />
+						<span className="name">{profile?.username}</span>
 						<span className="grade">
 							{profile?.stuNum.substr(0, 1)}-{profile?.stuNum.substr(1, 1)},{' '}
 							{profile?.stuNum.substr(2, 4)}번
