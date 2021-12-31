@@ -104,7 +104,13 @@ const UserProfile: React.FC = () => {
 			</S.Content>
 			<S.MemberControl>
 				<Link to={'/change/password'}>비밀번호 변경</Link>
-				<Link to={'/withdrawl'}>회원 탈퇴</Link>
+				<div
+					onClick={() => {
+						alert('회원탈퇴는 개발자에게 문의 해주세요.');
+					}}
+				>
+					회원 탈퇴
+				</div>
 			</S.MemberControl>
 			<S.Policy>
 				<span>© 2021 Ampersand. All Rights Reserved.</span>

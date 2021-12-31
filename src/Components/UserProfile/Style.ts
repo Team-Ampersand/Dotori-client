@@ -182,4 +182,10 @@ export const MemberControl = styled.div`
 		color: #bbbbbe;
 		font-weight: 500;
 	}
+	div {
+		cursor: pointer;
+		text-decoration: none;
+		color: #bbbbbe;
+		font-weight: 500;
+	}
 `;
