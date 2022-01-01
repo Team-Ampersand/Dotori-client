@@ -62,6 +62,7 @@ const myPage = async () => {
 const UserProfile: React.FC = () => {
 	const [profile, setProfile] = useState<UserProfileType>();
 	const onLogout = TryLogout();
+	const setLogged = useSetRecoilState(HasToken);
 	const history = useHistory();
 
 	useEffect(() => {
@@ -78,6 +79,21 @@ const UserProfile: React.FC = () => {
 					localStorage.removeItem('role');
 
 					history.push('/signin');
+					setLogged(false);
+					window.location.reload();
+				} else if (e.message === 'Request failed with status code 403') {
+					alert('로그아웃 되었습니다. 다시 로그인 해주세요.');
+
+					// deleteCookie('Dotori_accessToken');
+					// deleteCookie('Dotori_refreshToken');
+					// deleteCookie('role');
+
+					localStorage.removeItem('Dotori_accessToken');
+					localStorage.removeItem('Dotori_refreshToken');
+					localStorage.removeItem('role');
+
+					history.push('/');
+					setLogged(false);
 					window.location.reload();
 				}
 			});

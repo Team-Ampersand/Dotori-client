@@ -14,8 +14,9 @@ const studyInfo = async () => {
 	try {
 		const res = await selfstudy.studyinfo();
 		return res;
-	} catch (e) {
-		alert(e);
+	} catch (e: any) {
+		if (e.message === 'Request failed with status code 401') {
+		} else alert(e);
 	}
 };
 
