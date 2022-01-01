@@ -42,7 +42,9 @@ const sidebarMenuData = [
 				menuIcon: 'More',
 				menuTitle: '학생 정보',
 				show:
-					returnShow() === 'admin' || returnShow() === 'developer'
+					returnShow() === 'admin' ||
+					returnShow() === 'developer' ||
+					returnShow() === 'councillor'
 						? true
 						: false,
 			},
