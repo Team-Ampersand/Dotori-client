@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ManufactureDate } from 'Utils/ManufactureDate';
 
 type StyleProps = {
 	statusColor?: string;
@@ -16,7 +17,8 @@ export const Positioner = styled.div<StyleProps>`
 			if (
 				props.Clicked === 'CAN' &&
 				new Date().getHours() >= 20 &&
-				new Date().getHours() < 22
+				new Date().getHours() < 22 &&
+				['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1
 			) {
 				return '#fff';
 			} else if (props.Clicked === 'APPLIED') {
@@ -24,7 +26,8 @@ export const Positioner = styled.div<StyleProps>`
 			} else if (
 				props.Clicked === 'CANT' ||
 				new Date().getHours() < 20 ||
-				new Date().getHours() > 22
+				new Date().getHours() > 22 ||
+				['금', '토', '일'].indexOf(ManufactureDate('W')) !== -1
 			) {
 				return '#fc2c2c';
 			}
@@ -101,7 +104,8 @@ export const StudyButton = styled.button<StyleProps>`
 		if (
 			props.Clicked === 'CAN' &&
 			new Date().getHours() >= 20 &&
-			new Date().getHours() < 22
+			new Date().getHours() < 22 &&
+			['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1
 		) {
 			return '#617be3';
 		} else if (props.Clicked === 'APPLIED') {
@@ -109,7 +113,8 @@ export const StudyButton = styled.button<StyleProps>`
 		} else if (
 			props.Clicked === 'CANT' ||
 			new Date().getHours() < 20 ||
-			new Date().getHours() > 22
+			new Date().getHours() > 22 ||
+			['금', '토', '일'].indexOf(ManufactureDate('W')) !== -1
 		) {
 			return '#fc2c2c';
 		}
@@ -118,7 +123,8 @@ export const StudyButton = styled.button<StyleProps>`
 		if (
 			props.Clicked === 'CAN' &&
 			new Date().getHours() >= 20 &&
-			new Date().getHours() < 22
+			new Date().getHours() < 22 &&
+			['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1
 		) {
 			return '#fff';
 		} else if (props.Clicked === 'APPLIED') {
@@ -126,7 +132,8 @@ export const StudyButton = styled.button<StyleProps>`
 		} else if (
 			props.Clicked === 'CANT' ||
 			new Date().getHours() < 20 ||
-			new Date().getHours() > 22
+			new Date().getHours() > 22 ||
+			['금', '토', '일'].indexOf(ManufactureDate('W')) !== -1
 		) {
 			return '#fff';
 		}
@@ -136,7 +143,8 @@ export const StudyButton = styled.button<StyleProps>`
 			if (
 				props.Clicked === 'CAN' &&
 				new Date().getHours() >= 20 &&
-				new Date().getHours() < 22
+				new Date().getHours() < 22 &&
+				['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1
 			) {
 				return '#fff';
 			} else if (props.Clicked === 'APPLIED') {
@@ -144,7 +152,8 @@ export const StudyButton = styled.button<StyleProps>`
 			} else if (
 				props.Clicked === 'CANT' ||
 				new Date().getHours() < 20 ||
-				new Date().getHours() > 22
+				new Date().getHours() > 22 ||
+				['금', '토', '일'].indexOf(ManufactureDate('W')) !== -1
 			) {
 				return '#fff';
 			}
