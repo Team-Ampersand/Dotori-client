@@ -22,7 +22,7 @@ export const Header = styled.div`
 `;
 
 export const LogoutWrapper = styled.div`
-	width: 100px;
+	width: 120px;
 	display: flex;
 	justify-content: flex-end;
 	cursor: pointer;
@@ -52,18 +52,12 @@ export const UserWrapper = styled.div`
 
 	@media (max-height: 900px) {
 		justify-content: flex-end;
-
-		svg {
-			display: none;
-			opacity: 0;
-		}
+		margin-bottom: 50px;
 
 		div {
-			margin-right: auto;
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			margin-bottom: 10px;
 
 			.name {
 				font-size: 20px;
@@ -184,6 +178,12 @@ export const MemberControl = styled.div`
 	justify-content: space-around;
 	align-items: flex-end;
 	a {
+		text-decoration: none;
+		color: #bbbbbe;
+		font-weight: 500;
+	}
+	div {
+		cursor: pointer;
 		text-decoration: none;
 		color: #bbbbbe;
 		font-weight: 500;

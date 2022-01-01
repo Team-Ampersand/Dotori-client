@@ -58,30 +58,29 @@ export const StudyHeader = styled.div`
 `;
 
 export const StudyContent = styled.div`
+	width: 100%;
+	height: 100%;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
+	justify-content: space-evenly;
 	strong {
 		font-size: 18px;
-		margin-top: 8vh;
 	}
 	span {
 		font-size: 5em;
 		font-weight: bold;
-		margin-top: 11vh;
 	}
 	p {
 		font-size: 18px;
 		font-weight: 500;
-		margin-top: 11vh;
 	}
 `;
 
 export const PointProgress = styled.div`
-	margin-top: 5vh;
 	position: relative;
 	width: 60%;
-	height: 9px;
+	height: 10px;
 	border-radius: 20px;
 	background-color: #ededed;
 `;
@@ -95,7 +94,7 @@ export const ActiveProgress = styled.div<StyleProps>`
 `;
 
 export const StudyButton = styled.button<StyleProps>`
-	width: 12vw;
+	width: 40%;
 	height: 7vh;
 	border: none;
 	background-color: ${(props) => {
@@ -151,7 +150,6 @@ export const StudyButton = styled.button<StyleProps>`
 			}
 		}};
 	border-radius: 10px;
-	margin-top: 12.5vh;
 	font-size: 20px;
 	font-weight: bold;
 	// box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);

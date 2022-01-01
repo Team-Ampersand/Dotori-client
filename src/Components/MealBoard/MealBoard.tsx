@@ -9,6 +9,16 @@ const returnMealdata = async (mealCode: number, setList) => {
 			'YMD'
 		)}`
 	);
+
+	if (res.data.RESULT.MESSAGE === '해당하는 데이터가 없습니다.') {
+		setList([
+			{
+				kind: '급식이 없어요',
+				meal: [],
+			},
+		]);
+		return;
+	}
 	const result = !!res.data.mealServiceDietInfo[1].row[mealCode]
 		? res.data.mealServiceDietInfo[1].row[mealCode].DDISH_NM.toString()
 				.replace(/[*<br/>0-9a-z.()]/g, '0')

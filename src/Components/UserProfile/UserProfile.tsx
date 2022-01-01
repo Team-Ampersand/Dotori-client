@@ -62,6 +62,7 @@ const myPage = async () => {
 const UserProfile: React.FC = () => {
 	const [profile, setProfile] = useState<UserProfileType>();
 	const onLogout = TryLogout();
+	const setLogged = useSetRecoilState(HasToken);
 	const history = useHistory();
 
 	useEffect(() => {
@@ -78,6 +79,21 @@ const UserProfile: React.FC = () => {
 					localStorage.removeItem('role');
 
 					history.push('/signin');
+					setLogged(false);
+					window.location.reload();
+				} else if (e.message === 'Request failed with status code 403') {
+					alert('로그아웃 되었습니다. 다시 로그인 해주세요.');
+
+					// deleteCookie('Dotori_accessToken');
+					// deleteCookie('Dotori_refreshToken');
+					// deleteCookie('role');
+
+					localStorage.removeItem('Dotori_accessToken');
+					localStorage.removeItem('Dotori_refreshToken');
+					localStorage.removeItem('role');
+
+					history.push('/');
+					setLogged(false);
 					window.location.reload();
 				}
 			});
@@ -94,7 +110,7 @@ const UserProfile: React.FC = () => {
 				<S.UserWrapper>
 					<Profile />
 					<div>
-						<span className="name">{profile?.username}</span> <br />
+						<span className="name">{profile?.username}</span>
 						<span className="grade">
 							{profile?.stuNum.substr(0, 1)}-{profile?.stuNum.substr(1, 1)},{' '}
 							{profile?.stuNum.substr(2, 4)}번
@@ -104,7 +120,13 @@ const UserProfile: React.FC = () => {
 			</S.Content>
 			<S.MemberControl>
 				<Link to={'/change/password'}>비밀번호 변경</Link>
-				<Link to={'/withdrawl'}>회원 탈퇴</Link>
+				<div
+					onClick={() => {
+						alert('회원탈퇴는 개발자에게 문의 해주세요.');
+					}}
+				>
+					회원 탈퇴
+				</div>
 			</S.MemberControl>
 			<S.Policy>
 				<span>© 2021 Ampersand. All Rights Reserved.</span>
