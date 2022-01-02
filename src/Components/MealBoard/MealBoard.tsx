@@ -9,34 +9,35 @@ const returnMealdata = async (mealCode: number, setList) => {
 			'YMD'
 		)}`
 	);
-
-	if (res.data.RESULT.MESSAGE === '해당하는 데이터가 없습니다.') {
+	if (
+		res.data.mealServiceDietInfo[0].head[1].RESULT.MESSAGE ===
+		'정상 처리되었습니다.'
+	) {
+		const result = !!res.data.mealServiceDietInfo[1].row[mealCode]
+			? res.data.mealServiceDietInfo[1].row[mealCode].DDISH_NM.toString()
+					.replace(/[*<br/>0-9a-z.()]/g, '0')
+					.split('0')
+					.filter((value) => {
+						return value !== '';
+					})
+			: [];
+		const mealTime = !!res.data.mealServiceDietInfo[1].row[mealCode]
+			? res.data.mealServiceDietInfo[1].row[mealCode].MMEAL_SC_NM
+			: '급식이 없어요';
+		setList([
+			{
+				kind: mealTime,
+				meal: result,
+			},
+		]);
+	} else if (res.data.RESULT.MESSAGE === '해당하는 데이터가 없습니다.') {
 		setList([
 			{
 				kind: '급식이 없어요',
 				meal: [],
 			},
 		]);
-		return;
 	}
-	const result = !!res.data.mealServiceDietInfo[1].row[mealCode]
-		? res.data.mealServiceDietInfo[1].row[mealCode].DDISH_NM.toString()
-				.replace(/[*<br/>0-9a-z.()]/g, '0')
-				.split('0')
-				.filter((value) => {
-					return value !== '';
-				})
-		: [];
-	const mealTime = !!res.data.mealServiceDietInfo[1].row[mealCode]
-		? res.data.mealServiceDietInfo[1].row[mealCode].MMEAL_SC_NM
-		: '급식이 없어요';
-
-	setList([
-		{
-			kind: mealTime,
-			meal: result,
-		},
-	]);
 };
 
 type listtype = {
