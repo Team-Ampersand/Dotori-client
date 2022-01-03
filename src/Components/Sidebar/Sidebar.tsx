@@ -78,15 +78,7 @@ const Sidebar: React.FC = () => {
 				<Logo />
 				{/* </S.Logo> */}
 			</S.LogoWrapper>
-			{sidebarMenuData.map((menuData) => (
-				<SidebarList
-					menuDataLists={menuData.menuLists}
-					menuName={menuData.menuName}
-					currentRouter={currentRouter}
-					setCurrnentRouter={setCurrentRouter}
-					key={`sidebar-${menuData.menuName}`}
-				/>
-			))}
+			{mappingSidebarMenu}
 		</S.Postioner>
 	);
 };
