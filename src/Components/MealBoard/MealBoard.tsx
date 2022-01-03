@@ -5,7 +5,9 @@ import { ManufactureDate } from 'Utils/ManufactureDate';
 
 const returnMealdata = async (mealCode: number, setList) => {
 	const res = await axios.get(
-		`https://open.neis.go.kr/hub/mealServiceDietInfo?key=a3afec6ce62648408595f9b95028258b&Type=json&ATPT_OFCDC_SC_CODE=F10&SD_SCHUL_CODE=7380292&MLSV_YMD=${ManufactureDate(
+		`https://open.neis.go.kr/hub/mealServiceDietInfo?key=${
+			process.env.REACT_APP_NEIS_API_KEY
+		}&Type=json&ATPT_OFCDC_SC_CODE=F10&SD_SCHUL_CODE=7380292&MLSV_YMD=${ManufactureDate(
 			'YMD'
 		)}`
 	);
