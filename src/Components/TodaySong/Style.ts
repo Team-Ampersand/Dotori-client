@@ -16,7 +16,7 @@ export const Postioner = styled.div`
 
 export const PlaylistContainer = styled.div`
 	width: 100%;
-	height: 100px;
+	height: 10%;
 	display: flex;
 	font-size: 26px;
 	font-weight: bold;
@@ -33,6 +33,7 @@ export const PlaylistContainer = styled.div`
 
 export const SongContainer = styled.div`
 	padding-top: 20px;
+	height: 90%;
 	overflow: scroll;
 	&::-webkit-scrollbar {
 		display: none;
