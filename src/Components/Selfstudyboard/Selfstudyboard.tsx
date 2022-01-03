@@ -79,7 +79,7 @@ const returnButton = (status: string, setInfo, count) => {
 		status === 'CAN' &&
 		can.indexOf(today) !== -1 &&
 		hours >= 20 &&
-		hours < 22
+		hours < 21
 	) {
 		return (
 			<S.StudyButton
@@ -109,7 +109,7 @@ const returnButton = (status: string, setInfo, count) => {
 		count >= 50 ||
 		cant.indexOf(today) !== -1 ||
 		hours < 20 ||
-		hours > 22
+		hours >= 21
 	) {
 		return (
 			<S.StudyButton
@@ -121,6 +121,15 @@ const returnButton = (status: string, setInfo, count) => {
 				자습불가
 			</S.StudyButton>
 		);
+	} else {
+		<S.StudyButton
+			Clicked={status}
+			onClick={() => {
+				alert('아직 자습을 신청하실 수 있는 시간이 아닙니다.');
+			}}
+		>
+			자습불가
+		</S.StudyButton>;
 	}
 };
 
