@@ -27,6 +27,7 @@ const TrySignup = () => {
 				return alert('이메일코드가 입력되지 않았습니다.');
 			else if (name === '') return alert('이름이 입력되지 않았습니다.');
 			else if (stuId === '') return alert('학번이 입력되지 않았습니다.');
+			else if (!parseInt(stuId)) return alert('학번이 숫자가 아닙니다.');
 			else if (password === '') return alert('비밀번호가 입력되지 않았습니다.');
 			else if (repassword === '')
 				return alert('비밀번호가 재입력이 입력되지 않았습니다.');
@@ -41,6 +42,11 @@ const TrySignup = () => {
 					? '이미 가입된 유저입니다'
 					: e
 			);
+			if (e.message === 'Request failed with status code 409') {
+				alert('이미 가입된 유저입니다.');
+			} else if (e.message === 'Request failed with status code 400') {
+				alert('');
+			}
 		}
 	};
 
@@ -167,12 +173,15 @@ const SignupForm: React.FC = () => {
 				type="text"
 				displayed={false}
 				onChange={(e) => setStuId(e.target.value)}
+				maxLength={4}
+				autoComplete="off"
 			/>
 			<S.InputStyle
 				placeholder="비밀번호를 입력하세요."
 				type="password"
 				displayed={false}
 				onChange={(e) => setPassword(e.target.value)}
+				autoComplete="off"
 			/>
 			<S.InputStyle
 				placeholder="비밀번호를 재입력하세요."
