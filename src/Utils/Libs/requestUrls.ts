@@ -92,39 +92,39 @@ export const RoleController = {
 
 //자습신청
 export const SelfstudyController = {
-	//자습신청
-	selfStudy: (role: string | null) => {
-		return `/${role}/selfstudy`;
-	},
-	//자습취소
-	cancelStudy: (role: string | null) => {
-		return `/${role}/cancel/selfstudy`;
-	},
-	//신청조회
-	studyLookup: (role: string | null) => {
-		return `/${role}/selfstudy`;
-	},
-	//반별 신청 조회
-	classLookup: (classId: number, role: string | null) => {
-		return `/${role}/selfstudy/${classId}`;
-	},
-	studyInfo: (role: string | null) => {
-		return `/${role}/selfstudy/info`;
-	},
+  //자습신청
+  selfStudy: (role: string | null) => {
+    return `/${role}/selfstudy`;
+  },
+  //자습취소
+  cancelStudy: (role: string | null) => {
+    return `/${role}/cancel/selfstudy`;
+  },
+  //신청조회
+  studyLookup: (role: string | null) => {
+    return `/${role}/selfstudy`;
+  },
+  //반별 신청 조회
+  classLookup: (classId: number, role: string | null) => {
+    return `/${role}/selfstudy/${classId}`;
+  },
+  studyInfo: (role: string | null) => {
+    return `/${role}/selfstudy/info`;
+  },
 };
 
 //기상송 신청
 export const MusicController = {
-	//음악 신청(post) or 조회(get)
-	music: (role: string | null) => {
-		return `/${role}/music`;
-	},
-	todayMusic: (role: string | null) => {
-		return `/${role}/music/current`;
-	},
-	deleteMusic: (role: string | null, id: number) => {
-		return `/${role}/music/${id}`;
-	},
+  //음악 신청(post) or 조회(get)
+  music: (role: string | null) => {
+    return `/${role}/music`;
+  },
+  todayMusic: (role: string | null) => {
+    return `/${role}/music/current`;
+  },
+  deleteMusic: (role: string | null, id: number) => {
+    return `/${role}/music/${id}`;
+  },
 };
 
 // 학생 정보 변경
@@ -139,7 +139,7 @@ export const StuInfoController = {
   },
   // 이름 변경
   updateStuName: (role: string | null) => {
-    return `/${role}/info/username`;
+    return `/${role}/info/membername`;
   },
   // 권한 변경
   updateStuRole: (role: string | null) => {
