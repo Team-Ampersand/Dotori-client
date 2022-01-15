@@ -5,8 +5,8 @@ import stuInfo from "Api/stuInfo";
 
 interface studentList {
   id: number;
-  stdNum: number;
-  username: string;
+  stuNum: number;
+  memberName: string;
   roles: Array<any>;
 }
 
@@ -73,8 +73,8 @@ const Authorzation: React.FC = () => {
             <StuAuthorityItem
               key={stu.id}
               stuId={stu.id}
-              stuNum={String(stu.stdNum)}
-              name={stu.username}
+              stuNum={String(stu.stuNum)}
+              name={stu.memberName}
               authority={stu.roles[0]}
             />
           ))}
