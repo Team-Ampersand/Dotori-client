@@ -8,7 +8,7 @@ type SongItemObj = {
 	createdDate: Date;
 	id: number;
 	url: string;
-	username: string;
+	memberName: string;
 };
 interface SongProps {
 	songObj: SongItemObj;
@@ -76,7 +76,7 @@ const SongItem: React.FC<SongProps> = ({ songObj }) => {
 			<S.ImgContainer thumbnail={videoId} />
 			<S.Container>
 				<S.TitleContainer>{title}</S.TitleContainer>
-				<S.AuthorContainer>{songObj.username}</S.AuthorContainer>
+				<S.AuthorContainer>{songObj.memberName}</S.AuthorContainer>
 				<S.AuthorContainer>{dateFormat(songObj.createdDate)}</S.AuthorContainer>
 			</S.Container>
 			{role === 'admin' || role === 'developer' || role === 'councillor' ? (

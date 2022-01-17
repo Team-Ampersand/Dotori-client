@@ -10,7 +10,7 @@ import { HasToken } from 'Atoms';
 type list = {
 	id: number;
 	url: string;
-	username: string;
+	memberName: string;
 	createdDate: Date;
 };
 
