@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "./Style";
 import StuAuthorityItem from "Components/StuAuthorityItem/StuAuthorityItem";
 import stuInfo from "Api/stuInfo";
@@ -12,6 +12,11 @@ interface studentList {
 
 const Authorzation: React.FC = () => {
   const [studentList, setStudentList] = useState<studentList[]>([]);
+
+  const getStuInfo = async () => {
+    const role = await localStorage.getItem("role");
+    return await stuInfo.getStuInfo(role);
+  };
 
   const getClassStuInfo = async () => {
     const role = await localStorage.getItem("role");
@@ -32,6 +37,16 @@ const Authorzation: React.FC = () => {
       }
     } else return;
   };
+
+  useEffect(() => {
+    try {
+      getStuInfo().then((res) => {
+        res && setStudentList(res.data.data);
+      });
+    } catch (e: any) {
+      throw Error(e);
+    }
+  }, []);
 
   return (
     <S.Positioner>

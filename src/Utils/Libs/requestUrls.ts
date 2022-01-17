@@ -129,6 +129,10 @@ export const MusicController = {
 
 // 학생 정보 변경
 export const StuInfoController = {
+  // 학생정보 전체 조회
+  getStuInfo: (role: string | null) => {
+    return `/${role}/info`;
+  },
   // 반별 학생정보 조회
   getClassStuInfo: (role: string | null, classId: number) => {
     return `/${role}/info/${classId}`;
