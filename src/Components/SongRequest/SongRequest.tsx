@@ -127,7 +127,7 @@ const SongRequest: React.FC = () => {
 	return (
 		<S.Postioner>
 			<label>기상음악 신청</label>
-			<Calendar onChange={(value) => getDateSong(value)} />
+			<Calendar onChange={(value) => getDateSong(convertDateFormat(value))} />
 			<S.InputWrapper>
 				<p>URL 주소</p>
 				{returnBtn(url, setUrl, songInput)}
