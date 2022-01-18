@@ -51,6 +51,14 @@ export const ContentInput = styled.textarea`
   }
 `;
 
+export const ImgContainer = styled.div``;
+
+export const ImgBtnWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const BtnWrapper = styled.div`
   display: flex;
   flex-direction: row;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as S from "./Style";
 import { Prompt, useHistory } from "react-router-dom";
 import { useBeforeunload } from "react-beforeunload";
@@ -7,12 +7,24 @@ import notice from "../../Api/notice";
 const NoticeWrite: React.FC = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [postFile, setPostFile] = useState("");
+  const [fileImage, setFileImage] = useState("");
 
   const getTitle = (e) => {
     setTitle(e.target.value);
   };
   const getContent = (e) => {
     setContent(e.target.value);
+  };
+
+  const saveFileImage = async (e) => {
+    await setPostFile(e.target.files[0]);
+    await setFileImage(URL.createObjectURL(e.target.files[0]));
+  };
+  const deleteFileImage = async () => {
+    await URL.revokeObjectURL(fileImage);
+    await setPostFile("");
+    await setFileImage("");
   };
 
   const [shouldConfirmState, setShouldConfirmState] = useState(true);
@@ -26,11 +38,10 @@ const NoticeWrite: React.FC = () => {
     await confirm();
     try {
       const role = await localStorage.getItem("role");
-      const res = await notice.noticeWrite(role, title, content);
+      const res = await notice.noticeWrite(role, title, content, postFile);
       await history.push("/notice");
       return res;
     } catch (e: any) {
-      console.log(e.message);
       if (e.message === "Error: Request failed with status code 400") {
         alert("제목과 내용을 입력해주세요.");
       }
@@ -64,6 +75,20 @@ const NoticeWrite: React.FC = () => {
             <S.Btn onClick={createNotice}>생성</S.Btn>
           </S.BtnWrapper>
         </S.Container>
+        <S.ImgContainer>
+          <div>
+            {fileImage && <img alt="notice" src={fileImage} />}
+            <S.ImgBtnWrapper>
+              <input
+                name="imgUpload"
+                type="file"
+                accept="image/*"
+                onChange={saveFileImage}
+              />
+              <button onClick={() => deleteFileImage()}>삭제</button>
+            </S.ImgBtnWrapper>
+          </div>
+        </S.ImgContainer>
       </S.Positioner>
     </>
   );
