@@ -17,6 +17,10 @@ const NoticeWrite: React.FC = () => {
     setContent(e.target.value);
   };
 
+  useEffect(() => {
+    setPostFile(postFile);
+  }, [postFile]);
+
   const saveFileImage = async (e) => {
     await setPostFile(e.target.files[0]);
     await setFileImage(URL.createObjectURL(e.target.files[0]));
