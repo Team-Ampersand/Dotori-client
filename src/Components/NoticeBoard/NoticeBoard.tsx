@@ -36,16 +36,23 @@ const NoticeBoard: React.FC = () => {
     } else return false;
   };
 
+  const [totalPage, setTotalPage] = useState(0);
+
   useEffect(() => {
-    settingRole();
     getNotice().then(async (res) => {
-      // let totalPage = res.data.data.totalPages;
-      // getNoticeDetail(totalPage - 1).then((res) =>
-      //   setBoard(res.data.data.content)
-      // );
-      res && console.log(res.data.data);
+      await setTotalPage(res?.data.data.totalPages);
     });
   }, []);
+
+  useEffect(() => {
+    settingRole();
+    setTotalPage(totalPage);
+    if (totalPage > 0) {
+      getNoticeDetail(totalPage - 1).then((response) =>
+        setBoard(response?.data.data.content)
+      );
+    }
+  }, [totalPage]);
 
   const [editState, setEditState] = useState(false);
   const onToggle = () => {
