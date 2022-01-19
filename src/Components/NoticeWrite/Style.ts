@@ -19,9 +19,10 @@ export const Container = styled.div`
 `;
 
 export const ContentWrapper = styled.div`
-  width: 95%;
+  width: 97%;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
 `;
 
@@ -61,8 +62,8 @@ export const ContentInput = styled.textarea`
 export const ImgContainer = styled.div``;
 
 export const Img = styled.div`
-  width: 400px;
-  height: 400px;
+  width: 20vw;
+  height: 40vh;
   border: 10px solid gray;
   border-radius: 10px;
   display: flex;
@@ -92,8 +93,8 @@ export const ImgBtnWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100px;
-    height: 40px;
+    width: 5vw;
+    height: 4.5vh;
     color: #fff;
     background-color: #495057;
     font-size: 16px;
@@ -111,8 +112,8 @@ export const ImgBtnWrapper = styled.div`
   }
   button {
     background-color: #fa5252;
-    width: 90px;
-    height: 40px;
+    width: 4.5vw;
+    height: 4.5vh;
     color: #fff;
     font-size: 18px;
     font-weight: bold;
