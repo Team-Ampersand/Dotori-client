@@ -68,6 +68,11 @@ export const Img = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: 100%;
+  }
   p {
     font-size: 24px;
     font-weight: lighter;
@@ -97,6 +102,7 @@ export const ImgBtnWrapper = styled.div`
     border: none;
     border-radius: 10px;
     box-sizing: border-box;
+    cursor: pointer;
     &:hover {
       background-color: #fff;
       border: 3px solid #495057;
@@ -114,6 +120,7 @@ export const ImgBtnWrapper = styled.div`
     border: none;
     border-radius: 10px;
     box-sizing: border-box;
+    cursor: pointer;
     &:hover {
       background-color: #fff;
       border: 3px solid #fa5252;
@@ -139,6 +146,7 @@ export const Btn = styled.button`
   font-weight: bold;
   color: #0f4c81;
   border: 3px solid #0f4c81;
+  cursor: pointer;
   &:hover {
     background-color: #0f4c81;
     color: #fff;
@@ -156,6 +164,7 @@ export const DeleteBtn = styled.button`
   font-weight: bold;
   color: #f03e3e;
   border: 3px solid #f03e3e;
+  cursor: pointer;
   &:hover {
     background-color: #f03e3e;
     color: #fff;
