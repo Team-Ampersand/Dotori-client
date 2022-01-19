@@ -1,6 +1,5 @@
 import { noticeController } from "Utils/Libs/requestUrls";
 import RequestApi from "Utils/Libs/requestApi";
-import fs from "fs";
 
 class notice {
   async getNotice(role: string | null) {
