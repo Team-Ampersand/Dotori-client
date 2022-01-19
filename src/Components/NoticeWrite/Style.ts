@@ -96,6 +96,12 @@ export const ImgBtnWrapper = styled.div`
     outline: none;
     border: none;
     border-radius: 10px;
+    box-sizing: border-box;
+    &:hover {
+      background-color: #fff;
+      border: 3px solid #495057;
+      color: #495057;
+    }
   }
   button {
     background-color: #fa5252;
@@ -107,6 +113,12 @@ export const ImgBtnWrapper = styled.div`
     outline: none;
     border: none;
     border-radius: 10px;
+    box-sizing: border-box;
+    &:hover {
+      background-color: #fff;
+      border: 3px solid #fa5252;
+      color: #fa5252;
+    }
   }
 `;
 
