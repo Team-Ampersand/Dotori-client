@@ -2,6 +2,18 @@ import { StuInfoController } from "Utils/Libs/requestUrls";
 import RequestApi from "Utils/Libs/requestApi";
 
 class stuInfo {
+  async getStuInfo(role: string | null) {
+    try {
+      return await RequestApi({
+        method: "GET",
+        url: StuInfoController.getStuInfo(role),
+      });
+    } catch (e: any) {
+      if (e.massage === "Request failed with status code 404") {
+        alert("등록된 학생 정보가 없습니다.");
+      } else return;
+    }
+  }
   async getClassStuInfo(role: string | null, classId: number) {
     try {
       return await RequestApi({

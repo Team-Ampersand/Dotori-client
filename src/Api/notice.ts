@@ -1,5 +1,6 @@
 import { noticeController } from "Utils/Libs/requestUrls";
 import RequestApi from "Utils/Libs/requestApi";
+import fs from "fs";
 
 class notice {
   async getNotice(role: string | null) {
@@ -9,7 +10,10 @@ class notice {
         url: noticeController.getNotice(role),
       });
     } catch (e: any) {
-      throw new Error(e);
+      if (e.message === "Request failed with status code 401") {
+        alert("로그아웃 되었습니다. 다시 로그인 해주세요.");
+      } else throw new Error(e);
+      // throw new Error(e);
     }
   }
   async getNoticeDetail(role: string | null, page: number) {
@@ -32,16 +36,30 @@ class notice {
       throw new Error(e);
     }
   }
-  async noticeWrite(role: string | null, title: string, content: string) {
+  async noticeWrite(
+    role: string | null,
+    title: string,
+    content: string,
+    img: string
+  ) {
     try {
-      const data = {
+      let formData = new FormData();
+      formData.append("files", img);
+      let boardDto = {
         title: title,
         content: content,
       };
+      formData.append(
+        "boardDto",
+        new Blob([JSON.stringify(boardDto)], { type: "application/json" })
+      );
       return await RequestApi({
         method: "POST",
         url: noticeController.noticeWrite(role),
-        data: data,
+        data: formData,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       });
     } catch (e: any) {
       throw new Error(e);
