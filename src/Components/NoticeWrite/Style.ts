@@ -18,6 +18,13 @@ export const Container = styled.div`
   flex-direction: column;
 `;
 
+export const ContentWrapper = styled.div`
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
 export const TitleInput = styled.input`
   width: 58.5vw;
   height: 6.3vh;
@@ -53,10 +60,54 @@ export const ContentInput = styled.textarea`
 
 export const ImgContainer = styled.div``;
 
-export const ImgBtnWrapper = styled.div`
+export const Img = styled.div`
+  width: 400px;
+  height: 400px;
+  border: 10px solid gray;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
+  p {
+    font-size: 24px;
+    font-weight: lighter;
+  }
+`;
+
+export const ImgBtnWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 30px;
+  input {
+    display: none;
+  }
+  label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 40px;
+    color: #fff;
+    background-color: #495057;
+    font-size: 16px;
+    font-weight: bold;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+  }
+  button {
+    background-color: #fa5252;
+    width: 90px;
+    height: 40px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+  }
 `;
 
 export const BtnWrapper = styled.div`
@@ -75,11 +126,10 @@ export const Btn = styled.button`
   font-size: 1.25rem;
   font-weight: bold;
   color: #0f4c81;
-  border: 2px solid #0f4c81;
+  border: 3px solid #0f4c81;
   &:hover {
     background-color: #0f4c81;
     color: #fff;
-    border: 2px solid #0f4c81;
   }
 `;
 
@@ -93,7 +143,7 @@ export const DeleteBtn = styled.button`
   font-size: 1.25rem;
   font-weight: bold;
   color: #f03e3e;
-  border: 2px solid #f03e3e;
+  border: 3px solid #f03e3e;
   &:hover {
     background-color: #f03e3e;
     color: #fff;

@@ -64,14 +64,40 @@ const NoticeWrite: React.FC = () => {
       />
       <S.Positioner>
         <S.Container>
-          <S.TitleInput
-            placeholder="제목을 입력해주세요 (1 ~ 45자)"
-            onChange={getTitle}
-          />
-          <S.ContentInput
-            placeholder="내용을 입력해주세요 (1 ~ 250자)"
-            onChange={getContent}
-          />
+          <S.ContentWrapper>
+            <div>
+              <S.TitleInput
+                placeholder="제목을 입력해주세요 (1 ~ 45자)"
+                onChange={getTitle}
+              />
+              <S.ContentInput
+                placeholder="내용을 입력해주세요 (1 ~ 250자)"
+                onChange={getContent}
+              />
+            </div>
+            <S.ImgContainer>
+              <div>
+                <S.Img>
+                  {fileImage ? (
+                    <img alt="notice" src={fileImage} />
+                  ) : (
+                    <p>이미지가 선택되지 않았습니다.</p>
+                  )}
+                </S.Img>
+                <S.ImgBtnWrapper>
+                  <input
+                    id="select-file"
+                    name="imgUpload"
+                    type="file"
+                    accept="image/*"
+                    onChange={saveFileImage}
+                  />
+                  <label htmlFor="select-file">이미지 선택</label>
+                  <button onClick={() => deleteFileImage()}>삭제</button>
+                </S.ImgBtnWrapper>
+              </div>
+            </S.ImgContainer>
+          </S.ContentWrapper>
           <S.BtnWrapper>
             <S.DeleteBtn onClick={() => history.push("/notice")}>
               취소
@@ -79,20 +105,6 @@ const NoticeWrite: React.FC = () => {
             <S.Btn onClick={createNotice}>생성</S.Btn>
           </S.BtnWrapper>
         </S.Container>
-        <S.ImgContainer>
-          <div>
-            {fileImage && <img alt="notice" src={fileImage} />}
-            <S.ImgBtnWrapper>
-              <input
-                name="imgUpload"
-                type="file"
-                accept="image/*"
-                onChange={saveFileImage}
-              />
-              <button onClick={() => deleteFileImage()}>삭제</button>
-            </S.ImgBtnWrapper>
-          </div>
-        </S.ImgContainer>
       </S.Positioner>
     </>
   );
