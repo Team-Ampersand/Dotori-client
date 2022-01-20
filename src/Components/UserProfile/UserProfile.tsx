@@ -7,11 +7,15 @@ import { useSetRecoilState } from 'recoil';
 import { HasToken } from '../../Atoms';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
-import { deleteCookie } from 'Utils/Cookie';
+import refresh from 'Api/refresh';
+import useSWR from 'swr';
+import RequestApi from 'Utils/Libs/requestApi';
+import axios from 'axios';
+import Config from 'Utils/Config/Config.json';
 
 type UserProfileType = {
 	id: number;
-	username: string;
+	memberName: string;
 	stuNum: string;
 	point: number;
 };
@@ -23,9 +27,6 @@ const TryLogout = () => {
 	const onLogout = async () => {
 		try {
 			await member.logout();
-			// deleteCookie('Dotori_accessToken');
-			// deleteCookie('Dotori_refreshToken');
-			// deleteCookie('role');
 
 			localStorage.removeItem('Dotori_accessToken');
 			localStorage.removeItem('Dotori_refreshToken');
@@ -38,10 +39,6 @@ const TryLogout = () => {
 		} catch (e: any) {
 			if (e.message === 'Request failed with status code 401') {
 				alert('로그아웃 되었습니다. 다시 로그인 해주세요.');
-
-				// deleteCookie('Dotori_accessToken');
-				// deleteCookie('Dotori_refreshToken');
-				// deleteCookie('role');
 
 				localStorage.removeItem('Dotori_accessToken');
 				localStorage.removeItem('Dotori_refreshToken');
@@ -67,7 +64,7 @@ const UserProfile: React.FC = () => {
 
 	useEffect(() => {
 		myPage()
-			.then((res) => {
+			.then((res: any) => {
 				setProfile(res.data.data);
 			})
 			.catch((e) => {
@@ -96,7 +93,7 @@ const UserProfile: React.FC = () => {
 				<S.UserWrapper>
 					<Profile />
 					<div>
-						<span className="name">{profile?.username}</span>
+						<span className="name">{profile?.memberName}</span>
 						<span className="grade">
 							{profile?.stuNum.substr(0, 1)}-{profile?.stuNum.substr(1, 1)},{' '}
 							{profile?.stuNum.substr(2, 4)}번
