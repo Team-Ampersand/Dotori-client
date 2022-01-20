@@ -22,8 +22,8 @@ class Member {
 			const data = {
 				email: email,
 				password: password,
-				username: name,
-				stdNum: stuId,
+				memberName: name,
+				stuNum: stuId,
 			};
 			return RequestApi({
 				method: 'POST',
