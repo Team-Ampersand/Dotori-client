@@ -16,14 +16,14 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 `;
 
 export const PageBtnWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  top: 0;
-  bottom: 0;
-  margin: auto;
+  position: absolute;
+  bottom: 20px;
   width: 8vw;
   span {
     svg {
