@@ -93,7 +93,10 @@ const Modal: React.FC<ModalProps> = ({
             ) : (
               <>
                 {content?.split("\n").map((line) => (
-                  <p>{line}</p>
+                  <p>
+                    {line}
+                    <br />
+                  </p>
                 ))}
               </>
             )}

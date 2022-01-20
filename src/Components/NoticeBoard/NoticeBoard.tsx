@@ -39,10 +39,11 @@ const NoticeBoard: React.FC = () => {
   useEffect(() => {
     settingRole();
     getNotice().then(async (res) => {
-      let totalPage = res.data.data.totalPages;
-      getNoticeDetail(totalPage - 1).then((res) =>
-        setBoard(res.data.data.content)
-      );
+      // let totalPage = res.data.data.totalPages;
+      // getNoticeDetail(totalPage - 1).then((res) =>
+      //   setBoard(res.data.data.content)
+      // );
+      res && console.log(res.data.data);
     });
   }, []);
 
