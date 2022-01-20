@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./Style";
+import * as I from "../../Assets/Svg";
 import NoticeBoardItem from "../NoticeBoardItem/NoticeBoardItem";
 import { Link } from "react-router-dom";
 import notice from "Api/notice";
@@ -59,6 +60,26 @@ const NoticeBoard: React.FC = () => {
     setEditState(!editState);
   };
 
+  const [pageNumber, setPageNumber] = useState(1);
+
+  useEffect(() => {
+    setPageNumber(pageNumber);
+  }, [pageNumber]);
+
+  const nextPageClick = async () => {
+    if (pageNumber <= totalPage) {
+      await setTotalPage(totalPage - 1);
+      await setPageNumber(pageNumber + 1);
+    } else return;
+  };
+  const prevPageClick = async () => {
+    if (pageNumber === 1) return;
+    if (pageNumber > 1) {
+      await setTotalPage(totalPage + 1);
+      await setPageNumber(pageNumber - 1);
+    } else return;
+  };
+
   return (
     <>
       <S.Positioner>
@@ -85,6 +106,17 @@ const NoticeBoard: React.FC = () => {
                   role={role}
                 />
               ))}
+          <S.PageBtnWrapper>
+            <div onClick={prevPageClick}>
+              <span>
+                <I.More />
+              </span>
+            </div>
+            <label>{pageNumber}</label>
+            <div onClick={nextPageClick}>
+              <I.More />
+            </div>
+          </S.PageBtnWrapper>
         </S.Container>
       </S.Positioner>
     </>
