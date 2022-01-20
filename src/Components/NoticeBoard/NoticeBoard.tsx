@@ -70,10 +70,16 @@ const NoticeBoard: React.FC = () => {
     if (pageNumber <= totalPage) {
       await setTotalPage(totalPage - 1);
       await setPageNumber(pageNumber + 1);
-    } else return;
+    } else {
+      alert("마지막 페이지입니다.");
+      return;
+    }
   };
   const prevPageClick = async () => {
-    if (pageNumber === 1) return;
+    if (pageNumber === 1) {
+      alert("첫번째 페이지입니다.");
+      return;
+    }
     if (pageNumber > 1) {
       await setTotalPage(totalPage + 1);
       await setPageNumber(pageNumber - 1);
