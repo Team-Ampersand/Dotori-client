@@ -6,7 +6,7 @@ export interface HasToken {
 	HasToken?: boolean;
 }
 
-const RequestApi = async (
+const RequestApi = (
 	p: AxiosRequestConfig,
 	condition: HasToken = { HasToken: false }
 ) => {
