@@ -14,7 +14,7 @@ export const Container = styled.li`
   margin: 30px 40px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
   border-radius: 20px;
-  height: 78px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -27,23 +27,28 @@ export const StuInfoWrapper = styled.div`
 
 export const StuNumStyle = styled.div`
   font-size: 24px;
-  padding-left: 80px;
-  width: 120px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-right: 1px solid black;
 `;
 
 export const NameStyle = styled.div`
   font-size: 24px;
-  padding-left: 80px;
-  width: 140px;
+  width: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-right: 1px solid black;
 `;
 
 export const AuthorityStyle = styled.div`
   font-size: 20px;
-  text-align: center;
-  padding-left: 40px;
-  width: 100px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const EditBtn = styled.button`
