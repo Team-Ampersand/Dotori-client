@@ -67,7 +67,7 @@ const NoticeBoard: React.FC = () => {
   }, [pageNumber]);
 
   const nextPageClick = async () => {
-    if (pageNumber <= totalPage) {
+    if (pageNumber < totalPage) {
       await setTotalPage(totalPage - 1);
       await setPageNumber(pageNumber + 1);
     } else {
