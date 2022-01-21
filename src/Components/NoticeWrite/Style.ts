@@ -19,9 +19,10 @@ export const Container = styled.div`
 `;
 
 export const ContentWrapper = styled.div`
-  width: 95%;
+  width: 97%;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
 `;
 
@@ -61,13 +62,18 @@ export const ContentInput = styled.textarea`
 export const ImgContainer = styled.div``;
 
 export const Img = styled.div`
-  width: 400px;
-  height: 400px;
+  width: 20vw;
+  height: 40vh;
   border: 10px solid gray;
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: 100%;
+  }
   p {
     font-size: 24px;
     font-weight: lighter;
@@ -87,8 +93,8 @@ export const ImgBtnWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100px;
-    height: 40px;
+    width: 5vw;
+    height: 4.5vh;
     color: #fff;
     background-color: #495057;
     font-size: 16px;
@@ -97,6 +103,7 @@ export const ImgBtnWrapper = styled.div`
     border: none;
     border-radius: 10px;
     box-sizing: border-box;
+    cursor: pointer;
     &:hover {
       background-color: #fff;
       border: 3px solid #495057;
@@ -105,8 +112,8 @@ export const ImgBtnWrapper = styled.div`
   }
   button {
     background-color: #fa5252;
-    width: 90px;
-    height: 40px;
+    width: 4.5vw;
+    height: 4.5vh;
     color: #fff;
     font-size: 18px;
     font-weight: bold;
@@ -114,6 +121,7 @@ export const ImgBtnWrapper = styled.div`
     border: none;
     border-radius: 10px;
     box-sizing: border-box;
+    cursor: pointer;
     &:hover {
       background-color: #fff;
       border: 3px solid #fa5252;
@@ -139,6 +147,7 @@ export const Btn = styled.button`
   font-weight: bold;
   color: #0f4c81;
   border: 3px solid #0f4c81;
+  cursor: pointer;
   &:hover {
     background-color: #0f4c81;
     color: #fff;
@@ -156,6 +165,7 @@ export const DeleteBtn = styled.button`
   font-weight: bold;
   color: #f03e3e;
   border: 3px solid #f03e3e;
+  cursor: pointer;
   &:hover {
     background-color: #f03e3e;
     color: #fff;

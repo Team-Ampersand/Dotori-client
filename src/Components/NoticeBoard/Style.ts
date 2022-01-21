@@ -16,24 +16,30 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 `;
 
-export const PageUl = styled.ul`
+export const PageBtnWrapper = styled.div`
   display: flex;
-  justify-content: space-around;
-  margin-top: 2.7vh;
-  width: 11.7vw;
-  list-style: none;
-`;
-
-export const PageBtn = styled.div`
-  font-size: 1.5rem;
-  font-weight: bold;
-  padding: 0.45vh 0.24vw 0.45vh 0.24vw;
-  color: gray;
-  &:hover {
+  justify-content: space-between;
+  position: absolute;
+  bottom: 20px;
+  width: 8vw;
+  span {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+  svg {
+    width: 30px;
+    height: 30px;
     cursor: pointer;
-    color: #000;
+  }
+  label {
+    text-align: center;
+    font-size: 30px;
+    font-weight: lighter;
+    border-radius: 50px;
   }
 `;
 

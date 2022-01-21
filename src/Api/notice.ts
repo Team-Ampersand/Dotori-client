@@ -1,6 +1,5 @@
 import { noticeController } from "Utils/Libs/requestUrls";
 import RequestApi from "Utils/Libs/requestApi";
-import fs from "fs";
 
 class notice {
   async getNotice(role: string | null) {
@@ -12,6 +11,10 @@ class notice {
     } catch (e: any) {
       if (e.message === "Request failed with status code 401") {
         alert("로그아웃 되었습니다. 다시 로그인 해주세요.");
+        localStorage.removeItem("Dotori_accessToken");
+        localStorage.removeItem("Dotori_refreshToken");
+        localStorage.removeItem("role");
+        window.location.reload();
       } else throw new Error(e);
       // throw new Error(e);
     }
