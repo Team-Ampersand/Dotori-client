@@ -11,15 +11,7 @@ const returnMealdata = async (mealCode: number, setList) => {
 			'YMD'
 		)}`
 	);
-	if (['토', '일'].indexOf(ManufactureDate('W')) !== -1) {
-		setList([
-			{
-				kind: '급식이 없어요',
-				meal: [],
-			},
-		]);
-		return;
-	} else if (
+	if (
 		res.data.mealServiceDietInfo[0].head[1].RESULT.MESSAGE ===
 		'정상 처리되었습니다.'
 	) {
@@ -40,7 +32,6 @@ const returnMealdata = async (mealCode: number, setList) => {
 				meal: result,
 			},
 		]);
-		return;
 	} else if (res.data.RESULT.MESSAGE === '해당하는 데이터가 없습니다.') {
 		setList([
 			{
@@ -48,7 +39,6 @@ const returnMealdata = async (mealCode: number, setList) => {
 				meal: [],
 			},
 		]);
-		return;
 	}
 };
 
