@@ -27,16 +27,6 @@ class Music {
 			throw new Error(e);
 		}
 	}
-	async todayMusic() {
-		try {
-			return RequestApi({
-				method: 'GET',
-				url: MusicController.todayMusic(localStorage.getItem('role')),
-			});
-		} catch (e: any) {
-			throw new Error(e);
-		}
-	}
 	async deleteMusic(id: number) {
 		try {
 			return RequestApi({
@@ -47,15 +37,11 @@ class Music {
 			throw new Error(e);
 		}
 	}
-	async dateMusic(date: string) {
-		const data = {
-			date: date,
-		};
+	async dateMusic() {
 		try {
 			return RequestApi({
-				method: 'POST',
+				method: 'GET',
 				url: MusicController.dateMusic(localStorage.getItem('role')),
-				data: data,
 			});
 		} catch (e: any) {
 			throw new Error(e);

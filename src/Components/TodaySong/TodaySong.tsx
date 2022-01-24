@@ -21,15 +21,6 @@ const musicLookup = async () => {
 	} catch (e) {}
 };
 
-const todayMusic = async () => {
-	try {
-		const res = await music.todayMusic();
-		return res;
-	} catch (e) {
-		alert(e);
-	}
-};
-
 const TodaySong: React.FC = () => {
 	const history = useHistory();
 	const [all, setAll] = useState(true);
@@ -78,33 +69,7 @@ const TodaySong: React.FC = () => {
 	return (
 		<S.Postioner>
 			<S.PlaylistContainer>
-				<h3>{all ? 'Week Playlist' : 'Today Playlist'}</h3>
-				<S.BtnWrapper>
-					<S.AllWrapper
-						onClick={() => {
-							musicLookup().then((res) => {
-								setList(res?.data.data);
-								setAll(true);
-								setToday(false);
-							});
-						}}
-						isClicked={all}
-					>
-						전체
-					</S.AllWrapper>
-					<S.TodayWrapper
-						onClick={() => {
-							todayMusic().then((res) => {
-								setList(res?.data.data);
-								setAll(false);
-								setToday(true);
-							});
-						}}
-						isClicked={today}
-					>
-						오늘
-					</S.TodayWrapper>
-				</S.BtnWrapper>
+				<h3>{all ? 'Month Playlist' : 'Date Playlist'}</h3>
 			</S.PlaylistContainer>
 			<S.SongContainer>
 				{list &&
