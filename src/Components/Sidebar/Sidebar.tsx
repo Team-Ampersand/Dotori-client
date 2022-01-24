@@ -48,6 +48,17 @@ const sidebarMenuData = [
 						? true
 						: false,
 			},
+			{
+				router: '/penalty',
+				menuIcon: 'Penalty',
+				menuTitle: '규정 위반',
+				show:
+				returnShow() === 'admin' ||
+				returnShow() === 'developer' ||
+				returnShow() === 'councillor'
+					? true
+					: false,
+			}
 		],
 	},
 ];
