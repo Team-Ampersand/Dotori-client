@@ -129,20 +129,24 @@ export const MusicController = {
 
 // 학생 정보 변경
 export const StuInfoController = {
-	// 반별 학생정보 조회
-	getClassStuInfo: (role: string | null, classId: number) => {
-		return `/${role}/info/${classId}`;
-	},
-	// 학번 변경
-	updateStuNum: (role: string | null) => {
-		return `/${role}/info/stunum`;
-	},
-	// 이름 변경
-	updateStuName: (role: string | null) => {
-		return `/${role}/info/membername`;
-	},
-	// 권한 변경
-	updateStuRole: (role: string | null) => {
-		return `/${role}/info/role`;
-	},
+  // 학생정보 전체 조회
+  getStuInfo: (role: string | null) => {
+    return `/${role}/info`;
+  },
+  // 반별 학생정보 조회
+  getClassStuInfo: (role: string | null, classId: number) => {
+    return `/${role}/info/${classId}`;
+  },
+  // 학번 변경
+  updateStuNum: (role: string | null) => {
+    return `/${role}/info/stunum`;
+  },
+  // 이름 변경
+  updateStuName: (role: string | null) => {
+    return `/${role}/info/membername`;
+  },
+  // 권한 변경
+  updateStuRole: (role: string | null) => {
+    return `/${role}/info/role`;
+  },
 };

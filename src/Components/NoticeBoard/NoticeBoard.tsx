@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./Style";
+import * as I from "../../Assets/Svg";
 import NoticeBoardItem from "../NoticeBoardItem/NoticeBoardItem";
 import { Link } from "react-router-dom";
 import notice from "Api/notice";
@@ -36,19 +37,53 @@ const NoticeBoard: React.FC = () => {
     } else return false;
   };
 
+  const [totalPage, setTotalPage] = useState(0);
+
   useEffect(() => {
-    settingRole();
     getNotice().then(async (res) => {
-      let totalPage = res.data.data.totalPages;
-      getNoticeDetail(totalPage - 1).then((res) =>
-        setBoard(res.data.data.content)
-      );
+      await setTotalPage(res?.data.data.totalPages);
     });
   }, []);
+
+  useEffect(() => {
+    settingRole();
+    setTotalPage(totalPage);
+    if (totalPage > 0) {
+      getNoticeDetail(totalPage - 1).then((response) =>
+        setBoard(response?.data.data.content)
+      );
+    }
+  }, [totalPage]);
 
   const [editState, setEditState] = useState(false);
   const onToggle = () => {
     setEditState(!editState);
+  };
+
+  const [pageNumber, setPageNumber] = useState(1);
+
+  useEffect(() => {
+    setPageNumber(pageNumber);
+  }, [pageNumber]);
+
+  const nextPageClick = async () => {
+    if (pageNumber < totalPage) {
+      await setTotalPage(totalPage - 1);
+      await setPageNumber(pageNumber + 1);
+    } else {
+      alert("마지막 페이지입니다.");
+      return;
+    }
+  };
+  const prevPageClick = async () => {
+    if (pageNumber === 1) {
+      alert("첫번째 페이지입니다.");
+      return;
+    }
+    if (pageNumber > 1) {
+      await setTotalPage(totalPage + 1);
+      await setPageNumber(pageNumber - 1);
+    } else return;
   };
 
   return (
@@ -77,6 +112,17 @@ const NoticeBoard: React.FC = () => {
                   role={role}
                 />
               ))}
+          <S.PageBtnWrapper>
+            <div onClick={prevPageClick}>
+              <span>
+                <I.More />
+              </span>
+            </div>
+            <label>{pageNumber}</label>
+            <div onClick={nextPageClick}>
+              <I.More />
+            </div>
+          </S.PageBtnWrapper>
         </S.Container>
       </S.Positioner>
     </>

@@ -23,6 +23,7 @@ const Modal: React.FC<ModalProps> = ({
 }) => {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
+  const [imgUrl, setImgUrl] = useState<string>("");
 
   const getNoticeItem = async (boardId) => {
     return notice.getNoticeItem(role, boardId);
@@ -36,6 +37,7 @@ const Modal: React.FC<ModalProps> = ({
         setContent(res.content);
         setUpdateTitle(res.title);
         setUpdateContent(res.content);
+        setImgUrl(res.url);
       });
     window.history.pushState({ page: "modal" }, document.title);
     window.addEventListener("popstate", (e) => closeModal(e));
@@ -82,22 +84,32 @@ const Modal: React.FC<ModalProps> = ({
               </>
             )}
           </S.Title>
-          <S.Content>
-            {updateState ? (
-              <>
-                <textarea
-                  value={updateContent}
-                  onChange={(e) => setUpdateContent(e.target.value)}
-                />
-              </>
-            ) : (
-              <>
-                {content?.split("\n").map((line) => (
-                  <p>{line}</p>
-                ))}
-              </>
+          <S.ContentWrapper>
+            <S.Content>
+              {updateState ? (
+                <>
+                  <textarea
+                    value={updateContent}
+                    onChange={(e) => setUpdateContent(e.target.value)}
+                  />
+                </>
+              ) : (
+                <>
+                  {content?.split("\n").map((line) => (
+                    <p>
+                      {line}
+                      <br />
+                    </p>
+                  ))}
+                </>
+              )}
+            </S.Content>
+            {imgUrl && (
+              <S.ImgWrapper>
+                <img alt="notice" src={imgUrl} />
+              </S.ImgWrapper>
             )}
-          </S.Content>
+          </S.ContentWrapper>
           {updateState ? (
             <>
               <S.BtnWrapper color={authorColor}>

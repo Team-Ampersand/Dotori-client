@@ -9,7 +9,14 @@ class notice {
         url: noticeController.getNotice(role),
       });
     } catch (e: any) {
-      throw new Error(e);
+      if (e.message === "Request failed with status code 401") {
+        alert("로그아웃 되었습니다. 다시 로그인 해주세요.");
+        localStorage.removeItem("Dotori_accessToken");
+        localStorage.removeItem("Dotori_refreshToken");
+        localStorage.removeItem("role");
+        window.location.reload();
+      } else throw new Error(e);
+      // throw new Error(e);
     }
   }
   async getNoticeDetail(role: string | null, page: number) {
@@ -32,16 +39,30 @@ class notice {
       throw new Error(e);
     }
   }
-  async noticeWrite(role: string | null, title: string, content: string) {
+  async noticeWrite(
+    role: string | null,
+    title: string,
+    content: string,
+    img: string
+  ) {
     try {
-      const data = {
+      let formData = new FormData();
+      formData.append("files", img);
+      let boardDto = {
         title: title,
         content: content,
       };
+      formData.append(
+        "boardDto",
+        new Blob([JSON.stringify(boardDto)], { type: "application/json" })
+      );
       return await RequestApi({
         method: "POST",
         url: noticeController.noticeWrite(role),
-        data: data,
+        data: formData,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       });
     } catch (e: any) {
       throw new Error(e);

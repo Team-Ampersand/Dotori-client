@@ -2,6 +2,24 @@ import { StuInfoController } from "Utils/Libs/requestUrls";
 import RequestApi from "Utils/Libs/requestApi";
 
 class stuInfo {
+  async getStuInfo(role: string | null) {
+    try {
+      return await RequestApi({
+        method: "GET",
+        url: StuInfoController.getStuInfo(role),
+      });
+    } catch (e: any) {
+      if (e.massage === "Request failed with status code 404") {
+        alert("등록된 학생 정보가 없습니다.");
+      } else if (e.massage === "Request failed with status code 401") {
+        alert("로그아웃 되었습니다. 다시 로그인 해주세요.");
+        localStorage.removeItem("Dotori_accessToken");
+        localStorage.removeItem("Dotori_refreshToken");
+        localStorage.removeItem("role");
+        window.location.reload();
+      } else throw Error(e);
+    }
+  }
   async getClassStuInfo(role: string | null, classId: number) {
     try {
       return await RequestApi({
