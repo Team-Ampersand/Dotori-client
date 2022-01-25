@@ -15,6 +15,7 @@ import PwChangePage from "./PwChangePage/PwChangePage";
 import WithdrawlPage from "Pages/WithdrawlPage/WithdrawlPage";
 import NotFoundPage from "./NotFoundPage/NotFoundPage";
 import PromotionPage from "./PromotionPage/PromotionPage";
+import PenaltyPage from "./PenaltyPage/PenaltyPage";
 
 export {
   SidebarPage,
@@ -34,4 +35,5 @@ export {
   WithdrawlPage,
   NotFoundPage,
   PromotionPage,
+  PenaltyPage,
 };

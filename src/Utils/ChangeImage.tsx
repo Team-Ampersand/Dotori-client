@@ -11,7 +11,7 @@ import {
 	Slack,
 	Bug,
 	More,
-	Penalty,
+	PenaltyIcon,
 } from '../Assets/Svg';
 
 export const useRouterNameChangeMenuImage = (routerName: String) => {
@@ -37,7 +37,7 @@ export const useRouterNameChangeMenuImage = (routerName: String) => {
 		case 'Bug':
 			return <Bug />;
 		case 'Penalty':
-			return <Penalty />;
+			return <PenaltyIcon />;
 		default:
 			break;
 	}

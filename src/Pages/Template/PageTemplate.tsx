@@ -24,6 +24,8 @@ const returnPageType = (routerName: string) => {
       return "상벌점 관리";
     case "/authorization":
       return "학생 정보";
+    case "/penalty":
+      return "규정 위반";
     default:
       break;
   }
@@ -43,6 +45,8 @@ const returnValueType = (nowUrl: string) => {
       return "point";
     case "/authorization":
       return "student info";
+    case "penalty":
+      return "penalty";
     default:
       return 0;
   }
@@ -59,7 +63,8 @@ const BannerStatus = (
     "point" ||
     "selfstudy" ||
     "song" ||
-    "student info"
+    "student info" ||
+    "penalty"
   ) {
     return (
       <>

@@ -17,6 +17,7 @@ import {
   WithdrawlPage,
   NotFoundPage,
   PromotionPage,
+  PenaltyPage,
 } from "./Pages";
 
 const Router: React.FC = () => {
@@ -40,6 +41,7 @@ const Router: React.FC = () => {
       <PrivateRoute path="/authorization" component={AuthorizationPage} />
       <PrivateRoute path="/Withdrawl" component={WithdrawlPage} />
       <PrivateRoute path="/change/password" component={PwChangePage} />
+      <PrivateRoute path="/penalty" component={PenaltyPage} />
       <Route component={NotFoundPage} />
     </>
   );
