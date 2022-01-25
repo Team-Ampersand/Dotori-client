@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import * as S from "./Style";
-import StuAuthorityItem from "Components/StuAuthorityItem/StuAuthorityItem";
+import StuAuthorityItem from "../StuAuthorityItem2/StuAuthorityItem2";
 import stuInfo from "Api/stuInfo";
 import PenaltyBreakDown from "../PenaltyBreakDown/PenaltyBreakDown";
 
@@ -88,7 +88,6 @@ const Penalty: React.FC = () => {
           <S.Search pattern='\d*' placeholder="이름을 검색해주세요"/>
           <S.Btn onClick={onSubmit}>검색</S.Btn>
         </S.SearchBox>
-          
         <S.BreakDownBtn>규정위반 기록하기</S.BreakDownBtn>
       </S.BoxContainer>
       <S.Container>

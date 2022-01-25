@@ -9,7 +9,6 @@ export const Positioner = styled.div`
 
 export const BoxContainer = styled.div`
   display: flex;
-
 `;
 
 export const SelectBoxWrapper = styled.div`
@@ -71,7 +70,7 @@ export const AuthorizationBoard = styled.ul`
 
 export const Container = styled.div`
   display: flex;
-  width: 100%;
+  width: 90%;
   height: 85%;
   background-color: #FFFFFF;
   border-radius: 20px;
