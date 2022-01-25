@@ -3,7 +3,6 @@ import { DotoriLogo } from '../../Assets/Svg';
 import * as S from './Style';
 import { Link } from 'react-router-dom';
 import member from '../../Api/member';
-import email from '../../Api/email';
 import { useHistory } from 'react-router';
 
 const TrySignup = () => {
@@ -52,7 +51,7 @@ const TrySignup = () => {
 
 	const emailCertify = async () => {
 		try {
-			await email.auth(id + '@gsm.hs.kr');
+			await member.auth(id + '@gsm.hs.kr');
 			alert('인증번호가 위의 이메일로 전송 되었습니다.');
 		} catch (e: any) {
 			alert(
@@ -69,7 +68,7 @@ const TrySignup = () => {
 			if (emailCode === '') {
 				return alert('아무것도 입력하지 않으셨습니다');
 			}
-			await email.authCheck(emailCode);
+			await member.authCheck(emailCode);
 			setDisabled(true);
 			alert('인증이 완료 되었습니다.');
 		} catch (e: any) {

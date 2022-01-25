@@ -97,6 +97,35 @@ class Member {
 			data: data,
 		});
 	}
+	auth(email: string) {
+		try {
+			const data = {
+				email: email,
+			};
+			return RequestApi({
+				method: 'POST',
+				url: MemberController.auth(),
+				data: data,
+			});
+		} catch (e: any) {
+			throw new Error(e);
+		}
+	}
+
+	authCheck(emailCode: string) {
+		try {
+			const data = {
+				key: emailCode,
+			};
+			return RequestApi({
+				method: 'POST',
+				url: MemberController.authcheck(),
+				data: data,
+			});
+		} catch (e: any) {
+			throw new Error(e);
+		}
+	}
 }
 
 export default new Member();
