@@ -52,7 +52,7 @@ const leftPad = (value) => {
 	return `0${value}`;
 };
 
-const dateFormat = (createdDate: Date) => {
+export const dateFormat = (createdDate: Date) => {
 	const date = new Date(createdDate);
 	const year = date.getFullYear();
 	const month = leftPad(date.getMonth() + 1);

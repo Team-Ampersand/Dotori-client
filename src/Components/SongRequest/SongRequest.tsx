@@ -1,14 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as S from './Style';
 import music from 'Api/music';
-import { getCookie } from 'Utils/Cookie';
 import { ManufactureDate } from 'Utils/ManufactureDate';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import axios from 'axios';
-import { BASE_URL } from '../../Utils/Config/Config.json';
-import { MusicController } from 'Utils/Libs/requestUrls';
 import { useHistory } from 'react-router';
+import { dateFormat } from 'Components/SongItem/SongItem';
 
 const musicApply = async (musicUrl: string) => {
 	try {
@@ -18,6 +15,14 @@ const musicApply = async (musicUrl: string) => {
 		e.message === 'Request failed with status code 409'
 			? alert('이미 노래를 신청 해 신청 하실 수 없습니다.')
 			: alert(e);
+	}
+};
+
+const getDateMusic = async (date: any) => {
+	try {
+		await music.dateMusic(date);
+	} catch (e) {
+		alert(e);
 	}
 };
 
@@ -101,16 +106,6 @@ const returnBtn = (
 const SongRequest: React.FC = () => {
 	const [url, setUrl] = useState<string>('');
 	const songInput = useRef<HTMLInputElement>(null);
-	const history = useHistory();
-	const role = localStorage.getItem('role');
-	const convertDateFormat = (date) => {
-		let year = date.getFullYear();
-		let month = date.getMonth() + 1;
-		month = month >= 10 ? month : '0' + month;
-		let day = date.getDate();
-		day = day >= 10 ? day : '0' + day;
-		return [year, month, day].join('-');
-	};
 
 	useEffect(() => {
 		if (songInput.current) {
@@ -121,13 +116,6 @@ const SongRequest: React.FC = () => {
 	return (
 		<S.Postioner>
 			<label>기상음악 신청</label>
-			<Calendar
-				onChange={(value) =>
-					history.push({
-						pathname: `/${role}/music?date=${convertDateFormat(value)}`,
-					})
-				}
-			/>
 			<S.InputWrapper>
 				<p>URL 주소</p>
 				{returnBtn(url, setUrl, songInput)}

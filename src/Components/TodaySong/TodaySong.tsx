@@ -6,6 +6,10 @@ import { useHistory } from 'react-router';
 import { deleteCookie } from 'Utils/Cookie';
 import { useSetRecoilState } from 'recoil';
 import { HasToken } from 'Atoms';
+import { dateFormat } from 'Components/SongItem/SongItem';
+import Calendar from 'react-calendar';
+import { Calander } from 'Assets/Svg';
+import { ManufactureDate } from 'Utils/ManufactureDate';
 
 type list = {
 	id: number;
@@ -21,10 +25,23 @@ const musicLookup = async () => {
 	} catch (e) {}
 };
 
+const getDateMusic = async (date: any) => {
+	try {
+		return await music.dateMusic(date);
+	} catch (e) {
+		alert(e);
+	}
+};
+
 const TodaySong: React.FC = () => {
 	const history = useHistory();
 	const [all, setAll] = useState(true);
-	const [today, setToday] = useState(false);
+	const [date, setDate] = useState(false);
+	const [showDate, setShowDate] = useState(
+		`${ManufactureDate('Y')}-${('0' + ManufactureDate('M')).slice(-2)}-${(
+			'0' + ManufactureDate('D')
+		).slice(-2)}`
+	);
 	const [list, setList] = useState<list[]>([]);
 	const setLogged = useSetRecoilState(HasToken);
 	useEffect(() => {
@@ -69,7 +86,47 @@ const TodaySong: React.FC = () => {
 	return (
 		<S.Postioner>
 			<S.PlaylistContainer>
-				<h3>{all ? 'Month Playlist' : 'Date Playlist'}</h3>
+				<h3>
+					{all ? `${ManufactureDate('M')}월 Playlist` : `${showDate} Playlist`}
+				</h3>
+				<S.BtnWrapper>
+					<S.AllWrapper
+						onClick={() => {
+							musicLookup().then((res) => {
+								setList(res?.data.data);
+								setAll(true);
+								setDate(false);
+							});
+						}}
+						isClicked={all}
+					>
+						전체
+					</S.AllWrapper>
+					<S.DateWrapper
+						isClicked={date}
+						onClick={() =>
+							getDateMusic(showDate).then((res) => {
+								setList(res?.data.data);
+								setAll(false);
+								setDate(true);
+							})
+						}
+					>
+						<Calander />
+						<S.CalanderWrapper isClicked={date}>
+							<Calendar
+								onChange={(value) =>
+									getDateMusic(dateFormat(value)).then((res) => {
+										setList(res?.data.data);
+										setAll(false);
+										setDate(true);
+										setShowDate(dateFormat(value));
+									})
+								}
+							/>
+						</S.CalanderWrapper>
+					</S.DateWrapper>
+				</S.BtnWrapper>
 			</S.PlaylistContainer>
 			<S.SongContainer>
 				{list &&

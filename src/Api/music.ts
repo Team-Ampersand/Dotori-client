@@ -37,11 +37,11 @@ class Music {
 			throw new Error(e);
 		}
 	}
-	async dateMusic() {
+	async dateMusic(date: any) {
 		try {
 			return RequestApi({
 				method: 'GET',
-				url: MusicController.dateMusic(localStorage.getItem('role')),
+				url: MusicController.dateMusic(localStorage.getItem('role'), date),
 			});
 		} catch (e: any) {
 			throw new Error(e);
