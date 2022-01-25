@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const BreakDownContainer = styled.div`
-    width: 85%;
+    width: 100%;
     height: 100%;
     display: grid;
 `;

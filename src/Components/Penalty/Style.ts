@@ -70,7 +70,7 @@ export const AuthorizationBoard = styled.ul`
 
 export const Container = styled.div`
   display: flex;
-  width: 90%;
+  width: 100%;
   height: 85%;
   background-color: #FFFFFF;
   border-radius: 20px;
