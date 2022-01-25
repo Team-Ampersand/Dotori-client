@@ -7,6 +7,11 @@ export const Positioner = styled.div`
   grid-template-rows: 9vh;
 `;
 
+export const BoxContainer = styled.div`
+  display: flex;
+  
+`;
+
 export const SelectBoxWrapper = styled.div`
   display: flex;
   background-color: #fff;

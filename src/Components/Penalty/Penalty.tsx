@@ -3,6 +3,7 @@ import * as S from "./Style";
 import StuAuthorityItem from "Components/StuAuthorityItem/StuAuthorityItem";
 import stuInfo from "Api/stuInfo";
 import PenaltyBreakDown from "../PenaltyBreakDown/PenaltyBreakDown";
+import { Search } from 'Components';
 
 interface studentList {
   id: number;
@@ -51,38 +52,41 @@ const Penalty: React.FC = () => {
 
   return(
     <S.Positioner>
-      <S.SelectBoxWrapper>
-        <S.SelectBox
-          onChange={({ target: { value } }) => {
-            setStuGrade(value);
-          }}
-          value={stuGrade}
-        >
-          <S.Option value="" selected disabled hidden>
-            선택
-          </S.Option>
-          <S.Option value="1">1</S.Option>
-          <S.Option value="2">2</S.Option>
-          <S.Option value="3">3</S.Option>
-        </S.SelectBox>
-        <S.Label>학년</S.Label>
-        <S.SelectBox
-          onChange={({ target: { value } }) => {
-            setStuClass(value);
-          }}
-          value={stuClass}
-        >
-          <S.Option value="" selected disabled hidden>
-            선택
-          </S.Option>
-          <S.Option value="1">1</S.Option>
-          <S.Option value="2">2</S.Option>
-          <S.Option value="3">3</S.Option>
-          <S.Option value="4">4</S.Option>
-        </S.SelectBox>
-        <S.Label>반</S.Label>
-        <S.Btn onClick={onSubmit}>검색</S.Btn>
-      </S.SelectBoxWrapper>
+      <S.BoxContainer>
+        <S.SelectBoxWrapper>
+          <S.SelectBox
+            onChange={({ target: { value } }) => {
+              setStuGrade(value);
+            }}
+            value={stuGrade}
+          >
+            <S.Option value="" selected disabled hidden>
+              선택
+            </S.Option>
+            <S.Option value="1">1</S.Option>
+            <S.Option value="2">2</S.Option>
+            <S.Option value="3">3</S.Option>
+          </S.SelectBox>
+          <S.Label>학년</S.Label>
+          <S.SelectBox
+            onChange={({ target: { value } }) => {
+              setStuClass(value);
+            }}
+            value={stuClass}
+          >
+            <S.Option value="" selected disabled hidden>
+              선택
+            </S.Option>
+            <S.Option value="1">1</S.Option>
+            <S.Option value="2">2</S.Option>
+            <S.Option value="3">3</S.Option>
+            <S.Option value="4">4</S.Option>
+          </S.SelectBox>
+          <S.Label>반</S.Label>
+          <S.Btn onClick={onSubmit}>검색</S.Btn>
+        </S.SelectBoxWrapper>
+        <Search />
+      </S.BoxContainer>
       <S.Container>
         <S.AuthorizationBoard>
           {studentList &&

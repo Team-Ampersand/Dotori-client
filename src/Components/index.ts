@@ -34,6 +34,7 @@ import SongItem from './SongItem/SongItem';
 import MealBoard from './MealBoard/MealBoard';
 import Withdrawl from 'Components/Withdrawl/Withdrawl';
 import Penalty from './Penalty/Penalty';
+import Search from './Search/Search';
 
 export {
 	Sidebar,
@@ -72,4 +73,5 @@ export {
 	Withdrawl,
   	InfoUpdateModal,
 	Penalty,
+	Search,
 };
