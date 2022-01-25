@@ -3,7 +3,6 @@ import * as S from "./Style";
 import StuAuthorityItem from "Components/StuAuthorityItem/StuAuthorityItem";
 import stuInfo from "Api/stuInfo";
 import PenaltyBreakDown from "../PenaltyBreakDown/PenaltyBreakDown";
-import { Search } from 'Components';
 
 interface studentList {
   id: number;
@@ -85,7 +84,12 @@ const Penalty: React.FC = () => {
           <S.Label>반</S.Label>
           <S.Btn onClick={onSubmit}>검색</S.Btn>
         </S.SelectBoxWrapper>
-        <Search />
+        <S.SearchBox>
+          <S.Search pattern='\d*' placeholder="이름을 검색해주세요"/>
+          <S.Btn onClick={onSubmit}>검색</S.Btn>
+        </S.SearchBox>
+          
+        <S.BreakDownBtn>규정위반 기록하기</S.BreakDownBtn>
       </S.BoxContainer>
       <S.Container>
         <S.AuthorizationBoard>
