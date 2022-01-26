@@ -2,30 +2,39 @@
 export const MemberController = {
 	// 로그인
 	signin: () => {
-		return '/signin';
+		return '/members/signin';
 	},
 	// 회원 가입
 	signup: () => {
-		return '/signup';
+		return '/members/signup';
 	},
 	// 로그아웃
 	logout: () => {
-		return '/logout';
+		return '/members/logout';
 	},
 	// 비밀번호 변경
 	change: () => {
-		return '/change/password';
+		return '/members/password';
 	},
 	// 회원탈퇴
 	delete: () => {
-		return '/delete';
+		return '/members/withdrawal';
 	},
 	//비밀번호 찾기 전 이메일로 인증번호 보내기
 	authPassword: () => {
-		return '/send/change/password/authkey';
+		return '/members/password/email';
 	},
+	//비밀번호 찾기 전 이메일 인증 확인
 	findPassword: () => {
-		return '/verified/auth/change/password';
+		return '/members/password/email/check';
+	},
+	//이메일로 key값 받기
+	auth: () => {
+		return '/members/signup/email';
+	},
+	//위에서 받은 key값 인증
+	authcheck: () => {
+		return '/members/signup/email/check';
 	},
 };
 
@@ -129,24 +138,24 @@ export const MusicController = {
 
 // 학생 정보 변경
 export const StuInfoController = {
-  // 학생정보 전체 조회
-  getStuInfo: (role: string | null) => {
-    return `/${role}/info`;
-  },
-  // 반별 학생정보 조회
-  getClassStuInfo: (role: string | null, classId: number) => {
-    return `/${role}/info/${classId}`;
-  },
-  // 학번 변경
-  updateStuNum: (role: string | null) => {
-    return `/${role}/info/stunum`;
-  },
-  // 이름 변경
-  updateStuName: (role: string | null) => {
-    return `/${role}/info/membername`;
-  },
-  // 권한 변경
-  updateStuRole: (role: string | null) => {
-    return `/${role}/info/role`;
-  },
+	// 학생정보 전체 조회
+	getStuInfo: (role: string | null) => {
+		return `/${role}/info`;
+	},
+	// 반별 학생정보 조회
+	getClassStuInfo: (role: string | null, classId: number) => {
+		return `/${role}/info/${classId}`;
+	},
+	// 학번 변경
+	updateStuNum: (role: string | null) => {
+		return `/${role}/info/stunum`;
+	},
+	// 이름 변경
+	updateStuName: (role: string | null) => {
+		return `/${role}/info/membername`;
+	},
+	// 권한 변경
+	updateStuRole: (role: string | null) => {
+		return `/${role}/info/role`;
+	},
 };
