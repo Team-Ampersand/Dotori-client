@@ -40,6 +40,7 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
   return (
     <>
       <S.Container>
+        <S.CheckBox type="checkbox"/>
         <S.StuInfoWrapper>
           <S.StuNumStyle>{stuNum}</S.StuNumStyle>
           <S.NameStyle>{name}</S.NameStyle>

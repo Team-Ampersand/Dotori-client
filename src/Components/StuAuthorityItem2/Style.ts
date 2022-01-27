@@ -95,3 +95,10 @@ export const Btn = styled.button<BtnProps>`
     color: #fff;
   }
 `;
+
+export const CheckBox = styled.input`
+  margin-left: 20px;
+  width: 30px;
+  height: 30px;
+  background-color: rgba(15, 76, 129, 1);
+`;
