@@ -11,8 +11,10 @@ interface studentList {
   roles: Array<any>;
 }
 
+
 const Penalty: React.FC = () => {
   const [studentList, setStudentList] = useState<studentList[]>([]);
+  const [searchTerm, setSearchTerm]: any = useState("");
 
   const getStuInfo = async () => {
     const role = await localStorage.getItem("role");
@@ -48,6 +50,38 @@ const Penalty: React.FC = () => {
       throw Error(e);
     }
   }, []);
+
+  // eslint-disable-next-line array-callback-return
+  const Test = studentList && studentList.filter((val) => {
+    if (searchTerm === "") { 
+      return (
+        // eslint-disable-next-line array-callback-return
+        studentList && studentList.map((stu) => {
+        <StuAuthorityItem
+          key={stu.id}
+          stuId={stu.id}
+          stuNum={String(stu.stuNum)}
+          name={stu.memberName}
+          authority={stu.roles[0]}
+        />
+      })
+      )
+    }
+    else if (val.memberName.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())) { return val }
+  }).map((stu) => {
+    return (
+      <>
+          <StuAuthorityItem
+            key={stu.id}
+            stuId={stu.id}
+            stuNum={String(stu.stuNum)}
+            name={stu.memberName}
+            authority={stu.roles[0]}
+          />
+        </>
+    )
+  })
+
 
   return(
     <S.Positioner>
@@ -85,23 +119,14 @@ const Penalty: React.FC = () => {
           <S.Btn onClick={onSubmit}>검색</S.Btn>
         </S.SelectBoxWrapper>
         <S.SearchBox>
-          <S.Search pattern='\d*' placeholder="이름을 검색해주세요"/>
+          <S.Search pattern='\d*' placeholder="이름을 검색해주세요" onChange={(e) => {setSearchTerm(e.target.value)}}/>
           <S.Btn onClick={onSubmit}>검색</S.Btn>
         </S.SearchBox>
         <S.BreakDownBtn>규정위반 기록하기</S.BreakDownBtn>
       </S.BoxContainer>
       <S.Container>
         <S.AuthorizationBoard>
-          {studentList &&
-            studentList.map((stu) => (
-              <StuAuthorityItem
-                key={stu.id}
-                stuId={stu.id}
-                stuNum={String(stu.stuNum)}
-                name={stu.memberName}
-                authority={stu.roles[0]}
-              />
-            ))}
+          {Test}
         </S.AuthorizationBoard>
         <PenaltyBreakDown />
       </S.Container>

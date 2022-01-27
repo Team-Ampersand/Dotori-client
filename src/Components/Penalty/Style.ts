@@ -104,6 +104,11 @@ export const Search = styled.input`
   }
 `;
 
+export const SearchWrapper = styled.div`
+  width: 100%;
+  border-bottom: 1px solid black;
+`;
+
 export const BreakDownBtn = styled.button`
   width: 190px;
   height: 70px;
