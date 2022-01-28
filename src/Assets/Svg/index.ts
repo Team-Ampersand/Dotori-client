@@ -17,6 +17,7 @@ import IllustHome from "./IllustHome";
 import DotoriLogo from "./DotoriLogo";
 import LoginArrow from "./LoginArrow";
 import Profile from "./Profile";
+import Calander from './Calandar';
 import PenaltyIcon from "./PenaltyIcon";
 
 export {
@@ -39,5 +40,6 @@ export {
   DotoriLogo,
   LoginArrow,
   Profile,
+  Calander,
   PenaltyIcon,
 };
