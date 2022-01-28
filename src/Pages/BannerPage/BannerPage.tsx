@@ -21,6 +21,8 @@ const CompareBanner = (nowUrl: string) => {
       return;
     case "/authorization":
       return;
+    case "/penalty":
+      return;
     default:
       return (
         <S.Postioner>

@@ -33,6 +33,7 @@ import PasswordForm from './PasswordForm/PasswordForm';
 import SongItem from './SongItem/SongItem';
 import MealBoard from './MealBoard/MealBoard';
 import Withdrawl from 'Components/Withdrawl/Withdrawl';
+import Penalty from './Penalty/Penalty';
 
 export {
 	Sidebar,
@@ -69,5 +70,6 @@ export {
 	SongItem,
 	MealBoard,
 	Withdrawl,
-  InfoUpdateModal,
+  	InfoUpdateModal,
+	Penalty,
 };
