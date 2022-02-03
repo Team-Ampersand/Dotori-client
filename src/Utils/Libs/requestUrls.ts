@@ -2,11 +2,11 @@
 export const MemberController = {
 	// 로그인
 	signin: () => {
-		return '/members/signin';
+		return '/signin';
 	},
 	// 회원 가입
 	signup: () => {
-		return '/members/signup';
+		return '/signup';
 	},
 	// 로그아웃
 	logout: () => {
@@ -30,11 +30,11 @@ export const MemberController = {
 	},
 	//이메일로 key값 받기
 	auth: () => {
-		return '/members/signup/email';
+		return '/signup/email';
 	},
 	//위에서 받은 key값 인증
 	authcheck: () => {
-		return '/members/signup/email/check';
+		return '/signup/email/check';
 	},
 };
 
