@@ -83,6 +83,26 @@ class stuInfo {
       } else throw Error(e);
     }
   }
+  async banSelfStudy(role: string | null, stuId: number) {
+    try {
+      return await RequestApi({
+        method: "PUT",
+        url: StuInfoController.banSelfStudy(role, stuId),
+      });
+    } catch (e: any) {
+      throw Error(e);
+    }
+  }
+  async banCancelSelfStudy(role: string | null, stuId: number) {
+    try {
+      return await RequestApi({
+        method: "PUT",
+        url: StuInfoController.banCancelSelfStudy(role, stuId),
+      });
+    } catch (e: any) {
+      throw Error(e);
+    }
+  }
 }
 
 export default new stuInfo();
