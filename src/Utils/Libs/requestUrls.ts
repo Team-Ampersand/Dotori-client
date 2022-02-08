@@ -159,3 +159,11 @@ export const StuInfoController = {
 		return `/${role}/info/role`;
 	},
 };
+
+// 기숙사 규정위반
+export const PenaltyController = {
+  // 단일 학생 규정위반 정보 전체 조회
+  getPenaltyInfo: (role: string | null, stuNum: string) => {
+    return `/${role}/rule/all/${stuNum}`;
+  }
+}

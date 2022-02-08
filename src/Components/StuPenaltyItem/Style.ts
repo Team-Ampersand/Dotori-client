@@ -9,7 +9,7 @@ interface BtnProps {
 }
 
 export const Container = styled.li`
-  width: 90%;
+  width: 95%;
   list-style: none;
   margin: 30px 40px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
@@ -21,8 +21,7 @@ export const Container = styled.li`
 `;
 
 export const StuInfoWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
   justify-content: center;
   align-items: center;
 `;
@@ -54,7 +53,7 @@ export const AuthorityStyle = styled.div`
 `;
 
 export const EditBtn = styled.button`
-  width: 90px;
+  width: 200px;
   height: 45px;
   margin-right: 70px;
   font-size: 18px;
