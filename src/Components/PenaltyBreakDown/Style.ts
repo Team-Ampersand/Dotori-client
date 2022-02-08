@@ -4,12 +4,13 @@ export const BreakDownContainer = styled.div`
     width: 100%;
     height: 100%;
     display: grid;
+    justify-content: center;
+    align-items: center;
 `;
 
 export const BreakDownWrapper = styled.div`
-    margin: 4vh 3vh;
-    width: 90%;
-    height: 90%;
+    width: 70vh;
+    height: 95%;
     border: 2px solid rgba(0, 0, 0, 1);
     border-radius: 40px;
 `;
@@ -72,4 +73,5 @@ export const SmallCategories = styled.div`
 
 export const DateWrapper = styled.div`
     font-size: 13px;
+    display: grid;
 `;
