@@ -113,7 +113,9 @@ class stuInfo {
         url: StuInfoController.searchName(role, name),
       });
     } catch (e: any) {
-      throw Error(e);
+      if (e.message === "Request failed with status code 404") {
+        alert("해당하는 학생이 없습니다.");
+      } else throw Error(e);
     }
   }
 }
