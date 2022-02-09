@@ -103,6 +103,19 @@ class stuInfo {
       throw Error(e);
     }
   }
+  async searchName(role: string | null, name: string) {
+    try {
+      if (name === "") {
+        return await this.getStuInfo(role);
+      }
+      return await RequestApi({
+        method: "GET",
+        url: StuInfoController.searchName(role, name),
+      });
+    } catch (e: any) {
+      throw Error(e);
+    }
+  }
 }
 
 export default new stuInfo();

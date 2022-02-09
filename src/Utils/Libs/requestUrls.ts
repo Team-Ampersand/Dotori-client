@@ -166,4 +166,8 @@ export const StuInfoController = {
   banCancelSelfStudy: (role: string | null, stuId: number) => {
     return `${role}/selfstudy/ban/cancel/${stuId}`;
   },
+  // 이름으로 학생 검색
+  searchName: (role: string | null, name: string) => {
+    return `${role}/info/members?membername=${name}`;
+  },
 };
