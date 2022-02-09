@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const Positioner = styled.div`
   height: 100%;
   width: 100%;
-  display: grid;
-  grid-template-rows: 9vh;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const BoxContainer = styled.div`
@@ -60,7 +60,7 @@ export const Btn = styled.button`
 
 export const AuthorizationBoard = styled.ul`
   width: 100%;
-  height: 100%;
+  height: 74vh;
   background-color: #fff;
   list-style: none;
   overflow-y: scroll;
@@ -71,6 +71,7 @@ export const Container = styled.div`
   display: flex;
   width: 100%;
   height: 75vh;
+  margin-top: 20px;
   background-color: #FFFFFF;
   border-radius: 20px;
 `;

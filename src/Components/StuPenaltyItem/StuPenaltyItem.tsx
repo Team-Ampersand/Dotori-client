@@ -3,7 +3,6 @@ import * as S from "./Style";
 import PenaltyModal from "../PenaltyModal/PenaltyModal";
 
 interface StuAuthorityItemProps {
-  stuId: number;
   stuNum: string;
   name: string;
   authority: string;
@@ -23,16 +22,21 @@ const returnRoleValue = (roleType: string) => {
 };
 
 const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
-  stuId,
   stuNum,
   name,
   authority,
 }) => {
   const [editState, setEditState] = useState(false);
+  const [checkItems, setCheckItems]:any = useState([]);
 
-  // const onConfirm = () => {
-  //   setEditState(!editState);
-  // };
+  const handleSingleCheck = (checked, id) => {
+    if (checked) {
+      setCheckItems([...checkItems, id]);
+    } else {
+      // 체크 해제
+      setCheckItems(checkItems.filter((el) => el !== id));
+    }
+  };
 
   const closeModal = () => {
     setEditState(false);
@@ -41,7 +45,7 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
     <>
       <S.Container>
         <S.StuInfoWrapper>
-          <S.CheckBox type="checkbox"/>
+          <S.CheckBox type="checkbox" onChange={(e) => handleSingleCheck(e.target.checked, stuNum)} checked={checkItems.includes(stuNum) ? true : false}/>
           <S.StuNumStyle>{stuNum}</S.StuNumStyle>
           <S.NameStyle>{name}</S.NameStyle>
           <S.AuthorityStyle>{returnRoleValue(authority)}</S.AuthorityStyle>
@@ -51,7 +55,6 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
           modalState={editState}
           closeModal={closeModal}
           stuNum={stuNum}
-          role={returnRoleValue(authority)}
         />
       </S.Container>
     </>

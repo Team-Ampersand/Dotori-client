@@ -165,5 +165,9 @@ export const PenaltyController = {
   // 단일 학생 규정위반 정보 전체 조회
   getPenaltyInfo: (role: string | null, stuNum: string) => {
     return `/${role}/rule/all/${stuNum}`;
+  },
+  // 학생 규정위반 부여
+  updatePenaltyInfo: (role: string | null) => {
+	  return `/${role}/rule`
   }
 }

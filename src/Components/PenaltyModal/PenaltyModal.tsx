@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import * as S from "./Style";
 import penaltyInfo from "../../Api/penaltyInfo";
 import PenaltyBreakDown from "Components/PenaltyBreakDown/PenaltyBreakDown";
+import { isTemplateExpression } from "typescript";
 
 interface ModalProps {
   modalState: boolean;
   closeModal: () => void;
   stuNum: string;
-  role: string;
 }
 
 const PenaltyModal: React.FC<ModalProps> = ({
@@ -15,7 +15,7 @@ const PenaltyModal: React.FC<ModalProps> = ({
 	closeModal,
 	stuNum,
 }) => {
-	const [penaltyList, setPenaltyList] = useState([]);
+	const [penaltyList, setPenaltyList] = useState();
 
   const getPenaltyInfo = async () => {
     const role = await localStorage.getItem("role");
@@ -24,8 +24,7 @@ const PenaltyModal: React.FC<ModalProps> = ({
 
   useEffect(() => {
       getPenaltyInfo().then((res) => {
-        console.log(res?.data);
-        res && setPenaltyList(res.data);
+				res && setPenaltyList(res.data.data);
       });
   }, []);
 
@@ -43,7 +42,9 @@ const PenaltyModal: React.FC<ModalProps> = ({
       <S.Positioner>
         <S.Overlay onClick={closeModal} />
         <S.Container>
-          <PenaltyBreakDown/>
+					<PenaltyBreakDown
+            penaltyList={penaltyList}
+					/>
           <S.BtnWrapper>
             <S.CompleteBtn onClick={onCancle}>확인</S.CompleteBtn>
           </S.BtnWrapper>

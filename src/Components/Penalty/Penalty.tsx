@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import * as S from "./Style";
-import StuAuthorityItem from "../StuPenaltyItem/StuPenaltyItem";
+import StuPenaltyItem from "../StuPenaltyItem/StuPenaltyItem";
 import stuInfo from "Api/stuInfo";
+import GiveModal from 'Components/GiveModal/GiveModal';
 
 interface studentList {
   id: number;
@@ -56,9 +57,8 @@ const Penalty: React.FC = () => {
       return (
         // eslint-disable-next-line array-callback-return
         studentList && studentList.map((stu) => {
-        <StuAuthorityItem
+        <StuPenaltyItem
           key={stu.id}
-          stuId={stu.id}
           stuNum={String(stu.stuNum)}
           name={stu.memberName}
           authority={stu.roles[0]}
@@ -70,16 +70,21 @@ const Penalty: React.FC = () => {
   }).map((stu) => {
     return (
       <>
-          <StuAuthorityItem
-            key={stu.id}
-            stuId={stu.id}
-            stuNum={String(stu.stuNum)}
-            name={stu.memberName}
-            authority={stu.roles[0]}
-          />
-        </>
+        <StuPenaltyItem
+          key={stu.id}
+          stuNum={String(stu.stuNum)}
+          name={stu.memberName}
+          authority={stu.roles[0]}
+        />
+      </>
     )
   })
+
+  const [editState, setEditState] = useState(false);
+
+  const closeModal = () => {
+    setEditState(false);
+  };
 
 
   return(
@@ -121,7 +126,12 @@ const Penalty: React.FC = () => {
           <S.Search pattern='\d*' placeholder="이름을 검색해주세요" onChange={(e) => {setSearchTerm(e.target.value)}}/>
           <S.Btn onClick={onSubmit}>검색</S.Btn>
         </S.SearchBox>
-        <S.BreakDownBtn>규정위반 기록하기</S.BreakDownBtn>
+        <S.BreakDownBtn onClick={() => setEditState(!editState)}>규정위반 기록하기</S.BreakDownBtn>
+        <GiveModal
+          modalState={editState}
+          closeModal={closeModal}
+          // stuNum={stuNum}
+        />
       </S.BoxContainer>
       <S.Container>
         <S.AuthorizationBoard>
