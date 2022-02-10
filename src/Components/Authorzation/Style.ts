@@ -8,7 +8,6 @@ export const SelectWrapper = styled.div`
   width: 500px;
   height: 70px;
   border-radius: 20px;
-  margin-top: 20px;
   justify-content: center;
   align-items: center;
 `;
@@ -53,6 +52,9 @@ export const Positioner = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  div {
+    display: flex;
+  }
 `;
 
 export const AuthorizationBoard = styled.ul`
@@ -63,4 +65,43 @@ export const AuthorizationBoard = styled.ul`
   background-color: #fff;
   list-style: none;
   overflow: scroll;
+`;
+
+export const SearchBox = styled.div`
+  display: flex;
+  background-color: #fff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+  width: 300px;
+  height: 70px;
+  border-radius: 20px;
+  justify-content: space-around;
+  align-items: center;
+  border: none;
+  margin-left: 50px;
+`;
+
+export const Search = styled.input`
+  display: flex;
+  width: 50%;
+  height: 90%;
+  border: none;
+  border-radius: 20px;
+  font-size: 18px;
+`;
+
+export const SearchBtn = styled.button`
+  width: 90px;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  outline: none;
+  background-color: #0f4c81;
+  &:hover {
+    background-color: #fff;
+    color: #0f4c81;
+    border: 2px solid #0f4c81;
+  }
 `;
