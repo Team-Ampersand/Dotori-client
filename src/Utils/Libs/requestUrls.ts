@@ -159,3 +159,16 @@ export const StuInfoController = {
 		return `/${role}/info/role`;
 	},
 };
+
+// 안마의자 신청
+export const MassageController = {
+	massage: (role: string | null) => {
+		return `/${role}/massage`;
+	},
+	massageInfo: (role: string | null) => {
+		return `/${role}/massage/info`;
+	},
+	cancelMassage: (role: string | null) => {
+		return `/${role}/cancel/massage`;
+	},
+};
