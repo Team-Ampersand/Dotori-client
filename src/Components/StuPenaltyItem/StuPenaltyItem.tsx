@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as S from "./Style";
-import { InfoUpdateModal } from "Components";
+import PenaltyModal from "../PenaltyModal/PenaltyModal";
 
 interface StuAuthorityItemProps {
   stuId: number;
@@ -40,19 +40,18 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
   return (
     <>
       <S.Container>
-        <S.CheckBox type="checkbox"/>
         <S.StuInfoWrapper>
+          <S.CheckBox type="checkbox"/>
           <S.StuNumStyle>{stuNum}</S.StuNumStyle>
           <S.NameStyle>{name}</S.NameStyle>
           <S.AuthorityStyle>{returnRoleValue(authority)}</S.AuthorityStyle>
         </S.StuInfoWrapper>
-        <InfoUpdateModal
+        <S.EditBtn onClick={() => setEditState(!editState)}>규정위반내역 확인하기</S.EditBtn>
+        <PenaltyModal
           modalState={editState}
           closeModal={closeModal}
           stuNum={stuNum}
-          name={name}
           role={returnRoleValue(authority)}
-          stuId={stuId}
         />
       </S.Container>
     </>
