@@ -34,6 +34,8 @@ import SongItem from './SongItem/SongItem';
 import MealBoard from './MealBoard/MealBoard';
 import Withdrawl from 'Components/Withdrawl/Withdrawl';
 import Penalty from './Penalty/Penalty';
+import MassageBoard from 'Components/MassageBoard/MassageBoard';
+import MassageTable from 'Components/MassageTable/MassageTable';
 
 export {
 	Sidebar,
@@ -70,6 +72,8 @@ export {
 	SongItem,
 	MealBoard,
 	Withdrawl,
-  	InfoUpdateModal,
+	InfoUpdateModal,
 	Penalty,
+	MassageBoard,
+	MassageTable,
 };
