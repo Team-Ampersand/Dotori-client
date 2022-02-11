@@ -58,6 +58,18 @@ const onlyCompareThisHeader = (match: MatchType) => {
 	}
 };
 
+const returnBorderColor = (stuNum) => {
+	if (stuNum.substring(0, 1) === '1') {
+		return '#FFF65E';
+	} else if (stuNum.substring(0, 1) === '2') {
+		return '#5E98CA';
+	} else if (stuNum.substring(0, 1) === '3') {
+		return '#60D286';
+	} else {
+		return '#000000';
+	}
+};
+
 const List: React.FC<ListProps> = ({ match }) => {
 	const [userlist, setUserList] = useRecoilState(list);
 	const setLogged = useSetRecoilState(HasToken);
@@ -73,12 +85,15 @@ const List: React.FC<ListProps> = ({ match }) => {
 		<>
 			{userlist &&
 				userlist.map((item, idx) => (
-					<S.Wrapper key={`${idx}`}>
+					<S.Wrapper
+						key={`${idx}`}
+						borderColor={returnBorderColor(item.stuNum)}
+					>
 						<div style={{ flex: onlyCompareThisHeader(match)!.list[0].flex }}>
-							{item.username}
+							{item.memberName}
 						</div>
 						<div style={{ flex: onlyCompareThisHeader(match)!.list[1].flex }}>
-							{item.stdNum}
+							{item.stuNum}
 						</div>
 					</S.Wrapper>
 				))}
