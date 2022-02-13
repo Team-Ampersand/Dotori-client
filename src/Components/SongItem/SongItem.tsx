@@ -3,12 +3,14 @@ import * as S from './Style';
 import axios from 'axios';
 import music from 'Api/music';
 import { getCookie } from 'Utils/Cookie';
+import { useDecode } from '../../Hooks/useDecode';
 
 type SongItemObj = {
 	createdDate: Date;
 	id: number;
 	url: string;
 	memberName: string;
+	email: string;
 };
 interface SongProps {
 	songObj: SongItemObj;
@@ -64,6 +66,9 @@ const SongItem: React.FC<SongProps> = ({ songObj }) => {
 	const [title, setTitle] = useState('');
 	const videoId = youtube_parser(songObj.url);
 	const role = localStorage.getItem('role');
+	const userEmail: any = useDecode();
+	console.log(songObj.email);
+	console.log(userEmail);
 
 	useEffect(() => {
 		songTitle(videoId).then((res) => {
@@ -79,7 +84,10 @@ const SongItem: React.FC<SongProps> = ({ songObj }) => {
 				<S.AuthorContainer>{songObj.memberName}</S.AuthorContainer>
 				<S.AuthorContainer>{dateFormat(songObj.createdDate)}</S.AuthorContainer>
 			</S.Container>
-			{role === 'admin' || role === 'developer' || role === 'councillor' ? (
+			{role === 'admin' ||
+			role === 'developer' ||
+			role === 'councillor' ||
+			songObj.email === userEmail.sub ? (
 				<S.DeleteContainer
 					onClick={(e) => {
 						e.preventDefault();
