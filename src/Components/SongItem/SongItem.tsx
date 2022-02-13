@@ -67,8 +67,6 @@ const SongItem: React.FC<SongProps> = ({ songObj }) => {
 	const videoId = youtube_parser(songObj.url);
 	const role = localStorage.getItem('role');
 	const userEmail: any = useDecode();
-	console.log(songObj.email);
-	console.log(userEmail);
 
 	useEffect(() => {
 		songTitle(videoId).then((res) => {
