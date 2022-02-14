@@ -26,7 +26,7 @@ const MassageTable = () => {
 		returnUserObj().then((res) => {
 			setList(res?.data.data);
 		});
-	});
+	}, []);
 
 	return (
 		<S.Positioner>
