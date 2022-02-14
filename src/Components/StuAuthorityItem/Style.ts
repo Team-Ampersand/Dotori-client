@@ -1,12 +1,4 @@
-import styled, { css } from "styled-components";
-
-interface EditProps {
-  edit: boolean;
-}
-
-interface BtnProps {
-  BtnColor: string;
-}
+import styled from "styled-components";
 
 export const Container = styled.li`
   width: 95%;
@@ -49,12 +41,57 @@ export const AuthorityStyle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  border-right: 1px solid black;
+`;
+
+export const SelfStudyStyle = styled.div`
+  font-size: 20px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const BanBtn = styled.button`
+  width: 90px;
+  height: 45px;
+  margin-right: 40px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  background-color: red;
+
+  &:hover {
+    border: 2px solid red;
+    color: red;
+    background-color: #fff;
+  }
+`;
+
+export const BanCancelBtn = styled.button`
+  width: 90px;
+  height: 45px;
+  margin-right: 40px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  background-color: blue;
+
+  &:hover {
+    border: 2px solid blue;
+    color: blue;
+    background-color: #fff;
+  }
 `;
 
 export const EditBtn = styled.button`
   width: 90px;
   height: 45px;
-  margin-right: 70px;
+  margin-right: 30px;
   font-size: 18px;
   font-weight: bold;
   color: #fff;
@@ -69,27 +106,4 @@ export const EditBtn = styled.button`
   }
 `;
 
-export const BtnWrapper = styled.div<EditProps>`
-  ${(props) =>
-    !props.edit &&
-    css`
-      display: none;
-    `}
-  margin-right: 20px;
-`;
-
-export const Btn = styled.button<BtnProps>`
-  border: 2px solid ${(props) => props.BtnColor};
-  border-radius: 10px;
-  width: 90px;
-  height: 45px;
-  font-size: 18px;
-  font-weight: bold;
-  background-color: transparent;
-  margin-left: 20px;
-  color: ${(props) => props.BtnColor};
-  &:hover {
-    background-color: ${(props) => props.BtnColor};
-    color: #fff;
-  }
-`;
+export const BtnWrapper = styled.div``;

@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import * as S from "./Style";
-import StuAuthorityItem from "../StuAuthorityItem2/StuAuthorityItem2";
+import StuAuthorityItem from "../StuPenaltyItem/StuPenaltyItem";
 import stuInfo from "Api/stuInfo";
-import PenaltyBreakDown from "../PenaltyBreakDown/PenaltyBreakDown";
 
 interface studentList {
   id: number;
@@ -52,7 +51,7 @@ const Penalty: React.FC = () => {
   }, []);
 
   // eslint-disable-next-line array-callback-return
-  const Test = studentList && studentList.filter((val) => {
+  const Search = studentList && studentList.filter((val) => {
     if (searchTerm === "") { 
       return (
         // eslint-disable-next-line array-callback-return
@@ -126,9 +125,8 @@ const Penalty: React.FC = () => {
       </S.BoxContainer>
       <S.Container>
         <S.AuthorizationBoard>
-          {Test}
+          {Search}
         </S.AuthorizationBoard>
-        <PenaltyBreakDown />
       </S.Container>
     </S.Positioner>
   );
