@@ -172,6 +172,19 @@ export const StuInfoController = {
   },
 };
 
+// 안마의자 신청
+export const MassageController = {
+	massage: (role: string | null) => {
+		return `/${role}/massage`;
+	},
+	massageInfo: (role: string | null) => {
+		return `/${role}/massage/info`;
+	},
+	cancelMassage: (role: string | null) => {
+		return `/${role}/cancel/massage`;
+	},
+};
+
 // 기숙사 규정위반
 export const PenaltyController = {
   // 단일 학생 규정위반 정보 전체 조회
