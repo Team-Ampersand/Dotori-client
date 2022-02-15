@@ -16,6 +16,7 @@ type list = {
 	url: string;
 	memberName: string;
 	createdDate: Date;
+	email: string;
 };
 
 const musicLookup = async () => {
@@ -119,7 +120,7 @@ const TodaySong: React.FC = () => {
 									getDateMusic(dateFormat(value)).then((res) => {
 										setList(res?.data.data);
 										setAll(false);
-										setDate(true);
+										setDate(!Date);
 										setShowDate(dateFormat(value));
 									})
 								}

@@ -56,4 +56,6 @@ export const DeleteContainer = styled.div`
 	font-size: 20px;
 	cursor: pointer;
 	color: #fc2c2c;
+	position: relative;
+	left: 4%;
 `;
