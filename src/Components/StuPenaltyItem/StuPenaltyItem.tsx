@@ -27,16 +27,6 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
   authority,
 }) => {
   const [editState, setEditState] = useState(false);
-  const [checkItems, setCheckItems]:any = useState([]);
-
-  const handleSingleCheck = (checked, id) => {
-    if (checked) {
-      setCheckItems([...checkItems, id]);
-    } else {
-      // 체크 해제
-      setCheckItems(checkItems.filter((el) => el !== id));
-    }
-  };
 
   const closeModal = () => {
     setEditState(false);
@@ -45,7 +35,6 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
     <>
       <S.Container>
         <S.StuInfoWrapper>
-          <S.CheckBox type="checkbox" onChange={(e) => handleSingleCheck(e.target.checked, stuNum)} checked={checkItems.includes(stuNum) ? true : false}/>
           <S.StuNumStyle>{stuNum}</S.StuNumStyle>
           <S.NameStyle>{name}</S.NameStyle>
           <S.AuthorityStyle>{returnRoleValue(authority)}</S.AuthorityStyle>

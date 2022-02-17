@@ -1,6 +1,5 @@
 import { PenaltyController } from "Utils/Libs/requestUrls";
 import RequestApi from "Utils/Libs/requestApi";
-import { EnumType } from "typescript";
 
 class penaltyInfo {
   async getPenaltyInfo(role: string | null, stuNum: string){
@@ -15,7 +14,7 @@ class penaltyInfo {
       } else return;
     }
   }
-  updatePenaltyInfo(date: string, rule: EnumType, stuNum: string){
+  updatePenaltyInfo(date: string, rule: string, stuNum: Array<string>){
     try{
       const data = {
         date: date,
@@ -26,6 +25,26 @@ class penaltyInfo {
         method: "POST",
         url: PenaltyController.updatePenaltyInfo(localStorage.getItem("role")),
         data: data,
+      });
+    } catch (e: any) {
+      throw new Error(e);
+    }
+  }
+  async getModifyPenaltyInfo(role: string | null, stuNum) {
+    try{
+      return await RequestApi({
+        method: "GET",
+        url: PenaltyController.getModifyPenaltyInfo(role, stuNum),
+      });
+    } catch (e: any) {
+      throw new Error(e);
+    }
+  }
+  async deletePenaltyInfo(role: string | null, PenaltyId: number){
+    try{
+      return await RequestApi({
+        method: "DELETE",
+        url: PenaltyController.deletePenaltyInfo(role, PenaltyId),
       });
     } catch (e: any) {
       throw new Error(e);

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import * as S from "./Style";
 import penaltyInfo from "../../Api/penaltyInfo";
 import PenaltyBreakDown from "Components/PenaltyBreakDown/PenaltyBreakDown";
-import { isTemplateExpression } from "typescript";
 
 interface ModalProps {
   modalState: boolean;
@@ -24,7 +23,7 @@ const PenaltyModal: React.FC<ModalProps> = ({
 
   useEffect(() => {
       getPenaltyInfo().then((res) => {
-				res && setPenaltyList(res.data.data);
+        res && setPenaltyList(res.data.data);
       });
   }, []);
 

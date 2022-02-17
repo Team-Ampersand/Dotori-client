@@ -9,6 +9,7 @@ export const Positioner = styled.div`
 
 export const BoxContainer = styled.div`
   display: flex;
+  align-items: center;
 `;
 
 export const SelectBoxWrapper = styled.div`
@@ -125,4 +126,11 @@ export const BreakDownBtn = styled.button`
     color: #FF5252;
     border: 2px solid #FF5252;
   }
+`;
+
+export const CheckBox = styled.input`
+  margin-left: 20px;
+  width: 30px;
+  height: 30px;
+  background-color: rgba(15, 76, 129, 1);
 `;

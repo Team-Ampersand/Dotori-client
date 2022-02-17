@@ -58,7 +58,7 @@ export const SmallCategoriesWrapper = styled.ul`
     display: grid;
     width: 50%;
     height: 100%;
-    margin-top: -2vh;
+    margin-top: -1.9vh;
     margin-left: 2.5vh;
     grid-template-rows: repeat(auto-fit, 6vh);
 `;
@@ -69,6 +69,7 @@ export const SmallCategories = styled.div`
     justify-content: space-around;
     width: 100%;
     height: 100%;
+    font-size: 16px;
 `;
 
 export const DateWrapper = styled.div`
