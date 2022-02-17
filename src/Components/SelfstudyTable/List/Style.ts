@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+type StyleProps = {
+	borderColor: string;
+};
+
+export const Wrapper = styled.div<StyleProps>`
 	width: 100%;
 	height: 100%;
 	display: flex;

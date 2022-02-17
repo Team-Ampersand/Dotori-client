@@ -3,7 +3,7 @@ import { ManufactureDate } from 'Utils/ManufactureDate';
 
 type StyleProps = {
 	statusColor?: string;
-	Clicked?: string;
+	status?: string;
 	count?: number;
 };
 
@@ -15,30 +15,30 @@ export const Positioner = styled.div<StyleProps>`
 	border: 2px solid
 		${(props) => {
 			if (
-				props.Clicked === 'CAN' &&
+				props.status === 'CAN' &&
 				new Date().getHours() >= 20 &&
 				new Date().getHours() < 21 &&
 				['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1 &&
-				localStorage.getItem('role') !== 'admin'
+				new Date().getMinutes() >= 20
 			) {
 				return '#fff';
-			} else if (props.Clicked === 'APPLIED') {
+			} else if (props.status === 'APPLIED') {
 				return '#617be3';
 			} else if (
-				props.Clicked === 'CANT' ||
+				props.status === 'CANT' ||
 				new Date().getHours() < 20 ||
 				new Date().getHours() >= 21 ||
-				['금', '토', '일'].indexOf(ManufactureDate('W')) !== -1
+				['금', '토', '일'].indexOf(ManufactureDate('W')) !== -1 ||
+				new Date().getMinutes() < 20
 			) {
 				return '#fc2c2c';
 			}
 		}};
-
 	background-color: #fff;
 	border-radius: 20px;
 `;
 
-export const StudyHeader = styled.div`
+export const MassageHeader = styled.div`
 	height: 60px;
 	display: flex;
 	align-items: center;
@@ -62,7 +62,7 @@ export const StudyHeader = styled.div`
 	}
 `;
 
-export const StudyContent = styled.div`
+export const MassageContent = styled.div`
 	width: 100%;
 	height: 100%;
 	display: flex;
@@ -92,50 +92,54 @@ export const PointProgress = styled.div`
 
 export const ActiveProgress = styled.div<StyleProps>`
 	position: absolute;
-	width: ${(props) => props.count! * 2}%;
+	width: ${(props) => props.count! * 20}%;
 	height: 9px;
 	border-radius: 20px;
 	background-color: ${(props) => props.statusColor};
 `;
 
-export const StudyButton = styled.button<StyleProps>`
+export const MassageButton = styled.button<StyleProps>`
 	width: 40%;
 	height: 20%;
 	border: none;
 	background-color: ${(props) => {
 		if (
-			props.Clicked === 'CAN' &&
+			props.status === 'CAN' &&
 			new Date().getHours() >= 20 &&
 			new Date().getHours() < 21 &&
-			['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1
+			['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1 &&
+			new Date().getMinutes() >= 20
 		) {
 			return '#617be3';
-		} else if (props.Clicked === 'APPLIED') {
+		} else if (props.status === 'APPLIED') {
 			return '#fff';
 		} else if (
-			props.Clicked === 'CANT' ||
+			props.status === 'CANT' ||
 			new Date().getHours() < 20 ||
 			new Date().getHours() >= 21 ||
-			['금', '토', '일'].indexOf(ManufactureDate('W')) !== -1
+			['금', '토', '일'].indexOf(ManufactureDate('W')) !== -1 ||
+			new Date().getMinutes() < 20
 		) {
 			return '#fc2c2c';
 		}
 	}};
 	color: ${(props) => {
 		if (
-			props.Clicked === 'CAN' &&
+			props.status === 'CAN' &&
 			new Date().getHours() >= 20 &&
 			new Date().getHours() < 21 &&
-			['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1
+			['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1 &&
+			new Date().getMinutes() >= 20
 		) {
 			return '#fff';
-		} else if (props.Clicked === 'APPLIED') {
+		} else if (props.status === 'APPLIED') {
 			return '#617be3';
 		} else if (
-			props.Clicked === 'CANT' ||
+			props.status === 'CANT' ||
 			new Date().getHours() < 20 ||
 			new Date().getHours() >= 21 ||
-			['금', '토', '일'].indexOf(ManufactureDate('W')) !== -1
+			['금', '토', '일'].indexOf(ManufactureDate('W')) !== -1 ||
+			new Date().getMinutes() < 20
 		) {
 			return '#fff';
 		}
@@ -143,19 +147,21 @@ export const StudyButton = styled.button<StyleProps>`
 	border: 2px solid
 		${(props) => {
 			if (
-				props.Clicked === 'CAN' &&
+				props.status === 'CAN' &&
 				new Date().getHours() >= 20 &&
 				new Date().getHours() < 21 &&
-				['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1
+				['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1 &&
+				new Date().getMinutes() >= 20
 			) {
 				return '#fff';
-			} else if (props.Clicked === 'APPLIED') {
+			} else if (props.status === 'APPLIED') {
 				return '#617be3';
 			} else if (
-				props.Clicked === 'CANT' ||
+				props.status === 'CANT' ||
 				new Date().getHours() < 20 ||
 				new Date().getHours() >= 21 ||
-				['금', '토', '일'].indexOf(ManufactureDate('W')) !== -1
+				['금', '토', '일'].indexOf(ManufactureDate('W')) !== -1 ||
+				new Date().getMinutes() < 20
 			) {
 				return '#fff';
 			}
@@ -163,5 +169,4 @@ export const StudyButton = styled.button<StyleProps>`
 	border-radius: 10px;
 	font-size: 20px;
 	font-weight: bold;
-	// box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;

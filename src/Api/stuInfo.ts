@@ -83,6 +83,41 @@ class stuInfo {
       } else throw Error(e);
     }
   }
+  async banSelfStudy(role: string | null, stuId: number) {
+    try {
+      return await RequestApi({
+        method: "PUT",
+        url: StuInfoController.banSelfStudy(role, stuId),
+      });
+    } catch (e: any) {
+      throw Error(e);
+    }
+  }
+  async banCancelSelfStudy(role: string | null, stuId: number) {
+    try {
+      return await RequestApi({
+        method: "PUT",
+        url: StuInfoController.banCancelSelfStudy(role, stuId),
+      });
+    } catch (e: any) {
+      throw Error(e);
+    }
+  }
+  async searchName(role: string | null, name: string) {
+    try {
+      if (name === "") {
+        return await this.getStuInfo(role);
+      }
+      return await RequestApi({
+        method: "GET",
+        url: StuInfoController.searchName(role, name),
+      });
+    } catch (e: any) {
+      if (e.message === "Request failed with status code 404") {
+        alert("해당하는 학생이 없습니다.");
+      } else throw Error(e);
+    }
+  }
 }
 
 export default new stuInfo();

@@ -12,6 +12,7 @@ import {
 	Bug,
 	More,
 	PenaltyIcon,
+	Massage,
 } from '../Assets/Svg';
 
 export const useRouterNameChangeMenuImage = (routerName: String) => {
@@ -38,6 +39,8 @@ export const useRouterNameChangeMenuImage = (routerName: String) => {
 			return <Bug />;
 		case 'Penalty':
 			return <PenaltyIcon />;
+		case 'Massage':
+			return <Massage />;
 		default:
 			break;
 	}

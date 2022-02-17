@@ -41,7 +41,7 @@ const NoticeBoard: React.FC = () => {
 
   useEffect(() => {
     getNotice().then(async (res) => {
-      await setTotalPage(res?.data.data.totalPages);
+      (await res?.data.data) && setTotalPage(res?.data.data.totalPages);
     });
   }, []);
 
