@@ -1,6 +1,4 @@
-/* eslint-disable no-duplicate-case */
-/* eslint-disable no-sequences */
-import React from 'react';
+import React, { useState } from 'react';
 import * as S from "./Style";
 import LCategories from "./LargeCategories";
 
@@ -19,14 +17,18 @@ const items = LCategories.map(item => {
 })
 
 const PenaltyBreakDown:React.FC<PenaltyBreakDownProps> = ({ penaltyList }) => {
-  const ViolationHistoryList = [penaltyList] && [penaltyList].map((item) => {
+  const [closed, setClosed] = useState(false);
+  const handleMoreBtn =  () => {
+    setClosed(!closed);
+  }
+  const ViolationHistoryList = [penaltyList] && [penaltyList].map((item) => { 
     return(
       <>
         <S.LargeCategoriesWrapper>
           {items}
         </S.LargeCategoriesWrapper>
         <S.SmallCategoriesWrapper>
-          {item.FIREARMS.cnt > 0 ? <S.SmallCategories>화기류 {item.FIREARMS.cnt}회 <S.DateWrapper>{item.FIREARMS.date.join("\n")}</S.DateWrapper></S.SmallCategories> : null}
+          {item.FIREARMS.cnt > 0 ? <S.SmallCategories>화기류 {item.FIREARMS.cnt}회 <S.DateWrapper onClick={handleMoreBtn} className={closed ? "" : "close"}>{item.FIREARMS.date.join("\n")}</S.DateWrapper></S.SmallCategories> : null}
           {item.WEAPON.cnt > 0 ? <S.SmallCategories>흉기 {item.WEAPON.cnt}회 <S.DateWrapper>{item.WEAPON.date.join("\n")}</S.DateWrapper></S.SmallCategories> : null}
           {item.ALCOHOL.cnt > 0 ? <S.SmallCategories>주류 {item.ALCOHOL.cnt}회 <S.DateWrapper>{item.ALCOHOL.date.join("\n")}</S.DateWrapper></S.SmallCategories> : null}
           {item.TOBACCO.cnt > 0 ? <S.SmallCategories>담배 {item.TOBACCO.cnt}회 <S.DateWrapper>{item.TOBACCO.date.join("\n")}</S.DateWrapper></S.SmallCategories> : null}
