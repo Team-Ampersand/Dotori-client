@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import * as S from "./Style";
 import PenaltyModal from "../PenaltyModal/PenaltyModal";
+import ModifyModal from "Components/ModifyModal/ModifyModal";
 
 interface StuAuthorityItemProps {
-  stuId: number;
   stuNum: string;
   name: string;
   authority: string;
@@ -23,36 +23,43 @@ const returnRoleValue = (roleType: string) => {
 };
 
 const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
-  stuId,
   stuNum,
   name,
   authority,
 }) => {
-  const [editState, setEditState] = useState(false);
+  const [editPenaltyState, setEditPenaltyState] = useState(false);
+  const [editModifyState, setEditModifyState] = useState(false);
 
-  // const onConfirm = () => {
-  //   setEditState(!editState);
-  // };
-
-  const closeModal = () => {
-    setEditState(false);
+  const closePenaltyModal = () => {
+    setEditPenaltyState(false);
   };
+
+  const closeModifyModal = () => {
+    setEditModifyState(false);
+  }
+
   return (
     <>
       <S.Container>
         <S.StuInfoWrapper>
-          <S.CheckBox type="checkbox"/>
           <S.StuNumStyle>{stuNum}</S.StuNumStyle>
           <S.NameStyle>{name}</S.NameStyle>
           <S.AuthorityStyle>{returnRoleValue(authority)}</S.AuthorityStyle>
         </S.StuInfoWrapper>
-        <S.EditBtn onClick={() => setEditState(!editState)}>규정위반내역 확인하기</S.EditBtn>
-        <PenaltyModal
-          modalState={editState}
-          closeModal={closeModal}
-          stuNum={stuNum}
-          role={returnRoleValue(authority)}
-        />
+        <S.BtnWrapper>
+          <S.EditModifyBtn onClick={() => setEditModifyState(!editModifyState)}>규정위반내역 수정하기</S.EditModifyBtn>
+          <ModifyModal 
+            modalState={editModifyState}
+            closeModifyModal={closeModifyModal}
+            stuNum={stuNum}
+          />
+          <S.EditBtn onClick={() => setEditPenaltyState(!editPenaltyState)}>규정위반내역 확인하기</S.EditBtn>
+          <PenaltyModal
+            modalState={editPenaltyState}
+            closePenaltyModal={closePenaltyModal}
+            stuNum={stuNum}
+          />
+        </S.BtnWrapper>
       </S.Container>
     </>
   );

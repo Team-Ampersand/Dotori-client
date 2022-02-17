@@ -33,6 +33,13 @@ export const Category = styled.div`
     height: 80%;
     font-size: 20px;
     font-weight: 700;
+    .close{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
 `;
 
 export const LargeCategoriesWrapper = styled.ul`
@@ -57,8 +64,8 @@ export const TextWrapper = styled.div`
 export const SmallCategoriesWrapper = styled.ul`
     display: grid;
     width: 50%;
-    height: 100%;
-    margin-top: -2vh;
+    height: 200px;
+    margin-top: -1.9vh;
     margin-left: 2.5vh;
     grid-template-rows: repeat(auto-fit, 6vh);
 `;
@@ -69,9 +76,12 @@ export const SmallCategories = styled.div`
     justify-content: space-around;
     width: 100%;
     height: 100%;
+    font-size: 16px;
 `;
 
 export const DateWrapper = styled.div`
-    font-size: 13px;
     display: grid;
+    font-size: 13px;
+    width: 100px;
+    cursor: pointer;
 `;

@@ -5,17 +5,16 @@ import PenaltyBreakDown from "Components/PenaltyBreakDown/PenaltyBreakDown";
 
 interface ModalProps {
   modalState: boolean;
-  closeModal: () => void;
+  closePenaltyModal: () => void;
   stuNum: string;
-  role: string;
 }
 
 const PenaltyModal: React.FC<ModalProps> = ({
   modalState,
-	closeModal,
+	closePenaltyModal,
 	stuNum,
 }) => {
-	const [penaltyList, setPenaltyList] = useState([]);
+	const [penaltyList, setPenaltyList] = useState();
 
   const getPenaltyInfo = async () => {
     const role = await localStorage.getItem("role");
@@ -24,26 +23,27 @@ const PenaltyModal: React.FC<ModalProps> = ({
 
   useEffect(() => {
       getPenaltyInfo().then((res) => {
-        console.log(res?.data);
-        res && setPenaltyList(res.data);
+        res && setPenaltyList(res.data.data);
       });
   }, []);
 
   useEffect(() => {
     window.history.pushState({ page: "modal" }, document.title);
-    window.addEventListener("popstate", closeModal);
+    window.addEventListener("popstate", closePenaltyModal);
   });
 
   const onCancle = () => {
-    closeModal();
+    closePenaltyModal();
   };
 
   return modalState ? (
     <>
       <S.Positioner>
-        <S.Overlay onClick={closeModal} />
+        <S.Overlay onClick={closePenaltyModal} />
         <S.Container>
-          <PenaltyBreakDown/>
+					<PenaltyBreakDown
+            penaltyList={penaltyList}
+					/>
           <S.BtnWrapper>
             <S.CompleteBtn onClick={onCancle}>확인</S.CompleteBtn>
           </S.BtnWrapper>

@@ -190,5 +190,17 @@ export const PenaltyController = {
   // 단일 학생 규정위반 정보 전체 조회
   getPenaltyInfo: (role: string | null, stuNum: string) => {
     return `/${role}/rule/all/${stuNum}`;
+  },
+  // 학생 규정위반 부여
+  updatePenaltyInfo: (role: string | null) => {
+	  return `/${role}/rule/`
+  },
+  // 단일 학생 규정위반 정보 단일 조회 ( 수정하기 페이지 )
+  getModifyPenaltyInfo: (role: string | null, stuNum: string) => {
+	  return `/${role}/rule/${stuNum}`
+  },
+  // 학생 규정위반 삭제
+  deletePenaltyInfo: (role: string | null, PenaltyId: number) => {
+	  return `/${role}/rule/${PenaltyId}`
   }
 }

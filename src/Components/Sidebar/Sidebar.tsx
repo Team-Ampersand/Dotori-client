@@ -59,12 +59,10 @@ const sidebarMenuData = [
 				menuIcon: 'Penalty',
 				menuTitle: '규정 위반',
 				show:
-					returnShow() === 'admin' ||
-					returnShow() === 'developer' ||
-					returnShow() === 'councillor'
-						? true
-						: false,
-			},
+				returnShow() === 'admin'
+					? true
+					: false,
+			}
 		],
 	},
 ];
