@@ -92,7 +92,6 @@ const ModifyList:React.FC<ModifyListProps> = ({ modifyList,role }) => {
       </>
     )
   });
-  console.log(ModifyPenaltyList);
   return(
     <S.ModifyContainer>
       <S.ModifyWrapper>

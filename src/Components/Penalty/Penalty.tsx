@@ -135,7 +135,7 @@ const Penalty: React.FC = () => {
           <S.Search pattern='\d*' placeholder="이름을 검색해주세요" onChange={(e) => {setSearchTerm(e.target.value)}}/>
           <S.Btn onClick={onSubmit}>검색</S.Btn>
         </S.SearchBox>
-        <PenaltyGiveItem stuNum={checkItems}/>
+        <PenaltyGiveItem stuNum={checkItems} checked={checkItems}/>
       </S.BoxContainer>
       <S.Container>
         <S.AuthorizationBoard>

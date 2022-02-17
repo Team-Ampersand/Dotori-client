@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 import React, { useState } from 'react';
 import * as S from "./Style";
 import penaltyInfo from "Api/penaltyInfo";
-import { EnumType } from 'typescript';
+
 interface ModalProps {
   modalState: boolean;
   closeModal: () => void;
@@ -24,11 +25,19 @@ const GiveModal: React.FC<ModalProps> = ({
   const [date, setDate]= useState("");
 
   const onComplete = () => {
+    if (date === "") {
+      alert("날짜를 설정해주세요!");
+      return;
+    }else if (givePenalty === ""){
+      alert("규정위반 내역을 설정해주세요!");
+      return;
+    }
     givePenaltyUpdate();
     closeModal();
     window.location.reload();
   }
-    
+
+
   return modalState ? (
     <>
       <S.Positioner>
@@ -36,7 +45,11 @@ const GiveModal: React.FC<ModalProps> = ({
           <S.Container>
             <S.PenaltyGiveContainer>
               <S.DateWrapper>
-                  <S.Date type="date" onChange={(e) => setDate(e.target.value)} />
+                  <S.Date 
+                    type="date"
+                    onChange={(e) => setDate(e.target.value)}
+                    required
+                  />
               </S.DateWrapper>
               <S.List>
                 <S.PenaltySelect
