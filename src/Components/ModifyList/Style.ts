@@ -28,11 +28,15 @@ export const Header = styled.div`
 `;
 
 export const Category = styled.div`
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 20px;
     width: 100%;
     height: 80%;
     font-size: 20px;
     font-weight: 700;
+    margin-top: 20px;
 `;
 
 export const CategoriesWrapper = styled.ul`
@@ -40,7 +44,6 @@ export const CategoriesWrapper = styled.ul`
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    height: 100%;
 `;
 
 export const DateWrapper = styled.div`

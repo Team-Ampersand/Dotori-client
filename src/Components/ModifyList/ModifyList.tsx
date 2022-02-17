@@ -82,21 +82,23 @@ const ModifyList:React.FC<ModifyListProps> = ({ modifyList,role }) => {
         window.location.reload();
       }
     };
-
-    return(
+    return (
       <>
         <S.CategoriesWrapper>
-          <S.DateWrapper>{item.date}</S.DateWrapper> <S.ItemWrapper>{returnPenaltyValue(item.rule)}</S.ItemWrapper> <S.DeleteBtn onClick={onDelete}>삭제</S.DeleteBtn>
+          <S.DateWrapper>{item.date}</S.DateWrapper> 
+          <S.ItemWrapper>{returnPenaltyValue(item.rule)}</S.ItemWrapper> 
+          <S.DeleteBtn onClick={onDelete}>삭제</S.DeleteBtn>
         </S.CategoriesWrapper>
       </>
     )
   });
+  console.log(ModifyPenaltyList);
   return(
     <S.ModifyContainer>
       <S.ModifyWrapper>
         <S.Header>규정위반 내역 수정</S.Header>
         <S.Category>
-          {ModifyPenaltyList}
+          {ModifyPenaltyList.length > 0 ? ModifyPenaltyList : <S.CategoriesWrapper>이 학생은 규정위반 내역이 없습니다.</S.CategoriesWrapper>}
         </S.Category>
       </S.ModifyWrapper>
     </S.ModifyContainer>

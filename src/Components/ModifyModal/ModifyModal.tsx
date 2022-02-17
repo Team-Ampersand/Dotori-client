@@ -44,11 +44,6 @@ const ModifyModal: React.FC<ModalProps> = ({
     closeModifyModal();
   };
 
-  // const onRemove = (id) => {
-  //   if (window.confirm("정말 삭제하시겠습니까 ?")) {
-  //     setModifyList(modifyList.filter((item) => item.id !== id));
-  //   }
-  // }
   return modalState ? (
     <>
       <S.Positioner>
