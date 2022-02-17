@@ -73,7 +73,7 @@ export const SmallCategories = styled.div`
 `;
 
 export const DateWrapper = styled.div`
-    width: 18.9%;
+    display: block;
     font-size: 13px;
-    word-break: break-all;
+    width: 100px;
 `;
