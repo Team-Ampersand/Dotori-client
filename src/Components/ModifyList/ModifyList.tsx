@@ -73,7 +73,7 @@ const returnPenaltyValue = (penaltyType: string) => {
 const ModifyList:React.FC<ModifyListProps> = ({ modifyList,role }) => {
   const ModifyPenaltyList = modifyList && modifyList.map((item) => {
     const deletePenalty = async (PenaltyId) => {
-      return penaltyInfo.deletePenaltyInfo(role, PenaltyId);
+      return await penaltyInfo.deletePenaltyInfo(role, PenaltyId);
     };
   
     const onDelete = async () => {
