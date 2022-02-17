@@ -5,13 +5,13 @@ import PenaltyBreakDown from "Components/PenaltyBreakDown/PenaltyBreakDown";
 
 interface ModalProps {
   modalState: boolean;
-  closeModal: () => void;
+  closePenaltyModal: () => void;
   stuNum: string;
 }
 
 const PenaltyModal: React.FC<ModalProps> = ({
   modalState,
-	closeModal,
+	closePenaltyModal,
 	stuNum,
 }) => {
 	const [penaltyList, setPenaltyList] = useState();
@@ -29,17 +29,17 @@ const PenaltyModal: React.FC<ModalProps> = ({
 
   useEffect(() => {
     window.history.pushState({ page: "modal" }, document.title);
-    window.addEventListener("popstate", closeModal);
+    window.addEventListener("popstate", closePenaltyModal);
   });
 
   const onCancle = () => {
-    closeModal();
+    closePenaltyModal();
   };
 
   return modalState ? (
     <>
       <S.Positioner>
-        <S.Overlay onClick={closeModal} />
+        <S.Overlay onClick={closePenaltyModal} />
         <S.Container>
 					<PenaltyBreakDown
             penaltyList={penaltyList}
