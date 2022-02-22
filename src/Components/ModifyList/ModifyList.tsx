@@ -75,29 +75,29 @@ const ModifyList:React.FC<ModifyListProps> = ({ modifyList,role }) => {
     const deletePenalty = async (PenaltyId) => {
       return await penaltyInfo.deletePenaltyInfo(role, PenaltyId);
     };
-  
     const onDelete = async () => {
       if (window.confirm("정말 삭제하시겠습니까 ?")) {
         await deletePenalty(item.id);
         window.location.reload();
-      }
-    };
-    return (
-      <>
-        <S.CategoriesWrapper>
-          <S.DateWrapper>{item.date}</S.DateWrapper> 
-          <S.ItemWrapper>{returnPenaltyValue(item.rule)}</S.ItemWrapper> 
-          <S.DeleteBtn onClick={onDelete}>삭제</S.DeleteBtn>
-        </S.CategoriesWrapper>
-      </>
-    )
-  });
+        }
+      };
+      return (
+        <>
+          <S.CategoriesWrapper>
+            <S.DateWrapper>{item.date}</S.DateWrapper> 
+            <S.ItemWrapper>{returnPenaltyValue(item.rule)}</S.ItemWrapper> 
+            <S.DeleteBtn onClick={onDelete}>삭제</S.DeleteBtn>
+          </S.CategoriesWrapper>
+        </>
+      )
+    }
+  );
   return(
     <S.ModifyContainer>
       <S.ModifyWrapper>
         <S.Header>규정위반 내역 수정</S.Header>
         <S.Category>
-          {ModifyPenaltyList.length > 0 ? ModifyPenaltyList : <S.CategoriesWrapper>이 학생은 규정위반 내역이 없습니다.</S.CategoriesWrapper>}
+          {modifyList.toString() === "규정위반 내역이 없습니다" ? <S.CategoriesWrapper>이 학생은 규정위반 내역이 없습니다.</S.CategoriesWrapper> : ModifyPenaltyList}
         </S.Category>
       </S.ModifyWrapper>
     </S.ModifyContainer>

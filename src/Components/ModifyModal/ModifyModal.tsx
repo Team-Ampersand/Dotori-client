@@ -14,7 +14,8 @@ const ModifyModal: React.FC<ModalProps> = ({
   closeModifyModal,
   stuNum
 }) => {
-	const [modifyList, setModifyList]:any = useState([]);
+  const [modifyList, setModifyList]:any = useState([]);
+  const [modifyMessage, setModifyMessage] = useState();
 
   const getModifyPenaltyInfo = async () => {
     const role = await localStorage.getItem("role");
@@ -32,6 +33,7 @@ const ModifyModal: React.FC<ModalProps> = ({
     settingRole();
     getModifyPenaltyInfo().then((res) => {
       res && setModifyList(res.data.data);
+      res && setModifyMessage(res.data.message);
     });
   }, []);
 
@@ -49,7 +51,7 @@ const ModifyModal: React.FC<ModalProps> = ({
       <S.Positioner>
         <S.Overlay onClick={closeModifyModal} />
         <S.Container>
-          <ModifyList modifyList={modifyList} role={role} />
+          <ModifyList modifyList={modifyMessage === "규정위반 내역이 없습니다" ? [modifyMessage] : modifyList} role={role} />
           <S.BtnWrapper>
             <S.CompleteBtn onClick={onCancle}>확인</S.CompleteBtn>
           </S.BtnWrapper>
