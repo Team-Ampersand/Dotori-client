@@ -2,9 +2,7 @@ import React, {useState, useEffect} from 'react';
 import * as S from "./Style";
 import StuPenaltyItem from "../StuPenaltyItem/StuPenaltyItem";
 import stuInfo from "Api/stuInfo";
-import penaltyInfo from "../../Api/penaltyInfo";
 import PenaltyGiveItem from 'Components/PenaltyGiveItem/PenaltyGiveItem';
-import { EnumType } from 'typescript';
 interface studentList {
   id: number;
   stuNum: number;
@@ -56,35 +54,18 @@ const Penalty: React.FC = () => {
   const handleSingleCheck = (checked, id: string) => {
     if (checked) {
       checkItems.push(id);
-      console.log(checkItems);
     } else {
       checkItems = checkItems.filter((el) => el !== id)
-      console.log(checkItems);
     }
   };
 
   // eslint-disable-next-line array-callback-return
   const Search = studentList && studentList.filter((val) => {
-    if (searchTerm === "") { 
-      return (
-        // eslint-disable-next-line array-callback-return
-        studentList && studentList.map((stu) => {
-          <S.BoxContainer>
-            <S.CheckBox type="checkbox" onChange={(e) => handleSingleCheck(e.target.checked, String(stu.stuNum))} />
-            <StuPenaltyItem
-              key={stu.id}
-              stuNum={String(stu.stuNum)}
-              name={stu.memberName}
-              authority={stu.roles[0]}
-            />
-          </S.BoxContainer>
-      })
-      )
-    }
+    if (searchTerm === "") { return val }
     else if (val.memberName.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())) { return val }
   }).map((stu) => {
     return (
-      <S.BoxContainer>
+      <S.BoxContainer key={stu.id}>
         <S.CheckBox type="checkbox" onChange={(e) => handleSingleCheck(e.target.checked, String(stu.stuNum))} />
         <StuPenaltyItem
           key={stu.id}
@@ -133,7 +114,7 @@ const Penalty: React.FC = () => {
         </S.SelectBoxWrapper>
         <S.SearchBox>
           <S.Search pattern='\d*' placeholder="이름을 검색해주세요" onChange={(e) => {setSearchTerm(e.target.value)}}/>
-          <S.Btn onClick={onSubmit}>검색</S.Btn>
+          <S.Btn>검색</S.Btn>
         </S.SearchBox>
         <PenaltyGiveItem stuNum={checkItems} checked={checkItems}/>
       </S.BoxContainer>

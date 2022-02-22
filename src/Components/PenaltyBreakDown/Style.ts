@@ -1,4 +1,9 @@
+import { toColorString } from "polished";
 import styled from "styled-components";
+
+type StyleProps = {
+    isPenalty: boolean;
+}
 
 export const BreakDownContainer = styled.div`
     width: 100%;
@@ -57,26 +62,46 @@ export const LargeCategories = styled.div`
     
 `;
 
-export const TextWrapper = styled.div`
+export const TextWrapper = styled.div<StyleProps>`
     cursor: pointer;
+    ${(props) =>  (props.isPenalty ? "color: #0F4C81" : "color: #BBBBBE")};
 `;
 
 export const SmallCategoriesWrapper = styled.ul`
     display: grid;
     width: 50%;
-    height: 200px;
+    height: 100%;
     margin-top: -1.9vh;
     margin-left: 2.5vh;
     grid-template-rows: repeat(auto-fit, 6vh);
+    
 `;
 
 export const SmallCategories = styled.div`
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 100%;
     height: 100%;
     font-size: 16px;
+`;
+
+export const None = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+
+export const NameWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    width: 200px;
+`;
+
+export const CntWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    width: 40px;
 `;
 
 export const DateWrapper = styled.div`
