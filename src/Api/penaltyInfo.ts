@@ -10,7 +10,7 @@ class penaltyInfo {
       });
     } catch (e: any) {
       if (e.message === "Request failed with status code 404") {
-        alert("1");
+        alert("등록된 학생 규정위반 정보가 없습니다.");
       } else return;
     }
   }
