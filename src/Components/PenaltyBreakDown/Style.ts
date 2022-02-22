@@ -1,4 +1,9 @@
+import { toColorString } from "polished";
 import styled from "styled-components";
+
+type StyleProps = {
+    isPenalty: boolean;
+}
 
 export const BreakDownContainer = styled.div`
     width: 100%;
@@ -57,8 +62,9 @@ export const LargeCategories = styled.div`
     
 `;
 
-export const TextWrapper = styled.div`
+export const TextWrapper = styled.div<StyleProps>`
     cursor: pointer;
+    ${(props) =>  (props.isPenalty ? "color: #0F4C81" : "color: #BBBBBE")};
 `;
 
 export const SmallCategoriesWrapper = styled.ul`
@@ -78,6 +84,12 @@ export const SmallCategories = styled.div`
     width: 100%;
     height: 100%;
     font-size: 16px;
+`;
+
+export const None = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
 
 export const NameWrapper = styled.div`

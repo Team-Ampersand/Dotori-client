@@ -54,10 +54,8 @@ const Penalty: React.FC = () => {
   const handleSingleCheck = (checked, id: string) => {
     if (checked) {
       checkItems.push(id);
-      console.log(checkItems);
     } else {
       checkItems = checkItems.filter((el) => el !== id)
-      console.log(checkItems);
     }
   };
 
@@ -67,7 +65,7 @@ const Penalty: React.FC = () => {
     else if (val.memberName.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())) { return val }
   }).map((stu) => {
     return (
-      <S.BoxContainer>
+      <S.BoxContainer key={stu.id}>
         <S.CheckBox type="checkbox" onChange={(e) => handleSingleCheck(e.target.checked, String(stu.stuNum))} />
         <StuPenaltyItem
           key={stu.id}

@@ -68,7 +68,7 @@ const PenaltyBreakDown:React.FC<PenaltyBreakDownProps> = ({ penaltyList }) => {
         case "DAMAGE_OF_POST":
           return "부착된 게시물 훼손 및 낙서";
         case "POSSESSION_OF_ELECTRONICS_DEVICES":
-          return "사용 제한 시간 중 전자기기 소지 혹은 사용";
+          return "전자기기 소지 혹은 사용";
         case "CLEAN_COUNDITION_BAD":
           return "호실 정리정돈 상태 불량";
         case "ENVIRONMENT_POLLUTION":
@@ -90,64 +90,78 @@ const PenaltyBreakDown:React.FC<PenaltyBreakDownProps> = ({ penaltyList }) => {
     const obj = Object.entries(item);
     const SmallCatergories = obj.map((item:any) => {
       return(
-        item[1].cnt > 0 ? <S.SmallCategories><S.NameWrapper>{returnPenaltyValue(item[0])}</S.NameWrapper><S.CntWrapper>{item[1].cnt}회</S.CntWrapper><S.DateWrapper onClick={handleMoreBtn} className={closed ? "" : "close"}>{item[1].date.join("\n")}</S.DateWrapper></S.SmallCategories> : null
+        <>
+        {all ? item[1] === "규" ? <S.None>규정위반 내역이 없습니다.</S.None> : null : null}
+        {all ? item[1].cnt > 0 ? <S.SmallCategories><S.NameWrapper>{returnPenaltyValue(item[0])}</S.NameWrapper><S.CntWrapper>{item[1].cnt}회</S.CntWrapper><S.DateWrapper onClick={handleMoreBtn} className={closed ? "" : "close"}>{item[1].date.join("\n")}</S.DateWrapper></S.SmallCategories> : null : null}
+        {ban ? item[0] === "FIREARMS" || item[0] === "WEAPON" || item[0] === "ALCOHOL" || item[0] === "TOBACCO" || item[0] === "MEANDERING_APPARATUS" || item[0] === "FOOD" ? <S.SmallCategories><S.NameWrapper>{returnPenaltyValue(item[0])}</S.NameWrapper><S.CntWrapper>{item[1].cnt}회</S.CntWrapper><S.DateWrapper onClick={handleMoreBtn} className={closed ? "" : "close"}>{item[1].date.join("\n")}</S.DateWrapper></S.SmallCategories> : null : null}
+        {unfulfill ? item[0] === "MANAGER_GUIDANCE" ? <S.SmallCategories><S.NameWrapper>{returnPenaltyValue(item[0])}</S.NameWrapper><S.CntWrapper>{item[1].cnt}회</S.CntWrapper><S.DateWrapper onClick={handleMoreBtn} className={closed ? "" : "close"}>{item[1].date.join("\n")}</S.DateWrapper></S.SmallCategories> : null : null}
+        {time ? item[0] === "TIME" || item[0] === "OUTING" || item[0] === "OVERNIGHT_STAY" ? <S.SmallCategories><S.NameWrapper>{returnPenaltyValue(item[0])}</S.NameWrapper><S.CntWrapper>{item[1].cnt}회</S.CntWrapper><S.DateWrapper onClick={handleMoreBtn} className={closed ? "" : "close"}>{item[1].date.join("\n")}</S.DateWrapper></S.SmallCategories> : null : null}
+        {damage ? item[0] === "DAMAGE_OF_GOODS" || item[0] === "THEFT" || item[0] === "CHANTAGE" ? <S.SmallCategories><S.NameWrapper>{returnPenaltyValue(item[0])}</S.NameWrapper><S.CntWrapper>{item[1].cnt}회</S.CntWrapper><S.DateWrapper onClick={handleMoreBtn} className={closed ? "" : "close"}>{item[1].date.join("\n")}</S.DateWrapper></S.SmallCategories> : null : null}
+        {sleep ? item[0] === "DISTURBING_SLEEP" || item[0] === "ELECTRONIC_DEVICE" ? <S.SmallCategories><S.NameWrapper>{returnPenaltyValue(item[0])}</S.NameWrapper><S.CntWrapper>{item[1].cnt}회</S.CntWrapper><S.DateWrapper onClick={handleMoreBtn} className={closed ? "" : "close"}>{item[1].date.join("\n")}</S.DateWrapper></S.SmallCategories> : null : null}
+        {hygiene ? item[0] === "LOUD" || item[0] === "INCOREECT_ENTRY" || item[0] === "LAUNDRY" || item[0] === "VIOLATION_OF_THE_USE_OF_FACILITIES" || item[0] === "DAMAGE_OF_POST" || item[0] === "POSSESSION_OF_ELECTRONICS_DEVICES" || item[0] === "CLEAN_COUNDITION_BAD" || item[0] === "ENVIRONMENT_POLLUTION" ? <S.SmallCategories><S.NameWrapper>{returnPenaltyValue(item[0])}</S.NameWrapper><S.CntWrapper>{item[1].cnt}회</S.CntWrapper><S.DateWrapper onClick={handleMoreBtn} className={closed ? "" : "close"}>{item[1].date.join("\n")}</S.DateWrapper></S.SmallCategories> : null : null}
+        {affection ? item[0] === "AFFECTIONATE_ACT" || item[0] === "SEXUAL_ACT" ? <S.SmallCategories><S.NameWrapper>{returnPenaltyValue(item[0])}</S.NameWrapper><S.CntWrapper>{item[1].cnt}회</S.CntWrapper><S.DateWrapper onClick={handleMoreBtn} className={closed ? "" : "close"}>{item[1].date.join("\n")}</S.DateWrapper></S.SmallCategories> : null : null}
+        {entry ? item[0] === "ENTRY_TO_PROHIBITED_AREAS" ? <S.SmallCategories><S.NameWrapper>{returnPenaltyValue(item[0])}</S.NameWrapper><S.CntWrapper>{item[1].cnt}회</S.CntWrapper><S.DateWrapper onClick={handleMoreBtn} className={closed ? "" : "close"}>{item[1].date.join("\n")}</S.DateWrapper></S.SmallCategories> : null : null}
+        {learn ? item[0] === "VIOLATION_OF_STUDY_ROOM_RULES" ? <S.SmallCategories><S.NameWrapper>{returnPenaltyValue(item[0])}</S.NameWrapper><S.CntWrapper>{item[1].cnt}회</S.CntWrapper><S.DateWrapper onClick={handleMoreBtn} className={closed ? "" : "close"}>{item[1].date.join("\n")}</S.DateWrapper></S.SmallCategories> : null : null}
+        {outside ? item[0] === "OUTSIDER_ENTRY" ? <S.SmallCategories><S.NameWrapper>{returnPenaltyValue(item[0])}</S.NameWrapper><S.CntWrapper>{item[1].cnt}회</S.CntWrapper><S.DateWrapper onClick={handleMoreBtn} className={closed ? "" : "close"}>{item[1].date.join("\n")}</S.DateWrapper></S.SmallCategories> : null : null}
+        </>
       )
     })
+    
     return(
       <>
         <S.LargeCategoriesWrapper>
           <S.LargeCategories>
-            <S.TextWrapper onClick={() => {setAll(!all); setBan(false); setUnfulfill(false); setTime(false); setDamage(false); setSleep(false); setHygiene(false); setAffection(false); setEntry(false); setLearn(false); setOutside(false);}}>
+            <S.TextWrapper isPenalty={all === true} onClick={() => {setAll(true); setBan(false); setUnfulfill(false); setTime(false); setDamage(false); setSleep(false); setHygiene(false); setAffection(false); setEntry(false); setLearn(false); setOutside(false);}}>
               전체
             </S.TextWrapper>
           </S.LargeCategories>
           <S.LargeCategories>
-            <S.TextWrapper onClick={() => {setBan(!ban); setAll(false); setUnfulfill(false); setTime(false); setDamage(false); setSleep(false); setHygiene(false); setAffection(false); setEntry(false); setLearn(false); setOutside(false);}}>
+            <S.TextWrapper isPenalty={ban === true} onClick={() => {setBan(true); setAll(false); setUnfulfill(false); setTime(false); setDamage(false); setSleep(false); setHygiene(false); setAffection(false); setEntry(false); setLearn(false); setOutside(false);}}>
               금지 물품 반입
             </S.TextWrapper>
           </S.LargeCategories>
           <S.LargeCategories>
-            <S.TextWrapper onClick={() => {setUnfulfill(!unfulfill); setAll(false); setBan(false); setTime(false); setDamage(false); setSleep(false); setHygiene(false); setAffection(false); setEntry(false); setLearn(false); setOutside(false);}}>
+            <S.TextWrapper isPenalty={unfulfill === true} onClick={() => {setUnfulfill(true); setAll(false); setBan(false); setTime(false); setDamage(false); setSleep(false); setHygiene(false); setAffection(false); setEntry(false); setLearn(false); setOutside(false);}}>
               사감 지도 불이행
             </S.TextWrapper>
           </S.LargeCategories>
           <S.LargeCategories>
-            <S.TextWrapper onClick={() => {setTime(!time); setAll(false); setBan(false); setUnfulfill(false); setDamage(false); setSleep(false); setHygiene(false); setAffection(false); setEntry(false); setLearn(false); setOutside(false);}}>
+            <S.TextWrapper isPenalty={time === true} onClick={() => {setTime(true); setAll(false); setBan(false); setUnfulfill(false); setDamage(false); setSleep(false); setHygiene(false); setAffection(false); setEntry(false); setLearn(false); setOutside(false);}}>
               시간 관 소홀 및 이탈 행위
             </S.TextWrapper>
           </S.LargeCategories>
           <S.LargeCategories>
-            <S.TextWrapper onClick={() => {setDamage(!damage); setAll(false); setBan(false); setUnfulfill(false); setTime(false); setSleep(false); setHygiene(false); setAffection(false); setEntry(false); setLearn(false); setOutside(false);}}>
+            <S.TextWrapper isPenalty={damage === true} onClick={() => {setDamage(true); setAll(false); setBan(false); setUnfulfill(false); setTime(false); setSleep(false); setHygiene(false); setAffection(false); setEntry(false); setLearn(false); setOutside(false);}}>
               물품 훼손 및 절도
             </S.TextWrapper>
           </S.LargeCategories>
           <S.LargeCategories>
-            <S.TextWrapper onClick={() => {setSleep(!sleep); setAll(false); setBan(false); setUnfulfill(false); setTime(false); setDamage(false); setHygiene(false); setAffection(false); setEntry(false); setLearn(false); setOutside(false);}}>
+            <S.TextWrapper isPenalty={sleep === true} onClick={() => {setSleep(true); setAll(false); setBan(false); setUnfulfill(false); setTime(false); setDamage(false); setHygiene(false); setAffection(false); setEntry(false); setLearn(false); setOutside(false);}}>
               취침 방해
             </S.TextWrapper>
           </S.LargeCategories>
           <S.LargeCategories>
-            <S.TextWrapper onClick={() => {setHygiene(!hygiene); setAll(false); setBan(false); setUnfulfill(false); setTime(false); setDamage(false); setSleep(false); setAffection(false); setEntry(false); setLearn(false); setOutside(false);}}>
+            <S.TextWrapper isPenalty={hygiene === true} onClick={() => {setHygiene(true); setAll(false); setBan(false); setUnfulfill(false); setTime(false); setDamage(false); setSleep(false); setAffection(false); setEntry(false); setLearn(false); setOutside(false);}}>
               공동 생활 방해 및 위생 상태 불량
             </S.TextWrapper>
           </S.LargeCategories>
           <S.LargeCategories>
-            <S.TextWrapper onClick={() => {setAffection(!affection); setAll(false); setBan(false); setUnfulfill(false); setTime(false); setDamage(false); setSleep(false); setHygiene(false); setEntry(false); setLearn(false); setOutside(false);}}>
+            <S.TextWrapper isPenalty={affection === true} onClick={() => {setAffection(true); setAll(false); setBan(false); setUnfulfill(false); setTime(false); setDamage(false); setSleep(false); setHygiene(false); setEntry(false); setLearn(false); setOutside(false);}}>
               애정 행위
             </S.TextWrapper>
           </S.LargeCategories>
           <S.LargeCategories>
-            <S.TextWrapper onClick={() => {setEntry(!entry); setAll(false); setBan(false); setUnfulfill(false); setTime(false); setDamage(false); setSleep(false); setHygiene(false); setAffection(false); setLearn(false); setOutside(false);}}>
+            <S.TextWrapper isPenalty={entry === true} onClick={() => {setEntry(true); setAll(false); setBan(false); setUnfulfill(false); setTime(false); setDamage(false); setSleep(false); setHygiene(false); setAffection(false); setLearn(false); setOutside(false);}}>
               기숙사 출입 금지 구역 출입
             </S.TextWrapper>
           </S.LargeCategories>
           <S.LargeCategories>
-            <S.TextWrapper onClick={() => {setLearn(!learn); setAll(false); setBan(false); setUnfulfill(false); setTime(false); setDamage(false); setSleep(false); setHygiene(false); setAffection(false); setEntry(false); setOutside(false);}}>
+            <S.TextWrapper isPenalty={learn === true} onClick={() => {setLearn(true); setAll(false); setBan(false); setUnfulfill(false); setTime(false); setDamage(false); setSleep(false); setHygiene(false); setAffection(false); setEntry(false); setOutside(false);}}>
               학습실 면학분위기 저해
             </S.TextWrapper>
           </S.LargeCategories>
           <S.LargeCategories>
-            <S.TextWrapper onClick={() => {setOutside(!outside); setAll(false); setBan(false); setUnfulfill(false); setTime(false); setDamage(false); setSleep(false); setHygiene(false); setAffection(false); setEntry(false); setLearn(false);}}>
+            <S.TextWrapper isPenalty={outside === true} onClick={() => {setOutside(true); setAll(false); setBan(false); setUnfulfill(false); setTime(false); setDamage(false); setSleep(false); setHygiene(false); setAffection(false); setEntry(false); setLearn(false);}}>
               외부인 출입 관여
             </S.TextWrapper>
           </S.LargeCategories>
