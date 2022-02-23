@@ -22,7 +22,7 @@ const GiveModal: React.FC<ModalProps> = ({
     alert("규정위반 내역을 추가하였습니다.")
   }
 
-  const [date, setDate]= useState("");
+  const [date, setDate]= useState(new Date().toISOString().slice(0, 10));
 
   const onComplete = () => {
     if (date === "") {
@@ -48,6 +48,7 @@ const GiveModal: React.FC<ModalProps> = ({
                   <S.Date 
                     type="date"
                     onChange={(e) => setDate(e.target.value)}
+                    value={new Date().toISOString().slice(0, 10)}
                     required
                   />
               </S.DateWrapper>

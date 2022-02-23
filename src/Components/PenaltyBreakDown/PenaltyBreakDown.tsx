@@ -89,9 +89,13 @@ const PenaltyBreakDown:React.FC<PenaltyBreakDownProps> = ({ penaltyList }) => {
       };
     const obj = Object.entries(item);
     const SmallCatergories = obj.map((item:any) => {
+      if(item[1] === "규"){
+        return(
+          <S.None>규정위반 내역이 없습니다.</S.None>
+        )
+      }
       return(
         <>
-        {all ? item[1] === "규" ? <S.None>규정위반 내역이 없습니다.</S.None> : null : null}
         {all ? item[1].cnt > 0 ? <S.SmallCategories><S.NameWrapper>{returnPenaltyValue(item[0])}</S.NameWrapper><S.CntWrapper>{item[1].cnt}회</S.CntWrapper><S.DateWrapper onClick={handleMoreBtn} className={closed ? "" : "close"}>{item[1].date.join("\n")}</S.DateWrapper></S.SmallCategories> : null : null}
         {ban ? item[0] === "FIREARMS" || item[0] === "WEAPON" || item[0] === "ALCOHOL" || item[0] === "TOBACCO" || item[0] === "MEANDERING_APPARATUS" || item[0] === "FOOD" ? <S.SmallCategories><S.NameWrapper>{returnPenaltyValue(item[0])}</S.NameWrapper><S.CntWrapper>{item[1].cnt}회</S.CntWrapper><S.DateWrapper onClick={handleMoreBtn} className={closed ? "" : "close"}>{item[1].date.join("\n")}</S.DateWrapper></S.SmallCategories> : null : null}
         {unfulfill ? item[0] === "MANAGER_GUIDANCE" ? <S.SmallCategories><S.NameWrapper>{returnPenaltyValue(item[0])}</S.NameWrapper><S.CntWrapper>{item[1].cnt}회</S.CntWrapper><S.DateWrapper onClick={handleMoreBtn} className={closed ? "" : "close"}>{item[1].date.join("\n")}</S.DateWrapper></S.SmallCategories> : null : null}

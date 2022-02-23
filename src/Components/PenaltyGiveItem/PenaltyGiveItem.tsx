@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as S from "./Style";
-import GiveModal from "Components/GiveModal/GiveModal";
+import GiveModal from "Components/PenaltyGiveModal/PenaltyGiveModal";
 
 interface PenaltyGiveItemProps {
   stuNum:Array<string>
