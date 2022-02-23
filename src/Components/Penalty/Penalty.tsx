@@ -12,7 +12,10 @@ interface studentList {
 
 const Penalty: React.FC = () => {
   const [studentList, setStudentList] = useState<studentList[]>([]);
-  const [searchTerm, setSearchTerm]: any = useState("");
+  const [stuGrade, setStuGrade] = useState("");
+  const [stuClass, setStuClass] = useState("");
+  const [stuName, setStuName] = useState<string>("");
+  let checkItems:Array<string> = [];
 
   const getStuInfo = async () => {
     const role = await localStorage.getItem("role");
@@ -23,9 +26,6 @@ const Penalty: React.FC = () => {
     const role = await localStorage.getItem("role");
     return await stuInfo.getClassStuInfo(role, parseInt(stuGrade + stuClass));
   };
-
-  const [stuGrade, setStuGrade] = useState("");
-  const [stuClass, setStuClass] = useState("");
 
   const onSubmit = () => {
     if (parseInt(stuGrade + stuClass) > 0) {
@@ -39,6 +39,23 @@ const Penalty: React.FC = () => {
     } else return;
   };
 
+  const nameSearch = async () => {
+    const role = localStorage.getItem("role");
+    return await stuInfo.searchName(role, stuName);
+  };
+
+  const onSearch = () => {
+    nameSearch().then((res) => {
+      res && setStudentList(res.data.data);
+    });
+  };
+
+  const handleKeyPress = e => {
+    if(e.key === 'Enter') {
+      onSearch();
+    }
+  }
+
   useEffect(() => {
     try {
       getStuInfo().then((res) => {
@@ -49,8 +66,6 @@ const Penalty: React.FC = () => {
     }
   }, []);
 
-  let checkItems:Array<string> = [];
-
   const handleSingleCheck = (checked, id: string) => {
     if (checked) {
       checkItems.push(id);
@@ -58,24 +73,6 @@ const Penalty: React.FC = () => {
       checkItems = checkItems.filter((el) => el !== id)
     }
   };
-
-  // eslint-disable-next-line array-callback-return
-  const Search = studentList && studentList.filter((val) => {
-    if (searchTerm === "") { return val }
-    else if (val.memberName.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())) { return val }
-  }).map((stu) => {
-    return (
-      <S.BoxContainer key={stu.id}>
-        <S.CheckBox type="checkbox" onChange={(e) => handleSingleCheck(e.target.checked, String(stu.stuNum))} />
-        <StuPenaltyItem
-          key={stu.id}
-          stuNum={String(stu.stuNum)}
-          name={stu.memberName}
-          authority={stu.roles[0]}
-        />
-      </S.BoxContainer>
-    )
-  })
 
   return(
     <S.Positioner>
@@ -113,14 +110,26 @@ const Penalty: React.FC = () => {
           <S.Btn onClick={onSubmit}>검색</S.Btn>
         </S.SelectBoxWrapper>
         <S.SearchBox>
-          <S.Search pattern='\d*' placeholder="이름을 검색해주세요" onChange={(e) => {setSearchTerm(e.target.value)}}/>
-          <S.Btn>검색</S.Btn>
+          <S.Search pattern='\d*' placeholder="이름을 검색해주세요" onChange={(e) => {setStuName(e.target.value)}} onKeyPress={handleKeyPress}/>
+          <S.Btn onClick={onSearch} >검색</S.Btn>
         </S.SearchBox>
         <PenaltyGiveItem stuNum={checkItems} checked={checkItems}/>
       </S.BoxContainer>
       <S.Container>
         <S.AuthorizationBoard>
-          {Search}
+          {studentList && studentList.map((stu) => {
+            return (
+              <S.BoxContainer key={stu.id}>
+                <S.CheckBox type="checkbox" onChange={(e) => handleSingleCheck(e.target.checked, String(stu.stuNum))} />
+                <StuPenaltyItem
+                  key={stu.id}
+                  stuNum={String(stu.stuNum)}
+                  name={stu.memberName}
+                  authority={stu.roles[0]}
+                />
+              </S.BoxContainer>
+            )
+          })}
         </S.AuthorizationBoard>
       </S.Container>
     </S.Positioner>
