@@ -13,7 +13,7 @@ export const Positioner = styled.a`
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 	display: flex;
 	align-items: center;
-	justify-content: space-evenly;
+	justify-content: flex-start;
 	margin-bottom: 3vh;
 	text-decoration: none;
 `;
@@ -23,6 +23,7 @@ export const ImgContainer = styled.div<StyleProps>`
 	height: 90px;
 	background-size: 120px 90px;
 	border-radius: 25px;
+	margin-left: 7%;
 	background-image: url(${(props) => {
 		return `https://img.youtube.com/vi/${props.thumbnail}/sddefault.jpg`;
 	}});
@@ -33,6 +34,16 @@ export const TitleContainer = styled.span`
 	font-size: 20px;
 	font-weight: 600;
 	color: #333;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	white-space: normal;
+	line-height: 1.2;
+	text-align: left;
+	word-wrap: break-word;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
 
 	a {
 		color: #333;
@@ -50,10 +61,12 @@ export const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
+	margin-left: 10%;
 `;
 
 export const DeleteContainer = styled.div`
 	font-size: 20px;
 	cursor: pointer;
 	color: #fc2c2c;
+	margin-left: 8.5%;
 `;
