@@ -1,8 +1,10 @@
-import React from 'react';
+import penaltyInfo from 'Api/penaltyInfo';
+import React, { useEffect } from 'react';
 import * as S from "./Style";
 
-interface PenaltyItemProps {
-    stuNum: string,
+interface ModifyListProps {
+  modifyList: any,
+  role: string | null;
 }
 
 const returnPenaltyValue = (penaltyType: string) => {
@@ -11,7 +13,7 @@ const returnPenaltyValue = (penaltyType: string) => {
       return "화기류";
     case "WEAPON":
       return "흉기";
-    case "ALCOHO":
+    case "ALCOHOL":
       return "주류";
     case "TOBACCO":
       return "담배";
@@ -28,7 +30,7 @@ const returnPenaltyValue = (penaltyType: string) => {
     case "OVERNIGHT_STAY":
       return "외박";
     case "DAMAGE_OF_GOODS":
-      return "물품회손";
+      return "물품훼손";
     case "THEFT":
       return "절도";
     case "CHANTAGE":
@@ -68,13 +70,38 @@ const returnPenaltyValue = (penaltyType: string) => {
     }
   };
 
-const PenaltyItem: React.FC<PenaltyItemProps> = ({stuNum}) => {
-  return (
-    <S.SmallCategories>
-      <div>{stuNum}</div>
-      {/* <div>{returnPenaltyValue(penalty)}</div> */}
-    </S.SmallCategories>
+const ModifyList:React.FC<ModifyListProps> = ({ modifyList,role }) => {
+  const ModifyPenaltyList = modifyList && modifyList.map((item) => {
+    const deletePenalty = async (PenaltyId) => {
+      return await penaltyInfo.deletePenaltyInfo(role, PenaltyId);
+    };
+    const onDelete = async () => {
+      if (window.confirm("정말 삭제하시겠습니까 ?")) {
+        await deletePenalty(item.id);
+        window.location.reload();
+        }
+      };
+      return (
+        <>
+          <S.CategoriesWrapper>
+            <S.DateWrapper>{item.date}</S.DateWrapper> 
+            <S.ItemWrapper>{returnPenaltyValue(item.rule)}</S.ItemWrapper> 
+            <S.DeleteBtn onClick={onDelete}>삭제</S.DeleteBtn>
+          </S.CategoriesWrapper>
+        </>
+      )
+    }
+  );
+  return(
+    <S.ModifyContainer>
+      <S.ModifyWrapper>
+        <S.Header>규정위반 내역 수정</S.Header>
+        <S.Category>
+          {modifyList.toString() === "규정위반 내역이 없습니다" ? <S.CategoriesWrapper>이 학생은 규정위반 내역이 없습니다.</S.CategoriesWrapper> : ModifyPenaltyList}
+        </S.Category>
+      </S.ModifyWrapper>
+    </S.ModifyContainer>
   )
-}
+};
 
-export default PenaltyItem
+export default ModifyList;

@@ -70,13 +70,27 @@ export const EditBtn = styled.button`
   }
 `;
 
-export const BtnWrapper = styled.div<EditProps>`
-  ${(props) =>
-    !props.edit &&
-    css`
-      display: none;
-    `}
-  margin-right: 20px;
+export const EditModifyBtn = styled.button`
+  width: 200px;
+  height: 45px;
+  margin-right: 30px;
+  border: 2px solid black;
+  background-color: black;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  border-radius: 10px;
+  
+  &:hover {
+    background-color: transparent;
+    color: black;
+  }
+`;
+
+export const BtnWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Btn = styled.button<BtnProps>`
