@@ -105,7 +105,7 @@ const PenaltyInfoModal: React.FC<PenaltyInfoModalProps> = ({
 				<S.PenaltyInfoWrapper>
 					{penalty &&
 						penalty.map((item, index) => (
-							<S.PenaltyWrapper>
+							<S.PenaltyWrapper key={index}>
 								<p>{returnPenaltyValue(item.rule)}</p>
 								<p>{item.date}</p>
 							</S.PenaltyWrapper>
