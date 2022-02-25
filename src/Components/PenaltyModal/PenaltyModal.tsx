@@ -14,7 +14,8 @@ const PenaltyModal: React.FC<ModalProps> = ({
 	closePenaltyModal,
 	stuNum,
 }) => {
-	const [penaltyList, setPenaltyList] = useState();
+  const [penaltyList, setPenaltyList] = useState();
+  const [penaltyMessage, setPenaltyMessage] = useState();
 
   const getPenaltyInfo = async () => {
     const role = await localStorage.getItem("role");
@@ -24,6 +25,7 @@ const PenaltyModal: React.FC<ModalProps> = ({
   useEffect(() => {
       getPenaltyInfo().then((res) => {
         res && setPenaltyList(res.data.data);
+        res && setPenaltyMessage(res.data.message);
       });
   }, []);
 
@@ -42,7 +44,7 @@ const PenaltyModal: React.FC<ModalProps> = ({
         <S.Overlay onClick={closePenaltyModal} />
         <S.Container>
 					<PenaltyBreakDown
-            penaltyList={penaltyList}
+            penaltyList={penaltyMessage === "규정위반 내역이 없습니다" ? penaltyMessage : penaltyList}
 					/>
           <S.BtnWrapper>
             <S.CompleteBtn onClick={onCancle}>확인</S.CompleteBtn>
