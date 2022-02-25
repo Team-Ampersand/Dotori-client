@@ -36,6 +36,7 @@ import Withdrawl from 'Components/Withdrawl/Withdrawl';
 import Penalty from './Penalty/Penalty';
 import MassageBoard from 'Components/MassageBoard/MassageBoard';
 import MassageTable from 'Components/MassageTable/MassageTable';
+import PenaltyInfoModal from 'Components/PenaltyInfoModal/PenaltyInfoModal';
 
 export {
 	Sidebar,
@@ -76,4 +77,5 @@ export {
 	Penalty,
 	MassageBoard,
 	MassageTable,
+	PenaltyInfoModal,
 };

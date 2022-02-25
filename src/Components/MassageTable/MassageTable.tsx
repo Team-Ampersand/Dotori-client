@@ -2,6 +2,12 @@ import massage from 'Api/massage';
 import React, { useEffect, useState } from 'react';
 import * as S from './Style';
 
+type ListType = {
+	id: number;
+	stuNum: string;
+	memberName: string;
+};
+
 const returnUserObj = async () => {
 	const res = await massage.massageLookup();
 	return res;
@@ -20,7 +26,7 @@ const returnBorderColor = (stuNum) => {
 };
 
 const MassageTable = () => {
-	const [list, setList] = useState([{ memberName: '', stuNum: '' }]);
+	const [list, setList] = useState<ListType[]>();
 
 	useEffect(() => {
 		returnUserObj().then((res) => {
@@ -31,12 +37,13 @@ const MassageTable = () => {
 	return (
 		<S.Positioner>
 			<S.Content>
-				{list.map((item) => (
-					<S.Wrapper borderColor={returnBorderColor(item.stuNum)}>
-						<div>{item.memberName}</div>
-						<div>{item.stuNum}</div>
-					</S.Wrapper>
-				))}
+				{list &&
+					list.map((item, index) => (
+						<S.Wrapper borderColor={returnBorderColor(item.stuNum)} key={index}>
+							<div>{item.memberName}</div>
+							<div>{item.stuNum}</div>
+						</S.Wrapper>
+					))}
 			</S.Content>
 		</S.Positioner>
 	);

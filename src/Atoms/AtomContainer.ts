@@ -13,5 +13,5 @@ export const HasToken = atom<boolean>({
 
 export const list = atom<User[]>({
 	key: 'list',
-	default: [{ id: '', stuNum: '', memberName: '' }],
+	default: [],
 });

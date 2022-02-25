@@ -6,7 +6,12 @@ import selfstudy from 'Api/selfStudy';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { list, HasToken } from 'Atoms';
 import { useHistory } from 'react-router';
-import { deleteCookie } from 'Utils/Cookie';
+
+type ListType = {
+	id: number;
+	stuNum: string;
+	memberName: string;
+};
 
 const ReturnUserObj = async (history, setLogged) => {
 	try {
@@ -17,10 +22,6 @@ const ReturnUserObj = async (history, setLogged) => {
 			history.push('/signin');
 			alert('장시간 자리에서 비워 로그아웃 되었습니다. 다시 로그인 해주세요.');
 
-			// deleteCookie('Dotori_accessToken');
-			// deleteCookie('Dotori_refreshToken');
-			// deleteCookie('role');
-
 			localStorage.removeItem('Dotori_accessToken');
 			localStorage.removeItem('Dotori_refreshToken');
 			localStorage.removeItem('role');
@@ -29,10 +30,6 @@ const ReturnUserObj = async (history, setLogged) => {
 			window.location.reload();
 		} else if (e.message === 'Request failed with status code 403') {
 			alert('로그아웃 되었습니다. 다시 로그인 해주세요.');
-
-			// deleteCookie('Dotori_accessToken');
-			// deleteCookie('Dotori_refreshToken');
-			// deleteCookie('role');
 
 			localStorage.removeItem('Dotori_accessToken');
 			localStorage.removeItem('Dotori_refreshToken');
@@ -79,7 +76,7 @@ const List: React.FC<ListProps> = ({ match }) => {
 		ReturnUserObj(history, setLogged).then((res) => {
 			setUserList(res?.data.data);
 		});
-	}, [setUserList]);
+	}, []);
 
 	return (
 		<>

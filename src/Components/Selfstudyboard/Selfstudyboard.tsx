@@ -3,7 +3,6 @@ import * as S from './Style';
 import { ManufactureDate } from '../../Utils/ManufactureDate';
 import { Link, useHistory } from 'react-router-dom';
 import selfstudy from 'Api/selfStudy';
-import { getCookie } from 'Utils/Cookie';
 import { useSetRecoilState } from 'recoil';
 import { HasToken } from 'Atoms';
 
@@ -20,10 +19,6 @@ const studyInfo = async (setLogged, history) => {
 		if (e.message === 'Request failed with status code 401') {
 		} else if (e.message === 'Request failed with status code 403') {
 			alert('로그아웃 되었습니다. 다시 로그인 해주세요.');
-
-			// deleteCookie('Dotori_accessToken');
-			// deleteCookie('Dotori_refreshToken');
-			// deleteCookie('role');
 
 			localStorage.removeItem('Dotori_accessToken');
 			localStorage.removeItem('Dotori_refreshToken');
@@ -50,9 +45,7 @@ const cancleStudy = async (setInfo, count) => {
 	try {
 		await selfstudy.cancelstudy();
 		setInfo({ count: count - 1, selfStudy_status: 'CANT' });
-		alert(
-			'자습 신청이 취소 되었습니다. 오늘 하루동안 다시 신청이 불가능 합니다.'
-		);
+		alert('자습 신청이 취소 되었습니다.');
 	} catch (e) {
 		alert('자습취소를 하실수 없는 상태입니다\n' + e);
 	}
@@ -76,10 +69,10 @@ const returnButton = (status: string, setInfo, count) => {
 	if (localStorage.getItem('role') === 'admin') {
 		return <p>사감 선생님은 자습신청을 하지 않으셔도 됩니다.</p>;
 	} else if (
-		status === 'CAN' &&
-		can.indexOf(today) !== -1 &&
-		hours >= 20 &&
-		hours < 21
+		status === 'CAN'
+		// can.indexOf(today) !== -1
+		// && hours >= 20 &&
+		// hours < 21
 	) {
 		return (
 			<S.StudyButton
@@ -95,7 +88,11 @@ const returnButton = (status: string, setInfo, count) => {
 		return (
 			<S.StudyButton
 				onClick={() => {
-					if (window.confirm('자습을 취소 하시겠습니까?')) {
+					if (
+						window.confirm(
+							'자습을 취소 하시겠습니까? 오늘 하루동안 다시 신청이 불가능 합니다.'
+						)
+					) {
 						cancleStudy(setInfo, count);
 					} else alert('자습이 취소되지 않았습니다.');
 				}}
@@ -104,12 +101,24 @@ const returnButton = (status: string, setInfo, count) => {
 				자습취소
 			</S.StudyButton>
 		);
+	} else if (status === 'IMPOSSIBLE') {
+		return (
+			<S.StudyButton
+				Clicked={status}
+				onClick={() => {
+					alert('자습신청이 금지되었습니다.');
+				}}
+			>
+				자습불가
+			</S.StudyButton>
+		);
 	} else if (
 		status === 'CANT' ||
-		count >= 50 ||
-		cant.indexOf(today) !== -1 ||
-		hours < 20 ||
-		hours >= 21
+		count >= 50
+		// cant.indexOf(today) !== -1
+		// ||
+		// hours < 20 ||
+		// hours >= 21
 	) {
 		return (
 			<S.StudyButton
