@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, {useState, useEffect, useCallback} from 'react';
 import * as S from "./Style";
 import StuPenaltyItem from "../StuPenaltyItem/StuPenaltyItem";
 import stuInfo from "Api/stuInfo";
@@ -66,13 +67,16 @@ const Penalty: React.FC = () => {
     }
   }, []);
 
-  const handleSingleCheck = (checked, id: string) => {
+  const handleSingleCheck = useCallback((checked, id: string) => {
     if (checked) {
       checkItems.push(id);
+      localStorage.setItem("stuNum", JSON.stringify(checkItems));
+      console.log(checkItems.length);
     } else {
       checkItems = checkItems.filter((el) => el !== id)
+      localStorage.setItem("stuNum", JSON.stringify(checkItems));
     }
-  };
+  }, []);
 
   return(
     <S.Positioner>
@@ -113,7 +117,7 @@ const Penalty: React.FC = () => {
           <S.Search pattern='\d*' placeholder="이름을 검색해주세요" onChange={(e) => {setStuName(e.target.value)}} onKeyPress={handleKeyPress}/>
           <S.Btn onClick={onSearch} >검색</S.Btn>
         </S.SearchBox>
-        <PenaltyGiveItem stuNum={checkItems} checked={checkItems}/>
+        <PenaltyGiveItem />
       </S.BoxContainer>
       <S.Container>
         <S.AuthorizationBoard>

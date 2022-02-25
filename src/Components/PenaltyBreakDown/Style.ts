@@ -1,4 +1,3 @@
-import { toColorString } from "polished";
 import styled from "styled-components";
 
 type StyleProps = {

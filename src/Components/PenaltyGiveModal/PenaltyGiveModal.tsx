@@ -48,7 +48,7 @@ const GiveModal: React.FC<ModalProps> = ({
                   <S.Date 
                     type="date"
                     onChange={(e) => setDate(e.target.value)}
-                    value={new Date().toISOString().slice(0, 10)}
+                    // value={new Date().toISOString().slice(0, 10)}
                     required
                   />
               </S.DateWrapper>
