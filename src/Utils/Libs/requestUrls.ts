@@ -187,6 +187,14 @@ export const MassageController = {
 
 // 기숙사 규정위반
 export const PenaltyController = {
+  // 학생 정보 전체 조회
+  getStuInfo: (role: string | null) => {
+    return `/${role}/rule/stuinfo`;
+  },
+  // 반별 학생정보 조회
+  getClassStuInfo: (role: string | null, classId: number) => {
+    return `/${role}/rule/stuinfo/${classId}`
+  },
   // 단일 학생 규정위반 정보 전체 조회
   getPenaltyInfo: (role: string | null, stuNum: string) => {
     return `/${role}/rule/all/${stuNum}`;
@@ -202,5 +210,9 @@ export const PenaltyController = {
   // 학생 규정위반 삭제
   deletePenaltyInfo: (role: string | null, PenaltyId: number) => {
 	  return `/${role}/rule/${PenaltyId}`
+  },
+  // 이름으로 학생 검색
+  searchName: (role: string | null, name: string) => {
+    return `${role}/rule/stuinfo/members?membername=${name}`;
   }
 }

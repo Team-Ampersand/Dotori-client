@@ -2,13 +2,12 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import * as S from "./Style";
 import StuPenaltyItem from "../StuPenaltyItem/StuPenaltyItem";
-import stuInfo from "Api/stuInfo";
+import penaltyInfo from "Api/penaltyInfo";
 import PenaltyGiveItem from 'Components/PenaltyGiveItem/PenaltyGiveItem';
 interface studentList {
   id: number;
-  stuNum: number;
   memberName: string;
-  roles: Array<any>;
+  stuNum: string;
 }
 
 const Penalty: React.FC = () => {
@@ -20,19 +19,19 @@ const Penalty: React.FC = () => {
 
   const getStuInfo = async () => {
     const role = await localStorage.getItem("role");
-    return await stuInfo.getStuInfo(role);
+    return await penaltyInfo.getStuInfo(role);
   };
 
   const getClassStuInfo = async () => {
     const role = await localStorage.getItem("role");
-    return await stuInfo.getClassStuInfo(role, parseInt(stuGrade + stuClass));
+    return await penaltyInfo.getClassStuInfo(role, parseInt(stuGrade + stuClass));
   };
 
   const onSubmit = () => {
     if (parseInt(stuGrade + stuClass) > 0) {
       try {
         getClassStuInfo().then((res) => {
-          res && setStudentList(res.data.data);
+          res && setStudentList(res.data.list);
         });
       } catch (e: any) {
         throw Error(e);
@@ -42,12 +41,12 @@ const Penalty: React.FC = () => {
 
   const nameSearch = async () => {
     const role = localStorage.getItem("role");
-    return await stuInfo.searchName(role, stuName);
+    return await penaltyInfo.searchName(role, stuName);
   };
 
   const onSearch = () => {
     nameSearch().then((res) => {
-      res && setStudentList(res.data.data);
+      res && setStudentList(res.data.list);
     });
   };
 
@@ -60,7 +59,7 @@ const Penalty: React.FC = () => {
   useEffect(() => {
     try {
       getStuInfo().then((res) => {
-        res && setStudentList(res.data.data);
+        res && setStudentList(res.data.list);
       });
     } catch (e: any) {
       throw Error(e);
@@ -71,7 +70,6 @@ const Penalty: React.FC = () => {
     if (checked) {
       checkItems.push(id);
       localStorage.setItem("stuNum", JSON.stringify(checkItems));
-      console.log(checkItems.length);
     } else {
       checkItems = checkItems.filter((el) => el !== id)
       localStorage.setItem("stuNum", JSON.stringify(checkItems));
@@ -127,9 +125,8 @@ const Penalty: React.FC = () => {
                 <S.CheckBox type="checkbox" onChange={(e) => handleSingleCheck(e.target.checked, String(stu.stuNum))} />
                 <StuPenaltyItem
                   key={stu.id}
-                  stuNum={String(stu.stuNum)}
                   name={stu.memberName}
-                  authority={stu.roles[0]}
+                  stuNum={stu.stuNum}
                 />
               </S.BoxContainer>
             )
