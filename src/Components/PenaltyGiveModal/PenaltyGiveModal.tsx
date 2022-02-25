@@ -9,7 +9,6 @@ interface ModalProps {
   stuNum: Array<string>;
 }
 
-
 const GiveModal: React.FC<ModalProps> = ({
     modalState,
     closeModal,
@@ -34,6 +33,7 @@ const GiveModal: React.FC<ModalProps> = ({
     }
     await givePenaltyUpdate();
     await closeModal();
+    await localStorage.removeItem("stuNum");
     await window.location.reload();
   }
 

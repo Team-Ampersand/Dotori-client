@@ -70,11 +70,12 @@ const Penalty: React.FC = () => {
     if (checked) {
       checkItems.push(id);
       localStorage.setItem("stuNum", JSON.stringify(checkItems));
+      console.log(checkItems);
     } else {
       checkItems = checkItems.filter((el) => el !== id)
       localStorage.setItem("stuNum", JSON.stringify(checkItems));
     }
-  }, []);
+  }, [checkItems]);
 
   return(
     <S.Positioner>
@@ -115,7 +116,7 @@ const Penalty: React.FC = () => {
           <S.Search pattern='\d*' placeholder="이름을 검색해주세요" onChange={(e) => {setStuName(e.target.value)}} onKeyPress={handleKeyPress}/>
           <S.Btn onClick={onSearch} >검색</S.Btn>
         </S.SearchBox>
-        <PenaltyGiveItem />
+        <PenaltyGiveItem checked={checkItems}/>
       </S.BoxContainer>
       <S.Container>
         <S.AuthorizationBoard>
