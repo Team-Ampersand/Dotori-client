@@ -24,7 +24,7 @@ const GiveModal: React.FC<ModalProps> = ({
 
   const [date, setDate]= useState(new Date().toISOString().slice(0, 10));
 
-  const onComplete = () => {
+  const onComplete = async () => {
     if (date === "") {
       alert("날짜를 설정해주세요!");
       return;
@@ -32,9 +32,9 @@ const GiveModal: React.FC<ModalProps> = ({
       alert("규정위반 내역을 설정해주세요!");
       return;
     }
-    givePenaltyUpdate();
-    closeModal();
-    window.location.reload();
+    await givePenaltyUpdate();
+    await closeModal();
+    await window.location.reload();
   }
 
 
