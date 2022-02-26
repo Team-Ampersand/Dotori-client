@@ -81,6 +81,8 @@ const PenaltyInfoModal: React.FC<PenaltyInfoModalProps> = ({
 	closeModal,
 }) => {
 	const [penalty, setPenalty] = useState<Array<penalty>>();
+	const [message, setMessage] = useState('');
+
 	const PenaltyMainInfo = async () => {
 		const { data } = await penaltyInfo.getPenaltyMainInfo();
 		return data;
@@ -89,6 +91,7 @@ const PenaltyInfoModal: React.FC<PenaltyInfoModalProps> = ({
 	useEffect(() => {
 		PenaltyMainInfo().then((res) => {
 			setPenalty(res.data);
+			setMessage(res.message);
 		});
 	}, []);
 
@@ -103,13 +106,17 @@ const PenaltyInfoModal: React.FC<PenaltyInfoModalProps> = ({
 			<S.Container>
 				<S.Title>규정 위반 내역</S.Title>
 				<S.PenaltyInfoWrapper>
-					{penalty &&
+					{message === '규정위반 내역이 없습니다' ? (
+						<S.PenaltyException>규정위반 내역이 없습니다.</S.PenaltyException>
+					) : (
+						penalty &&
 						penalty.map((item, index) => (
 							<S.PenaltyWrapper key={index}>
 								<p>{returnPenaltyValue(item.rule)}</p>
 								<p>{item.date}</p>
 							</S.PenaltyWrapper>
-						))}
+						))
+					)}
 				</S.PenaltyInfoWrapper>
 				<S.PenaltyCheckBtn onClick={closeModal}>확인</S.PenaltyCheckBtn>
 			</S.Container>
