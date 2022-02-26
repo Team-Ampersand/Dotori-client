@@ -14,7 +14,7 @@ export const BreakDownContainer = styled.div`
 
 export const BreakDownWrapper = styled.div`
     width: 800px;
-    height: 95%;
+    height: 950px;
     border: 2px solid rgba(0, 0, 0, 1);
     border-radius: 40px;
 `;
@@ -47,7 +47,8 @@ export const Category = styled.div`
 `;
 
 export const LargeCategoriesWrapper = styled.ul`
-    display: grid;
+    display: flex;
+    flex-direction: column;
     width: 40%;
     height: 100%;
     border-right: 3px solid #0F4C81;
@@ -56,9 +57,8 @@ export const LargeCategoriesWrapper = styled.ul`
 
 export const LargeCategories = styled.div`
     width: 100%;
-    height: 100%;
+    height: 80px;
     color: rgba(185, 185, 185, 1);
-    
 `;
 
 export const TextWrapper = styled.div<StyleProps>`
@@ -72,8 +72,8 @@ export const SmallCategoriesWrapper = styled.ul`
     height: 100%;
     margin-top: -1.9vh;
     margin-left: 2.5vh;
+    overflow-y: scroll;
     grid-template-rows: repeat(auto-fit, 6vh);
-    
 `;
 
 export const SmallCategories = styled.div`
@@ -81,7 +81,7 @@ export const SmallCategories = styled.div`
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: 100%;
+    height: 70px;
     font-size: 16px;
 `;
 
@@ -106,6 +106,7 @@ export const CntWrapper = styled.div`
 export const DateWrapper = styled.div`
     display: grid;
     font-size: 13px;
-    width: 100px;
+    width: 90px;
     cursor: pointer;
+    height: auto;
 `;
