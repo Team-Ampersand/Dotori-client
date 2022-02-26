@@ -62,3 +62,9 @@ export const PenaltyWrapper = styled.div`
 	justify-content: space-evenly;
 	margin-top: 10px;
 `;
+
+export const PenaltyException = styled.p`
+	display: flex;
+	justify-content: center;
+	margin-top: 10px;
+`;
