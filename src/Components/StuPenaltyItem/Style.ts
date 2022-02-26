@@ -1,8 +1,4 @@
-import styled, { css } from "styled-components";
-
-interface EditProps {
-  edit: boolean;
-}
+import styled from "styled-components";
 
 interface BtnProps {
   BtnColor: string;
@@ -40,8 +36,7 @@ export const NameStyle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
+  border-left: 2px solid black;
 `;
 
 export const AuthorityStyle = styled.div`

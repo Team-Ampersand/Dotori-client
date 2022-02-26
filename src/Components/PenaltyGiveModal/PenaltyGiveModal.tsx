@@ -9,7 +9,6 @@ interface ModalProps {
   stuNum: Array<string>;
 }
 
-
 const GiveModal: React.FC<ModalProps> = ({
     modalState,
     closeModal,
@@ -24,7 +23,7 @@ const GiveModal: React.FC<ModalProps> = ({
 
   const [date, setDate]= useState("");
 
-  const onComplete = () => {
+  const onComplete = async () => {
     if (date === "") {
       alert("날짜를 설정해주세요!");
       return;
@@ -32,9 +31,10 @@ const GiveModal: React.FC<ModalProps> = ({
       alert("규정위반 내역을 설정해주세요!");
       return;
     }
-    givePenaltyUpdate();
-    closeModal();
-    window.location.reload();
+    await givePenaltyUpdate();
+    await closeModal();
+    await localStorage.removeItem("stuNum");
+    await window.location.reload();
   }
 
 
@@ -48,6 +48,7 @@ const GiveModal: React.FC<ModalProps> = ({
                   <S.Date 
                     type="date"
                     onChange={(e) => setDate(e.target.value)}
+                    // value={new Date().toISOString().slice(0, 10)}
                     required
                   />
               </S.DateWrapper>

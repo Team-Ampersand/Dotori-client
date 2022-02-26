@@ -1,4 +1,3 @@
-import { toColorString } from "polished";
 import styled from "styled-components";
 
 type StyleProps = {
@@ -14,7 +13,7 @@ export const BreakDownContainer = styled.div`
 `;
 
 export const BreakDownWrapper = styled.div`
-    width: 70vh;
+    width: 800px;
     height: 95%;
     border: 2px solid rgba(0, 0, 0, 1);
     border-radius: 40px;

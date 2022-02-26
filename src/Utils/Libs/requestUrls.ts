@@ -187,25 +187,32 @@ export const MassageController = {
 
 // 기숙사 규정위반
 export const PenaltyController = {
-	// 단일 학생 규정위반 정보 전체 조회
-	getPenaltyInfo: (role: string | null, stuNum: string) => {
-		return `/${role}/rule/all/${stuNum}`;
-	},
-	// 학생 규정위반 부여
-	updatePenaltyInfo: (role: string | null) => {
-		return `/${role}/rule/`;
-	},
-	// 단일 학생 규정위반 정보 단일 조회 ( 수정하기 페이지 )
-	getModifyPenaltyInfo: (role: string | null, stuNum: string) => {
-		return `/${role}/rule/${stuNum}`;
-	},
-	// 학생 규정위반 삭제
-	deletePenaltyInfo: (role: string | null, PenaltyId: number) => {
-		return `/${role}/rule/${PenaltyId}`;
-	},
-
-	//메인 페이지 학생 규정위반 조회
-	getPenaltyMainInfo: (role: string | null) => {
-		return `/${role}/rule/main`;
-	},
-};
+  // 학생 정보 전체 조회
+  getStuInfo: (role: string | null) => {
+    return `/${role}/rule/stuinfo`;
+  },
+  // 반별 학생정보 조회
+  getClassStuInfo: (role: string | null, classId: number) => {
+    return `/${role}/rule/stuinfo/${classId}`
+  },
+  // 단일 학생 규정위반 정보 전체 조회
+  getPenaltyInfo: (role: string | null, stuNum: string) => {
+    return `/${role}/rule/all/${stuNum}`;
+  },
+  // 학생 규정위반 부여
+  updatePenaltyInfo: (role: string | null) => {
+	  return `/${role}/rule/`
+  },
+  // 단일 학생 규정위반 정보 단일 조회 ( 수정하기 페이지 )
+  getModifyPenaltyInfo: (role: string | null, stuNum: string) => {
+	  return `/${role}/rule/${stuNum}`
+  },
+  // 학생 규정위반 삭제
+  deletePenaltyInfo: (role: string | null, PenaltyId: number) => {
+	  return `/${role}/rule/${PenaltyId}`
+  },
+  // 이름으로 학생 검색
+  searchName: (role: string | null, name: string) => {
+    return `${role}/rule/stuinfo/members?membername=${name}`;
+  }
+}
