@@ -1,5 +1,5 @@
-import { PenaltyController } from "Utils/Libs/requestUrls";
-import RequestApi from "Utils/Libs/requestApi";
+import { PenaltyController } from 'Utils/Libs/requestUrls';
+import RequestApi from 'Utils/Libs/requestApi';
 
 class penaltyInfo {
   async getStuInfo(role: string | null) {

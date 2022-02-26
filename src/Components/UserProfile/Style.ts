@@ -175,7 +175,7 @@ export const Policy = styled.div`
 export const MemberControl = styled.div`
 	height: 10%;
 	display: flex;
-	justify-content: space-around;
+	justify-content: center;
 	align-items: flex-end;
 	a {
 		text-decoration: none;
@@ -187,5 +187,22 @@ export const MemberControl = styled.div`
 		text-decoration: none;
 		color: #bbbbbe;
 		font-weight: 500;
+		margin-left: 50px;
+	}
+`;
+
+export const PenaltyBtn = styled.button`
+	width: 143px;
+	height: 41px;
+	font-size: 16px;
+	border: 0;
+	background: #0f4c80;
+	color: white;
+	border-radius: 10px;
+	margin-top: 30px;
+	&:hover {
+		background: #ffffff;
+		color: #0f4c80;
+		border: 1px solid #0f4c80;
 	}
 `;

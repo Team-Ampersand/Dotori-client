@@ -13,9 +13,8 @@ export const Wrapper = styled.div<StyleProps>`
 	border-radius: 20px;
 	margin-top: 2.7vh;
 	margin-bottom: 2vh;
-	&:last-child {
-		border-bottom: none;
-	}
+	border: 2px solid ${(props) => props.borderColor};
+
 	div {
 		font-size: 18px;
 		color: #000;

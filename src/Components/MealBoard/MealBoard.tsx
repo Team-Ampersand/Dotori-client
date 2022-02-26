@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import * as S from './Style';
 import { ManufactureDate } from 'Utils/ManufactureDate';
 
@@ -11,34 +11,24 @@ const returnMealdata = async (mealCode: number, setList) => {
 			'YMD'
 		)}`
 	);
-	if (data.RESULT.MESSAGE === '해당하는 데이터가 없습니다.') {
-		setList([
-			{
-				kind: '급식이 없어요',
-				meal: [],
-			},
-		]);
-		return;
-	} else {
-		const result = !!data.mealServiceDietInfo[1].row[mealCode]
-			? data.mealServiceDietInfo[1].row[mealCode].DDISH_NM.toString()
-					.replace(/[*<br/>0-9a-z.()]/g, '0')
-					.split('0')
-					.filter((value) => {
-						return value !== '';
-					})
-			: [];
-		const mealTime = !!data.mealServiceDietInfo[1].row[mealCode]
-			? data.mealServiceDietInfo[1].row[mealCode].MMEAL_SC_NM
-			: '급식이 없어요';
-		setList([
-			{
-				kind: mealTime,
-				meal: result,
-			},
-		]);
-		return;
-	}
+
+	const result = !!data.mealServiceDietInfo[1].row[mealCode]
+		? data.mealServiceDietInfo[1].row[mealCode].DDISH_NM.toString()
+				.replace(/[*<br/>0-9a-z.()]/g, '0')
+				.split('0')
+				.filter((value) => {
+					return value !== '';
+				})
+		: [];
+	const mealTime = !!data.mealServiceDietInfo[1].row[mealCode]
+		? data.mealServiceDietInfo[1].row[mealCode].MMEAL_SC_NM
+		: '급식이 없어요';
+	setList([
+		{
+			kind: mealTime,
+			meal: result,
+		},
+	]);
 };
 
 type listtype = {
@@ -99,12 +89,12 @@ const MealBoard: React.FC = () => {
 				</S.DayWrapper>
 			</S.TitleContainer>
 			<S.MealContainer>
-				{list.map((item: listtype, idx) => {
+				{list.map((item: listtype, index) => {
 					return (
-						<S.Meal>
+						<S.Meal key={index}>
 							<span>{item.kind}</span>
-							{item.meal.map((item, idx) => {
-								return <p>{item}</p>;
+							{item.meal.map((item, index) => {
+								return <p key={index}>{item}</p>;
 							})}
 						</S.Meal>
 					);
