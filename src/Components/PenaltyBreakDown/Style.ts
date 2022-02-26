@@ -67,13 +67,13 @@ export const TextWrapper = styled.div<StyleProps>`
 `;
 
 export const SmallCategoriesWrapper = styled.ul`
-    display: grid;
+    display: flex;
+    flex-direction: column;
     width: 50%;
     height: 100%;
-    margin-top: -1.9vh;
     margin-left: 2.5vh;
     overflow-y: scroll;
-    grid-template-rows: repeat(auto-fit, 6vh);
+    row-gap: 50px;
 `;
 
 export const SmallCategories = styled.div`
@@ -81,7 +81,6 @@ export const SmallCategories = styled.div`
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: 70px;
     font-size: 16px;
 `;
 
