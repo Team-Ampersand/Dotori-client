@@ -96,7 +96,7 @@ const returnButton = (
 	) {
 		return (
 			<S.MassageButton
-				onClick={() => alert('안마의자 신청이 불가능합니다.')}
+				onClick={() => alert('안마의자 신청 가능한 시간이 아닙니다.')}
 				status={status}
 			>
 				신청불가
