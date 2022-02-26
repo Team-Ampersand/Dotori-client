@@ -21,7 +21,7 @@ const GiveModal: React.FC<ModalProps> = ({
     alert("규정위반 내역을 추가하였습니다.")
   }
 
-  const [date, setDate]= useState(new Date().toISOString().slice(0, 10));
+  const [date, setDate]= useState("");
 
   const onComplete = async () => {
     if (date === "") {

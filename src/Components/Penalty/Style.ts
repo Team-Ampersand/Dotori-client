@@ -134,3 +134,26 @@ export const CheckBox = styled.input`
   height: 30px;
   background-color: rgba(15, 76, 129, 1);
 `;
+
+export const SelectStu = styled.div`
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+  width: 650px;
+  height: 70px;
+  margin-top: 20px;
+  margin-left: 1vh;
+  border: none;
+`;
+
+export const SelectStus = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100px;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 700;
+`;

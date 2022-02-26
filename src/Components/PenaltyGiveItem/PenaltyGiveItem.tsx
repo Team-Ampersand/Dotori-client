@@ -1,23 +1,20 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import * as S from "./Style";
 import PenaltyGiveModal from "Components/PenaltyGiveModal/PenaltyGiveModal";
 
 interface Props {
-  checked: Array<string>;
+  checked: Array<string>
 }
 
-const PenaltyGiveItem: React.FC<Props> = ({ checked }) => {
+const PenaltyGiveItem: React.FC<Props> = ({checked}) => {
   const [editState, setEditState] = useState(false);
-  const getStuNum = localStorage.getItem("stuNum")
-  const stuNums = !!getStuNum ? JSON.parse(getStuNum) : [];
-
-  const GiveItemModal = () => {
+  const GiveItemModal = useCallback(() => {
     if(checked.length === 0){
       alert("규정을 위반한 학생을 체크해주세요.");
       return;
     }
     setEditState(!editState)
-  }
+  }, [checked.length, editState])
 
   const closeModal = () => {
     setEditState(false);
@@ -29,10 +26,10 @@ const PenaltyGiveItem: React.FC<Props> = ({ checked }) => {
       <PenaltyGiveModal
         modalState={editState}
         closeModal={closeModal}
-        stuNum={stuNums}
+        stuNum={checked}
       />
     </>
   )
 }
 
-export default PenaltyGiveItem;
+export default React.memo(PenaltyGiveItem);

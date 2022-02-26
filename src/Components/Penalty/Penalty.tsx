@@ -15,7 +15,7 @@ const Penalty: React.FC = () => {
   const [stuGrade, setStuGrade] = useState("");
   const [stuClass, setStuClass] = useState("");
   const [stuName, setStuName] = useState<string>("");
-  let checkItems:Array<string> = [];
+  const [checkItems, setCheckItems] = useState<Array<string>>([]);
 
   const getStuInfo = async () => {
     const role = await localStorage.getItem("role");
@@ -61,6 +61,7 @@ const Penalty: React.FC = () => {
       getStuInfo().then((res) => {
         res && setStudentList(res.data.list);
       });
+      onSearch();
     } catch (e: any) {
       throw Error(e);
     }
@@ -68,12 +69,9 @@ const Penalty: React.FC = () => {
 
   const handleSingleCheck = useCallback((checked, id: string) => {
     if (checked) {
-      checkItems.push(id);
-      localStorage.setItem("stuNum", JSON.stringify(checkItems));
-      console.log(checkItems);
+      setCheckItems([...checkItems,id]);
     } else {
-      checkItems = checkItems.filter((el) => el !== id)
-      localStorage.setItem("stuNum", JSON.stringify(checkItems));
+      setCheckItems(checkItems.filter((el) => el !== id));
     }
   }, [checkItems]);
 
@@ -117,6 +115,7 @@ const Penalty: React.FC = () => {
           <S.Btn onClick={onSearch} >검색</S.Btn>
         </S.SearchBox>
         <PenaltyGiveItem checked={checkItems}/>
+        <S.SelectStu><S.SelectStus>선택된 학생</S.SelectStus>{checkItems.join(', ')}</S.SelectStu>
       </S.BoxContainer>
       <S.Container>
         <S.AuthorizationBoard>
