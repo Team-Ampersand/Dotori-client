@@ -9,8 +9,8 @@ export const ModifyContainer = styled.div`
 `;
 
 export const ModifyWrapper = styled.div`
-    width: 70vh;
-    height: 95%;
+    width: 800px;
+    height: 950px;
     border: 2px solid rgba(0, 0, 0, 1);
     border-radius: 40px;
 `;
