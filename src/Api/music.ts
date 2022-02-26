@@ -27,21 +27,21 @@ class Music {
 			throw new Error(e);
 		}
 	}
-	async todayMusic() {
-		try {
-			return RequestApi({
-				method: 'GET',
-				url: MusicController.todayMusic(localStorage.getItem('role')),
-			});
-		} catch (e: any) {
-			throw new Error(e);
-		}
-	}
 	async deleteMusic(id: number) {
 		try {
 			return RequestApi({
 				method: 'DELETE',
 				url: MusicController.deleteMusic(localStorage.getItem('role'), id),
+			});
+		} catch (e: any) {
+			throw new Error(e);
+		}
+	}
+	async dateMusic(date: any) {
+		try {
+			return RequestApi({
+				method: 'GET',
+				url: MusicController.dateMusic(localStorage.getItem('role'), date),
 			});
 		} catch (e: any) {
 			throw new Error(e);

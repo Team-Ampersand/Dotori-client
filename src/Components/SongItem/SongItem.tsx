@@ -3,12 +3,14 @@ import * as S from './Style';
 import axios from 'axios';
 import music from 'Api/music';
 import { getCookie } from 'Utils/Cookie';
+import { useDecode } from '../../Hooks/useDecode';
 
 type SongItemObj = {
 	createdDate: Date;
 	id: number;
 	url: string;
-	username: string;
+	memberName: string;
+	email: string;
 };
 interface SongProps {
 	songObj: SongItemObj;
@@ -52,7 +54,7 @@ const leftPad = (value) => {
 	return `0${value}`;
 };
 
-const dateFormat = (createdDate: Date) => {
+export const dateFormat = (createdDate: Date) => {
 	const date = new Date(createdDate);
 	const year = date.getFullYear();
 	const month = leftPad(date.getMonth() + 1);
@@ -64,6 +66,7 @@ const SongItem: React.FC<SongProps> = ({ songObj }) => {
 	const [title, setTitle] = useState('');
 	const videoId = youtube_parser(songObj.url);
 	const role = localStorage.getItem('role');
+	const userEmail: any = useDecode();
 
 	useEffect(() => {
 		songTitle(videoId).then((res) => {
@@ -76,10 +79,13 @@ const SongItem: React.FC<SongProps> = ({ songObj }) => {
 			<S.ImgContainer thumbnail={videoId} />
 			<S.Container>
 				<S.TitleContainer>{title}</S.TitleContainer>
-				<S.AuthorContainer>{songObj.username}</S.AuthorContainer>
+				<S.AuthorContainer>{songObj.memberName}</S.AuthorContainer>
 				<S.AuthorContainer>{dateFormat(songObj.createdDate)}</S.AuthorContainer>
 			</S.Container>
-			{role === 'admin' || role === 'developer' || role === 'councillor' ? (
+			{role === 'admin' ||
+			role === 'developer' ||
+			role === 'councillor' ||
+			songObj.email === userEmail.sub ? (
 				<S.DeleteContainer
 					onClick={(e) => {
 						e.preventDefault();

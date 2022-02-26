@@ -1,45 +1,34 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import * as S from './Style';
 import { ManufactureDate } from 'Utils/ManufactureDate';
 
 const returnMealdata = async (mealCode: number, setList) => {
-	const res = await axios.get(
+	const { data } = await axios.get(
 		`https://open.neis.go.kr/hub/mealServiceDietInfo?key=${
 			process.env.REACT_APP_NEIS_API_KEY
 		}&Type=json&ATPT_OFCDC_SC_CODE=F10&SD_SCHUL_CODE=7380292&MLSV_YMD=${ManufactureDate(
 			'YMD'
 		)}`
 	);
-	if (
-		res.data.mealServiceDietInfo[0].head[1].RESULT.MESSAGE ===
-		'정상 처리되었습니다.'
-	) {
-		const result = !!res.data.mealServiceDietInfo[1].row[mealCode]
-			? res.data.mealServiceDietInfo[1].row[mealCode].DDISH_NM.toString()
-					.replace(/[*<br/>0-9a-z.()]/g, '0')
-					.split('0')
-					.filter((value) => {
-						return value !== '';
-					})
-			: [];
-		const mealTime = !!res.data.mealServiceDietInfo[1].row[mealCode]
-			? res.data.mealServiceDietInfo[1].row[mealCode].MMEAL_SC_NM
-			: '급식이 없어요';
-		setList([
-			{
-				kind: mealTime,
-				meal: result,
-			},
-		]);
-	} else if (res.data.RESULT.MESSAGE === '해당하는 데이터가 없습니다.') {
-		setList([
-			{
-				kind: '급식이 없어요',
-				meal: [],
-			},
-		]);
-	}
+
+	const result = !!data.mealServiceDietInfo[1].row[mealCode]
+		? data.mealServiceDietInfo[1].row[mealCode].DDISH_NM.toString()
+				.replace(/[*<br/>0-9a-z.()]/g, '0')
+				.split('0')
+				.filter((value) => {
+					return value !== '';
+				})
+		: [];
+	const mealTime = !!data.mealServiceDietInfo[1].row[mealCode]
+		? data.mealServiceDietInfo[1].row[mealCode].MMEAL_SC_NM
+		: '급식이 없어요';
+	setList([
+		{
+			kind: mealTime,
+			meal: result,
+		},
+	]);
 };
 
 type listtype = {
@@ -100,12 +89,12 @@ const MealBoard: React.FC = () => {
 				</S.DayWrapper>
 			</S.TitleContainer>
 			<S.MealContainer>
-				{list.map((item: listtype, idx) => {
+				{list.map((item: listtype, index) => {
 					return (
-						<S.Meal>
+						<S.Meal key={index}>
 							<span>{item.kind}</span>
-							{item.meal.map((item, idx) => {
-								return <p>{item}</p>;
+							{item.meal.map((item, index) => {
+								return <p key={index}>{item}</p>;
 							})}
 						</S.Meal>
 					);

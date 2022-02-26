@@ -8,7 +8,7 @@ export const Positioner = styled.div`
 
 export const UserProfile = styled.div`
 	display: flex;
-	width: 25%;
+	width: 27%;
 	min-width: 200px;
 	height: 100%;
 	background-color: #fff;
@@ -23,9 +23,23 @@ export const MealBoard = styled.div`
 	border-radius: 20px;
 `;
 
-export const Selfstudyboard = styled.div`
+export const SelfstudyBoard = styled.div`
+	width: 100%;
+	height: 48%;
+`;
+
+export const MassageBoard = styled.div`
+	width: 100%;
+	height: 48%;
+	margin-bottom: 5px;
+`;
+
+export const MiddleWrapper = styled.div`
 	width: 35%;
 	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 `;
 
 export const Container = styled.div`

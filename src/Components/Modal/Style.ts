@@ -66,7 +66,17 @@ export const Close = styled.div`
   }
 `;
 
+export const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
 export const Content = styled.div`
+  width: 96%;
+  overflow: hidden;
+  word-wrap: break-word;
+  word-break: break-all;
   margin: 30px 20px 20px 20px;
   font-size: 20px;
   display: flex;
@@ -77,6 +87,21 @@ export const Content = styled.div`
     font-size: 20px;
     width: 90%;
     height: 500px;
+  }
+`;
+
+export const ImgWrapper = styled.div`
+  overflow: hidden;
+  min-width: 400px;
+  max-width: 400px;
+  min-height: 400px;
+  max-height: 400px;
+  margin-top: 20px;
+  margin-right: 20px;
+  border: 1px solid gray;
+  img {
+    width: 100%;
+    height: 100%;
   }
 `;
 

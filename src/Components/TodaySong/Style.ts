@@ -52,9 +52,15 @@ export const AllWrapper = styled.span<StyleProps>`
 	margin-right: 40px;
 `;
 
-export const TodayWrapper = styled.span<StyleProps>`
+export const DateWrapper = styled.span<StyleProps>`
 	font-size: 16px;
 	color: ${(props) => (props.isClicked ? '#333' : '#8b8b8b')};
 	cursor: pointer;
 	margin-right: 40px;
+`;
+
+export const CalanderWrapper = styled.div<StyleProps>`
+	display: ${(props) => (props.isClicked ? 'block' : 'none')};
+	position: absolute;
+	top: 60px;
 `;

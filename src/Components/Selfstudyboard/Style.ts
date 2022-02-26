@@ -9,7 +9,7 @@ type StyleProps = {
 
 export const Positioner = styled.div<StyleProps>`
 	width: 100%;
-	height: 99.4%;
+	height: 100%;
 	display: flex;
 	flex-direction: column;
 	border: 2px solid
@@ -18,7 +18,8 @@ export const Positioner = styled.div<StyleProps>`
 				props.Clicked === 'CAN' &&
 				new Date().getHours() >= 20 &&
 				new Date().getHours() < 21 &&
-				['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1
+				['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1 &&
+				localStorage.getItem('role') !== 'admin'
 			) {
 				return '#fff';
 			} else if (props.Clicked === 'APPLIED') {
@@ -32,6 +33,7 @@ export const Positioner = styled.div<StyleProps>`
 				return '#fc2c2c';
 			}
 		}};
+
 	background-color: #fff;
 	border-radius: 20px;
 `;
@@ -98,7 +100,7 @@ export const ActiveProgress = styled.div<StyleProps>`
 
 export const StudyButton = styled.button<StyleProps>`
 	width: 40%;
-	height: 7vh;
+	height: 20%;
 	border: none;
 	background-color: ${(props) => {
 		if (

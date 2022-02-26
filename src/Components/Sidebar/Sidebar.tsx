@@ -32,6 +32,12 @@ const sidebarMenuData = [
 				show: true,
 			},
 			{
+				router: '/massage',
+				menuIcon: 'Massage',
+				menuTitle: '안마의자',
+				show: true,
+			},
+			{
 				router: '/song',
 				menuIcon: 'Song',
 				menuTitle: '기상음악',
@@ -48,6 +54,15 @@ const sidebarMenuData = [
 						? true
 						: false,
 			},
+			{
+				router: '/penalty',
+				menuIcon: 'Penalty',
+				menuTitle: '규정 위반',
+				show:
+				returnShow() === 'admin'
+					? true
+					: false,
+			}
 		],
 	},
 ];

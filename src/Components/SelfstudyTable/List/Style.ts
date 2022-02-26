@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+type StyleProps = {
+	borderColor: string;
+};
+
+export const Wrapper = styled.div<StyleProps>`
 	width: 100%;
 	height: 100%;
 	display: flex;
@@ -9,9 +13,8 @@ export const Wrapper = styled.div`
 	border-radius: 20px;
 	margin-top: 2.7vh;
 	margin-bottom: 2vh;
-	&:last-child {
-		border-bottom: none;
-	}
+	border: 2px solid ${(props) => props.borderColor};
+
 	div {
 		font-size: 18px;
 		color: #000;

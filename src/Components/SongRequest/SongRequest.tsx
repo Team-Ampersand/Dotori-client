@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as S from './Style';
 import music from 'Api/music';
-import { getCookie } from 'Utils/Cookie';
 import { ManufactureDate } from 'Utils/ManufactureDate';
+import 'react-calendar/dist/Calendar.css';
 
 const musicApply = async (musicUrl: string) => {
 	try {

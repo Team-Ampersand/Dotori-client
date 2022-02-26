@@ -7,6 +7,7 @@ import {
 	Selfstudyboard,
 	MealBoard,
 	Sidebar,
+	MassageBoard,
 } from '../../Components';
 
 interface HomeProps {
@@ -22,9 +23,14 @@ const HomeContainer: React.FC<HomeProps> = ({ match }) => {
 					<S.UserProfile>
 						<UserProfile />
 					</S.UserProfile>
-					<S.Selfstudyboard>
-						<Selfstudyboard />
-					</S.Selfstudyboard>
+					<S.MiddleWrapper>
+						<S.SelfstudyBoard>
+							<Selfstudyboard />
+						</S.SelfstudyBoard>
+						<S.MassageBoard>
+							<MassageBoard />
+						</S.MassageBoard>
+					</S.MiddleWrapper>
 					<S.MealBoard>
 						<MealBoard />
 					</S.MealBoard>
