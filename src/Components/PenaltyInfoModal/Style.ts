@@ -44,6 +44,7 @@ export const PenaltyInfoWrapper = styled.div`
 	height: 80%;
 	background: #ededed;
 	border-radius: 13px;
+	overflow-y: scroll;
 `;
 
 export const PenaltyCheckBtn = styled.button`
@@ -59,8 +60,13 @@ export const PenaltyCheckBtn = styled.button`
 export const PenaltyWrapper = styled.div`
 	width: 100%;
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: space-between;
 	margin-top: 10px;
+	p {
+		width: 50%;
+		display: flex;
+		justify-content: center;
+	}
 `;
 
 export const PenaltyException = styled.p`
