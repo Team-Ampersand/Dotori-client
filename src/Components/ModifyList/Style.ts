@@ -20,7 +20,7 @@ export const Header = styled.div`
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 10%;
+    height: 80px;
     font-size: 30px;
     font-weight: 700;
     line-height: 35px;
@@ -33,10 +33,11 @@ export const Category = styled.div`
     align-items: flex-start;
     row-gap: 20px;
     width: 100%;
-    height: 80%;
+    height: 720px;
     font-size: 20px;
     font-weight: 700;
     margin-top: 20px;
+    overflow-y: scroll;
 `;
 
 export const CategoriesWrapper = styled.ul`
