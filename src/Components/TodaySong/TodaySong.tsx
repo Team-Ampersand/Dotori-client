@@ -109,7 +109,7 @@ const TodaySong: React.FC = () => {
 							getDateMusic(showDate).then((res) => {
 								setList(res?.data.data);
 								setAll(false);
-								setDate(true);
+								setDate(!date);
 							})
 						}
 					>
