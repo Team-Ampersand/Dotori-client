@@ -48,11 +48,11 @@ const returnButton = (
 	if (localStorage.getItem('role') === 'admin') {
 		return <p>사감 선생님은 안마의자 신청을 하지 않으셔도 됩니다.</p>;
 	} else if (
-		status === 'CAN'
-		// can.indexOf(today) !== -1
-		// hours >= 20 &&
-		// hours < 21 &&
-		// minutes >= 20
+		status === 'CAN' &&
+		can.indexOf(today) !== -1 &&
+		hours >= 20 &&
+		hours < 21 &&
+		minutes >= 20
 	) {
 		return (
 			<S.MassageButton
@@ -80,7 +80,9 @@ const returnButton = (
 	} else if (status === 'IMPOSSIBLE') {
 		return (
 			<S.MassageButton
-				onClick={() => alert('안마의자 신청은 한달뒤에 가능합니다.')}
+				onClick={() =>
+					alert('안마의자 신청은 신청일로 부터 한달 뒤 신청 가능합니다.')
+				}
 				status={status}
 			>
 				신청불가
@@ -88,11 +90,10 @@ const returnButton = (
 		);
 	} else if (
 		status === 'CANT' ||
-		count >= 5
-		// cant.indexOf(today) !== -1
-		// hours < 20 ||
-		// hours >= 21 ||
-		// minutes < 20
+		count === 5 ||
+		cant.indexOf(today) !== -1 ||
+		hours < 20 ||
+		hours >= 21
 	) {
 		return (
 			<S.MassageButton

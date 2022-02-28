@@ -51,16 +51,6 @@ const Authorzation: React.FC = () => {
 		});
 	};
 
-	useEffect(() => {
-		try {
-			getStuInfo().then((res) => {
-				res && setStudentList(res.data.data);
-			});
-		} catch (e: any) {
-			throw Error(e);
-		}
-	}, []);
-
 	return (
 		<S.Positioner>
 			<div>
