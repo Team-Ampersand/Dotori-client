@@ -9,6 +9,7 @@ import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { PenaltyInfoModal } from 'Components';
 import penaltyInfo from 'Api/penaltyInfo';
+import { ManufactureDate } from 'Utils/ManufactureDate';
 
 type UserProfileType = {
 	id: number;
@@ -117,7 +118,7 @@ const UserProfile: React.FC = () => {
 					</div>
 				</S.MemberControl>
 				<S.Policy>
-					<span>© 2021 Ampersand. All Rights Reserved.</span>
+					<span>© {ManufactureDate('Y')} Ampersand. All Rights Reserved.</span>
 					<p>
 						<a
 							href="https://github.com/Team-Ampersand"

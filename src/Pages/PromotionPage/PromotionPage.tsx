@@ -6,6 +6,7 @@ import React from 'react';
 import { deleteCookie } from 'Utils/Cookie';
 import member from 'Api/member';
 import isLogin from 'Utils/Libs/isLogin';
+import { ManufactureDate } from 'Utils/ManufactureDate';
 
 const TryLogout = (setLogged) => {
 	const onLogout = async () => {
@@ -63,7 +64,7 @@ const PromotionPage: React.FC = () => {
 				<p>기숙사 통합 관리 시스템</p>
 				<S.Btn to="/home">홈으로</S.Btn>
 				<S.Footer>
-					<h1>2021 Team-&mpersand</h1>
+					<h1>{ManufactureDate('Y')} Team-&mpersand</h1>
 				</S.Footer>
 			</S.Positioner>
 		</>
