@@ -64,7 +64,7 @@ class Member {
 				newPassword: newPassword,
 			};
 			return RequestApi({
-				method: 'POST',
+				method: 'PUT',
 				url: MemberController.change(),
 				data: data,
 			});
