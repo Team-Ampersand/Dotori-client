@@ -80,7 +80,9 @@ const returnButton = (
 	} else if (status === 'IMPOSSIBLE') {
 		return (
 			<S.MassageButton
-				onClick={() => alert('안마의자 신청은 한달뒤에 가능합니다.')}
+				onClick={() =>
+					alert('안마의자 신청은 신청일로 부터 한달 뒤 신청 가능합니다.')
+				}
 				status={status}
 			>
 				신청불가
