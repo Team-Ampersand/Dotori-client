@@ -130,10 +130,13 @@ const TodaySong: React.FC = () => {
 				</S.BtnWrapper>
 			</S.PlaylistContainer>
 			<S.SongContainer>
-				{list &&
+				{list ? (
 					[...list].reverse().map((data, idx) => {
 						return <SongItem songObj={data} key={`${idx}`} />;
-					})}
+					})
+				) : (
+					<S.NoSongText>신청한 음악이 없습니다.</S.NoSongText>
+				)}
 			</S.SongContainer>
 		</S.Postioner>
 	);

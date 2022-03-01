@@ -64,3 +64,11 @@ export const CalanderWrapper = styled.div<StyleProps>`
 	position: absolute;
 	top: 60px;
 `;
+
+export const NoSongText = styled.div`
+	font-size: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 40%;
+`;
