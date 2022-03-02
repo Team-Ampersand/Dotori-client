@@ -6,11 +6,6 @@ interface BtnProps {
 
 export const Container = styled.li`
   width: 95%;
-  list-style: none;
-  margin: 30px 40px;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
-  border-radius: 20px;
-  height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -24,7 +19,7 @@ export const StuInfoWrapper = styled.div`
 
 export const StuNumStyle = styled.div`
   font-size: 24px;
-  width: 200px;
+  width: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,11 +27,12 @@ export const StuNumStyle = styled.div`
 
 export const NameStyle = styled.div`
   font-size: 24px;
-  width: 280px;
+  width: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-left: 2px solid black;
+  margin-left: 30px;
 `;
 
 export const AuthorityStyle = styled.div`
@@ -48,10 +44,10 @@ export const AuthorityStyle = styled.div`
 `;
 
 export const EditBtn = styled.button`
-  width: 200px;
-  height: 45px;
+  width: 80px;
+  height: 40px;
   margin-right: 70px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   color: #fff;
   border: none;
@@ -66,8 +62,8 @@ export const EditBtn = styled.button`
 `;
 
 export const EditModifyBtn = styled.button`
-  width: 200px;
-  height: 45px;
+  width: 80px;
+  height: 40px;
   margin-right: 30px;
   border: 2px solid black;
   background-color: black;
