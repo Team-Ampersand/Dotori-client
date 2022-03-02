@@ -32,7 +32,6 @@ export const NameStyle = styled.div`
   justify-content: center;
   align-items: center;
   border-left: 2px solid black;
-  margin-left: 30px;
 `;
 
 export const AuthorityStyle = styled.div`
