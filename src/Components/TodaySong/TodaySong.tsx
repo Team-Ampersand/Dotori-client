@@ -137,7 +137,7 @@ const TodaySong: React.FC = () => {
 					})
 				) : (
 					<S.NoSongText>
-						<I.DotoriLogo />
+						<I.Logo />
 						<p>신청한 음악이 없습니다.</p>
 					</S.NoSongText>
 				)}

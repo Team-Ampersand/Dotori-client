@@ -70,9 +70,10 @@ export const NoSongText = styled.div`
 	display: grid;
 	color: #0f4c81;
 	justify-content: center;
-	margin-top: 24%;
+	margin-top: 34%;
+	font-size: 25px;
 
 	svg {
-		margin-left: 45px;
+		margin-left: 40px;
 	}
 `;

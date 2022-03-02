@@ -11,6 +11,7 @@ import IllustNotebook from './IllustNotebook';
 import IllustBeta from './IllustBeta';
 import IllustSong from './IllustSong';
 import Logout from './Logout';
+import Logo from './Logo';
 import User from './User';
 import More from './More';
 import IllustHome from './IllustHome';
@@ -44,4 +45,5 @@ export {
 	Calander,
 	PenaltyIcon,
 	Massage,
+	Logo,
 };
