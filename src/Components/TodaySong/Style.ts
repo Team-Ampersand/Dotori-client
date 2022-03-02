@@ -67,8 +67,12 @@ export const CalanderWrapper = styled.div<StyleProps>`
 
 export const NoSongText = styled.div`
 	font-size: 30px;
-	display: flex;
+	display: grid;
+	color: #0f4c81;
 	justify-content: center;
-	align-items: center;
-	margin-top: 40%;
+	margin-top: 24%;
+
+	svg {
+		margin-left: 45px;
+	}
 `;

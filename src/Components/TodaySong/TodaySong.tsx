@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './Style';
+import * as I from '../../Assets/Svg/index';
 import { SongItem } from '../';
 import music from 'Api/music';
 import { useHistory } from 'react-router';
@@ -135,7 +136,10 @@ const TodaySong: React.FC = () => {
 						return <SongItem songObj={data} key={`${idx}`} />;
 					})
 				) : (
-					<S.NoSongText>신청한 음악이 없습니다.</S.NoSongText>
+					<S.NoSongText>
+						<I.DotoriLogo />
+						<p>신청한 음악이 없습니다.</p>
+					</S.NoSongText>
 				)}
 			</S.SongContainer>
 		</S.Postioner>
