@@ -1,4 +1,5 @@
 import massage from 'Api/massage';
+import Logo from 'Assets/Svg/Logo';
 import React, { useEffect, useState } from 'react';
 import * as S from './Style';
 
@@ -37,13 +38,20 @@ const MassageTable = () => {
 	return (
 		<S.Positioner>
 			<S.Content>
-				{list &&
+				{list ? (
+					list &&
 					list.map((item, index) => (
 						<S.Wrapper borderColor={returnBorderColor(item.stuNum)} key={index}>
 							<div>{item.memberName}</div>
 							<div>{item.stuNum}</div>
 						</S.Wrapper>
-					))}
+					))
+				) : (
+					<S.ExceptionWrapper>
+						<Logo />
+						<span>안마의자를 신청한 사람이 없습니다.</span>
+					</S.ExceptionWrapper>
+				)}
 			</S.Content>
 		</S.Positioner>
 	);
