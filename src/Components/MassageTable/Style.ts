@@ -42,3 +42,13 @@ export const Wrapper = styled.div<StyleProps>`
 		justify-content: center;
 	}
 `;
+
+export const ExceptionWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	span {
+		font-size: 20px;
+	}
+`;
