@@ -31,13 +31,13 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
           <S.NameStyle>{name}</S.NameStyle>
         </S.StuInfoWrapper>
         <S.BtnWrapper>
-          <S.EditModifyBtn onClick={() => setEditModifyState(!editModifyState)}>규정위반내역 수정하기</S.EditModifyBtn>
+          <S.EditModifyBtn onClick={() => setEditModifyState(!editModifyState)}>수정</S.EditModifyBtn>
           <ModifyModal 
             modalState={editModifyState}
             closeModifyModal={closeModifyModal}
             stuNum={stuNum}
           />
-          <S.EditBtn onClick={() => setEditPenaltyState(!editPenaltyState)}>규정위반내역 확인하기</S.EditBtn>
+          <S.EditBtn onClick={() => setEditPenaltyState(!editPenaltyState)}>확인</S.EditBtn>
           <PenaltyModal
             modalState={editPenaltyState}
             closePenaltyModal={closePenaltyModal}

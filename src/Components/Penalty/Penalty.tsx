@@ -56,16 +56,16 @@ const Penalty: React.FC = () => {
     }
   }
 
-  useEffect(() => {
-    try {
-      getStuInfo().then((res) => {
-        res && setStudentList(res.data.list);
-      });
-      onSearch();
-    } catch (e: any) {
-      throw Error(e);
-    }
-  }, []);
+  // useEffect(() => {
+  //   try {
+  //     getStuInfo().then((res) => {
+  //       res && setStudentList(res.data.list);
+  //     });
+  //     onSearch();
+  //   } catch (e: any) {
+  //     throw Error(e);
+  //   }
+  // }, []);
 
   const handleSingleCheck = useCallback((checked, id: string) => {
     if (checked) {
@@ -86,8 +86,9 @@ const Penalty: React.FC = () => {
             value={stuGrade}
           >
             <S.Option value="" selected disabled hidden>
-              선택
+              전체
             </S.Option>
+            <S.Option value="">전체</S.Option>
             <S.Option value="1">1</S.Option>
             <S.Option value="2">2</S.Option>
             <S.Option value="3">3</S.Option>
@@ -100,8 +101,9 @@ const Penalty: React.FC = () => {
             value={stuClass}
           >
             <S.Option value="" selected disabled hidden>
-              선택
+              전체
             </S.Option>
+            <S.Option value="전체">전체</S.Option>
             <S.Option value="1">1</S.Option>
             <S.Option value="2">2</S.Option>
             <S.Option value="3">3</S.Option>
@@ -121,14 +123,14 @@ const Penalty: React.FC = () => {
         <S.AuthorizationBoard>
           {studentList && studentList.map((stu) => {
             return (
-              <S.BoxContainer key={stu.id}>
+              <S.StuBoxContainer key={stu.id}>
                 <S.CheckBox type="checkbox" onChange={(e) => handleSingleCheck(e.target.checked, String(stu.stuNum))} />
                 <StuPenaltyItem
                   key={stu.id}
                   name={stu.memberName}
                   stuNum={stu.stuNum}
                 />
-              </S.BoxContainer>
+              </S.StuBoxContainer>
             )
           })}
         </S.AuthorizationBoard>
