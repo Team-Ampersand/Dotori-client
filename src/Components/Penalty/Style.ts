@@ -12,6 +12,20 @@ export const BoxContainer = styled.div`
   align-items: center;
 `;
 
+export const StuBoxContainer = styled.div`
+  display: flex;
+  align-items: center;
+  width: 95%;
+  list-style: none;
+  margin: 20px 40px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 export const SelectBoxWrapper = styled.div`
   display: flex;
   background-color: #fff;
@@ -43,7 +57,7 @@ export const Label = styled.div`
 `;
 
 export const Btn = styled.button`
-  width: 90px;
+  width: 80px;
   height: 40px;
   border-radius: 10px;
   border: none;
