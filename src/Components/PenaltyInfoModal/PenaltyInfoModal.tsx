@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './Style';
 import penaltyInfo from '../../Api/penaltyInfo';
+import * as I from '../../Assets/Svg';
 
 interface PenaltyInfoModalProps {
 	modalState: boolean;
@@ -107,7 +108,10 @@ const PenaltyInfoModal: React.FC<PenaltyInfoModalProps> = ({
 				<S.Title>규정 위반 내역</S.Title>
 				<S.PenaltyInfoWrapper>
 					{message === '규정위반 내역이 없습니다' ? (
-						<S.PenaltyException>규정위반 내역이 없습니다.</S.PenaltyException>
+						<S.PenaltyException>
+							<I.Logo></I.Logo>
+							<span>규정위반 내역이 없습니다.</span>
+						</S.PenaltyException>
 					) : (
 						penalty &&
 						penalty.map((item, index) => (
