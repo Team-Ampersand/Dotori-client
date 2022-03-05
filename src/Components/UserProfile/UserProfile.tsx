@@ -84,7 +84,9 @@ const UserProfile: React.FC = () => {
 	}, []);
 	return (
 		<>
-			<PenaltyInfoModal modalState={modalState} closeModal={closeModal} />
+			{modalState && (
+				<PenaltyInfoModal modalState={modalState} closeModal={closeModal} />
+			)}
 			<S.Postioner>
 				<S.Header>
 					<S.LogoutWrapper onClick={onLogout} data-test="test-logout">

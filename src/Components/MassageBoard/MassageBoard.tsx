@@ -93,7 +93,8 @@ const returnButton = (
 		count === 5 ||
 		cant.indexOf(today) !== -1 ||
 		hours < 20 ||
-		hours >= 21
+		hours >= 21 ||
+		minutes < 20
 	) {
 		return (
 			<S.MassageButton
@@ -137,6 +138,7 @@ const MassageBoard: React.FC = () => {
 					{ManufactureDate('Y')}년 {ManufactureDate('M')}월{' '}
 					{ManufactureDate('D')}일 {ManufactureDate('W')}요일
 				</strong>
+				<p>8 : 20 ~ 9 : 00</p>
 				<span>{info.count}/5</span>
 				<S.PointProgress>
 					<S.ActiveProgress

@@ -52,3 +52,13 @@ export const DetectedLaptop = styled.p<{ status: boolean }>`
 		color: ${(props) => (props.status ? '#e11a1a' : '#000')};
 	}
 `;
+
+export const ExceptionWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	span {
+		font-size: 20px;
+	}
+`;
