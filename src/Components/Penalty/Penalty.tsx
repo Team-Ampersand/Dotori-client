@@ -56,16 +56,16 @@ const Penalty: React.FC = () => {
     }
   }
 
-  // useEffect(() => {
-  //   try {
-  //     getStuInfo().then((res) => {
-  //       res && setStudentList(res.data.list);
-  //     });
-  //     onSearch();
-  //   } catch (e: any) {
-  //     throw Error(e);
-  //   }
-  // }, []);
+  useEffect(() => {
+    try {
+      getStuInfo().then((res) => {
+        res && setStudentList(res.data.list);
+      });
+      onSearch();
+    } catch (e: any) {
+      throw Error(e);
+    }
+  }, []);
 
   const handleSingleCheck = useCallback((checked, id: string) => {
     if (checked) {

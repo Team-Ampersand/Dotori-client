@@ -3,12 +3,12 @@ import * as S from "./Style";
 
 interface PenaltyBreakDownProps {
   penaltyList: any,
+  penaltyMessage: any
 }
 
-
-const PenaltyBreakDown:React.FC<PenaltyBreakDownProps> = ({ penaltyList }) => {
+const PenaltyBreakDown:React.FC<PenaltyBreakDownProps> = ({ penaltyList, penaltyMessage }) => {
   const [closed, setClosed] = useState(false);
-  const handleMoreBtn =  () => {
+  const handleMoreBtn = () => {
     setClosed(!closed);
   }
 
@@ -87,13 +87,10 @@ const PenaltyBreakDown:React.FC<PenaltyBreakDownProps> = ({ penaltyList }) => {
           return "";
         }
       };
-    const obj = Object.entries(item);
-    const SmallCatergories = obj.map((item:any) => {
-      if(item[1] === "규"){
-        return(
-          <S.None>규정위반 내역이 없습니다.</S.None>
-        )
-      }
+
+    const obj = item && Object.entries(item);
+    console.log(obj)
+    const SmallCatergories = obj && obj.map((item:any) => {      
       return(
         <>
         {all ? item[1].cnt > 0 ? <S.SmallCategories><S.NameWrapper>{returnPenaltyValue(item[0])}</S.NameWrapper><S.CntWrapper>{item[1].cnt}회</S.CntWrapper><S.DateWrapper onClick={handleMoreBtn} className={closed ? "" : "close"}>{item[1].date.sort().join('\n')}</S.DateWrapper></S.SmallCategories> : null : null}
@@ -110,7 +107,7 @@ const PenaltyBreakDown:React.FC<PenaltyBreakDownProps> = ({ penaltyList }) => {
         </>
       )
     })
-    
+
     return(
       <>
         <S.LargeCategoriesWrapper>
@@ -171,7 +168,7 @@ const PenaltyBreakDown:React.FC<PenaltyBreakDownProps> = ({ penaltyList }) => {
           </S.LargeCategories>
         </S.LargeCategoriesWrapper>
         <S.SmallCategoriesWrapper>
-          {SmallCatergories}
+          {penaltyMessage === "규정위반 내역이 없습니다" ? <S.None>규정위반 내역이 없습니다.</S.None> : SmallCatergories}
         </S.SmallCategoriesWrapper>
       </>
     )
