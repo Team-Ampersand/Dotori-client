@@ -32,17 +32,21 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
         </S.StuInfoWrapper>
         <S.BtnWrapper>
           <S.EditModifyBtn onClick={() => setEditModifyState(!editModifyState)}>수정</S.EditModifyBtn>
-          <ModifyModal 
+            {editModifyState && 
+            <ModifyModal 
             modalState={editModifyState}
             closeModifyModal={closeModifyModal}
             stuNum={stuNum}
           />
+            }
           <S.EditBtn onClick={() => setEditPenaltyState(!editPenaltyState)}>확인</S.EditBtn>
-          <PenaltyModal
+            {editPenaltyState &&
+            <PenaltyModal
             modalState={editPenaltyState}
             closePenaltyModal={closePenaltyModal}
             stuNum={stuNum}
           />
+          }
         </S.BtnWrapper>
       </S.Container>
     </>

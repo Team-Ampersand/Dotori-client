@@ -110,18 +110,13 @@ export const SearchBox = styled.div`
 
 export const Search = styled.input`
   display: flex;
-  width: 50%;
-  height: 90%;
+  width: 150px;
+  height: 70px;
   border: none;
   border-radius: 20px;
   ::placeholder{
       font-size: 18px;
   }
-`;
-
-export const SearchWrapper = styled.div`
-  width: 100%;
-  border-bottom: 1px solid black;
 `;
 
 export const BreakDownBtn = styled.button`
@@ -155,11 +150,13 @@ export const SelectStu = styled.div`
   background-color: #fff;
   border-radius: 20px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
-  width: 650px;
+  width: auto;
   height: 70px;
   margin-top: 20px;
   margin-left: 1vh;
   border: none;
+  padding-right: 20px;
+  padding-left: 10px;
 `;
 
 export const SelectStus = styled.div`

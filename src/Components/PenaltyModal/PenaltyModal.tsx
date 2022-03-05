@@ -45,6 +45,7 @@ const PenaltyModal: React.FC<ModalProps> = ({
         <S.Container>
 					<PenaltyBreakDown
             penaltyList={penaltyMessage === "규정위반 내역이 없습니다" ? penaltyMessage : penaltyList}
+            penaltyMessage={penaltyMessage}
 					/>
           <S.BtnWrapper>
             <S.CompleteBtn onClick={onCancle}>확인</S.CompleteBtn>

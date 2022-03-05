@@ -51,7 +51,7 @@ const ModifyModal: React.FC<ModalProps> = ({
       <S.Positioner>
         <S.Overlay onClick={closeModifyModal} />
         <S.Container>
-          <ModifyList modifyList={modifyMessage === "규정위반 내역이 없습니다" ? [modifyMessage] : modifyList} role={role} />
+          <ModifyList modifyList={modifyMessage === "규정위반 내역이 없습니다" ? [modifyMessage] : modifyList} role={role} modifyMessage={modifyMessage}/>
           <S.BtnWrapper>
             <S.CompleteBtn onClick={onCancle}>확인</S.CompleteBtn>
           </S.BtnWrapper>
