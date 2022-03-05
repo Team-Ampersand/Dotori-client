@@ -70,7 +70,9 @@ export const PenaltyWrapper = styled.div`
 `;
 
 export const PenaltyException = styled.p`
+	height: 100%;
 	display: flex;
+	flex-direction: column;
+	align-items: center;
 	justify-content: center;
-	margin-top: 10px;
 `;
