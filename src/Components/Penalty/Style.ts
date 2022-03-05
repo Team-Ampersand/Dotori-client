@@ -150,11 +150,13 @@ export const SelectStu = styled.div`
   background-color: #fff;
   border-radius: 20px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
-  width: 400px;
+  width: auto;
   height: 70px;
   margin-top: 20px;
   margin-left: 1vh;
   border: none;
+  padding-right: 20px;
+  padding-left: 10px;
 `;
 
 export const SelectStus = styled.div`
