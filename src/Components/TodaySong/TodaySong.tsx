@@ -36,7 +36,6 @@ const TodaySong: React.FC = () => {
 		).slice(-2)}`
 	);
 	const [list, setList] = useState<list[]>([]);
-	console.log(date);
 	const setLogged = useSetRecoilState(HasToken);
 	useEffect(() => {
 		getDateMusic(showPlaylistDate)
