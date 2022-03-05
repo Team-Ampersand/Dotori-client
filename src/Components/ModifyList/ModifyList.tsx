@@ -5,6 +5,7 @@ import * as S from "./Style";
 interface ModifyListProps {
   modifyList: any,
   role: string | null;
+  modifyMessage: any
 }
 
 const returnPenaltyValue = (penaltyType: string) => {
@@ -70,7 +71,7 @@ const returnPenaltyValue = (penaltyType: string) => {
     }
   };
 
-const ModifyList:React.FC<ModifyListProps> = ({ modifyList,role }) => {
+const ModifyList:React.FC<ModifyListProps> = ({ modifyList,role,modifyMessage }) => {
   const ModifyPenaltyList = modifyList && modifyList.map((item) => {
     const deletePenalty = async (PenaltyId) => {
       return await penaltyInfo.deletePenaltyInfo(role, PenaltyId);
@@ -97,7 +98,7 @@ const ModifyList:React.FC<ModifyListProps> = ({ modifyList,role }) => {
       <S.ModifyWrapper>
         <S.Header>규정위반 내역 수정</S.Header>
         <S.Category>
-          {modifyList.toString() === "규정위반 내역이 없습니다" ? <S.CategoriesWrapper>이 학생은 규정위반 내역이 없습니다.</S.CategoriesWrapper> : ModifyPenaltyList}
+          {modifyMessage === "규정위반 내역이 없습니다" ? <S.CategoriesWrapper>이 학생은 규정위반 내역이 없습니다.</S.CategoriesWrapper> : ModifyPenaltyList}
         </S.Category>
       </S.ModifyWrapper>
     </S.ModifyContainer>

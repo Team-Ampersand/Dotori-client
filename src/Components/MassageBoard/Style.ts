@@ -79,6 +79,7 @@ export const MassageContent = styled.div`
 	p {
 		font-size: 18px;
 		font-weight: 500;
+		color: #bbbbbe;
 	}
 `;
 

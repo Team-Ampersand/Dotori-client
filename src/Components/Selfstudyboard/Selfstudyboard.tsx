@@ -165,6 +165,7 @@ const Selfstudyboard: React.FC = () => {
 					{ManufactureDate('Y')}년 {ManufactureDate('M')}월{' '}
 					{ManufactureDate('D')}일 {ManufactureDate('W')}요일
 				</strong>
+				<p>8 : 00 ~ 9 : 00</p>
 				<span>
 					{parseInt(info.count)}/{Room.roomMax}
 				</span>

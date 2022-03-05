@@ -6,6 +6,7 @@ import selfstudy from 'Api/selfStudy';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { list, HasToken } from 'Atoms';
 import { useHistory } from 'react-router';
+import Logo from 'Assets/Svg/Logo';
 
 type ListType = {
 	id: number;
@@ -80,7 +81,8 @@ const List: React.FC<ListProps> = ({ match }) => {
 
 	return (
 		<>
-			{userlist &&
+			{userlist ? (
+				userlist &&
 				userlist.map((item, idx) => (
 					<S.Wrapper
 						key={`${idx}`}
@@ -93,7 +95,13 @@ const List: React.FC<ListProps> = ({ match }) => {
 							{item.stuNum}
 						</div>
 					</S.Wrapper>
-				))}
+				))
+			) : (
+				<S.ExceptionWrapper>
+					<Logo />
+					<span>자습을 신청한 사람이 없습니다.</span>
+				</S.ExceptionWrapper>
+			)}
 		</>
 	);
 };
