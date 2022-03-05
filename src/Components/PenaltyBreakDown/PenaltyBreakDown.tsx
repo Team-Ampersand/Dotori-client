@@ -89,7 +89,6 @@ const PenaltyBreakDown:React.FC<PenaltyBreakDownProps> = ({ penaltyList, penalty
       };
 
     const obj = item && Object.entries(item);
-    console.log(obj)
     const SmallCatergories = obj && obj.map((item:any) => {      
       return(
         <>
