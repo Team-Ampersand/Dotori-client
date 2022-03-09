@@ -22,8 +22,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# prettier
-.prettierrc
-
 #env 환경변수 파일
 .env

@@ -1,37 +1,26 @@
 {
-  "compilerOptions": {
-    "outDir": "./dist",
-    "jsx": "react-jsx",
-    "module": "esnext",
-    "noImplicitAny": false,
-    "esModuleInterop": true,
-    "target": "es6",
-    "sourceMap": true,
-    "baseUrl": "src",
-    "typeRoots": [
-      "/node_modules/@types",
-      "@types"
-    ],
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true
-  },
-  "include": [
-    "./src/**/*"
-  ],
-  "exclude": [
-    "./node_modules"
-  ]
+	"compilerOptions": {
+		"outDir": "./dist",
+		"jsx": "react-jsx",
+		"module": "esnext",
+		"noImplicitAny": false,
+		"esModuleInterop": true,
+		"target": "es6",
+		"sourceMap": true,
+		"baseUrl": "src",
+		"typeRoots": ["/node_modules/@types", "@types"],
+		"lib": ["dom", "dom.iterable", "esnext"],
+		"allowJs": true,
+		"skipLibCheck": true,
+		"allowSyntheticDefaultImports": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"noFallthroughCasesInSwitch": true,
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noEmit": true
+	},
+	"include": ["./src/**/*"],
+	"exclude": ["./node_modules"]
 }
