@@ -11,7 +11,6 @@ import {
 	SigninPage,
 	SignupPage,
 	NoticeWritePage,
-	PointPage,
 	AuthorizationPage,
 	PwChangePage,
 	WithdrawlPage,
@@ -35,7 +34,6 @@ const Router: React.FC = () => {
 			<PrivateRoute exact path="/notice" component={NoticePage} />
 			<PrivateRoute path="/notice/write" component={NoticeWritePage} />
 			<PrivateRoute path="/song" component={SongPage} />
-			<PrivateRoute path="/point" component={PointPage} />
 			<PublicRoute restricted path="/signin" component={SigninPage} />
 			<PublicRoute restricted path="/signup" component={SignupPage} />
 			<PublicRoute restricted exact path="/password" component={PwChangePage} />

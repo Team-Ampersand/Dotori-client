@@ -1,6 +1,5 @@
 import RequestApi from '../Utils/Libs/requestApi';
 import { SelfstudyController } from '../Utils/Libs/requestUrls';
-import { getCookie } from 'Utils/Cookie';
 
 class SelfStudy {
 	async selfstudy() {

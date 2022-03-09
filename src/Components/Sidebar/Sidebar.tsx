@@ -2,7 +2,6 @@ import React, { useMemo, useState } from 'react';
 import * as S from './Style';
 import SidebarList from '../SidebarList/SidebarList';
 import Logo from 'Assets/Svg/Logo';
-import { getCookie } from 'Utils/Cookie';
 import { useHistory } from 'react-router';
 
 const returnShow = () => {

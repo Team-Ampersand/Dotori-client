@@ -3,7 +3,6 @@ import * as S from './Style';
 import { DotoriLogo } from 'Assets/Svg';
 import member from 'Api/member';
 import { useHistory } from 'react-router';
-import { deleteCookie } from 'Utils/Cookie';
 
 const onWithdrawl = async (id: string, password: string, history) => {
 	try {

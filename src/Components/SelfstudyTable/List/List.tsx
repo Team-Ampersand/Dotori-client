@@ -1,18 +1,11 @@
 import React, { useEffect } from 'react';
 import * as S from './Style';
 import { MatchType } from '../../../Utils/GlobalType';
-import { LaptopHeader } from '../Header/model/CombineAdminHeader';
 import selfstudy from 'Api/selfStudy';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { list, HasToken } from 'Atoms';
 import { useHistory } from 'react-router';
 import Logo from 'Assets/Svg/Logo';
-
-type ListType = {
-	id: number;
-	stuNum: string;
-	memberName: string;
-};
 
 const ReturnUserObj = async (history, setLogged) => {
 	try {
@@ -47,15 +40,6 @@ interface ListProps {
 	match: MatchType;
 }
 
-const onlyCompareThisHeader = (match: MatchType) => {
-	switch (match.path) {
-		case '/selfstudy':
-			return LaptopHeader;
-		default:
-			break;
-	}
-};
-
 const returnBorderColor = (stuNum) => {
 	if (stuNum.substring(0, 1) === '1') {
 		return '#FFF65E';
@@ -88,12 +72,8 @@ const List: React.FC<ListProps> = ({ match }) => {
 						key={`${idx}`}
 						borderColor={returnBorderColor(item.stuNum)}
 					>
-						<div style={{ flex: onlyCompareThisHeader(match)!.list[0].flex }}>
-							{item.memberName}
-						</div>
-						<div style={{ flex: onlyCompareThisHeader(match)!.list[1].flex }}>
-							{item.stuNum}
-						</div>
+						<div>{item.memberName}</div>
+						<div>{item.stuNum}</div>
 					</S.Wrapper>
 				))
 			) : (
