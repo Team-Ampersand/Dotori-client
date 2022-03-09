@@ -83,7 +83,7 @@ const ModifyList: React.FC<ModifyListProps> = ({
 				return await penaltyInfo.deletePenaltyInfo(role, PenaltyId);
 			};
 			const onDelete = async () => {
-				if (window.confirm('정말 삭제하시겠습니까 ?')) {
+				if (window.confirm('정말 삭제하시겠어요?')) {
 					await deletePenalty(item.id);
 					window.location.reload();
 				}
