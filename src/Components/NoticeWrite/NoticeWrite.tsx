@@ -47,7 +47,7 @@ const NoticeWrite: React.FC = () => {
 			return res;
 		} catch (e: any) {
 			if (e.message === 'Error: Request failed with status code 400') {
-				alert('제목과 내용을 입력해주세요.');
+				alert('제목과 내용을 입력해주세요');
 			}
 		}
 	};
@@ -60,7 +60,7 @@ const NoticeWrite: React.FC = () => {
 		<>
 			<Prompt
 				when={shouldConfirmState}
-				message={'주의! 변경사항이 저장되지 않을 수 있습니다.'}
+				message={'주의! 변경사항이 저장되지 않을 수 있어요'}
 			/>
 			<S.Positioner>
 				<S.Container>
@@ -81,7 +81,7 @@ const NoticeWrite: React.FC = () => {
 									{fileImage ? (
 										<img alt="notice" src={fileImage} />
 									) : (
-										<p>이미지가 선택되지 않았습니다.</p>
+										<p>이미지가 선택되지 않았어요</p>
 									)}
 								</S.Img>
 								<S.ImgBtnWrapper>

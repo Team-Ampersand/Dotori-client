@@ -8,14 +8,14 @@ import { History } from 'history';
 const authPassword = async (id: string, setDisabled, setDisplayed) => {
 	try {
 		await member.authPassword(id + '@gsm.hs.kr');
-		console.log('이메일을 확인해주세요.');
+		console.log('이메일을 확인해주세요');
 		setDisabled(false);
 	} catch (e: any) {
 		if (e.message === 'Request failed with status code 400') {
-			alert('이메일 형식이 잘못 되었습니다.');
+			alert('이메일 형식이 잘못 되었어요');
 			setDisplayed(true);
 		} else if (e.message === 'Request failed with status code 404') {
-			alert('존재하지 않는 회원 정보입니다.');
+			alert('존재하지 않는 회원 정보에요');
 		}
 	}
 };
@@ -23,11 +23,11 @@ const authPassword = async (id: string, setDisabled, setDisplayed) => {
 const findPassword = async (newPw: string, emailCode, history) => {
 	try {
 		await member.findPassword(newPw, emailCode);
-		alert('비밀번호가 변경 되었습니다!');
+		alert('비밀번호가 변경 되었어요');
 		history.push('/signin');
 	} catch (e: any) {
 		e.message === 'Request failed with status code 409'
-			? alert('인증 키가 다릅니다.')
+			? alert('인증 키가 달라요')
 			: alert('개발자에게 문의 해주세요!' + e);
 	}
 };
@@ -35,12 +35,12 @@ const findPassword = async (newPw: string, emailCode, history) => {
 const changePassword = async (password: string, newPw: string, history) => {
 	try {
 		await member.passwordChange(password, newPw);
-		alert('비밀번호가 변경되었습니다.');
+		alert('비밀번호가 변경되었어요');
 		history.push('/home');
 	} catch (e: any) {
 		alert(
 			e.message === 'Request failed with status code 409'
-				? alert('현재 비밀번호가 다릅니다.')
+				? alert('현재 비밀번호가 달라요')
 				: alert('개발자에게 문의 해주세요!' + e)
 		);
 	}
@@ -112,7 +112,7 @@ const returnPassworForm = (
 				/>
 				<S.ButtonStyle
 					onClick={() => {
-						if (newPw !== repassword) alert('입력한 비밀번호가 서로 다릅니다.');
+						if (newPw !== repassword) alert('입력한 비밀번호가 서로 달라요');
 						else findPassword(newPw, emailCode, history);
 					}}
 				>
@@ -143,7 +143,7 @@ const returnPassworForm = (
 				/>
 				<S.ButtonStyle
 					onClick={() => {
-						if (newPw !== repassword) alert('입력한 비밀번호가 서로 다릅니다.');
+						if (newPw !== repassword) alert('입력한 비밀번호가 서로 달라요');
 						else changePassword(password, newPw, history);
 					}}
 				>

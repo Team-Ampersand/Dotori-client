@@ -31,7 +31,7 @@ const TryLogout = () => {
 
 			setLogged(false);
 			history.push('/');
-			alert('로그아웃 되었습니다.');
+			alert('로그아웃 되었어요');
 			window.location.reload();
 		} catch (e: any) {
 			if (e.message === 'Request failed with status code 401') {
@@ -69,7 +69,7 @@ const UserProfile: React.FC = () => {
 			})
 			.catch((e) => {
 				if (e.response.status === 401) {
-					alert('로그아웃 되었습니다. 다시 로그인 해주세요.');
+					alert('로그아웃 되었어요. 다시 로그인 해주세요');
 
 					localStorage.removeItem('Dotori_accessToken');
 					localStorage.removeItem('Dotori_refreshToken');
@@ -112,7 +112,7 @@ const UserProfile: React.FC = () => {
 					<Link to={'/change/password'}>비밀번호 변경</Link>
 					<div
 						onClick={() => {
-							alert('회원탈퇴는 개발자에게 문의 해주세요.');
+							alert('회원탈퇴는 개발자에게 문의 해주세요');
 						}}
 					>
 						회원 탈퇴

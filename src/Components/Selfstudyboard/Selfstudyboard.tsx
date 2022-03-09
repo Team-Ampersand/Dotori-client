@@ -18,7 +18,7 @@ const studyInfo = async (setLogged, history) => {
 	} catch (e: any) {
 		if (e.message === 'Request failed with status code 401') {
 		} else if (e.message === 'Request failed with status code 403') {
-			alert('로그아웃 되었습니다. 다시 로그인 해주세요.');
+			alert('로그아웃 되었어요. 다시 로그인 해주세요');
 
 			localStorage.removeItem('Dotori_accessToken');
 			localStorage.removeItem('Dotori_refreshToken');
@@ -35,9 +35,9 @@ const applyStudy = async (setInfo, count) => {
 	try {
 		await selfstudy.selfstudy();
 		setInfo({ count: count + 1, selfStudy_status: 'APPLIED' });
-		alert('자습 신청이 완료 되었습니다!');
+		alert('자습 신청이 완료 되었어요');
 	} catch (e) {
-		alert('이미 자습신청을 하셨거나 할 수 없는 상태입니다.\n' + e);
+		alert('이미 자습신청을 하셨거나 할 수 없는 상태에요\n' + e);
 	}
 };
 
@@ -45,9 +45,9 @@ const cancleStudy = async (setInfo, count) => {
 	try {
 		await selfstudy.cancelstudy();
 		setInfo({ count: count - 1, selfStudy_status: 'CANT' });
-		alert('자습 신청이 취소 되었습니다.');
+		alert('자습 신청이 취소 되었어요');
 	} catch (e) {
-		alert('자습취소를 하실수 없는 상태입니다\n' + e);
+		alert('자습취소를 하실수 없는 상태에요\n' + e);
 	}
 };
 
@@ -90,11 +90,11 @@ const returnButton = (status: string, setInfo, count) => {
 				onClick={() => {
 					if (
 						window.confirm(
-							'자습을 취소 하시겠습니까? 오늘 하루동안 다시 신청이 불가능 합니다.'
+							'자습을 취소 하시겠어요? 오늘 하루동안 다시 신청이 불가능 해요'
 						)
 					) {
 						cancleStudy(setInfo, count);
-					} else alert('자습이 취소되지 않았습니다.');
+					} else alert('자습이 취소되지 않았어요');
 				}}
 				Clicked={status}
 			>
@@ -106,7 +106,7 @@ const returnButton = (status: string, setInfo, count) => {
 			<S.StudyButton
 				Clicked={status}
 				onClick={() => {
-					alert('자습신청이 금지되었습니다.');
+					alert('자습신청이 금지되었어요');
 				}}
 			>
 				자습불가
@@ -123,7 +123,7 @@ const returnButton = (status: string, setInfo, count) => {
 			<S.StudyButton
 				Clicked={status}
 				onClick={() => {
-					alert('아직 자습을 신청하실 수 있는 시간이 아닙니다.');
+					alert('아직 자습을 신청하실 수 있는 시간이 아니에요');
 				}}
 			>
 				자습불가
@@ -133,7 +133,7 @@ const returnButton = (status: string, setInfo, count) => {
 		<S.StudyButton
 			Clicked={status}
 			onClick={() => {
-				alert('아직 자습을 신청하실 수 있는 시간이 아닙니다.');
+				alert('아직 자습을 신청하실 수 있는 시간이 아니에요');
 			}}
 		>
 			자습불가
