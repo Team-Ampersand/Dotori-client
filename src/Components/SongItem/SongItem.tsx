@@ -40,7 +40,7 @@ const youtube_parser = (url: string) => {
 const deleteMusic = async (id: number) => {
 	try {
 		await music.deleteMusic(id);
-		alert('삭제 되었습니다.');
+		alert('삭제 되었어요');
 		window.location.reload();
 	} catch (e) {
 		alert(e);
