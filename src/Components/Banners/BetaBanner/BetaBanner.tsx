@@ -31,13 +31,13 @@ const BetaBanner: React.FC = () => {
 				<S.TextWrapper>
 					<h2>오늘의 청소 학년</h2>
 					<span>
-						오늘의 청소학년은 <strong>{grade}학년</strong> 입니다.
+						오늘의 청소학년은 <strong>{grade}학년</strong> 이에요
 					</span>
-					{grade === 1 && <h4>오늘은 여학생 청소하는 날입니다.</h4>}
+					{grade === 1 && <h4>오늘은 여학생 청소하는 날이에요</h4>}
 				</S.TextWrapper>
 			) : (
 				<S.TextWrapper>
-					<h2>오늘의 청소는 없습니다.</h2>
+					<h2>오늘의 청소는 없어요</h2>
 				</S.TextWrapper>
 			)}
 		</S.Postioner>

@@ -22,14 +22,14 @@ const returnRoomStatusNumber = (compareMax: number, compareMin: number) => {
 const applyMassage = async (setInfo, count: number) => {
 	await massage.massage();
 	setInfo({ count: count + 1, status: 'APPLIED' });
-	alert('안마의자 신청이 완료되었습니다.');
+	alert('안마의자 신청이 완료되었어요');
 };
 
 const cancelMassage = async (setInfo, count: number) => {
 	await massage.cancelMassage();
 	setInfo({ count: count - 1, status: 'CANT' });
 	alert(
-		'안마의자 신청이 취소 되었습니다. 오늘 하루 동안 다시 신청이 불가능 합니다.'
+		'안마의자 신청이 취소 되었어요. 오늘 하루 동안 다시 신청이 불가능 해요'
 	);
 };
 
@@ -46,7 +46,7 @@ const returnButton = (
 	let hours = new Date().getHours();
 	let minutes = new Date().getMinutes();
 	if (localStorage.getItem('role') === 'admin') {
-		return <p>사감 선생님은 안마의자 신청을 하지 않으셔도 됩니다.</p>;
+		return <p>사감 선생님은 안마의자 신청을 하지 않으셔도 됩니다</p>;
 	} else if (
 		status === 'CAN' &&
 		can.indexOf(today) !== -1 &&
@@ -68,9 +68,9 @@ const returnButton = (
 		return (
 			<S.MassageButton
 				onClick={() => {
-					if (window.confirm('안마의자 신청을 취소하시겠습니까?')) {
+					if (window.confirm('안마의자 신청을 취소하시겠어요?')) {
 						cancelMassage(setInfo, count);
-					} else alert('안마의자 신청이 취소되지 않았습니다.');
+					} else alert('안마의자 신청이 취소되지 않았어요');
 				}}
 				status={status}
 			>
@@ -81,7 +81,7 @@ const returnButton = (
 		return (
 			<S.MassageButton
 				onClick={() =>
-					alert('안마의자 신청은 신청일로 부터 한달 뒤 신청 가능합니다.')
+					alert('안마의자 신청은 신청일로 부터 한달 뒤 신청 가능해요')
 				}
 				status={status}
 			>
@@ -98,7 +98,7 @@ const returnButton = (
 	) {
 		return (
 			<S.MassageButton
-				onClick={() => alert('안마의자 신청 가능한 시간이 아닙니다.')}
+				onClick={() => alert('안마의자 신청 가능한 시간이 아니에요')}
 				status={status}
 			>
 				신청불가
@@ -106,7 +106,7 @@ const returnButton = (
 		);
 	} else {
 		<S.MassageButton
-			onClick={() => alert('안마의자 신청이 불가능합니다.')}
+			onClick={() => alert('안마의자 신청이 불가능해요')}
 			status={status}
 		>
 			신청불가

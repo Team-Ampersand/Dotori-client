@@ -54,7 +54,7 @@ const Modal: React.FC<ModalProps> = ({
 	};
 
 	const updateClose = (e) => {
-		if (window.confirm('변경사항이 저장되지 않을 수 있습니다.')) {
+		if (window.confirm('변경사항이 저장되지 않을 수 있어요')) {
 			closeModal(e);
 		}
 	};

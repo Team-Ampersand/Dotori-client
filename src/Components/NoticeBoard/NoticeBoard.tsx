@@ -71,13 +71,13 @@ const NoticeBoard: React.FC = () => {
 			await setTotalPage(totalPage - 1);
 			await setPageNumber(pageNumber + 1);
 		} else {
-			alert('마지막 페이지입니다.');
+			alert('마지막 페이지에요');
 			return;
 		}
 	};
 	const prevPageClick = async () => {
 		if (pageNumber === 1) {
-			alert('첫번째 페이지입니다.');
+			alert('첫번째 페이지에요');
 			return;
 		}
 		if (pageNumber > 1) {
