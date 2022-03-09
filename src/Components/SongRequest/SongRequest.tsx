@@ -7,10 +7,10 @@ import 'react-calendar/dist/Calendar.css';
 const musicApply = async (musicUrl: string) => {
 	try {
 		await music.music(musicUrl);
-		alert('노래가 신청되었습니다.');
+		alert('노래가 신청되었어요');
 	} catch (e: any) {
 		e.message === 'Request failed with status code 409'
-			? alert('이미 노래를 신청 해 신청 하실 수 없습니다.')
+			? alert('이미 노래를 신청 해 신청 하실 수 없어요')
 			: alert(e);
 	}
 };
@@ -28,7 +28,7 @@ const returnBtn = (
 			<>
 				<input
 					name="link"
-					placeholder="url을 입력하세요."
+					placeholder="url을 입력하세요"
 					type="text"
 					onChange={({ target: { value } }) => setUrl(value)}
 					disabled
@@ -42,7 +42,7 @@ const returnBtn = (
 			<>
 				<input
 					name="link"
-					placeholder="url을 입력하세요."
+					placeholder="url을 입력하세요"
 					type="text"
 					disabled
 				/>
@@ -54,20 +54,20 @@ const returnBtn = (
 			<>
 				<input
 					name="link"
-					placeholder="url을 입력하세요."
+					placeholder="url을 입력하세요"
 					type="text"
 					onChange={({ target: { value } }) => setUrl(value)}
 					ref={songInput}
 					onKeyPress={(e) => {
 						if (e.key === 'Enter') {
 							if (url === '') {
-								alert('아무것도 입력하지 않았습니다.');
+								alert('아무것도 입력하지 않았어요');
 							} else if (CheckUrl(url)) {
 								musicApply(url).then(() => {
 									window.location.reload();
 								});
 							} else {
-								alert('유튜브 링크만 추가하실 수 있습니다.');
+								alert('유튜브 링크만 추가하실 수 있어요');
 							}
 						}
 					}}
@@ -75,13 +75,13 @@ const returnBtn = (
 				<button
 					onClick={() => {
 						if (url === '') {
-							alert('아무것도 입력하지 않았습니다.');
+							alert('아무것도 입력하지 않았어요');
 						} else if (CheckUrl(url)) {
 							musicApply(url).then(() => {
 								window.location.reload();
 							});
 						} else {
-							alert('유튜브 링크만 추가하실 수 있습니다.');
+							alert('유튜브 링크만 추가하실 수 있어요');
 						}
 					}}
 				>

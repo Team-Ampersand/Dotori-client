@@ -53,7 +53,7 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
 	}, []);
 
 	const banSelfStudy = async () => {
-		if (window.confirm('자습을 금지하겠습니까 ?')) {
+		if (window.confirm('자습을 금지하시겠어요?')) {
 			const role = await localStorage.getItem('role');
 			await stuInfo.banSelfStudy(role, stuId);
 			window.location.reload();
@@ -61,7 +61,7 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
 	};
 
 	const banCancelSelfStudy = async () => {
-		if (window.confirm('자습 금지를 취소하시겠습니까 ?')) {
+		if (window.confirm('자습 금지를 취소하시겠어요?')) {
 			const role = await localStorage.getItem('role');
 			await stuInfo.banCancelSelfStudy(role, stuId);
 			window.location.reload();
