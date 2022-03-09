@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import * as S from './Style';
 import axios from 'axios';
 import music from 'Api/music';
-import { getCookie } from 'Utils/Cookie';
 import { useDecode } from '../../Hooks/useDecode';
 
 type SongItemObj = {

@@ -3,7 +3,6 @@ import Logo from 'Assets/Svg/Logo';
 import { HasToken } from 'Atoms';
 import { useSetRecoilState } from 'recoil';
 import React from 'react';
-import { deleteCookie } from 'Utils/Cookie';
 import member from 'Api/member';
 import isLogin from 'Utils/Libs/isLogin';
 import { ManufactureDate } from 'Utils/ManufactureDate';

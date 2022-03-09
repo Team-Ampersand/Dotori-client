@@ -7,9 +7,6 @@ import {
 	Song,
 	Point,
 	Setting,
-	School,
-	Slack,
-	Bug,
 	More,
 	PenaltyIcon,
 	Massage,
@@ -29,14 +26,8 @@ export const useRouterNameChangeMenuImage = (routerName: String) => {
 			return <Point />;
 		case 'Setting':
 			return <Setting />;
-		case 'School':
-			return <School />;
 		case 'More':
 			return <More />;
-		case 'Slack':
-			return <Slack />;
-		case 'Bug':
-			return <Bug />;
 		case 'Penalty':
 			return <PenaltyIcon />;
 		case 'Massage':

@@ -1,5 +1,5 @@
 import penaltyInfo from 'Api/penaltyInfo';
-import React, { useEffect } from 'react';
+import React from 'react';
 import * as S from './Style';
 
 interface ModifyListProps {

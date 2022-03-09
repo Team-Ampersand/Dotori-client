@@ -6,8 +6,6 @@ import LaptopPage from './LaptopPage/LaptopPage';
 import NoticePage from './NoticePage/NoticePage';
 import NoticeWritePage from './NoticeWritePage/NoticeWritePage';
 import SongPage from './SongPage/SongPage';
-import AdminSongListPage from './AdminSongListPage/AdminSongListPage';
-import PointPage from './PointPage/PointPage';
 import AuthorizationPage from './AuthorizationPage/AuthorizationPage';
 import SigninPage from 'Pages/SigninPage/SigninPage';
 import SignupPage from './SignupPage/SignupPage';
@@ -27,8 +25,6 @@ export {
 	NoticePage,
 	NoticeWritePage,
 	SongPage,
-	AdminSongListPage,
-	PointPage,
 	AuthorizationPage,
 	SigninPage,
 	SignupPage,

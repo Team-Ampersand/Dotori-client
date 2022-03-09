@@ -8,7 +8,6 @@ import { HasToken } from '../../Atoms';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { PenaltyInfoModal } from 'Components';
-import penaltyInfo from 'Api/penaltyInfo';
 import { ManufactureDate } from 'Utils/ManufactureDate';
 
 type UserProfileType = {
