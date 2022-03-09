@@ -110,7 +110,7 @@ const PenaltyInfoModal: React.FC<PenaltyInfoModalProps> = ({
 					{message === '규정위반 내역이 없습니다' ? (
 						<S.PenaltyException>
 							<I.Logo></I.Logo>
-							<span>규정위반 내역이 없습니다.</span>
+							<span>규정위반 내역이 없어요</span>
 						</S.PenaltyException>
 					) : (
 						penalty &&
