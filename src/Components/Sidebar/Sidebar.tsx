@@ -58,11 +58,8 @@ const sidebarMenuData = [
 				router: '/penalty',
 				menuIcon: 'Penalty',
 				menuTitle: '규정 위반',
-				show:
-				returnShow() === 'admin'
-					? true
-					: false,
-			}
+				show: returnShow() === 'admin' ? true : false,
+			},
 		],
 	},
 ];

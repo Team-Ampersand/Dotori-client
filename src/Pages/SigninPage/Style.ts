@@ -1,4 +1,3 @@
-import styled from "styled-components"
+import styled from 'styled-components';
 
-export const Positioner = styled.div`
-`;
+export const Positioner = styled.div``;
