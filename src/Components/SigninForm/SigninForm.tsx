@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { DotoriLogo } from 'Assets/Svg';
 import * as S from './Style';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { HasToken } from '../../Atoms';
 import { useSetRecoilState } from 'recoil';
 import member from '../../Api/member';
@@ -11,7 +11,7 @@ const TrySignin = () => {
 	const [id, setId] = useState('');
 	const [password, setPassword] = useState('');
 	const setLogged = useSetRecoilState(HasToken);
-	const history = useHistory();
+	const navigate = useNavigate();
 
 	const onSignin = async () => {
 		try {
@@ -27,7 +27,7 @@ const TrySignin = () => {
 			localStorage.setItem('role', await rolelookup());
 
 			setLogged(true);
-			history.push('/home');
+			navigate('/home');
 			window.location.reload();
 		} catch (e: any) {
 			if (e.message === 'Request failed with status code 409') {

@@ -5,8 +5,7 @@ import member from '../../Api/member';
 import mypage from '../../Api/mypage';
 import { useSetRecoilState } from 'recoil';
 import { HasToken } from '../../Atoms';
-import { useHistory } from 'react-router';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { PenaltyInfoModal } from 'Components';
 import { ManufactureDate } from 'Utils/ManufactureDate';
 
@@ -19,7 +18,7 @@ type UserProfileType = {
 
 const TryLogout = () => {
 	const setLogged = useSetRecoilState(HasToken);
-	const history = useHistory();
+	const navigate = useNavigate();
 
 	const onLogout = async () => {
 		try {
@@ -30,12 +29,12 @@ const TryLogout = () => {
 			localStorage.removeItem('role');
 
 			setLogged(false);
-			history.push('/');
+			navigate('/');
 			alert('로그아웃 되었어요');
 			window.location.reload();
 		} catch (e: any) {
 			if (e.message === 'Request failed with status code 401') {
-				alert('로그아웃 되었습니다. 다시 로그인 해주세요.');
+				alert('로그아웃 되었어요. 다시 로그인 해주세요');
 
 				localStorage.removeItem('Dotori_accessToken');
 				localStorage.removeItem('Dotori_refreshToken');
@@ -57,7 +56,7 @@ const UserProfile: React.FC = () => {
 	const [profile, setProfile] = useState<UserProfileType>();
 	const onLogout = TryLogout();
 	const setLogged = useSetRecoilState(HasToken);
-	const history = useHistory();
+	const navigate = useNavigate();
 	const [modalState, setModalState] = useState(false);
 
 	const closeModal = () => setModalState(false);
@@ -75,7 +74,7 @@ const UserProfile: React.FC = () => {
 					localStorage.removeItem('Dotori_refreshToken');
 					localStorage.removeItem('role');
 
-					history.push('/signin');
+					navigate('/signin');
 					setLogged(false);
 					window.location.reload();
 				}

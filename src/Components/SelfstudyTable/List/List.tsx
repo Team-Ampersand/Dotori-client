@@ -4,7 +4,7 @@ import { MatchType } from '../../../Utils/GlobalType';
 import selfstudy from 'Api/selfStudy';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { list, HasToken } from 'Atoms';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 import Logo from 'Assets/Svg/Logo';
 
 const ReturnUserObj = async (history, setLogged) => {
@@ -36,10 +36,6 @@ const ReturnUserObj = async (history, setLogged) => {
 	}
 };
 
-interface ListProps {
-	match: MatchType;
-}
-
 const returnBorderColor = (stuNum) => {
 	if (stuNum.substring(0, 1) === '1') {
 		return '#FFF65E';
@@ -52,13 +48,13 @@ const returnBorderColor = (stuNum) => {
 	}
 };
 
-const List: React.FC<ListProps> = ({ match }) => {
+const List: React.FC = () => {
 	const [userlist, setUserList] = useRecoilState(list);
 	const setLogged = useSetRecoilState(HasToken);
-	const history = useHistory();
+	const navigate = useNavigate();
 
 	useEffect(() => {
-		ReturnUserObj(history, setLogged).then((res) => {
+		ReturnUserObj(navigate, setLogged).then((res) => {
 			setUserList(res?.data.data);
 		});
 	}, []);

@@ -1,18 +1,13 @@
 import React from 'react';
 import * as S from './Style';
-import { MatchType } from 'Utils/GlobalType';
 import { PageTemplate } from 'Pages';
 import { Sidebar, MassageTable } from 'Components';
 
-interface MassageProps {
-	match: MatchType;
-}
-
-const MassagePage: React.FC<MassageProps> = ({ match }) => {
+const MassagePage: React.FC = () => {
 	return (
 		<S.Positioner>
 			<Sidebar />
-			<PageTemplate match={match}>
+			<PageTemplate>
 				<MassageTable />
 			</PageTemplate>
 		</S.Positioner>

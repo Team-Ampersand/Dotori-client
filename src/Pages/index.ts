@@ -2,7 +2,7 @@ import SidebarPage from './SidebarPage/SidebarPage';
 import HomePage from './HomePage/HomePage';
 import BannerPage from './BannerPage/BannerPage';
 import PageTemplate from './Template/PageTemplate';
-import LaptopPage from './LaptopPage/LaptopPage';
+import SelfStudyPage from './SelfStudyPage/SelfStudyPage';
 import NoticePage from './NoticePage/NoticePage';
 import NoticeWritePage from './NoticeWritePage/NoticeWritePage';
 import SongPage from './SongPage/SongPage';
@@ -21,7 +21,7 @@ export {
 	HomePage,
 	BannerPage,
 	PageTemplate,
-	LaptopPage,
+	SelfStudyPage,
 	NoticePage,
 	NoticeWritePage,
 	SongPage,
