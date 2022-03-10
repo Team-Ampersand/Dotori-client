@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './Style';
 import { ManufactureDate } from '../../Utils/ManufactureDate';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import selfstudy from 'Api/selfStudy';
 import { useSetRecoilState } from 'recoil';
 import { HasToken } from 'Atoms';
@@ -11,7 +11,7 @@ const Room = {
 	roomMax: 50,
 };
 
-const studyInfo = async (setLogged, history) => {
+const studyInfo = async (setLogged, navigate) => {
 	try {
 		const res = await selfstudy.studyinfo();
 		return res;
@@ -24,7 +24,7 @@ const studyInfo = async (setLogged, history) => {
 			localStorage.removeItem('Dotori_refreshToken');
 			localStorage.removeItem('role');
 
-			history.push('/');
+			navigate('/');
 			setLogged(false);
 			window.location.reload();
 		} else alert(e);
@@ -144,9 +144,9 @@ const returnButton = (status: string, setInfo, count) => {
 const Selfstudyboard: React.FC = () => {
 	const [info, setInfo] = useState({ count: '0', selfStudy_status: '' });
 	const setLogged = useSetRecoilState(HasToken);
-	const history = useHistory();
+	const navigate = useNavigate();
 	useEffect(() => {
-		studyInfo(setLogged, history).then((res) => {
+		studyInfo(setLogged, navigate).then((res) => {
 			setInfo(res?.data.data);
 		});
 	}, []);

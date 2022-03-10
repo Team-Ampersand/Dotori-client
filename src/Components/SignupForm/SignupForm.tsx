@@ -3,7 +3,7 @@ import { DotoriLogo } from '../../Assets/Svg';
 import * as S from './Style';
 import { Link } from 'react-router-dom';
 import member from '../../Api/member';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
 const TrySignup = () => {
 	const [id, setId] = useState('');
@@ -14,7 +14,7 @@ const TrySignup = () => {
 	const [repassword, setRePassword] = useState('');
 	const [clicked, setClicked] = useState(true);
 	const [disabled, setDisabled] = useState(false);
-	const history = useHistory();
+	const navigate = useNavigate();
 
 	const onSignup = async () => {
 		try {
@@ -34,7 +34,7 @@ const TrySignup = () => {
 				return alert('입력한 비밀번호가 서로 다릅니다.');
 			await member.signup(id + '@gsm.hs.kr', password, name, stuId);
 			alert('회원가입이 되었습니다.');
-			history.push('/signin');
+			navigate('/signin');
 		} catch (e: any) {
 			alert(
 				e.message === 'Request failed with status code 409'

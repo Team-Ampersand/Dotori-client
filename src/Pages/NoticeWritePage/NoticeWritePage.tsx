@@ -1,15 +1,10 @@
 import React from 'react';
-import { MatchType } from '../../Utils/GlobalType';
 import PageTemplate from 'Pages/Template/PageTemplate';
 import { NoticeWrite } from '../../Components';
 
-interface NoticeWriteProps {
-	match: MatchType;
-}
-
-const NoticeWritePage: React.FC<NoticeWriteProps> = ({ match }) => {
+const NoticeWritePage: React.FC = () => {
 	return (
-		<PageTemplate match={match}>
+		<PageTemplate>
 			<NoticeWrite />
 		</PageTemplate>
 	);

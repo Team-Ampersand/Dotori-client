@@ -2,8 +2,7 @@ import { DotoriLogo } from 'Assets/Svg';
 import React, { useState } from 'react';
 import * as S from './Style';
 import member from 'Api/member';
-import { useHistory } from 'react-router';
-import { History } from 'history';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 
 const authPassword = async (id: string, setDisabled, setDisplayed) => {
 	try {
@@ -20,11 +19,11 @@ const authPassword = async (id: string, setDisabled, setDisplayed) => {
 	}
 };
 
-const findPassword = async (newPw: string, emailCode, history) => {
+const findPassword = async (newPw: string, emailCode, navigate) => {
 	try {
 		await member.findPassword(newPw, emailCode);
 		alert('비밀번호가 변경 되었습니다!');
-		history.push('/signin');
+		navigate('/signin');
 	} catch (e: any) {
 		e.message === 'Request failed with status code 409'
 			? alert('인증 키가 다릅니다.')
@@ -32,11 +31,11 @@ const findPassword = async (newPw: string, emailCode, history) => {
 	}
 };
 
-const changePassword = async (password: string, newPw: string, history) => {
+const changePassword = async (password: string, newPw: string, navigate) => {
 	try {
 		await member.passwordChange(password, newPw);
 		alert('비밀번호가 변경되었습니다.');
-		history.push('/home');
+		navigate('/home');
 	} catch (e: any) {
 		alert(
 			e.message === 'Request failed with status code 409'
@@ -67,7 +66,7 @@ const returnPassworForm = (
 	id: string,
 	displayed: boolean | undefined,
 	emailCode: string,
-	history: History<unknown>
+	navigate: NavigateFunction 
 ) => {
 	if (window.location.pathname === '/password') {
 		return (
@@ -113,7 +112,7 @@ const returnPassworForm = (
 				<S.ButtonStyle
 					onClick={() => {
 						if (newPw !== repassword) alert('입력한 비밀번호가 서로 다릅니다.');
-						else findPassword(newPw, emailCode, history);
+						else findPassword(newPw, emailCode, navigate);
 					}}
 				>
 					비밀번호 변경
@@ -144,7 +143,7 @@ const returnPassworForm = (
 				<S.ButtonStyle
 					onClick={() => {
 						if (newPw !== repassword) alert('입력한 비밀번호가 서로 다릅니다.');
-						else changePassword(password, newPw, history);
+						else changePassword(password, newPw, navigate);
 					}}
 				>
 					비밀번호 변경
@@ -155,7 +154,7 @@ const returnPassworForm = (
 };
 
 const PasswordForm: React.FC = () => {
-	const history = useHistory();
+	const navigate = useNavigate();
 	const [id, setId] = useState('');
 	const [emailCode, setEmailCode] = useState('');
 	const [password, setPassword] = useState('');
@@ -182,7 +181,7 @@ const PasswordForm: React.FC = () => {
 				id,
 				displayed,
 				emailCode,
-				history
+				navigate
 			)}
 		</S.Positioner>
 	);

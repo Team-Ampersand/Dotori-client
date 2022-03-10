@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
 import * as S from './Style';
 import BannerPage from '../BannerPage/BannerPage';
-import { MatchType } from '../../Utils/GlobalType';
 import { ManufactureDate } from '../../Utils/ManufactureDate';
 
-interface TemplateProps {
-	match: MatchType;
-}
 
 const returnPageType = (routerName: string) => {
 	switch (routerName) {
@@ -57,12 +53,11 @@ const returnValueType = (nowUrl: string) => {
 };
 
 const BannerStatus = (
-	match: MatchType,
 	children: React.ReactNode,
 	isActive: boolean
 ) => {
 	if (
-		returnValueType(match.path) === 'notice' ||
+		returnValueType(window.location.pathname) === 'notice' ||
 		'notice write' ||
 		'point' ||
 		'selfstudy' ||
@@ -73,7 +68,7 @@ const BannerStatus = (
 	) {
 		return (
 			<>
-				<BannerPage match={match} />
+				<BannerPage />
 				<S.Content>{children}</S.Content>
 			</>
 		);
@@ -81,7 +76,7 @@ const BannerStatus = (
 		return (
 			<>
 				<S.Banner>
-					<BannerPage match={match} />
+					<BannerPage />
 				</S.Banner>
 				<S.Content>{children}</S.Content>
 			</>
@@ -89,20 +84,20 @@ const BannerStatus = (
 	}
 };
 
-const PageTemplate: React.FC<TemplateProps> = ({ match, children }) => {
+const PageTemplate: React.FC = ({ children }) => {
 	const [isActive, setIsActive] = useState(false);
 
 	return (
 		<S.Postioner>
 			<S.Wrapper>
 				<S.Title>
-					{returnPageType(match.path)}
+					{returnPageType(window.location.pathname)}
 					<strong>
 						{ManufactureDate('Y')}년 {ManufactureDate('M')}월{' '}
 						{ManufactureDate('D')}일 {ManufactureDate('W')}요일
 					</strong>
 				</S.Title>
-				{BannerStatus(match, children, isActive)}
+				{BannerStatus(children, isActive)}
 			</S.Wrapper>
 		</S.Postioner>
 	);

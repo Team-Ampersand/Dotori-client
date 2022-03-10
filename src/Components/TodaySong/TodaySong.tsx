@@ -3,7 +3,7 @@ import * as S from './Style';
 import * as I from '../../Assets/Svg/index';
 import { SongItem } from '../';
 import music from 'Api/music';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import { HasToken } from 'Atoms';
 import { dateFormat } from 'Components/SongItem/SongItem';
@@ -28,7 +28,7 @@ const getDateMusic = async (date: any) => {
 };
 
 const TodaySong: React.FC = () => {
-	const history = useHistory();
+	const navigate = useNavigate();
 	const [date, setDate] = useState(false);
 	const [showPlaylistDate, setShowPlaylistDate] = useState<string>(
 		`${ManufactureDate('Y')}-${('0' + ManufactureDate('M')).slice(-2)}-${(
@@ -56,7 +56,7 @@ const TodaySong: React.FC = () => {
 					localStorage.removeItem('Dotori_refreshToken');
 					localStorage.removeItem('role');
 
-					history.push('/signin');
+					navigate('/signin');
 
 					window.location.reload();
 				} else if (e.message === 'Request failed with status code 403') {
@@ -70,7 +70,7 @@ const TodaySong: React.FC = () => {
 					localStorage.removeItem('Dotori_refreshToken');
 					localStorage.removeItem('role');
 
-					history.push('/');
+					navigate('/');
 					setLogged(false);
 					window.location.reload();
 				}
