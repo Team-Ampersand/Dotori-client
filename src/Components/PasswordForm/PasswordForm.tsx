@@ -22,7 +22,7 @@ const authPassword = async (id: string, setDisabled, setDisplayed) => {
 const findPassword = async (newPw: string, emailCode, navigate) => {
 	try {
 		await member.findPassword(newPw, emailCode);
-		alert('비밀번호가 변경 되었습니다!');
+		alert('비밀번호가 변경 되었어요!');
 		navigate('/signin');
 	} catch (e: any) {
 		e.message === 'Request failed with status code 409'
@@ -34,7 +34,7 @@ const findPassword = async (newPw: string, emailCode, navigate) => {
 const changePassword = async (password: string, newPw: string, navigate) => {
 	try {
 		await member.passwordChange(password, newPw);
-		alert('비밀번호가 변경되었습니다.');
+		alert('비밀번호가 변경되었어요');
 		navigate('/home');
 	} catch (e: any) {
 		alert(
@@ -111,7 +111,7 @@ const returnPassworForm = (
 				/>
 				<S.ButtonStyle
 					onClick={() => {
-						if (newPw !== repassword) alert('입력한 비밀번호가 서로 다릅니다.');
+						if (newPw !== repassword) alert('입력한 비밀번호가 서로 달라요');
 						else findPassword(newPw, emailCode, navigate);
 					}}
 				>
@@ -142,7 +142,7 @@ const returnPassworForm = (
 				/>
 				<S.ButtonStyle
 					onClick={() => {
-						if (newPw !== repassword) alert('입력한 비밀번호가 서로 다릅니다.');
+						if (newPw !== repassword) alert('입력한 비밀번호가 서로 달라요');
 						else changePassword(password, newPw, navigate);
 					}}
 				>

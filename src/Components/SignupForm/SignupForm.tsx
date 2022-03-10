@@ -23,7 +23,7 @@ const TrySignup = () => {
 			}
 			if (id === '') return alert('이메일이 입력되지 않았어요');
 			else if (emailCode === '')
-				return alert('이메일코드가 입력되지 않았습니다.');
+				return alert('이메일코드가 입력되지 않았어요');
 			else if (name === '') return alert('이름이 입력되지 않았어요');
 			else if (stuId === '') return alert('학번이 입력되지 않았어요');
 			else if (!parseInt(stuId)) return alert('학번이 숫자가 아니에요');
