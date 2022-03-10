@@ -9,7 +9,7 @@ class Massage {
 				url: MassageController.massage(localStorage.getItem('role')),
 			});
 		} catch (e: any) {
-			alert('이미 안마의자 신청을 하셨거나 할 수 없는 상태입니다.\n' + e);
+			alert('이미 안마의자 신청을 하셨거나 할 수 없는 상태에요\n' + e);
 		}
 	}
 	massageLookup() {
@@ -37,7 +37,7 @@ class Massage {
 				url: MassageController.cancelMassage(localStorage.getItem('role')),
 			});
 		} catch (e: any) {
-			alert('이미 안마의자 신청을 취소 하셨거나 할 수 없는 상태입니다.\n' + e);
+			alert('이미 안마의자 신청을 취소 하셨거나 할 수 없는 상태에요\n' + e);
 		}
 	}
 }

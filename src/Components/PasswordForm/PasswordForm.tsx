@@ -7,14 +7,14 @@ import { NavigateFunction, useNavigate } from 'react-router-dom';
 const authPassword = async (id: string, setDisabled, setDisplayed) => {
 	try {
 		await member.authPassword(id + '@gsm.hs.kr');
-		console.log('이메일을 확인해주세요.');
+		console.log('이메일을 확인해주세요');
 		setDisabled(false);
 	} catch (e: any) {
 		if (e.message === 'Request failed with status code 400') {
-			alert('이메일 형식이 잘못 되었습니다.');
+			alert('이메일 형식이 잘못 되었어요');
 			setDisplayed(true);
 		} else if (e.message === 'Request failed with status code 404') {
-			alert('존재하지 않는 회원 정보입니다.');
+			alert('존재하지 않는 회원 정보에요');
 		}
 	}
 };
@@ -26,7 +26,7 @@ const findPassword = async (newPw: string, emailCode, navigate) => {
 		navigate('/signin');
 	} catch (e: any) {
 		e.message === 'Request failed with status code 409'
-			? alert('인증 키가 다릅니다.')
+			? alert('인증 키가 달라요')
 			: alert('개발자에게 문의 해주세요!' + e);
 	}
 };
@@ -39,7 +39,7 @@ const changePassword = async (password: string, newPw: string, navigate) => {
 	} catch (e: any) {
 		alert(
 			e.message === 'Request failed with status code 409'
-				? alert('현재 비밀번호가 다릅니다.')
+				? alert('현재 비밀번호가 달라요')
 				: alert('개발자에게 문의 해주세요!' + e)
 		);
 	}

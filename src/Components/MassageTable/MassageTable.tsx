@@ -49,7 +49,7 @@ const MassageTable = () => {
 				) : (
 					<S.ExceptionWrapper>
 						<Logo />
-						<span>안마의자를 신청한 사람이 없습니다.</span>
+						<span>안마의자를 신청한 사람이 없어요</span>
 					</S.ExceptionWrapper>
 				)}
 			</S.Content>

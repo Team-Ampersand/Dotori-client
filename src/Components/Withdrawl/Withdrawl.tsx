@@ -7,11 +7,7 @@ import { useNavigate } from 'react-router-dom';
 const onWithdrawl = async (id: string, password: string, navigate) => {
 	try {
 		await member.delete(id, password);
-		alert('회원탈퇴가 되었습니다.');
-
-		// deleteCookie('Dotori_accessToken');
-		// deleteCookie('Dotori_refreshToken');
-		// deleteCookie('role');
+		alert('회원탈퇴가 되었어요');
 
 		localStorage.removeItem('Dotori_accessToken');
 		localStorage.removeItem('Dotori_refreshToken');
@@ -47,7 +43,7 @@ const Withdrawl: React.FC = () => {
 				onClick={() => {
 					if (
 						window.confirm(
-							'정말로 회원탈퇴 하시겠습니까?\n회원탈퇴로 인한 불이익은 Dotori 개발팀에서 책임지지 않습니다.'
+							'정말로 회원탈퇴 하시겠어요?\n회원탈퇴로 인한 불이익은 Dotori 개발팀에서 책임지지 않아요'
 						)
 					) {
 						onWithdrawl(id, password, navigate);

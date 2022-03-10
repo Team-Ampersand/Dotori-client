@@ -43,14 +43,8 @@ const TodaySong: React.FC = () => {
 				setList(res?.data.data);
 			})
 			.catch((e) => {
-				if (e.message === 'Request failed with status code 401') {
-					alert(
-						'장시간 자리에서 비워 로그아웃 되었습니다. 다시 로그인 해주세요.'
-					);
-
-					// deleteCookie('Dotori_accessToken');
-					// deleteCookie('Dotori_refreshToken');
-					// deleteCookie('role');
+				if (e.response.status === 401) {
+					alert('로그아웃 되었어요. 다시 로그인 해주세요');
 
 					localStorage.removeItem('Dotori_accessToken');
 					localStorage.removeItem('Dotori_refreshToken');
@@ -59,12 +53,8 @@ const TodaySong: React.FC = () => {
 					navigate('/signin');
 
 					window.location.reload();
-				} else if (e.message === 'Request failed with status code 403') {
-					alert('로그아웃 되었습니다. 다시 로그인 해주세요.');
-
-					// deleteCookie('Dotori_accessToken');
-					// deleteCookie('Dotori_refreshToken');
-					// deleteCookie('role');
+				} else if (e.response.status === 403) {
+					alert('로그아웃 되었어요. 다시 로그인 해주세요');
 
 					localStorage.removeItem('Dotori_accessToken');
 					localStorage.removeItem('Dotori_refreshToken');
@@ -105,7 +95,7 @@ const TodaySong: React.FC = () => {
 				) : (
 					<S.NoSongText>
 						<I.Logo />
-						<p>신청된 음악이 없습니다.</p>
+						<p>신청된 음악이 없어요</p>
 					</S.NoSongText>
 				)}
 			</S.SongContainer>

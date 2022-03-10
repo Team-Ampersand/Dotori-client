@@ -46,7 +46,7 @@ const NoticeWrite: React.FC = () => {
 			return res;
 		} catch (e: any) {
 			if (e.message === 'Error: Request failed with status code 400') {
-				alert('제목과 내용을 입력해주세요.');
+				alert('제목과 내용을 입력해주세요');
 			}
 		}
 	};
@@ -76,7 +76,7 @@ const NoticeWrite: React.FC = () => {
 									{fileImage ? (
 										<img alt="notice" src={fileImage} />
 									) : (
-										<p>이미지가 선택되지 않았습니다.</p>
+										<p>이미지가 선택되지 않았어요</p>
 									)}
 								</S.Img>
 								<S.ImgBtnWrapper>
