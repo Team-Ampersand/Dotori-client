@@ -48,7 +48,7 @@ const Withdrawl: React.FC = () => {
 					) {
 						onWithdrawl(id, password, navigate);
 					} else {
-						alert('잘 생각하셨습니다!');
+						alert('잘 생각하셨어요!');
 						navigate('/');
 					}
 				}}

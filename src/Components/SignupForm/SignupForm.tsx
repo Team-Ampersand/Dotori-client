@@ -33,7 +33,7 @@ const TrySignup = () => {
 			if (password !== repassword)
 				return alert('입력한 비밀번호가 서로 달라요');
 			await member.signup(id + '@gsm.hs.kr', password, name, stuId);
-			alert('회원가입이 되었습니다.');
+			alert('회원가입이 되었어요');
 			navigate('/signin');
 		} catch (e: any) {
 			alert(
@@ -56,7 +56,7 @@ const TrySignup = () => {
 		} catch (e: any) {
 			alert(
 				e.message === 'Request failed with status code 409'
-					? '이미 가입된 유저입니다'
+					? '이미 가입된 유저에요'
 					: e
 			);
 			setClicked(true);
@@ -70,7 +70,7 @@ const TrySignup = () => {
 			}
 			await member.authCheck(emailCode);
 			setDisabled(true);
-			alert('인증이 완료 되었습니다.');
+			alert('인증이 완료 되었어요');
 		} catch (e: any) {
 			e.message === 'Request failed with status code 409'
 				? alert('인증키가 일치 하지 않아요')
