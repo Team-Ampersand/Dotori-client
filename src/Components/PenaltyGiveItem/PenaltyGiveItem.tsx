@@ -10,7 +10,7 @@ const PenaltyGiveItem: React.FC<Props> = ({ checked }) => {
 	const [editState, setEditState] = useState(false);
 	const GiveItemModal = useCallback(() => {
 		if (checked.length === 0) {
-			alert('규정을 위반한 학생을 체크해주세요.');
+			alert('규정을 위반한 학생을 체크해주세요');
 			return;
 		}
 		setEditState(!editState);

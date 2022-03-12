@@ -1,11 +1,6 @@
 import React from 'react';
 import * as S from './Style';
 import { BetaBanner } from '../../Components';
-import { MatchType } from '../../Utils/GlobalType';
-
-interface BannerProps {
-	match: MatchType;
-}
 
 const CompareBanner = (nowUrl: string) => {
 	switch (nowUrl) {
@@ -34,8 +29,8 @@ const CompareBanner = (nowUrl: string) => {
 	}
 };
 
-const BannerContainer: React.FC<BannerProps> = ({ match }) => {
-	return <>{CompareBanner(match.path)}</>;
+const BannerContainer: React.FC = () => {
+	return <>{CompareBanner(window.location.pathname)}</>;
 };
 
 export default BannerContainer;

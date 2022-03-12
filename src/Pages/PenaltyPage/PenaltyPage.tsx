@@ -1,18 +1,13 @@
 import React from 'react';
 import * as S from './Style';
-import { MatchType } from '../../Utils/GlobalType';
 import PageTemplate from 'Pages/Template/PageTemplate';
 import { Penalty, Sidebar } from '../../Components';
 
-interface PenaltyPageProps {
-	match: MatchType;
-}
-
-const PenaltyPage: React.FC<PenaltyPageProps> = ({ match }) => {
+const PenaltyPage: React.FC = () => {
 	return (
 		<S.Positioner>
 			<Sidebar />
-			<PageTemplate match={match}>
+			<PageTemplate>
 				<Penalty />
 			</PageTemplate>
 		</S.Positioner>

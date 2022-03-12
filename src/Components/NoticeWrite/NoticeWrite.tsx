@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import * as S from './Style';
-import { Prompt, useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useBeforeunload } from 'react-beforeunload';
 import notice from '../../Api/notice';
 
@@ -9,6 +9,7 @@ const NoticeWrite: React.FC = () => {
 	const [content, setContent] = useState('');
 	const [postFile, setPostFile] = useState('');
 	const [fileImage, setFileImage] = useState('');
+	const navigate = useNavigate();
 
 	const getTitle = (e) => {
 		setTitle(e.target.value);
@@ -36,14 +37,12 @@ const NoticeWrite: React.FC = () => {
 		setShouldConfirmState(false);
 	};
 
-	const history = useHistory();
-
 	const createNotice = async () => {
 		await confirm();
 		try {
 			const role = await localStorage.getItem('role');
 			const res = await notice.noticeWrite(role, title, content, postFile);
-			await history.push('/notice');
+			await navigate('/notice');
 			return res;
 		} catch (e: any) {
 			if (e.message === 'Error: Request failed with status code 400') {
@@ -58,10 +57,6 @@ const NoticeWrite: React.FC = () => {
 
 	return (
 		<>
-			<Prompt
-				when={shouldConfirmState}
-				message={'주의! 변경사항이 저장되지 않을 수 있어요'}
-			/>
 			<S.Positioner>
 				<S.Container>
 					<S.ContentWrapper>
@@ -99,7 +94,7 @@ const NoticeWrite: React.FC = () => {
 						</S.ImgContainer>
 					</S.ContentWrapper>
 					<S.BtnWrapper>
-						<S.DeleteBtn onClick={() => history.push('/notice')}>
+						<S.DeleteBtn onClick={() => navigate('/notice')}>
 							취소
 						</S.DeleteBtn>
 						<S.Btn onClick={createNotice}>생성</S.Btn>

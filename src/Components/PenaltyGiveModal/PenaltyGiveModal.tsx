@@ -18,7 +18,7 @@ const GiveModal: React.FC<ModalProps> = ({
 
 	const givePenaltyUpdate = async () => {
 		await penaltyInfo.updatePenaltyInfo(date, givePenalty, stuNum);
-		alert('규정위반 내역을 추가하였습니다.');
+		alert('규정위반 내역을 추가했어요');
 	};
 
 	const [date, setDate] = useState('');

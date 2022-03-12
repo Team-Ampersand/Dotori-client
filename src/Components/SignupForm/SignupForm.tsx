@@ -3,7 +3,7 @@ import { DotoriLogo } from '../../Assets/Svg';
 import * as S from './Style';
 import { Link } from 'react-router-dom';
 import member from '../../Api/member';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
 const TrySignup = () => {
 	const [id, setId] = useState('');
@@ -14,7 +14,7 @@ const TrySignup = () => {
 	const [repassword, setRePassword] = useState('');
 	const [clicked, setClicked] = useState(true);
 	const [disabled, setDisabled] = useState(false);
-	const history = useHistory();
+	const navigate = useNavigate();
 
 	const onSignup = async () => {
 		try {
@@ -23,7 +23,7 @@ const TrySignup = () => {
 			}
 			if (id === '') return alert('이메일이 입력되지 않았어요');
 			else if (emailCode === '')
-				return alert('이메일코드가 입력되지 않았습니다.');
+				return alert('이메일코드가 입력되지 않았어요');
 			else if (name === '') return alert('이름이 입력되지 않았어요');
 			else if (stuId === '') return alert('학번이 입력되지 않았어요');
 			else if (!parseInt(stuId)) return alert('학번이 숫자가 아니에요');
@@ -34,7 +34,7 @@ const TrySignup = () => {
 				return alert('입력한 비밀번호가 서로 달라요');
 			await member.signup(id + '@gsm.hs.kr', password, name, stuId);
 			alert('회원가입이 되었어요');
-			history.push('/signin');
+			navigate('/signin');
 		} catch (e: any) {
 			alert(
 				e.message === 'Request failed with status code 409'
@@ -56,7 +56,7 @@ const TrySignup = () => {
 		} catch (e: any) {
 			alert(
 				e.message === 'Request failed with status code 409'
-					? '이미 가입된 유저입니다'
+					? '이미 가입된 유저에요'
 					: e
 			);
 			setClicked(true);
@@ -70,7 +70,7 @@ const TrySignup = () => {
 			}
 			await member.authCheck(emailCode);
 			setDisabled(true);
-			alert('인증이 완료 되었습니다.');
+			alert('인증이 완료 되었어요');
 		} catch (e: any) {
 			e.message === 'Request failed with status code 409'
 				? alert('인증키가 일치 하지 않아요')

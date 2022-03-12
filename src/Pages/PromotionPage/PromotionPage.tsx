@@ -15,6 +15,7 @@ const TryLogout = (setLogged) => {
 			localStorage.removeItem('Dotori_refreshToken');
 			localStorage.removeItem('role');
 			setLogged(false);
+			window.location.reload();
 		} catch (e: any) {
 			if (e.message === 'Request failed with status code 401') {
 				alert('로그아웃 되었습니다. 다시 로그인 해주세요.');
@@ -30,6 +31,7 @@ const TryLogout = (setLogged) => {
 				window.location.reload();
 			}
 		}
+
 	};
 	return onLogout;
 };

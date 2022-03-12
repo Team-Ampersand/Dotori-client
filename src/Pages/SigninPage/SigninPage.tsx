@@ -1,13 +1,8 @@
 import React from 'react';
-import { MatchType } from 'Utils/GlobalType';
 import * as S from './Style';
 import { LoginForm } from '../../Components';
 
-interface signinProps {
-	match: MatchType;
-}
-
-const SigninPage: React.FC<signinProps> = ({ match }) => {
+const SigninPage: React.FC = () => {
 	return (
 		<S.Positioner>
 			<LoginForm />
