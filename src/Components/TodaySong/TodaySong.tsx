@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import * as S from './Style';
 import * as I from '../../Assets/Svg/index';
 import { SongItem } from '../';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { HasToken, isCalendarOpen, setList, showPlaylistDate } from 'Atoms';
 import music from 'Api/music';
@@ -18,7 +18,7 @@ const getDateMusic = async (date: any) => {
 
 const TodaySong: React.FC = () => {
 	const [songlist, setSongList] = useRecoilState(setList);
-	const history = useHistory();
+	const navigate = useNavigate();
 	const setLogged = useSetRecoilState(HasToken);
 	const [playlistDate] = useRecoilState(showPlaylistDate);
 	const [calendarOpen, setCalendarOpen] = useRecoilState(isCalendarOpen);
@@ -36,7 +36,7 @@ const TodaySong: React.FC = () => {
 					localStorage.removeItem('Dotori_refreshToken');
 					localStorage.removeItem('role');
 
-					history.push('/signin');
+					navigate('/signin');
 
 					window.location.reload();
 				} else if (e.response.status === 403) {
@@ -46,7 +46,7 @@ const TodaySong: React.FC = () => {
 					localStorage.removeItem('Dotori_refreshToken');
 					localStorage.removeItem('role');
 
-					history.push('/');
+					navigate('/');
 					setLogged(false);
 					window.location.reload();
 				}
