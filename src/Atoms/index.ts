@@ -3,6 +3,7 @@ import {
 	list,
 	isCalendarOpen,
 	showPlaylistDate,
+	setList,
 } from './AtomContainer';
 
-export { HasToken, list, isCalendarOpen, showPlaylistDate };
+export { HasToken, list, isCalendarOpen, showPlaylistDate, setList };

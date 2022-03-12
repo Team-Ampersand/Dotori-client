@@ -7,6 +7,14 @@ type User = {
 	memberName: string;
 };
 
+type list = {
+	id: number;
+	url: string;
+	memberName: string;
+	createdDate: Date;
+	email: string;
+};
+
 export const HasToken = atom<boolean>({
 	key: 'HasToken',
 	default: false,
@@ -27,4 +35,9 @@ export const showPlaylistDate = atom<string>({
 	default: `${ManufactureDate('Y')}-${('0' + ManufactureDate('M')).slice(
 		-2
 	)}-${('0' + ManufactureDate('D')).slice(-2)}`,
+});
+
+export const setList = atom<list[]>({
+	key: 'setList',
+	default: [],
 });
