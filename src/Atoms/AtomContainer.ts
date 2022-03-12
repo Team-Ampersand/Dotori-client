@@ -1,4 +1,5 @@
 import { atom } from 'recoil';
+import { ManufactureDate } from 'Utils/ManufactureDate';
 
 type User = {
 	id: string;
@@ -19,4 +20,11 @@ export const list = atom<User[]>({
 export const isCalendarOpen = atom<boolean>({
 	key: 'isCalendarOpen',
 	default: false,
+});
+
+export const showPlaylistDate = atom<string>({
+	key: 'showPlaylistDate',
+	default: `${ManufactureDate('Y')}-${('0' + ManufactureDate('M')).slice(
+		-2
+	)}-${('0' + ManufactureDate('D')).slice(-2)}`,
 });

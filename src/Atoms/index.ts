@@ -1,3 +1,8 @@
-import { HasToken, list, isCalendarOpen } from './AtomContainer';
+import {
+	HasToken,
+	list,
+	isCalendarOpen,
+	showPlaylistDate,
+} from './AtomContainer';
 
-export { HasToken, list, isCalendarOpen };
+export { HasToken, list, isCalendarOpen, showPlaylistDate };
