@@ -1,23 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as S from './Style';
 import * as I from '../../Assets/Svg/index';
 import { SongItem } from '../';
+import { useHistory } from 'react-router';
+import { useRecoilState, useSetRecoilState } from 'recoil';
+import { HasToken, isCalendarOpen, setList, showPlaylistDate } from 'Atoms';
 import music from 'Api/music';
-import { useNavigate } from 'react-router-dom';
-import { useSetRecoilState } from 'recoil';
-import { HasToken } from 'Atoms';
-import { dateFormat } from 'Components/SongItem/SongItem';
-import Calendar from 'react-calendar';
-import { Calander } from 'Assets/Svg';
-import { ManufactureDate } from 'Utils/ManufactureDate';
-
-type list = {
-	id: number;
-	url: string;
-	memberName: string;
-	createdDate: Date;
-	email: string;
-};
+import CalendarModal from 'Components/CalendarModal/CalendarModal';
 
 const getDateMusic = async (date: any) => {
 	try {
@@ -28,19 +17,16 @@ const getDateMusic = async (date: any) => {
 };
 
 const TodaySong: React.FC = () => {
-	const navigate = useNavigate();
-	const [date, setDate] = useState(false);
-	const [showPlaylistDate, setShowPlaylistDate] = useState<string>(
-		`${ManufactureDate('Y')}-${('0' + ManufactureDate('M')).slice(-2)}-${(
-			'0' + ManufactureDate('D')
-		).slice(-2)}`
-	);
-	const [list, setList] = useState<list[]>([]);
+	const [songlist, setSongList] = useRecoilState(setList);
+	const history = useHistory();
 	const setLogged = useSetRecoilState(HasToken);
+	const [playlistDate] = useRecoilState(showPlaylistDate);
+	const [calendarOpen, setCalendarOpen] = useRecoilState(isCalendarOpen);
+
 	useEffect(() => {
-		getDateMusic(showPlaylistDate)
+		getDateMusic(playlistDate)
 			.then((res) => {
-				setList(res?.data.data);
+				setSongList(res?.data.data);
 			})
 			.catch((e) => {
 				if (e.response.status === 401) {
@@ -50,7 +36,7 @@ const TodaySong: React.FC = () => {
 					localStorage.removeItem('Dotori_refreshToken');
 					localStorage.removeItem('role');
 
-					navigate('/signin');
+					history.push('/signin');
 
 					window.location.reload();
 				} else if (e.response.status === 403) {
@@ -60,7 +46,7 @@ const TodaySong: React.FC = () => {
 					localStorage.removeItem('Dotori_refreshToken');
 					localStorage.removeItem('role');
 
-					navigate('/');
+					history.push('/');
 					setLogged(false);
 					window.location.reload();
 				}
@@ -70,26 +56,13 @@ const TodaySong: React.FC = () => {
 	return (
 		<S.Postioner>
 			<S.PlaylistContainer>
-				<h3>{`${showPlaylistDate} Playlist`}</h3>
-				<S.BtnWrapper>
-					<S.DateWrapper isClicked={date} onClick={() => setDate(!date)}>
-						<Calander />
-						<S.CalanderWrapper isClicked={date}>
-							<Calendar
-								onChange={(value) =>
-									getDateMusic(dateFormat(value)).then((res) => {
-										setList(res?.data.data);
-										setShowPlaylistDate(dateFormat(value));
-									})
-								}
-							/>
-						</S.CalanderWrapper>
-					</S.DateWrapper>
-				</S.BtnWrapper>
+				<h3>{`${playlistDate} Playlist`}</h3>
+				<I.Calander onClick={() => setCalendarOpen(!calendarOpen)} />
 			</S.PlaylistContainer>
+			{calendarOpen && <CalendarModal visible={calendarOpen} />}
 			<S.SongContainer>
-				{list ? (
-					[...list].reverse().map((data, idx) => {
+				{songlist ? (
+					[...songlist].reverse().map((data, idx) => {
 						return <SongItem songObj={data} key={`${idx}`} />;
 					})
 				) : (
