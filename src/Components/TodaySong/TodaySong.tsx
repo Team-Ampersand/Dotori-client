@@ -4,17 +4,9 @@ import * as I from '../../Assets/Svg/index';
 import { SongItem } from '../';
 import { useHistory } from 'react-router';
 import { useRecoilState, useSetRecoilState } from 'recoil';
-import { HasToken, showPlaylistDate } from 'Atoms';
+import { HasToken, isCalendarOpen, setList, showPlaylistDate } from 'Atoms';
 import music from 'Api/music';
 import CalendarModal from 'Components/CalendarModal/CalendarModal';
-
-type list = {
-	id: number;
-	url: string;
-	memberName: string;
-	createdDate: Date;
-	email: string;
-};
 
 const getDateMusic = async (date: any) => {
 	try {
@@ -25,15 +17,16 @@ const getDateMusic = async (date: any) => {
 };
 
 const TodaySong: React.FC = () => {
-	const [list, setList] = useState<list[]>([]);
+	const [songlist, setSongList] = useRecoilState(setList);
 	const history = useHistory();
 	const setLogged = useSetRecoilState(HasToken);
-	const [playlistDate, setPlaylistDate] = useRecoilState(showPlaylistDate);
+	const [playlistDate] = useRecoilState(showPlaylistDate);
+	const [calendarOpen, setCalendarOpen] = useRecoilState(isCalendarOpen);
 
 	useEffect(() => {
 		getDateMusic(playlistDate)
 			.then((res) => {
-				setList(res?.data.data);
+				setSongList(res?.data.data);
 			})
 			.catch((e) => {
 				if (e.response.status === 401) {
@@ -62,10 +55,14 @@ const TodaySong: React.FC = () => {
 
 	return (
 		<S.Postioner>
-			<CalendarModal />
+			<S.PlaylistContainer>
+				<h3>{`${playlistDate} Playlist`}</h3>
+				<I.Calander onClick={() => setCalendarOpen(!calendarOpen)} />
+			</S.PlaylistContainer>
+			{calendarOpen && <CalendarModal visible={calendarOpen} />}
 			<S.SongContainer>
-				{list ? (
-					[...list].reverse().map((data, idx) => {
+				{songlist ? (
+					[...songlist].reverse().map((data, idx) => {
 						return <SongItem songObj={data} key={`${idx}`} />;
 					})
 				) : (
