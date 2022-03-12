@@ -1,22 +1,23 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { GlobalStyle, Positioner, ContentWrapper } from './Style/GlobalStyle';
 import Router from './Router';
 import { BrowserRouter } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
+import { CookiesProvider } from 'react-cookie';
 
 const App: React.FC = () => {
 	return (
 		<RecoilRoot>
-			<BrowserRouter>
-				<GlobalStyle />
-				<Positioner>
-					<ContentWrapper>
-						<Suspense fallback={<div />}>
+			<CookiesProvider>
+				<BrowserRouter>
+					<GlobalStyle />
+					<Positioner>
+						<ContentWrapper>
 							<Router />
-						</Suspense>
-					</ContentWrapper>
-				</Positioner>
-			</BrowserRouter>
+						</ContentWrapper>
+					</Positioner>
+				</BrowserRouter>
+			</CookiesProvider>
 		</RecoilRoot>
 	);
 };
