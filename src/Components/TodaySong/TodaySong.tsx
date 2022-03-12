@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as S from './Style';
 import * as I from '../../Assets/Svg/index';
 import { SongItem } from '../';
-import music from 'Api/music';
 import { useHistory } from 'react-router';
-import { useSetRecoilState } from 'recoil';
-import { HasToken } from 'Atoms';
-import { dateFormat } from 'Components/SongItem/SongItem';
-import Calendar from 'react-calendar';
-import { Calander } from 'Assets/Svg';
-import { ManufactureDate } from 'Utils/ManufactureDate';
+import { useRecoilState, useSetRecoilState } from 'recoil';
+import { HasToken, showPlaylistDate } from 'Atoms';
+import music from 'Api/music';
+import CalendarModal from 'Components/CalendarModal/CalendarModal';
 
 type list = {
 	id: number;
@@ -28,17 +25,13 @@ const getDateMusic = async (date: any) => {
 };
 
 const TodaySong: React.FC = () => {
-	const history = useHistory();
-	const [date, setDate] = useState(false);
-	const [showPlaylistDate, setShowPlaylistDate] = useState<string>(
-		`${ManufactureDate('Y')}-${('0' + ManufactureDate('M')).slice(-2)}-${(
-			'0' + ManufactureDate('D')
-		).slice(-2)}`
-	);
 	const [list, setList] = useState<list[]>([]);
+	const history = useHistory();
 	const setLogged = useSetRecoilState(HasToken);
+	const [playlistDate, setPlaylistDate] = useRecoilState(showPlaylistDate);
+
 	useEffect(() => {
-		getDateMusic(showPlaylistDate)
+		getDateMusic(playlistDate)
 			.then((res) => {
 				setList(res?.data.data);
 			})
@@ -69,24 +62,7 @@ const TodaySong: React.FC = () => {
 
 	return (
 		<S.Postioner>
-			<S.PlaylistContainer>
-				<h3>{`${showPlaylistDate} Playlist`}</h3>
-				<S.BtnWrapper>
-					<S.DateWrapper isClicked={date} onClick={() => setDate(!date)}>
-						<Calander />
-						<S.CalanderWrapper isClicked={date}>
-							<Calendar
-								onChange={(value) =>
-									getDateMusic(dateFormat(value)).then((res) => {
-										setList(res?.data.data);
-										setShowPlaylistDate(dateFormat(value));
-									})
-								}
-							/>
-						</S.CalanderWrapper>
-					</S.DateWrapper>
-				</S.BtnWrapper>
-			</S.PlaylistContainer>
+			<CalendarModal />
 			<S.SongContainer>
 				{list ? (
 					[...list].reverse().map((data, idx) => {
