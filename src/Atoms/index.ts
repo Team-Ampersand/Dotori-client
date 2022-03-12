@@ -1,3 +1,3 @@
-import { HasToken, list } from './AtomContainer';
+import { HasToken, list, isCalendarOpen } from './AtomContainer';
 
-export { HasToken, list };
+export { HasToken, list, isCalendarOpen };

@@ -15,3 +15,8 @@ export const list = atom<User[]>({
 	key: 'list',
 	default: [],
 });
+
+export const isCalendarOpen = atom<boolean>({
+	key: 'isCalendarOpen',
+	default: false,
+});
