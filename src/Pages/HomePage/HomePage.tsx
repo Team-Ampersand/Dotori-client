@@ -1,6 +1,5 @@
 import React from 'react';
 import * as S from './Style';
-import { MatchType } from '../../Utils/GlobalType';
 import { PageTemplate } from '..';
 import {
 	UserProfile,
@@ -10,15 +9,11 @@ import {
 	MassageBoard,
 } from '../../Components';
 
-interface HomeProps {
-	match: MatchType;
-}
-
-const HomeContainer: React.FC<HomeProps> = ({ match }) => {
+const HomeContainer: React.FC = () => {
 	return (
 		<S.Positioner>
 			<Sidebar />
-			<PageTemplate match={match}>
+			<PageTemplate>
 				<S.Container>
 					<S.UserProfile>
 						<UserProfile />

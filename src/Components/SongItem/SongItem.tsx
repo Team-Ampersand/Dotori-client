@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import * as S from './Style';
 import axios from 'axios';
 import music from 'Api/music';
-import { getCookie } from 'Utils/Cookie';
 import { useDecode } from '../../Hooks/useDecode';
 
 type SongItemObj = {
@@ -41,7 +40,7 @@ const youtube_parser = (url: string) => {
 const deleteMusic = async (id: number) => {
 	try {
 		await music.deleteMusic(id);
-		alert('삭제 되었습니다.');
+		alert('삭제 되었어요');
 		window.location.reload();
 	} catch (e) {
 		alert(e);

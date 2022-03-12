@@ -2,23 +2,18 @@ import React, { useState } from 'react';
 import * as S from './Style';
 import { DotoriLogo } from 'Assets/Svg';
 import member from 'Api/member';
-import { useHistory } from 'react-router';
-import { deleteCookie } from 'Utils/Cookie';
+import { useNavigate } from 'react-router-dom';
 
-const onWithdrawl = async (id: string, password: string, history) => {
+const onWithdrawl = async (id: string, password: string, navigate) => {
 	try {
 		await member.delete(id, password);
-		alert('회원탈퇴가 되었습니다.');
-
-		// deleteCookie('Dotori_accessToken');
-		// deleteCookie('Dotori_refreshToken');
-		// deleteCookie('role');
+		alert('회원탈퇴가 되었어요');
 
 		localStorage.removeItem('Dotori_accessToken');
 		localStorage.removeItem('Dotori_refreshToken');
 		localStorage.removeItem('role');
 
-		history.push('/signin');
+		navigate('/signin');
 		window.location.reload();
 	} catch (e) {
 		alert(e);
@@ -26,7 +21,7 @@ const onWithdrawl = async (id: string, password: string, history) => {
 };
 
 const Withdrawl: React.FC = () => {
-	const history = useHistory();
+	const navigate = useNavigate();
 	const [id, setId] = useState('');
 	const [password, setPassword] = useState('');
 	return (
@@ -48,13 +43,13 @@ const Withdrawl: React.FC = () => {
 				onClick={() => {
 					if (
 						window.confirm(
-							'정말로 회원탈퇴 하시겠습니까?\n회원탈퇴로 인한 불이익은 Dotori 개발팀에서 책임지지 않습니다.'
+							'정말로 회원탈퇴 하시겠어요?\n회원탈퇴로 인한 불이익은 Dotori 개발팀에서 책임지지 않아요'
 						)
 					) {
-						onWithdrawl(id, password, history);
+						onWithdrawl(id, password, navigate);
 					} else {
-						alert('잘 생각하셨습니다!');
-						history.push('/');
+						alert('잘 생각하셨어요!');
+						navigate('/');
 					}
 				}}
 			>

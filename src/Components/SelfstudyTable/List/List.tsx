@@ -1,18 +1,11 @@
 import React, { useEffect } from 'react';
 import * as S from './Style';
 import { MatchType } from '../../../Utils/GlobalType';
-import { LaptopHeader } from '../Header/model/CombineAdminHeader';
 import selfstudy from 'Api/selfStudy';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { list, HasToken } from 'Atoms';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 import Logo from 'Assets/Svg/Logo';
-
-type ListType = {
-	id: number;
-	stuNum: string;
-	memberName: string;
-};
 
 const ReturnUserObj = async (history, setLogged) => {
 	try {
@@ -21,7 +14,7 @@ const ReturnUserObj = async (history, setLogged) => {
 	} catch (e: any) {
 		if (e.message === 'Request failed with status code 401') {
 			history.push('/signin');
-			alert('장시간 자리에서 비워 로그아웃 되었습니다. 다시 로그인 해주세요.');
+			alert('로그아웃 되었어요. 다시 로그인 해주세요');
 
 			localStorage.removeItem('Dotori_accessToken');
 			localStorage.removeItem('Dotori_refreshToken');
@@ -30,7 +23,7 @@ const ReturnUserObj = async (history, setLogged) => {
 			setLogged(false);
 			window.location.reload();
 		} else if (e.message === 'Request failed with status code 403') {
-			alert('로그아웃 되었습니다. 다시 로그인 해주세요.');
+			alert('로그아웃 되었어요. 다시 로그인 해주세요');
 
 			localStorage.removeItem('Dotori_accessToken');
 			localStorage.removeItem('Dotori_refreshToken');
@@ -40,19 +33,6 @@ const ReturnUserObj = async (history, setLogged) => {
 			setLogged(false);
 			window.location.reload();
 		}
-	}
-};
-
-interface ListProps {
-	match: MatchType;
-}
-
-const onlyCompareThisHeader = (match: MatchType) => {
-	switch (match.path) {
-		case '/selfstudy':
-			return LaptopHeader;
-		default:
-			break;
 	}
 };
 
@@ -68,13 +48,13 @@ const returnBorderColor = (stuNum) => {
 	}
 };
 
-const List: React.FC<ListProps> = ({ match }) => {
+const List: React.FC = () => {
 	const [userlist, setUserList] = useRecoilState(list);
 	const setLogged = useSetRecoilState(HasToken);
-	const history = useHistory();
+	const navigate = useNavigate();
 
 	useEffect(() => {
-		ReturnUserObj(history, setLogged).then((res) => {
+		ReturnUserObj(navigate, setLogged).then((res) => {
 			setUserList(res?.data.data);
 		});
 	}, []);
@@ -88,18 +68,14 @@ const List: React.FC<ListProps> = ({ match }) => {
 						key={`${idx}`}
 						borderColor={returnBorderColor(item.stuNum)}
 					>
-						<div style={{ flex: onlyCompareThisHeader(match)!.list[0].flex }}>
-							{item.memberName}
-						</div>
-						<div style={{ flex: onlyCompareThisHeader(match)!.list[1].flex }}>
-							{item.stuNum}
-						</div>
+						<div>{item.memberName}</div>
+						<div>{item.stuNum}</div>
 					</S.Wrapper>
 				))
 			) : (
 				<S.ExceptionWrapper>
 					<Logo />
-					<span>자습을 신청한 사람이 없습니다.</span>
+					<span>자습을 신청한 사람이 없어요</span>
 				</S.ExceptionWrapper>
 			)}
 		</>

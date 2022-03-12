@@ -1,51 +1,143 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
+import React, { lazy } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import PrivateRoute from 'Utils/Libs/PrivateRoute';
 import PublicRoute from 'Utils/Libs/PublicRoute';
-
-import {
-	HomePage,
-	LaptopPage,
-	SongPage,
-	NoticePage,
-	SigninPage,
-	SignupPage,
-	NoticeWritePage,
-	PointPage,
-	AuthorizationPage,
-	PwChangePage,
-	WithdrawlPage,
-	NotFoundPage,
-	PromotionPage,
-	PenaltyPage,
-	MassagePage,
-} from './Pages';
+const HomePage = lazy(() => import('./Pages/HomePage/HomePage'));
+const PromotionPage = lazy(() => import('./Pages/PromotionPage/PromotionPage'));
+const SelfStudyPage = lazy(() => import('./Pages/SelfStudyPage/SelfStudyPage'));
+const NoticePage = lazy(() => import('./Pages/NoticePage/NoticePage'));
+const NoticeWritePage = lazy(
+	() => import('./Pages/NoticeWritePage/NoticeWritePage')
+);
+const SongPage = lazy(() => import('./Pages/SongPage/SongPage'));
+const SigninPage = lazy(() => import('./Pages/SigninPage/SigninPage'));
+const SignupPage = lazy(() => import('./Pages/SignupPage/SignupPage'));
+const PwChangePage = lazy(() => import('./Pages/PwChangePage/PwChangePage'));
+const AuthorizationPage = lazy(
+	() => import('./Pages/AuthorizationPage/AuthorizationPage')
+);
+const WithdrawlPage = lazy(() => import('./Pages/WithdrawlPage/WithdrawlPage'));
+const PenaltyPage = lazy(() => import('./Pages/PenaltyPage/PenaltyPage'));
+const MassagePage = lazy(() => import('./Pages/MassagePage/MassagePage'));
+const NotFoundPage = lazy(() => import('./Pages/NotFoundPage/NotFoundPage'));
 
 const Router: React.FC = () => {
 	return (
-		<>
-			<PublicRoute
-				restricted={false}
-				exact
+		<Routes>
+			<Route
 				path="/"
-				component={PromotionPage}
+				element={
+					<PublicRoute restricted={false}>
+						<PromotionPage />
+					</PublicRoute>
+				}
 			/>
-			<PrivateRoute exact path="/home" component={HomePage} />
-			<PrivateRoute path="/selfstudy" component={LaptopPage} />
-			<PrivateRoute exact path="/notice" component={NoticePage} />
-			<PrivateRoute path="/notice/write" component={NoticeWritePage} />
-			<PrivateRoute path="/song" component={SongPage} />
-			<PrivateRoute path="/point" component={PointPage} />
-			<PublicRoute restricted path="/signin" component={SigninPage} />
-			<PublicRoute restricted path="/signup" component={SignupPage} />
-			<PublicRoute restricted exact path="/password" component={PwChangePage} />
-			<PrivateRoute path="/authorization" component={AuthorizationPage} />
-			<PrivateRoute path="/Withdrawl" component={WithdrawlPage} />
-			<PrivateRoute path="/change/password" component={PwChangePage} />
-			<PrivateRoute path="/penalty" component={PenaltyPage} />
-			<PrivateRoute path="/massage" component={MassagePage} />
-			<Route component={NotFoundPage} />
-		</>
+			<Route
+				path="/home"
+				element={
+					<PrivateRoute>
+						<HomePage />
+					</PrivateRoute>
+				}
+			/>
+			<Route
+				path="/selfstudy"
+				element={
+					<PrivateRoute>
+						<SelfStudyPage />
+					</PrivateRoute>
+				}
+			/>
+			<Route
+				path="/notice"
+				element={
+					<PrivateRoute>
+						<NoticePage />
+					</PrivateRoute>
+				}
+			/>
+			<Route
+				path="/notice/write"
+				element={
+					<PrivateRoute>
+						<NoticeWritePage />
+					</PrivateRoute>
+				}
+			/>
+			<Route
+				path="/song"
+				element={
+					<PrivateRoute>
+						<SongPage />
+					</PrivateRoute>
+				}
+			/>
+			<Route
+				path="/signin"
+				element={
+					<PublicRoute restricted={false}>
+						<SigninPage />
+					</PublicRoute>
+				}
+			/>
+			<Route
+				path="/signup"
+				element={
+					<PublicRoute restricted={false}>
+						<SignupPage />
+					</PublicRoute>
+				}
+			/>
+			<Route
+				path="/password"
+				element={
+					<PublicRoute restricted={false}>
+						<PwChangePage />
+					</PublicRoute>
+				}
+			/>
+			<Route
+				path="/authorization"
+				element={
+					<PrivateRoute>
+						<AuthorizationPage />
+					</PrivateRoute>
+				}
+			/>
+			<Route
+				path="/Withdrawl"
+				element={
+					<PrivateRoute>
+						<WithdrawlPage />
+					</PrivateRoute>
+				}
+			/>
+			<Route
+				path="/change/password"
+				element={
+					<PrivateRoute>
+						<PwChangePage />
+					</PrivateRoute>
+				}
+			/>
+			<Route
+				path="/penalty"
+				element={
+					<PrivateRoute>
+						<PenaltyPage />
+					</PrivateRoute>
+				}
+			/>
+			<Route
+				path="/massage"
+				element={
+					<PrivateRoute>
+						<MassagePage />
+					</PrivateRoute>
+				}
+			/>
+			<Route element={<NotFoundPage />} />
+		</Routes>
 	);
 };
 

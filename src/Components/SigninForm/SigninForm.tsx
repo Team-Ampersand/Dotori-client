@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { DotoriLogo } from 'Assets/Svg';
 import * as S from './Style';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { HasToken } from '../../Atoms';
 import { useSetRecoilState } from 'recoil';
 import member from '../../Api/member';
@@ -11,14 +11,14 @@ const TrySignin = () => {
 	const [id, setId] = useState('');
 	const [password, setPassword] = useState('');
 	const setLogged = useSetRecoilState(HasToken);
-	const history = useHistory();
+	const navigate = useNavigate();
 
 	const onSignin = async () => {
 		try {
 			if (id === '') {
-				return alert('이메일을 입력해주세요.');
+				return alert('이메일을 입력해주세요');
 			} else if (password === '') {
-				return alert('비밀번호를 입력해주세요.');
+				return alert('비밀번호를 입력해주세요');
 			}
 			const res = await member.signin(id + '@gsm.hs.kr', password);
 
@@ -27,13 +27,13 @@ const TrySignin = () => {
 			localStorage.setItem('role', await rolelookup());
 
 			setLogged(true);
-			history.push('/home');
+			navigate('/home');
 			window.location.reload();
 		} catch (e: any) {
 			if (e.message === 'Request failed with status code 409') {
-				alert('비밀번호가 올바르지 않습니다.');
+				alert('비밀번호가 올바르지 않아요');
 			} else if (e.message === 'Request failed with status code 404') {
-				alert('해당 이메일에 해당하는 학생을 찾을 수 없습니다.');
+				alert('해당 이메일에 해당하는 학생을 찾을 수 없어요');
 			} else {
 				alert(e);
 			}

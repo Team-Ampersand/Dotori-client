@@ -29,7 +29,7 @@ const Classification: React.FC = () => {
 		} catch (e: any) {
 			alert(
 				e.message === 'Request failed with status code 404'
-					? stuGrade + '학년' + stuClass + '반에는 신청한 학생이 없습니다'
+					? stuGrade + '학년' + stuClass + '반에는 신청한 학생이 없어요'
 					: e
 			);
 		}

@@ -1,23 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as S from './Style';
 import * as I from '../../Assets/Svg/index';
 import { SongItem } from '../';
-import music from 'Api/music';
 import { useHistory } from 'react-router';
-import { useSetRecoilState } from 'recoil';
-import { HasToken } from 'Atoms';
-import { dateFormat } from 'Components/SongItem/SongItem';
-import Calendar from 'react-calendar';
-import { Calander } from 'Assets/Svg';
-import { ManufactureDate } from 'Utils/ManufactureDate';
-
-type list = {
-	id: number;
-	url: string;
-	memberName: string;
-	createdDate: Date;
-	email: string;
-};
+import { useRecoilState, useSetRecoilState } from 'recoil';
+import { HasToken, isCalendarOpen, setList, showPlaylistDate } from 'Atoms';
+import music from 'Api/music';
+import CalendarModal from 'Components/CalendarModal/CalendarModal';
 
 const getDateMusic = async (date: any) => {
 	try {
@@ -28,29 +17,20 @@ const getDateMusic = async (date: any) => {
 };
 
 const TodaySong: React.FC = () => {
+	const [songlist, setSongList] = useRecoilState(setList);
 	const history = useHistory();
-	const [date, setDate] = useState(false);
-	const [showPlaylistDate, setShowPlaylistDate] = useState<string>(
-		`${ManufactureDate('Y')}-${('0' + ManufactureDate('M')).slice(-2)}-${(
-			'0' + ManufactureDate('D')
-		).slice(-2)}`
-	);
-	const [list, setList] = useState<list[]>([]);
 	const setLogged = useSetRecoilState(HasToken);
+	const [playlistDate] = useRecoilState(showPlaylistDate);
+	const [calendarOpen, setCalendarOpen] = useRecoilState(isCalendarOpen);
+
 	useEffect(() => {
-		getDateMusic(showPlaylistDate)
+		getDateMusic(playlistDate)
 			.then((res) => {
-				setList(res?.data.data);
+				setSongList(res?.data.data);
 			})
 			.catch((e) => {
-				if (e.message === 'Request failed with status code 401') {
-					alert(
-						'장시간 자리에서 비워 로그아웃 되었습니다. 다시 로그인 해주세요.'
-					);
-
-					// deleteCookie('Dotori_accessToken');
-					// deleteCookie('Dotori_refreshToken');
-					// deleteCookie('role');
+				if (e.response.status === 401) {
+					alert('로그아웃 되었어요. 다시 로그인 해주세요');
 
 					localStorage.removeItem('Dotori_accessToken');
 					localStorage.removeItem('Dotori_refreshToken');
@@ -59,12 +39,8 @@ const TodaySong: React.FC = () => {
 					history.push('/signin');
 
 					window.location.reload();
-				} else if (e.message === 'Request failed with status code 403') {
-					alert('로그아웃 되었습니다. 다시 로그인 해주세요.');
-
-					// deleteCookie('Dotori_accessToken');
-					// deleteCookie('Dotori_refreshToken');
-					// deleteCookie('role');
+				} else if (e.response.status === 403) {
+					alert('로그아웃 되었어요. 다시 로그인 해주세요');
 
 					localStorage.removeItem('Dotori_accessToken');
 					localStorage.removeItem('Dotori_refreshToken');
@@ -80,32 +56,19 @@ const TodaySong: React.FC = () => {
 	return (
 		<S.Postioner>
 			<S.PlaylistContainer>
-				<h3>{`${showPlaylistDate} Playlist`}</h3>
-				<S.BtnWrapper>
-					<S.DateWrapper isClicked={date} onClick={() => setDate(!date)}>
-						<Calander />
-						<S.CalanderWrapper isClicked={date}>
-							<Calendar
-								onChange={(value) =>
-									getDateMusic(dateFormat(value)).then((res) => {
-										setList(res?.data.data);
-										setShowPlaylistDate(dateFormat(value));
-									})
-								}
-							/>
-						</S.CalanderWrapper>
-					</S.DateWrapper>
-				</S.BtnWrapper>
+				<h3>{`${playlistDate} Playlist`}</h3>
+				<I.Calander onClick={() => setCalendarOpen(!calendarOpen)} />
 			</S.PlaylistContainer>
+			{calendarOpen && <CalendarModal visible={calendarOpen} />}
 			<S.SongContainer>
-				{list ? (
-					[...list].reverse().map((data, idx) => {
+				{songlist ? (
+					[...songlist].reverse().map((data, idx) => {
 						return <SongItem songObj={data} key={`${idx}`} />;
 					})
 				) : (
 					<S.NoSongText>
 						<I.Logo />
-						<p>신청된 음악이 없습니다.</p>
+						<p>신청된 음악이 없어요</p>
 					</S.NoSongText>
 				)}
 			</S.SongContainer>

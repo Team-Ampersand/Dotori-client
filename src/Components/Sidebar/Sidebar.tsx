@@ -2,8 +2,7 @@ import React, { useMemo, useState } from 'react';
 import * as S from './Style';
 import SidebarList from '../SidebarList/SidebarList';
 import Logo from 'Assets/Svg/Logo';
-import { getCookie } from 'Utils/Cookie';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
 const returnShow = () => {
 	return localStorage.getItem('role');
@@ -58,17 +57,14 @@ const sidebarMenuData = [
 				router: '/penalty',
 				menuIcon: 'Penalty',
 				menuTitle: '규정 위반',
-				show:
-				returnShow() === 'admin'
-					? true
-					: false,
-			}
+				show: returnShow() === 'admin' ? true : false,
+			},
 		],
 	},
 ];
 
 const Sidebar: React.FC = () => {
-	const history = useHistory();
+	const navigate = useNavigate();
 	const [currentRouter, setCurrentRouter] = useState(window.location.pathname);
 	const mappingSidebarMenu = useMemo(() => {
 		return sidebarMenuData.map((menuData) => (
@@ -86,7 +82,7 @@ const Sidebar: React.FC = () => {
 		<S.Postioner>
 			<S.LogoWrapper
 				onClick={() => {
-					history.push('/home');
+					navigate('/home');
 				}}
 			>
 				{/* <S.Logo> */}

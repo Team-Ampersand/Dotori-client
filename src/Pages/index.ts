@@ -2,12 +2,10 @@ import SidebarPage from './SidebarPage/SidebarPage';
 import HomePage from './HomePage/HomePage';
 import BannerPage from './BannerPage/BannerPage';
 import PageTemplate from './Template/PageTemplate';
-import LaptopPage from './LaptopPage/LaptopPage';
+import SelfStudyPage from './SelfStudyPage/SelfStudyPage';
 import NoticePage from './NoticePage/NoticePage';
 import NoticeWritePage from './NoticeWritePage/NoticeWritePage';
 import SongPage from './SongPage/SongPage';
-import AdminSongListPage from './AdminSongListPage/AdminSongListPage';
-import PointPage from './PointPage/PointPage';
 import AuthorizationPage from './AuthorizationPage/AuthorizationPage';
 import SigninPage from 'Pages/SigninPage/SigninPage';
 import SignupPage from './SignupPage/SignupPage';
@@ -23,12 +21,10 @@ export {
 	HomePage,
 	BannerPage,
 	PageTemplate,
-	LaptopPage,
+	SelfStudyPage,
 	NoticePage,
 	NoticeWritePage,
 	SongPage,
-	AdminSongListPage,
-	PointPage,
 	AuthorizationPage,
 	SigninPage,
 	SignupPage,
