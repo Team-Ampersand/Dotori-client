@@ -123,7 +123,7 @@ const returnButton = (status: string, setInfo, count) => {
 			<S.StudyButton
 				Clicked={status}
 				onClick={() => {
-					alert('아직 자습을 신청하실 수 있는 시간이 아니에요');
+					alert('자습을 신청하실 수 있는 시간이 아니에요');
 				}}
 			>
 				자습불가
@@ -133,7 +133,7 @@ const returnButton = (status: string, setInfo, count) => {
 		<S.StudyButton
 			Clicked={status}
 			onClick={() => {
-				alert('아직 자습을 신청하실 수 있는 시간이 아니에요');
+				alert('자습을 신청하실 수 있는 시간이 아니에요');
 			}}
 		>
 			자습불가
@@ -165,7 +165,7 @@ const Selfstudyboard: React.FC = () => {
 					{ManufactureDate('Y')}년 {ManufactureDate('M')}월{' '}
 					{ManufactureDate('D')}일 {ManufactureDate('W')}요일
 				</strong>
-				<p>8 : 00 ~ 9 : 00</p>
+				<p>20 : 00 ~ 21 : 00</p>
 				<span>
 					{parseInt(info.count)}/{Room.roomMax}
 				</span>
