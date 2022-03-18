@@ -2,28 +2,12 @@ import axios, { AxiosRequestConfig } from 'axios';
 import { BASE_HEADER } from '../Config/Config.json';
 import { baseURL } from 'Utils/Config/Config';
 
-export interface HasToken {
-	HasToken?: boolean;
-}
-
-const RequestApi = (
-	p: AxiosRequestConfig,
-	condition: HasToken = { HasToken: false }
-) => {
-	let accessToken: string | null = null;
-	let refreshToken: string | null = null;
-	if (!condition.HasToken) {
-		accessToken = localStorage.getItem('Dotori_accessToken');
-		refreshToken = localStorage.getItem('Dotori_refreshToken');
-	}
+const RequestApi = (p: AxiosRequestConfig) => {
 	try {
-		let header = Object.assign(BASE_HEADER, p.headers);
-		if (refreshToken) {
-			header = Object.assign(header, {
-				Authorization: accessToken,
-				RefreshToken: refreshToken,
-			});
-		}
+		let header = Object.assign(BASE_HEADER, p.headers, {
+			Authorization: localStorage.getItem('Dotori_accessToken') ?? '',
+			RefreshToken: localStorage.getItem('Dotori_refreshToken') ?? '',
+		});
 		const res = axios({
 			method: p.method,
 			baseURL: baseURL,
