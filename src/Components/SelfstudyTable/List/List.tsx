@@ -1,37 +1,28 @@
 import React, { useEffect } from 'react';
 import * as S from './Style';
-import { MatchType } from '../../../Utils/GlobalType';
 import selfstudy from 'Api/selfStudy';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { list, HasToken } from 'Atoms';
 import { useNavigate } from 'react-router';
 import Logo from 'Assets/Svg/Logo';
 
-const ReturnUserObj = async (history, setLogged) => {
+const ReturnUserObj = async (navigate, setLogged) => {
 	try {
-		const res = await selfstudy.lookupstudy();
-		return res;
+		const { data } = await selfstudy.lookupstudy();
+		return { data };
 	} catch (e: any) {
 		if (e.message === 'Request failed with status code 401') {
-			history.push('/signin');
 			alert('로그아웃 되었어요. 다시 로그인 해주세요');
 
 			localStorage.removeItem('Dotori_accessToken');
 			localStorage.removeItem('Dotori_refreshToken');
 			localStorage.removeItem('role');
 
+			navigate('/signin');
 			setLogged(false);
 			window.location.reload();
-		} else if (e.message === 'Request failed with status code 403') {
-			alert('로그아웃 되었어요. 다시 로그인 해주세요');
-
-			localStorage.removeItem('Dotori_accessToken');
-			localStorage.removeItem('Dotori_refreshToken');
-			localStorage.removeItem('role');
-
-			history.push('/');
-			setLogged(false);
-			window.location.reload();
+		} else {
+			alert(e);
 		}
 	}
 };
@@ -50,8 +41,8 @@ const returnBorderColor = (stuNum) => {
 
 const List: React.FC = () => {
 	const [userlist, setUserList] = useRecoilState(list);
-	const setLogged = useSetRecoilState(HasToken);
 	const navigate = useNavigate();
+	const setLogged = useSetRecoilState(HasToken);
 
 	useEffect(() => {
 		ReturnUserObj(navigate, setLogged).then((res) => {
