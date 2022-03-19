@@ -138,7 +138,7 @@ const MassageBoard: React.FC = () => {
 					{ManufactureDate('Y')}년 {ManufactureDate('M')}월{' '}
 					{ManufactureDate('D')}일 {ManufactureDate('W')}요일
 				</strong>
-				<p>8 : 20 ~ 9 : 00</p>
+				<p>20 : 20 ~ 21 : 00</p>
 				<span>{info.count}/5</span>
 				<S.PointProgress>
 					<S.ActiveProgress

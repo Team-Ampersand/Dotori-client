@@ -1,6 +1,9 @@
 import massage from 'Api/massage';
 import Logo from 'Assets/Svg/Logo';
+import { HasToken } from 'Atoms';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSetRecoilState } from 'recoil';
 import * as S from './Style';
 
 type ListType = {
@@ -9,9 +12,23 @@ type ListType = {
 	memberName: string;
 };
 
-const returnUserObj = async () => {
-	const res = await massage.massageLookup();
-	return res;
+const returnUserObj = async (navigate, setLogged) => {
+	try {
+		const res = await massage.massageLookup();
+		return res;
+	} catch (e: any) {
+		if (e.message === 'Request failed with status code 401') {
+			alert('로그아웃 되었어요. 다시 로그인 해주세요');
+
+			localStorage.removeItem('Dotori_accessToken');
+			localStorage.removeItem('Dotori_refreshToken');
+			localStorage.removeItem('role');
+
+			navigate('/signin');
+			setLogged(false);
+			window.location.reload();
+		}
+	}
 };
 
 const returnBorderColor = (stuNum) => {
@@ -28,9 +45,11 @@ const returnBorderColor = (stuNum) => {
 
 const MassageTable = () => {
 	const [list, setList] = useState<ListType[]>();
+	const navigate = useNavigate();
+	const setLogged = useSetRecoilState(HasToken);
 
 	useEffect(() => {
-		returnUserObj().then((res) => {
+		returnUserObj(navigate, setLogged).then((res) => {
 			setList(res?.data.data);
 		});
 	}, []);

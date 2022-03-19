@@ -2,25 +2,33 @@ import RequestApi from '../Utils/Libs/requestApi';
 import { SelfstudyController } from '../Utils/Libs/requestUrls';
 
 class SelfStudy {
-	async selfstudy() {
+	selfstudy() {
 		return RequestApi({
 			method: 'PUT',
 			url: SelfstudyController.selfStudy(localStorage.getItem('role')),
 		});
 	}
-	async lookupstudy() {
-		return RequestApi({
-			method: 'GET',
-			url: SelfstudyController.selfStudy(localStorage.getItem('role')),
-		});
+	lookupstudy() {
+		try {
+			return RequestApi({
+				method: 'GET',
+				url: SelfstudyController.selfStudy(localStorage.getItem('role')),
+			});
+		} catch (e: any) {
+			throw new Error(e);
+		}
 	}
-	async cancelstudy() {
-		return RequestApi({
-			method: 'PUT',
-			url: SelfstudyController.cancelStudy(localStorage.getItem('role')),
-		});
+	cancelstudy() {
+		try {
+			return RequestApi({
+				method: 'PUT',
+				url: SelfstudyController.cancelStudy(localStorage.getItem('role')),
+			});
+		} catch (e: any) {
+			throw new Error(e);
+		}
 	}
-	async classlookup(classID: string) {
+	classlookup(classID: string) {
 		return RequestApi({
 			method: 'GET',
 			url: SelfstudyController.classLookup(
@@ -29,7 +37,7 @@ class SelfStudy {
 			),
 		});
 	}
-	async studyinfo() {
+	studyinfo() {
 		return RequestApi({
 			method: 'GET',
 			url: SelfstudyController.studyInfo(localStorage.getItem('role')),
