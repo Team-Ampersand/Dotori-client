@@ -20,13 +20,9 @@ const NoticeBoard: React.FC = () => {
 	const navigate = useNavigate();
 
 	const getNotice = async () => {
-		const role = localStorage.getItem('role');
-		return await notice.getNotice(role);
-	};
-	const getNoticeDetail = async (page: number, navigate, setLogged) => {
-		const role = localStorage.getItem('role');
 		try {
-			return await notice.getNoticeDetail(role, page);
+			const role = localStorage.getItem('role');
+			return await notice.getNotice(role);
 		} catch (e: any) {
 			if (e.message === 'Request failed with status code 401') {
 				alert('로그아웃 되었어요. 다시 로그인 해주세요');
@@ -41,6 +37,14 @@ const NoticeBoard: React.FC = () => {
 			} else {
 				alert(e);
 			}
+		}
+	};
+	const getNoticeDetail = async (page: number) => {
+		const role = localStorage.getItem('role');
+		try {
+			return await notice.getNoticeDetail(role, page);
+		} catch (e: any) {
+			alert(e);
 		}
 	};
 
@@ -69,7 +73,7 @@ const NoticeBoard: React.FC = () => {
 		settingRole();
 		setTotalPage(totalPage);
 		if (totalPage > 0) {
-			getNoticeDetail(totalPage - 1, navigate, setLogged).then((response) =>
+			getNoticeDetail(totalPage - 1).then((response) =>
 				setBoard(response?.data.data.content)
 			);
 		}

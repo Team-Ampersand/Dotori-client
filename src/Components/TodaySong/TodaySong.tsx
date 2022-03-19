@@ -8,14 +8,6 @@ import { HasToken, isCalendarOpen, setList, showPlaylistDate } from 'Atoms';
 import music from 'Api/music';
 import CalendarModal from 'Components/CalendarModal/CalendarModal';
 
-const getDateMusic = async (date: any) => {
-	try {
-		return await music.dateMusic(date);
-	} catch (e) {
-		alert(e);
-	}
-};
-
 const TodaySong: React.FC = () => {
 	const [songlist, setSongList] = useRecoilState(setList);
 	const navigate = useNavigate();
@@ -23,34 +15,38 @@ const TodaySong: React.FC = () => {
 	const [playlistDate] = useRecoilState(showPlaylistDate);
 	const [calendarOpen, setCalendarOpen] = useRecoilState(isCalendarOpen);
 
+	const getDateMusic = async (date: any) => {
+		try {
+			return await music.dateMusic(date);
+		} catch (e: any) {
+			if (e.message === 'Request failed with status code 401') {
+				alert('로그아웃 되었어요. 다시 로그인 해주세요');
+
+				localStorage.removeItem('Dotori_accessToken');
+				localStorage.removeItem('Dotori_refreshToken');
+				localStorage.removeItem('role');
+
+				navigate('/signin');
+
+				window.location.reload();
+			} else if (e.message === 'Request failed with status code 403') {
+				alert('로그아웃 되었어요. 다시 로그인 해주세요');
+
+				localStorage.removeItem('Dotori_accessToken');
+				localStorage.removeItem('Dotori_refreshToken');
+				localStorage.removeItem('role');
+
+				navigate('/');
+				setLogged(false);
+				window.location.reload();
+			}
+		}
+	};
+
 	useEffect(() => {
-		getDateMusic(playlistDate)
-			.then((res) => {
-				setSongList(res?.data.data);
-			})
-			.catch((e) => {
-				if (e.response.status === 401) {
-					alert('로그아웃 되었어요. 다시 로그인 해주세요');
-
-					localStorage.removeItem('Dotori_accessToken');
-					localStorage.removeItem('Dotori_refreshToken');
-					localStorage.removeItem('role');
-
-					navigate('/signin');
-
-					window.location.reload();
-				} else if (e.response.status === 403) {
-					alert('로그아웃 되었어요. 다시 로그인 해주세요');
-
-					localStorage.removeItem('Dotori_accessToken');
-					localStorage.removeItem('Dotori_refreshToken');
-					localStorage.removeItem('role');
-
-					navigate('/');
-					setLogged(false);
-					window.location.reload();
-				}
-			});
+		getDateMusic(playlistDate).then((res) => {
+			setSongList(res?.data.data);
+		});
 	}, []);
 
 	return (
