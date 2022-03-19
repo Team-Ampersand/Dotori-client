@@ -3,37 +3,45 @@ import React, { useEffect, useState } from 'react';
 import * as S from './Style';
 import { ManufactureDate } from 'Utils/ManufactureDate';
 
-const returnMealdata = async (mealCode: number, setList) => {
-	const { data } = await axios.get(
-		`https://open.neis.go.kr/hub/mealServiceDietInfo?key=${
-			process.env.REACT_APP_NEIS_API_KEY
-		}&Type=json&ATPT_OFCDC_SC_CODE=F10&SD_SCHUL_CODE=7380292&MLSV_YMD=${ManufactureDate(
-			'YMD'
-		)}`
-	);
-
-	const result = !!data.mealServiceDietInfo[1].row[mealCode]
-		? data.mealServiceDietInfo[1].row[mealCode].DDISH_NM.toString()
-				.replace(/[*<br/>0-9a-z.()]/g, '0')
-				.split('0')
-				.filter((value) => {
-					return value !== '';
-				})
-		: [];
-	const mealTime = !!data.mealServiceDietInfo[1].row[mealCode]
-		? data.mealServiceDietInfo[1].row[mealCode].MMEAL_SC_NM
-		: '급식이 없어요';
-	setList([
-		{
-			kind: mealTime,
-			meal: result,
-		},
-	]);
-};
-
 type listtype = {
 	kind: string;
 	meal: [];
+};
+const returnMealdata = async (
+	date: { datestr: string; day: number },
+	mealCode,
+	setList
+) => {
+	const { data } = await axios.get(
+		`https://open.neis.go.kr/hub/mealServiceDietInfo?key=${process.env.REACT_APP_NEIS_API_KEY}&Type=json&ATPT_OFCDC_SC_CODE=F10&SD_SCHUL_CODE=7380292&MLSV_YMD=${date.datestr}`
+	);
+
+	try {
+		const result = !!data.mealServiceDietInfo[1].row[mealCode]
+			? data.mealServiceDietInfo[1].row[mealCode].DDISH_NM.toString()
+					.replace(/[*<br/>0-9a-z.()]/g, '0')
+					.split('0')
+					.filter((value) => {
+						return value !== '';
+					})
+			: [];
+		const mealTime = !!data.mealServiceDietInfo[1].row[mealCode]
+			? data.mealServiceDietInfo[1].row[mealCode].MMEAL_SC_NM
+			: '급식이 없어요';
+		setList([
+			{
+				kind: mealTime,
+				meal: result,
+			},
+		]);
+	} catch (e: any) {
+		setList([
+			{
+				kind: '급식이 없어요',
+				meal: [],
+			},
+		]);
+	}
 };
 
 const returnMealcode = () => {
@@ -51,11 +59,46 @@ const returnMealcode = () => {
 
 const MealBoard: React.FC = () => {
 	const [mealCode, setMealCode] = useState(returnMealcode());
-	const [list, setList] = useState([]);
+	const [currentDate] = useState(
+		new Date(
+			ManufactureDate('YMD').slice(0, 4) +
+				'-' +
+				ManufactureDate('YMD').slice(4, 6) +
+				'-' +
+				ManufactureDate('YMD').slice(6)
+		)
+	);
+	const getDateStr = (myDate: Date) => {
+		let month = myDate.getMonth() + 1;
+		let stringMonth = month.toString();
+		let day = myDate.getDate();
+		let stringDay = day.toString();
+		if (month < 10) stringMonth = '0' + month;
+		if (day < 10) stringDay = '0' + day;
+		return myDate.getFullYear() + stringMonth + stringDay;
+	};
+
+	const [date, setDate] = useState({
+		datestr: getDateStr(currentDate),
+		day: currentDate.getDay(),
+	});
+	const [list, setList] = useState<listtype[]>();
+
+	let week = ['일', '월', '화', '수', '목', '금', '토'];
+
+	const nextDay = () => {
+		currentDate.setDate(currentDate.getDate() + 1);
+		setDate({ datestr: getDateStr(currentDate), day: currentDate.getDay() });
+	};
+
+	const prevDay = () => {
+		currentDate.setDate(currentDate.getDate() - 1);
+		setDate({ datestr: getDateStr(currentDate), day: currentDate.getDay() });
+	};
 
 	useEffect(() => {
-		returnMealdata(mealCode, setList);
-	}, [mealCode]);
+		returnMealdata(date, mealCode, setList);
+	}, [date, mealCode]);
 
 	return (
 		<S.Positioner>
@@ -88,18 +131,27 @@ const MealBoard: React.FC = () => {
 					</S.DinnerWrapper>
 				</S.DayWrapper>
 			</S.TitleContainer>
+			<S.DateWrapper>
+				<strong>
+					{date.datestr.slice(0, 4)}년 {date.datestr.slice(4, 6)}월{' '}
+					{date.datestr.slice(6)}일 {week[date.day]}요일
+				</strong>
+			</S.DateWrapper>
 			<S.MealContainer>
-				{list.map((item: listtype, index) => {
-					return (
+				{list &&
+					list.map((item: listtype, index) => (
 						<S.Meal key={index}>
 							<span>{item.kind}</span>
 							{item.meal.map((item, index) => {
 								return <p key={index}>{item}</p>;
 							})}
 						</S.Meal>
-					);
-				})}
+					))}
 			</S.MealContainer>
+			<S.NextWrapper>
+				<S.Button onClick={() => prevDay()}>이전</S.Button>
+				<S.Button onClick={() => nextDay()}>다음</S.Button>
+			</S.NextWrapper>
 		</S.Positioner>
 	);
 };

@@ -1,10 +1,10 @@
 import React from 'react';
-import { dateFormat } from 'Components/SongItem/SongItem';
 import Calendar from 'react-calendar';
 import music from 'Api/music';
 import * as S from './Style';
 import { useRecoilState } from 'recoil';
 import { isCalendarOpen, setList, showPlaylistDate } from 'Atoms';
+import { DateFormatter } from '../../Utils/DateFormatter';
 
 type calendar = {
 	visible: boolean;
@@ -34,9 +34,9 @@ const CalendarModal: React.FC<calendar> = ({ visible }) => {
 					<S.CalendarWrapper>
 						<Calendar
 							onChange={(value) =>
-								getDateMusic(dateFormat(value)).then((res) => {
+								getDateMusic(DateFormatter(value)).then((res) => {
 									setSongList(res?.data.data);
-									setPlaylistDate(dateFormat(value));
+									setPlaylistDate(DateFormatter(value));
 								})
 							}
 							calendarType="US"

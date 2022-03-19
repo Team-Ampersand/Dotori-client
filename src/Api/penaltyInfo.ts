@@ -9,9 +9,9 @@ class penaltyInfo {
 				url: PenaltyController.getStuInfo(role),
 			});
 		} catch (e: any) {
-			if (e.massage === 'Request failed with status code 404') {
+			if (e.message === 'Request failed with status code 404') {
 				alert('등록된 학생 정보가 없어요');
-			} else if (e.massage === 'Request failed with status code 401') {
+			} else if (e.message === 'Request failed with status code 401') {
 				alert('로그아웃 되었어요');
 				localStorage.removeItem('Dotori_accessToken');
 				localStorage.removeItem('Dotori_refreshToken');

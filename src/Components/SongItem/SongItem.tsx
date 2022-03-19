@@ -3,6 +3,7 @@ import * as S from './Style';
 import axios from 'axios';
 import music from 'Api/music';
 import { useDecode } from '../../Hooks/useDecode';
+import { DateFormatter } from '../../Utils/DateFormatter';
 
 type SongItemObj = {
 	createdDate: Date;
@@ -46,20 +47,6 @@ const deleteMusic = async (id: number) => {
 		alert(e);
 	}
 };
-const leftPad = (value) => {
-	if (value >= 10) {
-		return value;
-	}
-	return `0${value}`;
-};
-
-export const dateFormat = (createdDate: Date) => {
-	const date = new Date(createdDate);
-	const year = date.getFullYear();
-	const month = leftPad(date.getMonth() + 1);
-	const day = leftPad(date.getDate());
-	return [year, month, day].join('-');
-};
 
 const SongItem: React.FC<SongProps> = ({ songObj }) => {
 	const [title, setTitle] = useState('');
@@ -79,7 +66,9 @@ const SongItem: React.FC<SongProps> = ({ songObj }) => {
 			<S.Container>
 				<S.TitleContainer>{title}</S.TitleContainer>
 				<S.AuthorContainer>{songObj.memberName}</S.AuthorContainer>
-				<S.AuthorContainer>{dateFormat(songObj.createdDate)}</S.AuthorContainer>
+				<S.AuthorContainer>
+					{DateFormatter(songObj.createdDate)}
+				</S.AuthorContainer>
 			</S.Container>
 			{role === 'admin' ||
 			role === 'developer' ||
