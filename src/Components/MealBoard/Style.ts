@@ -65,7 +65,7 @@ export const DinnerWrapper = styled.span<StyleProps>`
 
 export const Meal = styled.div`
 	width: 100%;
-	height: 50%;
+	height: 80%;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -82,4 +82,35 @@ export const Meal = styled.div`
 		justify-content: center;
 		font-weight: bold;
 	}
+`;
+
+export const NextWrapper = styled.div`
+	width: 100%;
+	height: 20%;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+`;
+
+export const Button = styled.button`
+	width: 120px;
+	height: 45px;
+	font-size: 16px;
+	background: #0f4c80;
+	color: #ffffff;
+	border-radius: 9px;
+	border: 0;
+	&:hover {
+		background: #ffffff;
+		border: 1px solid #0f4c80;
+		color: #0f4c80;
+	}
+`;
+export const DateWrapper = styled.div`
+	width: 100%;
+	height: 15%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 18px;
 `;
