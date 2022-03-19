@@ -1,5 +1,6 @@
 import { MassageController } from 'Utils/Libs/requestUrls';
 import RequestApi from 'Utils/Libs/requestApi';
+import { useNavigate } from 'react-router-dom';
 
 class Massage {
 	massage() {
@@ -18,7 +19,9 @@ class Massage {
 				method: 'GET',
 				url: MassageController.massage(localStorage.getItem('role')),
 			});
-		} catch (e) {}
+		} catch (e: any) {
+			throw new Error(e);
+		}
 	}
 	massageInfo() {
 		try {
@@ -26,9 +29,7 @@ class Massage {
 				method: 'GET',
 				url: MassageController.massageInfo(localStorage.getItem('role')),
 			});
-		} catch (e: any) {
-			alert(e);
-		}
+		} catch (e: any) {}
 	}
 	cancelMassage() {
 		try {
