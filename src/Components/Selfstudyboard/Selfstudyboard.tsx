@@ -130,18 +130,6 @@ const returnButton = (
 				자습취소
 			</S.StudyButton>
 		);
-	} else if (count === 50) {
-		return (
-			<S.StudyButton
-				Clicked={status}
-				onClick={() => {
-					alert('50명이 넘어 신청할 수 없어요');
-				}}
-				count={count}
-			>
-				자습불가
-			</S.StudyButton>
-		);
 	} else if (
 		status === 'CANT' ||
 		cant.indexOf(today) !== -1 ||
@@ -153,6 +141,18 @@ const returnButton = (
 				Clicked={status}
 				onClick={() => {
 					alert('자습을 신청하실 수 있는 시간이 아니에요');
+				}}
+				count={count}
+			>
+				자습불가
+			</S.StudyButton>
+		);
+	} else if (count === 50) {
+		return (
+			<S.StudyButton
+				Clicked={status}
+				onClick={() => {
+					alert('50명이 넘어 신청할 수 없어요');
 				}}
 				count={count}
 			>
