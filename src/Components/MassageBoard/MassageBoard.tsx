@@ -92,16 +92,6 @@ const returnButton = (
 				신청불가
 			</S.MassageButton>
 		);
-	} else if (count === 5) {
-		return (
-			<S.MassageButton
-				onClick={() => alert('5명이 넘어 신청할 수 없어요')}
-				status={status}
-				count={count}
-			>
-				신청불가
-			</S.MassageButton>
-		);
 	} else if (
 		status === 'CANT' ||
 		cant.indexOf(today) !== -1 ||
@@ -112,6 +102,16 @@ const returnButton = (
 		return (
 			<S.MassageButton
 				onClick={() => alert('안마의자 신청 가능한 시간이 아니에요')}
+				status={status}
+				count={count}
+			>
+				신청불가
+			</S.MassageButton>
+		);
+	} else if (count === 5) {
+		return (
+			<S.MassageButton
+				onClick={() => alert('5명이 넘어 신청할 수 없어요')}
 				status={status}
 				count={count}
 			>
