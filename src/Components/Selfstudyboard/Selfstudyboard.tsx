@@ -31,7 +31,15 @@ const studyInfo = async (setLogged, navigate) => {
 	}
 };
 
-const applyStudy = async (setInfo, count) => {
+const applyStudy = async (
+	setInfo: {
+		(
+			value: React.SetStateAction<{ count: string; selfStudy_status: string }>
+		): void;
+		(arg0: { count: any; selfStudy_status: string }): void;
+	},
+	count: number
+) => {
 	try {
 		await selfstudy.selfstudy();
 		setInfo({ count: count + 1, selfStudy_status: 'APPLIED' });
@@ -61,15 +69,34 @@ const returnRoomStatusNumber = (compareMax: number, compareMin: number) => {
 	}
 };
 
-const returnButton = (status: string, setInfo, count) => {
+const returnButton = (
+	status: string,
+	setInfo: React.Dispatch<
+		React.SetStateAction<{ count: string; selfStudy_status: string }>
+	>,
+	count: number
+) => {
 	let today: string = ManufactureDate('W');
 	let can = ['월', '화', '수', '목'];
 	let cant = ['금', '토', '일'];
 	let hours = new Date().getHours();
 	if (localStorage.getItem('role') === 'admin') {
 		return <p>사감 선생님은 자습신청을 하지 않으셔도 됩니다.</p>;
+	} else if (status === 'IMPOSSIBLE') {
+		return (
+			<S.StudyButton
+				Clicked={status}
+				count={count}
+				onClick={() => {
+					alert('자습신청이 금지되었어요');
+				}}
+			>
+				자습불가
+			</S.StudyButton>
+		);
 	} else if (
 		status === 'CAN' &&
+		count < 50 &&
 		can.indexOf(today) !== -1 &&
 		hours >= 20 &&
 		hours < 21
@@ -80,6 +107,7 @@ const returnButton = (status: string, setInfo, count) => {
 					applyStudy(setInfo, count);
 				}}
 				Clicked={status}
+				count={count}
 			>
 				자습신청
 			</S.StudyButton>
@@ -97,24 +125,25 @@ const returnButton = (status: string, setInfo, count) => {
 					} else alert('자습이 취소되지 않았어요');
 				}}
 				Clicked={status}
+				count={count}
 			>
 				자습취소
 			</S.StudyButton>
 		);
-	} else if (status === 'IMPOSSIBLE') {
+	} else if (count === 50) {
 		return (
 			<S.StudyButton
 				Clicked={status}
 				onClick={() => {
-					alert('자습신청이 금지되었어요');
+					alert('50명이 넘어 신청할 수 없어요');
 				}}
+				count={count}
 			>
 				자습불가
 			</S.StudyButton>
 		);
 	} else if (
 		status === 'CANT' ||
-		count === 50 ||
 		cant.indexOf(today) !== -1 ||
 		hours < 20 ||
 		hours >= 21
@@ -125,6 +154,7 @@ const returnButton = (status: string, setInfo, count) => {
 				onClick={() => {
 					alert('자습을 신청하실 수 있는 시간이 아니에요');
 				}}
+				count={count}
 			>
 				자습불가
 			</S.StudyButton>
@@ -135,6 +165,7 @@ const returnButton = (status: string, setInfo, count) => {
 			onClick={() => {
 				alert('자습을 신청하실 수 있는 시간이 아니에요');
 			}}
+			count={count}
 		>
 			자습불가
 		</S.StudyButton>;
@@ -151,7 +182,7 @@ const Selfstudyboard: React.FC = () => {
 		});
 	}, []);
 	return (
-		<S.Positioner Clicked={info.selfStudy_status}>
+		<S.Positioner Clicked={info.selfStudy_status} count={parseInt(info.count)}>
 			<S.StudyHeader>
 				<h2>자습신청</h2>
 				<div>

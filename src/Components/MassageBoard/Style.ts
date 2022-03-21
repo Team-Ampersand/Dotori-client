@@ -4,7 +4,7 @@ import { ManufactureDate } from 'Utils/ManufactureDate';
 type StyleProps = {
 	statusColor?: string;
 	status?: string;
-	count?: number;
+	count: number;
 };
 
 export const Positioner = styled.div<StyleProps>`
@@ -16,16 +16,20 @@ export const Positioner = styled.div<StyleProps>`
 		${(props) => {
 			if (
 				props.status === 'CAN' &&
+				props.count < 5 &&
 				new Date().getHours() >= 20 &&
 				new Date().getHours() < 21 &&
 				['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1 &&
 				new Date().getMinutes() >= 20
 			) {
 				return '#fff';
+			} else if (props.status === 'IMPOSSIBLE') {
+				return '#fc2c2c';
 			} else if (props.status === 'APPLIED') {
 				return '#617be3';
 			} else if (
 				props.status === 'CANT' ||
+				props.count === 5 ||
 				new Date().getHours() < 20 ||
 				new Date().getHours() >= 21 ||
 				['금', '토', '일'].indexOf(ManufactureDate('W')) !== -1 ||
@@ -106,16 +110,20 @@ export const MassageButton = styled.button<StyleProps>`
 	background-color: ${(props) => {
 		if (
 			props.status === 'CAN' &&
+			props.count < 5 &&
 			new Date().getHours() >= 20 &&
 			new Date().getHours() < 21 &&
 			['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1 &&
 			new Date().getMinutes() >= 20
 		) {
 			return '#617be3';
+		} else if (props.status === 'IMPOSSIBLE') {
+			return '#fc2c2c';
 		} else if (props.status === 'APPLIED') {
 			return '#fff';
 		} else if (
 			props.status === 'CANT' ||
+			props.count === 5 ||
 			new Date().getHours() < 20 ||
 			new Date().getHours() >= 21 ||
 			['금', '토', '일'].indexOf(ManufactureDate('W')) !== -1 ||
@@ -127,11 +135,14 @@ export const MassageButton = styled.button<StyleProps>`
 	color: ${(props) => {
 		if (
 			props.status === 'CAN' &&
+			props.count < 5 &&
 			new Date().getHours() >= 20 &&
 			new Date().getHours() < 21 &&
 			['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1 &&
 			new Date().getMinutes() >= 20
 		) {
+			return '#fff';
+		} else if (props.status === 'IMPOSSIBLE') {
 			return '#fff';
 		} else if (props.status === 'APPLIED') {
 			return '#617be3';
@@ -149,16 +160,20 @@ export const MassageButton = styled.button<StyleProps>`
 		${(props) => {
 			if (
 				props.status === 'CAN' &&
+				props.count < 5 &&
 				new Date().getHours() >= 20 &&
 				new Date().getHours() < 21 &&
 				['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1 &&
 				new Date().getMinutes() >= 20
 			) {
 				return '#fff';
+			} else if (props.status === 'IMPOSSIBLE') {
+				return '#fff';
 			} else if (props.status === 'APPLIED') {
 				return '#617be3';
 			} else if (
 				props.status === 'CANT' ||
+				props.count === 5 ||
 				new Date().getHours() < 20 ||
 				new Date().getHours() >= 21 ||
 				['금', '토', '일'].indexOf(ManufactureDate('W')) !== -1 ||

@@ -49,6 +49,7 @@ const returnButton = (
 		return <p>사감 선생님은 안마의자 신청을 하지 않으셔도 됩니다</p>;
 	} else if (
 		status === 'CAN' &&
+		count < 5 &&
 		can.indexOf(today) !== -1 &&
 		hours >= 20 &&
 		hours < 21 &&
@@ -60,6 +61,7 @@ const returnButton = (
 					applyMassage(setInfo, count);
 				}}
 				status={status}
+				count={count}
 			>
 				안마의자 신청
 			</S.MassageButton>
@@ -73,6 +75,7 @@ const returnButton = (
 					} else alert('안마의자 신청이 취소되지 않았어요');
 				}}
 				status={status}
+				count={count}
 			>
 				안마의자 취소
 			</S.MassageButton>
@@ -84,13 +87,23 @@ const returnButton = (
 					alert('안마의자 신청은 신청일로 부터 한달 뒤 신청 가능해요')
 				}
 				status={status}
+				count={count}
+			>
+				신청불가
+			</S.MassageButton>
+		);
+	} else if (count === 5) {
+		return (
+			<S.MassageButton
+				onClick={() => alert('5명이 넘어 신청할 수 없어요')}
+				status={status}
+				count={count}
 			>
 				신청불가
 			</S.MassageButton>
 		);
 	} else if (
 		status === 'CANT' ||
-		count === 5 ||
 		cant.indexOf(today) !== -1 ||
 		hours < 20 ||
 		hours >= 21 ||
@@ -100,6 +113,7 @@ const returnButton = (
 			<S.MassageButton
 				onClick={() => alert('안마의자 신청 가능한 시간이 아니에요')}
 				status={status}
+				count={count}
 			>
 				신청불가
 			</S.MassageButton>
@@ -108,6 +122,7 @@ const returnButton = (
 		<S.MassageButton
 			onClick={() => alert('안마의자 신청이 불가능해요')}
 			status={status}
+			count={count}
 		>
 			신청불가
 		</S.MassageButton>;
@@ -124,7 +139,7 @@ const MassageBoard: React.FC = () => {
 	}, []);
 
 	return (
-		<S.Positioner status={info.status}>
+		<S.Positioner status={info.status} count={parseInt(info.count)}>
 			<S.MassageHeader>
 				<h2>안마의자 신청</h2>
 				<div>
