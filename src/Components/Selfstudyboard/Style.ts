@@ -163,7 +163,7 @@ export const StudyButton = styled.button<StyleProps>`
 				['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1
 			) {
 				return '#fff';
-			} else if (props.Clicked) {
+			} else if (props.Clicked === 'IMPOSSIBLE') {
 				return '#fff';
 			} else if (props.Clicked === 'APPLIED') {
 				return '#617be3';
