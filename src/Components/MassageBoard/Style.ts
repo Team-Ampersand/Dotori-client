@@ -148,6 +148,7 @@ export const MassageButton = styled.button<StyleProps>`
 			return '#617be3';
 		} else if (
 			props.status === 'CANT' ||
+			props.count === 5 ||
 			new Date().getHours() < 20 ||
 			new Date().getHours() >= 21 ||
 			['금', '토', '일'].indexOf(ManufactureDate('W')) !== -1 ||
