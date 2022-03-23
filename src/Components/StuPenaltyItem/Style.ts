@@ -128,5 +128,3 @@ export const CheckBox = styled.input`
 	height: 30px;
 	background-color: rgba(15, 76, 129, 1);
 `;
-
-export const ImgSection = styled.img``;
