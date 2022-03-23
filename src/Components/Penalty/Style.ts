@@ -79,6 +79,7 @@ export const AuthorizationBoard = styled.ul`
 	background-color: #fff;
 	list-style: none;
 	overflow-y: scroll;
+	overflow-x: hidden;
 	border-radius: 20px;
 `;
 
@@ -111,7 +112,7 @@ export const SearchBox = styled.div`
 export const Search = styled.input`
 	display: flex;
 	width: 150px;
-	height: 70px;
+	height: 50px;
 	border: none;
 	border-radius: 20px;
 	::placeholder {

@@ -7,12 +7,14 @@ interface ModalProps {
 	modalState: boolean;
 	closeModal: () => void;
 	stuNum: Array<string>;
+	setCheckItems: any;
 }
 
 const GiveModal: React.FC<ModalProps> = ({
 	modalState,
 	closeModal,
 	stuNum,
+	setCheckItems,
 }) => {
 	const [givePenalty, setGivePenalty] = useState('');
 
@@ -32,9 +34,8 @@ const GiveModal: React.FC<ModalProps> = ({
 			return;
 		}
 		await givePenaltyUpdate();
-		await closeModal();
-		await localStorage.removeItem('stuNum');
-		await window.location.reload();
+		closeModal();
+		setCheckItems([]);
 	};
 
 	return modalState ? (
@@ -47,7 +48,6 @@ const GiveModal: React.FC<ModalProps> = ({
 							<S.Date
 								type="date"
 								onChange={(e) => setDate(e.target.value)}
-								// value={new Date().toISOString().slice(0, 10)}
 								required
 							/>
 						</S.DateWrapper>

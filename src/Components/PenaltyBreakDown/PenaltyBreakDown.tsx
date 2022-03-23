@@ -499,7 +499,7 @@ const PenaltyBreakDown: React.FC<PenaltyBreakDownProps> = ({
 						</S.LargeCategories>
 					</S.LargeCategoriesWrapper>
 					<S.SmallCategoriesWrapper>
-						{penaltyMessage === '규정위반 내역이 없습니다' ? (
+						{penaltyMessage === '규정위반 내역이 없습니다.' ? (
 							<S.None>규정위반 내역이 없습니다.</S.None>
 						) : (
 							SmallCatergories

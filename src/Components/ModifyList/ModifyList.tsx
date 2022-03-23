@@ -103,7 +103,7 @@ const ModifyList: React.FC<ModifyListProps> = ({
 			<S.ModifyWrapper>
 				<S.Header>규정위반 내역 수정</S.Header>
 				<S.Category>
-					{modifyMessage === '규정위반 내역이 없습니다' ? (
+					{modifyMessage === '규정위반 내역이 없습니다.' ? (
 						<S.CategoriesWrapper>
 							이 학생은 규정위반 내역이 없습니다.
 						</S.CategoriesWrapper>

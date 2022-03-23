@@ -9,6 +9,11 @@ export const Container = styled.li`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	svg{
+		width: 40px;
+		height: 40px;
+		margin-left: 20px;
+	}
 `;
 
 export const StuInfoWrapper = styled.div`
@@ -23,6 +28,7 @@ export const StuNumStyle = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin-right: 15px;
 `;
 
 export const NameStyle = styled.div`
@@ -34,12 +40,29 @@ export const NameStyle = styled.div`
 	border-left: 2px solid black;
 `;
 
-export const AuthorityStyle = styled.div`
-	font-size: 20px;
-	width: 200px;
+export const PenaltyStyle = styled.div`
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
+`;
+
+export const PenaltyIconWrapper = styled.div`
+	display:flex;
+	align-items: center;
+	.tooltiptext{
+		visibility: hidden;
+		background-color: black;
+		color: #fff;
+		text-align: center;
+		border-radius: 6px;
+		padding: 5px 10px;
+		position: absolute;
+		margin-top: 70px;
+		z-index: 1;
+	}
+	:hover .tooltiptext {
+	visibility: visible;
+	}
 `;
 
 export const EditBtn = styled.button`
@@ -105,3 +128,5 @@ export const CheckBox = styled.input`
 	height: 30px;
 	background-color: rgba(15, 76, 129, 1);
 `;
+
+export const ImgSection = styled.img``;

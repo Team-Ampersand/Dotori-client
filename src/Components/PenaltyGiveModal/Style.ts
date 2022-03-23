@@ -23,22 +23,22 @@ export const Overlay = styled.div`
 
 export const Container = styled.div`
 	position: relative;
-	border-radius: 40px;
+	border-radius: 20px;
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 	background-color: white;
-	width: 650px;
-	height: 450px;
+	width: 550px;
+	height: 350px;
 	display: flex;
 	justify-content: center;
+	align-items: center;
 `;
 
 export const PenaltyGiveContainer = styled.div`
 	width: 100%;
-	display: flex;
-	flex-direction: column;
+	height: 100%;
+	display: grid;
 	justify-content: center;
 	align-items: center;
-	margin: 30px;
 `;
 
 export const DateWrapper = styled.div`
@@ -46,37 +46,31 @@ export const DateWrapper = styled.div`
 	justify-content: flex-start;
 	align-items: flex-start;
 	width: 100%;
-	height: 60px;
 `;
 
 export const Date = styled.input``;
 
 export const List = styled.div`
 	width: 100%;
-	height: 40vh;
-	margin-top: 10vh;
 	display: grid;
 	justify-content: center;
 	align-items: flex-start;
 `;
 
 export const BtnWrapper = styled.div`
-	position: absolute;
-	bottom: 0;
-	margin-bottom: 45px;
 	width: 100%;
 	display: flex;
 	justify-content: center;
 `;
 
 export const GiveBtn = styled.button`
-	width: 80%;
+	width: 40vh;
 	height: 50px;
-	border-radius: 20px;
+	border-radius: 30px;
 	border: none;
 	background-color: #ff5252;
 	color: #ffffff;
-	font-size: 16px;
+	font-size: 14px;
 	font-weight: 700;
 	&:hover {
 		background-color: #fff;
@@ -86,8 +80,11 @@ export const GiveBtn = styled.button`
 `;
 
 export const PenaltySelect = styled.select`
-	width: 30vh;
-	height: 35px;
+	width: 40vh;
+	height: 40px;
 	text-align: center;
-	font-size: 24px;
+	font-size: 17px;
+	border-radius: 5px;
+	padding: 0 10px;
+	text-align: left;
 `;
