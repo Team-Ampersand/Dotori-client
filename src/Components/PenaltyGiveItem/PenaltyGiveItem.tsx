@@ -4,9 +4,10 @@ import PenaltyGiveModal from 'Components/PenaltyGiveModal/PenaltyGiveModal';
 
 interface Props {
 	checked: Array<string>;
+	setCheckItems: any;
 }
 
-const PenaltyGiveItem: React.FC<Props> = ({ checked }) => {
+const PenaltyGiveItem: React.FC<Props> = ({ checked, setCheckItems }) => {
 	const [editState, setEditState] = useState(false);
 	const GiveItemModal = useCallback(() => {
 		if (checked.length === 0) {
@@ -27,6 +28,7 @@ const PenaltyGiveItem: React.FC<Props> = ({ checked }) => {
 				modalState={editState}
 				closeModal={closeModal}
 				stuNum={checked}
+				setCheckItems={setCheckItems}
 			/>
 		</>
 	);

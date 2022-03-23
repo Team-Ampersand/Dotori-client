@@ -18,6 +18,16 @@ import Profile from './Profile';
 import Calander from './Calandar';
 import PenaltyIcon from './PenaltyIcon';
 import Massage from './Massage';
+import Ban from './Ban';
+import Unfulfill from './Unfulfill';
+import Time from './Time';
+import Damage from './Damage';
+import Sleep from './Sleep';
+import Hygiene from './Hygiene';
+import Affect from './Affection';
+import Entry from './Entry';
+import Learn from './Learn';
+import Outside from './Outside';
 
 export {
 	Home,
@@ -40,4 +50,14 @@ export {
 	PenaltyIcon,
 	Massage,
 	Logo,
+	Ban,
+	Unfulfill,
+	Time,
+	Damage,
+	Sleep,
+	Hygiene,
+	Affect,
+	Entry,
+	Learn,
+	Outside
 };

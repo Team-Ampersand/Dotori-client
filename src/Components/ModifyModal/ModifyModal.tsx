@@ -53,7 +53,7 @@ const ModifyModal: React.FC<ModalProps> = ({
 				<S.Container>
 					<ModifyList
 						modifyList={
-							modifyMessage === '규정위반 내역이 없습니다'
+							modifyMessage === '규정위반 내역이 없습니다.'
 								? [modifyMessage]
 								: modifyList
 						}

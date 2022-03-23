@@ -4,10 +4,12 @@ import * as S from './Style';
 import StuPenaltyItem from '../StuPenaltyItem/StuPenaltyItem';
 import penaltyInfo from 'Api/penaltyInfo';
 import PenaltyGiveItem from 'Components/PenaltyGiveItem/PenaltyGiveItem';
+
 interface studentList {
 	id: number;
 	memberName: string;
 	stuNum: string;
+	ruleBigViolationList: string[];
 }
 
 const Penalty: React.FC = () => {
@@ -18,12 +20,12 @@ const Penalty: React.FC = () => {
 	const [checkItems, setCheckItems] = useState<Array<string>>([]);
 
 	const getStuInfo = async () => {
-		const role = await localStorage.getItem('role');
+		const role = localStorage.getItem('role');
 		return await penaltyInfo.getStuInfo(role);
 	};
 
 	const getClassStuInfo = async () => {
-		const role = await localStorage.getItem('role');
+		const role = localStorage.getItem('role');
 		return await penaltyInfo.getClassStuInfo(
 			role,
 			parseInt(stuGrade + stuClass)
@@ -39,7 +41,7 @@ const Penalty: React.FC = () => {
 			} catch (e: any) {
 				throw Error(e);
 			}
-		} else return;
+		}
 	};
 
 	const nameSearch = async () => {
@@ -59,17 +61,6 @@ const Penalty: React.FC = () => {
 		}
 	};
 
-	useEffect(() => {
-		try {
-			getStuInfo().then((res) => {
-				res && setStudentList(res.data.list);
-			});
-			onSearch();
-		} catch (e: any) {
-			throw Error(e);
-		}
-	}, []);
-
 	const handleSingleCheck = useCallback(
 		(checked, id: string) => {
 			if (checked) {
@@ -80,6 +71,12 @@ const Penalty: React.FC = () => {
 		},
 		[checkItems]
 	);
+
+	useEffect(() => {
+		getStuInfo().then((res) => {
+			res && setStudentList(res.data.list);
+		});
+	}, []);
 
 	return (
 		<S.Positioner>
@@ -94,6 +91,7 @@ const Penalty: React.FC = () => {
 						<S.Option value="" selected disabled hidden>
 							선택
 						</S.Option>
+						<S.Option value="0">전체</S.Option>
 						<S.Option value="1">1</S.Option>
 						<S.Option value="2">2</S.Option>
 						<S.Option value="3">3</S.Option>
@@ -106,8 +104,9 @@ const Penalty: React.FC = () => {
 						value={stuClass}
 					>
 						<S.Option value="" selected disabled hidden>
-							선택
+							전체
 						</S.Option>
+						<S.Option value="">전체</S.Option>
 						<S.Option value="1">1</S.Option>
 						<S.Option value="2">2</S.Option>
 						<S.Option value="3">3</S.Option>
@@ -127,7 +126,7 @@ const Penalty: React.FC = () => {
 					/>
 					<S.Btn onClick={onSearch}>검색</S.Btn>
 				</S.SearchBox>
-				<PenaltyGiveItem checked={checkItems} />
+				<PenaltyGiveItem checked={checkItems} setCheckItems={setCheckItems} />
 				<S.SelectStu>
 					<S.SelectStus>선택된 학생</S.SelectStus>
 					{checkItems.join(', ')}
@@ -142,13 +141,14 @@ const Penalty: React.FC = () => {
 									<S.CheckBox
 										type="checkbox"
 										onChange={(e) =>
-											handleSingleCheck(e.target.checked, String(stu.stuNum))
+											handleSingleCheck(e.target.checked, stu.stuNum)
 										}
 									/>
 									<StuPenaltyItem
 										key={stu.id}
 										name={stu.memberName}
 										stuNum={stu.stuNum}
+										ruleBigViolationList={stu.ruleBigViolationList}
 									/>
 								</S.StuBoxContainer>
 							);
