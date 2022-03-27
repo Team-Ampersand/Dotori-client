@@ -1,5 +1,4 @@
 import { MemberController } from '../Utils/Libs/requestUrls';
-import RequestApi from '../Utils/Libs/requestApi';
 import { apiClient } from 'Utils/Libs/apiClient';
 
 export const signin = async (id: string, password: string) => {

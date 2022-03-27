@@ -1,6 +1,5 @@
 import { MassageController } from 'Utils/Libs/requestUrls';
 import { apiClient } from 'Utils/Libs/apiClient';
-import { rolelookup } from 'Utils/Libs/roleLookup';
 
 export const massage = async (role: string) => {
 	try {
