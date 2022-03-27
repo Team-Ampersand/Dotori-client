@@ -1,41 +1,31 @@
-import RequestApi from 'Utils/Libs/requestApi';
+import { apiClient } from 'Utils/Libs/apiClient';
 import { MusicController } from 'Utils/Libs/requestUrls';
 
-class Music {
-	music(musicUrl: string) {
-		try {
-			const data = {
-				musicUrl: musicUrl,
-			};
-			return RequestApi({
-				method: 'POST',
-				url: MusicController.music(localStorage.getItem('role')),
-				data: data,
-			});
-		} catch (e: any) {
-			throw new Error(e);
-		}
+export const music = async (role: string, musicUrl: string) => {
+	try {
+		const { data } = await apiClient.post(MusicController.music(role), {
+			musicUrl: musicUrl,
+		});
+		return { data };
+	} catch (e) {
+		alert(e);
 	}
-	deleteMusic(id: number) {
-		try {
-			return RequestApi({
-				method: 'DELETE',
-				url: MusicController.deleteMusic(localStorage.getItem('role'), id),
-			});
-		} catch (e: any) {
-			throw new Error(e);
-		}
-	}
-	dateMusic(date: any) {
-		try {
-			return RequestApi({
-				method: 'GET',
-				url: MusicController.dateMusic(localStorage.getItem('role'), date),
-			});
-		} catch (e: any) {
-			throw new Error(e);
-		}
-	}
-}
+};
 
-export default new Music();
+export const deleteMusic = async (role: string, id: number) => {
+	try {
+		const { data } = await apiClient.delete(
+			MusicController.deleteMusic(role, id)
+		);
+		return { data };
+	} catch (e) {
+		alert(e);
+	}
+};
+
+export const dateMusic = async (role: string, date: any) => {
+	try {
+		const { data } = await apiClient.get(MusicController.dateMusic(role, date));
+		return { data };
+	} catch (e) {}
+};

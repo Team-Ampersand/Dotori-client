@@ -1,46 +1,35 @@
 import { MassageController } from 'Utils/Libs/requestUrls';
-import RequestApi from 'Utils/Libs/requestApi';
-import { useNavigate } from 'react-router-dom';
+import { apiClient } from 'Utils/Libs/apiClient';
+import { rolelookup } from 'Utils/Libs/roleLookup';
 
-class Massage {
-	massage() {
-		try {
-			return RequestApi({
-				method: 'PUT',
-				url: MassageController.massage(localStorage.getItem('role')),
-			});
-		} catch (e: any) {
-			alert('이미 안마의자 신청을 하셨거나 할 수 없는 상태에요\n' + e);
-		}
+export const massage = async (role: string) => {
+	try {
+		const { data } = await apiClient.put(MassageController.massage(role));
+		return { data };
+	} catch (e) {
+		alert(e);
 	}
-	massageLookup() {
-		try {
-			return RequestApi({
-				method: 'GET',
-				url: MassageController.massage(localStorage.getItem('role')),
-			});
-		} catch (e: any) {
-			throw new Error(e);
-		}
-	}
-	massageInfo() {
-		try {
-			return RequestApi({
-				method: 'GET',
-				url: MassageController.massageInfo(localStorage.getItem('role')),
-			});
-		} catch (e: any) {}
-	}
-	cancelMassage() {
-		try {
-			return RequestApi({
-				method: 'PUT',
-				url: MassageController.cancelMassage(localStorage.getItem('role')),
-			});
-		} catch (e: any) {
-			alert('이미 안마의자 신청을 취소 하셨거나 할 수 없는 상태에요\n' + e);
-		}
-	}
-}
+};
 
-export default new Massage();
+export const massageLookup = async (role: string) => {
+	try {
+		const { data } = await apiClient.get(MassageController.massage(role));
+		return { data };
+	} catch (e) {
+		alert(e);
+	}
+};
+
+export const massageInfo = async (role: string) => {
+	try {
+		const { data } = await apiClient.get(MassageController.massageInfo(role));
+		return { data };
+	} catch (e) {}
+};
+
+export const cancelMassage = async (role: string) => {
+	try {
+		const { data } = await apiClient.put(MassageController.cancelMassage(role));
+		return { data };
+	} catch (e) {}
+};
