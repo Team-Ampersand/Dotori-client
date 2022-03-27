@@ -29,8 +29,8 @@ export const getRefresh = async (config: AxiosRequestConfig) => {
 				},
 			}
 		);
-		localStorage.setItem('Dotori_accessToken', data.NewAccessToken);
-		localStorage.setItem('Dotori_refreshToken', data.NewRefreshToken);
+		localStorage.setItem('Dotori_accessToken', data.data.NewAccessToken);
+		localStorage.setItem('Dotori_refreshToken', data.data.NewRefreshToken);
 	}
 	return config;
 };
