@@ -133,12 +133,7 @@ const returnButton = (
 				자습취소
 			</S.StudyButton>
 		);
-	} else if (
-		status === 'CANT' ||
-		cant.indexOf(today) !== -1 ||
-		hours < 20 ||
-		hours >= 21
-	) {
+	} else if (cant.indexOf(today) !== -1 || hours < 20 || hours >= 21) {
 		return (
 			<S.StudyButton
 				Clicked={status}
@@ -162,6 +157,16 @@ const returnButton = (
 				자습불가
 			</S.StudyButton>
 		);
+	} else if (status === 'CANT') {
+		<S.StudyButton
+			Clicked={status}
+			onClick={() => {
+				alert('자습 신청이 불가능 해요');
+			}}
+			count={count}
+		>
+			자습불가
+		</S.StudyButton>;
 	} else {
 		<S.StudyButton
 			Clicked={status}
