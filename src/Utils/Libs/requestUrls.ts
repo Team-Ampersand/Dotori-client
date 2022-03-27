@@ -117,6 +117,7 @@ export const SelfstudyController = {
 	classLookup: (classId: number, role: string | null) => {
 		return `/${role}/selfstudy/${classId}`;
 	},
+	//메인페이지 자습신청한 학생 카운트 및 상태
 	studyInfo: (role: string) => {
 		return `/${role}/selfstudy/info`;
 	},
