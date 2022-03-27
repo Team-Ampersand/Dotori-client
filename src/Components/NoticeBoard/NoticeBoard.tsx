@@ -22,23 +22,7 @@ const NoticeBoard: React.FC = () => {
 	const role = useRole();
 
 	const GetNotice = async () => {
-		try {
-			return await getNotice(role);
-		} catch (e: any) {
-			if (e.message === 'Request failed with status code 401') {
-				alert('로그아웃 되었어요. 다시 로그인 해주세요');
-
-				localStorage.removeItem('Dotori_accessToken');
-				localStorage.removeItem('Dotori_refreshToken');
-				localStorage.removeItem('role');
-
-				navigate('/signin');
-				setLogged(false);
-				window.location.reload();
-			} else {
-				alert(e);
-			}
-		}
+		return await getNotice(role);
 	};
 	const GetNoticeDetail = async (page: number) => {
 		try {
@@ -69,7 +53,7 @@ const NoticeBoard: React.FC = () => {
 				setBoard(response?.data.data.content)
 			);
 		}
-	}, [totalPage]);
+	}, [board]);
 
 	const [editState, setEditState] = useState(false);
 	const onToggle = () => {
@@ -84,8 +68,8 @@ const NoticeBoard: React.FC = () => {
 
 	const nextPageClick = async () => {
 		if (pageNumber < totalPage) {
-			await setTotalPage(totalPage - 1);
-			await setPageNumber(pageNumber + 1);
+			setTotalPage(totalPage - 1);
+			setPageNumber(pageNumber + 1);
 		} else {
 			alert('마지막 페이지에요');
 			return;
@@ -97,8 +81,8 @@ const NoticeBoard: React.FC = () => {
 			return;
 		}
 		if (pageNumber > 1) {
-			await setTotalPage(totalPage + 1);
-			await setPageNumber(pageNumber - 1);
+			setTotalPage(totalPage + 1);
+			setPageNumber(pageNumber - 1);
 		} else return;
 	};
 
