@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import * as S from './Style';
 import { useNavigate } from 'react-router-dom';
 import { useBeforeunload } from 'react-beforeunload';
-import notice from '../../Api/notice';
+import { noticeWrite } from '../../Api/notice';
+import { useRole } from 'Hooks/useRole';
 
 const NoticeWrite: React.FC = () => {
 	const [title, setTitle] = useState('');
@@ -10,6 +11,7 @@ const NoticeWrite: React.FC = () => {
 	const [postFile, setPostFile] = useState('');
 	const [fileImage, setFileImage] = useState('');
 	const navigate = useNavigate();
+	const role = useRole();
 
 	const getTitle = (e) => {
 		setTitle(e.target.value);
@@ -22,14 +24,14 @@ const NoticeWrite: React.FC = () => {
 		setPostFile(postFile);
 	}, [postFile]);
 
-	const saveFileImage = async (e) => {
-		await setPostFile(e.target.files[0]);
-		await setFileImage(URL.createObjectURL(e.target.files[0]));
+	const saveFileImage = (e) => {
+		setPostFile(e.target.files[0]);
+		setFileImage(URL.createObjectURL(e.target.files[0]));
 	};
-	const deleteFileImage = async () => {
-		await URL.revokeObjectURL(fileImage);
-		await setPostFile('');
-		await setFileImage('');
+	const deleteFileImage = () => {
+		URL.revokeObjectURL(fileImage);
+		setPostFile('');
+		setFileImage('');
 	};
 
 	const [shouldConfirmState, setShouldConfirmState] = useState(true);
@@ -38,11 +40,10 @@ const NoticeWrite: React.FC = () => {
 	};
 
 	const createNotice = async () => {
-		await confirm();
+		confirm();
 		try {
-			const role = await localStorage.getItem('role');
-			const res = await notice.noticeWrite(role, title, content, postFile);
-			await navigate('/notice');
+			const res = await noticeWrite(role, title, content, postFile);
+			navigate('/notice');
 			return res;
 		} catch (e: any) {
 			if (e.message === 'Error: Request failed with status code 400') {
@@ -94,9 +95,7 @@ const NoticeWrite: React.FC = () => {
 						</S.ImgContainer>
 					</S.ContentWrapper>
 					<S.BtnWrapper>
-						<S.DeleteBtn onClick={() => navigate('/notice')}>
-							취소
-						</S.DeleteBtn>
+						<S.DeleteBtn onClick={() => navigate('/notice')}>취소</S.DeleteBtn>
 						<S.Btn onClick={createNotice}>생성</S.Btn>
 					</S.BtnWrapper>
 				</S.Container>

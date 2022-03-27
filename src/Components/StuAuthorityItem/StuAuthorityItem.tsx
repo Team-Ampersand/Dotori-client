@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './Style';
 import { InfoUpdateModal } from 'Components';
-import stuInfo from 'Api/stuInfo';
+import { banSelfStudy, banCancelSelfStudy } from 'Api/stuInfo';
+import { useRole } from 'Hooks/useRole';
 
 interface StuAuthorityItemProps {
 	stuId: number;
@@ -46,24 +47,23 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
 	authority,
 	selfStudy,
 }) => {
+	const role = useRole();
 	useEffect(() => {
 		if (returnSelfStudyValue(selfStudy) === '신청 불가') {
 			setSelfStudyState(false);
 		}
 	}, []);
 
-	const banSelfStudy = async () => {
+	const BanSelfStudy = async () => {
 		if (window.confirm('자습을 금지하시겠어요?')) {
-			const role = await localStorage.getItem('role');
-			await stuInfo.banSelfStudy(role, stuId);
+			await banSelfStudy(role, stuId);
 			window.location.reload();
 		} else return;
 	};
 
-	const banCancelSelfStudy = async () => {
+	const BanCancelSelfStudy = async () => {
 		if (window.confirm('자습 금지를 취소하시겠어요?')) {
-			const role = await localStorage.getItem('role');
-			await stuInfo.banCancelSelfStudy(role, stuId);
+			await banCancelSelfStudy(role, stuId);
 			window.location.reload();
 		} else return;
 	};
@@ -88,9 +88,9 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
 				</S.StuInfoWrapper>
 				<S.BtnWrapper>
 					{selfStudyState ? (
-						<S.BanBtn onClick={banSelfStudy}>자습 금지</S.BanBtn>
+						<S.BanBtn onClick={BanSelfStudy}>자습 금지</S.BanBtn>
 					) : (
-						<S.BanCancelBtn onClick={banCancelSelfStudy}>
+						<S.BanCancelBtn onClick={BanCancelSelfStudy}>
 							금지 취소
 						</S.BanCancelBtn>
 					)}
@@ -103,7 +103,6 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
 					closeModal={closeModal}
 					stuNum={stuNum}
 					memberName={memberName}
-					role={returnRoleValue(authority)}
 					stuId={stuId}
 				/>
 			</S.Container>

@@ -1,4 +1,5 @@
-import penaltyInfo from 'Api/penaltyInfo';
+import { deletePenaltyInfo } from 'Api/penaltyInfo';
+import { useRole } from 'Hooks/useRole';
 import React from 'react';
 import * as S from './Style';
 
@@ -73,14 +74,15 @@ const returnPenaltyValue = (penaltyType: string) => {
 
 const ModifyList: React.FC<ModifyListProps> = ({
 	modifyList,
-	role,
+
 	modifyMessage,
 }) => {
+	const role = useRole();
 	const ModifyPenaltyList =
 		modifyList &&
 		modifyList.map((item) => {
 			const deletePenalty = async (PenaltyId) => {
-				return await penaltyInfo.deletePenaltyInfo(role, PenaltyId);
+				return await deletePenaltyInfo(role, PenaltyId);
 			};
 			const onDelete = async () => {
 				if (window.confirm('정말 삭제하시겠어요?')) {

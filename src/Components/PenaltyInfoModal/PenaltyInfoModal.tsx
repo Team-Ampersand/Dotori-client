@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './Style';
-import penaltyInfo from '../../Api/penaltyInfo';
+import { getPenaltyMainInfo } from '../../Api/penaltyInfo';
 import * as I from '../../Assets/Svg';
+import { useRole } from 'Hooks/useRole';
 
 interface PenaltyInfoModalProps {
 	modalState: boolean;
@@ -83,16 +84,17 @@ const PenaltyInfoModal: React.FC<PenaltyInfoModalProps> = ({
 }) => {
 	const [penalty, setPenalty] = useState<Array<penalty>>();
 	const [message, setMessage] = useState('');
+	const role = useRole();
 
 	const PenaltyMainInfo = async () => {
-		const { data } = await penaltyInfo.getPenaltyMainInfo();
+		const data = await getPenaltyMainInfo(role);
 		return data;
 	};
 
 	useEffect(() => {
 		PenaltyMainInfo().then((res) => {
-			setPenalty(res.data);
-			setMessage(res.message);
+			setPenalty(res?.data);
+			setMessage(res?.data.message);
 		});
 	}, []);
 

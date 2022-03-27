@@ -6,7 +6,7 @@ interface SidebarItemArrayProps {
 	router: string;
 	menuIcon: string;
 	menuTitle: string;
-	show: boolean;
+	show: string[];
 }
 
 //** Props */

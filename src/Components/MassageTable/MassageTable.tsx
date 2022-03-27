@@ -1,6 +1,7 @@
-import massage from 'Api/massage';
+import { massageLookup } from 'Api/massage';
 import Logo from 'Assets/Svg/Logo';
 import { HasToken } from 'Atoms';
+import { useRole } from 'Hooks/useRole';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
@@ -28,10 +29,11 @@ const MassageTable = () => {
 	const [list, setList] = useState<ListType[]>();
 	const navigate = useNavigate();
 	const setLogged = useSetRecoilState(HasToken);
+	const role = useRole();
 
 	const returnUserObj = async () => {
 		try {
-			const res = await massage.massageLookup();
+			const res = await massageLookup(role);
 			return res;
 		} catch (e: any) {
 			if (e.message === 'Request failed with status code 401') {

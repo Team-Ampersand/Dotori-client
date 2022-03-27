@@ -1,12 +1,13 @@
 import React from 'react';
 import * as S from './Style';
 import { useRouterNameChangeMenuImage } from '../../Utils/ChangeImage';
+import { useRole } from 'Hooks/useRole';
 
 interface SidebarItemProps {
 	router: string;
 	menuIcon: string;
 	menuTitle: string;
-	show: boolean;
+	show: string[];
 	currentRouter: string;
 	setCurrnentRouter: (currentRouter: string) => void;
 }
@@ -19,12 +20,13 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
 	currentRouter,
 	setCurrnentRouter,
 }) => {
+	const role = useRole();
 	return (
 		<S.LinkWrapper
 			to={router}
 			onClick={() => setCurrnentRouter(router)}
 			sidebarColor={currentRouter === router}
-			show={show}
+			show={show.includes(role)}
 		>
 			{useRouterNameChangeMenuImage(menuIcon)}
 			<S.MenuTitle>{menuTitle}</S.MenuTitle>

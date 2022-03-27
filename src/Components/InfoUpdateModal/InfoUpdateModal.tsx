@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import * as S from './Style';
-import stuInfo from '../../Api/stuInfo';
+import { updateStuName, updateStuNum, updateStuRole } from '../../Api/stuInfo';
+import { useRole } from 'Hooks/useRole';
 
 interface ModalProps {
 	modalState: boolean;
 	closeModal: () => void;
 	stuNum: string;
 	memberName: string;
-	role: string;
 	stuId: number;
 }
 
@@ -16,10 +16,10 @@ const InfoUpdateModal: React.FC<ModalProps> = ({
 	closeModal,
 	stuNum,
 	memberName,
-	role,
 	stuId,
 }) => {
-	const [updateStuNum, setUpdateStuNum] = useState(stuNum);
+	const role = useRole();
+	const [updateStuId, setUpdateStuId] = useState(stuNum);
 	const [updateName, setUpdateName] = useState(memberName);
 	const [updateRole, setUpdateRole] = useState(role);
 
@@ -35,23 +35,20 @@ const InfoUpdateModal: React.FC<ModalProps> = ({
 	};
 
 	const stuNumUpdate = async () => {
-		const role = await localStorage.getItem('role');
-		await stuInfo.updateStuNum(role, stuId, updateStuNum);
+		await updateStuNum(role, stuId, updateStuId);
 		alert('학번이 변경되었어요');
 	};
 	const stuNameUpdate = async () => {
-		const role = await localStorage.getItem('role');
-		await stuInfo.updateStuName(role, stuId, updateName);
+		await updateStuName(role, stuId, updateName);
 		alert('이름이 변경되었어요');
 	};
 	const stuRoleUpdate = async () => {
-		const role = await localStorage.getItem('role');
-		await stuInfo.updateStuRole(role, stuId, returnRoleValue(updateRole));
+		await updateStuRole(role, stuId, returnRoleValue(updateRole));
 		alert('권한이 변경되었어요');
 	};
 
 	const onCancle = () => {
-		setUpdateStuNum(stuNum);
+		setUpdateStuId(stuNum);
 		setUpdateName(memberName);
 		setUpdateRole(role);
 		closeModal();
@@ -70,8 +67,8 @@ const InfoUpdateModal: React.FC<ModalProps> = ({
 						<S.ChangerItem>
 							<S.StuNumInput
 								type="number"
-								value={updateStuNum}
-								onChange={(e) => setUpdateStuNum(e.target.value)}
+								value={updateStuId}
+								onChange={(e) => setUpdateStuId(e.target.value)}
 							/>
 							<S.UpdateBtn onClick={stuNumUpdate}>학번 수정</S.UpdateBtn>
 						</S.ChangerItem>

@@ -1,13 +1,11 @@
 import { RoleController } from '../Utils/Libs/requestUrls';
-import RequestApi from 'Utils/Libs/requestApi';
+import { apiClient } from 'Utils/Libs/apiClient';
 
-class Role {
-	role() {
-		return RequestApi({
-			method: 'GET',
-			url: RoleController.role(),
-		});
+export const role = async () => {
+	try {
+		const { data } = await apiClient.get(RoleController.role());
+		return { data };
+	} catch (e) {
+		alert(e);
 	}
-}
-
-export default new Role();
+};

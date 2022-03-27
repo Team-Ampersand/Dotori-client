@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import React, { useState } from 'react';
 import * as S from './Style';
-import penaltyInfo from 'Api/penaltyInfo';
+import { updatePenaltyInfo } from 'Api/penaltyInfo';
+import { useRole } from 'Hooks/useRole';
 
 interface ModalProps {
 	modalState: boolean;
@@ -17,9 +18,10 @@ const GiveModal: React.FC<ModalProps> = ({
 	setCheckItems,
 }) => {
 	const [givePenalty, setGivePenalty] = useState('');
+	const role = useRole();
 
 	const givePenaltyUpdate = async () => {
-		await penaltyInfo.updatePenaltyInfo(date, givePenalty, stuNum);
+		await updatePenaltyInfo(role, date, givePenalty, stuNum);
 		alert('규정위반 내역을 추가했어요');
 	};
 

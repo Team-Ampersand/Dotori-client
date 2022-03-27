@@ -3,9 +3,10 @@ import * as S from './Style';
 import * as I from '../../Assets/Svg';
 import NoticeBoardItem from '../NoticeBoardItem/NoticeBoardItem';
 import { Link, useNavigate } from 'react-router-dom';
-import notice from 'Api/notice';
+import { getNotice, getNoticeDetail } from 'Api/notice';
 import { useSetRecoilState } from 'recoil';
 import { HasToken } from 'Atoms';
+import { useRole } from 'Hooks/useRole';
 
 interface board {
 	id: number;
@@ -18,41 +19,17 @@ const NoticeBoard: React.FC = () => {
 	const [board, setBoard] = useState<board[]>([]);
 	const setLogged = useSetRecoilState(HasToken);
 	const navigate = useNavigate();
+	const role = useRole();
 
-	const getNotice = async () => {
-		try {
-			const role = localStorage.getItem('role');
-			return await notice.getNotice(role);
-		} catch (e: any) {
-			if (e.message === 'Request failed with status code 401') {
-				alert('로그아웃 되었어요. 다시 로그인 해주세요');
-
-				localStorage.removeItem('Dotori_accessToken');
-				localStorage.removeItem('Dotori_refreshToken');
-				localStorage.removeItem('role');
-
-				navigate('/signin');
-				setLogged(false);
-				window.location.reload();
-			} else {
-				alert(e);
-			}
-		}
+	const GetNotice = async () => {
+		return await getNotice(role);
 	};
-	const getNoticeDetail = async (page: number) => {
-		const role = localStorage.getItem('role');
+	const GetNoticeDetail = async (page: number) => {
 		try {
-			return await notice.getNoticeDetail(role, page);
+			return await getNoticeDetail(role, page);
 		} catch (e: any) {
 			alert(e);
 		}
-	};
-
-	const [role, setRole] = useState<string | null>('');
-
-	const settingRole = async () => {
-		const role = localStorage.getItem('role');
-		setRole(role);
 	};
 
 	const checkMember = () => {
@@ -64,20 +41,19 @@ const NoticeBoard: React.FC = () => {
 	const [totalPage, setTotalPage] = useState(0);
 
 	useEffect(() => {
-		getNotice().then(async (res) => {
+		GetNotice().then(async (res) => {
 			(await res?.data.data) && setTotalPage(res?.data.data.totalPages);
 		});
 	}, []);
 
 	useEffect(() => {
-		settingRole();
 		setTotalPage(totalPage);
 		if (totalPage > 0) {
-			getNoticeDetail(totalPage - 1).then((response) =>
+			GetNoticeDetail(totalPage - 1).then((response) =>
 				setBoard(response?.data.data.content)
 			);
 		}
-	}, [totalPage]);
+	}, [board]);
 
 	const [editState, setEditState] = useState(false);
 	const onToggle = () => {
@@ -92,8 +68,8 @@ const NoticeBoard: React.FC = () => {
 
 	const nextPageClick = async () => {
 		if (pageNumber < totalPage) {
-			await setTotalPage(totalPage - 1);
-			await setPageNumber(pageNumber + 1);
+			setTotalPage(totalPage - 1);
+			setPageNumber(pageNumber + 1);
 		} else {
 			alert('마지막 페이지에요');
 			return;
@@ -105,8 +81,8 @@ const NoticeBoard: React.FC = () => {
 			return;
 		}
 		if (pageNumber > 1) {
-			await setTotalPage(totalPage + 1);
-			await setPageNumber(pageNumber - 1);
+			setTotalPage(totalPage + 1);
+			setPageNumber(pageNumber - 1);
 		} else return;
 	};
 
@@ -133,7 +109,6 @@ const NoticeBoard: React.FC = () => {
 									title={noticeItem.title}
 									createdDate={noticeItem.createdDate}
 									editState={editState}
-									role={role}
 								/>
 							))}
 					<S.PageBtnWrapper>

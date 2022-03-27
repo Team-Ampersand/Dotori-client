@@ -1,17 +1,11 @@
 import { RefreshTokenController } from 'Utils/Libs/requestUrls';
-import RequestApi from 'Utils/Libs/requestApi';
+import { apiClient } from 'Utils/Libs/apiClient';
 
-class Refresh {
-	refresh() {
-		try {
-			return RequestApi({
-				method: 'GET',
-				url: RefreshTokenController.refresh(),
-			});
-		} catch (e: any) {
-			throw new Error(e);
-		}
+export const refresh = async () => {
+	try {
+		const { data } = await apiClient.get(RefreshTokenController.refresh());
+		return { data };
+	} catch (e) {
+		alert(e);
 	}
-}
-
-export default new Refresh();
+};

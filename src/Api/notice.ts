@@ -1,91 +1,94 @@
 import { noticeController } from 'Utils/Libs/requestUrls';
-import RequestApi from 'Utils/Libs/requestApi';
+import { apiClient } from 'Utils/Libs/apiClient';
 
-class notice {
-	getNotice(role: string | null) {
-		try {
-			return RequestApi({
-				method: 'get',
-				url: noticeController.getNotice(role),
-			});
-		} catch (e: any) {
-			throw new Error(e);
-		}
+export const getNotice = async (role: string) => {
+	try {
+		const { data } = await apiClient.get(noticeController.getNotice(role));
+		return { data };
+	} catch (e) {
+		alert(e);
 	}
-	getNoticeDetail(role: string | null, page: number) {
-		try {
-			return RequestApi({
-				method: 'get',
-				url: noticeController.getNoticeDetail(role, page),
-			});
-		} catch (e: any) {
-			throw new Error(e);
-		}
+};
+
+export const getNoticeDetail = async (role: string, page: number) => {
+	try {
+		const { data } = await apiClient.get(
+			noticeController.getNoticeDetail(role, page)
+		);
+		return { data };
+	} catch (e) {
+		alert(e);
 	}
-	getNoticeItem(role: string | null, boardId: number) {
-		try {
-			return RequestApi({
-				method: 'get',
-				url: noticeController.getNoticeItem(role, boardId),
-			});
-		} catch (e: any) {
-			throw new Error(e);
-		}
+};
+
+export const getNoticeItem = async (role: string, boardId: number) => {
+	try {
+		const { data } = await apiClient.get(
+			noticeController.getNoticeItem(role, boardId)
+		);
+		return { data };
+	} catch (e: any) {
+		alert(e);
 	}
-	noticeWrite(
-		role: string | null,
-		title: string,
-		content: string,
-		img: string
-	) {
-		try {
-			let formData = new FormData();
-			formData.append('files', img);
-			let boardDto = {
+};
+
+export const noticeWrite = async (
+	role: string,
+	title: string,
+	content: string,
+	img: string
+) => {
+	try {
+		let formData = new FormData();
+		formData.append('files', img);
+		let boardDto = {
+			title: title,
+			content: content,
+		};
+		formData.append(
+			'boardDto',
+			new Blob([JSON.stringify(boardDto)], { type: 'application/json' })
+		);
+		const { data } = await apiClient.post(
+			noticeController.noticeWrite(role),
+			{
+				formData: formData,
+			},
+			{ headers: { 'Content-Type': 'multipart/form-data' } }
+		);
+		return { data };
+	} catch (e: any) {
+		alert(e);
+	}
+};
+
+export const noticeDelete = async (role: string | null, boardId: number) => {
+	try {
+		const { data } = await apiClient.delete(
+			noticeController.noticeDelete(role, boardId)
+		);
+		return { data };
+	} catch (e: any) {
+		alert(e);
+	}
+};
+
+export const noticeUpdate = async (
+	role: string | null,
+	boardId: number,
+	title,
+	content
+) => {
+	try {
+		const { data } = await apiClient.put(
+			noticeController.noticeUpdate(role, boardId),
+			{
 				title: title,
 				content: content,
-			};
-			formData.append(
-				'boardDto',
-				new Blob([JSON.stringify(boardDto)], { type: 'application/json' })
-			);
-			return RequestApi({
-				method: 'POST',
-				url: noticeController.noticeWrite(role),
-				data: formData,
-				headers: {
-					'Content-Type': 'multipart/form-data',
-				},
-			});
-		} catch (e: any) {
-			throw new Error(e);
-		}
+			}
+		);
+		return { data };
+	} catch (e: any) {
+		alert(e);
 	}
-	noticeDelete(role: string | null, boardId: number) {
-		try {
-			return RequestApi({
-				method: 'DELETE',
-				url: noticeController.noticeDelete(role, boardId),
-			});
-		} catch (e: any) {
-			throw new Error(e);
-		}
-	}
-	noticeUpdate(role: string | null, boardId: number, title, content) {
-		try {
-			const data = {
-				title: title,
-				content: content,
-			};
-			return RequestApi({
-				method: 'PUT',
-				url: noticeController.noticeUpdate(role, boardId),
-				data: data,
-			});
-		} catch (e: any) {
-			throw new Error(e);
-		}
-	}
-}
-
-export default new notice();
+};
