@@ -2,18 +2,19 @@ import React, { useEffect, useState } from 'react';
 import * as S from './Style';
 import { ManufactureDate } from '../../Utils/ManufactureDate';
 import { Link, useNavigate } from 'react-router-dom';
-import selfstudy from 'Api/selfStudy';
+import { studyInfo, selfStudy, cancelStudy } from 'Api/selfStudy';
 import { useSetRecoilState } from 'recoil';
 import { HasToken } from 'Atoms';
+import { useRole } from 'Hooks/useRole';
 
 const Room = {
 	currentRoom: 13,
 	roomMax: 50,
 };
 
-const studyInfo = async (setLogged, navigate) => {
+const StudyInfo = async (setLogged, navigate, role: string) => {
 	try {
-		const res = await selfstudy.studyinfo();
+		const res = await studyInfo(role);
 		return res;
 	} catch (e: any) {
 		if (e.message === 'Request failed with status code 401') {
@@ -38,10 +39,11 @@ const applyStudy = async (
 		): void;
 		(arg0: { count: any; selfStudy_status: string }): void;
 	},
-	count: number
+	count: number,
+	role: string
 ) => {
 	try {
-		await selfstudy.selfstudy();
+		await selfStudy(role);
 		setInfo({ count: count + 1, selfStudy_status: 'APPLIED' });
 		alert('자습 신청이 완료 되었어요');
 	} catch (e) {
@@ -49,9 +51,9 @@ const applyStudy = async (
 	}
 };
 
-const cancleStudy = async (setInfo, count) => {
+const cancleStudy = async (setInfo, count, role) => {
 	try {
-		await selfstudy.cancelstudy();
+		await cancelStudy(role);
 		setInfo({ count: count - 1, selfStudy_status: 'CANT' });
 		alert('자습 신청이 취소 되었어요');
 	} catch (e) {
@@ -74,7 +76,8 @@ const returnButton = (
 	setInfo: React.Dispatch<
 		React.SetStateAction<{ count: string; selfStudy_status: string }>
 	>,
-	count: number
+	count: number,
+	role: string
 ) => {
 	let today: string = ManufactureDate('W');
 	let can = ['월', '화', '수', '목'];
@@ -104,7 +107,7 @@ const returnButton = (
 		return (
 			<S.StudyButton
 				onClick={() => {
-					applyStudy(setInfo, count);
+					applyStudy(setInfo, count, role);
 				}}
 				Clicked={status}
 				count={count}
@@ -121,7 +124,7 @@ const returnButton = (
 							'자습을 취소 하시겠어요? 오늘 하루동안 다시 신청이 불가능 해요'
 						)
 					) {
-						cancleStudy(setInfo, count);
+						cancleStudy(setInfo, count, role);
 					} else alert('자습이 취소되지 않았어요');
 				}}
 				Clicked={status}
@@ -176,8 +179,10 @@ const Selfstudyboard: React.FC = () => {
 	const [info, setInfo] = useState({ count: '0', selfStudy_status: '' });
 	const setLogged = useSetRecoilState(HasToken);
 	const navigate = useNavigate();
+	const role = useRole();
+
 	useEffect(() => {
-		studyInfo(setLogged, navigate).then((res) => {
+		StudyInfo(setLogged, navigate, role).then((res) => {
 			setInfo(res?.data.data);
 		});
 	}, []);
@@ -209,7 +214,12 @@ const Selfstudyboard: React.FC = () => {
 						count={parseInt(info.count)}
 					/>
 				</S.PointProgress>
-				{returnButton(info.selfStudy_status, setInfo, parseInt(info.count))}
+				{returnButton(
+					info.selfStudy_status,
+					setInfo,
+					parseInt(info.count),
+					role
+				)}
 			</S.StudyContent>
 		</S.Positioner>
 	);

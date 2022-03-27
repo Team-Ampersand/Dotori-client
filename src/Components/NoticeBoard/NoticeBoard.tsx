@@ -3,9 +3,10 @@ import * as S from './Style';
 import * as I from '../../Assets/Svg';
 import NoticeBoardItem from '../NoticeBoardItem/NoticeBoardItem';
 import { Link, useNavigate } from 'react-router-dom';
-import notice from 'Api/notice';
+import { getNotice, getNoticeDetail } from 'Api/notice';
 import { useSetRecoilState } from 'recoil';
 import { HasToken } from 'Atoms';
+import { useRole } from 'Hooks/useRole';
 
 interface board {
 	id: number;
@@ -18,11 +19,11 @@ const NoticeBoard: React.FC = () => {
 	const [board, setBoard] = useState<board[]>([]);
 	const setLogged = useSetRecoilState(HasToken);
 	const navigate = useNavigate();
+	const role = useRole();
 
-	const getNotice = async () => {
+	const GetNotice = async () => {
 		try {
-			const role = localStorage.getItem('role');
-			return await notice.getNotice(role);
+			return await getNotice(role);
 		} catch (e: any) {
 			if (e.message === 'Request failed with status code 401') {
 				alert('로그아웃 되었어요. 다시 로그인 해주세요');
@@ -39,20 +40,12 @@ const NoticeBoard: React.FC = () => {
 			}
 		}
 	};
-	const getNoticeDetail = async (page: number) => {
-		const role = localStorage.getItem('role');
+	const GetNoticeDetail = async (page: number) => {
 		try {
-			return await notice.getNoticeDetail(role, page);
+			return await getNoticeDetail(role, page);
 		} catch (e: any) {
 			alert(e);
 		}
-	};
-
-	const [role, setRole] = useState<string | null>('');
-
-	const settingRole = async () => {
-		const role = localStorage.getItem('role');
-		setRole(role);
 	};
 
 	const checkMember = () => {
@@ -64,16 +57,15 @@ const NoticeBoard: React.FC = () => {
 	const [totalPage, setTotalPage] = useState(0);
 
 	useEffect(() => {
-		getNotice().then(async (res) => {
+		GetNotice().then(async (res) => {
 			(await res?.data.data) && setTotalPage(res?.data.data.totalPages);
 		});
 	}, []);
 
 	useEffect(() => {
-		settingRole();
 		setTotalPage(totalPage);
 		if (totalPage > 0) {
-			getNoticeDetail(totalPage - 1).then((response) =>
+			GetNoticeDetail(totalPage - 1).then((response) =>
 				setBoard(response?.data.data.content)
 			);
 		}
@@ -133,7 +125,6 @@ const NoticeBoard: React.FC = () => {
 									title={noticeItem.title}
 									createdDate={noticeItem.createdDate}
 									editState={editState}
-									role={role}
 								/>
 							))}
 					<S.PageBtnWrapper>

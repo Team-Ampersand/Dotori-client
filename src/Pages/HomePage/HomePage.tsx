@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as S from './Style';
 import { PageTemplate } from '..';
 import {

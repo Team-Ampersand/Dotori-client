@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import * as S from './Style';
-import penaltyInfo from '../../Api/penaltyInfo';
+import { getPenaltyInfo } from '../../Api/penaltyInfo';
 import PenaltyBreakDown from 'Components/PenaltyBreakDown/PenaltyBreakDown';
+import { useRole } from 'Hooks/useRole';
 
 interface ModalProps {
 	modalState: boolean;
@@ -16,14 +17,14 @@ const PenaltyModal: React.FC<ModalProps> = ({
 }) => {
 	const [penaltyList, setPenaltyList] = useState();
 	const [penaltyMessage, setPenaltyMessage] = useState();
+	const role = useRole();
 
-	const getPenaltyInfo = async () => {
-		const role = await localStorage.getItem('role');
-		return await penaltyInfo.getPenaltyInfo(role, stuNum);
+	const GetPenaltyInfo = async () => {
+		return await getPenaltyInfo(role, stuNum);
 	};
 
 	useEffect(() => {
-		getPenaltyInfo().then((res) => {
+		GetPenaltyInfo().then((res) => {
 			res && setPenaltyList(res.data.data);
 			res && setPenaltyMessage(res.data.message);
 		});

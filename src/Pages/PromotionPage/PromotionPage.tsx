@@ -3,14 +3,14 @@ import Logo from 'Assets/Svg/Logo';
 import { HasToken } from 'Atoms';
 import { useSetRecoilState } from 'recoil';
 import React from 'react';
-import member from 'Api/member';
+import { logout } from 'Api/member';
 import isLogin from 'Utils/Libs/isLogin';
 import { ManufactureDate } from 'Utils/ManufactureDate';
 
 const TryLogout = (setLogged) => {
 	const onLogout = async () => {
 		try {
-			await member.logout();
+			await logout();
 			localStorage.removeItem('Dotori_accessToken');
 			localStorage.removeItem('Dotori_refreshToken');
 			localStorage.removeItem('role');
@@ -31,7 +31,6 @@ const TryLogout = (setLogged) => {
 				window.location.reload();
 			}
 		}
-
 	};
 	return onLogout;
 };

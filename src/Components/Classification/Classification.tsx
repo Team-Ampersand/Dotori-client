@@ -1,40 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as S from './Style';
-import selfstudy from 'Api/selfStudy';
-import { useSetRecoilState } from 'recoil';
-import { list } from 'Atoms';
 
-const Classification: React.FC = () => {
-	const [stuGrade, setStuGrade] = useState('');
-	const [stuClass, setStuClass] = useState('');
-	const setClassLookup = useSetRecoilState(list);
+interface ClassificationProps {
+	onSubmit: () => void;
+	stuGrade: string;
+	stuClass: string;
+	setStuGrade: any;
+	setStuClass: any;
+}
 
-	const onSubmit = async () => {
-		try {
-			if (window.location.pathname === '/selfstudy') {
-				if (stuGrade + stuClass === '00') {
-					const res = await selfstudy.lookupstudy();
-					setClassLookup(res.data.data);
-				} else if (stuGrade + stuClass === '') {
-					alert('아무것도 선택하지 않으셨어요');
-				} else if (stuGrade === '' || stuGrade === '0') {
-					alert('학년을 선택해주세요');
-				} else if (stuClass === '' || stuClass === '0') {
-					alert('반을 선택해주세요');
-				} else {
-					const res = await selfstudy.classlookup(stuGrade + stuClass);
-					setClassLookup(res.data.data);
-				}
-			}
-		} catch (e: any) {
-			alert(
-				e.message === 'Request failed with status code 404'
-					? stuGrade + '학년' + stuClass + '반에는 신청한 학생이 없어요'
-					: e
-			);
-		}
-	};
-
+const Classification: React.FC<ClassificationProps> = ({
+	onSubmit,
+	stuGrade,
+	stuClass,
+	setStuGrade,
+	setStuClass,
+}) => {
 	const gradeSelect = (e) => {
 		setStuGrade(e.target.value);
 	};

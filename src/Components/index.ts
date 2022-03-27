@@ -26,6 +26,7 @@ import Penalty from './Penalty/Penalty';
 import MassageBoard from 'Components/MassageBoard/MassageBoard';
 import MassageTable from 'Components/MassageTable/MassageTable';
 import PenaltyInfoModal from 'Components/PenaltyInfoModal/PenaltyInfoModal';
+import StuAuthorityItem from 'Components/StuAuthorityItem/StuAuthorityItem';
 
 export {
 	Sidebar,
@@ -56,4 +57,5 @@ export {
 	MassageBoard,
 	MassageTable,
 	PenaltyInfoModal,
+	StuAuthorityItem,
 };

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import * as S from './Style';
-import StuAuthorityItem from 'Components/StuAuthorityItem/StuAuthorityItem';
-import stuInfo from 'Api/stuInfo';
+import { getClassStuInfo, searchName } from 'Api/stuInfo';
+import { useRole } from 'Hooks/useRole';
+import { Classification, StuAuthorityItem } from 'Components';
 
 interface studentList {
 	id: number;
@@ -13,10 +14,10 @@ interface studentList {
 
 const Authorzation: React.FC = () => {
 	const [studentList, setStudentList] = useState<studentList[]>([]);
+	const role = useRole();
 
-	const getClassStuInfo = async () => {
-		const role = await localStorage.getItem('role');
-		return await stuInfo.getClassStuInfo(role, parseInt(stuGrade + stuClass));
+	const GetClassStuInfo = async () => {
+		return await getClassStuInfo(role, parseInt(stuGrade + stuClass));
 	};
 
 	const [stuGrade, setStuGrade] = useState<string>('');
@@ -26,7 +27,7 @@ const Authorzation: React.FC = () => {
 	const onSubmit = () => {
 		if (parseInt(stuGrade + stuClass) > 0) {
 			try {
-				getClassStuInfo().then((res) => {
+				GetClassStuInfo().then((res) => {
 					res && setStudentList(res.data.data);
 				});
 			} catch (e: any) {
@@ -36,8 +37,7 @@ const Authorzation: React.FC = () => {
 	};
 
 	const nameSearch = async () => {
-		const role = localStorage.getItem('role');
-		return await stuInfo.searchName(role, stuName);
+		return await searchName(role, stuName);
 	};
 
 	const onSearch = () => {
@@ -49,38 +49,13 @@ const Authorzation: React.FC = () => {
 	return (
 		<S.Positioner>
 			<div>
-				<S.SelectWrapper>
-					<S.SelectBox
-						onChange={({ target: { value } }) => {
-							setStuGrade(value);
-						}}
-						value={stuGrade}
-					>
-						<S.Option value="" selected disabled hidden>
-							선택
-						</S.Option>
-						<S.Option value="1">1</S.Option>
-						<S.Option value="2">2</S.Option>
-						<S.Option value="3">3</S.Option>
-					</S.SelectBox>
-					<S.Label>학년</S.Label>
-					<S.SelectBox
-						onChange={({ target: { value } }) => {
-							setStuClass(value);
-						}}
-						value={stuClass}
-					>
-						<S.Option value="" selected disabled hidden>
-							선택
-						</S.Option>
-						<S.Option value="1">1</S.Option>
-						<S.Option value="2">2</S.Option>
-						<S.Option value="3">3</S.Option>
-						<S.Option value="4">4</S.Option>
-					</S.SelectBox>
-					<S.Label>반</S.Label>
-					<S.Btn onClick={onSubmit}>검색</S.Btn>
-				</S.SelectWrapper>
+				<Classification
+					onSubmit={onSubmit}
+					setStuClass={setStuClass}
+					setStuGrade={setStuGrade}
+					stuClass={stuClass}
+					stuGrade={stuGrade}
+				/>
 				<S.SearchBox>
 					<S.Search
 						placeholder="이름으로 검색하기"

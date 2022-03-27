@@ -1,13 +1,9 @@
-import massage from 'Api/massage';
+import { massage, massageInfo, cancelMassage } from 'Api/massage';
+import { useRole } from 'Hooks/useRole';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ManufactureDate } from 'Utils/ManufactureDate';
 import * as S from './Style';
-
-const massageInfo = async () => {
-	const res = await massage.massageInfo();
-	return res;
-};
 
 const returnRoomStatusNumber = (compareMax: number, compareMin: number) => {
 	if (compareMax / 2 > compareMin) {
@@ -19,14 +15,19 @@ const returnRoomStatusNumber = (compareMax: number, compareMin: number) => {
 	}
 };
 
-const applyMassage = async (setInfo, count: number) => {
-	await massage.massage();
+const MassageInfo = async (role: string) => {
+	const res = massageInfo(role);
+	return res;
+};
+
+const applyMassage = async (setInfo, count: number, role: string) => {
+	await massage(role);
 	setInfo({ count: count + 1, status: 'APPLIED' });
 	alert('안마의자 신청이 완료되었어요');
 };
 
-const cancelMassage = async (setInfo, count: number) => {
-	await massage.cancelMassage();
+const CancelMassage = async (setInfo, count: number, role: string) => {
+	await cancelMassage(role);
 	setInfo({ count: count - 1, status: 'CANT' });
 	alert(
 		'안마의자 신청이 취소 되었어요. 오늘 하루 동안 다시 신청이 불가능 해요'
@@ -38,7 +39,8 @@ const returnButton = (
 	setInfo: React.Dispatch<
 		React.SetStateAction<{ count: string; status: string }>
 	>,
-	count: number
+	count: number,
+	role: string
 ) => {
 	let today: string = ManufactureDate('W');
 	let can = ['월', '화', '수', '목'];
@@ -58,7 +60,7 @@ const returnButton = (
 		return (
 			<S.MassageButton
 				onClick={() => {
-					applyMassage(setInfo, count);
+					applyMassage(setInfo, count, role);
 				}}
 				status={status}
 				count={count}
@@ -71,7 +73,7 @@ const returnButton = (
 			<S.MassageButton
 				onClick={() => {
 					if (window.confirm('안마의자 신청을 취소하시겠어요?')) {
-						cancelMassage(setInfo, count);
+						CancelMassage(setInfo, count, role);
 					} else alert('안마의자 신청이 취소되지 않았어요');
 				}}
 				status={status}
@@ -131,10 +133,11 @@ const returnButton = (
 
 const MassageBoard: React.FC = () => {
 	const [info, setInfo] = useState({ count: '0', status: '' });
+	const role = useRole();
 
 	useEffect(() => {
-		massageInfo().then((res) => {
-			setInfo(res?.data.data);
+		MassageInfo(role).then((res) => {
+			console.log(res);
 		});
 	}, []);
 
@@ -161,7 +164,7 @@ const MassageBoard: React.FC = () => {
 						count={parseInt(info.count)}
 					/>
 				</S.PointProgress>
-				{returnButton(info.status, setInfo, parseInt(info.count))}
+				{returnButton(info.status, setInfo, parseInt(info.count), role)}
 			</S.MassageContent>
 		</S.Positioner>
 	);

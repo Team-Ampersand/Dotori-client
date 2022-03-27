@@ -17,7 +17,7 @@ export const MemberController = {
 		return '/members/password';
 	},
 	// 회원탈퇴
-	delete: () => {
+	withdrawal: () => {
 		return '/members/withdrawal';
 	},
 	//비밀번호 찾기 전 이메일로 인증번호 보내기
@@ -117,8 +117,12 @@ export const SelfstudyController = {
 	classLookup: (classId: number, role: string | null) => {
 		return `/${role}/selfstudy/${classId}`;
 	},
-	studyInfo: (role: string | null) => {
+	studyInfo: (role: string) => {
 		return `/${role}/selfstudy/info`;
+	},
+	//자습신청한 학생 자습 신청한 순서대로 전체 조회
+	studyRank: (role: string) => {
+		return `/${role}/selfstudy/rank`;
 	},
 };
 
