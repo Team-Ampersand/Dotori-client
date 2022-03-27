@@ -32,6 +32,7 @@ export const getRefresh = async (config: AxiosRequestConfig) => {
 			);
 			localStorage.setItem('Dotori_accessToken', data.data.NewAccessToken);
 			localStorage.setItem('Dotori_refreshToken', data.data.NewRefreshToken);
+			config.headers['Authorization'] = data.data.NewAccessToken;
 		} catch (e: any) {
 			if (e.message === 'Request failed with status code 400') {
 				alert('로그아웃 되었어요');
