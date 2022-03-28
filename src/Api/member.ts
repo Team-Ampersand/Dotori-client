@@ -7,6 +7,7 @@ export const signin = async (id: string, password: string) => {
 			email: id,
 			password: password,
 		});
+		apiClient.defaults.headers.common['authorization'] = data.data.accessToken;
 		return { data };
 	} catch (e: any) {
 		throw new Error(e);
