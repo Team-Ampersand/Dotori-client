@@ -17,8 +17,6 @@ interface board {
 
 const NoticeBoard: React.FC = () => {
 	const [board, setBoard] = useState<board[]>([]);
-	const setLogged = useSetRecoilState(HasToken);
-	const navigate = useNavigate();
 	const role = useRole();
 
 	const GetNotice = async () => {
@@ -53,7 +51,7 @@ const NoticeBoard: React.FC = () => {
 				setBoard(response?.data.data.content)
 			);
 		}
-	}, [board]);
+	}, [totalPage]);
 
 	const [editState, setEditState] = useState(false);
 	const onToggle = () => {

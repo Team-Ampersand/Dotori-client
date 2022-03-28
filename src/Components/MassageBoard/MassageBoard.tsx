@@ -122,7 +122,7 @@ const returnButton = (
 	} else if (status === 'CANT') {
 		return (
 			<S.MassageButton
-				onClick={() => alert('5명이 넘어 신청할 수 없어요')}
+				onClick={() => alert('안마의자 신청이 불가능 해요')}
 				status={status}
 				count={count}
 			>
