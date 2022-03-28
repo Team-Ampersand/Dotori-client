@@ -62,7 +62,7 @@ export const NoSongText = styled.div`
 	}
 `;
 
-export const appliedSongCount = styled.p`
+export const AppliedSongCount = styled.p`
 	font-size: 18px;
 	font-weight: bold;
 	color: #b9b9b9;
