@@ -40,10 +40,7 @@ export const PlaylistContainer = styled.div`
 export const SongContainer = styled.div`
 	padding-top: 20px;
 	height: 90%;
-	overflow: scroll;
-	&::-webkit-scrollbar {
-		display: none;
-	}
+	overflow-y: scroll;
 `;
 
 export const AllWrapper = styled.span<StyleProps>`

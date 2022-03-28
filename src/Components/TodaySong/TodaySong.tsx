@@ -60,7 +60,7 @@ const TodaySong: React.FC = () => {
 			{calendarOpen && <CalendarModal visible={calendarOpen} />}
 			<S.SongContainer>
 				{songlist ? (
-					[...songlist].reverse().map((data, idx) => {
+					[...songlist].map((data, idx) => {
 						return <SongItem songObj={data} key={`${idx}`} />;
 					})
 				) : (
