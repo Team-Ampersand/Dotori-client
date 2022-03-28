@@ -61,3 +61,9 @@ export const NoSongText = styled.div`
 		margin-left: 15.5%;
 	}
 `;
+
+export const appliedSongCount = styled.p`
+	font-size: 18px;
+	font-weight: bold;
+	color: #b9b9b9;
+`;
