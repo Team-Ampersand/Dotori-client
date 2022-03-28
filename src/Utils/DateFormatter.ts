@@ -10,6 +10,14 @@ export const DateFormatter = (currentDate: Date) => {
 	const year = date.getFullYear();
 	const month = leftPad(date.getMonth() + 1);
 	const day = leftPad(date.getDate());
+	return [year, month, day].join('-');
+};
+
+export const showMusicDataFormatter = (currentDate: Date) => {
+	const date = new Date(currentDate);
+	const year = date.getFullYear();
+	const month = leftPad(date.getMonth() + 1);
+	const day = leftPad(date.getDate());
 	const hour = leftPad(date.getHours());
 	const min = leftPad(date.getMinutes());
 	const hourJoin = [hour, ''].join('시');

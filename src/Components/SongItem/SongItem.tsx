@@ -3,7 +3,10 @@ import * as S from './Style';
 import axios from 'axios';
 import { deleteMusic } from 'Api/music';
 import { useDecode } from '../../Hooks/useDecode';
-import { DateFormatter } from '../../Utils/DateFormatter';
+import {
+	DateFormatter,
+	showMusicDataFormatter,
+} from '../../Utils/DateFormatter';
 import { useRole } from 'Hooks/useRole';
 
 type SongItemObj = {
@@ -68,7 +71,7 @@ const SongItem: React.FC<SongProps> = ({ songObj }) => {
 				<S.TitleContainer>{title}</S.TitleContainer>
 				<S.AuthorContainer>{songObj.memberName}</S.AuthorContainer>
 				<S.AuthorContainer>
-					{DateFormatter(songObj.createdDate)}
+					{showMusicDataFormatter(songObj.createdDate)}
 				</S.AuthorContainer>
 			</S.Container>
 			{role === 'admin' ||
