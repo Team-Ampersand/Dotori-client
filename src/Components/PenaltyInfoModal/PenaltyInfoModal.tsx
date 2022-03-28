@@ -82,7 +82,7 @@ const PenaltyInfoModal: React.FC<PenaltyInfoModalProps> = ({
 	modalState,
 	closeModal,
 }) => {
-	const [penalty, setPenalty] = useState<Array<penalty>>();
+	const [penalty, setPenalty] = useState<Array<penalty>>([]);
 	const [message, setMessage] = useState('');
 	const role = useRole();
 
@@ -93,7 +93,7 @@ const PenaltyInfoModal: React.FC<PenaltyInfoModalProps> = ({
 
 	useEffect(() => {
 		PenaltyMainInfo().then((res) => {
-			setPenalty(res?.data);
+			setPenalty(res?.data.data);
 			setMessage(res?.data.message);
 		});
 	}, []);
@@ -109,7 +109,7 @@ const PenaltyInfoModal: React.FC<PenaltyInfoModalProps> = ({
 			<S.Container>
 				<S.Title>규정 위반 내역</S.Title>
 				<S.PenaltyInfoWrapper>
-					{message === '규정위반 내역이 없습니다' ? (
+					{message === '규정위반 내역이 없습니다.' ? (
 						<S.PenaltyException>
 							<I.Logo></I.Logo>
 							<span>규정위반 내역이 없어요</span>
