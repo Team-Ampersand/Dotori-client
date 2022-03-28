@@ -7,7 +7,7 @@ type User = {
 	memberName: string;
 };
 
-type list = {
+type lists = {
 	id: number;
 	url: string;
 	memberName: string;
@@ -37,7 +37,7 @@ export const showPlaylistDate = atom<string>({
 	)}-${('0' + ManufactureDate('D')).slice(-2)}`,
 });
 
-export const setList = atom<list[]>({
+export const setList = atom<lists[]>({
 	key: 'setList',
 	default: [],
 });
