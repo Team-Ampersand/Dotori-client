@@ -55,12 +55,15 @@ const TodaySong: React.FC = () => {
 		<S.Postioner>
 			<S.PlaylistContainer>
 				<h3>{`${playlistDate} Playlist`}</h3>
+				<S.appliedSongCount>
+					오늘 신청된 음악 개수 : {songlist.length}
+				</S.appliedSongCount>
 				<I.Calander onClick={() => setCalendarOpen(!calendarOpen)} />
 			</S.PlaylistContainer>
 			{calendarOpen && <CalendarModal visible={calendarOpen} />}
 			<S.SongContainer>
 				{songlist ? (
-					[...songlist].reverse().map((data, idx) => {
+					[...songlist].map((data, idx) => {
 						return <SongItem songObj={data} key={`${idx}`} />;
 					})
 				) : (
