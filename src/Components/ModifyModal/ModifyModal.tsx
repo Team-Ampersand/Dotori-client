@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import * as S from './Style';
-import penaltyInfo from '../../Api/penaltyInfo';
+import { getModifyPenaltyInfo } from '../../Api/penaltyInfo';
 import ModifyList from 'Components/ModifyList/ModifyList';
+import { useRole } from 'Hooks/useRole';
 
 interface ModalProps {
 	modalState: boolean;
@@ -16,22 +17,14 @@ const ModifyModal: React.FC<ModalProps> = ({
 }) => {
 	const [modifyList, setModifyList]: any = useState([]);
 	const [modifyMessage, setModifyMessage] = useState();
+	const role = useRole();
 
-	const getModifyPenaltyInfo = async () => {
-		const role = await localStorage.getItem('role');
-		return await penaltyInfo.getModifyPenaltyInfo(role, stuNum);
-	};
-
-	const [role, setRole] = useState<string | null>('');
-
-	const settingRole = async () => {
-		const role = await localStorage.getItem('role');
-		setRole(role);
+	const GetModifyPenaltyInfo = async () => {
+		return await getModifyPenaltyInfo(role, stuNum);
 	};
 
 	useEffect(() => {
-		settingRole();
-		getModifyPenaltyInfo().then((res) => {
+		GetModifyPenaltyInfo().then((res) => {
 			res && setModifyList(res.data.data);
 			res && setModifyMessage(res.data.message);
 		});
@@ -53,7 +46,7 @@ const ModifyModal: React.FC<ModalProps> = ({
 				<S.Container>
 					<ModifyList
 						modifyList={
-							modifyMessage === '규정위반 내역이 없습니다'
+							modifyMessage === '규정위반 내역이 없습니다.'
 								? [modifyMessage]
 								: modifyList
 						}

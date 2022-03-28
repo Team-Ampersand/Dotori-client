@@ -1,131 +1,94 @@
 import { MemberController } from '../Utils/Libs/requestUrls';
-import RequestApi from '../Utils/Libs/requestApi';
+import { apiClient } from 'Utils/Libs/apiClient';
 
-class Member {
-	signin(id: string, password: string) {
-		try {
-			const data = {
-				email: id,
-				password: password,
-			};
-			return RequestApi({
-				method: 'POST',
-				url: MemberController.signin(),
-				data: data,
-			});
-		} catch (e: any) {
-			throw new Error(e);
-		}
-	}
-	signup(email: string, password: string, name: string, stuId: string) {
-		try {
-			const data = {
-				email: email,
-				password: password,
-				memberName: name,
-				stuNum: stuId,
-			};
-			return RequestApi({
-				method: 'POST',
-				url: MemberController.signup(),
-				data: data,
-			});
-		} catch (e: any) {
-			throw new Error(e);
-		}
-	}
-	logout() {
-		try {
-			return RequestApi({
-				method: 'DELETE',
-				url: MemberController.logout(),
-			});
-		} catch (e: any) {
-			throw new Error(e);
-		}
-	}
-	delete(email: string, password: string) {
-		try {
-			const data = {
-				email: email,
-				password: password,
-			};
-			return RequestApi({
-				method: 'POST',
-				url: MemberController.delete(),
-				data: data,
-			});
-		} catch (e) {}
-	}
-	passwordChange(currentPassword: string, newPassword: string) {
-		try {
-			const data = {
-				currentPassword: currentPassword,
-				newPassword: newPassword,
-			};
-			return RequestApi({
-				method: 'PUT',
-				url: MemberController.change(),
-				data: data,
-			});
-		} catch (e: any) {
-			throw new Error(e);
-		}
-	}
-	authPassword(email: string) {
-		try {
-			const data = {
-				email: email,
-			};
-			return RequestApi({
-				method: 'POST',
-				url: MemberController.authPassword(),
-				data: data,
-			});
-		} catch (e: any) {
-			throw new Error(e);
-		}
-	}
-	findPassword(newPassword: string, emailCode: string) {
-		const data = {
-			key: emailCode,
-			newPassword: newPassword,
-		};
-		return RequestApi({
-			method: 'POST',
-			url: MemberController.findPassword(),
-			data: data,
+export const signin = async (id: string, password: string) => {
+	try {
+		const { data } = await apiClient.post(MemberController.signin(), {
+			email: id,
+			password: password,
 		});
+		return { data };
+	} catch (e: any) {
+		throw new Error(e);
 	}
-	auth(email: string) {
-		try {
-			const data = {
-				email: email,
-			};
-			return RequestApi({
-				method: 'POST',
-				url: MemberController.auth(),
-				data: data,
-			});
-		} catch (e: any) {
-			throw new Error(e);
-		}
-	}
+};
 
-	authCheck(emailCode: string) {
-		try {
-			const data = {
-				key: emailCode,
-			};
-			return RequestApi({
-				method: 'POST',
-				url: MemberController.authcheck(),
-				data: data,
-			});
-		} catch (e: any) {
-			throw new Error(e);
-		}
+export const signup = async (
+	email: string,
+	password: string,
+	name: string,
+	stuNum: string
+) => {
+	try {
+		const { data } = await apiClient.post(MemberController.signup(), {
+			email: email,
+			password: password,
+			memberName: name,
+			stuNum: stuNum,
+		});
+		return { data };
+	} catch (e: any) {
+		throw new Error(e);
 	}
-}
+};
 
-export default new Member();
+export const logout = async () => {
+	try {
+		const { data } = await apiClient.delete(MemberController.logout());
+		return { data };
+	} catch (e) {}
+};
+
+export const withdrawal = async (email: string, password: string) => {
+	try {
+		const { data } = await apiClient.post(MemberController.withdrawal(), {
+			email: email,
+			password: password,
+		});
+		return { data };
+	} catch (e) {}
+};
+
+export const passwordChange = async (
+	currentPassword: string,
+	newPassword: string
+) => {
+	try {
+		const { data } = await apiClient.put(MemberController.change(), {
+			currentPassword: currentPassword,
+			newPassword: newPassword,
+		});
+		return { data };
+	} catch (e) {}
+};
+
+export const authPassword = async (email: string) => {
+	const { data } = await apiClient.post(MemberController.authPassword(), {
+		email: email,
+	});
+	return { data };
+};
+
+export const findPassword = async (newPassword: string, emailCode: string) => {
+	const { data } = await apiClient.post(MemberController.findPassword(), {
+		key: emailCode,
+		newPassword: newPassword,
+	});
+	return { data };
+};
+
+export const auth = async (email: string) => {
+	const { data } = await apiClient.post(MemberController.auth(), {
+		email: email,
+	});
+	return { data };
+};
+
+export const authCheck = async (emailCode: string) => {
+	try {
+		const { data } = await apiClient.post(MemberController.authcheck(), {
+			emailCode: emailCode,
+		});
+		return { data };
+	} catch (e) {}
+};

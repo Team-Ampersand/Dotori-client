@@ -1,23 +1,27 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import React, { useState } from 'react';
 import * as S from './Style';
-import penaltyInfo from 'Api/penaltyInfo';
+import { updatePenaltyInfo } from 'Api/penaltyInfo';
+import { useRole } from 'Hooks/useRole';
 
 interface ModalProps {
 	modalState: boolean;
 	closeModal: () => void;
 	stuNum: Array<string>;
+	setCheckItems: any;
 }
 
 const GiveModal: React.FC<ModalProps> = ({
 	modalState,
 	closeModal,
 	stuNum,
+	setCheckItems,
 }) => {
 	const [givePenalty, setGivePenalty] = useState('');
+	const role = useRole();
 
 	const givePenaltyUpdate = async () => {
-		await penaltyInfo.updatePenaltyInfo(date, givePenalty, stuNum);
+		await updatePenaltyInfo(role, date, givePenalty, stuNum);
 		alert('규정위반 내역을 추가했어요');
 	};
 
@@ -32,9 +36,8 @@ const GiveModal: React.FC<ModalProps> = ({
 			return;
 		}
 		await givePenaltyUpdate();
-		await closeModal();
-		await localStorage.removeItem('stuNum');
-		await window.location.reload();
+		closeModal();
+		setCheckItems([]);
 	};
 
 	return modalState ? (
@@ -47,7 +50,6 @@ const GiveModal: React.FC<ModalProps> = ({
 							<S.Date
 								type="date"
 								onChange={(e) => setDate(e.target.value)}
-								// value={new Date().toISOString().slice(0, 10)}
 								required
 							/>
 						</S.DateWrapper>

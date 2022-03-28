@@ -2,12 +2,16 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import * as S from './Style';
 import StuPenaltyItem from '../StuPenaltyItem/StuPenaltyItem';
-import penaltyInfo from 'Api/penaltyInfo';
+import { getStuInfo, getClassStuInfo, searchName } from 'Api/penaltyInfo';
 import PenaltyGiveItem from 'Components/PenaltyGiveItem/PenaltyGiveItem';
+import { useRole } from 'Hooks/useRole';
+import { Classification } from 'Components';
+
 interface studentList {
 	id: number;
 	memberName: string;
 	stuNum: string;
+	ruleBigViolationList: string[];
 }
 
 const Penalty: React.FC = () => {
@@ -16,35 +20,35 @@ const Penalty: React.FC = () => {
 	const [stuClass, setStuClass] = useState('');
 	const [stuName, setStuName] = useState<string>('');
 	const [checkItems, setCheckItems] = useState<Array<string>>([]);
+	const role = useRole();
 
-	const getStuInfo = async () => {
-		const role = await localStorage.getItem('role');
-		return await penaltyInfo.getStuInfo(role);
+	const GetStuInfo = async () => {
+		return await getStuInfo(role);
 	};
 
-	const getClassStuInfo = async () => {
-		const role = await localStorage.getItem('role');
-		return await penaltyInfo.getClassStuInfo(
-			role,
-			parseInt(stuGrade + stuClass)
-		);
+	const GetClassStuInfo = async () => {
+		return await getClassStuInfo(role, parseInt(stuGrade + stuClass));
 	};
 
 	const onSubmit = () => {
+		if (stuGrade + stuClass === '00') {
+			GetStuInfo().then((res) => {
+				res && setStudentList(res.data.list);
+			});
+		}
 		if (parseInt(stuGrade + stuClass) > 0) {
 			try {
-				getClassStuInfo().then((res) => {
+				GetClassStuInfo().then((res) => {
 					res && setStudentList(res.data.list);
 				});
 			} catch (e: any) {
 				throw Error(e);
 			}
-		} else return;
+		}
 	};
 
 	const nameSearch = async () => {
-		const role = localStorage.getItem('role');
-		return await penaltyInfo.searchName(role, stuName);
+		return await searchName(role, stuName);
 	};
 
 	const onSearch = () => {
@@ -59,17 +63,6 @@ const Penalty: React.FC = () => {
 		}
 	};
 
-	useEffect(() => {
-		try {
-			getStuInfo().then((res) => {
-				res && setStudentList(res.data.list);
-			});
-			onSearch();
-		} catch (e: any) {
-			throw Error(e);
-		}
-	}, []);
-
 	const handleSingleCheck = useCallback(
 		(checked, id: string) => {
 			if (checked) {
@@ -81,41 +74,22 @@ const Penalty: React.FC = () => {
 		[checkItems]
 	);
 
+	useEffect(() => {
+		GetStuInfo().then((res) => {
+			res && setStudentList(res.data.list);
+		});
+	}, []);
+
 	return (
 		<S.Positioner>
 			<S.BoxContainer>
-				<S.SelectBoxWrapper>
-					<S.SelectBox
-						onChange={({ target: { value } }) => {
-							setStuGrade(value);
-						}}
-						value={stuGrade}
-					>
-						<S.Option value="" selected disabled hidden>
-							선택
-						</S.Option>
-						<S.Option value="1">1</S.Option>
-						<S.Option value="2">2</S.Option>
-						<S.Option value="3">3</S.Option>
-					</S.SelectBox>
-					<S.Label>학년</S.Label>
-					<S.SelectBox
-						onChange={({ target: { value } }) => {
-							setStuClass(value);
-						}}
-						value={stuClass}
-					>
-						<S.Option value="" selected disabled hidden>
-							선택
-						</S.Option>
-						<S.Option value="1">1</S.Option>
-						<S.Option value="2">2</S.Option>
-						<S.Option value="3">3</S.Option>
-						<S.Option value="4">4</S.Option>
-					</S.SelectBox>
-					<S.Label>반</S.Label>
-					<S.Btn onClick={onSubmit}>검색</S.Btn>
-				</S.SelectBoxWrapper>
+				<Classification
+					onSubmit={onSubmit}
+					stuGrade={stuGrade}
+					stuClass={stuClass}
+					setStuClass={setStuClass}
+					setStuGrade={setStuGrade}
+				/>
 				<S.SearchBox>
 					<S.Search
 						pattern="\d*"
@@ -127,7 +101,7 @@ const Penalty: React.FC = () => {
 					/>
 					<S.Btn onClick={onSearch}>검색</S.Btn>
 				</S.SearchBox>
-				<PenaltyGiveItem checked={checkItems} />
+				<PenaltyGiveItem checked={checkItems} setCheckItems={setCheckItems} />
 				<S.SelectStu>
 					<S.SelectStus>선택된 학생</S.SelectStus>
 					{checkItems.join(', ')}
@@ -142,13 +116,14 @@ const Penalty: React.FC = () => {
 									<S.CheckBox
 										type="checkbox"
 										onChange={(e) =>
-											handleSingleCheck(e.target.checked, String(stu.stuNum))
+											handleSingleCheck(e.target.checked, stu.stuNum)
 										}
 									/>
 									<StuPenaltyItem
 										key={stu.id}
 										name={stu.memberName}
 										stuNum={stu.stuNum}
+										ruleBigViolationList={stu.ruleBigViolationList}
 									/>
 								</S.StuBoxContainer>
 							);

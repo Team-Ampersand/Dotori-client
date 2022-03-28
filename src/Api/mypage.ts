@@ -1,17 +1,11 @@
 import { MyPageController } from 'Utils/Libs/requestUrls';
-import RequestApi from 'Utils/Libs/requestApi';
+import { apiClient } from 'Utils/Libs/apiClient';
 
-class MyPage {
-	mypage() {
-		try {
-			return RequestApi({
-				method: 'GET',
-				url: MyPageController.home(),
-			});
-		} catch (e: any) {
-			throw new Error(e);
-		}
+export const mypage = async () => {
+	try {
+		const { data } = await apiClient.get(MyPageController.home());
+		return { data };
+	} catch (e) {
+		alert(e);
 	}
-}
-
-export default new MyPage();
+};

@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as S from './Style';
-import music from 'Api/music';
+import { music } from 'Api/music';
 import { ManufactureDate } from 'Utils/ManufactureDate';
 import 'react-calendar/dist/Calendar.css';
+import { useRole } from 'Hooks/useRole';
 
-const musicApply = async (musicUrl: string) => {
+const musicApply = async (musicUrl: string, role: string) => {
 	try {
-		await music.music(musicUrl);
+		await music(role, musicUrl);
 		alert('노래가 신청되었어요');
 	} catch (e: any) {
 		e.message === 'Request failed with status code 409'
@@ -18,11 +19,11 @@ const musicApply = async (musicUrl: string) => {
 const returnBtn = (
 	url: string,
 	setUrl: { (value: React.SetStateAction<string>): void; (arg0: string): void },
-	songInput: React.LegacyRef<HTMLInputElement> | undefined
+	songInput: React.LegacyRef<HTMLInputElement> | undefined,
+	role: string
 ) => {
 	const today = ManufactureDate('W');
 	let cant = ['금', '토'];
-	const role = localStorage.getItem('role');
 	if (role === 'admin') {
 		return (
 			<>
@@ -63,7 +64,7 @@ const returnBtn = (
 							if (url === '') {
 								alert('아무것도 입력하지 않았어요');
 							} else if (CheckUrl(url)) {
-								musicApply(url).then(() => {
+								musicApply(url, role).then(() => {
 									window.location.reload();
 								});
 							} else {
@@ -77,7 +78,7 @@ const returnBtn = (
 						if (url === '') {
 							alert('아무것도 입력하지 않았어요');
 						} else if (CheckUrl(url)) {
-							musicApply(url).then(() => {
+							musicApply(url, role).then(() => {
 								window.location.reload();
 							});
 						} else {
@@ -95,6 +96,7 @@ const returnBtn = (
 const SongRequest: React.FC = () => {
 	const [url, setUrl] = useState<string>('');
 	const songInput = useRef<HTMLInputElement>(null);
+	const role = useRole();
 
 	useEffect(() => {
 		if (songInput.current) {
@@ -107,7 +109,7 @@ const SongRequest: React.FC = () => {
 			<label>기상음악 신청</label>
 			<S.InputWrapper>
 				<p>URL 주소</p>
-				{returnBtn(url, setUrl, songInput)}
+				{returnBtn(url, setUrl, songInput, role)}
 			</S.InputWrapper>
 		</S.Postioner>
 	);

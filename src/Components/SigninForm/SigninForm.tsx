@@ -4,8 +4,7 @@ import * as S from './Style';
 import { Link, useNavigate } from 'react-router-dom';
 import { HasToken } from '../../Atoms';
 import { useSetRecoilState } from 'recoil';
-import member from '../../Api/member';
-import { rolelookup } from 'Utils/Libs/roleLookup';
+import { signin } from '../../Api/member';
 
 const TrySignin = () => {
 	const [id, setId] = useState('');
@@ -20,11 +19,10 @@ const TrySignin = () => {
 			} else if (password === '') {
 				return alert('비밀번호를 입력해주세요');
 			}
-			const res = await member.signin(id + '@gsm.hs.kr', password);
+			const { data } = await signin(id + '@gsm.hs.kr', password);
 
-			localStorage.setItem('Dotori_accessToken', res.data.data.accessToken);
-			localStorage.setItem('Dotori_refreshToken', res.data.data.refreshToken);
-			localStorage.setItem('role', await rolelookup());
+			localStorage.setItem('Dotori_accessToken', data.data.accessToken);
+			localStorage.setItem('Dotori_refreshToken', data.data.refreshToken);
 
 			setLogged(true);
 			navigate('/home');

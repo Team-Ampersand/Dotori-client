@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import * as S from './Style';
 import Modal from '../Modal/Modal';
-import notice from 'Api/notice';
+import { noticeDelete } from 'Api/notice';
+import { useRole } from 'Hooks/useRole';
 
 interface NoticeBoardItemProps {
 	board_key: number;
@@ -9,7 +10,6 @@ interface NoticeBoardItemProps {
 	title: string;
 	createdDate: string;
 	editState: boolean;
-	role: string | null;
 }
 
 const returnAuthorColor = (authorType: string) => {
@@ -40,9 +40,9 @@ const NoticeBoardItem: React.FC<NoticeBoardItemProps> = ({
 	title,
 	createdDate,
 	editState,
-	role,
 }) => {
 	const [modalState, setModalState] = useState<boolean>(false);
+	const role = useRole();
 
 	const openModal = () => {
 		setModalState(true);
@@ -56,7 +56,7 @@ const NoticeBoardItem: React.FC<NoticeBoardItemProps> = ({
 	const [updateState, setUpdateState] = useState<boolean>(false);
 
 	const deleteNotice = async (boardId) => {
-		return notice.noticeDelete(role, boardId);
+		return await noticeDelete(role, boardId);
 	};
 
 	const onModify = (e) => {
@@ -65,11 +65,11 @@ const NoticeBoardItem: React.FC<NoticeBoardItemProps> = ({
 		openModal();
 	};
 
-	const onDelete = async (e) => {
+	const onDelete = (e) => {
 		e.stopPropagation();
 		if (window.confirm('정말 삭제하시겠어요?')) {
 			deleteNotice(board_key);
-			await window.location.reload();
+			window.location.reload();
 		}
 	};
 
@@ -103,7 +103,6 @@ const NoticeBoardItem: React.FC<NoticeBoardItemProps> = ({
 					authorColor={returnAuthorColor(author[0])!}
 					updateState={updateState}
 					setUpdateState={setUpdateState}
-					role={role}
 				/>
 			)}
 		</>

@@ -1,7 +1,13 @@
 import jwt from 'jwt-decode';
 
+type user = {
+	sub: string;
+	iat: number;
+	exp: number;
+	auth: string[];
+};
+
 export const useDecode = () => {
-	const token: string = localStorage.getItem('Dotori_accessToken') ?? '';
-	const user = jwt(token);
+	const user: user = jwt(localStorage.getItem('Dotori_accessToken') ?? '');
 	return user;
 };

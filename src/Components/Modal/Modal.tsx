@@ -1,4 +1,5 @@
-import notice from 'Api/notice';
+import { getNoticeItem, noticeUpdate } from 'Api/notice';
+import { useRole } from 'Hooks/useRole';
 import React, { useEffect, useState } from 'react';
 import * as S from './Style';
 
@@ -9,7 +10,6 @@ interface ModalProps {
 	authorColor: string;
 	updateState: boolean;
 	setUpdateState: (e: any) => void;
-	role: string | null;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -19,19 +19,19 @@ const Modal: React.FC<ModalProps> = ({
 	authorColor,
 	updateState,
 	setUpdateState,
-	role,
 }) => {
 	const [title, setTitle] = useState<string>('');
 	const [content, setContent] = useState<string>('');
 	const [imgUrl, setImgUrl] = useState<string>('');
+	const role = useRole();
 
-	const getNoticeItem = async (boardId) => {
-		return notice.getNoticeItem(role, boardId);
+	const GetNoticeItem = async (boardId) => {
+		return getNoticeItem(role, boardId);
 	};
 
 	useEffect(() => {
-		getNoticeItem(board_key)
-			.then((res) => res.data.data)
+		GetNoticeItem(board_key)
+			.then((res) => res?.data.data)
 			.then((res) => {
 				setTitle(res.title);
 				setContent(res.content);
@@ -47,7 +47,7 @@ const Modal: React.FC<ModalProps> = ({
 	const [updateContent, setUpdateContent] = useState<string>('');
 
 	const onUpdate = async (e) => {
-		await notice.noticeUpdate(role, board_key, updateTitle, updateContent);
+		await noticeUpdate(role, board_key, updateTitle, updateContent);
 		closeModal(e);
 		setUpdateState(false);
 		window.location.reload();

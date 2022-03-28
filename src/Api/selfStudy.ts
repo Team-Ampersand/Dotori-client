@@ -1,48 +1,58 @@
-import RequestApi from '../Utils/Libs/requestApi';
+import { apiClient } from 'Utils/Libs/apiClient';
 import { SelfstudyController } from '../Utils/Libs/requestUrls';
 
-class SelfStudy {
-	selfstudy() {
-		return RequestApi({
-			method: 'PUT',
-			url: SelfstudyController.selfStudy(localStorage.getItem('role')),
-		});
+export const selfStudy = async (role: string) => {
+	try {
+		const { data } = await apiClient.put(SelfstudyController.selfStudy(role));
+		return { data };
+	} catch (e) {
+		alert(e);
 	}
-	lookupstudy() {
-		try {
-			return RequestApi({
-				method: 'GET',
-				url: SelfstudyController.selfStudy(localStorage.getItem('role')),
-			});
-		} catch (e: any) {
-			throw new Error(e);
-		}
-	}
-	cancelstudy() {
-		try {
-			return RequestApi({
-				method: 'PUT',
-				url: SelfstudyController.cancelStudy(localStorage.getItem('role')),
-			});
-		} catch (e: any) {
-			throw new Error(e);
-		}
-	}
-	classlookup(classID: string) {
-		return RequestApi({
-			method: 'GET',
-			url: SelfstudyController.classLookup(
-				parseInt(classID),
-				localStorage.getItem('role')!
-			),
-		});
-	}
-	studyinfo() {
-		return RequestApi({
-			method: 'GET',
-			url: SelfstudyController.studyInfo(localStorage.getItem('role')),
-		});
-	}
-}
+};
 
-export default new SelfStudy();
+export const lookupStudy = async (role: string) => {
+	try {
+		const { data } = await apiClient.get(SelfstudyController.studyLookup(role));
+		return { data };
+	} catch (e) {
+		alert(e);
+	}
+};
+
+export const cancelStudy = async (role: string) => {
+	try {
+		const { data } = await apiClient.put(SelfstudyController.cancelStudy(role));
+		return { data };
+	} catch (e) {
+		alert(e);
+	}
+};
+
+export const classLookup = async (classID: string, role: string) => {
+	try {
+		const { data } = await apiClient.get(
+			SelfstudyController.classLookup(parseInt(classID), role)
+		);
+		return { data };
+	} catch (e: any) {
+		alert(e);
+	}
+};
+
+export const studyInfo = async (role: string) => {
+	try {
+		const { data } = await apiClient.get(SelfstudyController.studyInfo(role));
+		return { data };
+	} catch (e) {
+		alert(e);
+	}
+};
+
+export const studyRank = async (role: string) => {
+	try {
+		const { data } = await apiClient.get(SelfstudyController.studyRank(role));
+		return { data };
+	} catch (e) {
+		alert(e);
+	}
+};

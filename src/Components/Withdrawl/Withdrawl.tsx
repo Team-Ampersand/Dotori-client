@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import * as S from './Style';
 import { DotoriLogo } from 'Assets/Svg';
-import member from 'Api/member';
+import { withdrawal } from 'Api/member';
 import { useNavigate } from 'react-router-dom';
 
 const onWithdrawl = async (id: string, password: string, navigate) => {
 	try {
-		await member.delete(id, password);
+		await withdrawal(id, password);
 		alert('회원탈퇴가 되었어요');
 
 		localStorage.removeItem('Dotori_accessToken');
 		localStorage.removeItem('Dotori_refreshToken');
-		localStorage.removeItem('role');
 
 		navigate('/signin');
 		window.location.reload();

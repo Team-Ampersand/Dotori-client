@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './Style';
 import axios from 'axios';
-import music from 'Api/music';
+import { deleteMusic } from 'Api/music';
 import { useDecode } from '../../Hooks/useDecode';
 import { DateFormatter } from '../../Utils/DateFormatter';
+import { useRole } from 'Hooks/useRole';
 
 type SongItemObj = {
 	createdDate: Date;
@@ -38,9 +39,9 @@ const youtube_parser = (url: string) => {
 	}
 };
 
-const deleteMusic = async (id: number) => {
+const DeleteMusic = async (id: number, role: string) => {
 	try {
-		await music.deleteMusic(id);
+		await deleteMusic(role, id);
 		alert('삭제 되었어요');
 		window.location.reload();
 	} catch (e) {
@@ -51,8 +52,8 @@ const deleteMusic = async (id: number) => {
 const SongItem: React.FC<SongProps> = ({ songObj }) => {
 	const [title, setTitle] = useState('');
 	const videoId = youtube_parser(songObj.url);
-	const role = localStorage.getItem('role');
-	const userEmail: any = useDecode();
+	const user = useDecode();
+	const role = useRole();
 
 	useEffect(() => {
 		songTitle(videoId).then((res) => {
@@ -73,12 +74,12 @@ const SongItem: React.FC<SongProps> = ({ songObj }) => {
 			{role === 'admin' ||
 			role === 'developer' ||
 			role === 'councillor' ||
-			songObj.email === userEmail.sub ? (
+			songObj.email === user.sub ? (
 				<S.DeleteContainer
 					onClick={(e) => {
 						e.preventDefault();
 						window.confirm('삭제 하시겠습니까?')
-							? deleteMusic(songObj.id)
+							? DeleteMusic(songObj.id, role)
 							: alert('삭제 하지 않았어요.');
 					}}
 				>

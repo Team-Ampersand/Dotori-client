@@ -1,12 +1,12 @@
 import { DotoriLogo } from 'Assets/Svg';
 import React, { useState } from 'react';
 import * as S from './Style';
-import member from 'Api/member';
+import { authPassword, findPassword, passwordChange } from 'Api/member';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 
-const authPassword = async (id: string, setDisabled, setDisplayed) => {
+const AuthPassword = async (id: string, setDisabled, setDisplayed) => {
 	try {
-		await member.authPassword(id + '@gsm.hs.kr');
+		await authPassword(id + '@gsm.hs.kr');
 		console.log('이메일을 확인해주세요');
 		setDisabled(false);
 	} catch (e: any) {
@@ -19,9 +19,9 @@ const authPassword = async (id: string, setDisabled, setDisplayed) => {
 	}
 };
 
-const findPassword = async (newPw: string, emailCode, navigate) => {
+const FindPassword = async (newPw: string, emailCode, navigate) => {
 	try {
-		await member.findPassword(newPw, emailCode);
+		await findPassword(newPw, emailCode);
 		alert('비밀번호가 변경 되었어요!');
 		navigate('/signin');
 	} catch (e: any) {
@@ -33,7 +33,7 @@ const findPassword = async (newPw: string, emailCode, navigate) => {
 
 const changePassword = async (password: string, newPw: string, navigate) => {
 	try {
-		await member.passwordChange(password, newPw);
+		await passwordChange(password, newPw);
 		alert('비밀번호가 변경되었어요');
 		navigate('/home');
 	} catch (e: any) {
@@ -66,7 +66,7 @@ const returnPassworForm = (
 	id: string,
 	displayed: boolean | undefined,
 	emailCode: string,
-	navigate: NavigateFunction 
+	navigate: NavigateFunction
 ) => {
 	if (window.location.pathname === '/password') {
 		return (
@@ -84,7 +84,7 @@ const returnPassworForm = (
 
 					<button
 						onClick={() => {
-							authPassword(id, setDisabled, setDisplayed);
+							AuthPassword(id, setDisabled, setDisplayed);
 							setDisplayed(false);
 						}}
 					>
@@ -112,7 +112,7 @@ const returnPassworForm = (
 				<S.ButtonStyle
 					onClick={() => {
 						if (newPw !== repassword) alert('입력한 비밀번호가 서로 달라요');
-						else findPassword(newPw, emailCode, navigate);
+						else FindPassword(newPw, emailCode, navigate);
 					}}
 				>
 					비밀번호 변경

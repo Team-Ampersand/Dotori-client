@@ -3,10 +3,7 @@ import * as S from './Style';
 import SidebarList from '../SidebarList/SidebarList';
 import Logo from 'Assets/Svg/Logo';
 import { useNavigate } from 'react-router-dom';
-
-const returnShow = () => {
-	return localStorage.getItem('role');
-};
+import { useRole } from 'Hooks/useRole';
 
 const sidebarMenuData = [
 	{
@@ -16,48 +13,43 @@ const sidebarMenuData = [
 				router: '/home',
 				menuIcon: 'Home',
 				menuTitle: '홈',
-				show: true,
+				show: ['admin', 'councillor', 'developer', 'member'],
 			},
 			{
 				router: '/notice',
 				menuIcon: 'Notice',
 				menuTitle: '공지사항',
-				show: true,
+				show: ['admin', 'councillor', 'developer', 'member'],
 			},
 			{
 				router: '/selfstudy',
 				menuIcon: 'Selfstudy',
 				menuTitle: '자습신청',
-				show: true,
+				show: ['admin', 'councillor', 'developer', 'member'],
 			},
 			{
 				router: '/massage',
 				menuIcon: 'Massage',
 				menuTitle: '안마의자',
-				show: true,
+				show: ['admin', 'councillor', 'developer', 'member'],
 			},
 			{
 				router: '/song',
 				menuIcon: 'Song',
 				menuTitle: '기상음악',
-				show: true,
+				show: ['admin', 'councillor', 'developer', 'member'],
 			},
 			{
 				router: '/authorization',
 				menuIcon: 'More',
 				menuTitle: '학생 정보',
-				show:
-					returnShow() === 'admin' ||
-					returnShow() === 'developer' ||
-					returnShow() === 'councillor'
-						? true
-						: false,
+				show: ['admin', 'councillor', 'developer'],
 			},
 			{
 				router: '/penalty',
 				menuIcon: 'Penalty',
 				menuTitle: '규정 위반',
-				show: returnShow() === 'admin' ? true : false,
+				show: ['admin'],
 			},
 		],
 	},
@@ -66,6 +58,7 @@ const sidebarMenuData = [
 const Sidebar: React.FC = () => {
 	const navigate = useNavigate();
 	const [currentRouter, setCurrentRouter] = useState(window.location.pathname);
+	const role = useRole();
 	const mappingSidebarMenu = useMemo(() => {
 		return sidebarMenuData.map((menuData) => (
 			<SidebarList

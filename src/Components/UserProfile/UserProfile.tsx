@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './Style';
 import { Logout, Profile } from '../../Assets/Svg';
-import member from '../../Api/member';
-import mypage from '../../Api/mypage';
+import { logout } from '../../Api/member';
+import { mypage } from '../../Api/mypage';
 import { useSetRecoilState } from 'recoil';
 import { HasToken } from '../../Atoms';
 import { useNavigate, Link } from 'react-router-dom';
@@ -22,7 +22,7 @@ const TryLogout = () => {
 
 	const onLogout = async () => {
 		try {
-			await member.logout();
+			await logout();
 
 			localStorage.removeItem('Dotori_accessToken');
 			localStorage.removeItem('Dotori_refreshToken');
@@ -48,37 +48,21 @@ const TryLogout = () => {
 };
 
 const myPage = async () => {
-	const res = await mypage.mypage();
+	const res = await mypage();
 	return res;
 };
 
 const UserProfile: React.FC = () => {
 	const [profile, setProfile] = useState<UserProfileType>();
 	const onLogout = TryLogout();
-	const setLogged = useSetRecoilState(HasToken);
-	const navigate = useNavigate();
 	const [modalState, setModalState] = useState(false);
 
 	const closeModal = () => setModalState(false);
 
 	useEffect(() => {
-		myPage()
-			.then((res: any) => {
-				setProfile(res.data.data);
-			})
-			.catch((e) => {
-				if (e.response.status === 401) {
-					alert('로그아웃 되었어요. 다시 로그인 해주세요');
-
-					localStorage.removeItem('Dotori_accessToken');
-					localStorage.removeItem('Dotori_refreshToken');
-					localStorage.removeItem('role');
-
-					navigate('/signin');
-					setLogged(false);
-					window.location.reload();
-				}
-			});
+		myPage().then((res: any) => {
+			setProfile(res.data.data);
+		});
 	}, []);
 	return (
 		<>

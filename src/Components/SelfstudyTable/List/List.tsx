@@ -1,30 +1,14 @@
 import React, { useEffect } from 'react';
 import * as S from './Style';
-import selfstudy from 'Api/selfStudy';
-import { useRecoilState, useSetRecoilState } from 'recoil';
-import { list, HasToken } from 'Atoms';
-import { useNavigate } from 'react-router';
+import { studyRank } from 'Api/selfStudy';
+import { useRecoilState } from 'recoil';
+import { list } from 'Atoms';
 import Logo from 'Assets/Svg/Logo';
+import { useRole } from 'Hooks/useRole';
 
-const ReturnUserObj = async (navigate, setLogged) => {
-	try {
-		const { data } = await selfstudy.lookupstudy();
-		return { data };
-	} catch (e: any) {
-		if (e.message === 'Request failed with status code 401') {
-			alert('로그아웃 되었어요. 다시 로그인 해주세요');
-
-			localStorage.removeItem('Dotori_accessToken');
-			localStorage.removeItem('Dotori_refreshToken');
-			localStorage.removeItem('role');
-
-			navigate('/signin');
-			setLogged(false);
-			window.location.reload();
-		} else {
-			alert(e);
-		}
-	}
+const ReturnUserObj = async (role: string) => {
+	const data = await studyRank(role);
+	return data;
 };
 
 const returnBorderColor = (stuNum) => {
@@ -41,11 +25,10 @@ const returnBorderColor = (stuNum) => {
 
 const List: React.FC = () => {
 	const [userlist, setUserList] = useRecoilState(list);
-	const navigate = useNavigate();
-	const setLogged = useSetRecoilState(HasToken);
+	const role = useRole();
 
 	useEffect(() => {
-		ReturnUserObj(navigate, setLogged).then((res) => {
+		ReturnUserObj(role).then((res) => {
 			setUserList(res?.data.data);
 		});
 	}, []);
