@@ -51,9 +51,7 @@ export const noticeWrite = async (
 		);
 		const { data } = await apiClient.post(
 			noticeController.noticeWrite(role),
-			{
-				formData: formData,
-			},
+			formData,
 			{ headers: { 'Content-Type': 'multipart/form-data' } }
 		);
 		return { data };
