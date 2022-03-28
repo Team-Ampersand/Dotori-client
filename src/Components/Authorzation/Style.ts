@@ -78,6 +78,7 @@ export const SearchBox = styled.div`
 	align-items: center;
 	border: none;
 	margin-left: 50px;
+	margin-top: 19px;
 `;
 
 export const Search = styled.input`
