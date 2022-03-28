@@ -146,7 +146,7 @@ const MassageBoard: React.FC = () => {
 
 	useEffect(() => {
 		MassageInfo(role).then((res) => {
-			console.log(res);
+			setInfo(res?.data.data);
 		});
 	}, []);
 

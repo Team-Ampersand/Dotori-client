@@ -7,7 +7,7 @@ import { NavigateFunction, useNavigate } from 'react-router-dom';
 const AuthPassword = async (id: string, setDisabled, setDisplayed) => {
 	try {
 		await authPassword(id + '@gsm.hs.kr');
-		console.log('이메일을 확인해주세요');
+		alert('이메일을 확인해주세요');
 		setDisabled(false);
 	} catch (e: any) {
 		if (e.message === 'Request failed with status code 400') {
