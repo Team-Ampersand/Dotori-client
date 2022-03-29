@@ -24,10 +24,10 @@ export const ImgContainer = styled.div<StyleProps>`
 	background-size: 120px 90px;
 	border-radius: 25px;
 	margin-left: 7%;
+	background-repeat: no-repeat;
 	background-image: url(${(props) => {
 		return `https://img.youtube.com/vi/${props.thumbnail}/sddefault.jpg`;
 	}});
-	background-repeat: no-repeat;
 `;
 
 export const TitleContainer = styled.span`

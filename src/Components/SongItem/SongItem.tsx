@@ -21,7 +21,7 @@ interface SongProps {
 }
 
 const songTitle = async (url: string) => {
-	const api_key = 'AIzaSyAIOlx_Ohakvd1tmJjr-dLHap_aBYMEuyE';
+	const api_key = process.env.REACT_APP_YOUTUBE_API_KEY;
 	try {
 		return axios.get(
 			`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${url}&key=${api_key}`
