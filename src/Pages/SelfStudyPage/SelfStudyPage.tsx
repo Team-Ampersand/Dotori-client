@@ -14,19 +14,19 @@ const SelfStudyPage: React.FC = () => {
 	const role = useRole();
 	const onSubmit = async () => {
 		try {
-			if (stuGrade + stuClass === '00') {
-				const res = await studyRank(role);
-				setClassLookup(res?.data.data);
-			} else if (stuGrade + stuClass === '') {
-				alert('아무것도 선택하지 않으셨어요');
-			} else if (stuGrade === '' || stuGrade === '0') {
-				alert('학년을 선택해주세요');
-			} else if (stuClass === '' || stuClass === '0') {
-				alert('반을 선택해주세요');
-			} else {
-				const res = await classLookup(stuGrade + stuClass, role);
-				setClassLookup(res?.data.data);
-			}
+			if (parseInt(stuGrade + stuClass) > 0) {
+				if (stuGrade !== '0') {
+					if (stuClass === '0') {
+						classLookup(stuGrade, role).then((res) => {
+							res && setClassLookup(res.data.data);
+						});
+					} else {
+						classLookup(stuGrade + stuClass, role).then((res) => {
+							res && setClassLookup(res.data.data);
+						});
+					}
+				} else alert('학년을 선택해주세요');
+			} else alert('학년 반을 선택해주세요');
 		} catch (e: any) {
 			alert(
 				e.message === 'Request failed with status code 404'
