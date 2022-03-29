@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { Suspense } from 'react';
 import { GlobalStyle, Positioner, ContentWrapper } from './Style/GlobalStyle';
 import Router from './Router';
 import { BrowserRouter } from 'react-router-dom';
@@ -13,7 +13,9 @@ const App: React.FC = () => {
 					<GlobalStyle />
 					<Positioner>
 						<ContentWrapper>
-							<Router />
+							<Suspense fallback={<div />}>
+								<Router />
+							</Suspense>
 						</ContentWrapper>
 					</Positioner>
 				</BrowserRouter>

@@ -83,7 +83,7 @@ const returnButton = (
 	let can = ['월', '화', '수', '목'];
 	let cant = ['금', '토', '일'];
 	let hours = new Date().getHours();
-	if (localStorage.getItem('role') === 'admin') {
+	if (role === 'admin') {
 		return <p>사감 선생님은 자습신청을 하지 않으셔도 됩니다.</p>;
 	} else if (status === 'IMPOSSIBLE') {
 		return (
@@ -158,15 +158,17 @@ const returnButton = (
 			</S.StudyButton>
 		);
 	} else if (status === 'CANT') {
-		<S.StudyButton
-			Clicked={status}
-			onClick={() => {
-				alert('자습 신청이 불가능 해요');
-			}}
-			count={count}
-		>
-			자습불가
-		</S.StudyButton>;
+		return (
+			<S.StudyButton
+				Clicked={status}
+				onClick={() => {
+					alert('자습 신청이 불가능 해요');
+				}}
+				count={count}
+			>
+				자습불가
+			</S.StudyButton>
+		);
 	} else {
 		<S.StudyButton
 			Clicked={status}

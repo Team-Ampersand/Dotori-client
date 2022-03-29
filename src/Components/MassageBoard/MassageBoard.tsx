@@ -47,7 +47,7 @@ const returnButton = (
 	let cant = ['금', '토', '일'];
 	let hours = new Date().getHours();
 	let minutes = new Date().getMinutes();
-	if (localStorage.getItem('role') === 'admin') {
+	if (role === 'admin') {
 		return <p>사감 선생님은 안마의자 신청을 하지 않으셔도 됩니다</p>;
 	} else if (
 		status === 'CAN' &&
