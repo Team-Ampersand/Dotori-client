@@ -8,11 +8,10 @@ import { useRole } from 'Hooks/useRole';
 const musicApply = async (musicUrl: string, role: string) => {
 	try {
 		await music(role, musicUrl);
-		alert('노래가 신청되었어요');
 	} catch (e: any) {
-		if (e.message === 'Request failed with status code 409') {
-			alert('이미 노래를 신청 해 신청 하실 수 없어요');
-		}
+		e.message === 'Request failed with status code 409'
+			? alert('이미 노래를 신청 해 신청 하실 수 없어요')
+			: alert(e);
 	}
 };
 
