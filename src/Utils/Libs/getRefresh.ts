@@ -1,7 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import jwt from 'jwt-decode';
 import { baseURL } from 'Utils/Config/Config';
-import { apiClient } from 'Utils/Libs/apiClient';
 import { RefreshTokenController } from 'Utils/Libs/requestUrls';
 
 type user = {
@@ -17,6 +16,7 @@ export const getRefresh = async (config: AxiosRequestConfig) => {
 		? jwt(accessToken)
 		: { sub: 'auth', iat: 0, exp: 9999999999999, auth: [] };
 	const nowDate = new Date().getTime() / 1000;
+	config.headers.common['authorization'] = accessToken;
 
 	if (user.exp < nowDate) {
 		try {
@@ -30,9 +30,10 @@ export const getRefresh = async (config: AxiosRequestConfig) => {
 					},
 				}
 			);
+			config.headers.common['authorization'] = await data.data.NewAccessToken;
+
 			localStorage.setItem('Dotori_accessToken', data.data.NewAccessToken);
 			localStorage.setItem('Dotori_refreshToken', data.data.NewRefreshToken);
-			config.headers['Authorization'] = data.data.NewAccessToken;
 		} catch (e: any) {
 			if (e.message === 'Request failed with status code 400') {
 				alert('로그아웃 되었어요');

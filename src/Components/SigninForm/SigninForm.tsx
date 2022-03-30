@@ -26,7 +26,6 @@ const TrySignin = () => {
 
 			setLogged(true);
 			navigate('/home');
-			window.location.reload();
 		} catch (e: any) {
 			if (e.message === 'Request failed with status code 409') {
 				alert('비밀번호가 올바르지 않아요');

@@ -4,6 +4,7 @@ import Router from './Router';
 import { BrowserRouter } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 import { CookiesProvider } from 'react-cookie';
+import { Skelethon } from 'Components';
 
 const App: React.FC = () => {
 	return (
@@ -13,7 +14,7 @@ const App: React.FC = () => {
 					<GlobalStyle />
 					<Positioner>
 						<ContentWrapper>
-							<Suspense fallback={<div />}>
+							<Suspense fallback={<Skelethon />}>
 								<Router />
 							</Suspense>
 						</ContentWrapper>

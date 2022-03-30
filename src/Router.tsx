@@ -1,3 +1,4 @@
+import { Skelethon } from 'Components';
 import React, { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import PrivateRoute from 'Utils/Libs/PrivateRoute';
@@ -76,7 +77,7 @@ const Router: React.FC = () => {
 			<Route
 				path="/signin"
 				element={
-					<PublicRoute restricted={false}>
+					<PublicRoute restricted={true}>
 						<SigninPage />
 					</PublicRoute>
 				}
@@ -84,7 +85,7 @@ const Router: React.FC = () => {
 			<Route
 				path="/signup"
 				element={
-					<PublicRoute restricted={false}>
+					<PublicRoute restricted={true}>
 						<SignupPage />
 					</PublicRoute>
 				}
@@ -92,7 +93,7 @@ const Router: React.FC = () => {
 			<Route
 				path="/password"
 				element={
-					<PublicRoute restricted={false}>
+					<PublicRoute restricted={true}>
 						<PwChangePage />
 					</PublicRoute>
 				}
@@ -137,7 +138,7 @@ const Router: React.FC = () => {
 					</PrivateRoute>
 				}
 			/>
-			<Route element={<NotFoundPage />} />
+			<Route path="*" element={<NotFoundPage />} />
 		</Routes>
 	);
 };
