@@ -5,7 +5,7 @@ import StuPenaltyItem from '../StuPenaltyItem/StuPenaltyItem';
 import { getStuInfo, getClassStuInfo, searchName } from 'Api/penaltyInfo';
 import PenaltyGiveItem from 'Components/PenaltyGiveItem/PenaltyGiveItem';
 import { useRole } from 'Hooks/useRole';
-import { Classification } from 'Components';
+import { Classification, NameSearch } from 'Components';
 
 interface studentList {
 	id: number;
@@ -57,7 +57,7 @@ const Penalty: React.FC = () => {
 		});
 	};
 
-	const handleKeyPress = (e) => {
+	const handleKeyPress = (e:any) => {
 		if (e.key === 'Enter') {
 			onSearch();
 		}
@@ -90,17 +90,11 @@ const Penalty: React.FC = () => {
 					setStuClass={setStuClass}
 					setStuGrade={setStuGrade}
 				/>
-				<S.SearchBox>
-					<S.Search
-						pattern="\d*"
-						placeholder="이름을 검색해주세요"
-						onChange={(e) => {
-							setStuName(e.target.value);
-						}}
-						onKeyPress={handleKeyPress}
-					/>
-					<S.Btn onClick={onSearch}>검색</S.Btn>
-				</S.SearchBox>
+				<NameSearch 
+					onSearch={onSearch}
+					setStuName={setStuName}
+					handleKeyPress={handleKeyPress}
+				/>
 				<PenaltyGiveItem checked={checkItems} setCheckItems={setCheckItems} />
 				<S.SelectStu>
 					<S.SelectStus>선택된 학생</S.SelectStus>

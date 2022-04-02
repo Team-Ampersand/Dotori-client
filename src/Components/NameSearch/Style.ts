@@ -1,35 +1,31 @@
 import styled from 'styled-components';
 
-export const SelectWrapper = styled.div`
+export const SearchBox = styled.div`
 	display: flex;
-	flex-direction: row;
 	background-color: #fff;
 	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
-	width: 500px;
+	width: 322px;
 	height: 70px;
 	border-radius: 20px;
-	margin-top: 20px;
-	justify-content: center;
+	justify-content: space-around;
 	align-items: center;
+	margin-top: 20px;
+	margin-left: 1vh;
+	border: none;
+	::placeholder {
+		font-size: 18px;
+	}
 `;
 
-export const SelectBox = styled.select`
-	font-size: 18px;
-	font-weight: bold;
-	border-radius: 5px;
-	border: 2px solid #9ECFF2;
-	width: 90px;
-	height: 40px;
-	text-align: center;
-	color: #898989;
-`;
-
-export const Option = styled.option``;
-
-export const Label = styled.div`
-	margin: 0 20px 0 20px;
-	font-size: 20px;
-	font-weight: bold;
+export const Search = styled.input`
+	display: flex;
+	width: 150px;
+	height: 50px;
+	border: none;
+	border-radius: 20px;
+	::placeholder {
+		font-size: 18px;
+	}
 `;
 
 export const Btn = styled.button`

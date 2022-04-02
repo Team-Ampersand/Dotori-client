@@ -76,9 +76,9 @@ const StuPenaltyItem: React.FC<StuPenaltyItemProps> = ({
 							stuNum={stuNum}
 						/>
 					)}
-					<S.EditBtn onClick={() => setEditPenaltyState(!editPenaltyState)}>
-						확인
-					</S.EditBtn>
+					<S.CheckBtn onClick={() => setEditPenaltyState(!editPenaltyState)}>
+						자세히 보기
+					</S.CheckBtn>
 					{editPenaltyState && (
 						<PenaltyModal
 							modalState={editPenaltyState}

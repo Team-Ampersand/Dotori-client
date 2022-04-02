@@ -23,7 +23,7 @@ const PenaltyGiveItem: React.FC<Props> = ({ checked, setCheckItems }) => {
 
 	return (
 		<>
-			<S.BreakDownBtn onClick={GiveItemModal}>규정위반 기록하기</S.BreakDownBtn>
+			<S.BreakDownBtn onClick={GiveItemModal}>규정 위반 기록</S.BreakDownBtn>
 			<PenaltyGiveModal
 				modalState={editState}
 				closeModal={closeModal}
