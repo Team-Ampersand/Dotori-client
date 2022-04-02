@@ -22,7 +22,7 @@ export const HeaderWrapper = styled.div`
 	display: flex;
 	justify-content: space-between;
 	width: 100%;
-	padding-bottom: 130px;
+	padding-bottom: 100px;
 `;
 
 export const Header = styled.div`
@@ -77,12 +77,13 @@ export const TextWrapper = styled.div`
 `;
 
 export const ImgWrapper = styled.img`
-	min-width: 500px;
-	max-width: 500px;
-	min-height: 500px;
-	max-height: 500px;
+	width: 600px;
+	height: 500px;
 	margin-top: 20px;
 	margin-right: 20px;
+	display: flex;
+	align-items: flex-start;
+	object-fit: contain;
 	img {
 		width: 100%;
 		height: 100%;

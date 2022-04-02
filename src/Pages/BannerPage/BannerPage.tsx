@@ -1,16 +1,17 @@
 import React from 'react';
 import * as S from './Style';
 import { BetaBanner } from '../../Components';
+import { useParams } from 'react-router-dom';
 
 const CompareBanner = (nowUrl: string) => {
+	const {board_key} = useParams();
+	console.log(Number(board_key));
 	switch (nowUrl) {
 		case '/song':
 			return;
 		case '/notice':
 			return;
 		case '/notice/write':
-			return;
-		case `${nowUrl}`:
 			return;
 		case '/selfstudy':
 			return;
@@ -21,6 +22,14 @@ const CompareBanner = (nowUrl: string) => {
 		case '/penalty':
 			return;
 		case '/massage':
+			return;
+		case '/home':
+			return (
+				<S.Postioner>
+					<BetaBanner />
+				</S.Postioner>				
+			)
+		case `${nowUrl}`:
 			return;
 		default:
 			return (

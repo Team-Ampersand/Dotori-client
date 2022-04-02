@@ -67,9 +67,7 @@ const NoticeBoardItem: React.FC<NoticeBoardItemProps> = ({
 					<span>{createdDate.split('').slice(0, 10)}</span>
 				</S.DateStyle>
 				<S.BtnWrapper edit={editState}>
-					<S.Btn BtnColor="black" onClick={onDelete}>
-						삭제
-					</S.Btn>
+					<S.Btn onClick={onDelete}>삭제</S.Btn>
 				</S.BtnWrapper>
 			</S.Container>
 		</>

@@ -34,7 +34,6 @@ const NoticePage: React.FC = () => {
 		GetNoticeItem(board_key)
             .then((res) => res?.data.data)
 			.then((res) => {
-                console.log(res)
 				setTitle(res.title);
                 setContent(res.content);
                 setDate(res.createdDate);

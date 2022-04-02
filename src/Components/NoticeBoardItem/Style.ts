@@ -82,19 +82,20 @@ export const BtnWrapper = styled.div<EditProps>`
 		`}
 `;
 
-export const Btn = styled.button<BtnProps>`
-	width: 4.4vw;
-	height: 3.6vh;
-	margin-left: 0.7vw;
-	border-radius: 10px;
-	background-color: transparent;
-	border: 2px solid ${(props) => props.BtnColor};
+export const Btn = styled.button`
+	width: 80px;
+	height: 40px;
+	border-radius: 5px;
+	background-color: #F38D8D;
+	border: none;
 	outline: none;
-	font-size: 1.25em;
-	color: ${(props) => props.BtnColor};
-	font-weight: bold;
+	font-size: 17px;
+	font-weight: 600;
+	color: #fff;
+	box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.15);
 	&:hover {
-		background-color: ${(props) => props.BtnColor};
-		color: #fff;
+		background-color: #fff;
+		color: #F38D8D;
+		border: 2px solid #F38D8D;
 	}
 `;
