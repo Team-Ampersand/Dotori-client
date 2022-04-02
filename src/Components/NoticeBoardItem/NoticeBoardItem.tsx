@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as S from './Style';
 import { noticeDelete } from 'Api/notice';
 import { useRole } from 'Hooks/useRole';
@@ -40,36 +40,18 @@ const NoticeBoardItem: React.FC<NoticeBoardItemProps> = ({
 	createdDate,
 	editState,
 }) => {
-	const [modalState, setModalState] = useState<boolean>(false);
 	const role = useRole();
-
-	const openModal = () => {
-		setModalState(true);
-	};
-
-	const closeModal = (e) => {
-		e.preventDefault();
-		setModalState(false);
-	};
-
-	const [updateState, setUpdateState] = useState<boolean>(false);
 
 	const deleteNotice = async (boardId) => {
 		return await noticeDelete(role, boardId);
 	};
 
-	const onModify = (e) => {
-		e.stopPropagation();
-		setUpdateState(true);
-		openModal();
-	};
-
 	const onDelete = (e) => {
-		e.stopPropagation();
+		e.preventDefault()
 		if (window.confirm('정말 삭제하시겠어요?')) {
 			deleteNotice(board_key);
-			window.location.reload();
 		}
+		window.location.reload();
 	};
 
 	return (
@@ -85,9 +67,6 @@ const NoticeBoardItem: React.FC<NoticeBoardItemProps> = ({
 					<span>{createdDate.split('').slice(0, 10)}</span>
 				</S.DateStyle>
 				<S.BtnWrapper edit={editState}>
-					<S.Btn BtnColor="gray" onClick={onModify}>
-						수정
-					</S.Btn>
 					<S.Btn BtnColor="black" onClick={onDelete}>
 						삭제
 					</S.Btn>

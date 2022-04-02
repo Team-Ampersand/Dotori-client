@@ -36,6 +36,11 @@ export const TitleWrapper = styled.div`
 	margin-right: 30px;
 	font-size: 32px;
 	font-weight: 700;
+	input {
+		text-align: center;
+		font-size: 26px;
+		font-weight: lighter;
+	}
 `;
 
 export const DateWrapper = styled.div`
@@ -63,6 +68,12 @@ export const TextWrapper = styled.div`
 	height: 100%;
 	font-size: 20px;
 	font-weight: 600;
+	textarea {
+		resize: none;
+		font-size: 20px;
+		width: 90%;
+		height: 500px;
+	}
 `;
 
 export const ImgWrapper = styled.img`
@@ -87,4 +98,20 @@ export const Footer = styled.div`
 	color: #878787;
 	font-size: 18px;
 	font-weight: 600;
+`;
+
+export const EditBtn = styled.button`
+	width: 100px;
+	height: 50px;
+	border-radius: 5px;
+	background-color: #9ECFF2;
+	color: #fff;
+	border: 0;
+	font-size: 18px;
+	font-weight: 600;
+	&:hover{
+		background-color: #fff;
+		color: #9ECFF2;
+		border: 2px solid;
+	}
 `;
