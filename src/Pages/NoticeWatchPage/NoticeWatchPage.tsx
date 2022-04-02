@@ -1,18 +1,17 @@
 import React from 'react';
 import PageTemplate from 'Pages/Template/PageTemplate';
-import Authorization from '../../Components/Authorzation/Authorzation';
-import { Sidebar } from '../../Components';
+import { NoticeCheck, Sidebar } from '../../Components';
 import * as S from './Style';
 
-const AuthorizationPage: React.FC = () => {
+const NoticePage: React.FC = () => {
 	return (
 		<S.Positioner>
 			<Sidebar />
 			<PageTemplate>
-				<Authorization />
+				<NoticeCheck />
 			</PageTemplate>
 		</S.Positioner>
 	);
 };
 
-export default AuthorizationPage;
+export default NoticePage;

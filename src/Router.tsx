@@ -1,4 +1,3 @@
-import { Skelethon } from 'Components';
 import React, { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import PrivateRoute from 'Utils/Libs/PrivateRoute';
@@ -10,6 +9,9 @@ const SelfStudyPage = lazy(() => import('./Pages/SelfStudyPage/SelfStudyPage'));
 const NoticePage = lazy(() => import('./Pages/NoticePage/NoticePage'));
 const NoticeWritePage = lazy(
 	() => import('./Pages/NoticeWritePage/NoticeWritePage')
+);
+const NoticeWatchPage = lazy(
+	() => import('./Pages/NoticeWatchPage/NoticeWatchPage')
 );
 const SongPage = lazy(() => import('./Pages/SongPage/SongPage'));
 const SigninPage = lazy(() => import('./Pages/SigninPage/SigninPage'));
@@ -63,6 +65,14 @@ const Router: React.FC = () => {
 				element={
 					<PrivateRoute>
 						<NoticeWritePage />
+					</PrivateRoute>
+				}
+			/>
+			<Route
+				path="/notice/:board_key"
+				element={
+					<PrivateRoute>
+						<NoticeWatchPage />
 					</PrivateRoute>
 				}
 			/>
