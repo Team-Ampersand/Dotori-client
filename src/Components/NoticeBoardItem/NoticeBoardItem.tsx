@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import * as S from './Style';
-import Modal from '../NoticeModal/NoticeModal';
 import { noticeDelete } from 'Api/notice';
 import { useRole } from 'Hooks/useRole';
 
