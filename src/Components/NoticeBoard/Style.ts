@@ -12,7 +12,7 @@ export const Container = styled.div`
 	height: 79vh;
 	margin-top: 1.8vh;
 	background: #fff;
-	border-radius: 10px;
+	border-radius: 20px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -21,7 +21,9 @@ export const Container = styled.div`
 
 export const PageBtnWrapper = styled.div`
 	display: flex;
-	justify-content: space-between;
+	/* justify-content: space-around; */
+	column-gap: 30px;
+	align-items: center;
 	position: absolute;
 	bottom: 20px;
 	width: 8vw;
@@ -31,13 +33,12 @@ export const PageBtnWrapper = styled.div`
 		}
 	}
 	svg {
-		width: 30px;
-		height: 30px;
 		cursor: pointer;
 	}
 	label {
 		text-align: center;
-		font-size: 30px;
+		font-size: 25px;
+		font-weight: 800;
 		font-weight: lighter;
 		border-radius: 50px;
 	}
@@ -49,20 +50,32 @@ export const BtnWrapper = styled.div`
 	height: 3.6vh;
 `;
 
-export const Btn = styled.button`
-	width: 4.4vw;
-	height: 3.6vh;
+export const WriteBtn = styled.button`
+	width: 95px;
+	height: 38px;
 	margin-right: 0.5vw;
-	border-radius: 10px;
-	background-color: #fff;
+	background-color: #9ECFF2;
 	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
 	border: none;
 	outline: none;
-	font-size: 1.25rem;
-	color: #b6b6b6;
-	font-weight: bold;
+	color: #fff;
+	border-radius: 5px;
+	font-size: 18px;
+	font-weight: 700;
+	letter-spacing: 3px;
 	&:hover {
-		background-color: #b6b6b6;
-		color: #fff;
+		background-color: #fff;
+		color: #9ECFF2;
+		border: 2px solid #9ECFF2;
+	}
+`;
+
+export const EditBtn = styled(WriteBtn)`
+	background-color: #C2C2C2;
+	color: #fff;
+	&:hover {
+		background-color: #fff;
+		color: #C2C2C2;
+		border: 2px solid #C2C2C2;
 	}
 `;

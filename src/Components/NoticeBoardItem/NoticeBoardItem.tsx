@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import * as S from './Style';
-import Modal from '../Modal/Modal';
+import Modal from '../NoticeModal/NoticeModal';
 import { noticeDelete } from 'Api/notice';
 import { useRole } from 'Hooks/useRole';
 
@@ -17,9 +17,9 @@ const returnAuthorColor = (authorType: string) => {
 		case 'ROLE_ADMIN':
 			return '#7D78D1';
 		case 'ROLE_COUNCILLOR':
-			return '#FF8C8C';
+			return '#EB8989';
 		case 'ROLE_DEVELOPER':
-			return '#0F4C81';
+			return '#6BB7EE';
 	}
 };
 
@@ -75,9 +75,9 @@ const NoticeBoardItem: React.FC<NoticeBoardItemProps> = ({
 
 	return (
 		<>
-			<S.Container onClick={openModal}>
+			<S.Container to={`/notice/${board_key}`}>
 				<S.AuthorStyle AuthorColor={returnAuthorColor(author[0])!}>
-					<span>[{returnAuthorValue(author[0])!}]</span>
+					<span>{returnAuthorValue(author[0])!}</span>
 				</S.AuthorStyle>
 				<S.TitleStyle>
 					<span>{title}</span>
@@ -89,22 +89,11 @@ const NoticeBoardItem: React.FC<NoticeBoardItemProps> = ({
 					<S.Btn BtnColor="gray" onClick={onModify}>
 						수정
 					</S.Btn>
-
 					<S.Btn BtnColor="black" onClick={onDelete}>
 						삭제
 					</S.Btn>
 				</S.BtnWrapper>
 			</S.Container>
-			{modalState && (
-				<Modal
-					board_key={board_key}
-					modalState={modalState}
-					closeModal={closeModal}
-					authorColor={returnAuthorColor(author[0])!}
-					updateState={updateState}
-					setUpdateState={setUpdateState}
-				/>
-			)}
 		</>
 	);
 };

@@ -3,7 +3,6 @@ import * as S from './Style';
 import BannerPage from '../BannerPage/BannerPage';
 import { ManufactureDate } from '../../Utils/ManufactureDate';
 
-
 const returnPageType = (routerName: string) => {
 	switch (routerName) {
 		case '/home':
@@ -24,6 +23,8 @@ const returnPageType = (routerName: string) => {
 			return '규정 위반';
 		case '/massage':
 			return '안마의자 신청';
+		case `${routerName}`:
+			return '공지사항';		
 		default:
 			break;
 	}
@@ -47,6 +48,8 @@ const returnValueType = (nowUrl: string) => {
 			return 'penalty';
 		case 'massage':
 			return 'massage';
+		case `${nowUrl}`:
+			return 'notice watch';
 		default:
 			return 0;
 	}
@@ -59,6 +62,7 @@ const BannerStatus = (
 	if (
 		returnValueType(window.location.pathname) === 'notice' ||
 		'notice write' ||
+		'notice watch' ||
 		'point' ||
 		'selfstudy' ||
 		'song' ||
@@ -86,7 +90,6 @@ const BannerStatus = (
 
 const PageTemplate: React.FC = ({ children }) => {
 	const [isActive, setIsActive] = useState(false);
-
 	return (
 		<S.Postioner>
 			<S.Wrapper>

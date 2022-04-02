@@ -90,9 +90,9 @@ const NoticeBoard: React.FC = () => {
 				{!checkMember() && (
 					<S.BtnWrapper>
 						<Link to={'/notice/write'}>
-							<S.Btn>작성</S.Btn>
+							<S.WriteBtn>작성</S.WriteBtn>
 						</Link>
-						<S.Btn onClick={onToggle}>{editState ? '완료' : '편집'}</S.Btn>
+						<S.EditBtn onClick={onToggle}>{editState ? '완료' : '편집'}</S.EditBtn>
 					</S.BtnWrapper>
 				)}
 				<S.Container>
@@ -110,15 +110,23 @@ const NoticeBoard: React.FC = () => {
 								/>
 							))}
 					<S.PageBtnWrapper>
-						<div onClick={prevPageClick}>
-							<span>
-								<I.More />
-							</span>
-						</div>
+						{pageNumber === 1 ?
+							<div></div>
+						:
+							<div onClick={prevPageClick}>
+								<I.NoticeMore />
+							</div>
+						}
 						<label>{pageNumber}</label>
-						<div onClick={nextPageClick}>
-							<I.More />
-						</div>
+						{pageNumber > 1 ?
+							<div onClick={nextPageClick}>
+								<span>
+									<I.NoticeMore />
+								</span>
+							</div>
+							:
+							''
+						}
 					</S.PageBtnWrapper>
 				</S.Container>
 			</S.Positioner>

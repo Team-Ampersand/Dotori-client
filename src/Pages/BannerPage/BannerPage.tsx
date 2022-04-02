@@ -10,6 +10,8 @@ const CompareBanner = (nowUrl: string) => {
 			return;
 		case '/notice/write':
 			return;
+		case `${nowUrl}`:
+			return;
 		case '/selfstudy':
 			return;
 		case '/point':

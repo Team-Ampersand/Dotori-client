@@ -12,7 +12,7 @@ interface ModalProps {
 	setUpdateState: (e: any) => void;
 }
 
-const Modal: React.FC<ModalProps> = ({
+const NoticeModal: React.FC<ModalProps> = ({
 	board_key,
 	modalState,
 	closeModal,
@@ -129,4 +129,4 @@ const Modal: React.FC<ModalProps> = ({
 	);
 };
 
-export default Modal;
+export default NoticeModal;
