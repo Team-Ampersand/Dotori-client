@@ -20,7 +20,7 @@ export const StuBoxContainer = styled.div`
 	margin: 20px 40px;
 	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
 	border-radius: 20px;
-	height: 60px;
+	height: 75px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -148,16 +148,16 @@ export const CheckBox = styled.input`
 export const SelectStu = styled.div`
 	display: flex;
 	align-items: center;
-	background-color: #fff;
-	border-radius: 20px;
-	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
 	width: auto;
-	height: 70px;
+	height: 64px;
+	background-color: #fff;
+	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
 	margin-top: 20px;
 	margin-left: 1vh;
 	border: none;
 	padding-right: 20px;
 	padding-left: 10px;
+	border-radius: 10px;
 `;
 
 export const SelectStus = styled.div`
