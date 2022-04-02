@@ -4,7 +4,7 @@ import { BetaBanner } from '../../Components';
 import { useParams } from 'react-router-dom';
 
 const CompareBanner = (nowUrl: string) => {
-	const {board_key} = useParams();
+	const { board_key } = useParams();
 	console.log(Number(board_key));
 	switch (nowUrl) {
 		case '/song':
@@ -27,8 +27,8 @@ const CompareBanner = (nowUrl: string) => {
 			return (
 				<S.Postioner>
 					<BetaBanner />
-				</S.Postioner>				
-			)
+				</S.Postioner>
+			);
 		case `${nowUrl}`:
 			return;
 		default:

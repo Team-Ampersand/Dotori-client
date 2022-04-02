@@ -24,7 +24,7 @@ const returnPageType = (routerName: string) => {
 		case '/massage':
 			return '안마의자 신청';
 		case `${routerName}`:
-			return '공지사항';		
+			return '공지사항';
 		default:
 			break;
 	}
@@ -55,10 +55,7 @@ const returnValueType = (nowUrl: string) => {
 	}
 };
 
-const BannerStatus = (
-	children: React.ReactNode,
-	isActive: boolean
-) => {
+const BannerStatus = (children: React.ReactNode, isActive: boolean) => {
 	if (
 		returnValueType(window.location.pathname) === 'notice' ||
 		'notice write' ||

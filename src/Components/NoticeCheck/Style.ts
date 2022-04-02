@@ -105,14 +105,14 @@ export const EditBtn = styled.button`
 	width: 100px;
 	height: 50px;
 	border-radius: 5px;
-	background-color: #9ECFF2;
+	background-color: #9ecff2;
 	color: #fff;
 	border: 0;
 	font-size: 18px;
 	font-weight: 600;
-	&:hover{
+	&:hover {
 		background-color: #fff;
-		color: #9ECFF2;
+		color: #9ecff2;
 		border: 2px solid;
 	}
 `;

@@ -47,7 +47,7 @@ const NoticeBoardItem: React.FC<NoticeBoardItemProps> = ({
 	};
 
 	const onDelete = (e) => {
-		e.preventDefault()
+		e.preventDefault();
 		if (window.confirm('정말 삭제하시겠어요?')) {
 			deleteNotice(board_key);
 		}

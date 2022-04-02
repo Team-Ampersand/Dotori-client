@@ -15,7 +15,6 @@ export const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	
 `;
 
 export const ContentWrapper = styled.div`
@@ -37,7 +36,7 @@ export const TitleInput = styled.input`
 	height: 76px;
 	padding: 0 40px;
 	background-color: #fff;
-	box-shadow: 0px 0px 13px 0px #0000001F;
+	box-shadow: 0px 0px 13px 0px #0000001f;
 	border-radius: 13px;
 	border: none;
 	font-size: 27px;
@@ -52,7 +51,7 @@ export const ContentInput = styled.textarea`
 	height: 60vh;
 	margin-top: 3vh;
 	background-color: #fff;
-	box-shadow: 0px 0px 13px 0px #0000001F;
+	box-shadow: 0px 0px 13px 0px #0000001f;
 	border: none;
 	border-radius: 13px;
 	padding: 40px;
@@ -78,7 +77,7 @@ export const ImgContainer = styled.div`
 	height: 670px;
 	border-radius: 15px;
 	background-color: #fff;
-	box-shadow: 0px 0px 13px 0px #0000001F;
+	box-shadow: 0px 0px 13px 0px #0000001f;
 	margin-right: 20px;
 `;
 
@@ -124,7 +123,7 @@ export const ImgBtnWrapper = styled.div`
 		height: 38px;
 		border-radius: 5px;
 		color: #fff;
-		background-color: #A7A7A7;
+		background-color: #a7a7a7;
 		outline: none;
 		border: none;
 		font-size: 16px;
@@ -132,15 +131,15 @@ export const ImgBtnWrapper = styled.div`
 		cursor: pointer;
 		&:hover {
 			background-color: #fff;
-			box-shadow: 0px 0px 13px 0px #0000001F;
-			color: #A7A7A7;
+			box-shadow: 0px 0px 13px 0px #0000001f;
+			color: #a7a7a7;
 		}
 	}
 	button {
 		width: 135px;
 		height: 38px;
 		border-radius: 5px;
-		background-color: #F59D9D;
+		background-color: #f59d9d;
 		color: #fff;
 		font-size: 16px;
 		font-weight: 500;
@@ -149,8 +148,8 @@ export const ImgBtnWrapper = styled.div`
 		cursor: pointer;
 		&:hover {
 			background-color: #fff;
-			border: 2px solid #F59D9D;
-			color: #F59D9D;
+			border: 2px solid #f59d9d;
+			color: #f59d9d;
 		}
 	}
 `;
@@ -168,7 +167,7 @@ export const BtnWrapper = styled.div`
 export const Btn = styled.button`
 	width: 115px;
 	height: 38px;
-	background-color: #9ECFF2;
+	background-color: #9ecff2;
 	box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
 	border-radius: 5px;
 	border: 0;
@@ -178,14 +177,14 @@ export const Btn = styled.button`
 	cursor: pointer;
 	&:hover {
 		background-color: #fff;
-		color: #9ECFF2;
+		color: #9ecff2;
 	}
 `;
 
 export const DeleteBtn = styled.button`
 	width: 115px;
 	height: 38px;
-	background-color: #F59D9D;
+	background-color: #f59d9d;
 	border-radius: 5px;
 	box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
 	font-size: 17px;
@@ -195,7 +194,7 @@ export const DeleteBtn = styled.button`
 	cursor: pointer;
 	&:hover {
 		background-color: #fff;
-		color: #F59D9D;
+		color: #f59d9d;
 	}
 `;
 
@@ -207,10 +206,10 @@ export const AuthorContainer = styled.div`
 	height: 76px;
 	border-radius: 13px;
 	background-color: #fff;
-	color: #9F9F9F;
+	color: #9f9f9f;
 	font-size: 23px;
 	font-weight: 600;
-	box-shadow: 0px 0px 13px 0px #0000001F;
+	box-shadow: 0px 0px 13px 0px #0000001f;
 `;
 
 export const AuthorWrapper = styled.div`

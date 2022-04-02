@@ -7,8 +7,12 @@ const HomePage = lazy(() => import('./Pages/HomePage/HomePage'));
 const PromotionPage = lazy(() => import('./Pages/PromotionPage/PromotionPage'));
 const SelfStudyPage = lazy(() => import('./Pages/SelfStudyPage/SelfStudyPage'));
 const NoticePage = lazy(() => import('./Pages/NoticePage/NoticePage'));
-const NoticeWritePage = lazy(() => import('./Pages/NoticeWritePage/NoticeWritePage'));
-const NoticeWatchPage = lazy(() => import('./Pages/NoticeWatchPage/NoticeWatchPage'));
+const NoticeWritePage = lazy(
+	() => import('./Pages/NoticeWritePage/NoticeWritePage')
+);
+const NoticeWatchPage = lazy(
+	() => import('./Pages/NoticeWatchPage/NoticeWatchPage')
+);
 const SongPage = lazy(() => import('./Pages/SongPage/SongPage'));
 const SigninPage = lazy(() => import('./Pages/SigninPage/SigninPage'));
 const SignupPage = lazy(() => import('./Pages/SignupPage/SignupPage'));

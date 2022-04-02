@@ -15,14 +15,14 @@ const NoticeWrite: React.FC = () => {
 	const role = useRole();
 
 	const returnAuthorValue = (authorType: string) => {
-        switch (authorType) {
-            case 'admin':
-                return '사감선생님';
-            case 'councillor':
-                return '자치위원회';
-            case 'developer':
-                return '도토리';
-        }
+		switch (authorType) {
+			case 'admin':
+				return '사감선생님';
+			case 'councillor':
+				return '자치위원회';
+			case 'developer':
+				return '도토리';
+		}
 	};
 
 	const getTitle = (e) => {
