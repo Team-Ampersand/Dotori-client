@@ -48,31 +48,6 @@ export const SelectBox = styled.select`
 	text-align: center;
 `;
 
-export const Option = styled.option``;
-
-export const Label = styled.div`
-	margin: 0 20px 0 20px;
-	font-size: 20px;
-	font-weight: bold;
-`;
-
-export const Btn = styled.button`
-	width: 80px;
-	height: 40px;
-	border-radius: 10px;
-	border: none;
-	color: #fff;
-	font-size: 18px;
-	font-weight: bold;
-	outline: none;
-	background-color: #0f4c81;
-	&:hover {
-		background-color: #fff;
-		color: #0f4c81;
-		border: 2px solid #0f4c81;
-	}
-`;
-
 export const AuthorizationBoard = styled.ul`
 	width: 100%;
 	height: 74vh;
@@ -90,52 +65,6 @@ export const Container = styled.div`
 	margin-top: 20px;
 	background-color: #ffffff;
 	border-radius: 20px;
-`;
-
-export const SearchBox = styled.div`
-	display: flex;
-	background-color: #fff;
-	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
-	width: 300px;
-	height: 70px;
-	border-radius: 20px;
-	justify-content: space-around;
-	align-items: center;
-	margin-top: 20px;
-	margin-left: 1vh;
-	border: none;
-	::placeholder {
-		font-size: 18px;
-	}
-`;
-
-export const Search = styled.input`
-	display: flex;
-	width: 150px;
-	height: 50px;
-	border: none;
-	border-radius: 20px;
-	::placeholder {
-		font-size: 18px;
-	}
-`;
-
-export const BreakDownBtn = styled.button`
-	width: 190px;
-	height: 70px;
-	margin-top: 20px;
-	border-radius: 20px;
-	margin-left: 1vh;
-	border: none;
-	background-color: #ff5252;
-	color: #ffffff;
-	font-size: 16px;
-	font-weight: 700;
-	&:hover {
-		background-color: #fff;
-		color: #ff5252;
-		border: 2px solid #ff5252;
-	}
 `;
 
 export const CheckBox = styled.input`

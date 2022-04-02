@@ -28,6 +28,7 @@ import MassageTable from 'Components/MassageTable/MassageTable';
 import PenaltyInfoModal from 'Components/PenaltyInfoModal/PenaltyInfoModal';
 import StuAuthorityItem from 'Components/StuAuthorityItem/StuAuthorityItem';
 import Skelethon from 'Components/Skelethon/Skelethon';
+import NameSearch from 'Components/NameSearch/NameSearch';
 
 export {
 	Sidebar,
@@ -60,4 +61,5 @@ export {
 	PenaltyInfoModal,
 	StuAuthorityItem,
 	Skelethon,
+	NameSearch,
 };
