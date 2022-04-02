@@ -14,7 +14,7 @@ const returnPageType = (routerName: string) => {
 		case '/notice':
 			return '공지사항';
 		case '/notice/write':
-			return '공지사항 작성';
+			return '공지사항';
 		case '/point':
 			return '상벌점 관리';
 		case '/authorization':

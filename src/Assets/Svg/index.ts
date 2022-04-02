@@ -30,6 +30,7 @@ import Entry from './Entry';
 import Learn from './Learn';
 import Outside from './Outside';
 import Cancel from './Cancel';
+import TextLogo from './TextLogo';
 
 export {
 	Home,
@@ -64,4 +65,5 @@ export {
 	Learn,
 	Outside,
 	Cancel,
+	TextLogo,
 };
