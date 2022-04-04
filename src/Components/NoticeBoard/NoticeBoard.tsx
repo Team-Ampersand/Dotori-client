@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react';
 import * as S from './Style';
 import * as I from '../../Assets/Svg';
 import NoticeBoardItem from '../NoticeBoardItem/NoticeBoardItem';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { getNotice, getNoticeDetail } from 'Api/notice';
-import { useSetRecoilState } from 'recoil';
-import { HasToken } from 'Atoms';
 import { useRole } from 'Hooks/useRole';
 
 interface board {
@@ -74,10 +72,6 @@ const NoticeBoard: React.FC = () => {
 		}
 	};
 	const prevPageClick = async () => {
-		if (pageNumber === 1) {
-			alert('첫번째 페이지에요');
-			return;
-		}
 		if (pageNumber > 1) {
 			setTotalPage(totalPage + 1);
 			setPageNumber(pageNumber - 1);
@@ -90,9 +84,11 @@ const NoticeBoard: React.FC = () => {
 				{!checkMember() && (
 					<S.BtnWrapper>
 						<Link to={'/notice/write'}>
-							<S.Btn>작성</S.Btn>
+							<S.WriteBtn>작성</S.WriteBtn>
 						</Link>
-						<S.Btn onClick={onToggle}>{editState ? '완료' : '편집'}</S.Btn>
+						<S.EditBtn onClick={onToggle}>
+							{editState ? '완료' : '편집'}
+						</S.EditBtn>
 					</S.BtnWrapper>
 				)}
 				<S.Container>
@@ -110,15 +106,23 @@ const NoticeBoard: React.FC = () => {
 								/>
 							))}
 					<S.PageBtnWrapper>
-						<div onClick={prevPageClick}>
-							<span>
-								<I.More />
-							</span>
-						</div>
+						{pageNumber === 1 ? (
+							<S.EmptyBtn />
+						) : (
+							<div onClick={prevPageClick}>
+								<I.NoticeMore />
+							</div>
+						)}
 						<label>{pageNumber}</label>
-						<div onClick={nextPageClick}>
-							<I.More />
-						</div>
+						{totalPage > 1 ? (
+							<div onClick={nextPageClick}>
+								<span>
+									<I.NoticeMore />
+								</span>
+							</div>
+						) : (
+							<div></div>
+						)}
 					</S.PageBtnWrapper>
 				</S.Container>
 			</S.Positioner>

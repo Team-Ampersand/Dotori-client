@@ -10,7 +10,7 @@ export const Container = styled.li`
 	align-items: center;
 	justify-content: space-between;
 	padding: 0 30px;
-	svg{
+	svg {
 		width: 40px;
 		height: 40px;
 		margin-left: 20px;
@@ -46,9 +46,9 @@ export const PenaltyStyle = styled.div`
 `;
 
 export const PenaltyIconWrapper = styled.div`
-	display:flex;
+	display: flex;
 	align-items: center;
-	.tooltiptext{
+	.tooltiptext {
 		visibility: hidden;
 		background-color: black;
 		color: #fff;
@@ -60,7 +60,7 @@ export const PenaltyIconWrapper = styled.div`
 		z-index: 1;
 	}
 	:hover .tooltiptext {
-	visibility: visible;
+		visibility: visible;
 	}
 `;
 
@@ -72,11 +72,11 @@ export const CheckBtn = styled.button`
 	color: #fff;
 	border: none;
 	border-radius: 5px;
-	background-color: #B3B3B3;
+	background-color: #b3b3b3;
 
 	&:hover {
-		border: 2px solid #B3B3B3;
-		color: #B3B3B3;
+		border: 2px solid #b3b3b3;
+		color: #b3b3b3;
 		background-color: #fff;
 	}
 `;
@@ -85,8 +85,8 @@ export const EditModifyBtn = styled.button`
 	width: 80px;
 	height: 40px;
 	margin-right: 20px;
-	border: 2px solid #9ECFF2;
-	background-color: #9ECFF2;
+	border: 2px solid #9ecff2;
+	background-color: #9ecff2;
 	font-size: 18px;
 	font-weight: bold;
 	color: white;
@@ -94,7 +94,7 @@ export const EditModifyBtn = styled.button`
 
 	&:hover {
 		background-color: transparent;
-		color: #9ECFF2;
+		color: #9ecff2;
 	}
 `;
 

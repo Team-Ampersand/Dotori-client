@@ -10,6 +10,7 @@ import IllustSong from './IllustSong';
 import Logout from './Logout';
 import Logo from './Logo';
 import User from './User';
+import NoticeMore from './NoticeMore';
 import More from './More';
 import IllustHome from './IllustHome';
 import DotoriLogo from './DotoriLogo';
@@ -28,6 +29,8 @@ import Affect from './Affection';
 import Entry from './Entry';
 import Learn from './Learn';
 import Outside from './Outside';
+import Cancel from './Cancel';
+import TextLogo from './TextLogo';
 
 export {
 	Home,
@@ -42,6 +45,7 @@ export {
 	IllustHome,
 	Logout,
 	User,
+	NoticeMore,
 	More,
 	DotoriLogo,
 	LoginArrow,
@@ -59,5 +63,7 @@ export {
 	Affect,
 	Entry,
 	Learn,
-	Outside
+	Outside,
+	Cancel,
+	TextLogo,
 };
