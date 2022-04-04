@@ -10,23 +10,26 @@ export const Positioner = styled.div`
 
 export const Container = styled.div`
 	width: 100%;
-	height: 85vh;
+	height: 100%;
 	border-radius: 20px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 `;
 
-export const ContentWrapper = styled.div`
+export const ContentContainer = styled.div`
 	width: 100%;
+	height: 95%;
 	display: flex;
 	align-items: flex-start;
 `;
 
 export const InputWrapper = styled.div`
 	display: grid;
+	grid-template-rows: repeat(1, 70px);
 	width: 100%;
 	height: 100%;
+	padding-bottom: 30px;
 `;
 
 export const TitleInput = styled.input`
@@ -48,13 +51,13 @@ export const TitleInput = styled.input`
 
 export const ContentInput = styled.textarea`
 	width: 90%;
-	height: 60vh;
+	height: 85%;
 	margin-top: 3vh;
 	background-color: #fff;
 	box-shadow: 0px 0px 13px 0px #0000001f;
 	border: none;
 	border-radius: 13px;
-	padding: 40px;
+	padding: 40px 40px 10px 40px;
 	font-size: 1.3rem;
 	font-weight: 500;
 	resize: none;
@@ -63,22 +66,23 @@ export const ContentInput = styled.textarea`
 	}
 `;
 
-export const ContentsWrapper = styled.div`
-	display: grid;
-	align-content: space-between;
-	height: 100%;
+export const ContentWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 700px;
+	height: 95%;
 `;
 
 export const ImgContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 500px;
-	height: 670px;
+	width: 95%;
+	height: 80%;
 	border-radius: 15px;
 	background-color: #fff;
 	box-shadow: 0px 0px 13px 0px #0000001f;
-	margin-right: 20px;
 `;
 
 export const LogoImg = styled.div`
@@ -108,6 +112,7 @@ export const Img = styled.div`
 
 export const ImgBtnWrapper = styled.div`
 	width: 100%;
+	height: 100px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -202,7 +207,7 @@ export const AuthorContainer = styled.div`
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
-	width: 500px;
+	width: 95%;
 	height: 76px;
 	border-radius: 13px;
 	background-color: #fff;
