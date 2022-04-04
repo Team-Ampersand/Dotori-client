@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+type StyleProps = {
+	colors?: boolean;
+};
+
 export const Container = styled.li`
 	width: 95%;
 	list-style: none;
@@ -18,34 +22,31 @@ export const StuInfoWrapper = styled.div`
 `;
 
 export const StuNumStyle = styled.div`
-	font-size: 24px;
+	font-size: 18px;
 	width: 200px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-right: 1px solid black;
 `;
 
 export const NameStyle = styled.div`
-	font-size: 24px;
+	font-size: 18px;
 	width: 280px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-right: 1px solid black;
 `;
 
 export const AuthorityStyle = styled.div`
-	font-size: 20px;
+	font-size: 18px;
 	width: 200px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-right: 1px solid black;
 `;
 
 export const SelfStudyStyle = styled.div`
-	font-size: 20px;
+	font-size: 18px;
 	width: 200px;
 	display: flex;
 	justify-content: center;
@@ -53,55 +54,55 @@ export const SelfStudyStyle = styled.div`
 `;
 
 export const BanBtn = styled.button`
-	width: 90px;
-	height: 45px;
-	margin-right: 40px;
+	width: 108px;
+	height: 36px;
+	margin-right: 20px;
 	font-size: 18px;
 	font-weight: bold;
 	color: #fff;
 	border: none;
-	border-radius: 10px;
-	background-color: red;
+	border-radius: 3px;
+	background-color: #ed7878;
 
 	&:hover {
-		border: 2px solid red;
-		color: red;
+		border: 2px solid #ed7878;
+		color: #ed7878;
 		background-color: #fff;
 	}
 `;
 
 export const BanCancelBtn = styled.button`
-	width: 90px;
-	height: 45px;
-	margin-right: 40px;
+	width: 108px;
+	height: 36px;
+	margin-right: 20px;
 	font-size: 18px;
 	font-weight: bold;
 	color: #fff;
 	border: none;
-	border-radius: 10px;
-	background-color: blue;
+	border-radius: 3px;
+	background-color: #668ae7;
 
 	&:hover {
-		border: 2px solid blue;
-		color: blue;
+		border: 2px solid #668ae7;
+		color: #668ae7;
 		background-color: #fff;
 	}
 `;
 
 export const EditBtn = styled.button`
-	width: 90px;
-	height: 45px;
+	width: 108px;
+	height: 36px;
 	margin-right: 30px;
 	font-size: 18px;
 	font-weight: bold;
 	color: #fff;
 	border: none;
-	border-radius: 10px;
-	background-color: #0f4c81;
+	border-radius: 3px;
+	background-color: #b8b8b8;
 
 	&:hover {
-		border: 2px solid #0f4c81;
-		color: #0f4c81;
+		border: 2px solid #b8b8b8;
+		color: #b8b8b8;
 		background-color: #fff;
 	}
 `;

@@ -57,7 +57,7 @@ const Penalty: React.FC = () => {
 		});
 	};
 
-	const handleKeyPress = (e:any) => {
+	const handleKeyPress = (e: any) => {
 		if (e.key === 'Enter') {
 			onSearch();
 		}
@@ -90,7 +90,7 @@ const Penalty: React.FC = () => {
 					setStuClass={setStuClass}
 					setStuGrade={setStuGrade}
 				/>
-				<NameSearch 
+				<NameSearch
 					onSearch={onSearch}
 					setStuName={setStuName}
 					handleKeyPress={handleKeyPress}

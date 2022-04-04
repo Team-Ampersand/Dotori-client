@@ -58,7 +58,7 @@ const Authorzation: React.FC = () => {
 				/>
 				<S.SearchBox>
 					<S.Search
-						placeholder="이름으로 검색하기"
+						placeholder="이름을 입력해주세요"
 						onChange={(e) => {
 							setStuName(e.target.value);
 						}}

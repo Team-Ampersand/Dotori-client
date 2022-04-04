@@ -34,7 +34,7 @@ const returnSelfStudyValue = (selfStudy: string) => {
 		case 'CANT':
 			return '신청 취소';
 		case 'IMPOSSIBLE':
-			return '신청 불가';
+			return '신청 불가능';
 		default:
 			return '';
 	}
@@ -49,7 +49,7 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
 }) => {
 	const role = useRole();
 	useEffect(() => {
-		if (returnSelfStudyValue(selfStudy) === '신청 불가') {
+		if (returnSelfStudyValue(selfStudy) === '신청 불가능') {
 			setSelfStudyState(false);
 		}
 	}, []);
@@ -75,6 +75,7 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
 	const closeModal = () => {
 		setEditState(false);
 	};
+
 	return (
 		<>
 			<S.Container>
@@ -83,6 +84,7 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
 					<S.NameStyle onClick={() => console.log(selfStudy)}>
 						{memberName}
 					</S.NameStyle>
+
 					<S.AuthorityStyle>{returnRoleValue(authority)}</S.AuthorityStyle>
 					<S.SelfStudyStyle>{returnSelfStudyValue(selfStudy)}</S.SelfStudyStyle>
 				</S.StuInfoWrapper>
