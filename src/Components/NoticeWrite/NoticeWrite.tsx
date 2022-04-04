@@ -76,7 +76,7 @@ const NoticeWrite: React.FC = () => {
 						<S.DeleteBtn onClick={() => navigate('/notice')}>취소</S.DeleteBtn>
 						<S.Btn onClick={createNotice}>작성하기</S.Btn>
 					</S.BtnWrapper>
-					<S.ContentWrapper>
+					<S.ContentContainer>
 						<S.InputWrapper>
 							<S.TitleInput
 								placeholder="제목을 입력해주세요 (1 ~ 45자)"
@@ -87,7 +87,7 @@ const NoticeWrite: React.FC = () => {
 								onChange={getContent}
 							/>
 						</S.InputWrapper>
-						<S.ContentsWrapper>
+						<S.ContentWrapper>
 							<S.ImgContainer>
 								<div>
 									<S.Img>
@@ -118,8 +118,8 @@ const NoticeWrite: React.FC = () => {
 									작성자 : {returnAuthorValue(role)}
 								</S.AuthorWrapper>
 							</S.AuthorContainer>
-						</S.ContentsWrapper>
-					</S.ContentWrapper>
+						</S.ContentWrapper>
+					</S.ContentContainer>
 				</S.Container>
 			</S.Positioner>
 		</>
