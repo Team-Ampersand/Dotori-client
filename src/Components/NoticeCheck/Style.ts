@@ -72,7 +72,7 @@ export const TextWrapper = styled.div`
 		resize: none;
 		font-size: 20px;
 		width: 90%;
-		height: 500px;
+		height: 450px;
 	}
 `;
 
