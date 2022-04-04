@@ -51,17 +51,15 @@ const NoticeWrite: React.FC = () => {
 		setShouldConfirmState(false);
 	};
 
-	const createNotice = async () => {
+	const createNotice = async (e) => {
 		confirm();
-		try {
-			const res = await noticeWrite(role, title, content, postFile);
+		const res = await noticeWrite(role, title, content, postFile);
+		if(title && content === ''){
+			return;
+		} else {
 			navigate('/notice');
-			return res;
-		} catch (e: any) {
-			if (e.message === 'Error: Request failed with status code 400') {
-				alert('제목과 내용을 입력해주세요');
-			}
 		}
+		return res;
 	};
 
 	useBeforeunload((e) => {
@@ -81,10 +79,12 @@ const NoticeWrite: React.FC = () => {
 							<S.TitleInput
 								placeholder="제목을 입력해주세요 (1 ~ 45자)"
 								onChange={getTitle}
+								className="input"
 							/>
 							<S.ContentInput
 								placeholder="내용을 입력해주세요 (1 ~ 250자)"
 								onChange={getContent}
+								className="input"
 							/>
 						</S.InputWrapper>
 						<S.ContentWrapper>

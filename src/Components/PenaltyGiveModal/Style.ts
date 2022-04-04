@@ -66,16 +66,16 @@ export const BtnWrapper = styled.div`
 export const GiveBtn = styled.button`
 	width: 40vh;
 	height: 50px;
-	border-radius: 30px;
+	border-radius: 10px;
 	border: none;
-	background-color: #ff5252;
+	background-color: #f38d8d;
 	color: #ffffff;
-	font-size: 14px;
+	font-size: 16px;
 	font-weight: 700;
 	&:hover {
 		background-color: #fff;
-		color: #ff5252;
-		border: 2px solid #ff5252;
+		color: #f38d8d;
+		border: 2px solid #f38d8d;
 	}
 `;
 

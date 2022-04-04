@@ -44,6 +44,11 @@ export const PageBtnWrapper = styled.div`
 	}
 `;
 
+export const EmptyBtn = styled.div`
+	width: 15px;
+	height: 19.5px;
+`;
+
 export const BtnWrapper = styled.div`
 	display: flex;
 	justify-content: flex-end;
