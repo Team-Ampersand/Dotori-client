@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as S from './Style';
 import { noticeDelete } from 'Api/notice';
 import { useRole } from 'Hooks/useRole';
@@ -46,14 +46,13 @@ const NoticeBoardItem: React.FC<NoticeBoardItemProps> = ({
 		return await noticeDelete(role, boardId);
 	};
 
-	const onDelete = (e) => {
+	const onDelete = async (e) => {
 		e.preventDefault();
 		if (window.confirm('정말 삭제하시겠어요?')) {
-			deleteNotice(board_key);
+			await deleteNotice(board_key);
+			window.location.reload();
 		}
-		window.location.reload();
 	};
-
 	return (
 		<>
 			<S.Container to={`/notice/${board_key}`}>

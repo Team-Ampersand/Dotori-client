@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react';
 import * as S from './Style';
 import * as I from '../../Assets/Svg';
 import NoticeBoardItem from '../NoticeBoardItem/NoticeBoardItem';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { getNotice, getNoticeDetail } from 'Api/notice';
-import { useSetRecoilState } from 'recoil';
-import { HasToken } from 'Atoms';
 import { useRole } from 'Hooks/useRole';
 
 interface board {
@@ -74,10 +72,6 @@ const NoticeBoard: React.FC = () => {
 		}
 	};
 	const prevPageClick = async () => {
-		if (pageNumber === 1) {
-			alert('첫번째 페이지에요');
-			return;
-		}
 		if (pageNumber > 1) {
 			setTotalPage(totalPage + 1);
 			setPageNumber(pageNumber - 1);
@@ -113,21 +107,21 @@ const NoticeBoard: React.FC = () => {
 							))}
 					<S.PageBtnWrapper>
 						{pageNumber === 1 ? (
-							<div></div>
+							<S.EmptyBtn />
 						) : (
 							<div onClick={prevPageClick}>
 								<I.NoticeMore />
 							</div>
 						)}
 						<label>{pageNumber}</label>
-						{pageNumber > 1 ? (
+						{totalPage > 1 ? (
 							<div onClick={nextPageClick}>
 								<span>
 									<I.NoticeMore />
 								</span>
 							</div>
 						) : (
-							''
+							<div></div>
 						)}
 					</S.PageBtnWrapper>
 				</S.Container>
