@@ -8,7 +8,7 @@ export const Positioner = styled.div`
 
 export const Container = styled.div`
 	width: 100%;
-	height: 72vh;
+	height: 70vh;
 	padding: 60px 80px;
 	margin-top: 1.8vh;
 	background: #fff;
@@ -79,15 +79,8 @@ export const TextWrapper = styled.div`
 export const ImgWrapper = styled.img`
 	width: 600px;
 	height: 500px;
-	margin-top: 20px;
-	margin-right: 20px;
-	display: flex;
-	align-items: flex-start;
+	margin-top: -50px;
 	object-fit: contain;
-	img {
-		width: 100%;
-		height: 100%;
-	}
 `;
 
 export const Footer = styled.div`
