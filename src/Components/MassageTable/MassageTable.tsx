@@ -1,4 +1,5 @@
 import { massageLookup } from 'Api/massage';
+import { TextLogo } from 'Assets/Svg';
 import Logo from 'Assets/Svg/Logo';
 import { HasToken } from 'Atoms';
 import { useRole } from 'Hooks/useRole';
@@ -69,7 +70,7 @@ const MassageTable = () => {
 					))
 				) : (
 					<S.ExceptionWrapper>
-						<Logo />
+						<TextLogo />
 						<span>안마의자를 신청한 사람이 없어요</span>
 					</S.ExceptionWrapper>
 				)}

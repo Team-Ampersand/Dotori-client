@@ -3,10 +3,7 @@ import * as S from './Style';
 import axios from 'axios';
 import { deleteMusic } from 'Api/music';
 import { useDecode } from '../../Hooks/useDecode';
-import {
-	DateFormatter,
-	showMusicDataFormatter,
-} from '../../Utils/DateFormatter';
+import { showMusicDataFormatter } from '../../Utils/DateFormatter';
 import { useRole } from 'Hooks/useRole';
 
 type SongItemObj = {

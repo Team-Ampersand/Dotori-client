@@ -85,10 +85,11 @@ export const deletePenaltyInfo = async (role: string, PenaltyId: number) => {
 	}
 };
 
-export const searchName = async (role: string, name: string) => {
+export const searchName = async (role: string, name: string, e?: any) => {
 	try {
 		if (name === '') {
-			return await getStuInfo(role);
+			alert('이름을 입력해주세요');
+			return null;
 		}
 		const { data } = await apiClient.get(
 			PenaltyController.searchName(role, name)
