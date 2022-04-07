@@ -11,6 +11,7 @@ export const BreakDownBtn = styled.button`
 	border-radius: 10px;
 	font-size: 20px;
 	font-weight: 550;
+	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
 	&:hover {
 		background-color: #fff;
 		color: #f38d8d;

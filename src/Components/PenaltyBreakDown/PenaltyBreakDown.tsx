@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as S from './Style';
+import * as I from 'Assets/Svg/index';
 
 interface PenaltyBreakDownProps {
 	penaltyList: any;
@@ -498,13 +499,16 @@ const PenaltyBreakDown: React.FC<PenaltyBreakDownProps> = ({
 							</S.TextWrapper>
 						</S.LargeCategories>
 					</S.LargeCategoriesWrapper>
-					<S.SmallCategoriesWrapper>
-						{penaltyMessage === '규정위반 내역이 없습니다.' ? (
-							<S.None>규정위반 내역이 없습니다.</S.None>
+					{penaltyMessage === '규정위반 내역이 없습니다.' ? (
+						<S.ExceptionWrapper>
+							<I.TextLogo />
+							<S.None>규정위반 내역이 없습니다.</S.None>							
+						</S.ExceptionWrapper>
 						) : (
-							SmallCatergories
-						)}
-					</S.SmallCategoriesWrapper>
+						<S.SmallCategoriesWrapper>
+							{SmallCatergories}
+						</S.SmallCategoriesWrapper>
+					)}
 				</>
 			);
 		});

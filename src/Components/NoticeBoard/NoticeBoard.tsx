@@ -77,7 +77,7 @@ const NoticeBoard: React.FC = () => {
 			setFooterNumber(footerNumber - 1);
 		} else return;
 	};
-
+	console.log(board);
 	return (
 		<>
 			<S.Positioner>
@@ -91,39 +91,48 @@ const NoticeBoard: React.FC = () => {
 						</S.EditBtn>
 					</S.BtnWrapper>
 				)}
+				{
+					[...board].length === 0 ?
+				
+				<S.ExceptionWrapper>
+					<I.TextLogo/>
+					현재 작성된 공지사항이 없어요!
+				</S.ExceptionWrapper>
+				:
 				<S.Container>
-					{[...board] &&
-						[...board]
-							.map((noticeItem) => (
-								<NoticeBoardItem
-									key={noticeItem.id}
-									board_key={noticeItem.id}
-									author={noticeItem.roles}
-									title={noticeItem.title}
-									createdDate={noticeItem.createdDate}
-									editState={editState}
-								/>
-							))}
-					<S.PageBtnWrapper>
-						{footerNumber === 1 ? (
-							<S.EmptyBtn />
-						) : (
-							<div onClick={prevPageClick}>
+				{[...board] &&
+					[...board]
+						.map((noticeItem) => (
+							<NoticeBoardItem
+								key={noticeItem.id}
+								board_key={noticeItem.id}
+								author={noticeItem.roles}
+								title={noticeItem.title}
+								createdDate={noticeItem.createdDate}
+								editState={editState}
+							/>
+						))}
+				<S.PageBtnWrapper>
+					{footerNumber === 1 ? (
+						<S.EmptyBtn />
+					) : (
+						<div onClick={prevPageClick}>
+							<I.NoticeMore />
+						</div>
+					)}
+					<label>{footerNumber}</label>
+					{totalPage > 1 ? (
+						<div onClick={nextPageClick}>
+							<span>
 								<I.NoticeMore />
-							</div>
-						)}
-						<label>{footerNumber}</label>
-						{totalPage > 1 ? (
-							<div onClick={nextPageClick}>
-								<span>
-									<I.NoticeMore />
-								</span>
-							</div>
-						) : (
-							<S.EmptyBtn />
-						)}
-					</S.PageBtnWrapper>
-				</S.Container>
+							</span>
+						</div>
+					) : (
+						<S.EmptyBtn />
+					)}
+				</S.PageBtnWrapper>
+			</S.Container>
+				}
 			</S.Positioner>
 		</>
 	);

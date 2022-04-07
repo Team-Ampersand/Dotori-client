@@ -42,6 +42,7 @@ export const Category = styled.div`
 
 export const CategoryException = styled.div`
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	width: 100%;
@@ -67,6 +68,7 @@ export const ItemWrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	width: 200px;
+	font-size: 16px;
 `;
 
 export const DeleteBtn = styled.button`

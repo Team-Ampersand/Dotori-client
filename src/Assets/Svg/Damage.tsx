@@ -2,7 +2,7 @@ import * as React from 'react';
 
 function Damage(props: React.SVGProps<SVGSVGElement>) {
 	return (
-		<svg width="1em" height="1em" viewBox="0 0 442 442" fill="none" {...props}>
+		<svg width="2em" height="2em" viewBox="0 0 442 442" fill="none" {...props}>
 			<path fill="url(#prefix__pattern23)" d="M108 84h250v250H108z" />
 			<rect
 				x={25}

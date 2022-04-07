@@ -31,6 +31,7 @@ import Learn from './Learn';
 import Outside from './Outside';
 import Cancel from './Cancel';
 import TextLogo from './TextLogo';
+import Delete from './Delete';
 
 export {
 	Home,
@@ -66,4 +67,5 @@ export {
 	Outside,
 	Cancel,
 	TextLogo,
+	Delete,
 };

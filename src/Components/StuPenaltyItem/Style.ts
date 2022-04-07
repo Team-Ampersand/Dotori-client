@@ -10,10 +10,8 @@ export const Container = styled.li`
 	align-items: center;
 	justify-content: space-between;
 	padding: 0 30px;
-	svg {
-		width: 40px;
-		height: 40px;
-		margin-left: 20px;
+	.Icon{
+		margin-left: 20px;		
 	}
 `;
 

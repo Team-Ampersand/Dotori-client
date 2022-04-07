@@ -59,7 +59,7 @@ const StuPenaltyItem: React.FC<StuPenaltyItemProps> = ({
 					<S.NameStyle>{name}</S.NameStyle>
 					<S.PenaltyStyle>
 						{ruleBigViolationList.map((item, idx) => (
-							<S.PenaltyIconWrapper>
+							<S.PenaltyIconWrapper key={idx} className="Icon">
 								{returnPenaltyIconValue(item)}
 								<div className="tooltiptext">{item}</div>
 							</S.PenaltyIconWrapper>
