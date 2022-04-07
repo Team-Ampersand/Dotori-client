@@ -25,6 +25,21 @@ const returnRoleValue = (roleType: string) => {
 	}
 };
 
+const returnSelfStudyColor = (selfStudyType: string) => {
+	switch (selfStudyType) {
+		case 'CAN':
+			return '#000000';
+		case 'APPLIED':
+			return '#000000';
+		case 'CANT':
+			return '#000000';
+		case 'IMPOSSIBLE':
+			return '#DD4A4A';
+		default:
+			return '';
+	}
+};
+
 const returnSelfStudyValue = (selfStudy: string) => {
 	switch (selfStudy) {
 		case 'CAN':
@@ -84,9 +99,10 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
 					<S.NameStyle onClick={() => console.log(selfStudy)}>
 						{memberName}
 					</S.NameStyle>
-
 					<S.AuthorityStyle>{returnRoleValue(authority)}</S.AuthorityStyle>
-					<S.SelfStudyStyle>{returnSelfStudyValue(selfStudy)}</S.SelfStudyStyle>
+					<S.SelfStudyStyle selfStudyColor={returnSelfStudyColor(selfStudy)}>
+						{returnSelfStudyValue(selfStudy)}
+					</S.SelfStudyStyle>
 				</S.StuInfoWrapper>
 				<S.BtnWrapper>
 					{selfStudyState ? (

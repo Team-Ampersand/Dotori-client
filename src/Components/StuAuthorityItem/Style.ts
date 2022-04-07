@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-type StyleProps = {
-	colors?: boolean;
-};
+interface StyleProps {
+	selfStudyColor: string;
+}
 
 export const Container = styled.li`
 	width: 95%;
@@ -45,12 +45,13 @@ export const AuthorityStyle = styled.div`
 	align-items: center;
 `;
 
-export const SelfStudyStyle = styled.div`
+export const SelfStudyStyle = styled.div<StyleProps>`
 	font-size: 18px;
 	width: 200px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	color: ${(props) => props.selfStudyColor};
 `;
 
 export const BanBtn = styled.button`
