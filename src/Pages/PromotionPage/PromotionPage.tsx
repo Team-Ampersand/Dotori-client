@@ -6,6 +6,7 @@ import React from 'react';
 import { logout } from 'Api/member';
 import isLogin from 'Utils/Libs/isLogin';
 import { ManufactureDate } from 'Utils/ManufactureDate';
+import { TextLogo } from 'Assets/Svg';
 
 const TryLogout = (setLogged) => {
 	const onLogout = async () => {
@@ -44,7 +45,7 @@ const PromotionPage: React.FC = () => {
 		<>
 			<S.Positioner>
 				<S.Header>
-					<Logo />
+					<TextLogo />
 					{!isLogin() ? (
 						<S.BtnWrapper>
 							<S.SignBtn to="/signin">로그인</S.SignBtn>
