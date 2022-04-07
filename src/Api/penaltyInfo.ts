@@ -47,7 +47,7 @@ export const getPenaltyInfo = async (role: string, stuNum: string) => {
 export const updatePenaltyInfo = async (
 	role: string,
 	date: string,
-	rule: string,
+	rule: Array<string>,
 	stuNum: Array<string>
 ) => {
 	try {

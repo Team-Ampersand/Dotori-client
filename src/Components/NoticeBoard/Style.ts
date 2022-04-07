@@ -19,6 +19,15 @@ export const Container = styled.div`
 	position: relative;
 `;
 
+export const ExceptionWrapper = styled(Container)`
+	justify-content: center;
+	align-items: center;
+	font-size: 25px;
+	svg{
+		margin-bottom: 15px;
+	}
+`;
+
 export const PageBtnWrapper = styled.div`
 	display: flex;
 	/* justify-content: space-around; */

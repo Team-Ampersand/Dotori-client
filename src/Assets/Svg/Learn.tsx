@@ -2,7 +2,7 @@ import * as React from 'react';
 
 function Learn(props: React.SVGProps<SVGSVGElement>) {
 	return (
-		<svg width="1em" height="1em" viewBox="0 0 442 442" fill="none" {...props}>
+		<svg width="2em" height="2em" viewBox="0 0 442 442" fill="none" {...props}>
 			<path fill="url(#prefix__pattern28)" d="M93 102h256v256H93z" />
 			<rect
 				x={25}

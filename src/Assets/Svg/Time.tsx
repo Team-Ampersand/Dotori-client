@@ -2,7 +2,7 @@ import * as React from 'react';
 
 function Time(props: React.SVGProps<SVGSVGElement>) {
 	return (
-		<svg width="1em" height="1em" viewBox="0 0 442 442" fill="none" {...props}>
+		<svg width="2em" height="2em" viewBox="0 0 442 442" fill="none" {...props}>
 			<rect
 				x={25}
 				y={25}
