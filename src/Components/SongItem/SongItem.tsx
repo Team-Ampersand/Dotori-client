@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './Style';
+import * as I from '../../Assets/Svg/index';
 import axios from 'axios';
 import { deleteMusic } from 'Api/music';
 import { useDecode } from '../../Hooks/useDecode';
@@ -67,10 +68,10 @@ const SongItem: React.FC<SongProps> = ({ songObj }) => {
 			<S.Container>
 				<S.TitleContainer>{title}</S.TitleContainer>
 				<S.AuthorContainer>{songObj.memberName}</S.AuthorContainer>
-				<S.AuthorContainer>
-					{showMusicDataFormatter(songObj.createdDate)}
-				</S.AuthorContainer>
 			</S.Container>
+			<S.DateContainer>
+				{showMusicDataFormatter(songObj.createdDate)}
+			</S.DateContainer>
 			{role === 'admin' ||
 			role === 'developer' ||
 			role === 'councillor' ||
@@ -83,7 +84,7 @@ const SongItem: React.FC<SongProps> = ({ songObj }) => {
 							: alert('삭제 하지 않았어요.');
 					}}
 				>
-					❌
+					<I.DeleteButton />
 				</S.DeleteContainer>
 			) : (
 				''
