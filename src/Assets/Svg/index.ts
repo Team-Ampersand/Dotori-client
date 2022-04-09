@@ -32,6 +32,7 @@ import Outside from './Outside';
 import Cancel from './Cancel';
 import TextLogo from './TextLogo';
 import Delete from './Delete';
+import DeleteButton from './DeleteButton';
 
 export {
 	Home,
@@ -68,4 +69,5 @@ export {
 	Cancel,
 	TextLogo,
 	Delete,
+	DeleteButton,
 };
