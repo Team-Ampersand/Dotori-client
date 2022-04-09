@@ -20,20 +20,20 @@ export const PlaylistContainer = styled.div`
 	display: flex;
 	position: sticky;
 	top: 0;
-	border-radius: 20px;
+	border-radius: 20px 20px 0px 0px;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
 	background-color: #fff;
 	justify-content: space-between;
 	align-items: center;
 	h3 {
-		margin-left: 30px;
+		margin-left: 50px;
 		font-size: 26px;
 		font-weight: bold;
 	}
-
 	svg {
 		cursor: pointer;
 		margin-top: 1%;
-		margin-right: 3.5%;
+		margin-right: 7%;
 	}
 `;
 

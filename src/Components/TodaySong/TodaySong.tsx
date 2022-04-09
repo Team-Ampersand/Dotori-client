@@ -54,7 +54,7 @@ const TodaySong: React.FC = () => {
 	return (
 		<S.Postioner>
 			<S.PlaylistContainer>
-				<h3>{`${playlistDate} Playlist`}</h3>
+				<h3>{`${playlistDate}`} Playlist</h3>
 				<S.AppliedSongCount>
 					{`${playlistDate} 에 신청된 음악 개수 : ${
 						songlist === undefined ? 0 : songlist.length
