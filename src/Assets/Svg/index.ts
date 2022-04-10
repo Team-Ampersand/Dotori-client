@@ -28,6 +28,7 @@ import Affect from './Affection';
 import Entry from './Entry';
 import Learn from './Learn';
 import Outside from './Outside';
+import NoticeMore from './NoticeMore';
 
 export {
 	Home,
@@ -59,5 +60,6 @@ export {
 	Affect,
 	Entry,
 	Learn,
-	Outside
+	Outside,
+	NoticeMore
 };
