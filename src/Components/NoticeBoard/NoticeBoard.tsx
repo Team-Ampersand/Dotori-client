@@ -37,6 +37,8 @@ const NoticeBoard: React.FC = () => {
 	};
 
 	const [totalPage, setTotalPage] = useState(0);
+	const [pageNumber, setPageNumber] = useState(0);
+	const [footerNumber, setFooterNumber] = useState(1);
 
 	useEffect(() => {
 		GetNotice().then(async (res) => {
@@ -46,9 +48,10 @@ const NoticeBoard: React.FC = () => {
 
 	useEffect(() => {
 		setTotalPage(totalPage);
+		setFooterNumber(footerNumber);
 		if (totalPage > 0) {
-			GetNoticeDetail(totalPage - 1).then((response) =>
-				setBoard(response?.data.data.content)
+			GetNoticeDetail(pageNumber).then((res) =>
+				setBoard(res?.data.data.content)
 			);
 		}
 	}, [totalPage]);
@@ -58,8 +61,6 @@ const NoticeBoard: React.FC = () => {
 		setEditState(!editState);
 	};
 
-	const [pageNumber, setPageNumber] = useState(1);
-
 	useEffect(() => {
 		setPageNumber(pageNumber);
 	}, [pageNumber]);
@@ -68,19 +69,14 @@ const NoticeBoard: React.FC = () => {
 		if (pageNumber < totalPage) {
 			setTotalPage(totalPage - 1);
 			setPageNumber(pageNumber + 1);
-		} else {
-			alert('마지막 페이지에요');
-			return;
-		}
+			setFooterNumber(footerNumber + 1);
+		} else return;
 	};
 	const prevPageClick = async () => {
-		if (pageNumber === 1) {
-			alert('첫번째 페이지에요');
-			return;
-		}
-		if (pageNumber > 1) {
+		if (footerNumber > 1) {
 			setTotalPage(totalPage + 1);
 			setPageNumber(pageNumber - 1);
+			setFooterNumber(footerNumber - 1);
 		} else return;
 	};
 
@@ -90,15 +86,14 @@ const NoticeBoard: React.FC = () => {
 				{!checkMember() && (
 					<S.BtnWrapper>
 						<Link to={'/notice/write'}>
-							<S.Btn>작성</S.Btn>
+							<S.EditBtn>작성</S.EditBtn>
 						</Link>
-						<S.Btn onClick={onToggle}>{editState ? '완료' : '편집'}</S.Btn>
+						<S.EditBtn onClick={onToggle}>{editState ? '완료' : '편집'}</S.EditBtn>
 					</S.BtnWrapper>
 				)}
 				<S.Container>
-					{[...board].reverse() &&
+					{[...board]&&
 						[...board]
-							.reverse()
 							.map((noticeItem) => (
 								<NoticeBoardItem
 									key={noticeItem.id}
@@ -110,15 +105,23 @@ const NoticeBoard: React.FC = () => {
 								/>
 							))}
 					<S.PageBtnWrapper>
-						<div onClick={prevPageClick}>
-							<span>
-								<I.More />
-							</span>
-						</div>
-						<label>{pageNumber}</label>
-						<div onClick={nextPageClick}>
-							<I.More />
-						</div>
+						{footerNumber === 1 ? (
+							<S.EmptyBtn />
+						) : (
+							<div onClick={prevPageClick}>
+								<I.NoticeMore />
+							</div>
+						)}
+						<label>{footerNumber}</label>
+						{totalPage > 1 ? (
+							<div onClick={nextPageClick}>
+								<span>
+									<I.NoticeMore />
+								</span>
+							</div>
+						) : (
+							<S.EmptyBtn />
+						)}
 					</S.PageBtnWrapper>
 				</S.Container>
 			</S.Positioner>
