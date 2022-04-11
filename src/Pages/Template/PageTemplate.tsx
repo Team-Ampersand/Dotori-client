@@ -3,7 +3,6 @@ import * as S from './Style';
 import BannerPage from '../BannerPage/BannerPage';
 import { ManufactureDate } from '../../Utils/ManufactureDate';
 
-
 const returnPageType = (routerName: string) => {
 	switch (routerName) {
 		case '/home':
@@ -52,10 +51,7 @@ const returnValueType = (nowUrl: string) => {
 	}
 };
 
-const BannerStatus = (
-	children: React.ReactNode,
-	isActive: boolean
-) => {
+const BannerStatus = (children: React.ReactNode, isActive: boolean) => {
 	if (
 		returnValueType(window.location.pathname) === 'notice' ||
 		'notice write' ||
@@ -93,8 +89,8 @@ const PageTemplate: React.FC = ({ children }) => {
 				<S.Title>
 					{returnPageType(window.location.pathname)}
 					<strong>
-						{ManufactureDate('Y')}년 {ManufactureDate('M')}월{' '}
-						{ManufactureDate('D')}일 {ManufactureDate('W')}요일
+						{ManufactureDate('Y')}.{ManufactureDate('M')}.{ManufactureDate('D')}{' '}
+						({ManufactureDate('W')})
 					</strong>
 				</S.Title>
 				{BannerStatus(children, isActive)}
