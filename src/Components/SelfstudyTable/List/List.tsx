@@ -5,6 +5,7 @@ import { useRecoilState } from 'recoil';
 import { list } from 'Atoms';
 import Logo from 'Assets/Svg/Logo';
 import { useRole } from 'Hooks/useRole';
+import { TextLogo } from 'Assets/Svg';
 
 const ReturnUserObj = async (role: string) => {
 	const data = await studyRank(role);
@@ -48,7 +49,7 @@ const List: React.FC = () => {
 				))
 			) : (
 				<S.ExceptionWrapper>
-					<Logo />
+					<TextLogo />
 					<span>자습을 신청한 사람이 없어요</span>
 				</S.ExceptionWrapper>
 			)}

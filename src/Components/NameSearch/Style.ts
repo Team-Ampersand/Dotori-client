@@ -37,10 +37,10 @@ export const Btn = styled.button`
 	font-size: 18px;
 	font-weight: bold;
 	outline: none;
-	background-color: #9ECFF2;
+	background-color: #9ecff2;
 	&:hover {
 		background-color: #fff;
-		color: #9ECFF2;
-		border: 2px solid #9ECFF2;
+		color: #9ecff2;
+		border: 2px solid #9ecff2;
 	}
 `;

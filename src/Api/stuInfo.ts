@@ -112,10 +112,11 @@ export const banCancelSelfStudy = async (role: string, stuId: number) => {
 	}
 };
 
-export const searchName = async (role: string, memberName: string) => {
+export const searchName = async (role: string, memberName: string, e?: any) => {
 	try {
 		if (memberName === '') {
-			return await getStuInfo(role);
+			alert('이름을 입력해주세요');
+			return null;
 		}
 		const { data } = await apiClient.get(
 			StuInfoController.searchName(role, memberName)

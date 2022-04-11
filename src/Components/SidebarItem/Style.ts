@@ -11,13 +11,13 @@ export const LinkWrapper = styled(Link)<StyleProps>`
 	display: ${(props) => (props.show ? 'flex' : 'none')};
 	width: 100%;
 	align-items: center;
-	${(props) => (props.sidebarColor ? 'color: #0F4C81' : 'color: #BBBBBE')};
+	${(props) => (props.sidebarColor ? 'color: #9ECFF2' : 'color: #BBBBBE')};
 	margin-bottom: 28%;
 
 	svg {
 		width: 25px;
 		height: 23.64px;
-		${(props) => (props.sidebarColor ? 'fill: #0F4C81' : 'fill: #BBBBBE')};
+		${(props) => (props.sidebarColor ? 'fill: #9ECFF2' : 'fill: #BBBBBE')};
 	}
 `;
 

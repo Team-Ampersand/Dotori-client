@@ -42,6 +42,7 @@ export const Category = styled.div`
 
 export const CategoryException = styled.div`
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	width: 100%;
@@ -67,6 +68,7 @@ export const ItemWrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	width: 200px;
+	font-size: 16px;
 `;
 
 export const DeleteBtn = styled.button`
@@ -74,13 +76,13 @@ export const DeleteBtn = styled.button`
 	height: 40px;
 	border-radius: 5px;
 	border: none;
-	background-color: #F38D8D;
+	background-color: #f38d8d;
 	color: #ffffff;
 	font-size: 16px;
 	font-weight: 700;
 	&:hover {
 		background-color: #fff;
-		color: #F38D8D;
-		border: 2px solid #F38D8D;
+		color: #f38d8d;
+		border: 2px solid #f38d8d;
 	}
 `;

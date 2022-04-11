@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react';
 import * as S from './Style';
 import * as I from '../../Assets/Svg';
 import NoticeBoardItem from '../NoticeBoardItem/NoticeBoardItem';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { getNotice, getNoticeDetail } from 'Api/notice';
-import { useSetRecoilState } from 'recoil';
-import { HasToken } from 'Atoms';
 import { useRole } from 'Hooks/useRole';
 
 interface board {
@@ -37,6 +35,8 @@ const NoticeBoard: React.FC = () => {
 	};
 
 	const [totalPage, setTotalPage] = useState(0);
+	const [pageNumber, setPageNumber] = useState(0);
+	const [footerNumber, setFooterNumber] = useState(1);
 
 	useEffect(() => {
 		GetNotice().then(async (res) => {
@@ -46,8 +46,9 @@ const NoticeBoard: React.FC = () => {
 
 	useEffect(() => {
 		setTotalPage(totalPage);
+		setFooterNumber(footerNumber);
 		if (totalPage > 0) {
-			GetNoticeDetail(totalPage - 1).then((response) =>
+			GetNoticeDetail(pageNumber).then((response) =>
 				setBoard(response?.data.data.content)
 			);
 		}
@@ -58,8 +59,6 @@ const NoticeBoard: React.FC = () => {
 		setEditState(!editState);
 	};
 
-	const [pageNumber, setPageNumber] = useState(1);
-
 	useEffect(() => {
 		setPageNumber(pageNumber);
 	}, [pageNumber]);
@@ -68,59 +67,72 @@ const NoticeBoard: React.FC = () => {
 		if (pageNumber < totalPage) {
 			setTotalPage(totalPage - 1);
 			setPageNumber(pageNumber + 1);
-		} else {
-			alert('마지막 페이지에요');
-			return;
-		}
-	};
-	const prevPageClick = async () => {
-		if (pageNumber === 1) {
-			alert('첫번째 페이지에요');
-			return;
-		}
-		if (pageNumber > 1) {
-			setTotalPage(totalPage + 1);
-			setPageNumber(pageNumber - 1);
+			setFooterNumber(footerNumber + 1);
 		} else return;
 	};
-
+	const prevPageClick = async () => {
+		if (footerNumber > 1) {
+			setTotalPage(totalPage + 1);
+			setPageNumber(pageNumber - 1);
+			setFooterNumber(footerNumber - 1);
+		} else return;
+	};
+	console.log(board);
 	return (
 		<>
 			<S.Positioner>
 				{!checkMember() && (
 					<S.BtnWrapper>
 						<Link to={'/notice/write'}>
-							<S.Btn>작성</S.Btn>
+							<S.WriteBtn>작성</S.WriteBtn>
 						</Link>
-						<S.Btn onClick={onToggle}>{editState ? '완료' : '편집'}</S.Btn>
+						<S.EditBtn onClick={onToggle}>
+							{editState ? '완료' : '편집'}
+						</S.EditBtn>
 					</S.BtnWrapper>
 				)}
+				{
+					[...board].length === 0 ?
+				
+				<S.ExceptionWrapper>
+					<I.TextLogo/>
+					현재 작성된 공지사항이 없어요!
+				</S.ExceptionWrapper>
+				:
 				<S.Container>
-					{[...board].reverse() &&
-						[...board]
-							.reverse()
-							.map((noticeItem) => (
-								<NoticeBoardItem
-									key={noticeItem.id}
-									board_key={noticeItem.id}
-									author={noticeItem.roles}
-									title={noticeItem.title}
-									createdDate={noticeItem.createdDate}
-									editState={editState}
-								/>
-							))}
-					<S.PageBtnWrapper>
+				{[...board] &&
+					[...board]
+						.map((noticeItem) => (
+							<NoticeBoardItem
+								key={noticeItem.id}
+								board_key={noticeItem.id}
+								author={noticeItem.roles}
+								title={noticeItem.title}
+								createdDate={noticeItem.createdDate}
+								editState={editState}
+							/>
+						))}
+				<S.PageBtnWrapper>
+					{footerNumber === 1 ? (
+						<S.EmptyBtn />
+					) : (
 						<div onClick={prevPageClick}>
+							<I.NoticeMore />
+						</div>
+					)}
+					<label>{footerNumber}</label>
+					{totalPage > 1 ? (
+						<div onClick={nextPageClick}>
 							<span>
-								<I.More />
+								<I.NoticeMore />
 							</span>
 						</div>
-						<label>{pageNumber}</label>
-						<div onClick={nextPageClick}>
-							<I.More />
-						</div>
-					</S.PageBtnWrapper>
-				</S.Container>
+					) : (
+						<S.EmptyBtn />
+					)}
+				</S.PageBtnWrapper>
+			</S.Container>
+				}
 			</S.Positioner>
 		</>
 	);

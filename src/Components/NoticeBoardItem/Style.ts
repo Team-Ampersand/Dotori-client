@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { darken } from 'polished';
+import { Link } from 'react-router-dom';
 
 interface EditProps {
 	edit: boolean;
@@ -13,13 +14,14 @@ interface BtnProps {
 	BtnColor: string;
 }
 
-export const Container = styled.div`
+export const Container = styled(Link)`
 	width: 95%;
 	height: 7.3vh;
 	background-color: #fff;
-	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+	box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.15);
 	border-radius: 20px;
 	margin-top: 2.7vh;
+	text-decoration: none;
 	cursor: pointer;
 	display: flex;
 	flex-direction: row;
@@ -56,8 +58,9 @@ export const TitleStyle = styled.div`
 export const DateStyle = styled.div<EditProps>`
 	span {
 		color: #ababab;
-		font-size: 1.125em;
-		font-weight: bold;
+		font-size: 15px;
+		font-weight: 600;
+		line-height: 18px;
 	}
 	display: flex;
 	justify-content: center;
@@ -79,19 +82,20 @@ export const BtnWrapper = styled.div<EditProps>`
 		`}
 `;
 
-export const Btn = styled.button<BtnProps>`
-	width: 4.4vw;
-	height: 3.6vh;
-	margin-left: 0.7vw;
-	border-radius: 10px;
-	background-color: transparent;
-	border: 2px solid ${(props) => props.BtnColor};
+export const Btn = styled.button`
+	width: 80px;
+	height: 40px;
+	border-radius: 5px;
+	background-color: #f38d8d;
+	border: none;
 	outline: none;
-	font-size: 1.25em;
-	color: ${(props) => props.BtnColor};
-	font-weight: bold;
+	font-size: 17px;
+	font-weight: 600;
+	color: #fff;
+	box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.15);
 	&:hover {
-		background-color: ${(props) => props.BtnColor};
-		color: #fff;
+		background-color: #fff;
+		color: #f38d8d;
+		border: 2px solid #f38d8d;
 	}
 `;

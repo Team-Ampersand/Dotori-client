@@ -55,10 +55,10 @@ export const NoSongText = styled.div`
 	display: grid;
 	justify-content: center;
 	font-size: 23px;
-	margin-top: 30%;
+	margin-top: 40%;
 
 	svg {
-		margin-left: 15.5%;
+		margin-left: 23%;
 	}
 `;
 

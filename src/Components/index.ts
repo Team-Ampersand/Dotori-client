@@ -6,6 +6,7 @@ import SongBanner from './Banners/SongBanner/SongBanner';
 import UserProfile from './UserProfile/UserProfile';
 import NoticeBoard from './NoticeBoard/NoticeBoard';
 import NoticeBoardItem from './NoticeBoardItem/NoticeBoardItem';
+import NoticeCheck from './NoticeCheck/NoticeCheck';
 import NoticeWrite from './NoticeWrite/NoticeWrite';
 import Classification from './Classification/Classification';
 import SelfstudyTable from './SelfstudyTable/SelfstudyTable';
@@ -39,6 +40,7 @@ export {
 	UserProfile,
 	NoticeBoard,
 	NoticeBoardItem,
+	NoticeCheck,
 	NoticeWrite,
 	Classification,
 	SelfstudyTable,

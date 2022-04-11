@@ -10,6 +10,7 @@ import IllustSong from './IllustSong';
 import Logout from './Logout';
 import Logo from './Logo';
 import User from './User';
+import NoticeMore from './NoticeMore';
 import More from './More';
 import IllustHome from './IllustHome';
 import DotoriLogo from './DotoriLogo';
@@ -31,6 +32,9 @@ import Outside from './Outside';
 import DotoriLogoV2 from 'Assets/Svg/DotoriLogoV2';
 import Arrowdown from 'Assets/Svg/Arrowdown';
 import LargeArrowDown from 'Assets/Svg/LargeArrowDown';
+import Cancel from './Cancel';
+import TextLogo from './TextLogo';
+import Delete from './Delete';
 
 export {
 	Home,
@@ -45,6 +49,7 @@ export {
 	IllustHome,
 	Logout,
 	User,
+	NoticeMore,
 	More,
 	DotoriLogo,
 	LoginArrow,
@@ -66,4 +71,7 @@ export {
 	DotoriLogoV2,
 	Arrowdown,
 	LargeArrowDown,
+	Cancel,
+	TextLogo,
+	Delete,
 };

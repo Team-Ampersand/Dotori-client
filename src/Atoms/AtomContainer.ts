@@ -41,3 +41,13 @@ export const setList = atom<lists[]>({
 	key: 'setList',
 	default: [],
 });
+
+export const fieldSelected = atom<string[]>({
+	key: "fieldSelected",
+	default: []
+});
+
+export const penaltySelected = atom<string[]>({
+	key: "penaltySelected",
+	default: []
+})

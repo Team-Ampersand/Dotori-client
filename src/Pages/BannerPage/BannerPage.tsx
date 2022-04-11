@@ -20,6 +20,14 @@ const CompareBanner = (nowUrl: string) => {
 			return;
 		case '/massage':
 			return;
+		case '/home':
+			return (
+				<S.Postioner>
+					<BetaBanner />
+				</S.Postioner>
+			);
+		case `${nowUrl}`:
+			return;
 		default:
 			return (
 				<S.Postioner>

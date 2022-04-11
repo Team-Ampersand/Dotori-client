@@ -76,6 +76,14 @@ export const SmallCategoriesWrapper = styled.ul`
 	row-gap: 50px;
 `;
 
+export const ExceptionWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	width: 50%;
+	justify-content: center;
+	align-items: center;
+`;
+
 export const SmallCategories = styled.div`
 	display: flex;
 	align-items: center;

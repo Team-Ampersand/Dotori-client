@@ -56,7 +56,7 @@ export const noticeWrite = async (
 		);
 		return { data };
 	} catch (e: any) {
-		alert(e);
+		alert("제목과 내용을 확인해주세요");
 	}
 };
 

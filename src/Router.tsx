@@ -42,6 +42,9 @@ const PwChangePage = lazy(
 			/* webpackChunkName: "passwordchange" */ './Pages/PwChangePage/PwChangePage'
 		)
 );
+const NoticeWatchPage = lazy(
+	() => import(/* webpackChunkName: "noticedetail" */'./Pages/NoticeWatchPage/NoticeWatchPage')
+);
 const AuthorizationPage = lazy(
 	() =>
 		import(
@@ -93,6 +96,14 @@ const Router: React.FC = () => {
 				element={
 					<PrivateRoute>
 						<NoticeWritePage />
+					</PrivateRoute>
+				}
+			/>
+			<Route
+				path="/notice/:board_key"
+				element={
+					<PrivateRoute>
+						<NoticeWatchPage />
 					</PrivateRoute>
 				}
 			/>
