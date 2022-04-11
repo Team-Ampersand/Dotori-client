@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DotoriLogo } from '../../Assets/Svg';
+import { DotoriLogoV2 } from '../../Assets/Svg';
 import * as S from './Style';
 import { Link } from 'react-router-dom';
 import { signup, auth, authCheck } from '../../Api/member';
@@ -62,7 +62,7 @@ const TrySignup = () => {
 		}
 	};
 
-	const authCheck = async (setDisabled) => {
+	const AuthCheck = async (setDisabled) => {
 		try {
 			if (emailCode === '') {
 				return alert('아무것도 입력하지 않으셨어요');
@@ -87,7 +87,7 @@ const TrySignup = () => {
 		setRePassword,
 		onSignup,
 		emailCertify,
-		authCheck,
+		AuthCheck,
 		clicked,
 		setClicked,
 		disabled,
@@ -106,7 +106,7 @@ const SignupForm: React.FC = () => {
 		setRePassword,
 		onSignup,
 		emailCertify,
-		authCheck,
+		AuthCheck,
 		clicked,
 		setClicked,
 		disabled,
@@ -114,7 +114,7 @@ const SignupForm: React.FC = () => {
 	} = TrySignup();
 	return (
 		<S.Positioner>
-			<DotoriLogo />
+			<DotoriLogoV2 />
 			<S.EmailContainer>
 				<S.InputWrapper>
 					<S.InputStyle
@@ -153,7 +153,7 @@ const SignupForm: React.FC = () => {
 				<S.CertifyButton
 					displayed={clicked}
 					onClick={() => {
-						authCheck(setDisabled);
+						AuthCheck(setDisabled);
 					}}
 					disabled={disabled}
 				>
