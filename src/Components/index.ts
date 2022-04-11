@@ -16,7 +16,7 @@ import Authorzation from './Authorzation/Authorzation';
 import InfoUpdateModal from './InfoUpdateModal/InfoUpdateModal';
 import ChangeInput from './ChangeInput/ChangeInput';
 import ChangeSelect from './ChangeSelect/ChangeSelect';
-import LoginForm from './SigninForm/SigninForm';
+import SigninForm from './SigninForm/SigninForm';
 import SignupForm from './SignupForm/SignupForm';
 import Selfstudyboard from './Selfstudyboard/Selfstudyboard';
 import PasswordForm from './PasswordForm/PasswordForm';
@@ -49,7 +49,7 @@ export {
 	Authorzation,
 	ChangeInput,
 	ChangeSelect,
-	LoginForm,
+	SigninForm,
 	SignupForm,
 	Selfstudyboard,
 	PasswordForm,

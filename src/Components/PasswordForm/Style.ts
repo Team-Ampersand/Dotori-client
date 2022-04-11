@@ -19,7 +19,7 @@ export const ButtonStyle = styled.button`
 	border-radius: 10px;
 	outline: none;
 	border: none;
-	background-color: #617be3;
+	background-color: #9ecff2;
 	color: #fff;
 	font-size: 16px;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -31,7 +31,7 @@ export const InputStyle = styled.input<StyleProps>`
 	height: 5vh;
 	border-radius: 10px;
 	outline: none;
-	border: 2px solid #617be3;
+	border: 2px solid #9ecff2;
 	padding-left: 10px;
 	margin-top: 1vh;
 	font-size: 16px;
@@ -53,14 +53,14 @@ export const EmailContainer = styled.div<StyleProps>`
 		border-radius: 9px;
 		outline: none;
 		border: none;
-		background-color: #617be3;
+		background-color: #9ecff2;
 		color: #fff;
 		transition: 0.5s;
 	}
 	button:hover {
 		background-color: #fff;
 		color: #617be3;
-		border: 2px solid #617be3;
+		border: 2px solid #9ecff2;
 	}
 `;
 

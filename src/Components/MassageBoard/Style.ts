@@ -12,56 +12,32 @@ export const Positioner = styled.div<StyleProps>`
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-	border: 2px solid
-		${(props) => {
-			if (
-				props.status === 'CAN' &&
-				props.count < 5 &&
-				new Date().getHours() >= 20 &&
-				new Date().getHours() < 21 &&
-				['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1 &&
-				new Date().getMinutes() >= 20
-			) {
-				return '#fff';
-			} else if (props.status === 'IMPOSSIBLE') {
-				return '#fc2c2c';
-			} else if (props.status === 'APPLIED') {
-				return '#617be3';
-			} else if (
-				props.status === 'CANT' ||
-				props.count === 5 ||
-				new Date().getHours() < 20 ||
-				new Date().getHours() >= 21 ||
-				['금', '토', '일'].indexOf(ManufactureDate('W')) !== -1 ||
-				new Date().getMinutes() < 20
-			) {
-				return '#fc2c2c';
-			}
-		}};
+	box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.12);
 	background-color: #fff;
 	border-radius: 20px;
+	padding: 4% 6%;
 `;
 
 export const MassageHeader = styled.div`
-	height: 60px;
 	display: flex;
-	align-items: center;
 	justify-content: space-between;
-	padding: 0 30px;
+	align-items: center;
+	margin-bottom: 2rem;
 
 	h2 {
 		font-size: 20px;
 	}
-	div {
+
+	a {
+		width: 82px;
 		display: flex;
-		align-items: center;
 		cursor: pointer;
-		a {
-			text-decoration: none;
-			span {
-				font-size: 18px;
-				color: #8b8b8b;
-			}
+		justify-content: space-between;
+		align-items: center;
+		text-decoration: none;
+		span {
+			font-size: 18px;
+			color: #ababab;
 		}
 	}
 `;
@@ -72,7 +48,7 @@ export const MassageContent = styled.div`
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	justify-content: space-evenly;
+	justify-content: space-between;
 	strong {
 		font-size: 18px;
 	}
@@ -81,9 +57,9 @@ export const MassageContent = styled.div`
 		font-weight: bold;
 	}
 	p {
-		font-size: 18px;
+		font-size: 16px;
 		font-weight: 500;
-		color: #bbbbbe;
+		color: #a1a1a1;
 	}
 `;
 
@@ -93,6 +69,7 @@ export const PointProgress = styled.div`
 	height: 10px;
 	border-radius: 20px;
 	background-color: #ededed;
+	box-shadow: inset 0px 2px 3px rgba(0, 0, 0, 0.12);
 `;
 
 export const ActiveProgress = styled.div<StyleProps>`
@@ -104,8 +81,8 @@ export const ActiveProgress = styled.div<StyleProps>`
 `;
 
 export const MassageButton = styled.button<StyleProps>`
-	width: 40%;
-	height: 20%;
+	width: 7rem;
+	height: 2.125rem;
 	border: none;
 	background-color: ${(props) => {
 		if (
@@ -116,9 +93,9 @@ export const MassageButton = styled.button<StyleProps>`
 			['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1 &&
 			new Date().getMinutes() >= 20
 		) {
-			return '#617be3';
+			return '#9ECFF2';
 		} else if (props.status === 'IMPOSSIBLE') {
-			return '#fc2c2c';
+			return '#CACACA';
 		} else if (props.status === 'APPLIED') {
 			return '#fff';
 		} else if (
@@ -129,36 +106,16 @@ export const MassageButton = styled.button<StyleProps>`
 			['금', '토', '일'].indexOf(ManufactureDate('W')) !== -1 ||
 			new Date().getMinutes() < 20
 		) {
-			return '#fc2c2c';
+			return '#CACACA';
 		}
 	}};
-	color: ${(props) => {
-		if (
-			props.status === 'CAN' &&
-			props.count < 5 &&
-			new Date().getHours() >= 20 &&
-			new Date().getHours() < 21 &&
-			['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1 &&
-			new Date().getMinutes() >= 20
-		) {
-			return '#fff';
-		} else if (props.status === 'IMPOSSIBLE') {
-			return '#fff';
-		} else if (props.status === 'APPLIED') {
-			return '#617be3';
-		} else if (
-			props.status === 'CANT' ||
-			props.count === 5 ||
-			new Date().getHours() < 20 ||
-			new Date().getHours() >= 21 ||
-			['금', '토', '일'].indexOf(ManufactureDate('W')) !== -1 ||
-			new Date().getMinutes() < 20
-		) {
-			return '#fff';
-		}
-	}};
-	border: 2px solid
-		${(props) => {
+	color: #ffffff;
+	border-radius: 8px;
+	font-size: 20px;
+	font-weight: bold;
+
+	&:hover {
+		color: ${(props) => {
 			if (
 				props.status === 'CAN' &&
 				props.count < 5 &&
@@ -167,23 +124,37 @@ export const MassageButton = styled.button<StyleProps>`
 				['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1 &&
 				new Date().getMinutes() >= 20
 			) {
-				return '#fff';
-			} else if (props.status === 'IMPOSSIBLE') {
-				return '#fff';
-			} else if (props.status === 'APPLIED') {
-				return '#617be3';
-			} else if (
-				props.status === 'CANT' ||
-				props.count === 5 ||
-				new Date().getHours() < 20 ||
-				new Date().getHours() >= 21 ||
-				['금', '토', '일'].indexOf(ManufactureDate('W')) !== -1 ||
-				new Date().getMinutes() < 20
-			) {
-				return '#fff';
+				return '#9ECFF2';
+			} else {
+				return '#ffffff';
 			}
 		}};
-	border-radius: 10px;
-	font-size: 20px;
-	font-weight: bold;
+		border: 2px solid
+			${(props) => {
+				if (
+					props.status === 'CAN' &&
+					props.count < 5 &&
+					new Date().getHours() >= 20 &&
+					new Date().getHours() < 21 &&
+					['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1 &&
+					new Date().getMinutes() >= 20
+				) {
+					return '#9ECFF2';
+				} else {
+					return '#CACACA';
+				}
+			}};
+	}
+`;
+
+export const Explain = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+`;
+
+export const Alert = styled.div`
+	font-size: 13px;
+	color: #6d92c4;
 `;

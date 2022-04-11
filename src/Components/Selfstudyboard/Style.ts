@@ -12,56 +12,32 @@ export const Positioner = styled.div<StyleProps>`
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-	border: 2px solid
-		${(props) => {
-			if (
-				props.Clicked === 'CAN' &&
-				props.count < 50 &&
-				new Date().getHours() >= 20 &&
-				new Date().getHours() < 21 &&
-				['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1 &&
-				localStorage.getItem('role') !== 'admin'
-			) {
-				return '#fff';
-			} else if (props.Clicked === 'IMPOSSIBLE') {
-				return '#fc2c2c';
-			} else if (props.Clicked === 'APPLIED') {
-				return '#617be3';
-			} else if (
-				props.Clicked === 'CANT' ||
-				props.count === 50 ||
-				new Date().getHours() < 20 ||
-				new Date().getHours() >= 21 ||
-				['금', '토', '일'].indexOf(ManufactureDate('W')) !== -1
-			) {
-				return '#fc2c2c';
-			}
-		}};
-
+	box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.12);
 	background-color: #fff;
 	border-radius: 20px;
+	padding: 4% 6%;
 `;
 
 export const StudyHeader = styled.div`
-	height: 60px;
 	display: flex;
-	align-items: center;
 	justify-content: space-between;
-	padding: 0 30px;
+	align-items: center;
+	margin-bottom: 2rem;
 
 	h2 {
 		font-size: 20px;
 	}
-	div {
+
+	a {
+		width: 82px;
 		display: flex;
+		justify-content: space-between;
 		align-items: center;
 		cursor: pointer;
-		a {
-			text-decoration: none;
-			span {
-				font-size: 18px;
-				color: #8b8b8b;
-			}
+		text-decoration: none;
+		span {
+			font-size: 18px;
+			color: #ababab;
 		}
 	}
 `;
@@ -72,7 +48,7 @@ export const StudyContent = styled.div`
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	justify-content: space-evenly;
+	justify-content: space-between;
 	strong {
 		font-size: 18px;
 	}
@@ -81,9 +57,9 @@ export const StudyContent = styled.div`
 		font-weight: bold;
 	}
 	p {
-		font-size: 18px;
+		font-size: 16px;
 		font-weight: 500;
-		color: #bbbbbe;
+		color: #a1a1a1;
 	}
 `;
 
@@ -93,6 +69,7 @@ export const PointProgress = styled.div`
 	height: 10px;
 	border-radius: 20px;
 	background-color: #ededed;
+	box-shadow: inset 0px 2px 3px rgba(0, 0, 0, 0.12);
 `;
 
 export const ActiveProgress = styled.div<StyleProps>`
@@ -104,8 +81,8 @@ export const ActiveProgress = styled.div<StyleProps>`
 `;
 
 export const StudyButton = styled.button<StyleProps>`
-	width: 40%;
-	height: 20%;
+	width: 7rem;
+	height: 2.125rem;
 	border: none;
 	background-color: ${(props) => {
 		if (
@@ -115,9 +92,9 @@ export const StudyButton = styled.button<StyleProps>`
 			new Date().getHours() < 21 &&
 			['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1
 		) {
-			return '#617be3';
+			return '#9ECFF2';
 		} else if (props.Clicked === 'IMPOSSIBLE') {
-			return '#fc2c2c';
+			return '#CACACA';
 		} else if (props.Clicked === 'APPLIED') {
 			return '#fff';
 		} else if (
@@ -127,34 +104,16 @@ export const StudyButton = styled.button<StyleProps>`
 			new Date().getHours() >= 21 ||
 			['금', '토', '일'].indexOf(ManufactureDate('W')) !== -1
 		) {
-			return '#fc2c2c';
+			return '#CACACA';
 		}
 	}};
-	color: ${(props) => {
-		if (
-			props.Clicked === 'CAN' &&
-			props.count < 50 &&
-			new Date().getHours() >= 20 &&
-			new Date().getHours() < 21 &&
-			['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1
-		) {
-			return '#fff';
-		} else if (props.Clicked === 'IMPOSSIBLE') {
-			return '#fff';
-		} else if (props.Clicked === 'APPLIED') {
-			return '#617be3';
-		} else if (
-			props.Clicked === 'CANT' ||
-			props.count === 50 ||
-			new Date().getHours() < 20 ||
-			new Date().getHours() >= 21 ||
-			['금', '토', '일'].indexOf(ManufactureDate('W')) !== -1
-		) {
-			return '#fff';
-		}
-	}};
-	border: 2px solid
-		${(props) => {
+	color: #fff;
+	border-radius: 8px;
+	font-size: 20px;
+	font-weight: bold;
+
+	&:hover {
+		color: ${(props) => {
 			if (
 				props.Clicked === 'CAN' &&
 				props.count < 50 &&
@@ -162,23 +121,22 @@ export const StudyButton = styled.button<StyleProps>`
 				new Date().getHours() < 21 &&
 				['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1
 			) {
-				return '#fff';
-			} else if (props.Clicked === 'IMPOSSIBLE') {
-				return '#fff';
-			} else if (props.Clicked === 'APPLIED') {
-				return '#617be3';
-			} else if (
-				props.Clicked === 'CANT' ||
-				props.count === 50 ||
-				new Date().getHours() < 20 ||
-				new Date().getHours() >= 21 ||
-				['금', '토', '일'].indexOf(ManufactureDate('W')) !== -1
-			) {
-				return '#fff';
+				return '#9ECFF2';
+			} else {
+				return '#ffffff';
 			}
 		}};
-	border-radius: 10px;
-	font-size: 20px;
-	font-weight: bold;
-	// box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+		border: 2px solid
+			${(props) => {
+				if (
+					props.Clicked === 'CAN' &&
+					props.count < 50 &&
+					new Date().getHours() >= 20 &&
+					new Date().getHours() < 21 &&
+					['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1
+				) {
+					return '#9ECFF2';
+				} else return '#CACACA';
+			}};
+	}
 `;

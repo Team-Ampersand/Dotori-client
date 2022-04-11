@@ -39,7 +39,7 @@ export const SelectContainer = styled.div`
 		border: 2px;
 		border-radius: 10px;
 		outline: none;
-		border: 2px solid #617be3;
+		border: 2px solid #9ecff2;
 		padding-left: 0.5vw;
 	}
 	span {
@@ -56,7 +56,7 @@ export const SigninContainer = styled.div`
 	a {
 		margin-left: 5px;
 		text-decoration: none;
-		color: #3a4c98;
+		color: #9ecff2;
 	}
 `;
 
@@ -67,7 +67,7 @@ export const QuestionContainer = styled.div`
 	span {
 		font-size: 1.1rem;
 		margin: 0 auto;
-		color: #617be3;
+		color: #9ecff2;
 		font-weight: bold;
 	}
 `;
@@ -87,14 +87,14 @@ export const EmailContainer = styled.div`
 		border-radius: 9px;
 		outline: none;
 		border: none;
-		background-color: #617be3;
+		background-color: #9ecff2;
 		color: #fff;
 		transition: 0.5s;
 	}
 	button:hover {
 		background-color: #fff;
-		color: #617be3;
-		border: 2px solid #617be3;
+		color: #9ecff2;
+		border: 2px solid #9ecff2;
 	}
 `;
 
@@ -103,7 +103,7 @@ export const InputStyle = styled.input<StyleProps>`
 	height: 5vh;
 	border-radius: 10px;
 	outline: none;
-	border: 2px solid #617be3;
+	border: 2px solid #9ecff2;
 	padding-left: 10px;
 	margin-top: 1vh;
 	font-size: 16px;
@@ -138,7 +138,7 @@ export const CertifyButton = styled.button<StyleProps>`
 	border-radius: 9px;
 	outline: none;
 	border: none;
-	background-color: #617be3;
+	background-color: #9ecff2;
 	color: #fff;
 	transition: 0.5s;
 `;

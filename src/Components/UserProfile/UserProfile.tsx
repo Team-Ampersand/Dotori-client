@@ -71,8 +71,8 @@ const UserProfile: React.FC = () => {
 			)}
 			<S.Postioner>
 				<S.Header>
+					<h3>프로필</h3>
 					<S.LogoutWrapper onClick={onLogout} data-test="test-logout">
-						<Logout />
 						<span>로그아웃</span>
 					</S.LogoutWrapper>
 				</S.Header>
@@ -81,26 +81,14 @@ const UserProfile: React.FC = () => {
 						<Profile />
 						<div>
 							<span className="name">{profile?.memberName}</span>
-							<span className="grade">
-								{profile?.stuNum.substr(0, 1)}-{profile?.stuNum.substr(1, 1)},{' '}
-								{profile?.stuNum.substr(2, 4)}번
-							</span>
+							<span className="grade">{profile?.stuNum}</span>
 						</div>
 						<S.PenaltyBtn onClick={() => setModalState(true)}>
 							규정 위반 내역
 						</S.PenaltyBtn>
+						<Link to={'/change/password'}>비밀번호 변경</Link>
 					</S.UserWrapper>
 				</S.Content>
-				<S.MemberControl>
-					<Link to={'/change/password'}>비밀번호 변경</Link>
-					<div
-						onClick={() => {
-							alert('회원탈퇴는 개발자에게 문의 해주세요');
-						}}
-					>
-						회원 탈퇴
-					</div>
-				</S.MemberControl>
 				<S.Policy>
 					<span>© {ManufactureDate('Y')} Ampersand. All Rights Reserved.</span>
 					<p>

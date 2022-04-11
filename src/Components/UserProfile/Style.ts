@@ -6,13 +6,12 @@ export const Postioner = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	padding: 4% 6%;
 `;
 
 export const Header = styled.div`
 	display: flex;
-	justify-content: flex-end;
-	margin-top: 20px;
-	margin-right: 20px;
+	justify-content: space-between;
 
 	svg {
 		fill: #8b8b8b;
@@ -29,7 +28,7 @@ export const LogoutWrapper = styled.div`
 	span {
 		font-size: 18px;
 		margin-left: 13px;
-		color: #fc2c2c;
+		color: #ababab;
 	}
 `;
 
@@ -40,6 +39,12 @@ export const Content = styled.div`
 	align-items: center;
 	justify-content: center;
 	margin: 0px 26px;
+	a {
+		text-decoration: none;
+		color: #bbbbbe;
+		font-weight: 500;
+		margin-top: 1.125rem;
+	}
 `;
 
 export const UserWrapper = styled.div`
@@ -173,36 +178,23 @@ export const Policy = styled.div`
 `;
 
 export const MemberControl = styled.div`
-	height: 10%;
 	display: flex;
 	justify-content: center;
 	align-items: flex-end;
-	a {
-		text-decoration: none;
-		color: #bbbbbe;
-		font-weight: 500;
-	}
-	div {
-		cursor: pointer;
-		text-decoration: none;
-		color: #bbbbbe;
-		font-weight: 500;
-		margin-left: 50px;
-	}
 `;
 
 export const PenaltyBtn = styled.button`
-	width: 143px;
-	height: 41px;
+	width: 137px;
+	height: 36px;
 	font-size: 16px;
 	border: 0;
-	background: #0f4c80;
+	background: #9ecff2;
 	color: white;
 	border-radius: 10px;
 	margin-top: 30px;
 	&:hover {
 		background: #ffffff;
-		color: #0f4c80;
-		border: 1px solid #0f4c80;
+		color: #9ecff2;
+		border: 1px solid #9ecff2;
 	}
 `;
