@@ -9,15 +9,13 @@ export const Positioner = styled.div`
 	height: 100%;
 	display: flex;
 	flex-direction: column;
+	padding: 4% 6%;
 `;
 
 export const TitleContainer = styled.div`
-	width: 90%;
-	height: 60px;
+	width: 100%;
 	display: flex;
-	align-items: center;
 	justify-content: space-between;
-	padding-left: 30px;
 
 	h2 {
 		font-size: 20px;
@@ -30,7 +28,6 @@ export const TitleContainer = styled.div`
 export const DayWrapper = styled.div`
 	width: 30%;
 	display: flex;
-	align-items: center;
 	justify-content: space-between;
 
 	span {
@@ -45,21 +42,24 @@ export const MealContainer = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
+	svg {
+		cursor: pointer;
+	}
 `;
 
 export const BreakfastWrapper = styled.span<StyleProps>`
 	color: ${(props) => {
-		return props.Clicked === 0 ? '#333' : '#8b8b8b';
+		return props.Clicked === 0 ? '#363636' : '#ababab';
 	}};
 `;
 export const LaunchWrapper = styled.span<StyleProps>`
 	color: ${(props) => {
-		return props.Clicked === 1 ? '#333' : '#8b8b8b';
+		return props.Clicked === 1 ? '#363636' : '#ababab';
 	}};
 `;
 export const DinnerWrapper = styled.span<StyleProps>`
 	color: ${(props) => {
-		return props.Clicked === 2 ? '#333' : '#8b8b8b';
+		return props.Clicked === 2 ? '#363636' : '#ababab';
 	}};
 `;
 
@@ -108,9 +108,13 @@ export const Button = styled.button`
 `;
 export const DateWrapper = styled.div`
 	width: 100%;
-	height: 15%;
 	display: flex;
-	align-items: center;
 	justify-content: center;
 	font-size: 18px;
+	margin-top: 3.25rem;
+	color: #5b5b5b;
+`;
+
+export const ReverseArrow = styled.div`
+	transform: rotate(180deg);
 `;
