@@ -3,22 +3,53 @@ import { Routes, Route } from 'react-router-dom';
 import PrivateRoute from 'Utils/Libs/PrivateRoute';
 import PublicRoute from 'Utils/Libs/PublicRoute';
 
-const HomePage = lazy(() => import('./Pages/HomePage/HomePage'));
-const PromotionPage = lazy(() => import('./Pages/PromotionPage/PromotionPage'));
-const SelfStudyPage = lazy(() => import('./Pages/SelfStudyPage/SelfStudyPage'));
-const NoticePage = lazy(() => import('./Pages/NoticePage/NoticePage'));
+const HomePage = lazy(
+	() => import(/* webpackChunkName: "home" */ './Pages/HomePage/HomePage')
+);
+const PromotionPage = lazy(
+	() =>
+		import(
+			/* webpackChunkName: "promotion" */ './Pages/PromotionPage/PromotionPage'
+		)
+);
+const SelfStudyPage = lazy(
+	() =>
+		import(
+			/* webpackChunkName: "selfstudy" */ './Pages/SelfStudyPage/SelfStudyPage'
+		)
+);
+const NoticePage = lazy(
+	() => import(/* webpackChunkName: "notice" */ './Pages/NoticePage/NoticePage')
+);
 const NoticeWritePage = lazy(
-	() => import('./Pages/NoticeWritePage/NoticeWritePage')
+	() =>
+		import(
+			/* webpackChunkName: "noticewrite" */ './Pages/NoticeWritePage/NoticeWritePage'
+		)
+);
+const SongPage = lazy(
+	() => import(/* webpackChunkName: "song" */ './Pages/SongPage/SongPage')
+);
+const SigninPage = lazy(
+	() => import(/* webpackChunkName: "signin" */ './Pages/SigninPage/SigninPage')
+);
+const SignupPage = lazy(
+	() => import(/* webpackChunkName: "signup" */ './Pages/SignupPage/SignupPage')
+);
+const PwChangePage = lazy(
+	() =>
+		import(
+			/* webpackChunkName: "passwordchange" */ './Pages/PwChangePage/PwChangePage'
+		)
 );
 const NoticeWatchPage = lazy(
-	() => import('./Pages/NoticeWatchPage/NoticeWatchPage')
+	() => import(/* webpackChunkName: "noticedetail" */'./Pages/NoticeWatchPage/NoticeWatchPage')
 );
-const SongPage = lazy(() => import('./Pages/SongPage/SongPage'));
-const SigninPage = lazy(() => import('./Pages/SigninPage/SigninPage'));
-const SignupPage = lazy(() => import('./Pages/SignupPage/SignupPage'));
-const PwChangePage = lazy(() => import('./Pages/PwChangePage/PwChangePage'));
 const AuthorizationPage = lazy(
-	() => import('./Pages/AuthorizationPage/AuthorizationPage')
+	() =>
+		import(
+			/* webpackChunkName: "authorization" */ './Pages/AuthorizationPage/AuthorizationPage'
+		)
 );
 const WithdrawlPage = lazy(() => import('./Pages/WithdrawlPage/WithdrawlPage'));
 const PenaltyPage = lazy(() => import('./Pages/PenaltyPage/PenaltyPage'));

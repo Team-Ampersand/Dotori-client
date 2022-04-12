@@ -93,8 +93,8 @@ const PageTemplate: React.FC = ({ children }) => {
 				<S.Title>
 					{returnPageType(window.location.pathname)}
 					<strong>
-						{ManufactureDate('Y')}년 {ManufactureDate('M')}월{' '}
-						{ManufactureDate('D')}일 {ManufactureDate('W')}요일
+						{ManufactureDate('Y')}.{ManufactureDate('M')}.{ManufactureDate('D')}{' '}
+						({ManufactureDate('W')})
 					</strong>
 				</S.Title>
 				{BannerStatus(children, isActive)}

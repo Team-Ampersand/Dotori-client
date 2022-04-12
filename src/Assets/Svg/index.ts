@@ -29,6 +29,9 @@ import Affect from './Affection';
 import Entry from './Entry';
 import Learn from './Learn';
 import Outside from './Outside';
+import DotoriLogoV2 from 'Assets/Svg/DotoriLogoV2';
+import Arrowdown from 'Assets/Svg/Arrowdown';
+import LargeArrowDown from 'Assets/Svg/LargeArrowDown';
 import Cancel from './Cancel';
 import TextLogo from './TextLogo';
 import Delete from './Delete';
@@ -66,6 +69,9 @@ export {
 	Entry,
 	Learn,
 	Outside,
+	DotoriLogoV2,
+	Arrowdown,
+	LargeArrowDown,
 	Cancel,
 	TextLogo,
 	Delete,

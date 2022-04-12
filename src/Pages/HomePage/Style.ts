@@ -8,19 +8,21 @@ export const Positioner = styled.div`
 
 export const UserProfile = styled.div`
 	display: flex;
-	width: 27%;
+	width: 29%;
 	min-width: 200px;
 	height: 100%;
 	background-color: #fff;
 	border-radius: 20px;
+	box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.12);
 `;
 
 export const MealBoard = styled.div`
-	width: 30%;
+	width: 29%;
 	height: 100%;
 	min-width: 235px;
 	background-color: #fff;
 	border-radius: 20px;
+	box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.12);
 `;
 
 export const SelfstudyBoard = styled.div`
@@ -35,7 +37,7 @@ export const MassageBoard = styled.div`
 `;
 
 export const MiddleWrapper = styled.div`
-	width: 35%;
+	width: 36%;
 	height: 100%;
 	display: flex;
 	flex-direction: column;

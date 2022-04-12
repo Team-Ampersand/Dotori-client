@@ -1,4 +1,4 @@
-import { DotoriLogo } from 'Assets/Svg';
+import { DotoriLogoV2 } from 'Assets/Svg';
 import React, { useState } from 'react';
 import * as S from './Style';
 import { authPassword, findPassword, passwordChange } from 'Api/member';
@@ -165,7 +165,7 @@ const PasswordForm: React.FC = () => {
 
 	return (
 		<S.Positioner>
-			<DotoriLogo />
+			<DotoriLogoV2 />
 			{returnPassworForm(
 				setPassword,
 				setNewPw,

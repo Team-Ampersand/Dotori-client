@@ -2,10 +2,10 @@ import styled from 'styled-components';
 
 export const Postioner = styled.div`
 	width: 100%;
-	height: 78%;
+	height: 80%;
 	background-color: #fff;
 	border-radius: 20px;
-	margin-top: 6vh;
+	margin-top: 5rem;
 `;
 
 export const TableHeader = styled.div`

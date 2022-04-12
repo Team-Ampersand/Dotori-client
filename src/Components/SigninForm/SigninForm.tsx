@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DotoriLogo } from 'Assets/Svg';
+import { DotoriLogoV2 } from 'Assets/Svg';
 import * as S from './Style';
 import { Link, useNavigate } from 'react-router-dom';
 import { HasToken } from '../../Atoms';
@@ -46,7 +46,7 @@ const SigninForm: React.FC = () => {
 		<>
 			<S.Positioner>
 				<S.LogoWrapper>
-					<DotoriLogo />
+					<DotoriLogoV2 />
 				</S.LogoWrapper>
 				<S.InputWrapper>
 					<label>@gsm.hs.kr</label>
@@ -78,14 +78,16 @@ const SigninForm: React.FC = () => {
 					로그인
 				</S.ButtonStyle>
 				<S.Line />
-				<S.SignupContainer>
-					<span>아직 계정이 없으신가요?</span>
-					<Link to="/signup">회원가입</Link>
-				</S.SignupContainer>
-				<S.FindContainer>
-					<span>비밀번호를 잊으셨나요?</span>
-					<Link to="/password">비밀번호 찾기</Link>
-				</S.FindContainer>
+				<S.SigninContainer>
+					<S.SignupWrapper>
+						<span>아직 계정이 없으신가요?</span>
+						<Link to="/signup">회원가입</Link>
+					</S.SignupWrapper>
+					<S.FindWrapper>
+						<span>비밀번호를 잊으셨나요?</span>
+						<Link to="/password">비밀번호 찾기</Link>
+					</S.FindWrapper>
+				</S.SigninContainer>
 			</S.Positioner>
 		</>
 	);

@@ -6,6 +6,7 @@ export const Postioner = styled.div`
 	display: flex;
 	background-color: #cccccc;
 	border-radius: 20px;
+	margin-bottom: 1.5rem;
 `;
 
 export const TextWrapper = styled.div`
