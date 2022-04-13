@@ -5,7 +5,13 @@ type StyleProps = {
 };
 
 export const Postioner = styled.div`
-	width: 49%;
+	width: 100%;
+	height: 100%;
+	display: flex;
+`;
+
+export const TodaySongWrapper = styled.div`
+	width: 100%;
 	min-width: 345px;
 	height: 100%;
 	display: flex;
@@ -66,4 +72,12 @@ export const AppliedSongCount = styled.p`
 	font-size: 18px;
 	font-weight: bold;
 	color: #b9b9b9;
+`;
+
+export const Container = styled.div`
+	width: 100%;
+	height: 100%;
+	display: grid;
+
+	margin-left: 3%;
 `;
