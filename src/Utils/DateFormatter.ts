@@ -10,7 +10,7 @@ export const DateFormatter = (currentDate: Date) => {
 	const year = date.getFullYear();
 	const month = leftPad(date.getMonth() + 1);
 	const day = leftPad(date.getDate());
-	return [year, month, day].join('.');
+	return [year, month, day].join('-');
 };
 
 export const showMusicDataFormatter = (currentDate: Date) => {
