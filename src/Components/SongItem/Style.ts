@@ -70,7 +70,7 @@ export const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	margin-left: 3%;
+	margin-left: 7%;
 `;
 
 export const DeleteContainer = styled.div`
