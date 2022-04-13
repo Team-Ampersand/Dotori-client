@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const Postioner = styled.div`
-	width: 49%;
-	height: 65%;
+	width: 100%;
+	height: 120%;
 	display: flex;
 	flex-direction: column;
 	background-color: #ffffff;
@@ -36,7 +36,7 @@ export const InputWrapper = styled.div`
 	width: 100%;
 	height: 100%;
 	margin-left: 6.5%;
-	margin-top: 3%;
+	margin-top: 1%;
 
 	p {
 		font-weight: bold;
