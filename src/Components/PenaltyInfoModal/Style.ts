@@ -40,21 +40,20 @@ export const Title = styled.span`
 `;
 
 export const PenaltyInfoWrapper = styled.div`
-	width: 90%;
+	width: 100%;
 	height: 80%;
-	background: #ededed;
 	border-radius: 13px;
 	overflow-y: scroll;
 `;
 
 export const PenaltyCheckBtn = styled.button`
-	width: 90%;
+	width: 30%;
 	height: 50px;
 	border: 0;
-	background: #28608f;
+	background: #9ecff2;
 	color: #ffffff;
 	font-size: 16px;
-	border-radius: 13px;
+	border-radius: 10px;
 `;
 
 export const PenaltyWrapper = styled.div`
