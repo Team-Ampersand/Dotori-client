@@ -35,7 +35,11 @@ import LargeArrowDown from 'Assets/Svg/LargeArrowDown';
 import Cancel from './Cancel';
 import TextLogo from './TextLogo';
 import Delete from './Delete';
-
+import PrevBarImg from './PreBar';
+import NextBarImg from './NextBar';
+import PromotionImg from './Promotion';
+import Arrow from './Arrow';
+import Arrow2 from './Arrow2';
 export {
 	Home,
 	Laptop,
@@ -74,4 +78,9 @@ export {
 	Cancel,
 	TextLogo,
 	Delete,
+	PrevBarImg,
+	NextBarImg,
+	PromotionImg,
+	Arrow,
+	Arrow2,
 };

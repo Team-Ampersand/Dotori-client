@@ -28,10 +28,6 @@ export const Positioner = styled.div`
 	}
 `;
 
-export const StyledLink = styled(Link)`
-	text-decoration: none;
-`;
-
 export const Header = styled.div`
 	background-color: white;
 	position: absolute;
@@ -45,6 +41,31 @@ export const Header = styled.div`
 	svg {
 		margin-left: 30px;
 	}
+
+	@media (max-width: 1900px) {
+		svg {
+			width: 100px;
+			margin-left: 50px;
+		}
+	}
+	@media (max-width: 1600px) {
+		svg {
+			width: 90px;
+			margin-left: 30px;
+		}
+	}
+	@media (max-width: 1400px) {
+		svg {
+			width: 80px;
+			margin-left: 30px;
+		}
+	}
+	@media (max-width: 700px) {
+		svg {
+			width: 60px;
+			margin-left: 15px;
+		}
+	}
 `;
 
 export const BtnWrapper = styled.div`
@@ -56,6 +77,31 @@ export const BtnWrapper = styled.div`
 	height: 35px;
 	margin-right: 30px;
 	gap: 10px;
+
+	@media (max-width: 1900px) {
+		width: 150px;
+		svg {
+			margin-left: 50px;
+		}
+	}
+	@media (max-width: 1600px) {
+		width: 130px;
+		svg {
+			margin-left: 30px;
+		}
+	}
+	@media (max-width: 1400px) {
+		width: 130px;
+		svg {
+			margin-left: 30px;
+		}
+	}
+	@media (max-width: 700px) {
+		width: 100px;
+		svg {
+			margin-left: 15px;
+		}
+	}
 `;
 
 export const SignBtn = styled(Link)`
@@ -73,46 +119,29 @@ export const SignBtn = styled(Link)`
 	font-weight: bold;
 	color: white;
 	&:hover {
-		width: 103px;
-		transition: 0.15s;
+		width: 90px;
+		transition: all ease 0.2s 0s;
 	}
-`;
 
-export const Btn = styled(Link)`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-top: 50px;
-	width: 160px;
-	height: 60px;
-	background-color: #fff;
-	border-radius: 10px;
-	border: none;
-	outline: none;
-	text-decoration: none;
-	font-size: 26px;
-	font-weight: bold;
-	color: #0f4c81;
-	&:hover {
-		width: 170px;
-		transition: 0.15s;
+	@media (max-width: 1900px) {
+		width: 100px;
+		height: 35px;
+		font-size: 15px;
 	}
-`;
-
-export const Footer = styled.div`
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	height: 8%;
-	background-color: #1971c2;
-	color: #fff;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	h1 {
-		font-size: 30px;
-		margin-right: 20px;
-		font-weight: lighter;
+	@media (max-width: 1600px) {
+		width: 70px;
+		height: 31px;
+		font-size: 10px;
+	}
+	@media (max-width: 1400px) {
+		width: 70px;
+		height: 31px;
+		font-size: 10px;
+	}
+	@media (max-width: 700px) {
+		width: 55px;
+		height: 25px;
+		font-size: 6px;
 	}
 `;
 
@@ -122,6 +151,28 @@ export const Dotory = styled.h2`
 	position: relative;
 	left: 35px;
 	-webkit-text-stroke: 1px white;
+
+	@media (max-width: 1900px) {
+		position: relative;
+		left: -80px;
+		font-size: 85px;
+	}
+	@media (max-width: 1600px) {
+		position: relative;
+		left: 35px;
+		font-size: 65px;
+	}
+	@media (max-width: 1400px) {
+		position: relative;
+		left: 35px;
+		font-size: 65px;
+	}
+	@media (max-width: 700px) {
+		position: relative;
+		left: 72px;
+		top: 65px;
+		font-size: 40px;
+	}
 `;
 
 export const Dormitory = styled.h2`
@@ -130,6 +181,34 @@ export const Dormitory = styled.h2`
 	font-size: 70px;
 	position: relative;
 	bottom: 180px;
+
+	@media (max-width: 1900px) {
+		position: relative;
+		bottom: 230px;
+		left: 65px;
+		font-size: 80px;
+	}
+	@media (max-width: 1600px) {
+		-webkit-text-stroke: 3px white;
+		position: relative;
+		bottom: 180px;
+		left: 0px;
+		font-size: 70px;
+	}
+	@media (max-width: 1400px) {
+		-webkit-text-stroke: 3px white;
+		position: relative;
+		bottom: 180px;
+		left: 0px;
+		font-size: 60px;
+	}
+	@media (max-width: 700px) {
+		-webkit-text-stroke: 1px white;
+		position: relative;
+		bottom: 0px;
+		left: -22px;
+		font-size: 40px;
+	}
 `;
 
 export const ProductBodyScrollable = styled.div`
@@ -155,6 +234,39 @@ export const Products = styled.div`
 		z-index: 10;
 		transform: scale(2);
 	}
+
+	@media (max-width: 1900px) {
+		svg {
+			position: relative;
+			top: 170px;
+			left: 110px;
+			transform: scale(2.8);
+		}
+	}
+	@media (max-width: 1600px) {
+		svg {
+			position: relative;
+			top: 120px;
+			left: 105px;
+			transform: scale(2);
+		}
+	}
+	@media (max-width: 1400px) {
+		svg {
+			position: relative;
+			top: 120px;
+			left: 105px;
+			transform: scale(2);
+		}
+	}
+	@media (max-width: 700px) {
+		svg {
+			position: relative;
+			top: 170px;
+			left: 80px;
+			transform: scale(1.5);
+		}
+	}
 `;
 
 export const Product = styled.div`
@@ -165,27 +277,42 @@ export const Product = styled.div`
 	align-items: center;
 `;
 
-export const SlideBtn = styled.button<StyleProps>`
+export const SlideBtn = styled.div<StyleProps>`
 	position: fixed;
 	display: ${(props) => props.display};
 	top: ${(props) => props.top};
 	left: ${(props) => props.left};
 	right: ${(props) => props.right};
-	color: white;
 	border: none;
-	font-size: 30px;
 	background-color: transparent;
 	transition: all ease 0.3s 0s;
 
 	svg {
-		z-index: 10;
-		color: black;
-		background-color: white;
-		width: 50px;
+		width: 150px;
 	}
 
 	&:hover {
-		font-size: 35px;
+		cursor: pointer;
+	}
+	@media (max-width: 1900px) {
+		svg {
+			width: 75px;
+		}
+	}
+	@media (max-width: 1600px) {
+		svg {
+			width: 60px;
+		}
+	}
+	@media (max-width: 1400px) {
+		svg {
+			width: 60px;
+		}
+	}
+	@media (max-width: 700px) {
+		svg {
+			width: 30px;
+		}
 	}
 `;
 
@@ -203,6 +330,19 @@ export const DescTitle = styled.div`
 	font-size: 30px;
 	color: white;
 	font-weight: bold;
+
+	@media (max-width: 1900px) {
+		font-size: 50px;
+	}
+	@media (max-width: 1600px) {
+		font-size: 40px;
+	}
+	@media (max-width: 1400px) {
+		font-size: 30px;
+	}
+	@media (max-width: 700px) {
+		font-size: 20px;
+	}
 `;
 
 export const DotoryDesc = styled.div`
@@ -213,6 +353,19 @@ export const DotoryDesc = styled.div`
 	font-size: 1rem;
 	color: white;
 	white-space: normal;
+
+	@media (max-width: 1900px) {
+		font-size: 1.3rem;
+	}
+	@media (max-width: 1600px) {
+		font-size: 1.2rem;
+	}
+	@media (max-width: 1400px) {
+		font-size: 1rem;
+	}
+	@media (max-width: 700px) {
+		font-size: 0.7rem;
+	}
 `;
 
 export const UnderBar = styled.span<StyleProps>`
@@ -221,12 +374,29 @@ export const UnderBar = styled.span<StyleProps>`
 	left: ${(props) => props.left};
 	background-color: white;
 	display: flex;
-	height: 5px;
-	width: 50px;
+	height: 10px;
+	width: 80px;
 	border-radius: 10px;
 	align-items: center;
 	justify-content: center;
 	color: white;
 	cursor: pointer;
 	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+	@media (max-width: 1900px) {
+		height: 7px;
+		width: 70px;
+	}
+	@media (max-width: 1600px) {
+		height: 6px;
+		width: 60px;
+	}
+	@media (max-width: 1400px) {
+		height: 5px;
+		width: 50px;
+	}
+	@media (max-width: 700px) {
+		height: 4px;
+		width: 26px;
+	}
 `;

@@ -6,10 +6,8 @@ import React, { useState } from 'react';
 import { logout } from 'Api/member';
 import isLogin from 'Utils/Libs/isLogin';
 // import { ManufactureDate } from 'Utils/ManufactureDate';
-import { TextLogo } from 'Assets/Svg';
-import PromotionImg from 'Assets/Svg/Promotion';
+import { TextLogo, PromotionImg, Arrow, Arrow2 } from 'Assets/Svg';
 import { useEffect } from 'react';
-import NextBarImg from 'Assets/Svg/NextBar';
 
 const TryLogout = (setLogged) => {
 	const onLogout = async () => {
@@ -65,9 +63,11 @@ const PromotionPage: React.FC = () => {
 	const leftBtnClickHandler = () => {
 		setCounter(counter - 1);
 	};
-
 	const rightBtnClickHandler = () => {
 		setCounter(counter + 1);
+	};
+	const underBarClick = (n: number) => {
+		setCounter(n);
 	};
 
 	return (
@@ -118,9 +118,7 @@ const PromotionPage: React.FC = () => {
 								</S.DotoryDesc>
 							</S.Dotory2Page>
 						</S.Product>
-						<S.Product>
-							<h1>.</h1>
-						</S.Product>
+						<S.Product></S.Product>
 					</S.Products>
 
 					<S.SlideBtn
@@ -129,7 +127,7 @@ const PromotionPage: React.FC = () => {
 						left="50px"
 						onClick={leftBtnClickHandler}
 					>
-						{'<'}
+						<Arrow2 />
 					</S.SlideBtn>
 					<S.SlideBtn
 						display={disRight}
@@ -137,40 +135,31 @@ const PromotionPage: React.FC = () => {
 						right="50px"
 						onClick={rightBtnClickHandler}
 					>
-						{/* {'>'} */}
-						<NextBarImg />
+						<Arrow />
 					</S.SlideBtn>
-
-					{/* <NextBar /> */}
 
 					<S.UnderBar
 						left="45%"
 						style={{
 							backgroundColor: `${counter === 0 ? 'white' : '#e9e9e9'}`,
 						}}
+						onClick={() => underBarClick(0)}
 					/>
 					<S.UnderBar
 						left="49%"
 						style={{
 							backgroundColor: `${counter === 1 ? 'white' : '#e9e9e9'}`,
 						}}
+						onClick={() => underBarClick(1)}
 					/>
 					<S.UnderBar
 						left="53%"
 						style={{
 							backgroundColor: `${counter === 2 ? 'white' : '#e9e9e9'}`,
 						}}
+						onClick={() => underBarClick(2)}
 					/>
 				</S.ProductBodyScrollable>
-
-				{/* <S.StyledLink to="/home">
-					<h1>D O T O R I</h1>
-				</S.StyledLink>
-				<p>기숙사 통합 관리 시스템</p>
-				<S.Btn to="/home">홈으로</S.Btn>
-				<S.Footer>
-					<h1>{ManufactureDate('Y')} Team-&mpersand</h1>
-				</S.Footer> */}
 			</S.Positioner>
 		</>
 	);
