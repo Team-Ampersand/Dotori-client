@@ -7,7 +7,7 @@ export const music = async (role: string, musicUrl: string) => {
 			musicUrl: musicUrl,
 		});
 		return { data };
-	} catch (e) {
+	} catch (e: any) {
 		if (e.message === 'Request failed with status code 409') {
 			alert('이미 노래를 신청 해 신청 하실 수 없어요');
 		}
