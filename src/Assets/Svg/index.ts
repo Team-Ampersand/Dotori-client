@@ -35,6 +35,7 @@ import LargeArrowDown from 'Assets/Svg/LargeArrowDown';
 import Cancel from './Cancel';
 import TextLogo from './TextLogo';
 import Delete from './Delete';
+import X from './X';
 
 export {
 	Home,
@@ -74,4 +75,5 @@ export {
 	Cancel,
 	TextLogo,
 	Delete,
+	X,
 };
