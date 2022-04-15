@@ -107,7 +107,10 @@ const PenaltyInfoModal: React.FC<PenaltyInfoModalProps> = ({
 		<S.Positioner>
 			<S.Overlay onClick={closeModal} />
 			<S.Container>
-				<S.Title>규정 위반 내역</S.Title>
+				<S.TitleWrapper>
+					<S.Title>규정 위반 내역</S.Title>
+					<I.X onClick={closeModal} />
+				</S.TitleWrapper>
 				<S.PenaltyInfoWrapper>
 					{message === '규정위반 내역이 없습니다.' ? (
 						<S.PenaltyException>
