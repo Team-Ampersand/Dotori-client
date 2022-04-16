@@ -3,9 +3,97 @@ import * as S from './Style';
 import { studyRank } from 'Api/selfStudy';
 import { useRecoilState } from 'recoil';
 import { list } from 'Atoms';
-import Logo from 'Assets/Svg/Logo';
 import { useRole } from 'Hooks/useRole';
-import { TextLogo, SmallFemale, SmallMale, Profile } from 'Assets/Svg';
+import {
+	SmallFemale,
+	SmallMale,
+	Profile,
+	GoldMedal,
+	SilverMedal,
+	BronzeMedal,
+	Trash,
+} from 'Assets/Svg';
+
+const userOBJ = [
+	{
+		id: 0,
+		gender: 'MAN',
+		stuNum: '3214',
+		memberName: '임창규',
+	},
+	{
+		id: 0,
+		gender: 'MAN',
+		stuNum: '3214',
+		memberName: '임창규',
+	},
+	{
+		id: 0,
+		gender: 'MAN',
+		stuNum: '3214',
+		memberName: '임창규',
+	},
+	{
+		id: 0,
+		gender: 'MAN',
+		stuNum: '3214',
+		memberName: '임창규',
+	},
+	{
+		id: 0,
+		gender: 'MAN',
+		stuNum: '3214',
+		memberName: '임창규',
+	},
+	{
+		id: 0,
+		gender: 'MAN',
+		stuNum: '3214',
+		memberName: '임창규',
+	},
+	{
+		id: 0,
+		gender: 'MAN',
+		stuNum: '3214',
+		memberName: '임창규',
+	},
+	{
+		id: 0,
+		gender: 'MAN',
+		stuNum: '3214',
+		memberName: '임창규',
+	},
+	{
+		id: 0,
+		gender: 'MAN',
+		stuNum: '3214',
+		memberName: '임창규',
+	},
+	{
+		id: 0,
+		gender: 'MAN',
+		stuNum: '3214',
+		memberName: '임창규',
+	},
+	{
+		id: 0,
+		gender: 'MAN',
+		stuNum: '3214',
+		memberName: '임창규',
+	},
+	{
+		id: 0,
+		gender: 'MAN',
+		stuNum: '3214',
+		memberName: '임창규',
+	},
+	{
+		id: 0,
+		gender: 'MAN',
+		stuNum: '3214',
+		memberName: '임창규',
+	},
+];
 
 const ReturnUserObj = async (role: string) => {
 	const data = await studyRank(role);
@@ -27,6 +115,17 @@ const List: React.FC = () => {
 			{userlist &&
 				userlist.map((item, idx) => (
 					<S.Wrapper key={`${idx}`}>
+						<S.Medal>
+							{idx === 0 ? (
+								<GoldMedal />
+							) : idx === 1 ? (
+								<SilverMedal />
+							) : idx === 2 ? (
+								<BronzeMedal />
+							) : (
+								idx === (userlist && userlist.length - 1) && <Trash />
+							)}
+						</S.Medal>
 						{item.gender === 'PENDING' ? (
 							<Profile width={110} height={110} />
 						) : item.gender === 'MAN' ? (
