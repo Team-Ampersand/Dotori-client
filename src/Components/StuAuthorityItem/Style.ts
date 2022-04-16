@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 interface StyleProps {
-	selfStudyColor: string;
+	selfStudyColor?: string;
+	genderColor?: string;
 }
 
 export const Container = styled.li`
@@ -21,12 +22,13 @@ export const StuInfoWrapper = styled.div`
 	flex-direction: row;
 `;
 
-export const StuNumStyle = styled.div`
+export const StuNumStyle = styled.div<StyleProps>`
 	font-size: 18px;
 	width: 200px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	color: ${(props) => props.genderColor};
 `;
 
 export const NameStyle = styled.div`

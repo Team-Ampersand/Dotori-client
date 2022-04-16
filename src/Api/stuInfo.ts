@@ -90,6 +90,24 @@ export const updateStuRole = async (
 	}
 };
 
+export const updateStuGender = async (
+	role: string,
+	stuId: number,
+	gender: string
+) => {
+	try {
+		const { data } = await apiClient.put(StuInfoController.updateGender(role), {
+			receiverId: stuId,
+			gender: gender,
+		});
+		return { data };
+	} catch (e: any) {
+		if (e.message === 'Request failed with status code 409') {
+			return;
+		} else alert(e);
+	}
+};
+
 export const banSelfStudy = async (role: string, stuId: number) => {
 	try {
 		const { data } = await apiClient.put(
