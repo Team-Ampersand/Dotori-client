@@ -70,6 +70,9 @@ const NotFoundPage = lazy(
 			/* webpackChunkName: "notfound" */ './Pages/NotFoundPage/NotFoundPage'
 		)
 );
+const GenderPage = lazy(
+	() => import(/* webpackChunkName: "gender" */ './Pages/GenderPage/GenderPage')
+);
 
 const Router: React.FC = () => {
 	return (
@@ -186,6 +189,14 @@ const Router: React.FC = () => {
 					</PrivateRoute>
 				}
 			/>
+			<Route
+				path="/gender"
+				element={
+					<PrivateRoute>
+						<GenderPage />
+					</PrivateRoute>
+				}
+			></Route>
 			<Route path="*" element={<NotFoundPage />} />
 		</Routes>
 	);
