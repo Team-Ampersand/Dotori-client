@@ -43,12 +43,12 @@ export const getRefresh = async (config: AxiosRequestConfig) => {
 			localStorage.setItem('Dotori_accessToken', data.data.NewAccessToken);
 			localStorage.setItem('Dotori_refreshToken', data.data.NewRefreshToken);
 		} catch (e: any) {
-			if (e.message === 'Request failed with status code 400') {
+			if (e.message === 'Request failed with status code 401') {
 				alert('로그아웃 되었어요');
 				localStorage.removeItem('Dotori_accessToken');
 				localStorage.removeItem('Dotori_refreshToken');
 				window.location.replace('/');
-			} else alert(e);
+			}
 		}
 	}
 	return config;
