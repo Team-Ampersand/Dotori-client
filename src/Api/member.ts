@@ -93,3 +93,12 @@ export const authCheck = async (emailCode: string) => {
 		return { data };
 	} catch (e) {}
 };
+
+export const changeGender = async (gender: string, email: string) => {
+	try {
+		const { data } = await apiClient.put(MemberController.gender(), {
+			gender: gender,
+		});
+		return { data };
+	} catch (e) {}
+};

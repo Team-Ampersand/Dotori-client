@@ -36,6 +36,10 @@ export const MemberController = {
 	authcheck: () => {
 		return '/signup/email/check';
 	},
+	//성별 설정
+	gender: () => {
+		return '/members/gender';
+	},
 };
 
 // 공지사항 관리
