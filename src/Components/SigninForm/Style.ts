@@ -20,24 +20,9 @@ export const LogoWrapper = styled.div`
 `;
 
 export const Line = styled.div`
-	margin-top: 2vh;
+	margin-top: 1rem;
 	width: 30vw;
 	border-bottom: 1px solid #969696;
-`;
-
-export const CheckBox = styled.input`
-	margin-right: 1vh;
-	width: 20px;
-	height: 20px;
-`;
-
-export const SaveContainer = styled.div`
-	margin-top: 1vh;
-	display: flex;
-	span {
-		margin-top: 0.5vh;
-		color: #969696;
-	}
 `;
 
 export const FindWrapper = styled.div`
@@ -53,7 +38,7 @@ export const FindWrapper = styled.div`
 `;
 
 export const SignupWrapper = styled.div`
-	margin-top: 1vh;
+	margin-top: 1rem;
 	span {
 		color: #969696;
 	}

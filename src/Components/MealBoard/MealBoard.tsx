@@ -69,6 +69,7 @@ const MealBoard: React.FC = () => {
 				ManufactureDate('YMD').slice(6)
 		)
 	);
+
 	const getDateStr = (myDate: Date) => {
 		let month = myDate.getMonth() + 1;
 		let stringMonth = month.toString();
@@ -79,10 +80,17 @@ const MealBoard: React.FC = () => {
 		return myDate.getFullYear() + stringMonth + stringDay;
 	};
 
-	const [date, setDate] = useState({
-		datestr: getDateStr(currentDate),
-		day: currentDate.getDay(),
-	});
+	const returnMealDate = () => {
+		let hours = new Date().getHours();
+		if (hours > 19) {
+			currentDate.setDate(currentDate.getDate() + 1);
+			return { datestr: getDateStr(currentDate), day: currentDate.getDay() };
+		} else {
+			return { datestr: getDateStr(currentDate), day: currentDate.getDay() };
+		}
+	};
+
+	const [date, setDate] = useState(returnMealDate);
 	const [list, setList] = useState<listtype[]>();
 
 	let week = ['일', '월', '화', '수', '목', '금', '토'];

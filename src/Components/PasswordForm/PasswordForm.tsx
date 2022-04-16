@@ -2,7 +2,7 @@ import { DotoriLogoV2 } from 'Assets/Svg';
 import React, { useState } from 'react';
 import * as S from './Style';
 import { authPassword, findPassword, passwordChange } from 'Api/member';
-import { NavigateFunction, useNavigate } from 'react-router-dom';
+import { Link, NavigateFunction, useNavigate } from 'react-router-dom';
 
 const AuthPassword = async (id: string, setDisabled, setDisplayed) => {
 	try {
@@ -117,6 +117,11 @@ const returnPassworForm = (
 				>
 					비밀번호 변경
 				</S.ButtonStyle>
+				<S.Line />
+				<S.ExplainWrapper>
+					<span>비밀번호가 기억 나셨나요?</span>
+					<Link to="/signin">로그인으로 돌아가기</Link>
+				</S.ExplainWrapper>
 			</>
 		);
 	} else {
@@ -148,6 +153,11 @@ const returnPassworForm = (
 				>
 					비밀번호 변경
 				</S.ButtonStyle>
+				<S.Line />
+				<S.ExplainWrapper>
+					<span>변경하실 필요가 없으시나요?</span>
+					<Link to="/home">돌아가기</Link>
+				</S.ExplainWrapper>
 			</>
 		);
 	}

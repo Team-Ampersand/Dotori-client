@@ -10,6 +10,7 @@ export const Positioner = styled.div`
 	align-items: center;
 	justify-content: center;
 	min-height: 100vh;
+	padding: 0 35%;
 `;
 
 export const ButtonStyle = styled.button`
@@ -82,4 +83,23 @@ export const InputWrapper = styled.div`
 			top: 18px;
 		}
 	}
+`;
+
+export const ExplainWrapper = styled.div`
+	width: 100%;
+	display: flex;
+	a {
+		text-decoration: none;
+		color: #9ecff2;
+	}
+	span {
+		margin-right: 0.5rem;
+		color: #969696;
+	}
+`;
+
+export const Line = styled.div`
+	margin: 1rem 0;
+	width: 30vw;
+	border-bottom: 1px solid #969696;
 `;
