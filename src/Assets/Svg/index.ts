@@ -36,6 +36,12 @@ import Cancel from './Cancel';
 import TextLogo from './TextLogo';
 import Delete from './Delete';
 import DeleteButton from './DeleteButton';
+import PrevBarImg from './PreBar';
+import NextBarImg from './NextBar';
+import PromotionImg from './Promotion';
+import Arrow from './Arrow';
+import Arrow2 from './Arrow2';
+import X from './X';
 
 export {
 	Home,
@@ -76,4 +82,10 @@ export {
 	TextLogo,
 	Delete,
 	DeleteButton,
+	PrevBarImg,
+	NextBarImg,
+	PromotionImg,
+	Arrow,
+	Arrow2,
+	X,
 };

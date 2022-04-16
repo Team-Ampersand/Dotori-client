@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
+import { getAnalytics, logEvent } from 'firebase/analytics';
 import jwt from 'jwt-decode';
 import { baseURL } from 'Utils/Config/Config';
 import { RefreshTokenController } from 'Utils/Libs/requestUrls';
@@ -16,7 +17,14 @@ export const getRefresh = async (config: AxiosRequestConfig) => {
 		? jwt(accessToken)
 		: { sub: 'auth', iat: 0, exp: 9999999999999, auth: [] };
 	const nowDate = new Date().getTime() / 1000;
+	const analytics = getAnalytics();
+
 	config.headers.common['authorization'] = accessToken;
+
+	logEvent(analytics, 'api_call', {
+		content_id: 'api_5790',
+		event_name: 'api_call',
+	});
 
 	if (user.exp < nowDate) {
 		try {
