@@ -73,7 +73,7 @@ const NoticeBoard: React.FC = () => {
 			setFooterNumber(footerNumber - 1);
 		} else return;
 	};
-	console.log(board);
+
 	return (
 		<>
 			<S.Positioner>

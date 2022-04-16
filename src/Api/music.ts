@@ -7,6 +7,7 @@ export const music = async (role: string, musicUrl: string) => {
 		const { data } = await apiClient.post(MusicController.music(role), {
 			musicUrl: musicUrl,
 		});
+		toast.success('기상 음악이 신청 되었어요');
 		return { data };
 	} catch (e: any) {
 		if (e.message === 'Request failed with status code 409') {
