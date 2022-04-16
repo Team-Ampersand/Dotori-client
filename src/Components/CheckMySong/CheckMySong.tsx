@@ -29,7 +29,7 @@ const CheckMySong: React.FC<CheckMySongProps> = ({ songlists }) => {
 	}, [mySong, songlist]);
 	return (
 		<S.Positioner>
-			<label>내가 오늘 신청한 음악이에요 😉</label>
+			<label>내가 오늘 신청한 음악이에요</label>
 			<S.SongContainer>
 				{mySong ? (
 					songlist &&
