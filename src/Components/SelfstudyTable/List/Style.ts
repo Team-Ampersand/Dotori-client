@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
 	background-color: #fff;
 	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
 	border-radius: 20px;
+	position: relative;
 `;
 
 export const StuNum = styled.span`
@@ -20,4 +21,10 @@ export const StuNum = styled.span`
 
 export const Name = styled.span`
 	font-size: 17px;
+`;
+
+export const Medal = styled.div`
+	position: absolute;
+	top: 10px;
+	left: 10px;
 `;
