@@ -5,12 +5,12 @@ function Arrow2(props: React.SVGProps<SVGSVGElement>) {
 		<svg viewBox="0 0 80 80" width={80} height={80} fill="none" {...props}>
 			<path
 				transform="rotate(90 40 0)"
-				fill="url(#prefix__pattern89)"
+				fill="url(#prefix__pattern91)"
 				d="M40 0h40v40H40z"
 			/>
 			<defs>
 				<pattern
-					id="prefix__pattern89"
+					id="prefix__pattern91"
 					patternContentUnits="objectBoundingBox"
 					width={1}
 					height={1}

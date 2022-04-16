@@ -24,8 +24,8 @@ function Promotion(props: React.SVGProps<SVGSVGElement>) {
 				fill="url(#c)"
 			/>
 			<path
-				fill-rule="evenodd"
-				clip-rule="evenodd"
+				fillRule="evenodd"
+				clipRule="evenodd"
 				d="M1000 523.263 20.907 632.214 379.565 752.65 1000 523.263Z"
 				fill="url(#d)"
 			/>
@@ -39,7 +39,7 @@ function Promotion(props: React.SVGProps<SVGSVGElement>) {
 				height="230"
 			>
 				<path
-					fill-rule="evenodd"
+					fillRule="evenodd"
 					clip-rule="evenodd"
 					d="M979.093 523.263 0 632.214 358.657 752.65l620.436-229.387Z"
 					fill="url(#e)"
@@ -55,13 +55,13 @@ function Promotion(props: React.SVGProps<SVGSVGElement>) {
 				d="m872.96 435.076.418-.112-.112-.418-101.815-379.98-.112-.418-.418.112-606.393 162.482-.418.112.112.418 101.816 379.98.112.418.418-.112L872.96 435.076Zm20.449 12.36c2.56 9.556-3.111 19.378-12.666 21.938L277.632 630.977c-9.555 2.56-19.377-3.11-21.937-12.666l-108.849-406.23c-2.56-9.556 3.11-19.377 12.665-21.937L762.623 28.541c9.554-2.56 19.376 3.11 21.937 12.665l108.849 406.23Z"
 				fill="#F2F2F2"
 				stroke="#E0E0E0"
-				stroke-width=".865"
+				strokeWidth=".865"
 			/>
 			<path
 				d="M146.01 212.305c-2.68-10.001 3.276-20.317 13.277-22.997L762.398 27.705c10.003-2.68 20.317 3.276 22.997 13.277l108.849 406.231c2.68 10.001-3.274 20.316-13.277 22.997L277.856 631.813c-10.001 2.68-20.317-3.276-22.997-13.278L146.01 212.305Zm132.325 421.297 603.112-161.603c10.984-2.943 17.531-14.278 14.587-25.266L787.185 40.503c-2.944-10.987-14.281-17.53-25.266-14.587L158.808 187.519c-10.987 2.944-17.531 14.279-14.587 25.265L253.07 619.015c2.944 10.987 14.279 17.531 25.265 14.587Z"
 				fill="#fff"
 				stroke="#E0E0E0"
-				stroke-width=".865"
+				strokeWidth=".865"
 			/>
 			<path
 				d="M976.958 447.815 184.185 660.238l-3.691-13.775 792.773-212.422 3.691 13.774"
@@ -95,8 +95,8 @@ function Promotion(props: React.SVGProps<SVGSVGElement>) {
 					gradientUnits="userSpaceOnUse"
 					gradientTransform="matrix(13.42214 -497.95714 1124.67151 30.31486 547.738 956.714)"
 				>
-					<stop offset=".573" stop-color="#fff" />
-					<stop offset="1" stop-color="#fff" stop-opacity="0" />
+					<stop offset=".573" stopColor="#fff" />
+					<stop offset="1" stopColor="#fff" stopOpacity="0" />
 				</radialGradient>
 				<radialGradient
 					id="d"
@@ -106,8 +106,8 @@ function Promotion(props: React.SVGProps<SVGSVGElement>) {
 					gradientUnits="userSpaceOnUse"
 					gradientTransform="matrix(13.42214 -497.95714 1124.67151 30.31486 547.738 956.714)"
 				>
-					<stop offset=".573" stop-color="#fff" />
-					<stop offset="1" stop-color="#fff" stop-opacity="0" />
+					<stop offset=".573" stopColor="#fff" />
+					<stop offset="1" stopColor="#fff" stopOpacity="0" />
 				</radialGradient>
 				<radialGradient
 					id="e"
@@ -117,8 +117,8 @@ function Promotion(props: React.SVGProps<SVGSVGElement>) {
 					gradientUnits="userSpaceOnUse"
 					gradientTransform="matrix(13.42214 -497.95714 1124.67151 30.31486 526.831 956.714)"
 				>
-					<stop offset=".573" stop-color="#fff" />
-					<stop offset="1" stop-color="#fff" stop-opacity="0" />
+					<stop offset=".573" stopColor="#fff" />
+					<stop offset="1" stopColor="#fff" stopOpacity="0" />
 				</radialGradient>
 				<radialGradient
 					id="h"
@@ -129,7 +129,7 @@ function Promotion(props: React.SVGProps<SVGSVGElement>) {
 					gradientTransform="rotate(-15.738 2472.683 -4.588) scale(769.726 2320.5)"
 				>
 					<stop />
-					<stop offset="1" stop-opacity="0" />
+					<stop offset="1" stopOpacity="0" />
 				</radialGradient>
 				<linearGradient
 					id="b"
@@ -139,8 +139,8 @@ function Promotion(props: React.SVGProps<SVGSVGElement>) {
 					y2="606.131"
 					gradientUnits="userSpaceOnUse"
 				>
-					<stop stop-color="#E0E0E0" />
-					<stop offset="1" stop-color="#C4C4C4" />
+					<stop stopColor="#E0E0E0" />
+					<stop offset="1" stopColor="#C4C4C4" />
 				</linearGradient>
 				<linearGradient
 					id="c"
@@ -150,8 +150,8 @@ function Promotion(props: React.SVGProps<SVGSVGElement>) {
 					y2="956.714"
 					gradientUnits="userSpaceOnUse"
 				>
-					<stop stop-color="#fff" />
-					<stop offset="1" stop-color="#fff" stop-opacity="0" />
+					<stop stopColor="#fff" />
+					<stop offset="1" stopColor="#fff" stopOpacity="0" />
 				</linearGradient>
 				<linearGradient
 					id="i"
@@ -161,12 +161,12 @@ function Promotion(props: React.SVGProps<SVGSVGElement>) {
 					y2="440.928"
 					gradientUnits="userSpaceOnUse"
 				>
-					<stop stop-color="#E0E0E0" />
-					<stop offset=".011" stop-color="#F2F2F2" />
-					<stop offset=".269" stop-color="#fff" />
-					<stop offset=".817" stop-color="#fff" />
-					<stop offset=".989" stop-color="#F2F2F2" />
-					<stop offset="1" stop-color="#E0E0E0" />
+					<stop stopColor="#E0E0E0" />
+					<stop offset=".011" stopColor="#F2F2F2" />
+					<stop offset=".269" stopColor="#fff" />
+					<stop offset=".817" stopColor="#fff" />
+					<stop offset=".989" stopColor="#F2F2F2" />
+					<stop offset="1" stopColor="#E0E0E0" />
 				</linearGradient>
 				<linearGradient
 					id="l"
@@ -176,10 +176,10 @@ function Promotion(props: React.SVGProps<SVGSVGElement>) {
 					y2="532.68"
 					gradientUnits="userSpaceOnUse"
 				>
-					<stop stop-color="#F2F2F2" />
-					<stop offset=".132" stop-color="#fff" />
-					<stop offset=".868" stop-color="#fff" />
-					<stop offset="1" stop-color="#F2F2F2" />
+					<stop stopColor="#F2F2F2" />
+					<stop offset=".132" stopColor="#fff" />
+					<stop offset=".868" stopColor="#fff" />
+					<stop offset="1" stopColor="#F2F2F2" />
 				</linearGradient>
 				<filter
 					id="g"
@@ -188,9 +188,9 @@ function Promotion(props: React.SVGProps<SVGSVGElement>) {
 					width="768.16"
 					height="347.96"
 					filterUnits="userSpaceOnUse"
-					color-interpolation-filters="sRGB"
+					colorInterpolationFilters="sRGB"
 				>
-					<feFlood flood-opacity="0" result="BackgroundImageFix" />
+					<feFlood floodOpacity="0" result="BackgroundImageFix" />
 					<feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
 					<feGaussianBlur
 						stdDeviation="8"
@@ -204,9 +204,9 @@ function Promotion(props: React.SVGProps<SVGSVGElement>) {
 					width="792.773"
 					height="215.884"
 					filterUnits="userSpaceOnUse"
-					color-interpolation-filters="sRGB"
+					colorInterpolationFilters="sRGB"
 				>
-					<feFlood flood-opacity="0" result="BackgroundImageFix" />
+					<feFlood floodOpacity="0" result="BackgroundImageFix" />
 					<feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
 					<feColorMatrix
 						in="SourceAlpha"
@@ -226,9 +226,9 @@ function Promotion(props: React.SVGProps<SVGSVGElement>) {
 					width="130.042"
 					height="46.554"
 					filterUnits="userSpaceOnUse"
-					color-interpolation-filters="sRGB"
+					colorInterpolationFilters="sRGB"
 				>
-					<feFlood flood-opacity="0" result="BackgroundImageFix" />
+					<feFlood floodOpacity="0" result="BackgroundImageFix" />
 					<feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
 					<feColorMatrix
 						in="SourceAlpha"
@@ -261,9 +261,9 @@ function Promotion(props: React.SVGProps<SVGSVGElement>) {
 					width="749.74"
 					height="583.993"
 					filterUnits="userSpaceOnUse"
-					color-interpolation-filters="sRGB"
+					colorInterpolationFilters="sRGB"
 				>
-					<feFlood flood-opacity="0" result="BackgroundImageFix" />
+					<feFlood floodOpacity="0" result="BackgroundImageFix" />
 					<feGaussianBlur in="BackgroundImage" stdDeviation="10.383" />
 					<feComposite
 						in2="SourceAlpha"

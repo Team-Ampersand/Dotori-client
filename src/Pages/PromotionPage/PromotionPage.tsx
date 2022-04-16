@@ -1,15 +1,16 @@
 import * as S from './Style';
-// import Logo from 'Assets/Svg/Logo';
 import { HasToken } from 'Atoms';
 import { useSetRecoilState } from 'recoil';
 import React, { useState } from 'react';
 import { logout } from 'Api/member';
 import isLogin from 'Utils/Libs/isLogin';
-// import { ManufactureDate } from 'Utils/ManufactureDate';
 import { TextLogo, PromotionImg, Arrow, Arrow2 } from 'Assets/Svg';
 import { useEffect } from 'react';
 
-const TryLogout = (setLogged) => {
+const TryLogout = (setLogged: {
+	(valOrUpdater: boolean | ((currVal: boolean) => boolean)): void;
+	(arg0: boolean): void;
+}) => {
 	const onLogout = async () => {
 		try {
 			await logout();
@@ -44,19 +45,19 @@ const PromotionPage: React.FC = () => {
 
 	const [disLeft, setDisLeft] = useState('none');
 	const [disRight, setDisRIght] = useState('none');
-	const [counter, setCounter] = useState(0);
+	const [counter, setCounter] = useState<number>(0);
+	const PageNumber: number = 2;
 
 	useEffect(() => {
-		if (counter === 0) {
+		if (counter <= 0) {
+			setDisRIght('block');
 			setDisLeft('none');
-		} else {
+		} else if (counter >= 1) {
 			setDisLeft('block');
-		}
-
-		if (counter === 2) {
 			setDisRIght('none');
 		} else {
-			setDisRIght('block');
+			setDisLeft('none');
+			setDisRIght('none');
 		}
 	}, [counter]);
 
@@ -90,7 +91,7 @@ const PromotionPage: React.FC = () => {
 				</S.Header>
 
 				<S.ProductBodyScrollable>
-					<S.Products style={{ transform: `translateX(-${100 * counter}vw)` }}>
+					<S.Products PageN={PageNumber} CurrentCounter={counter}>
 						<S.Product>
 							<S.Dotory>DOTORI</S.Dotory>
 							<PromotionImg />
@@ -118,46 +119,38 @@ const PromotionPage: React.FC = () => {
 								</S.DotoryDesc>
 							</S.Dotory2Page>
 						</S.Product>
-						<S.Product></S.Product>
 					</S.Products>
 
 					<S.SlideBtn
 						display={disLeft}
-						top="350px"
-						left="50px"
+						top={350}
+						left={50}
 						onClick={leftBtnClickHandler}
+						rotateD={0}
 					>
 						<Arrow2 />
 					</S.SlideBtn>
 					<S.SlideBtn
 						display={disRight}
-						top="350px"
-						right="50px"
+						top={350}
+						right={50}
 						onClick={rightBtnClickHandler}
+						rotateD={0}
 					>
 						<Arrow />
 					</S.SlideBtn>
 
 					<S.UnderBar
-						left="45%"
-						style={{
-							backgroundColor: `${counter === 0 ? 'white' : '#e9e9e9'}`,
-						}}
+						left={44}
+						CurrentCounter={counter}
+						n={0}
 						onClick={() => underBarClick(0)}
 					/>
 					<S.UnderBar
-						left="49%"
-						style={{
-							backgroundColor: `${counter === 1 ? 'white' : '#e9e9e9'}`,
-						}}
+						left={50}
+						CurrentCounter={counter}
+						n={1}
 						onClick={() => underBarClick(1)}
-					/>
-					<S.UnderBar
-						left="53%"
-						style={{
-							backgroundColor: `${counter === 2 ? 'white' : '#e9e9e9'}`,
-						}}
-						onClick={() => underBarClick(2)}
 					/>
 				</S.ProductBodyScrollable>
 			</S.Positioner>

@@ -2,10 +2,22 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 type StyleProps = {
-	top?: string;
-	left?: string;
-	right?: string;
+	PageN: number;
+	CurrentCounter: number;
+};
+
+type UnderBars = {
+	CurrentCounter?: number;
+	left?: number;
+	n?: number;
+};
+
+type SlideButton = {
 	display?: string;
+	top?: number;
+	left?: number;
+	right?: number;
+	rotateD?: number;
 };
 
 export const Positioner = styled.div`
@@ -13,25 +25,11 @@ export const Positioner = styled.div`
 	height: 100%;
 	background-color: #c7e2f6;
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	h1 {
-		color: #fff;
-		font-size: 60px;
-		text-decoration-line: none;
-	}
-	p {
-		color: #fff;
-		font-size: 20px;
-		font-weight: lighter;
-		margin-top: 10px;
-	}
+	flex-direction: column;
 `;
 
 export const Header = styled.div`
 	background-color: white;
-	position: absolute;
-	top: 0;
 	width: 100%;
 	height: 6%;
 	display: flex;
@@ -39,32 +37,8 @@ export const Header = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	svg {
-		margin-left: 30px;
-	}
-
-	@media (max-width: 1900px) {
-		svg {
-			width: 100px;
-			margin-left: 50px;
-		}
-	}
-	@media (max-width: 1600px) {
-		svg {
-			width: 90px;
-			margin-left: 30px;
-		}
-	}
-	@media (max-width: 1400px) {
-		svg {
-			width: 80px;
-			margin-left: 30px;
-		}
-	}
-	@media (max-width: 700px) {
-		svg {
-			width: 60px;
-			margin-left: 15px;
-		}
+		width: 8%;
+		margin-left: 2%;
 	}
 `;
 
@@ -73,35 +47,10 @@ export const BtnWrapper = styled.div`
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	width: 190px;
-	height: 35px;
-	margin-right: 30px;
+	width: 20vw;
+	height: 100%;
+	margin-right: 3vw;
 	gap: 10px;
-
-	@media (max-width: 1900px) {
-		width: 150px;
-		svg {
-			margin-left: 50px;
-		}
-	}
-	@media (max-width: 1600px) {
-		width: 130px;
-		svg {
-			margin-left: 30px;
-		}
-	}
-	@media (max-width: 1400px) {
-		width: 130px;
-		svg {
-			margin-left: 30px;
-		}
-	}
-	@media (max-width: 700px) {
-		width: 100px;
-		svg {
-			margin-left: 15px;
-		}
-	}
 `;
 
 export const SignBtn = styled(Link)`
@@ -109,162 +58,144 @@ export const SignBtn = styled(Link)`
 	justify-content: center;
 	align-items: center;
 	text-decoration: none;
-	width: 70px;
-	height: 30px;
+	width: 7vw;
+	height: 70%;
 	background-color: #9ecff2;
 	border-radius: 5px;
 	border: none;
 	outline: none;
-	font-size: 10px;
+	font-size: 1rem;
 	font-weight: bold;
 	color: white;
 	&:hover {
-		width: 90px;
+		background-color: #4775af;
 		transition: all ease 0.2s 0s;
 	}
-
 	@media (max-width: 1900px) {
-		width: 100px;
-		height: 35px;
-		font-size: 15px;
+		width: 13vw;
+		font-size: 1.2rem;
 	}
 	@media (max-width: 1600px) {
-		width: 70px;
-		height: 31px;
-		font-size: 10px;
+		width: 11vw;
+		font-size: 0.9rem;
 	}
 	@media (max-width: 1400px) {
-		width: 70px;
-		height: 31px;
-		font-size: 10px;
+		width: 10vw;
+		font-size: 0.8rem;
 	}
 	@media (max-width: 700px) {
-		width: 55px;
-		height: 25px;
-		font-size: 6px;
+		width: 10vw;
+		font-size: 0.7rem;
 	}
 `;
 
 export const Dotory = styled.h2`
-	font-size: 65px;
 	color: white;
+	font-size: 4.5vw;
 	position: relative;
-	left: 35px;
-	-webkit-text-stroke: 1px white;
+	right: 2vw;
 
 	@media (max-width: 1900px) {
+		font-size: 4.5vw;
 		position: relative;
-		left: -80px;
-		font-size: 85px;
+		right: 2vw;
 	}
 	@media (max-width: 1600px) {
 		position: relative;
-		left: 35px;
-		font-size: 65px;
+		font-size: 4.5vw;
+		right: -0.7vw;
 	}
 	@media (max-width: 1400px) {
 		position: relative;
-		left: 35px;
-		font-size: 65px;
+		font-size: 4vw;
+		right: 0vw;
 	}
 	@media (max-width: 700px) {
+		font-size: 4.5vw;
 		position: relative;
-		left: 72px;
-		top: 65px;
-		font-size: 40px;
+		right: -7.5vw;
+		top: 16vh;
 	}
 `;
 
 export const Dormitory = styled.h2`
 	-webkit-text-stroke: 3px white;
 	color: #c7e2f6;
-	font-size: 70px;
+	font-size: 4.3vw;
 	position: relative;
-	bottom: 180px;
+	bottom: 22vh;
+	left: 3vh;
 
 	@media (max-width: 1900px) {
-		position: relative;
-		bottom: 230px;
-		left: 65px;
-		font-size: 80px;
+		-webkit-text-stroke: 3px white;
 	}
 	@media (max-width: 1600px) {
-		-webkit-text-stroke: 3px white;
-		position: relative;
-		bottom: 180px;
-		left: 0px;
-		font-size: 70px;
+		-webkit-text-stroke: 2.5px white;
 	}
 	@media (max-width: 1400px) {
-		-webkit-text-stroke: 3px white;
+		-webkit-text-stroke: 2.5px white;
 		position: relative;
-		bottom: 180px;
-		left: 0px;
-		font-size: 60px;
+		bottom: 22vh;
+		left: 0vh;
 	}
 	@media (max-width: 700px) {
 		-webkit-text-stroke: 1px white;
 		position: relative;
-		bottom: 0px;
-		left: -22px;
-		font-size: 40px;
+		bottom: -8vh;
+		left: -9.5vh;
 	}
 `;
 
 export const ProductBodyScrollable = styled.div`
-	/* position: relative; */
 	white-space: nowrap;
 	overflow: hidden;
-	margin-top: 6%;
 	width: 100%;
-	height: 100vh;
+	height: 94%;
 `;
 
 export const Products = styled.div`
 	display: flex;
+	width: ${(props: StyleProps) => props.PageN * 100}vw;
+	transform: translateX(
+		${(props: StyleProps) => `-${props.CurrentCounter * 100}vw`}
+	);
 	transition: all ease-in-out 0.3s 0s;
-	width: 300vw;
 	height: 100%;
 
 	svg {
 		position: relative;
-		top: 100px;
-		left: 100px;
-		width: 450px;
+		top: 20vh;
+		left: 7vw;
+		width: 55vh;
 		z-index: 10;
-		transform: scale(2);
+		transform: scale(2.3);
 	}
 
 	@media (max-width: 1900px) {
 		svg {
 			position: relative;
-			top: 170px;
-			left: 110px;
-			transform: scale(2.8);
+			transform: scale(2.3);
 		}
 	}
 	@media (max-width: 1600px) {
 		svg {
 			position: relative;
-			top: 120px;
-			left: 105px;
-			transform: scale(2);
+			transform: scale(2.2);
 		}
 	}
 	@media (max-width: 1400px) {
 		svg {
 			position: relative;
-			top: 120px;
-			left: 105px;
-			transform: scale(2);
+			transform: scale(2.2);
 		}
 	}
+	/* ... */
 	@media (max-width: 700px) {
 		svg {
 			position: relative;
-			top: 170px;
-			left: 80px;
-			transform: scale(1.5);
+			top: 30vh;
+			left: 7vw;
+			transform: scale(1.4);
 		}
 	}
 `;
@@ -277,18 +208,20 @@ export const Product = styled.div`
 	align-items: center;
 `;
 
-export const SlideBtn = styled.div<StyleProps>`
+export const SlideBtn = styled.div`
 	position: fixed;
-	display: ${(props) => props.display};
-	top: ${(props) => props.top};
-	left: ${(props) => props.left};
-	right: ${(props) => props.right};
+	display: ${(props: SlideButton) => props.display};
+	top: ${(props: SlideButton) => props.top}px;
+	left: ${(props: SlideButton) => props.left}px;
+	right: ${(props: SlideButton) => props.right}px;
+
+	transform: rotate(${(props: SlideButton) => props.rotateD}deg);
 	border: none;
 	background-color: transparent;
 	transition: all ease 0.3s 0s;
-
 	svg {
-		width: 150px;
+		width: 100px;
+		height: 100px;
 	}
 
 	&:hover {
@@ -297,21 +230,25 @@ export const SlideBtn = styled.div<StyleProps>`
 	@media (max-width: 1900px) {
 		svg {
 			width: 75px;
+			height: 75px;
 		}
 	}
 	@media (max-width: 1600px) {
 		svg {
 			width: 60px;
+			height: 60px;
 		}
 	}
 	@media (max-width: 1400px) {
 		svg {
 			width: 60px;
+			height: 60px;
 		}
 	}
 	@media (max-width: 700px) {
 		svg {
 			width: 30px;
+			height: 30px;
 		}
 	}
 `;
@@ -327,21 +264,21 @@ export const Dotory2Page = styled.div`
 `;
 
 export const DescTitle = styled.div`
-	font-size: 30px;
+	font-size: 2.5rem;
 	color: white;
 	font-weight: bold;
 
 	@media (max-width: 1900px) {
-		font-size: 50px;
+		font-size: 2rem;
 	}
 	@media (max-width: 1600px) {
-		font-size: 40px;
+		font-size: 1.7rem;
 	}
 	@media (max-width: 1400px) {
-		font-size: 30px;
+		font-size: 1.7rem;
 	}
 	@media (max-width: 700px) {
-		font-size: 20px;
+		font-size: 1.3rem;
 	}
 `;
 
@@ -350,7 +287,7 @@ export const DotoryDesc = styled.div`
 	gap: 50px;
 	width: 100%;
 	height: 50%;
-	font-size: 1rem;
+	font-size: 1.4rem;
 	color: white;
 	white-space: normal;
 
@@ -358,7 +295,7 @@ export const DotoryDesc = styled.div`
 		font-size: 1.3rem;
 	}
 	@media (max-width: 1600px) {
-		font-size: 1.2rem;
+		font-size: 1.1rem;
 	}
 	@media (max-width: 1400px) {
 		font-size: 1rem;
@@ -368,35 +305,20 @@ export const DotoryDesc = styled.div`
 	}
 `;
 
-export const UnderBar = styled.span<StyleProps>`
+export const UnderBar = styled.span<UnderBars>`
+	z-index: 10;
 	position: fixed;
 	top: 93%;
-	left: ${(props) => props.left};
-	background-color: white;
+	left: ${(props) => props.left}%;
+	background-color: ${(props) =>
+		props.CurrentCounter === props.n ? 'white' : '#e9e9e9'};
 	display: flex;
-	height: 10px;
-	width: 80px;
+	height: 0.5vw;
+	width: 5%;
 	border-radius: 10px;
 	align-items: center;
 	justify-content: center;
 	color: white;
 	cursor: pointer;
 	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-
-	@media (max-width: 1900px) {
-		height: 7px;
-		width: 70px;
-	}
-	@media (max-width: 1600px) {
-		height: 6px;
-		width: 60px;
-	}
-	@media (max-width: 1400px) {
-		height: 5px;
-		width: 50px;
-	}
-	@media (max-width: 700px) {
-		height: 4px;
-		width: 26px;
-	}
 `;
