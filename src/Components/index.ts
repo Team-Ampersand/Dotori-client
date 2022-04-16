@@ -30,6 +30,7 @@ import PenaltyInfoModal from 'Components/PenaltyInfoModal/PenaltyInfoModal';
 import StuAuthorityItem from 'Components/StuAuthorityItem/StuAuthorityItem';
 import Skelethon from 'Components/Skelethon/Skelethon';
 import NameSearch from 'Components/NameSearch/NameSearch';
+import Gender from 'Components/Gender/Gender';
 
 export {
 	Sidebar,
@@ -64,4 +65,5 @@ export {
 	StuAuthorityItem,
 	Skelethon,
 	NameSearch,
+	Gender,
 };
