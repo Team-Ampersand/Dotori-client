@@ -85,7 +85,7 @@ export const deletePenaltyInfo = async (role: string, PenaltyId: number) => {
 	}
 };
 
-export const searchName = async (role: string, name: string, e?: any) => {
+export const searchName = async (role: string, name: string) => {
 	try {
 		if (name === '') {
 			alert('이름을 입력해주세요');

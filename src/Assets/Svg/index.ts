@@ -35,6 +35,7 @@ import LargeArrowDown from 'Assets/Svg/LargeArrowDown';
 import Cancel from './Cancel';
 import TextLogo from './TextLogo';
 import Delete from './Delete';
+import DeleteButton from './DeleteButton';
 import PrevBarImg from './PreBar';
 import NextBarImg from './NextBar';
 import PromotionImg from './Promotion';
@@ -80,6 +81,7 @@ export {
 	Cancel,
 	TextLogo,
 	Delete,
+	DeleteButton,
 	PrevBarImg,
 	NextBarImg,
 	PromotionImg,

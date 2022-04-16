@@ -1,3 +1,4 @@
+import CheckMySong from 'Components/CheckMySong/CheckMySong';
 import React from 'react';
 import { PageTemplate } from '..';
 import { SongRequest, TodaySong, Sidebar } from '../../Components';
@@ -8,10 +9,7 @@ const SongPage = () => {
 		<S.Positioner>
 			<Sidebar />
 			<PageTemplate>
-				<S.Container>
-					<TodaySong />
-					<SongRequest />
-				</S.Container>
+				<TodaySong />
 			</PageTemplate>
 		</S.Positioner>
 	);
