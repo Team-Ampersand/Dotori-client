@@ -12,18 +12,6 @@ export const Wrapper = styled.div`
 	border-radius: 20px;
 `;
 
-export const ExceptionWrapper = styled.div`
-	width: 100%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-
-	span {
-		font-size: 20px;
-	}
-`;
-
 export const StuNum = styled.span`
 	font-size: 13px;
 	color: #878787;

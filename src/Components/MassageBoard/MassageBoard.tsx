@@ -1,10 +1,23 @@
-import { massage, massageInfo, cancelMassage } from 'Api/massage';
+import {
+	massage,
+	massageInfo,
+	cancelMassage,
+	massageLookup,
+} from 'Api/massage';
 import { useRole } from 'Hooks/useRole';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ManufactureDate } from 'Utils/ManufactureDate';
 import * as S from './Style';
-import { Arrowdown } from 'Assets/Svg';
+import { Arrowdown, TextLogo } from 'Assets/Svg';
+import { HasToken } from 'Atoms';
+import { useSetRecoilState } from 'recoil';
+
+type ListType = {
+	id: number;
+	stuNum: string;
+	memberName: string;
+};
 
 const returnRoomStatusNumber = (compareMax: number, compareMin: number) => {
 	if (compareMax / 2 > compareMin) {
@@ -37,12 +50,16 @@ const CancelMassage = async (setInfo, count: number, role: string) => {
 
 const MassageBoard: React.FC = () => {
 	const [info, setInfo] = useState({ count: '0', status: '' });
+	const [list, setList] = useState<ListType[]>();
+	const navigate = useNavigate();
+	const setLogged = useSetRecoilState(HasToken);
 	const role = useRole();
 	let today: string = ManufactureDate('W');
 	let can = ['월', '화', '수', '목'];
 	let cant = ['금', '토', '일'];
 	let hours = new Date().getHours();
 	let minutes = new Date().getMinutes();
+	const [pageState, setPageState] = useState(true);
 
 	const returnButton = () => {
 		if (role === 'admin') {
@@ -138,6 +155,34 @@ const MassageBoard: React.FC = () => {
 		}
 	};
 
+	const returnUserObj = async () => {
+		try {
+			const res = await massageLookup(role);
+			return res;
+		} catch (e: any) {
+			if (e.message === 'Request failed with status code 401') {
+				alert('로그아웃 되었어요. 다시 로그인 해주세요');
+
+				localStorage.removeItem('Dotori_accessToken');
+				localStorage.removeItem('Dotori_refreshToken');
+				localStorage.removeItem('role');
+
+				navigate('/signin');
+				setLogged(false);
+				window.location.reload();
+			}
+		}
+	};
+
+	const handlePageState = () => {
+		setPageState(!pageState);
+		if (pageState) {
+			returnUserObj().then((res) => {
+				setList(res?.data.data);
+			});
+		}
+	};
+
 	useEffect(() => {
 		MassageInfo(role).then((res) => {
 			setInfo(res?.data.data);
@@ -147,35 +192,51 @@ const MassageBoard: React.FC = () => {
 	return (
 		<S.Positioner status={info.status} count={parseInt(info.count)}>
 			<S.MassageHeader>
-				<h2>안마의자 신청</h2>
-				<Link to="/massage">
-					<span>신청 현황</span>
+				<h2>{pageState ? '안마의자 신청' : '안마의자 신청 현황'}</h2>
+				<div onClick={handlePageState}>
+					<span>{pageState ? '신청 현황' : '안마 신청'}</span>
 					<Arrowdown />
-				</Link>
+				</div>
 			</S.MassageHeader>
-			<S.MassageContent>
-				<span>{info.count}/5</span>
-				<S.PointProgress>
-					<S.ActiveProgress
-						statusColor={returnRoomStatusNumber(5, parseInt(info.count))}
-						count={parseInt(info.count)}
-					/>
-				</S.PointProgress>
-				{returnButton()}
-				<S.Explain>
-					<p>
-						{cant.indexOf(today) !== -1 ||
-						hours < 20 ||
-						hours >= 21 ||
-						minutes < 20
-							? '20:00 ~ 21:00 에 안마의자 신청이 가능해요'
-							: '안마의자 신청이 가능해요'}
-					</p>
-					<S.Alert>
-						※ 여학생의 경우 여자 사감선생님께 별도로 신청해주시기 바랍니다.
-					</S.Alert>
-				</S.Explain>
-			</S.MassageContent>
+			{pageState ? (
+				<S.MassageContent>
+					<span>{info.count}/5</span>
+					<S.PointProgress>
+						<S.ActiveProgress
+							statusColor={returnRoomStatusNumber(5, parseInt(info.count))}
+							count={parseInt(info.count)}
+						/>
+					</S.PointProgress>
+					{returnButton()}
+					<S.Explain>
+						<p>
+							{cant.indexOf(today) !== -1 ||
+							hours < 20 ||
+							hours >= 21 ||
+							minutes < 20
+								? '20:00 ~ 21:00 에 안마의자 신청이 가능해요'
+								: '안마의자 신청이 가능해요'}
+						</p>
+						<S.Alert>
+							※ 여학생의 경우 여자 사감선생님께 별도로 신청해주시기 바랍니다.
+						</S.Alert>
+					</S.Explain>
+				</S.MassageContent>
+			) : list ? (
+				<S.ApplyContent>
+					{list &&
+						list.map((item, idx) => (
+							<p>
+								{item.stuNum} {item.memberName}
+							</p>
+						))}
+				</S.ApplyContent>
+			) : (
+				<S.ExceptionWrapper>
+					<TextLogo />
+					<p>안마의자를 신청한 사람이 없어요</p>
+				</S.ExceptionWrapper>
+			)}
 		</S.Positioner>
 	);
 };

@@ -43,7 +43,10 @@ const PwChangePage = lazy(
 		)
 );
 const NoticeWatchPage = lazy(
-	() => import(/* webpackChunkName: "noticedetail" */'./Pages/NoticeWatchPage/NoticeWatchPage')
+	() =>
+		import(
+			/* webpackChunkName: "noticedetail" */ './Pages/NoticeWatchPage/NoticeWatchPage'
+		)
 );
 const AuthorizationPage = lazy(
 	() =>
@@ -51,10 +54,22 @@ const AuthorizationPage = lazy(
 			/* webpackChunkName: "authorization" */ './Pages/AuthorizationPage/AuthorizationPage'
 		)
 );
-const WithdrawlPage = lazy(() => import('./Pages/WithdrawlPage/WithdrawlPage'));
-const PenaltyPage = lazy(() => import('./Pages/PenaltyPage/PenaltyPage'));
-const MassagePage = lazy(() => import('./Pages/MassagePage/MassagePage'));
-const NotFoundPage = lazy(() => import('./Pages/NotFoundPage/NotFoundPage'));
+const WithdrawlPage = lazy(
+	() =>
+		import(
+			/* webpackChunkName: "Withdrawl" */ './Pages/WithdrawlPage/WithdrawlPage'
+		)
+);
+const PenaltyPage = lazy(
+	() =>
+		import(/* webpackChunkName: "penalty" */ './Pages/PenaltyPage/PenaltyPage')
+);
+const NotFoundPage = lazy(
+	() =>
+		import(
+			/* webpackChunkName: "notfound" */ './Pages/NotFoundPage/NotFoundPage'
+		)
+);
 
 const Router: React.FC = () => {
 	return (
@@ -168,14 +183,6 @@ const Router: React.FC = () => {
 				element={
 					<PrivateRoute>
 						<PenaltyPage />
-					</PrivateRoute>
-				}
-			/>
-			<Route
-				path="/massage"
-				element={
-					<PrivateRoute>
-						<MassagePage />
 					</PrivateRoute>
 				}
 			/>

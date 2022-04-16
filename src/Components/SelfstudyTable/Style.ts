@@ -63,6 +63,6 @@ export const ExceptionWrapper = styled.div`
 	justify-content: center;
 
 	span {
-		font-size: 20px;
+		font-size: 23px;
 	}
 `;
