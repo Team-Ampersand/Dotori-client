@@ -61,7 +61,7 @@ export const AuthorContainer = styled.span`
 export const DateContainer = styled.span`
 	font-size: 12px;
 	color: #c4c4c4;
-	margin-top: 10%;
+	margin-top: 9%;
 	margin-right: -4%;
 	width: 7.6%;
 `;
@@ -71,7 +71,7 @@ export const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	margin-left: 7%;
+	margin-left: 10%;
 `;
 
 export const DeleteContainer = styled.div`
@@ -79,5 +79,5 @@ export const DeleteContainer = styled.div`
 	cursor: pointer;
 	color: #909090;
 	margin-bottom: 6%;
-	margin-right: 2%;
+	margin-right: 2.5%;
 `;
