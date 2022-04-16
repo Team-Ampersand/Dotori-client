@@ -41,11 +41,6 @@ const BetaBanner: React.FC = () => {
 		slidesToScroll: 1,
 	};
 
-	console.log(
-		new Date(board.lastBoardWriteDate).getDate() + 3 >
-			new Date(board.lastBoardWriteDate).getDate()
-	);
-
 	useEffect(() => {
 		boardAlarm().then(({ data }) => {
 			setBoard(data.data);
@@ -78,7 +73,7 @@ const BetaBanner: React.FC = () => {
 			<S.StyledSlider {...settings}>
 				<S.TextWrapper>
 					{new Date(board.lastBoardWriteDate).getDate() + 3 >
-					new Date(board.lastBoardWriteDate).getDate() ? (
+					new Date().getDate() ? (
 						<>
 							<h2>공지사항</h2>
 							<span>

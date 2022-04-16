@@ -54,7 +54,7 @@ const NoticeWrite: React.FC = () => {
 	const createNotice = async (e) => {
 		confirm();
 		const res = await noticeWrite(role, title, content, postFile);
-		if(title && content === ''){
+		if (title && content === '') {
 			return;
 		} else {
 			navigate('/notice');
@@ -82,7 +82,7 @@ const NoticeWrite: React.FC = () => {
 								className="input"
 							/>
 							<S.ContentInput
-								placeholder="내용을 입력해주세요 (1 ~ 250자)"
+								placeholder="내용을 입력해주세요 (1 ~ 5000자)"
 								onChange={getContent}
 								className="input"
 							/>
