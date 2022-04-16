@@ -139,6 +139,7 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
 					stuNum={stuNum}
 					memberName={memberName}
 					stuId={stuId}
+					gender={gender}
 				/>
 			</S.Container>
 		</>

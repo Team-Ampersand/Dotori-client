@@ -1,6 +1,11 @@
 import { useEffect, useState } from 'react';
 import * as S from './Style';
-import { updateStuName, updateStuNum, updateStuRole } from '../../Api/stuInfo';
+import {
+	updateStuName,
+	updateStuNum,
+	updateStuRole,
+	updateStuGender,
+} from '../../Api/stuInfo';
 import { useRole } from 'Hooks/useRole';
 
 interface ModalProps {
@@ -9,6 +14,7 @@ interface ModalProps {
 	stuNum: string;
 	memberName: string;
 	stuId: number;
+	gender: string;
 }
 
 const InfoUpdateModal: React.FC<ModalProps> = ({
@@ -17,11 +23,13 @@ const InfoUpdateModal: React.FC<ModalProps> = ({
 	stuNum,
 	memberName,
 	stuId,
+	gender,
 }) => {
 	const role = useRole();
 	const [updateStuId, setUpdateStuId] = useState(stuNum);
 	const [updateName, setUpdateName] = useState(memberName);
 	const [updateRole, setUpdateRole] = useState(role);
+	const [updateGender, setUpdateGender] = useState(gender);
 
 	useEffect(() => {
 		window.history.pushState({ page: 'modal' }, document.title);
@@ -32,6 +40,12 @@ const InfoUpdateModal: React.FC<ModalProps> = ({
 		if (role === '자치위원') return 'ROLE_COUNCILLOR';
 		if (role === '개발자') return 'ROLE_DEVELOPER';
 		return 'ROLE_MEMBER';
+	};
+
+	const returnGenderValue = (gender) => {
+		if (gender === '남자') return 'MAN';
+		if (gender === '여자') return 'WOMAN';
+		return 'PENDING';
 	};
 
 	const stuNumUpdate = async () => {
@@ -46,11 +60,16 @@ const InfoUpdateModal: React.FC<ModalProps> = ({
 		await updateStuRole(role, stuId, returnRoleValue(updateRole));
 		alert('권한이 변경되었어요');
 	};
+	const stuGenderUpdate = async () => {
+		await updateStuGender(role, stuId, returnGenderValue(updateGender));
+		alert('성별이 변경되었어요');
+	};
 
 	const onCancle = () => {
 		setUpdateStuId(stuNum);
 		setUpdateName(memberName);
 		setUpdateRole(role);
+		setUpdateGender(gender);
 		closeModal();
 	};
 	const onComplete = async () => {
@@ -94,6 +113,20 @@ const InfoUpdateModal: React.FC<ModalProps> = ({
 								<option value="개발자">개발자</option>
 							</S.StuRoleSelect>
 							<S.UpdateBtn onClick={stuRoleUpdate}>권한 수정</S.UpdateBtn>
+						</S.ChangerItem>
+						<S.ChangerItem>
+							<S.StuRoleSelect
+								onChange={(e) => {
+									setUpdateGender(e.target.value);
+								}}
+							>
+								<option value="" selected disabled hidden>
+									선택
+								</option>
+								<option value="남자">남자</option>
+								<option value="여자">여자</option>
+							</S.StuRoleSelect>
+							<S.UpdateBtn onClick={stuGenderUpdate}>성별 수정</S.UpdateBtn>
 						</S.ChangerItem>
 					</S.ChangerContainer>
 					<S.BtnWrapper>
