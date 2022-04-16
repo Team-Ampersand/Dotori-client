@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './Style';
-import { Logout, Profile } from '../../Assets/Svg';
+import { Logout, Profile, Male, Female } from '../../Assets/Svg';
 import { logout } from '../../Api/member';
 import { mypage } from '../../Api/mypage';
 import { useSetRecoilState } from 'recoil';
@@ -13,7 +13,7 @@ type UserProfileType = {
 	id: number;
 	memberName: string;
 	stuNum: string;
-	point: number;
+	gender: string;
 };
 
 const TryLogout = () => {
@@ -78,7 +78,13 @@ const UserProfile: React.FC = () => {
 				</S.Header>
 				<S.Content>
 					<S.UserWrapper>
-						<Profile />
+						{profile?.gender === 'PENDING' ? (
+							<Profile width={160} height={160} />
+						) : profile?.gender === 'MAN' ? (
+							<Male width={160} height={160} />
+						) : (
+							<Female width={160} height={160} />
+						)}
 						<div>
 							<span className="name">{profile?.memberName}</span>
 							<span className="grade">{profile?.stuNum}</span>
