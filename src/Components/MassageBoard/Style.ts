@@ -28,7 +28,7 @@ export const MassageHeader = styled.div`
 		font-size: 20px;
 	}
 
-	a {
+	div {
 		width: 82px;
 		display: flex;
 		cursor: pointer;
@@ -39,6 +39,18 @@ export const MassageHeader = styled.div`
 			font-size: 18px;
 			color: #ababab;
 		}
+	}
+`;
+
+export const ApplyContent = styled.div`
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	p {
+		font-weight: bold;
 	}
 `;
 
@@ -184,4 +196,13 @@ export const Explain = styled.div`
 export const Alert = styled.div`
 	font-size: 13px;
 	color: #6d92c4;
+`;
+
+export const ExceptionWrapper = styled.div`
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 `;
