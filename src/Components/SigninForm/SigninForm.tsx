@@ -21,8 +21,8 @@ const TrySignin = () => {
 			}
 			const { data } = await signin(id + '@gsm.hs.kr', password);
 
-			localStorage.setItem('Dotori_accessToken', data.data.accessToken);
-			localStorage.setItem('Dotori_refreshToken', data.data.refreshToken);
+			localStorage.setItem('Dotori_accessToken', data.data.token.accessToken);
+			localStorage.setItem('Dotori_refreshToken', data.data.token.refreshToken);
 
 			setLogged(true);
 			navigate('/home');

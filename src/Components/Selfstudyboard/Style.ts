@@ -83,7 +83,6 @@ export const ActiveProgress = styled.div<StyleProps>`
 export const StudyButton = styled.button<StyleProps>`
 	width: 7rem;
 	height: 2.125rem;
-	border: none;
 	background-color: ${(props) => {
 		if (
 			props.Clicked === 'CAN' &&
@@ -107,12 +106,35 @@ export const StudyButton = styled.button<StyleProps>`
 			return '#CACACA';
 		}
 	}};
-	color: #fff;
+	border: ${(props) => {
+		if (props.Clicked === 'APPLIED') return '2px solid #CACACA';
+		else return 'none';
+	}};
+	color: ${(props) => {
+		if (props.Clicked === 'APPLIED') {
+			return '#CACACA';
+		} else {
+			return '#fff';
+		}
+	}};
 	border-radius: 8px;
-	font-size: 20px;
+	font-size: 18px;
 	font-weight: bold;
 
 	&:hover {
+		background-color: ${(props) => {
+			if (
+				props.Clicked === 'CAN' &&
+				props.count < 50 &&
+				new Date().getHours() >= 20 &&
+				new Date().getHours() < 21 &&
+				['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1
+			) {
+				return '#fff';
+			} else {
+				return '#CACACA';
+			}
+		}};
 		color: ${(props) => {
 			if (
 				props.Clicked === 'CAN' &&
@@ -123,7 +145,7 @@ export const StudyButton = styled.button<StyleProps>`
 			) {
 				return '#9ECFF2';
 			} else {
-				return '#ffffff';
+				return '#fff';
 			}
 		}};
 		border: 2px solid

@@ -83,7 +83,6 @@ export const ActiveProgress = styled.div<StyleProps>`
 export const MassageButton = styled.button<StyleProps>`
 	width: 7rem;
 	height: 2.125rem;
-	border: none;
 	background-color: ${(props) => {
 		if (
 			props.status === 'CAN' &&
@@ -109,12 +108,38 @@ export const MassageButton = styled.button<StyleProps>`
 			return '#CACACA';
 		}
 	}};
-	color: #ffffff;
+	color: ${(props) => {
+		if (props.status === 'APPLIED') {
+			return '#CACACA';
+		} else {
+			return '#fff';
+		}
+	}};
+	border: ${(props) => {
+		if (props.status === 'APPLIED') {
+			return '2px solid #CACACA';
+		} else {
+			return 'none';
+		}
+	}};
 	border-radius: 8px;
-	font-size: 20px;
+	font-size: 18px;
 	font-weight: bold;
 
 	&:hover {
+		background-color: ${(props) => {
+			if (
+				props.status === 'CAN' &&
+				props.count < 50 &&
+				new Date().getHours() >= 20 &&
+				new Date().getHours() < 21 &&
+				['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1
+			) {
+				return '#fff';
+			} else {
+				return '#CACACA';
+			}
+		}};
 		color: ${(props) => {
 			if (
 				props.status === 'CAN' &&
@@ -140,6 +165,8 @@ export const MassageButton = styled.button<StyleProps>`
 					new Date().getMinutes() >= 20
 				) {
 					return '#9ECFF2';
+				} else if (props.status === 'APPLIED') {
+					return '#CACACA';
 				} else {
 					return '#CACACA';
 				}

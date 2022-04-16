@@ -5,6 +5,7 @@ type User = {
 	id: string;
 	stuNum: string;
 	memberName: string;
+	gender: string;
 };
 
 type lists = {

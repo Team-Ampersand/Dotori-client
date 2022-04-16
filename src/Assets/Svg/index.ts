@@ -42,6 +42,10 @@ import PromotionImg from './Promotion';
 import Arrow from './Arrow';
 import Arrow2 from './Arrow2';
 import X from './X';
+import Male from './Male';
+import Female from './Female';
+import SmallMale from './SmallMale';
+import SmallFemale from './SmallFemale';
 
 export {
 	Home,
@@ -88,4 +92,8 @@ export {
 	Arrow,
 	Arrow2,
 	X,
+	Male,
+	Female,
+	SmallMale,
+	SmallFemale,
 };
