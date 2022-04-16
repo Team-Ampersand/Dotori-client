@@ -47,6 +47,10 @@ import Male from './Male';
 import Female from './Female';
 import SmallMale from './SmallMale';
 import SmallFemale from './SmallFemale';
+import GoldMedal from './GoldMedal';
+import SilverMedal from './SilverMedal';
+import BronzeMedal from './BronzeMedal';
+import Trash from './Trash';
 
 export {
 	Home,
@@ -97,4 +101,8 @@ export {
 	Female,
 	SmallMale,
 	SmallFemale,
+	GoldMedal,
+	SilverMedal,
+	BronzeMedal,
+	Trash,
 };
