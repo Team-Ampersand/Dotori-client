@@ -89,6 +89,16 @@ export const EditBtn = styled(WriteBtn)`
 	color: #fff;
 	&:hover {
 		background-color: #fff;
+		color: #9ecff2;
+		border: 2px solid #9ecff2;
+	}
+`;
+
+export const EditBtn = styled(WriteBtn)`
+	background-color: #c2c2c2;
+	color: #fff;
+	&:hover {
+		background-color: #fff;
 		color: #c2c2c2;
 		border: 2px solid #c2c2c2;
 	}

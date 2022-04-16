@@ -29,6 +29,7 @@ import Affect from './Affection';
 import Entry from './Entry';
 import Learn from './Learn';
 import Outside from './Outside';
+
 import DotoriLogoV2 from 'Assets/Svg/DotoriLogoV2';
 import Arrowdown from 'Assets/Svg/Arrowdown';
 import LargeArrowDown from 'Assets/Svg/LargeArrowDown';
@@ -46,6 +47,7 @@ import Male from './Male';
 import Female from './Female';
 import SmallMale from './SmallMale';
 import SmallFemale from './SmallFemale';
+import NoticeMore from './NoticeMore';
 
 export {
 	Home,
@@ -96,4 +98,5 @@ export {
 	Female,
 	SmallMale,
 	SmallFemale,
+	NoticeMore
 };
