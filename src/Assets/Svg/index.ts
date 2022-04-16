@@ -40,6 +40,8 @@ import NextBarImg from './NextBar';
 import PromotionImg from './Promotion';
 import Arrow from './Arrow';
 import Arrow2 from './Arrow2';
+import X from './X';
+
 export {
 	Home,
 	Laptop,
@@ -83,4 +85,5 @@ export {
 	PromotionImg,
 	Arrow,
 	Arrow2,
+	X,
 };
