@@ -101,3 +101,8 @@ export const noticeUpdate = async (
 		}
 	}
 };
+
+export const boardAlarm = async () => {
+	const { data } = await apiClient.get(noticeController.boardAlarm());
+	return { data };
+};

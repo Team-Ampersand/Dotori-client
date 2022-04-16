@@ -48,7 +48,17 @@ export const studyInfo = async (role: string) => {
 	try {
 		const { data } = await apiClient.get(SelfstudyController.studyInfo(role));
 		return { data };
-	} catch (e) {}
+	} catch (e: any) {
+		if (e.message === 'Request failed with status code 403') {
+			toast.info('로그아웃 되었어요');
+
+			localStorage.removeItem('Dotori_accessToken');
+			localStorage.removeItem('Dotori_refreshToken');
+			localStorage.removeItem('role');
+
+			window.location.replace('/');
+		}
+	}
 };
 
 export const studyRank = async (role: string) => {

@@ -59,18 +59,16 @@ export const AllWrapper = styled.span<StyleProps>`
 `;
 
 export const NoSongText = styled.div`
-	font-size: 30px;
-	display: grid;
-	font-size: 23px;
-	margin-top: 35%;
-
-	svg {
-		margin-left: 40%;
-	}
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 
 	p {
-		margin-top: -4vh;
-		margin-left: 37%;
+		font-size: 23px;
+		margin-bottom: 4rem;
 	}
 `;
 
