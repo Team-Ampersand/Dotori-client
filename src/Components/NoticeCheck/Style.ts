@@ -8,7 +8,7 @@ export const Positioner = styled.div`
 
 export const Container = styled.div`
 	width: 100%;
-	height: 70vh;
+	height: 90%;
 	padding: 60px 80px;
 	margin-top: 1.8vh;
 	background: #fff;

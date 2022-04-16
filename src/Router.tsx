@@ -80,7 +80,7 @@ const Router: React.FC = () => {
 			<Route
 				path="/"
 				element={
-					<PublicRoute restricted={false}>
+					<PublicRoute restricted={true}>
 						<PromotionPage />
 					</PublicRoute>
 				}
