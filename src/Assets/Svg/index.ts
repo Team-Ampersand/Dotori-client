@@ -36,6 +36,10 @@ import Cancel from './Cancel';
 import TextLogo from './TextLogo';
 import Delete from './Delete';
 import X from './X';
+import Male from './Male';
+import Female from './Female';
+import SmallMale from './SmallMale';
+import SmallFemale from './SmallFemale';
 
 export {
 	Home,
@@ -76,4 +80,8 @@ export {
 	TextLogo,
 	Delete,
 	X,
+	Male,
+	Female,
+	SmallMale,
+	SmallFemale,
 };
