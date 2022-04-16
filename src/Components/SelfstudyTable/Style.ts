@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Postioner = styled.div`
 	width: 100%;
-	height: 80.5%;
+	height: 85.5%;
 	background-color: #fff;
 	border-radius: 20px;
 	margin-top: 2rem;
