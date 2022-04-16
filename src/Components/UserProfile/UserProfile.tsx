@@ -8,6 +8,7 @@ import { HasToken } from '../../Atoms';
 import { useNavigate, Link } from 'react-router-dom';
 import { PenaltyInfoModal } from 'Components';
 import { ManufactureDate } from 'Utils/ManufactureDate';
+import { toast } from 'react-toastify';
 
 type UserProfileType = {
 	id: number;
@@ -21,28 +22,16 @@ const TryLogout = () => {
 	const navigate = useNavigate();
 
 	const onLogout = async () => {
-		try {
-			await logout();
+		await logout();
 
-			localStorage.removeItem('Dotori_accessToken');
-			localStorage.removeItem('Dotori_refreshToken');
-			localStorage.removeItem('role');
+		localStorage.removeItem('Dotori_accessToken');
+		localStorage.removeItem('Dotori_refreshToken');
+		localStorage.removeItem('role');
 
-			setLogged(false);
-			navigate('/');
-			alert('로그아웃 되었어요');
-			window.location.reload();
-		} catch (e: any) {
-			if (e.message === 'Request failed with status code 401') {
-				alert('로그아웃 되었어요. 다시 로그인 해주세요');
-
-				localStorage.removeItem('Dotori_accessToken');
-				localStorage.removeItem('Dotori_refreshToken');
-				localStorage.removeItem('role');
-
-				window.location.reload();
-			}
-		}
+		setLogged(false);
+		navigate('/');
+		toast.info('로그아웃 되었어요');
+		window.location.reload();
 	};
 	return onLogout;
 };

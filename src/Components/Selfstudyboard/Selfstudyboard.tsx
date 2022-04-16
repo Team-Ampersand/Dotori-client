@@ -7,6 +7,7 @@ import { useSetRecoilState } from 'recoil';
 import { HasToken } from 'Atoms';
 import { useRole } from 'Hooks/useRole';
 import { Arrowdown } from 'Assets/Svg';
+import { toast } from 'react-toastify';
 
 const Room = {
 	currentRoom: 13,
@@ -20,7 +21,7 @@ const StudyInfo = async (setLogged, navigate, role: string) => {
 	} catch (e: any) {
 		if (e.message === 'Request failed with status code 401') {
 		} else if (e.message === 'Request failed with status code 403') {
-			alert('로그아웃 되었어요. 다시 로그인 해주세요');
+			toast.info('로그아웃 되었어요. 다시 로그인 해주세요');
 
 			localStorage.removeItem('Dotori_accessToken');
 			localStorage.removeItem('Dotori_refreshToken');
@@ -29,7 +30,7 @@ const StudyInfo = async (setLogged, navigate, role: string) => {
 			navigate('/');
 			setLogged(false);
 			window.location.reload();
-		} else alert(e);
+		}
 	}
 };
 
@@ -46,9 +47,9 @@ const applyStudy = async (
 	try {
 		await selfStudy(role);
 		setInfo({ count: count + 1, selfStudy_status: 'APPLIED' });
-		alert('자습 신청이 완료 되었어요');
+		toast.success('자습 신청이 완료 되었어요');
 	} catch (e) {
-		alert('이미 자습신청을 하셨거나 할 수 없는 상태에요\n' + e);
+		toast.info('이미 자습 신청을 하셨거나 할 수 없는 상태에요');
 	}
 };
 
@@ -56,9 +57,9 @@ const cancleStudy = async (setInfo, count, role) => {
 	try {
 		await cancelStudy(role);
 		setInfo({ count: count - 1, selfStudy_status: 'CANT' });
-		alert('자습 신청이 취소 되었어요');
+		toast.success('자습 신청이 취소 되었어요');
 	} catch (e) {
-		alert('자습취소를 하실수 없는 상태에요\n' + e);
+		toast.info('자습취소를 하실수 없는 상태에요');
 	}
 };
 
@@ -91,7 +92,7 @@ const Selfstudyboard: React.FC = () => {
 					Clicked={info.selfStudy_status}
 					count={parseInt(info.count)}
 					onClick={() => {
-						alert('자습신청이 금지되었어요');
+						toast.info('자습 신청이 금지되었어요');
 					}}
 				>
 					자습불가
@@ -125,7 +126,7 @@ const Selfstudyboard: React.FC = () => {
 							)
 						) {
 							cancleStudy(setInfo, parseInt(info.count), role);
-						} else alert('자습이 취소되지 않았어요');
+						} else toast.info('자습이 취소되지 않았어요');
 					}}
 					Clicked={info.selfStudy_status}
 					count={parseInt(info.count)}
@@ -138,7 +139,7 @@ const Selfstudyboard: React.FC = () => {
 				<S.StudyButton
 					Clicked={info.selfStudy_status}
 					onClick={() => {
-						alert('자습 신청이 가능한 시간이 아니에요');
+						toast.info('자습 신청이 가능한 시간이 아니에요');
 					}}
 					count={parseInt(info.count)}
 				>
@@ -150,7 +151,7 @@ const Selfstudyboard: React.FC = () => {
 				<S.StudyButton
 					Clicked={info.selfStudy_status}
 					onClick={() => {
-						alert('50명이 넘어 신청할 수 없어요');
+						toast.info('50명이 넘어 신청할 수 없어요');
 					}}
 					count={parseInt(info.count)}
 				>
@@ -162,7 +163,7 @@ const Selfstudyboard: React.FC = () => {
 				<S.StudyButton
 					Clicked={info.selfStudy_status}
 					onClick={() => {
-						alert('자습 신청이 불가능 해요');
+						toast.info('자습 신청이 불가능 해요');
 					}}
 					count={parseInt(info.count)}
 				>
@@ -173,7 +174,7 @@ const Selfstudyboard: React.FC = () => {
 			<S.StudyButton
 				Clicked={info.selfStudy_status}
 				onClick={() => {
-					alert('자습을 신청하실 수 있는 시간이 아니에요');
+					toast.info('자습을 신청하실 수 있는 시간이 아니에요');
 				}}
 				count={parseInt(info.count)}
 			>
