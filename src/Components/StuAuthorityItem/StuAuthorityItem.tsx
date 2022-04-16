@@ -10,6 +10,7 @@ interface StuAuthorityItemProps {
 	memberName: string;
 	authority: string;
 	selfStudy: string;
+	gender: string;
 }
 
 const returnRoleValue = (roleType: string) => {
@@ -22,6 +23,19 @@ const returnRoleValue = (roleType: string) => {
 			return '학생';
 		default:
 			return '';
+	}
+};
+
+const returnGenderColor = (genderType: string) => {
+	switch (genderType) {
+		case 'MAN':
+			return '#668AE6';
+		case 'WOMAN':
+			return '#E79393';
+		case 'PENDING':
+			return '#000000';
+		default:
+			return '#000000';
 	}
 };
 
@@ -61,6 +75,7 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
 	memberName,
 	authority,
 	selfStudy,
+	gender,
 }) => {
 	const role = useRole();
 	useEffect(() => {
@@ -95,7 +110,9 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
 		<>
 			<S.Container>
 				<S.StuInfoWrapper>
-					<S.StuNumStyle>{stuNum}</S.StuNumStyle>
+					<S.StuNumStyle genderColor={returnGenderColor(gender)}>
+						{stuNum}
+					</S.StuNumStyle>
 					<S.NameStyle onClick={() => console.log(selfStudy)}>
 						{memberName}
 					</S.NameStyle>
