@@ -163,6 +163,10 @@ export const StuInfoController = {
 	updateStuRole: (role: string | null) => {
 		return `/${role}/info/role`;
 	},
+	// 성별 변경
+	updateGender: (role: string | null) => {
+		return `/${role}/info/gender`;
+	},
 	// 자습신청 금지
 	banSelfStudy: (role: string | null, stuId: number) => {
 		return `${role}/selfstudy/ban/${stuId}`;
