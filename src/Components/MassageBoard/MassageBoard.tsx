@@ -12,6 +12,7 @@ import * as S from './Style';
 import { Arrowdown, TextLogo } from 'Assets/Svg';
 import { HasToken } from 'Atoms';
 import { useSetRecoilState } from 'recoil';
+import { toast } from 'react-toastify';
 
 type ListType = {
 	id: number;
@@ -37,13 +38,13 @@ const MassageInfo = async (role: string) => {
 const applyMassage = async (setInfo, count: number, role: string) => {
 	await massage(role);
 	setInfo({ count: count + 1, status: 'APPLIED' });
-	alert('안마의자 신청이 완료되었어요');
+	toast.success('안마의자 신청이 완료되었어요');
 };
 
 const CancelMassage = async (setInfo, count: number, role: string) => {
 	await cancelMassage(role);
 	setInfo({ count: count - 1, status: 'CANT' });
-	alert(
+	toast.success(
 		'안마의자 신청이 취소 되었어요. 오늘 하루 동안 다시 신청이 불가능 해요'
 	);
 };
@@ -89,7 +90,7 @@ const MassageBoard: React.FC = () => {
 					onClick={() => {
 						if (window.confirm('안마의자 신청을 취소하시겠어요?')) {
 							CancelMassage(setInfo, parseInt(info.count), role);
-						} else alert('안마의자 신청이 취소되지 않았어요');
+						} else toast.info('안마의자 신청이 취소되지 않았어요');
 					}}
 					status={info.status}
 					count={parseInt(info.count)}
@@ -101,7 +102,7 @@ const MassageBoard: React.FC = () => {
 			return (
 				<S.MassageButton
 					onClick={() =>
-						alert('안마의자 신청은 신청일로 부터 한달 뒤 신청 가능해요')
+						toast.info('안마의자 신청은 신청일로 부터 한달 뒤 신청 가능해요')
 					}
 					status={info.status}
 					count={parseInt(info.count)}
@@ -117,7 +118,7 @@ const MassageBoard: React.FC = () => {
 		) {
 			return (
 				<S.MassageButton
-					onClick={() => alert('안마의자 신청이 가능한 시간이 아니에요')}
+					onClick={() => toast.info('안마의자 신청이 가능한 시간이 아니에요')}
 					status={info.status}
 					count={parseInt(info.count)}
 				>
@@ -127,7 +128,7 @@ const MassageBoard: React.FC = () => {
 		} else if (parseInt(info.count) === 5) {
 			return (
 				<S.MassageButton
-					onClick={() => alert('5명이 넘어 신청할 수 없어요')}
+					onClick={() => toast.info('5명이 넘어 신청할 수 없어요')}
 					status={info.status}
 					count={parseInt(info.count)}
 				>
@@ -137,7 +138,7 @@ const MassageBoard: React.FC = () => {
 		} else if (info.status === 'CANT') {
 			return (
 				<S.MassageButton
-					onClick={() => alert('안마의자 신청이 불가능 해요')}
+					onClick={() => toast.info('안마의자 신청이 불가능 해요')}
 					status={info.status}
 					count={parseInt(info.count)}
 				>
@@ -146,7 +147,7 @@ const MassageBoard: React.FC = () => {
 			);
 		} else {
 			<S.MassageButton
-				onClick={() => alert('안마의자 신청이 불가능해요')}
+				onClick={() => toast.info('안마의자 신청이 불가능해요')}
 				status={info.status}
 				count={parseInt(info.count)}
 			>
@@ -156,22 +157,8 @@ const MassageBoard: React.FC = () => {
 	};
 
 	const returnUserObj = async () => {
-		try {
-			const res = await massageLookup(role);
-			return res;
-		} catch (e: any) {
-			if (e.message === 'Request failed with status code 401') {
-				alert('로그아웃 되었어요. 다시 로그인 해주세요');
-
-				localStorage.removeItem('Dotori_accessToken');
-				localStorage.removeItem('Dotori_refreshToken');
-				localStorage.removeItem('role');
-
-				navigate('/signin');
-				setLogged(false);
-				window.location.reload();
-			}
-		}
+		const res = await massageLookup(role);
+		return res;
 	};
 
 	const handlePageState = () => {

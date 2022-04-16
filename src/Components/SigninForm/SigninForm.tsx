@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { HasToken } from '../../Atoms';
 import { useSetRecoilState } from 'recoil';
 import { signin } from '../../Api/member';
+import { toast } from 'react-toastify';
 
 const TrySignin = () => {
 	const [id, setId] = useState('');
@@ -13,31 +14,21 @@ const TrySignin = () => {
 	const navigate = useNavigate();
 
 	const onSignin = async () => {
-		try {
-			if (id === '') {
-				return alert('이메일을 입력해주세요');
-			} else if (password === '') {
-				return alert('비밀번호를 입력해주세요');
-			}
-			const { data } = await signin(id + '@gsm.hs.kr', password);
+		if (id === '') {
+			return toast.warning('이메일을 입력해주세요');
+		} else if (password === '') {
+			return toast.warning('비밀번호를 입력해주세요');
+		}
+		const { data }: any = await signin(id + '@gsm.hs.kr', password);
 
-			localStorage.setItem('Dotori_accessToken', data.data.token.accessToken);
-			localStorage.setItem('Dotori_refreshToken', data.data.token.refreshToken);
+		localStorage.setItem('Dotori_accessToken', data.data.token.accessToken);
+		localStorage.setItem('Dotori_refreshToken', data.data.token.refreshToken);
 
-			setLogged(true);
-			if (data.data.gender === 'PENDING') {
-				navigate('/gender');
-			} else {
-				navigate('/home');
-			}
-		} catch (e: any) {
-			if (e.message === 'Request failed with status code 409') {
-				alert('비밀번호가 올바르지 않아요');
-			} else if (e.message === 'Request failed with status code 404') {
-				alert('해당 이메일에 해당하는 학생을 찾을 수 없어요');
-			} else {
-				alert(e);
-			}
+		setLogged(true);
+		if (data.data.gender === 'PENDING') {
+			navigate('/gender');
+		} else {
+			navigate('/home');
 		}
 	};
 	return [setId, setPassword, onSignin];

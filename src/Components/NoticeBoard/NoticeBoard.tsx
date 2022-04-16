@@ -21,11 +21,7 @@ const NoticeBoard: React.FC = () => {
 		return await getNotice(role);
 	};
 	const GetNoticeDetail = async (page: number) => {
-		try {
-			return await getNoticeDetail(role, page);
-		} catch (e: any) {
-			alert(e);
-		}
+		return await getNoticeDetail(role, page);
 	};
 
 	const checkMember = () => {
@@ -91,48 +87,45 @@ const NoticeBoard: React.FC = () => {
 						</S.EditBtn>
 					</S.BtnWrapper>
 				)}
-				{
-					[...board].length === 0 ?
-				
-				<S.ExceptionWrapper>
-					<I.TextLogo/>
-					현재 작성된 공지사항이 없어요!
-				</S.ExceptionWrapper>
-				:
-				<S.Container>
-				{[...board] &&
-					[...board]
-						.map((noticeItem) => (
-							<NoticeBoardItem
-								key={noticeItem.id}
-								board_key={noticeItem.id}
-								author={noticeItem.roles}
-								title={noticeItem.title}
-								createdDate={noticeItem.createdDate}
-								editState={editState}
-							/>
-						))}
-				<S.PageBtnWrapper>
-					{footerNumber === 1 ? (
-						<S.EmptyBtn />
-					) : (
-						<div onClick={prevPageClick}>
-							<I.NoticeMore />
-						</div>
-					)}
-					<label>{footerNumber}</label>
-					{totalPage > 1 ? (
-						<div onClick={nextPageClick}>
-							<span>
-								<I.NoticeMore />
-							</span>
-						</div>
-					) : (
-						<S.EmptyBtn />
-					)}
-				</S.PageBtnWrapper>
-			</S.Container>
-				}
+				{[...board].length === 0 ? (
+					<S.ExceptionWrapper>
+						<I.TextLogo />
+						현재 작성된 공지사항이 없어요!
+					</S.ExceptionWrapper>
+				) : (
+					<S.Container>
+						{[...board] &&
+							[...board].map((noticeItem) => (
+								<NoticeBoardItem
+									key={noticeItem.id}
+									board_key={noticeItem.id}
+									author={noticeItem.roles}
+									title={noticeItem.title}
+									createdDate={noticeItem.createdDate}
+									editState={editState}
+								/>
+							))}
+						<S.PageBtnWrapper>
+							{footerNumber === 1 ? (
+								<S.EmptyBtn />
+							) : (
+								<div onClick={prevPageClick}>
+									<I.NoticeMore />
+								</div>
+							)}
+							<label>{footerNumber}</label>
+							{totalPage > 1 ? (
+								<div onClick={nextPageClick}>
+									<span>
+										<I.NoticeMore />
+									</span>
+								</div>
+							) : (
+								<S.EmptyBtn />
+							)}
+						</S.PageBtnWrapper>
+					</S.Container>
+				)}
 			</S.Positioner>
 		</>
 	);

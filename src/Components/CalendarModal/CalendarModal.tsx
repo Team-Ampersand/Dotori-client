@@ -12,11 +12,7 @@ type calendar = {
 };
 
 const getDateMusic = async (date: any, role: string) => {
-	try {
-		return await dateMusic(role, date);
-	} catch (e) {
-		alert(e);
-	}
+	return await dateMusic(role, date);
 };
 
 const CalendarModal: React.FC<calendar> = ({ visible }) => {

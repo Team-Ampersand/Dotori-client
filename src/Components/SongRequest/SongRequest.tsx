@@ -4,15 +4,10 @@ import { music } from 'Api/music';
 import { ManufactureDate } from 'Utils/ManufactureDate';
 import 'react-calendar/dist/Calendar.css';
 import { useRole } from 'Hooks/useRole';
+import { toast } from 'react-toastify';
 
 const musicApply = async (musicUrl: string, role: string) => {
-	try {
-		await music(role, musicUrl);
-	} catch (e: any) {
-		e.message === 'Request failed with status code 409'
-			? alert('이미 노래를 신청 해 신청 하실 수 없어요')
-			: alert(e);
-	}
+	await music(role, musicUrl);
 };
 
 const returnBtn = (
@@ -37,7 +32,6 @@ const returnBtn = (
 			</>
 		);
 	} else if (cant.indexOf(today) !== -1) {
-		console.log(cant.indexOf(today));
 		return (
 			<>
 				<input
@@ -61,13 +55,14 @@ const returnBtn = (
 					onKeyPress={(e) => {
 						if (e.key === 'Enter') {
 							if (url === '') {
-								alert('아무것도 입력하지 않았어요');
+								toast.warning('아무것도 입력하지 않았어요');
 							} else if (CheckUrl(url)) {
 								musicApply(url, role).then(() => {
 									window.location.reload();
+									toast.success('기상 음악이 신청 되었어요');
 								});
 							} else {
-								alert('유튜브 링크만 추가하실 수 있어요');
+								toast.warning('유튜브 링크만 추가하실 수 있어요');
 							}
 						}
 					}}
@@ -75,13 +70,14 @@ const returnBtn = (
 				<button
 					onClick={() => {
 						if (url === '') {
-							alert('아무것도 입력하지 않았어요');
+							toast.warning('아무것도 입력하지 않았어요');
 						} else if (CheckUrl(url)) {
 							musicApply(url, role).then(() => {
 								window.location.reload();
+								toast.success('기상 음악이 신청 되었어요');
 							});
 						} else {
-							alert('유튜브 링크만 추가하실 수 있어요');
+							toast.warning('유튜브 링크만 추가하실 수 있어요');
 						}
 					}}
 				>

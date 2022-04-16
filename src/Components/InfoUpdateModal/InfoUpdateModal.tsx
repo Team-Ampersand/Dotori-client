@@ -7,6 +7,7 @@ import {
 	updateStuGender,
 } from '../../Api/stuInfo';
 import { useRole } from 'Hooks/useRole';
+import { toast } from 'react-toastify';
 
 interface ModalProps {
 	modalState: boolean;
@@ -50,19 +51,19 @@ const InfoUpdateModal: React.FC<ModalProps> = ({
 
 	const stuNumUpdate = async () => {
 		await updateStuNum(role, stuId, updateStuId);
-		alert('학번이 변경되었어요');
+		toast.success('학번이 변경되었어요');
 	};
 	const stuNameUpdate = async () => {
 		await updateStuName(role, stuId, updateName);
-		alert('이름이 변경되었어요');
+		toast.success('이름이 변경되었어요');
 	};
 	const stuRoleUpdate = async () => {
 		await updateStuRole(role, stuId, returnRoleValue(updateRole));
-		alert('권한이 변경되었어요');
+		toast.success('권한이 변경되었어요');
 	};
 	const stuGenderUpdate = async () => {
 		await updateStuGender(role, stuId, returnGenderValue(updateGender));
-		alert('성별이 변경되었어요');
+		toast.success('성별이 변경되었어요');
 	};
 
 	const onCancle = () => {

@@ -3,20 +3,17 @@ import * as S from './Style';
 import { DotoriLogo } from 'Assets/Svg';
 import { withdrawal } from 'Api/member';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const onWithdrawl = async (id: string, password: string, navigate) => {
-	try {
-		await withdrawal(id, password);
-		alert('회원탈퇴가 되었어요');
+	await withdrawal(id, password);
+	toast.success('회원탈퇴가 되었어요');
 
-		localStorage.removeItem('Dotori_accessToken');
-		localStorage.removeItem('Dotori_refreshToken');
+	localStorage.removeItem('Dotori_accessToken');
+	localStorage.removeItem('Dotori_refreshToken');
 
-		navigate('/signin');
-		window.location.reload();
-	} catch (e) {
-		alert(e);
-	}
+	navigate('/signin');
+	window.location.reload();
 };
 
 const Withdrawl: React.FC = () => {
@@ -47,7 +44,7 @@ const Withdrawl: React.FC = () => {
 					) {
 						onWithdrawl(id, password, navigate);
 					} else {
-						alert('잘 생각하셨어요!');
+						toast.info('잘 생각하셨어요!');
 						navigate('/');
 					}
 				}}

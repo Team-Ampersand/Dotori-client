@@ -3,46 +3,24 @@ import React, { useState } from 'react';
 import * as S from './Style';
 import { authPassword, findPassword, passwordChange } from 'Api/member';
 import { Link, NavigateFunction, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const AuthPassword = async (id: string, setDisabled, setDisplayed) => {
-	try {
-		await authPassword(id + '@gsm.hs.kr');
-		alert('이메일을 확인해주세요');
-		setDisabled(false);
-	} catch (e: any) {
-		if (e.message === 'Request failed with status code 400') {
-			alert('이메일 형식이 잘못 되었어요');
-			setDisplayed(true);
-		} else if (e.message === 'Request failed with status code 404') {
-			alert('존재하지 않는 회원 정보에요');
-		}
-	}
+	await authPassword(id + '@gsm.hs.kr', setDisplayed);
+	toast.info('이메일을 확인해주세요');
+	setDisabled(false);
 };
 
 const FindPassword = async (newPw: string, emailCode, navigate) => {
-	try {
-		await findPassword(newPw, emailCode);
-		alert('비밀번호가 변경 되었어요!');
-		navigate('/signin');
-	} catch (e: any) {
-		e.message === 'Request failed with status code 409'
-			? alert('인증 키가 달라요')
-			: alert('개발자에게 문의 해주세요!' + e);
-	}
+	await findPassword(newPw, emailCode);
+	toast.success('비밀번호가 변경 되었어요!');
+	navigate('/signin');
 };
 
 const changePassword = async (password: string, newPw: string, navigate) => {
-	try {
-		await passwordChange(password, newPw);
-		alert('비밀번호가 변경되었어요');
-		navigate('/home');
-	} catch (e: any) {
-		alert(
-			e.message === 'Request failed with status code 409'
-				? alert('현재 비밀번호가 달라요')
-				: alert('개발자에게 문의 해주세요!' + e)
-		);
-	}
+	await passwordChange(password, newPw);
+	toast.success('비밀번호가 변경되었어요');
+	navigate('/home');
 };
 
 const returnPassworForm = (
@@ -77,6 +55,7 @@ const returnPassworForm = (
 						<S.InputStyle
 							placeholder="이메일"
 							type="text"
+							maxLength={6}
 							onChange={({ target: { value } }) => setId(value)}
 							disabled={disabled}
 						/>
@@ -111,7 +90,8 @@ const returnPassworForm = (
 				/>
 				<S.ButtonStyle
 					onClick={() => {
-						if (newPw !== repassword) alert('입력한 비밀번호가 서로 달라요');
+						if (newPw !== repassword)
+							toast.warning('입력한 비밀번호가 서로 달라요');
 						else FindPassword(newPw, emailCode, navigate);
 					}}
 				>
@@ -147,7 +127,8 @@ const returnPassworForm = (
 				/>
 				<S.ButtonStyle
 					onClick={() => {
-						if (newPw !== repassword) alert('입력한 비밀번호가 서로 달라요');
+						if (newPw !== repassword)
+							toast.warning('입력한 비밀번호가 서로 달라요');
 						else changePassword(password, newPw, navigate);
 					}}
 				>
