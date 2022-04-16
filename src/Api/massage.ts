@@ -5,18 +5,14 @@ export const massage = async (role: string) => {
 	try {
 		const { data } = await apiClient.put(MassageController.massage(role));
 		return { data };
-	} catch (e) {
-		alert(e);
-	}
+	} catch (e) {}
 };
 
 export const massageLookup = async (role: string) => {
 	try {
 		const { data } = await apiClient.get(MassageController.massage(role));
 		return { data };
-	} catch (e) {
-		alert(e);
-	}
+	} catch (e) {}
 };
 
 export const massageInfo = async (role: string) => {

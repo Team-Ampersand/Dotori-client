@@ -2,6 +2,7 @@ import { deletePenaltyInfo } from 'Api/penaltyInfo';
 import { useRole } from 'Hooks/useRole';
 import React from 'react';
 import * as S from './Style';
+import * as I from 'Assets/Svg/index';
 
 interface ModifyListProps {
 	modifyList: any;
@@ -52,7 +53,7 @@ const returnPenaltyValue = (penaltyType: string) => {
 		case 'DAMAGE_OF_POST':
 			return '부착된 게시물 훼손 및 낙서';
 		case 'POSSESSION_OF_ELECTRONICS_DEVICES':
-			return '사용 제한 시간 중 전자기기 소지 혹은 사용';
+			return '전자기기 소지 혹은 사용';
 		case 'CLEAN_COUNDITION_BAD':
 			return '호실 정리정돈 상태 불량';
 		case 'ENVIRONMENT_POLLUTION':
@@ -106,9 +107,10 @@ const ModifyList: React.FC<ModifyListProps> = ({
 				<S.Header>규정위반 내역 수정</S.Header>
 				<S.Category>
 					{modifyMessage === '규정위반 내역이 없습니다.' ? (
-						<S.CategoriesWrapper>
-							이 학생은 규정위반 내역이 없습니다.
-						</S.CategoriesWrapper>
+						<S.CategoryException>
+							<I.TextLogo />
+							이 학생은 규정위반 내역이 없습니다
+						</S.CategoryException>
 					) : (
 						ModifyPenaltyList
 					)}

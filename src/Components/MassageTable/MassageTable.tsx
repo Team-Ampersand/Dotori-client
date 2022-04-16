@@ -1,9 +1,11 @@
 import { massageLookup } from 'Api/massage';
+import { TextLogo } from 'Assets/Svg';
 import Logo from 'Assets/Svg/Logo';
 import { HasToken } from 'Atoms';
 import { useRole } from 'Hooks/useRole';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { useSetRecoilState } from 'recoil';
 import * as S from './Style';
 
@@ -37,7 +39,7 @@ const MassageTable = () => {
 			return res;
 		} catch (e: any) {
 			if (e.message === 'Request failed with status code 401') {
-				alert('로그아웃 되었어요. 다시 로그인 해주세요');
+				toast.info('로그아웃 되었어요. 다시 로그인 해주세요');
 
 				localStorage.removeItem('Dotori_accessToken');
 				localStorage.removeItem('Dotori_refreshToken');
@@ -69,7 +71,7 @@ const MassageTable = () => {
 					))
 				) : (
 					<S.ExceptionWrapper>
-						<Logo />
+						<TextLogo />
 						<span>안마의자를 신청한 사람이 없어요</span>
 					</S.ExceptionWrapper>
 				)}

@@ -1,11 +1,11 @@
 import React from 'react';
 import * as S from './Style';
-import { LoginForm } from '../../Components';
+import { SigninForm } from '../../Components';
 
 const SigninPage: React.FC = () => {
 	return (
 		<S.Positioner>
-			<LoginForm />
+			<SigninForm />
 		</S.Positioner>
 	);
 };

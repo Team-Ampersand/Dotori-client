@@ -9,10 +9,9 @@ export const Container = styled.li`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	svg{
-		width: 40px;
-		height: 40px;
-		margin-left: 20px;
+	padding: 0 30px;
+	.Icon{
+		margin-left: 20px;		
 	}
 `;
 
@@ -24,11 +23,10 @@ export const StuInfoWrapper = styled.div`
 
 export const StuNumStyle = styled.div`
 	font-size: 24px;
-	width: 100px;
+	width: 200px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-right: 15px;
 `;
 
 export const NameStyle = styled.div`
@@ -37,7 +35,6 @@ export const NameStyle = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-left: 2px solid black;
 `;
 
 export const PenaltyStyle = styled.div`
@@ -47,9 +44,9 @@ export const PenaltyStyle = styled.div`
 `;
 
 export const PenaltyIconWrapper = styled.div`
-	display:flex;
+	display: flex;
 	align-items: center;
-	.tooltiptext{
+	.tooltiptext {
 		visibility: hidden;
 		background-color: black;
 		color: #fff;
@@ -61,24 +58,23 @@ export const PenaltyIconWrapper = styled.div`
 		z-index: 1;
 	}
 	:hover .tooltiptext {
-	visibility: visible;
+		visibility: visible;
 	}
 `;
 
-export const EditBtn = styled.button`
-	width: 80px;
+export const CheckBtn = styled.button`
+	width: 120px;
 	height: 40px;
-	margin-right: 70px;
 	font-size: 16px;
 	font-weight: bold;
 	color: #fff;
 	border: none;
-	border-radius: 10px;
-	background-color: #0f4c81;
+	border-radius: 5px;
+	background-color: #b3b3b3;
 
 	&:hover {
-		border: 2px solid #0f4c81;
-		color: #0f4c81;
+		border: 2px solid #b3b3b3;
+		color: #b3b3b3;
 		background-color: #fff;
 	}
 `;
@@ -86,17 +82,17 @@ export const EditBtn = styled.button`
 export const EditModifyBtn = styled.button`
 	width: 80px;
 	height: 40px;
-	margin-right: 30px;
-	border: 2px solid black;
-	background-color: black;
+	margin-right: 20px;
+	border: 2px solid #9ecff2;
+	background-color: #9ecff2;
 	font-size: 18px;
 	font-weight: bold;
 	color: white;
-	border-radius: 10px;
+	border-radius: 5px;
 
 	&:hover {
 		background-color: transparent;
-		color: black;
+		color: #9ecff2;
 	}
 `;
 

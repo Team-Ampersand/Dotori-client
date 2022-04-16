@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './Style';
+import * as I from '../../Assets/Svg/index';
 import axios from 'axios';
 import { deleteMusic } from 'Api/music';
 import { useDecode } from '../../Hooks/useDecode';
-import {
-	DateFormatter,
-	showMusicDataFormatter,
-} from '../../Utils/DateFormatter';
+import { showMusicDataFormatter } from '../../Utils/DateFormatter';
 import { useRole } from 'Hooks/useRole';
+import { toast } from 'react-toastify';
 
 type SongItemObj = {
 	createdDate: Date;
@@ -22,13 +21,10 @@ interface SongProps {
 
 const songTitle = async (url: string) => {
 	const api_key = process.env.REACT_APP_YOUTUBE_API_KEY;
-	try {
-		return axios.get(
-			`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${url}&key=${api_key}`
-		);
-	} catch (e) {
-		alert(e);
-	}
+
+	return axios.get(
+		`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${url}&key=${api_key}`
+	);
 };
 
 const youtube_parser = (url: string) => {
@@ -43,13 +39,9 @@ const youtube_parser = (url: string) => {
 };
 
 const DeleteMusic = async (id: number, role: string) => {
-	try {
-		await deleteMusic(role, id);
-		alert('삭제 되었어요');
-		window.location.reload();
-	} catch (e) {
-		alert(e);
-	}
+	await deleteMusic(role, id);
+	toast.info('삭제 되었어요');
+	window.location.reload();
 };
 
 const SongItem: React.FC<SongProps> = ({ songObj }) => {
@@ -70,10 +62,10 @@ const SongItem: React.FC<SongProps> = ({ songObj }) => {
 			<S.Container>
 				<S.TitleContainer>{title}</S.TitleContainer>
 				<S.AuthorContainer>{songObj.memberName}</S.AuthorContainer>
-				<S.AuthorContainer>
-					{showMusicDataFormatter(songObj.createdDate)}
-				</S.AuthorContainer>
 			</S.Container>
+			<S.DateContainer>
+				{showMusicDataFormatter(songObj.createdDate)}
+			</S.DateContainer>
 			{role === 'admin' ||
 			role === 'developer' ||
 			role === 'councillor' ||
@@ -83,10 +75,10 @@ const SongItem: React.FC<SongProps> = ({ songObj }) => {
 						e.preventDefault();
 						window.confirm('삭제 하시겠습니까?')
 							? DeleteMusic(songObj.id, role)
-							: alert('삭제 하지 않았어요.');
+							: toast.info('삭제 하지 않았어요.');
 					}}
 				>
-					❌
+					<I.DeleteButton />
 				</S.DeleteContainer>
 			) : (
 				''

@@ -4,7 +4,6 @@ import Authorization from '../../Components/Authorzation/Authorzation';
 import { Sidebar } from '../../Components';
 import * as S from './Style';
 
-
 const AuthorizationPage: React.FC = () => {
 	return (
 		<S.Positioner>

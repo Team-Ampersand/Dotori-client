@@ -10,6 +10,7 @@ export const Positioner = styled.div`
 	align-items: center;
 	justify-content: center;
 	min-height: 100vh;
+	padding: 0 35%;
 `;
 
 export const ButtonStyle = styled.button`
@@ -19,7 +20,7 @@ export const ButtonStyle = styled.button`
 	border-radius: 10px;
 	outline: none;
 	border: none;
-	background-color: #617be3;
+	background-color: #9ecff2;
 	color: #fff;
 	font-size: 16px;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -31,7 +32,7 @@ export const InputStyle = styled.input<StyleProps>`
 	height: 5vh;
 	border-radius: 10px;
 	outline: none;
-	border: 2px solid #617be3;
+	border: 2px solid #9ecff2;
 	padding-left: 10px;
 	margin-top: 1vh;
 	font-size: 16px;
@@ -53,14 +54,14 @@ export const EmailContainer = styled.div<StyleProps>`
 		border-radius: 9px;
 		outline: none;
 		border: none;
-		background-color: #617be3;
+		background-color: #9ecff2;
 		color: #fff;
 		transition: 0.5s;
 	}
 	button:hover {
 		background-color: #fff;
 		color: #617be3;
-		border: 2px solid #617be3;
+		border: 2px solid #9ecff2;
 	}
 `;
 
@@ -82,4 +83,23 @@ export const InputWrapper = styled.div`
 			top: 18px;
 		}
 	}
+`;
+
+export const ExplainWrapper = styled.div`
+	width: 100%;
+	display: flex;
+	a {
+		text-decoration: none;
+		color: #9ecff2;
+	}
+	span {
+		margin-right: 0.5rem;
+		color: #969696;
+	}
+`;
+
+export const Line = styled.div`
+	margin: 1rem 0;
+	width: 30vw;
+	border-bottom: 1px solid #969696;
 `;

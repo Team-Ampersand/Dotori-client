@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import * as S from './Style';
 import { ManufactureDate } from 'Utils/ManufactureDate';
+import { Arrowdown, LargeArrowDown } from 'Assets/Svg';
 
 type listtype = {
 	kind: string;
@@ -19,7 +20,7 @@ const returnMealdata = async (
 	try {
 		const result = !!data.mealServiceDietInfo[1].row[mealCode]
 			? data.mealServiceDietInfo[1].row[mealCode].DDISH_NM.toString()
-					.replace(/[*<br/>0-9a-z.()]/g, '0')
+					.replace(/[*<br/>0-9a-z.]/g, '0')
 					.split('0')
 					.filter((value) => {
 						return value !== '';
@@ -68,6 +69,7 @@ const MealBoard: React.FC = () => {
 				ManufactureDate('YMD').slice(6)
 		)
 	);
+
 	const getDateStr = (myDate: Date) => {
 		let month = myDate.getMonth() + 1;
 		let stringMonth = month.toString();
@@ -78,10 +80,17 @@ const MealBoard: React.FC = () => {
 		return myDate.getFullYear() + stringMonth + stringDay;
 	};
 
-	const [date, setDate] = useState({
-		datestr: getDateStr(currentDate),
-		day: currentDate.getDay(),
-	});
+	const returnMealDate = () => {
+		let hours = new Date().getHours();
+		if (hours > 19) {
+			currentDate.setDate(currentDate.getDate() + 1);
+			return { datestr: getDateStr(currentDate), day: currentDate.getDay() };
+		} else {
+			return { datestr: getDateStr(currentDate), day: currentDate.getDay() };
+		}
+	};
+
+	const [date, setDate] = useState(returnMealDate);
 	const [list, setList] = useState<listtype[]>();
 
 	let week = ['일', '월', '화', '수', '목', '금', '토'];
@@ -132,12 +141,15 @@ const MealBoard: React.FC = () => {
 				</S.DayWrapper>
 			</S.TitleContainer>
 			<S.DateWrapper>
-				<strong>
-					{date.datestr.slice(0, 4)}년 {date.datestr.slice(4, 6)}월{' '}
-					{date.datestr.slice(6)}일 {week[date.day]}요일
-				</strong>
+				<span>
+					{date.datestr.slice(0, 4)}.{date.datestr.slice(4, 6)}.
+					{date.datestr.slice(6)} ({week[date.day]})
+				</span>
 			</S.DateWrapper>
 			<S.MealContainer>
+				<S.ReverseArrow>
+					<LargeArrowDown onClick={prevDay} />
+				</S.ReverseArrow>
 				{list &&
 					list.map((item: listtype, index) => (
 						<S.Meal key={index}>
@@ -147,11 +159,8 @@ const MealBoard: React.FC = () => {
 							})}
 						</S.Meal>
 					))}
+				<LargeArrowDown onClick={nextDay} />
 			</S.MealContainer>
-			<S.NextWrapper>
-				<S.Button onClick={() => prevDay()}>이전</S.Button>
-				<S.Button onClick={() => nextDay()}>다음</S.Button>
-			</S.NextWrapper>
 		</S.Positioner>
 	);
 };

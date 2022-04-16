@@ -36,6 +36,10 @@ export const MemberController = {
 	authcheck: () => {
 		return '/signup/email/check';
 	},
+	//성별 설정
+	gender: () => {
+		return '/members/gender';
+	},
 };
 
 // 공지사항 관리
@@ -63,6 +67,9 @@ export const noticeController = {
 	// 공지사항 수정
 	noticeUpdate: (role: string | null, boardId: number) => {
 		return `/${role}/board/${boardId}`;
+	},
+	boardAlarm: () => {
+		return '/board/alarm';
 	},
 };
 
@@ -162,6 +169,10 @@ export const StuInfoController = {
 	// 권한 변경
 	updateStuRole: (role: string | null) => {
 		return `/${role}/info/role`;
+	},
+	// 성별 변경
+	updateGender: (role: string | null) => {
+		return `/${role}/info/gender`;
 	},
 	// 자습신청 금지
 	banSelfStudy: (role: string | null, stuId: number) => {

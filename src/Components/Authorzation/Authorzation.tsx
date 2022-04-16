@@ -10,6 +10,7 @@ interface studentList {
 	memberName: string;
 	roles: Array<any>;
 	selfStudy: string;
+	gender: string;
 }
 
 const Authorzation: React.FC = () => {
@@ -58,7 +59,7 @@ const Authorzation: React.FC = () => {
 				/>
 				<S.SearchBox>
 					<S.Search
-						placeholder="이름으로 검색하기"
+						placeholder="이름을 입력해주세요"
 						onChange={(e) => {
 							setStuName(e.target.value);
 						}}
@@ -79,6 +80,7 @@ const Authorzation: React.FC = () => {
 							memberName={stu.memberName}
 							authority={stu.roles[0]}
 							selfStudy={stu.selfStudy}
+							gender={stu.gender}
 						/>
 					))}
 			</S.AuthorizationBoard>

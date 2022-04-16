@@ -13,8 +13,8 @@ export const BreakDownContainer = styled.div`
 `;
 
 export const BreakDownWrapper = styled.div`
-	width: 800px;
-	height: 950px;
+	width: 600px;
+	height: 750px;
 	border: 2px solid rgba(0, 0, 0, 1);
 	border-radius: 40px;
 `;
@@ -35,7 +35,7 @@ export const Category = styled.div`
 	display: flex;
 	width: 100%;
 	height: 80%;
-	font-size: 20px;
+	font-size: 17px;
 	font-weight: 700;
 	.close {
 		overflow: hidden;
@@ -76,12 +76,20 @@ export const SmallCategoriesWrapper = styled.ul`
 	row-gap: 50px;
 `;
 
+export const ExceptionWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	width: 50%;
+	justify-content: center;
+	align-items: center;
+`;
+
 export const SmallCategories = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	width: 100%;
-	font-size: 16px;
+	font-size: 14px;
 `;
 
 export const None = styled.div`

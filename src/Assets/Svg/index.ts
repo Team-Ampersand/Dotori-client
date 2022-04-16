@@ -10,12 +10,13 @@ import IllustSong from './IllustSong';
 import Logout from './Logout';
 import Logo from './Logo';
 import User from './User';
+import NoticeMore from './NoticeMore';
 import More from './More';
 import IllustHome from './IllustHome';
 import DotoriLogo from './DotoriLogo';
 import LoginArrow from './LoginArrow';
 import Profile from './Profile';
-import Calander from './Calandar';
+import Calander from './Calendar';
 import PenaltyIcon from './PenaltyIcon';
 import Massage from './Massage';
 import Ban from './Ban';
@@ -28,6 +29,24 @@ import Affect from './Affection';
 import Entry from './Entry';
 import Learn from './Learn';
 import Outside from './Outside';
+
+import DotoriLogoV2 from 'Assets/Svg/DotoriLogoV2';
+import Arrowdown from 'Assets/Svg/Arrowdown';
+import LargeArrowDown from 'Assets/Svg/LargeArrowDown';
+import Cancel from './Cancel';
+import TextLogo from './TextLogo';
+import Delete from './Delete';
+import DeleteButton from './DeleteButton';
+import PrevBarImg from './PreBar';
+import NextBarImg from './NextBar';
+import PromotionImg from './Promotion';
+import Arrow from './Arrow';
+import Arrow2 from './Arrow2';
+import X from './X';
+import Male from './Male';
+import Female from './Female';
+import SmallMale from './SmallMale';
+import SmallFemale from './SmallFemale';
 import NoticeMore from './NoticeMore';
 
 export {
@@ -43,6 +62,7 @@ export {
 	IllustHome,
 	Logout,
 	User,
+	NoticeMore,
 	More,
 	DotoriLogo,
 	LoginArrow,
@@ -61,5 +81,22 @@ export {
 	Entry,
 	Learn,
 	Outside,
+	DotoriLogoV2,
+	Arrowdown,
+	LargeArrowDown,
+	Cancel,
+	TextLogo,
+	Delete,
+	DeleteButton,
+	PrevBarImg,
+	NextBarImg,
+	PromotionImg,
+	Arrow,
+	Arrow2,
+	X,
+	Male,
+	Female,
+	SmallMale,
+	SmallFemale,
 	NoticeMore
 };

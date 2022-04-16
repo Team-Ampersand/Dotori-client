@@ -10,6 +10,7 @@ interface StuAuthorityItemProps {
 	memberName: string;
 	authority: string;
 	selfStudy: string;
+	gender: string;
 }
 
 const returnRoleValue = (roleType: string) => {
@@ -25,6 +26,34 @@ const returnRoleValue = (roleType: string) => {
 	}
 };
 
+const returnGenderColor = (genderType: string) => {
+	switch (genderType) {
+		case 'MAN':
+			return '#668AE6';
+		case 'WOMAN':
+			return '#E79393';
+		case 'PENDING':
+			return '#000000';
+		default:
+			return '#000000';
+	}
+};
+
+const returnSelfStudyColor = (selfStudyType: string) => {
+	switch (selfStudyType) {
+		case 'CAN':
+			return '#000000';
+		case 'APPLIED':
+			return '#000000';
+		case 'CANT':
+			return '#000000';
+		case 'IMPOSSIBLE':
+			return '#DD4A4A';
+		default:
+			return '';
+	}
+};
+
 const returnSelfStudyValue = (selfStudy: string) => {
 	switch (selfStudy) {
 		case 'CAN':
@@ -34,7 +63,7 @@ const returnSelfStudyValue = (selfStudy: string) => {
 		case 'CANT':
 			return '신청 취소';
 		case 'IMPOSSIBLE':
-			return '신청 불가';
+			return '신청 불가능';
 		default:
 			return '';
 	}
@@ -46,10 +75,11 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
 	memberName,
 	authority,
 	selfStudy,
+	gender,
 }) => {
 	const role = useRole();
 	useEffect(() => {
-		if (returnSelfStudyValue(selfStudy) === '신청 불가') {
+		if (returnSelfStudyValue(selfStudy) === '신청 불가능') {
 			setSelfStudyState(false);
 		}
 	}, []);
@@ -75,16 +105,21 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
 	const closeModal = () => {
 		setEditState(false);
 	};
+
 	return (
 		<>
 			<S.Container>
 				<S.StuInfoWrapper>
-					<S.StuNumStyle>{stuNum}</S.StuNumStyle>
+					<S.StuNumStyle genderColor={returnGenderColor(gender)}>
+						{stuNum}
+					</S.StuNumStyle>
 					<S.NameStyle onClick={() => console.log(selfStudy)}>
 						{memberName}
 					</S.NameStyle>
 					<S.AuthorityStyle>{returnRoleValue(authority)}</S.AuthorityStyle>
-					<S.SelfStudyStyle>{returnSelfStudyValue(selfStudy)}</S.SelfStudyStyle>
+					<S.SelfStudyStyle selfStudyColor={returnSelfStudyColor(selfStudy)}>
+						{returnSelfStudyValue(selfStudy)}
+					</S.SelfStudyStyle>
 				</S.StuInfoWrapper>
 				<S.BtnWrapper>
 					{selfStudyState ? (
@@ -104,6 +139,7 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
 					stuNum={stuNum}
 					memberName={memberName}
 					stuId={stuId}
+					gender={gender}
 				/>
 			</S.Container>
 		</>

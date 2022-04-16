@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './Style';
-import { Logout, Profile } from '../../Assets/Svg';
+import { Logout, Profile, Male, Female } from '../../Assets/Svg';
 import { logout } from '../../Api/member';
 import { mypage } from '../../Api/mypage';
 import { useSetRecoilState } from 'recoil';
@@ -8,12 +8,13 @@ import { HasToken } from '../../Atoms';
 import { useNavigate, Link } from 'react-router-dom';
 import { PenaltyInfoModal } from 'Components';
 import { ManufactureDate } from 'Utils/ManufactureDate';
+import { toast } from 'react-toastify';
 
 type UserProfileType = {
 	id: number;
 	memberName: string;
 	stuNum: string;
-	point: number;
+	gender: string;
 };
 
 const TryLogout = () => {
@@ -21,28 +22,16 @@ const TryLogout = () => {
 	const navigate = useNavigate();
 
 	const onLogout = async () => {
-		try {
-			await logout();
+		await logout();
 
-			localStorage.removeItem('Dotori_accessToken');
-			localStorage.removeItem('Dotori_refreshToken');
-			localStorage.removeItem('role');
+		localStorage.removeItem('Dotori_accessToken');
+		localStorage.removeItem('Dotori_refreshToken');
+		localStorage.removeItem('role');
 
-			setLogged(false);
-			navigate('/');
-			alert('로그아웃 되었어요');
-			window.location.reload();
-		} catch (e: any) {
-			if (e.message === 'Request failed with status code 401') {
-				alert('로그아웃 되었어요. 다시 로그인 해주세요');
-
-				localStorage.removeItem('Dotori_accessToken');
-				localStorage.removeItem('Dotori_refreshToken');
-				localStorage.removeItem('role');
-
-				window.location.reload();
-			}
-		}
+		setLogged(false);
+		navigate('/');
+		toast.info('로그아웃 되었어요');
+		window.location.reload();
 	};
 	return onLogout;
 };
@@ -71,36 +60,30 @@ const UserProfile: React.FC = () => {
 			)}
 			<S.Postioner>
 				<S.Header>
+					<h3>프로필</h3>
 					<S.LogoutWrapper onClick={onLogout} data-test="test-logout">
-						<Logout />
 						<span>로그아웃</span>
 					</S.LogoutWrapper>
 				</S.Header>
 				<S.Content>
 					<S.UserWrapper>
-						<Profile />
+						{profile?.gender === 'PENDING' ? (
+							<Profile width={160} height={160} />
+						) : profile?.gender === 'MAN' ? (
+							<Male width={160} height={160} />
+						) : (
+							<Female width={160} height={160} />
+						)}
 						<div>
 							<span className="name">{profile?.memberName}</span>
-							<span className="grade">
-								{profile?.stuNum.substr(0, 1)}-{profile?.stuNum.substr(1, 1)},{' '}
-								{profile?.stuNum.substr(2, 4)}번
-							</span>
+							<span className="grade">{profile?.stuNum}</span>
 						</div>
 						<S.PenaltyBtn onClick={() => setModalState(true)}>
 							규정 위반 내역
 						</S.PenaltyBtn>
+						<Link to={'/change/password'}>비밀번호 변경</Link>
 					</S.UserWrapper>
 				</S.Content>
-				<S.MemberControl>
-					<Link to={'/change/password'}>비밀번호 변경</Link>
-					<div
-						onClick={() => {
-							alert('회원탈퇴는 개발자에게 문의 해주세요');
-						}}
-					>
-						회원 탈퇴
-					</div>
-				</S.MemberControl>
 				<S.Policy>
 					<span>© {ManufactureDate('Y')} Ampersand. All Rights Reserved.</span>
 					<p>

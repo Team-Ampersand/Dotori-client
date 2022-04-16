@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { DotoriLogo } from '../../Assets/Svg';
+import { DotoriLogoV2 } from '../../Assets/Svg';
 import * as S from './Style';
 import { Link } from 'react-router-dom';
 import { signup, auth, authCheck } from '../../Api/member';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const TrySignup = () => {
 	const [id, setId] = useState('');
@@ -17,64 +18,38 @@ const TrySignup = () => {
 	const navigate = useNavigate();
 
 	const onSignup = async () => {
-		try {
-			if (!disabled) {
-				return alert('이메일 인증 이후 회원가입을 진행해주세요');
-			}
-			if (id === '') return alert('이메일이 입력되지 않았어요');
-			else if (emailCode === '') return alert('이메일코드가 입력되지 않았어요');
-			else if (name === '') return alert('이름이 입력되지 않았어요');
-			else if (stuId === '') return alert('학번이 입력되지 않았어요');
-			else if (!parseInt(stuId)) return alert('학번이 숫자가 아니에요');
-			else if (password === '') return alert('비밀번호가 입력되지 않았어요');
-			else if (repassword === '')
-				return alert('비밀번호가 재입력이 입력되지 않았어요');
-			if (password !== repassword)
-				return alert('입력한 비밀번호가 서로 달라요');
-			await signup(id + '@gsm.hs.kr', password, name, stuId);
-			alert('회원가입이 되었어요');
-			navigate('/signin');
-		} catch (e: any) {
-			alert(
-				e.message === 'Request failed with status code 409'
-					? '이미 가입된 유저에요'
-					: e
-			);
-			if (e.message === 'Request failed with status code 409') {
-				alert('이미 가입된 유저에요');
-			} else if (e.message === 'Request failed with status code 400') {
-				alert('');
-			}
+		if (!disabled) {
+			return toast.warning('이메일 인증 이후 회원가입을 진행해주세요');
 		}
+		if (id === '') return toast.warning('이메일이 입력되지 않았어요');
+		else if (emailCode === '')
+			return toast.warning('이메일코드가 입력되지 않았어요');
+		else if (name === '') return toast.warning('이름이 입력되지 않았어요');
+		else if (stuId === '') return toast.warning('학번이 입력되지 않았어요');
+		else if (!parseInt(stuId)) return toast.warning('학번이 숫자가 아니에요');
+		else if (password === '')
+			return toast.warning('비밀번호가 입력되지 않았어요');
+		else if (repassword === '')
+			return toast.warning('비밀번호가 재입력이 입력되지 않았어요');
+		if (password !== repassword)
+			return toast.warning('입력한 비밀번호가 서로 달라요');
+		await signup(id + '@gsm.hs.kr', password, name, stuId);
+		toast.success('회원가입이 되었어요');
+		navigate('/signin');
 	};
 
 	const emailCertify = async () => {
-		try {
-			await auth(id + '@gsm.hs.kr');
-			alert('인증번호가 위의 이메일로 전송 되었어요');
-		} catch (e: any) {
-			alert(
-				e.message === 'Request failed with status code 409'
-					? '이미 가입된 유저에요'
-					: e
-			);
-			setClicked(true);
-		}
+		await auth(id + '@gsm.hs.kr');
+		toast.success('인증번호가 위의 이메일로 전송 되었어요');
 	};
 
-	const authCheck = async (setDisabled) => {
-		try {
-			if (emailCode === '') {
-				return alert('아무것도 입력하지 않으셨어요');
-			}
-			await authCheck(emailCode);
-			setDisabled(true);
-			alert('인증이 완료 되었어요');
-		} catch (e: any) {
-			e.message === 'Request failed with status code 409'
-				? alert('인증키가 일치 하지 않아요')
-				: alert(e);
+	const AuthCheck = async (setDisabled) => {
+		if (emailCode === '') {
+			return toast.warning('아무것도 입력하지 않으셨어요');
 		}
+		await authCheck(emailCode);
+		setDisabled(true);
+		toast.info('인증이 완료 되었어요');
 	};
 
 	return {
@@ -87,7 +62,7 @@ const TrySignup = () => {
 		setRePassword,
 		onSignup,
 		emailCertify,
-		authCheck,
+		AuthCheck,
 		clicked,
 		setClicked,
 		disabled,
@@ -106,7 +81,7 @@ const SignupForm: React.FC = () => {
 		setRePassword,
 		onSignup,
 		emailCertify,
-		authCheck,
+		AuthCheck,
 		clicked,
 		setClicked,
 		disabled,
@@ -114,7 +89,7 @@ const SignupForm: React.FC = () => {
 	} = TrySignup();
 	return (
 		<S.Positioner>
-			<DotoriLogo />
+			<DotoriLogoV2 />
 			<S.EmailContainer>
 				<S.InputWrapper>
 					<S.InputStyle
@@ -131,7 +106,7 @@ const SignupForm: React.FC = () => {
 				<button
 					onClick={() => {
 						if (id === '') {
-							alert('이메일을 입력하지 않았어요');
+							toast.warning('이메일을 입력하지 않았어요');
 						} else {
 							setClicked(false);
 							emailCertify();
@@ -153,7 +128,7 @@ const SignupForm: React.FC = () => {
 				<S.CertifyButton
 					displayed={clicked}
 					onClick={() => {
-						authCheck(setDisabled);
+						AuthCheck(setDisabled);
 					}}
 					disabled={disabled}
 				>

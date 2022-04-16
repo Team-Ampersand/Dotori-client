@@ -9,8 +9,8 @@ export const ModifyContainer = styled.div`
 `;
 
 export const ModifyWrapper = styled.div`
-	width: 800px;
-	height: 950px;
+	width: 600px;
+	height: 750px;
 	border: 2px solid rgba(0, 0, 0, 1);
 	border-radius: 40px;
 `;
@@ -33,11 +33,20 @@ export const Category = styled.div`
 	align-items: flex-start;
 	row-gap: 20px;
 	width: 100%;
-	height: 720px;
-	font-size: 20px;
-	font-weight: 700;
+	height: 580px;
+	font-size: 18px;
+	font-weight: 600;
 	margin-top: 20px;
 	overflow-y: scroll;
+`;
+
+export const CategoryException = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
 `;
 
 export const CategoriesWrapper = styled.ul`
@@ -51,29 +60,29 @@ export const DateWrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 150px;
+	width: 100px;
 `;
 
 export const ItemWrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 350px;
-	margin-left: -50px;
+	width: 200px;
+	font-size: 16px;
 `;
 
 export const DeleteBtn = styled.button`
 	width: 80px;
 	height: 40px;
-	border-radius: 10px;
+	border-radius: 5px;
 	border: none;
-	background-color: #ff5252;
+	background-color: #f38d8d;
 	color: #ffffff;
 	font-size: 16px;
 	font-weight: 700;
 	&:hover {
 		background-color: #fff;
-		color: #ff5252;
-		border: 2px solid #ff5252;
+		color: #f38d8d;
+		border: 2px solid #f38d8d;
 	}
 `;

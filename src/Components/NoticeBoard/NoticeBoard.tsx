@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react';
 import * as S from './Style';
 import * as I from '../../Assets/Svg';
 import NoticeBoardItem from '../NoticeBoardItem/NoticeBoardItem';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { getNotice, getNoticeDetail } from 'Api/notice';
-import { useSetRecoilState } from 'recoil';
-import { HasToken } from 'Atoms';
 import { useRole } from 'Hooks/useRole';
 
 interface board {
@@ -23,11 +21,7 @@ const NoticeBoard: React.FC = () => {
 		return await getNotice(role);
 	};
 	const GetNoticeDetail = async (page: number) => {
-		try {
-			return await getNoticeDetail(role, page);
-		} catch (e: any) {
-			alert(e);
-		}
+		return await getNoticeDetail(role, page);
 	};
 
 	const checkMember = () => {
@@ -50,8 +44,8 @@ const NoticeBoard: React.FC = () => {
 		setTotalPage(totalPage);
 		setFooterNumber(footerNumber);
 		if (totalPage > 0) {
-			GetNoticeDetail(pageNumber).then((res) =>
-				setBoard(res?.data.data.content)
+			GetNoticeDetail(pageNumber).then((response) =>
+				setBoard(response?.data.data.content)
 			);
 		}
 	}, [totalPage]);
@@ -79,22 +73,29 @@ const NoticeBoard: React.FC = () => {
 			setFooterNumber(footerNumber - 1);
 		} else return;
 	};
-
+	console.log(board);
 	return (
 		<>
 			<S.Positioner>
 				{!checkMember() && (
 					<S.BtnWrapper>
 						<Link to={'/notice/write'}>
-							<S.EditBtn>작성</S.EditBtn>
+							<S.WriteBtn>작성</S.WriteBtn>
 						</Link>
-						<S.EditBtn onClick={onToggle}>{editState ? '완료' : '편집'}</S.EditBtn>
+						<S.EditBtn onClick={onToggle}>
+							{editState ? '완료' : '편집'}
+						</S.EditBtn>
 					</S.BtnWrapper>
 				)}
-				<S.Container>
-					{[...board]&&
-						[...board]
-							.map((noticeItem) => (
+				{[...board].length === 0 ? (
+					<S.ExceptionWrapper>
+						<I.TextLogo />
+						현재 작성된 공지사항이 없어요!
+					</S.ExceptionWrapper>
+				) : (
+					<S.Container>
+						{[...board] &&
+							[...board].map((noticeItem) => (
 								<NoticeBoardItem
 									key={noticeItem.id}
 									board_key={noticeItem.id}
@@ -104,26 +105,27 @@ const NoticeBoard: React.FC = () => {
 									editState={editState}
 								/>
 							))}
-					<S.PageBtnWrapper>
-						{footerNumber === 1 ? (
-							<S.EmptyBtn />
-						) : (
-							<div onClick={prevPageClick}>
-								<I.NoticeMore />
-							</div>
-						)}
-						<label>{footerNumber}</label>
-						{totalPage > 1 ? (
-							<div onClick={nextPageClick}>
-								<span>
+						<S.PageBtnWrapper>
+							{footerNumber === 1 ? (
+								<S.EmptyBtn />
+							) : (
+								<div onClick={prevPageClick}>
 									<I.NoticeMore />
-								</span>
-							</div>
-						) : (
-							<S.EmptyBtn />
-						)}
-					</S.PageBtnWrapper>
-				</S.Container>
+								</div>
+							)}
+							<label>{footerNumber}</label>
+							{totalPage > 1 ? (
+								<div onClick={nextPageClick}>
+									<span>
+										<I.NoticeMore />
+									</span>
+								</div>
+							) : (
+								<S.EmptyBtn />
+							)}
+						</S.PageBtnWrapper>
+					</S.Container>
+				)}
 			</S.Positioner>
 		</>
 	);

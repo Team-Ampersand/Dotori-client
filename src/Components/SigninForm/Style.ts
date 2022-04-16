@@ -10,6 +10,7 @@ export const Positioner = styled.div`
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
+	padding: 0 35%;
 `;
 
 export const LogoWrapper = styled.div`
@@ -19,27 +20,12 @@ export const LogoWrapper = styled.div`
 `;
 
 export const Line = styled.div`
-	margin-top: 2vh;
+	margin-top: 1rem;
 	width: 30vw;
 	border-bottom: 1px solid #969696;
 `;
 
-export const CheckBox = styled.input`
-	margin-right: 1vh;
-	width: 20px;
-	height: 20px;
-`;
-
-export const SaveContainer = styled.div`
-	margin-top: 1vh;
-	display: flex;
-	span {
-		margin-top: 0.5vh;
-		color: #969696;
-	}
-`;
-
-export const FindContainer = styled.div`
+export const FindWrapper = styled.div`
 	margin-top: 1vh;
 	span {
 		color: #969696;
@@ -47,19 +33,19 @@ export const FindContainer = styled.div`
 	a {
 		margin-left: 5px;
 		text-decoration: none;
-		color: #3a4c98;
+		color: #9ecff2;
 	}
 `;
 
-export const SignupContainer = styled.div`
-	margin-top: 1vh;
+export const SignupWrapper = styled.div`
+	margin-top: 1rem;
 	span {
 		color: #969696;
 	}
 	a {
 		margin-left: 5px;
 		text-decoration: none;
-		color: #3a4c98;
+		color: #9ecff2;
 	}
 `;
 
@@ -70,7 +56,7 @@ export const ButtonStyle = styled.button`
 	border-radius: 10px;
 	outline: none;
 	border: none;
-	background-color: #617be3;
+	background-color: #9ecff2;
 	color: #fff;
 	font-size: 18px;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -88,7 +74,7 @@ export const InputStyle = styled.input<StyleProps>`
 	height: 5vh;
 	border-radius: 10px;
 	outline: none;
-	border: 2px solid #617be3;
+	border: 2px solid #9ecff2;
 	padding-left: 10px;
 	margin-top: 1vh;
 	font-size: 16px;
@@ -113,4 +99,11 @@ export const InputWrapper = styled.div`
 			top: 18px;
 		}
 	}
+`;
+
+export const SigninContainer = styled.div`
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
 `;

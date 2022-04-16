@@ -6,6 +6,7 @@ import { classLookup, studyRank } from 'Api/selfStudy';
 import { useRole } from 'Hooks/useRole';
 import { useSetRecoilState } from 'recoil';
 import { list } from 'Atoms';
+import { toast } from 'react-toastify';
 
 const SelfStudyPage: React.FC = () => {
 	const [stuGrade, setStuGrade] = useState<string>('0');
@@ -13,27 +14,19 @@ const SelfStudyPage: React.FC = () => {
 	const setClassLookup = useSetRecoilState(list);
 	const role = useRole();
 	const onSubmit = async () => {
-		try {
-			if (parseInt(stuGrade + stuClass) > 0) {
-				if (stuGrade !== '0') {
-					if (stuClass === '0') {
-						classLookup(stuGrade, role).then((res) => {
-							res && setClassLookup(res.data.data);
-						});
-					} else {
-						classLookup(stuGrade + stuClass, role).then((res) => {
-							res && setClassLookup(res.data.data);
-						});
-					}
-				} else alert('학년을 선택해주세요');
-			} else alert('학년 반을 선택해주세요');
-		} catch (e: any) {
-			alert(
-				e.message === 'Request failed with status code 404'
-					? stuGrade + '학년' + stuClass + '반에는 신청한 학생이 없어요'
-					: e
-			);
-		}
+		if (parseInt(stuGrade + stuClass) > 0) {
+			if (stuGrade !== '0') {
+				if (stuClass === '0') {
+					classLookup(stuGrade, role).then((res) => {
+						res && setClassLookup(res.data.data);
+					});
+				} else {
+					classLookup(stuGrade + stuClass, role).then((res) => {
+						res && setClassLookup(res.data.data);
+					});
+				}
+			} else toast.warning('학년을 선택해주세요');
+		} else toast.warning('학년 반을 선택해주세요');
 	};
 	return (
 		<S.Positioner>

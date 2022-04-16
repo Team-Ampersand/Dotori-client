@@ -30,4 +30,6 @@ function More(props: React.SVGProps<SVGSVGElement>) {
 }
 
 const MemoMore = React.memo(More);
+
 export default MemoMore;
+

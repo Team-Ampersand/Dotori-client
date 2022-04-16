@@ -1,19 +1,20 @@
 import styled from 'styled-components';
 
 export const BreakDownBtn = styled.button`
-	width: 190px;
-	height: 70px;
+	width: 211px;
+	height: 64px;
 	margin-top: 20px;
-	border-radius: 20px;
 	margin-left: 1vh;
 	border: none;
-	background-color: #ff5252;
+	background-color: #f38d8d;
 	color: #ffffff;
-	font-size: 16px;
-	font-weight: 700;
+	border-radius: 10px;
+	font-size: 20px;
+	font-weight: 550;
+	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
 	&:hover {
 		background-color: #fff;
-		color: #ff5252;
-		border: 2px solid #ff5252;
+		color: #f38d8d;
+		border: 2px solid #f38d8d;
 	}
 `;

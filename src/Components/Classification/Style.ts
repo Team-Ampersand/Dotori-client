@@ -16,11 +16,12 @@ export const SelectWrapper = styled.div`
 export const SelectBox = styled.select`
 	font-size: 18px;
 	font-weight: bold;
-	border-radius: 10px;
-	border: 1px solid #000;
-	width: 80px;
+	border-radius: 5px;
+	border: 2px solid #9ecff2;
+	width: 90px;
 	height: 40px;
 	text-align: center;
+	color: #898989;
 `;
 
 export const Option = styled.option``;
@@ -34,16 +35,16 @@ export const Label = styled.div`
 export const Btn = styled.button`
 	width: 90px;
 	height: 40px;
-	border-radius: 10px;
+	border-radius: 5px;
 	border: none;
 	color: #fff;
 	font-size: 18px;
 	font-weight: bold;
 	outline: none;
-	background-color: #0f4c81;
+	background-color: #9ecff2;
 	&:hover {
 		background-color: #fff;
-		color: #0f4c81;
-		border: 2px solid #0f4c81;
+		color: #9ecff2;
+		border: 2px solid #9ecff2;
 	}
 `;

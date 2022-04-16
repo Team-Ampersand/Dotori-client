@@ -110,11 +110,13 @@ export const UpdateBtn = styled.button`
 	font-size: 18px;
 	font-weight: bold;
 	background-color: transparent;
-	border: 2px solid #0f4c81;
-	border-radius: 5px;
-	color: #0f4c81;
+	border-radius: 3px;
+	border: none;
+	color: #fff;
+	background-color: #9ecff2;
 	&:hover {
-		background-color: #0f4c81;
-		color: #fff;
+		background-color: #fff;
+		color: #9ecff2;
+		border: 2px solid #9ecff2;
 	}
 `;

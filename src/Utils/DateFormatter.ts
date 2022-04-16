@@ -17,7 +17,7 @@ export const showMusicDataFormatter = (currentDate: Date) => {
 	const date = new Date(currentDate);
 	const hour = leftPad(date.getHours());
 	const min = leftPad(date.getMinutes());
-	const hourJoin = [hour, ''].join('시');
-	const minJoin = [min, ''].join('분');
+	const hourJoin = [hour, ''].join(' : ');
+	const minJoin = [min, ''].join('');
 	return [hourJoin, minJoin].join(' ');
 };

@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 export const Postioner = styled.div`
 	display: flex;
-	width: calc(100% - 2% * 2);
-	height: calc(100% - 4% * 2);
+	width: calc(100% - 2% * 7.2);
+	height: 100%;
 	align-items: center;
 	justify-content: center;
-	padding: 2.679% 2.381%;
+	padding: 2% 2%;
 `;
 
 export const Wrapper = styled.div`
@@ -18,9 +18,9 @@ export const Wrapper = styled.div`
 
 export const Title = styled.div`
 	width: 100%;
-	height: 74px;
 	font-size: 50px;
 	font-weight: bold;
+	margin-bottom: 1rem;
 
 	strong {
 		font-size: 18px;
@@ -42,7 +42,6 @@ export const Content = styled.div`
 	display: flex;
 	width: 100%;
 	height: 100%;
-	overflow: hidden;
 `;
 
 export const UserProfile = styled.div`

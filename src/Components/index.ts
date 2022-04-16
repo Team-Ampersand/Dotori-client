@@ -6,6 +6,7 @@ import SongBanner from './Banners/SongBanner/SongBanner';
 import UserProfile from './UserProfile/UserProfile';
 import NoticeBoard from './NoticeBoard/NoticeBoard';
 import NoticeBoardItem from './NoticeBoardItem/NoticeBoardItem';
+import NoticeCheck from './NoticeCheck/NoticeCheck';
 import NoticeWrite from './NoticeWrite/NoticeWrite';
 import Classification from './Classification/Classification';
 import SelfstudyTable from './SelfstudyTable/SelfstudyTable';
@@ -15,7 +16,7 @@ import Authorzation from './Authorzation/Authorzation';
 import InfoUpdateModal from './InfoUpdateModal/InfoUpdateModal';
 import ChangeInput from './ChangeInput/ChangeInput';
 import ChangeSelect from './ChangeSelect/ChangeSelect';
-import LoginForm from './SigninForm/SigninForm';
+import SigninForm from './SigninForm/SigninForm';
 import SignupForm from './SignupForm/SignupForm';
 import Selfstudyboard from './Selfstudyboard/Selfstudyboard';
 import PasswordForm from './PasswordForm/PasswordForm';
@@ -28,6 +29,8 @@ import MassageTable from 'Components/MassageTable/MassageTable';
 import PenaltyInfoModal from 'Components/PenaltyInfoModal/PenaltyInfoModal';
 import StuAuthorityItem from 'Components/StuAuthorityItem/StuAuthorityItem';
 import Skelethon from 'Components/Skelethon/Skelethon';
+import NameSearch from 'Components/NameSearch/NameSearch';
+import Gender from 'Components/Gender/Gender';
 
 export {
 	Sidebar,
@@ -38,6 +41,7 @@ export {
 	UserProfile,
 	NoticeBoard,
 	NoticeBoardItem,
+	NoticeCheck,
 	NoticeWrite,
 	Classification,
 	SelfstudyTable,
@@ -46,7 +50,7 @@ export {
 	Authorzation,
 	ChangeInput,
 	ChangeSelect,
-	LoginForm,
+	SigninForm,
 	SignupForm,
 	Selfstudyboard,
 	PasswordForm,
@@ -60,4 +64,6 @@ export {
 	PenaltyInfoModal,
 	StuAuthorityItem,
 	Skelethon,
+	NameSearch,
+	Gender,
 };
