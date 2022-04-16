@@ -25,7 +25,11 @@ const TrySignin = () => {
 			localStorage.setItem('Dotori_refreshToken', data.data.token.refreshToken);
 
 			setLogged(true);
-			navigate('/home');
+			if (data.data.gender === 'PENDING') {
+				navigate('/gender');
+			} else {
+				navigate('/home');
+			}
 		} catch (e: any) {
 			if (e.message === 'Request failed with status code 409') {
 				alert('비밀번호가 올바르지 않아요');
