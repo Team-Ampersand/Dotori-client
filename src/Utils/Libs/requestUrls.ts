@@ -68,6 +68,9 @@ export const noticeController = {
 	noticeUpdate: (role: string | null, boardId: number) => {
 		return `/${role}/board/${boardId}`;
 	},
+	boardAlarm: () => {
+		return '/board/alarm';
+	},
 };
 
 //이메일 인증
