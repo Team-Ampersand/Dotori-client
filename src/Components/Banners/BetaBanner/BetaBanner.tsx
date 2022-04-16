@@ -31,6 +31,8 @@ const BetaBanner: React.FC = () => {
 		}
 	};
 
+	console.log();
+
 	const settings = {
 		arrows: false,
 		autoplay: true,
@@ -72,8 +74,10 @@ const BetaBanner: React.FC = () => {
 		<S.Postioner>
 			<S.StyledSlider {...settings}>
 				<S.TextWrapper>
-					{new Date(board.lastBoardWriteDate).getDate() + 3 >
-					new Date().getDate() ? (
+					{new Date(board.lastBoardWriteDate).getMonth() >
+						new Date().getMonth() &&
+					new Date(board.lastBoardWriteDate).getDate() + 3 >
+						new Date().getDate() ? (
 						<>
 							<h2>공지사항</h2>
 							<span>
