@@ -92,17 +92,18 @@ const NoticePage: React.FC = () => {
 					{imgUrl && <S.ImgWrapper alt="notice" src={imgUrl} />}
 				</S.ContentWrapper>
 				<S.Footer>작성자 : {returnAuthorValue(roles[0])}</S.Footer>
-				{updateState ? (
-					<S.EditBtn onClick={onUpdate}>확인</S.EditBtn>
-				) : (
-					<S.EditBtn
-						onClick={() => {
-							setUpdateState(true);
-						}}
-					>
-						수정
-					</S.EditBtn>
-				)}
+				{role !== 'member' &&
+					(updateState ? (
+						<S.EditBtn onClick={onUpdate}>확인</S.EditBtn>
+					) : (
+						<S.EditBtn
+							onClick={() => {
+								setUpdateState(true);
+							}}
+						>
+							수정
+						</S.EditBtn>
+					))}
 			</S.Container>
 		</S.Positioner>
 	);
