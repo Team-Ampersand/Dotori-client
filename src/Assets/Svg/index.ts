@@ -47,7 +47,6 @@ import Male from './Male';
 import Female from './Female';
 import SmallMale from './SmallMale';
 import SmallFemale from './SmallFemale';
-import NoticeMore from './NoticeMore';
 
 export {
 	Home,
@@ -98,5 +97,4 @@ export {
 	Female,
 	SmallMale,
 	SmallFemale,
-	NoticeMore
 };
