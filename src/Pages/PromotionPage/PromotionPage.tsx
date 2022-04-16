@@ -1,4 +1,4 @@
-import Promotion from 'Components/ModifyList/Promotion/Promotion';
+import Promotion from 'Components/Promotion/Promotion';
 
 const PromotionPage: React.FC = () => {
 	return (
