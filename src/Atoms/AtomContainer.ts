@@ -5,6 +5,7 @@ type User = {
 	id: string;
 	stuNum: string;
 	memberName: string;
+	gender: string;
 };
 
 type lists = {
@@ -43,11 +44,11 @@ export const setList = atom<lists[]>({
 });
 
 export const fieldSelected = atom<string[]>({
-	key: "fieldSelected",
-	default: []
+	key: 'fieldSelected',
+	default: [],
 });
 
 export const penaltySelected = atom<string[]>({
-	key: "penaltySelected",
-	default: []
-})
+	key: 'penaltySelected',
+	default: [],
+});
