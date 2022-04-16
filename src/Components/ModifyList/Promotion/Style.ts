@@ -2,16 +2,13 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 type StyleProps = {
-	PageN: number;
 	CurrentCounter: number;
 };
-
 type UnderBars = {
 	CurrentCounter?: number;
-	left?: number;
+	left?: string;
 	n?: number;
 };
-
 type btn = {
 	display?: string;
 	top?: string;
@@ -36,7 +33,6 @@ export const Header = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	svg {
-		width: 8%;
 		margin-left: 2%;
 	}
 `;
@@ -46,7 +42,7 @@ export const BtnWrapper = styled.div`
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	width: 20vw;
+	width: 18vw;
 	height: 100%;
 	margin-right: 3vw;
 	gap: 10px;
@@ -97,7 +93,7 @@ export const ProductBodyScrollable = styled.div`
 
 export const Products = styled.div`
 	display: flex;
-	width: ${(props: StyleProps) => props.PageN * 100}vw;
+	width: 200vw;
 	transform: translateX(
 		${(props: StyleProps) => `-${props.CurrentCounter * 100}vw`}
 	);
@@ -124,8 +120,8 @@ export const Product = styled.div`
 
 export const SlideBtn = styled.div`
 	position: fixed;
+	top: 50vh;
 	display: ${(props: btn) => props.display};
-	top: ${(props: btn) => props.top};
 	left: ${(props: btn) => props.left};
 	right: ${(props: btn) => props.right};
 	background-color: transparent;
@@ -188,12 +184,12 @@ export const DotoryDesc = styled.div`
 	}
 `;
 
-export const UnderBar = styled.span<UnderBars>`
+export const UnderBar = styled.span`
 	z-index: 10;
 	position: fixed;
 	top: 93%;
-	left: ${(props) => props.left}%;
-	background-color: ${(props) =>
+	left: ${(props: UnderBars) => props.left};
+	background-color: ${(props: UnderBars) =>
 		props.CurrentCounter === props.n ? 'white' : '#e9e9e9'};
 	display: flex;
 	height: 0.5vw;
