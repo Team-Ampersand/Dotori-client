@@ -28,12 +28,6 @@ const sidebarMenuData = [
 				show: ['admin', 'councillor', 'developer', 'member'],
 			},
 			{
-				router: '/massage',
-				menuIcon: 'Massage',
-				menuTitle: '안마의자',
-				show: ['admin', 'councillor', 'developer', 'member'],
-			},
-			{
 				router: '/song',
 				menuIcon: 'Song',
 				menuTitle: '기상음악',
