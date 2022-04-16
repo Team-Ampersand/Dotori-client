@@ -1,20 +1,24 @@
 import { PenaltyController } from 'Utils/Libs/requestUrls';
 import { apiClient } from 'Utils/Libs/apiClient';
+import { toast } from 'react-toastify';
 
 export const getStuInfo = async (role: string) => {
 	try {
 		const { data } = await apiClient.get(PenaltyController.getStuInfo(role));
 		return { data };
 	} catch (e: any) {
-		if (e.message === 'Request failed with status code 404') {
-			alert('등록된 학생 정보가 없어요');
-		} else if (e.message === 'Request failed with status code 401') {
-			alert('로그아웃 되었어요');
+		if (
+			e.message === 'Request failed with status code 401' ||
+			e.message === 'Request failed with status code 403'
+		) {
+			toast.info('로그아웃 되었어요');
+
 			localStorage.removeItem('Dotori_accessToken');
 			localStorage.removeItem('Dotori_refreshToken');
 			localStorage.removeItem('role');
+
 			window.location.replace('/');
-		} else alert(e);
+		}
 	}
 };
 
@@ -24,11 +28,7 @@ export const getClassStuInfo = async (role: string | null, classId: number) => {
 			PenaltyController.getClassStuInfo(role, classId)
 		);
 		return { data };
-	} catch (e: any) {
-		if (e.message === 'Request failed with status code 404') {
-			alert('해당 반에 등록된 학생 정보가 없어요');
-		} else alert(e);
-	}
+	} catch (e: any) {}
 };
 
 export const getPenaltyInfo = async (role: string, stuNum: string) => {
@@ -37,11 +37,7 @@ export const getPenaltyInfo = async (role: string, stuNum: string) => {
 			PenaltyController.getPenaltyInfo(role, stuNum)
 		);
 		return { data };
-	} catch (e: any) {
-		if (e.message === 'Request failed with status code 404') {
-			alert('등록된 학생 규정위반 정보가 없어요');
-		} else alert(e);
-	}
+	} catch (e: any) {}
 };
 
 export const updatePenaltyInfo = async (
@@ -57,7 +53,9 @@ export const updatePenaltyInfo = async (
 		);
 		return { data };
 	} catch (e: any) {
-		alert(e);
+		if (e.message === 'Request failed with status code 404') {
+			toast.warning('해당 학생을 찾을 수 없어요');
+		}
 	}
 };
 
@@ -67,11 +65,7 @@ export const getModifyPenaltyInfo = async (role: string, stuNum: string) => {
 			PenaltyController.getModifyPenaltyInfo(role, stuNum)
 		);
 		return { data };
-	} catch (e: any) {
-		if (e.message === 'Request failed with status code 404') {
-			alert('등록된 학생 규정위반 정보가 없어요');
-		} else alert(e);
-	}
+	} catch (e: any) {}
 };
 
 export const deletePenaltyInfo = async (role: string, PenaltyId: number) => {
@@ -80,15 +74,13 @@ export const deletePenaltyInfo = async (role: string, PenaltyId: number) => {
 			PenaltyController.deletePenaltyInfo(role, PenaltyId)
 		);
 		return { data };
-	} catch (e: any) {
-		alert(e);
-	}
+	} catch (e: any) {}
 };
 
 export const searchName = async (role: string, name: string) => {
 	try {
 		if (name === '') {
-			alert('이름을 입력해주세요');
+			toast.warning('이름을 입력해주세요');
 			return null;
 		}
 		const { data } = await apiClient.get(
@@ -97,8 +89,8 @@ export const searchName = async (role: string, name: string) => {
 		return { data };
 	} catch (e: any) {
 		if (e.message === 'Request failed with status code 404') {
-			alert('해당하는 학생이 없어요');
-		} else alert(e);
+			toast.warning('해당하는 학생이 없어요');
+		}
 	}
 };
 
@@ -108,7 +100,5 @@ export const getPenaltyMainInfo = async (role: string) => {
 			PenaltyController.getPenaltyMainInfo(role)
 		);
 		return { data };
-	} catch (e: any) {
-		alert(e);
-	}
+	} catch (e: any) {}
 };

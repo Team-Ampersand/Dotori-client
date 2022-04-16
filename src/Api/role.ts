@@ -5,7 +5,5 @@ export const role = async () => {
 	try {
 		const { data } = await apiClient.get(RoleController.role());
 		return { data };
-	} catch (e) {
-		alert(e);
-	}
+	} catch (e) {}
 };

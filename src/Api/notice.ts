@@ -1,12 +1,23 @@
 import { noticeController } from 'Utils/Libs/requestUrls';
 import { apiClient } from 'Utils/Libs/apiClient';
+import { toast } from 'react-toastify';
 
 export const getNotice = async (role: string) => {
 	try {
 		const { data } = await apiClient.get(noticeController.getNotice(role));
 		return { data };
-	} catch (e) {
-		alert(e);
+	} catch (e: any) {
+		if (
+			e.message === 'Request failed with status code 401' ||
+			e.message === 'Request failed with status code 403'
+		) {
+			localStorage.removeItem('Dotori_accessToken');
+			localStorage.removeItem('Dotori_refreshToken');
+			localStorage.removeItem('role');
+
+			window.location.replace('/');
+			toast.info('로그아웃 되었어요');
+		}
 	}
 };
 
@@ -16,9 +27,7 @@ export const getNoticeDetail = async (role: string, page: number) => {
 			noticeController.getNoticeDetail(role, page)
 		);
 		return { data };
-	} catch (e) {
-		alert(e);
-	}
+	} catch (e) {}
 };
 
 export const getNoticeItem = async (role: string, boardId: number) => {
@@ -27,9 +36,7 @@ export const getNoticeItem = async (role: string, boardId: number) => {
 			noticeController.getNoticeItem(role, boardId)
 		);
 		return { data };
-	} catch (e: any) {
-		alert(e);
-	}
+	} catch (e: any) {}
 };
 
 export const noticeWrite = async (
@@ -56,7 +63,7 @@ export const noticeWrite = async (
 		);
 		return { data };
 	} catch (e: any) {
-		alert("제목과 내용을 확인해주세요");
+		toast.warning('제목과 내용을 확인해주세요');
 	}
 };
 
@@ -67,7 +74,9 @@ export const noticeDelete = async (role: string | null, boardId: number) => {
 		);
 		return { data };
 	} catch (e: any) {
-		alert(e);
+		if (e.message === 'Request failed with status code 404') {
+			toast.warning('공지사항을 찾을 수 없어요');
+		}
 	}
 };
 
@@ -87,6 +96,8 @@ export const noticeUpdate = async (
 		);
 		return { data };
 	} catch (e: any) {
-		alert(e);
+		if (e.message === 'Request failed with status code 404') {
+			toast.warning('공지사항을 찾을 수 없어요');
+		}
 	}
 };

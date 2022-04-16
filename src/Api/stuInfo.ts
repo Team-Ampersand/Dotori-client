@@ -1,19 +1,23 @@
 import { StuInfoController } from 'Utils/Libs/requestUrls';
 import { apiClient } from 'Utils/Libs/apiClient';
+import { toast } from 'react-toastify';
 
 export const getStuInfo = async (role: string) => {
 	try {
 		const { data } = await apiClient.get(StuInfoController.getStuInfo(role));
 		return { data };
 	} catch (e: any) {
-		if (e.massage === 'Request failed with status code 404') {
-			alert('등록된 학생 정보가 없어요');
-		} else if (e.massage === 'Request failed with status code 401') {
-			alert('로그아웃 되었어요. 다시 로그인 해주세요');
+		if (
+			e.message === 'Request failed with status code 401' ||
+			e.message === 'Request failed with status code 403'
+		) {
 			localStorage.removeItem('Dotori_accessToken');
 			localStorage.removeItem('Dotori_refreshToken');
 			localStorage.removeItem('role');
-		} else alert(e);
+
+			window.location.replace('/');
+			toast.info('로그아웃 되었어요');
+		}
 	}
 };
 
@@ -23,11 +27,7 @@ export const getClassStuInfo = async (role: string, classId: number) => {
 			StuInfoController.getClassStuInfo(role, classId)
 		);
 		return { data };
-	} catch (e: any) {
-		if (e.message === 'Request failed with status code 404') {
-			alert('해당 반에 등록된 학생 정보가 없어요');
-		} else alert(e);
-	}
+	} catch (e: any) {}
 };
 
 export const updateStuNum = async (
@@ -43,8 +43,8 @@ export const updateStuNum = async (
 		return { data };
 	} catch (e: any) {
 		if (e.message === 'Request failed with status code 409') {
-			return;
-		} else alert(e);
+			toast.warning('이미 등록된 학번이에요');
+		}
 	}
 };
 
@@ -62,11 +62,7 @@ export const updateStuName = async (
 			}
 		);
 		return { data };
-	} catch (e: any) {
-		if (e.message === 'Request failed with status code 409') {
-			return;
-		} else alert(e);
-	}
+	} catch (e: any) {}
 };
 
 export const updateStuRole = async (
@@ -83,11 +79,7 @@ export const updateStuRole = async (
 			}
 		);
 		return { data };
-	} catch (e: any) {
-		if (e.message === 'Request failed with status code 409') {
-			return;
-		} else alert(e);
-	}
+	} catch (e: any) {}
 };
 
 export const updateStuGender = async (
@@ -101,11 +93,7 @@ export const updateStuGender = async (
 			gender: gender,
 		});
 		return { data };
-	} catch (e: any) {
-		if (e.message === 'Request failed with status code 409') {
-			return;
-		} else alert(e);
-	}
+	} catch (e: any) {}
 };
 
 export const banSelfStudy = async (role: string, stuId: number) => {
@@ -115,7 +103,7 @@ export const banSelfStudy = async (role: string, stuId: number) => {
 		);
 		return { data };
 	} catch (e: any) {
-		alert(e);
+		toast.info(e);
 	}
 };
 
@@ -126,23 +114,19 @@ export const banCancelSelfStudy = async (role: string, stuId: number) => {
 		);
 		return { data };
 	} catch (e: any) {
-		alert(e);
+		toast.info(e);
 	}
 };
 
 export const searchName = async (role: string, memberName: string, e?: any) => {
 	try {
 		if (memberName === '') {
-			alert('이름을 입력해주세요');
+			toast.warning('이름을 입력해주세요');
 			return null;
 		}
 		const { data } = await apiClient.get(
 			StuInfoController.searchName(role, memberName)
 		);
 		return { data };
-	} catch (e: any) {
-		if (e.message === 'Request failed with status code 404') {
-			alert('해당하는 학생이 없어요');
-		} else alert(e);
-	}
+	} catch (e: any) {}
 };
