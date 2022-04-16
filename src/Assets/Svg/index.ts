@@ -16,7 +16,7 @@ import IllustHome from './IllustHome';
 import DotoriLogo from './DotoriLogo';
 import LoginArrow from './LoginArrow';
 import Profile from './Profile';
-import Calander from './Calandar';
+import Calander from './Calendar';
 import PenaltyIcon from './PenaltyIcon';
 import Massage from './Massage';
 import Ban from './Ban';

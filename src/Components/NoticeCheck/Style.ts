@@ -61,6 +61,7 @@ export const ContentWrapper = styled.div`
 	display: flex;
 	width: 100%;
 	height: 700px;
+	overflow-y: scroll;
 `;
 
 export const TextWrapper = styled.div`
@@ -68,6 +69,7 @@ export const TextWrapper = styled.div`
 	height: 100%;
 	font-size: 20px;
 	font-weight: 600;
+
 	textarea {
 		resize: none;
 		font-size: 20px;

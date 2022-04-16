@@ -31,15 +31,17 @@ export const PlaylistContainer = styled.div`
 	background-color: #fff;
 	justify-content: space-between;
 	align-items: center;
+
 	h3 {
-		margin-left: 50px;
+		margin-left: 28vh;
 		font-size: 26px;
-		font-weight: bold;
+		font-weight: 800;
+		color: #424242;
+		text-align: center;
 	}
 	svg {
 		cursor: pointer;
-		margin-top: 1%;
-		margin-right: 7%;
+		margin-right: 4vh;
 	}
 `;
 
@@ -59,19 +61,25 @@ export const AllWrapper = styled.span<StyleProps>`
 export const NoSongText = styled.div`
 	font-size: 30px;
 	display: grid;
-	justify-content: center;
 	font-size: 23px;
-	margin-top: 40%;
+	margin-top: 35%;
 
 	svg {
-		margin-left: 23%;
+		margin-left: 40%;
+	}
+
+	p {
+		margin-top: -4vh;
+		margin-left: 37%;
 	}
 `;
 
 export const AppliedSongCount = styled.p`
-	font-size: 18px;
-	font-weight: bold;
-	color: #b9b9b9;
+	font-size: 12px;
+	font-weight: 600;
+	color: #969696;
+	margin-top: 1vh;
+	margin-left: 61vh;
 `;
 
 export const Container = styled.div`

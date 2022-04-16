@@ -61,7 +61,8 @@ export const AuthorContainer = styled.span`
 export const DateContainer = styled.span`
 	font-size: 12px;
 	color: #c4c4c4;
-	margin-top: 11%;
+	margin-top: 10%;
+	margin-right: -4%;
 	width: 7.6%;
 `;
 
