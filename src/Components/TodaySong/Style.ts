@@ -73,7 +73,7 @@ export const NoSongText = styled.div`
 `;
 
 export const AppliedSongCount = styled.p`
-	font-size: 12px;
+	font-size: 14px;
 	font-weight: 600;
 	color: #969696;
 	margin-top: 1vh;
