@@ -5,6 +5,8 @@ import { ManufactureDate } from 'Utils/ManufactureDate';
 import 'react-calendar/dist/Calendar.css';
 import { useRole } from 'Hooks/useRole';
 import { toast } from 'react-toastify';
+import { mutate } from 'swr';
+import { showMusicDataFormatter } from 'Utils/DateFormatter';
 
 const musicApply = async (musicUrl: string, role: string) => {
 	await music(role, musicUrl);
@@ -17,6 +19,12 @@ const returnBtn = (
 	role: string
 ) => {
 	const today = ManufactureDate('W');
+	const requestAttend = async () => {
+		await musicApply(url, role).then(async () => {
+			toast.success('기상 음악이 신청 되었어요');
+		});
+		await mutate('/song');
+	};
 	let cant = ['금', '토'];
 	if (role === 'admin') {
 		return (
@@ -57,10 +65,7 @@ const returnBtn = (
 							if (url === '') {
 								toast.warning('아무것도 입력하지 않았어요');
 							} else if (CheckUrl(url)) {
-								musicApply(url, role).then(() => {
-									window.location.reload();
-									toast.success('기상 음악이 신청 되었어요');
-								});
+								requestAttend();
 							} else {
 								toast.warning('유튜브 링크만 추가하실 수 있어요');
 							}
@@ -73,7 +78,6 @@ const returnBtn = (
 							toast.warning('아무것도 입력하지 않았어요');
 						} else if (CheckUrl(url)) {
 							musicApply(url, role).then(() => {
-								window.location.reload();
 								toast.success('기상 음악이 신청 되었어요');
 							});
 						} else {
