@@ -33,7 +33,6 @@ export const CalendarOverlay = styled.div<StyleProps>`
 	left: 0;
 	bottom: 0;
 	right: 0;
-	z-index: 2;
 `;
 
 export const CalendarWrapper = styled.div`
