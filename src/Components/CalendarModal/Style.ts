@@ -8,7 +8,7 @@ export const CalendarContainer = styled.div`
 	display: flex;
 	position: sticky;
 	top: 0;
-	z-index: 1000;
+	z-index: 1;
 
 	background-color: #fff;
 	justify-content: space-between;
@@ -33,6 +33,7 @@ export const CalendarOverlay = styled.div<StyleProps>`
 	left: 0;
 	bottom: 0;
 	right: 0;
+	z-index: 2;
 `;
 
 export const CalendarWrapper = styled.div`
