@@ -8,6 +8,7 @@ export const CalendarContainer = styled.div`
 	display: flex;
 	position: sticky;
 	top: 0;
+	z-index: 1000;
 
 	background-color: #fff;
 	justify-content: space-between;
