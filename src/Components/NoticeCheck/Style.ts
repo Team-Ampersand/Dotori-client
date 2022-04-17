@@ -60,7 +60,7 @@ export const CancelWrapper = styled.div`
 export const ContentWrapper = styled.div`
 	display: flex;
 	width: 100%;
-	height: 700px;
+	height: 1000px;
 	overflow-y: scroll;
 `;
 
