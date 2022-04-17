@@ -21,13 +21,22 @@ export const Positioner = styled.a`
 export const ImgContainer = styled.div<StyleProps>`
 	width: 133.42px;
 	height: 74px;
-	background-size: 120px 74px;
+	background-size: 133.42px 74px;
 	border-radius: 5px;
 	margin-left: 3%;
+
 	background-repeat: no-repeat;
 	background-image: url(${(props) => {
 		return `https://img.youtube.com/vi/${props.thumbnail}/sddefault.jpg`;
 	}});
+`;
+
+export const Container = styled.div`
+	width: 70%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	margin-left: 2%;
 `;
 
 export const TitleContainer = styled.span`
@@ -61,23 +70,15 @@ export const AuthorContainer = styled.span`
 export const DateContainer = styled.span`
 	font-size: 12px;
 	color: #c4c4c4;
-	margin-top: 9%;
-	margin-right: -4%;
-	width: 7.6%;
-`;
-
-export const Container = styled.div`
-	width: 70%;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	margin-left: 10%;
+	margin-top: 10%;
+	width: 7.8%;
+	margin-right: -5%;
 `;
 
 export const DeleteContainer = styled.div`
-	font-size: 11px;
 	cursor: pointer;
 	color: #909090;
+	position: relative;
 	margin-bottom: 6%;
-	margin-right: 2.5%;
+	margin-right: 2%;
 `;
