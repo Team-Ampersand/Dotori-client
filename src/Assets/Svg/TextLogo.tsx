@@ -2,7 +2,7 @@ import * as React from 'react';
 
 function TextLogo(props: React.SVGProps<SVGSVGElement>) {
 	return (
-		<svg viewBox="0 0 110 45" width={110} height={45} fill="none" {...props}>
+		<svg viewBox="0 0 110 45" width="8vw" height="2.5vw" fill="none" {...props}>
 			<path fill="url(#prefix__pattern0)" d="M0 0h110v44.242H0z" />
 			<defs>
 				<pattern
