@@ -143,7 +143,7 @@ export const MusicController = {
 	deleteMusic: (role: string | null, id: number) => {
 		return `/${role}/music/${id}`;
 	},
-	dateMusic: (role: string | null, date: any) => {
+	dateMusic: (role: string | null, date: string) => {
 		return `/${role}/music?date=${date}`;
 	},
 };

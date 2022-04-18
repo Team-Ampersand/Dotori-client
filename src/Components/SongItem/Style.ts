@@ -65,7 +65,7 @@ export const TitleContainer = styled.span`
 export const AuthorContainer = styled.span`
 	font-size: 12px;
 	color: #c4c4c4;
-	margin-top: 2%;
+	margin-top: 4%;
 `;
 
 export const DateContainer = styled.span`
