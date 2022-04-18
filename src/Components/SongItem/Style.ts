@@ -6,7 +6,7 @@ type StyleProps = {
 
 export const Positioner = styled.a`
 	width: 90%;
-	height: 100px;
+	height: 120px;
 	background-color: #fff;
 	margin: 0 auto;
 	border-radius: 10px;
@@ -19,9 +19,9 @@ export const Positioner = styled.a`
 `;
 
 export const ImgContainer = styled.div<StyleProps>`
-	width: 133.42px;
-	height: 74px;
-	background-size: 133.42px 74px;
+	width: 150.42px;
+	height: 90px;
+	background-size: 150.42px 90px;
 	border-radius: 5px;
 	margin-left: 3%;
 
@@ -32,7 +32,7 @@ export const ImgContainer = styled.div<StyleProps>`
 `;
 
 export const Container = styled.div`
-	width: 65%;
+	width: 51%;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -73,7 +73,7 @@ export const DateContainer = styled.span`
 	color: #c4c4c4;
 	margin-top: 10%;
 	width: 7.8%;
-	margin-right: -5%;
+	margin-left: 11%;
 `;
 
 export const DeleteContainer = styled.div`
@@ -81,5 +81,5 @@ export const DeleteContainer = styled.div`
 	color: #909090;
 	position: relative;
 	margin-bottom: 9%;
-	margin-left: 1%;
+	margin-left: -4%;
 `;
