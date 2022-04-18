@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 export const Postioner = styled.div`
 	width: 100%;
 	height: 100%;
 	display: flex;
-	background-color: #cccccc;
+	background-color: rgba(0, 0, 0, 0.08);
 	border-radius: 20px;
 	margin-bottom: 1.5rem;
 `;
@@ -27,25 +28,8 @@ export const TextWrapper = styled.div`
 	}
 `;
 
-export const IlustWrapper = styled.div`
-	display: flex;
-	width: 200px;
-	height: 180px;
-	justify-content: flex-end;
-	margin-right: 35px;
-	position: relative;
-
-	svg {
-		position: absolute;
-		width: 200px;
-		height: 180px;
-		top: -50px;
-	}
-`;
-
 export const StyledSlider = styled(Slider)`
 	width: 100%;
-	height: 100%;
 	.slick-list {
 		height: 100%;
 	}
@@ -61,6 +45,7 @@ export const StyledSlider = styled(Slider)`
 	}
 
 	.slick-slide div div {
+		width: 100%;
 		height: 100%;
 		display: flex !important;
 		justify-content: center;
