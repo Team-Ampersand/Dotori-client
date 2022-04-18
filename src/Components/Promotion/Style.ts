@@ -34,6 +34,8 @@ export const Header = styled.div`
 	align-items: center;
 	svg {
 		margin-left: 0.5vw;
+		width: 8vw;
+		height: 2.5vw;
 	}
 `;
 
