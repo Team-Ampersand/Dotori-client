@@ -28,6 +28,14 @@ interface MusicType {
 		];
 	};
 }
+
+interface MusicData {
+	createdDate: Date;
+	email: string;
+	id: number;
+	memberName: string;
+	url: string;
+}
 interface CheckMySongProps {
 	songlists: any;
 }
@@ -35,26 +43,31 @@ interface CheckMySongProps {
 const CheckMySong: React.FC<CheckMySongProps> = ({ songlists }) => {
 	const user = useDecode();
 	const role = useRole();
-	const [songlist, setSongList] = useRecoilState(setList);
-	const [mySong, setMySong] = useState<boolean>(false);
 	const playlistDate = useRecoilValue(showPlaylistDate);
 	const { data, error } = useSWR<MusicType>(
 		MusicController.dateMusic(role, playlistDate),
 		apiClient.get
 	);
 
+	const filterCheck = (data: MusicData[]) => {
+		if (!data) return false;
+		else if (data.filter((data) => data.email === user.sub).length > 0)
+			return true;
+		else return false;
+	};
+
 	useEffect(() => {
 		mutate(`/${role}/music?date=${playlistDate}`);
 	}, []);
 
 	if (!data) return <div />;
+	if (error) return <div></div>;
 
 	return (
 		<S.Positioner>
 			<label>내가 오늘 신청한 음악이에요</label>
 			<S.SongContainer>
-				{data.data.data.filter((data) => data.email === user.sub).length > 0 ? (
-					data.data.data &&
+				{filterCheck(data.data.data) ? (
 					data.data.data
 						.filter((data) => data.email === user.sub)
 						.map((item, idx) => {

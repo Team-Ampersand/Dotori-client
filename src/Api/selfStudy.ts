@@ -36,6 +36,7 @@ export const lookupStudy = async (role: string) => {
 export const cancelStudy = async (role: string) => {
 	try {
 		const { data } = await apiClient.put(SelfstudyController.cancelStudy(role));
+		toast.success('자습 신청이 취소 되었어요');
 		return { data };
 	} catch (e) {}
 };
