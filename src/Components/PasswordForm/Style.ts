@@ -11,6 +11,7 @@ export const Positioner = styled.div`
 	justify-content: center;
 	min-height: 100vh;
 	padding: 0 35%;
+	background: #fff;
 `;
 
 export const ButtonStyle = styled.button`
