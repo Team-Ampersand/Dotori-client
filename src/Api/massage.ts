@@ -31,6 +31,9 @@ export const massageInfo = async (role: string) => {
 export const cancelMassage = async (role: string) => {
 	try {
 		const { data } = await apiClient.put(MassageController.cancelMassage(role));
+		toast.success(
+			'안마의자 신청이 취소 되었어요. 오늘 하루 동안 다시 신청이 불가능 해요'
+		);
 		return { data };
 	} catch (e) {}
 };
