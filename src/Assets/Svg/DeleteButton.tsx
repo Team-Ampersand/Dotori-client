@@ -2,7 +2,7 @@ import * as React from 'react';
 
 function DeleteButton(props: React.SVGProps<SVGSVGElement>) {
 	return (
-		<svg width="0.8em" height="0.8em" viewBox="0 0 9 9" fill="none" {...props}>
+		<svg width="0.6em" height="0.6em" viewBox="0 0 9 9" fill="none" {...props}>
 			<path fill="url(#prefix__pattern0)" d="M0 0h9v9H0z" />
 			<defs>
 				<pattern

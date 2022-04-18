@@ -32,11 +32,12 @@ export const ImgContainer = styled.div<StyleProps>`
 `;
 
 export const Container = styled.div`
-	width: 70%;
+	width: 65%;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 	margin-left: 2%;
+	margin-right: 3.8%;
 `;
 
 export const TitleContainer = styled.span`
@@ -64,7 +65,7 @@ export const TitleContainer = styled.span`
 export const AuthorContainer = styled.span`
 	font-size: 12px;
 	color: #c4c4c4;
-	margin-top: 6%;
+	margin-top: 2%;
 `;
 
 export const DateContainer = styled.span`
@@ -79,6 +80,6 @@ export const DeleteContainer = styled.div`
 	cursor: pointer;
 	color: #909090;
 	position: relative;
-	margin-bottom: 6%;
-	margin-right: 2%;
+	margin-bottom: 9%;
+	margin-left: 1%;
 `;
