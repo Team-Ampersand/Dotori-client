@@ -2,53 +2,48 @@ import styled from 'styled-components';
 
 export const Postioner = styled.div`
 	width: 100%;
-	height: 120%;
+	height: 530px;
 	display: flex;
 	flex-direction: column;
 	background-color: #ffffff;
 	border-radius: 20px;
 	label {
-		margin: 3.5% 6.5%;
-		margin-right: auto;
+		margin: 4.5% 6.5%;
 		font-weight: bold;
 		font-size: 26px;
 		color: #6d92c4;
 	}
-
-	.react-calendar {
-		margin-left: 27%;
-	}
 `;
 
 export const TextContainer = styled.div`
+	height: 60%;
 	p {
 		margin-left: 6.5%;
 		margin-top: 2%;
 	}
 
 	hr {
-		margin-top: 5%;
+		margin-top: 7%;
 		border: 1px solid #d8d8d8;
 	}
 `;
 
 export const InputWrapper = styled.div`
 	width: 100%;
-	height: 100%;
+	height: 200px;
 	margin-left: 6.5%;
-	margin-top: 1%;
+	margin-top: 42px;
 
 	p {
 		font-weight: bold;
 		font-size: 16px;
 		line-height: 24px;
 		margin-bottom: 1vh;
-		margin-top: 2vh;
 	}
 	input {
 		width: 75%;
 		height: 40.05px;
-		font-size: 20px;
+		font-size: 15px;
 		padding-left: 10px;
 		border: 2px solid #9ecff2;
 		box-sizing: border-box;
@@ -60,7 +55,6 @@ export const InputWrapper = styled.div`
 		padding: 2px;
 	}
 	button {
-		margin-top: 1vh;
 		margin-left: 2%;
 		width: 91px;
 		height: 36.23px;
