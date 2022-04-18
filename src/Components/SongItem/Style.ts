@@ -32,7 +32,7 @@ export const ImgContainer = styled.div<StyleProps>`
 `;
 
 export const Container = styled.div`
-	width: 70%;
+	width: 68%;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -64,7 +64,7 @@ export const TitleContainer = styled.span`
 export const AuthorContainer = styled.span`
 	font-size: 12px;
 	color: #c4c4c4;
-	margin-top: 6%;
+	margin-top: 2%;
 `;
 
 export const DateContainer = styled.span`
