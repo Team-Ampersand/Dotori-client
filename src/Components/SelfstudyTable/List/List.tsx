@@ -117,7 +117,7 @@ const List: React.FC = () => {
 				userlist.map((item, idx) => (
 					<S.Wrapper key={`${idx}`}>
 						<S.Medal>
-							{ClassLookuped &&
+							{!ClassLookuped &&
 								(idx === 0 ? (
 									<GoldMedal />
 								) : idx === 1 ? (
