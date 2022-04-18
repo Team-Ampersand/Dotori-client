@@ -49,13 +49,8 @@ const applyStudy = async (
 };
 
 const cancleStudy = async (setInfo, count, role) => {
-	try {
-		await cancelStudy(role);
-		setInfo({ count: count - 1, selfStudy_status: 'CANT' });
-		toast.success('자습 신청이 취소 되었어요');
-	} catch (e) {
-		toast.info('자습 취소를 할 수 없는 상태에요');
-	}
+	await cancelStudy(role);
+	setInfo({ count: count - 1, selfStudy_status: 'CANT' });
 };
 
 const returnRoomStatusNumber = (compareMax: number, compareMin: number) => {

@@ -105,7 +105,7 @@ const SongRequest: React.FC = () => {
 		if (songInput.current) {
 			songInput.current.focus();
 		}
-	});
+	}, []);
 
 	return (
 		<S.Postioner>

@@ -38,15 +38,11 @@ const MassageInfo = async (role: string) => {
 const applyMassage = async (setInfo, count: number, role: string) => {
 	await massage(role);
 	setInfo({ count: count + 1, status: 'APPLIED' });
-	toast.success('안마의자 신청이 완료되었어요');
 };
 
 const CancelMassage = async (setInfo, count: number, role: string) => {
 	await cancelMassage(role);
 	setInfo({ count: count - 1, status: 'CANT' });
-	toast.success(
-		'안마의자 신청이 취소 되었어요. 오늘 하루 동안 다시 신청이 불가능 해요'
-	);
 };
 
 const MassageBoard: React.FC = () => {
