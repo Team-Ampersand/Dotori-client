@@ -6,25 +6,23 @@ import 'react-calendar/dist/Calendar.css';
 import { useRole } from 'Hooks/useRole';
 import { toast } from 'react-toastify';
 import { mutate } from 'swr';
-import { showMusicDataFormatter } from 'Utils/DateFormatter';
+import { DateFormatter } from 'Utils/DateFormatter';
+import { showPlaylistDate } from 'Atoms';
+import { useRecoilValue } from 'recoil';
 
 const musicApply = async (musicUrl: string, role: string) => {
-	await music(role, musicUrl);
+	return await music(role, musicUrl);
 };
 
 const returnBtn = (
 	url: string,
 	setUrl: { (value: React.SetStateAction<string>): void; (arg0: string): void },
 	songInput: React.LegacyRef<HTMLInputElement> | undefined,
-	role: string
+	role: string,
+	playlistDate: string
 ) => {
 	const today = ManufactureDate('W');
-	const requestAttend = async () => {
-		await musicApply(url, role).then(async () => {
-			toast.success('기상 음악이 신청 되었어요');
-		});
-		await mutate('/song');
-	};
+
 	let cant = ['금', '토'];
 	if (role === 'admin') {
 		return (
@@ -65,12 +63,16 @@ const returnBtn = (
 							if (url === '') {
 								toast.warning('아무것도 입력하지 않았어요');
 							} else if (CheckUrl(url)) {
-								requestAttend();
+								musicApply(url, role).then(async (res) => {
+									mutate(`/${role}/music?date=${playlistDate}`);
+									setUrl('');
+								});
 							} else {
 								toast.warning('유튜브 링크만 추가하실 수 있어요');
 							}
 						}
 					}}
+					value={url}
 				/>
 				<button
 					onClick={() => {
@@ -78,7 +80,8 @@ const returnBtn = (
 							toast.warning('아무것도 입력하지 않았어요');
 						} else if (CheckUrl(url)) {
 							musicApply(url, role).then(() => {
-								toast.success('기상 음악이 신청 되었어요');
+								mutate(`/${role}/music?date=${playlistDate}`);
+								setUrl('');
 							});
 						} else {
 							toast.warning('유튜브 링크만 추가하실 수 있어요');
@@ -94,6 +97,7 @@ const returnBtn = (
 
 const SongRequest: React.FC = () => {
 	const [url, setUrl] = useState<string>('');
+	const playlistDate = useRecoilValue(showPlaylistDate);
 	const songInput = useRef<HTMLInputElement>(null);
 	const role = useRole();
 
@@ -122,7 +126,7 @@ const SongRequest: React.FC = () => {
 
 			<S.InputWrapper>
 				<p>기상음악 신청</p>
-				{returnBtn(url, setUrl, songInput, role)}
+				{returnBtn(url, setUrl, songInput, role, playlistDate)}
 			</S.InputWrapper>
 		</S.Postioner>
 	);
