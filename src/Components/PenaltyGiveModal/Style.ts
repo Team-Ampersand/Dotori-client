@@ -49,8 +49,8 @@ export const DateWrapper = styled.div`
 `;
 
 export const Date = styled.input`
-  width: 50%;
-  height: 40px;
+	width: 50%;
+	height: 40px;
 `;
 
 export const BtnWrapper = styled.div`
@@ -60,7 +60,7 @@ export const BtnWrapper = styled.div`
 `;
 
 export const GiveBtn = styled.button`
-	width: 40vh;
+	width: 44vh;
 	height: 50px;
 	border-radius: 10px;
 	border: none;
@@ -90,57 +90,57 @@ export const SelectWrapper = styled.div`
 `;
 
 export const SelectBox = styled.ul`
-  width: 100%;
-  border: 1px solid #c4c4c4;
-  border-radius: 15px 0 0 15px;
-  list-style: none;
-  overflow-y: scroll;
-  font-size: 15px;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  & .selected {
-    font-weight: bold;
-  }
-  & .currentSelect {
-    background: #f1f1f1;
-  }
-  li {
-    width: 100%;
-    height: 30px;
-    line-height: 30px;
-    padding: 0 1rem;
-    cursor: pointer;
-  }
-  li:hover {
-    background: #f1f1f1;
-  }
+	width: 100%;
+	border: 1px solid #c4c4c4;
+	border-radius: 15px 0 0 15px;
+	list-style: none;
+	overflow-y: scroll;
+	font-size: 15px;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+	& .selected {
+		font-weight: bold;
+	}
+	& .currentSelect {
+		background: #f1f1f1;
+	}
+	li {
+		width: 100%;
+		height: 30px;
+		line-height: 30px;
+		padding: 0 1rem;
+		cursor: pointer;
+	}
+	li:hover {
+		background: #f1f1f1;
+	}
 `;
 
 export const SelectBox2 = styled(SelectBox)`
-  border-radius: 0 15px 15px 0;
+	border-radius: 0 15px 15px 0;
 `;
 
 export const DefaultContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content:center;
-  align-items: center;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 `;
 
 export const TagContainer = styled.div`
-  display: grid;
+	display: grid;
 	justify-content: center;
 	grid-template-columns: 0.5fr 0.5fr;
 	column-gap: 30px;
-  height: 10rem;
-  padding: 2% 1%;
-  overflow-y: scroll;
-    svg {
-      margin-left: 1rem;
-      cursor: pointer;
-  }
+	height: 10rem;
+	padding: 2% 1%;
+	overflow-y: scroll;
+	svg {
+		margin-left: 1rem;
+		cursor: pointer;
+	}
 `;
 
 export const TagWrapper = styled.div`
@@ -151,7 +151,7 @@ export const TagWrapper = styled.div`
 	width: 200%;
 	height: 100%;
 	cursor: pointer;
-	:hover{
+	:hover {
 		background: #f7f7f7;
 	}
 `;

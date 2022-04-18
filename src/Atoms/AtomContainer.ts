@@ -52,3 +52,8 @@ export const penaltySelected = atom<string[]>({
 	key: 'penaltySelected',
 	default: [],
 });
+
+export const classLookuped = atom<boolean>({
+	key: 'classLookuped',
+	default: false,
+});

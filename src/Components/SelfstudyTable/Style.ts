@@ -2,10 +2,11 @@ import styled from 'styled-components';
 
 export const Postioner = styled.div`
 	width: 100%;
-	height: 80%;
+	height: 100%;
 	background-color: #fff;
 	border-radius: 20px;
 	margin-top: 2rem;
+	max-height: 794px;
 `;
 
 export const TableHeader = styled.div`
@@ -31,7 +32,6 @@ export const Content = styled.div`
 	justify-content: space-between;
 	justify-items: center;
 	overflow-y: scroll;
-	height: 100%;
 	-ms-overflow-style: none;
 	scrollbar-width: none;
 	border-radius: 10px;

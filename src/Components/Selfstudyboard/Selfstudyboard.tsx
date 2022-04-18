@@ -44,13 +44,8 @@ const applyStudy = async (
 	count: number,
 	role: string
 ) => {
-	try {
-		await selfStudy(role);
-		setInfo({ count: count + 1, selfStudy_status: 'APPLIED' });
-		toast.success('자습 신청이 완료 되었어요');
-	} catch (e) {
-		toast.info('이미 자습 신청을 하셨거나 할 수 없는 상태에요');
-	}
+	await selfStudy(role);
+	setInfo({ count: count + 1, selfStudy_status: 'APPLIED' });
 };
 
 const cancleStudy = async (setInfo, count, role) => {
@@ -59,7 +54,7 @@ const cancleStudy = async (setInfo, count, role) => {
 		setInfo({ count: count - 1, selfStudy_status: 'CANT' });
 		toast.success('자습 신청이 취소 되었어요');
 	} catch (e) {
-		toast.info('자습취소를 하실수 없는 상태에요');
+		toast.info('자습 취소를 할 수 없는 상태에요');
 	}
 };
 
@@ -214,7 +209,7 @@ const Selfstudyboard: React.FC = () => {
 				{returnButton()}
 				<p>
 					{cant.indexOf(today) !== -1 || hours < 20 || hours >= 21
-						? '20:00 ~ 21:00에 자습 신청이 가능해요'
+						? '20:00 ~ 21:00 에 자습 신청이 가능해요'
 						: '자습 신청 시간이에요'}
 				</p>
 			</S.StudyContent>

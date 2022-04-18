@@ -5,13 +5,14 @@ import { SelfstudyTable, Classification, Sidebar } from '../../Components';
 import { classLookup, studyRank } from 'Api/selfStudy';
 import { useRole } from 'Hooks/useRole';
 import { useSetRecoilState } from 'recoil';
-import { list } from 'Atoms';
+import { list, classLookuped } from 'Atoms';
 import { toast } from 'react-toastify';
 
 const SelfStudyPage: React.FC = () => {
 	const [stuGrade, setStuGrade] = useState<string>('0');
 	const [stuClass, setStuClass] = useState<string>('');
 	const setClassLookup = useSetRecoilState(list);
+	const setClassLookuped = useSetRecoilState(classLookuped);
 	const role = useRole();
 	const onSubmit = async () => {
 		if (parseInt(stuGrade + stuClass) > 0) {
@@ -19,10 +20,12 @@ const SelfStudyPage: React.FC = () => {
 				if (stuClass === '0') {
 					classLookup(stuGrade, role).then((res) => {
 						res && setClassLookup(res.data.data);
+						setClassLookuped(true);
 					});
 				} else {
 					classLookup(stuGrade + stuClass, role).then((res) => {
 						res && setClassLookup(res.data.data);
+						setClassLookuped(true);
 					});
 				}
 			} else toast.warning('학년을 선택해주세요');

@@ -8,9 +8,6 @@ const SongBanner: React.FC = () => {
 			<S.TextWrapper>
 				<h2>자신이 듣고 싶은 음악을 마음껏 신청하세요.</h2>
 			</S.TextWrapper>
-			<S.IlustWrapper>
-				<IllustSong />
-			</S.IlustWrapper>
 		</S.Postioner>
 	);
 };

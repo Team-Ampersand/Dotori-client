@@ -145,6 +145,7 @@ export const MassageButton = styled.button<StyleProps>`
 				props.count < 50 &&
 				new Date().getHours() >= 20 &&
 				new Date().getHours() < 21 &&
+				new Date().getMinutes() < 20 &&
 				['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1
 			) {
 				return '#fff';
