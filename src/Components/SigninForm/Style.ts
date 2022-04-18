@@ -10,6 +10,7 @@ export const Positioner = styled.div`
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
+	background: #ffffff;
 	padding: 0 35%;
 `;
 
@@ -17,6 +18,7 @@ export const LogoWrapper = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	margin-bottom: 2rem;
 `;
 
 export const Line = styled.div`
@@ -50,8 +52,8 @@ export const SignupWrapper = styled.div`
 `;
 
 export const ButtonStyle = styled.button`
-	margin-top: 2vh;
-	width: 29.5vw;
+	margin-top: 3rem;
+	width: 100%;
 	height: 5.5vh;
 	border-radius: 10px;
 	outline: none;
@@ -59,39 +61,34 @@ export const ButtonStyle = styled.button`
 	background-color: #9ecff2;
 	color: #fff;
 	font-size: 18px;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	position: relative;
-`;
-
-export const ArrowWrapper = styled.div`
-	position: absolute;
-	right: 2vh;
-	top: 1.6vh;
+	box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.12);
 `;
 
 export const InputStyle = styled.input<StyleProps>`
-	width: 29vw;
+	width: 100%;
 	height: 5vh;
 	border-radius: 10px;
 	outline: none;
 	border: 2px solid #9ecff2;
-	padding-left: 10px;
+	padding-left: 20px;
 	margin-top: 1vh;
 	font-size: 16px;
 	display: ${(props) => (props.displayed === true ? 'none' : 'flex')};
+	box-sizing: border-box;
 `;
 
 export const InputWrapper = styled.div`
 	position: relative;
+	width: 100%;
 	label {
 		opacity: 0.5;
 		position: absolute;
 		top: 25px;
-		left: 70px;
+		left: 80px;
 	}
 	@media screen and (min-height: 1073px) {
 		label {
-			top: 30px;
+			top: 27px;
 		}
 	}
 	@media screen and (max-height: 766px) {

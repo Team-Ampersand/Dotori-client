@@ -7,7 +7,7 @@ export const SelectWrapper = styled.div`
 	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
 	width: 500px;
 	height: 70px;
-	border-radius: 20px;
+	border-radius: 10px;
 	margin-top: 20px;
 	justify-content: center;
 	align-items: center;
