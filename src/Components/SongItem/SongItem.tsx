@@ -4,20 +4,23 @@ import * as I from '../../Assets/Svg/index';
 import axios from 'axios';
 import { deleteMusic } from 'Api/music';
 import { useDecode } from '../../Hooks/useDecode';
-import { showMusicDataFormatter } from '../../Utils/DateFormatter';
+import {
+	DateFormatter,
+	showMusicDataFormatter,
+} from '../../Utils/DateFormatter';
 import { useRole } from 'Hooks/useRole';
 import { toast } from 'react-toastify';
+import { mutate } from 'swr';
+import { useRecoilValue } from 'recoil';
+import { showPlaylistDate } from 'Atoms';
 
-type SongItemObj = {
+type SongItemProps = {
 	createdDate: Date;
 	id: number;
 	url: string;
 	memberName: string;
 	email: string;
 };
-interface SongProps {
-	songObj: SongItemObj;
-}
 
 const songTitle = async (url: string) => {
 	const api_key = process.env.REACT_APP_YOUTUBE_API_KEY;
@@ -38,15 +41,22 @@ const youtube_parser = (url: string) => {
 	}
 };
 
-const DeleteMusic = async (id: number, role: string) => {
+const DeleteMusic = async (id: number, role: string, playlistDate: string) => {
 	await deleteMusic(role, id);
 	toast.info('삭제 되었어요');
-	window.location.reload();
+	mutate(`/${role}/music?date=${playlistDate}`);
 };
 
-const SongItem: React.FC<SongProps> = ({ songObj }) => {
+const SongItem: React.FC<SongItemProps> = ({
+	createdDate,
+	id,
+	url,
+	memberName,
+	email,
+}) => {
 	const [title, setTitle] = useState('');
-	const videoId = youtube_parser(songObj.url);
+	const playlistDate = useRecoilValue(showPlaylistDate);
+	const videoId = youtube_parser(url);
 	const user = useDecode();
 	const role = useRole();
 
@@ -57,24 +67,22 @@ const SongItem: React.FC<SongProps> = ({ songObj }) => {
 	}, [videoId]);
 
 	return (
-		<S.Positioner href={songObj.url} target="_blank" rel="noreferrer">
+		<S.Positioner href={url} target="_blank" rel="noreferrer">
 			<S.ImgContainer thumbnail={videoId} />
 			<S.Container>
 				<S.TitleContainer>{title}</S.TitleContainer>
-				<S.AuthorContainer>{songObj.memberName}</S.AuthorContainer>
+				<S.AuthorContainer>{memberName}</S.AuthorContainer>
 			</S.Container>
-			<S.DateContainer>
-				{showMusicDataFormatter(songObj.createdDate)}
-			</S.DateContainer>
+			<S.DateContainer>{showMusicDataFormatter(createdDate)}</S.DateContainer>
 			{role === 'admin' ||
 			role === 'developer' ||
 			role === 'councillor' ||
-			songObj.email === user.sub ? (
+			email === user.sub ? (
 				<S.DeleteContainer
 					onClick={(e) => {
 						e.preventDefault();
 						window.confirm('삭제 하시겠습니까?')
-							? DeleteMusic(songObj.id, role)
+							? DeleteMusic(id, role, playlistDate)
 							: toast.info('삭제 하지 않았어요.');
 					}}
 				>
