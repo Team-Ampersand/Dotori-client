@@ -2,11 +2,12 @@ import styled from 'styled-components';
 
 export const Postioner = styled.div`
 	display: flex;
-	width: calc(100% - 2% * 7.2);
+	width: 100%;
 	height: 100%;
 	align-items: center;
 	justify-content: center;
 	padding: 2% 2%;
+	min-width: 100px;
 `;
 
 export const Wrapper = styled.div`
