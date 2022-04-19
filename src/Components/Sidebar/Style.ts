@@ -7,12 +7,13 @@ export const Postioner = styled.nav`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: flex-start;
 `;
 
 export const LogoWrapper = styled.div`
+	width: 100%;
 	display: flex;
-	align-items: center;
+	margin-left: 80px;
 	margin-top: 50px;
 	cursor: pointer;
 `;

@@ -11,5 +11,6 @@ export const MenuWrapper = styled.div<StyleProps>`
 	flex-direction: column;
 	margin-left: 43px;
 	align-self: center;
-	justify-content: center;
+	justify-content: flex-start;
+	margin-top: 4rem;
 `;
