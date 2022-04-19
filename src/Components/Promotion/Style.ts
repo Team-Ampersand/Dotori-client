@@ -33,7 +33,9 @@ export const Header = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	svg {
-		margin-left: 2%;
+		margin-left: 0.5vw;
+		width: 8vw;
+		height: 2.5vw;
 	}
 `;
 
@@ -42,9 +44,9 @@ export const BtnWrapper = styled.div`
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	width: 18vw;
+	width: 7vw;
 	height: 100%;
-	margin-right: 3vw;
+	margin-right: 0.5vw;
 	gap: 10px;
 `;
 
@@ -53,8 +55,8 @@ export const SignBtn = styled(Link)`
 	justify-content: center;
 	align-items: center;
 	text-decoration: none;
-	width: 7vw;
-	height: 70%;
+	width: 4vw;
+	height: 60%;
 	background-color: #9ecff2;
 	border-radius: 5px;
 	border: none;
@@ -67,20 +69,20 @@ export const SignBtn = styled(Link)`
 		transition: all ease 0.2s 0s;
 	}
 	@media (max-width: 1900px) {
-		width: 13vw;
-		font-size: 1.2rem;
-	}
-	@media (max-width: 1600px) {
-		width: 11vw;
+		width: 4.5vw;
 		font-size: 0.9rem;
 	}
+	@media (max-width: 1600px) {
+		width: 4vw;
+		font-size: 0.4rem;
+	}
 	@media (max-width: 1400px) {
-		width: 10vw;
-		font-size: 0.8rem;
+		width: 4vw;
+		font-size: 0.5rem;
 	}
 	@media (max-width: 700px) {
-		width: 10vw;
-		font-size: 0.7rem;
+		width: 6vw;
+		font-size: 0.3rem;
 	}
 `;
 
@@ -192,8 +194,8 @@ export const UnderBar = styled.span`
 	background-color: ${(props: UnderBars) =>
 		props.CurrentCounter === props.n ? 'white' : '#e9e9e9'};
 	display: flex;
-	height: 0.5vw;
-	width: 5%;
+	height: 0.35vw;
+	width: 3%;
 	border-radius: 10px;
 	align-items: center;
 	justify-content: center;

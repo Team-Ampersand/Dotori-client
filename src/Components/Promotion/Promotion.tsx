@@ -1,32 +1,9 @@
 import * as S from './Style';
-import { HasToken } from 'Atoms';
-import { useSetRecoilState } from 'recoil';
 import React, { useState } from 'react';
-import { logout } from 'Api/member';
-import isLogin from 'Utils/Libs/isLogin';
 import { TextLogo, Arrow, Arrow2, PromotionImg } from 'Assets/Svg';
 import { useEffect } from 'react';
 
-const TryLogout = (setLogged: {
-	(valOrUpdater: boolean | ((currVal: boolean) => boolean)): void;
-	(arg0: boolean): void;
-}) => {
-	const onLogout = async () => {
-		await logout();
-		localStorage.removeItem('Dotori_accessToken');
-		localStorage.removeItem('Dotori_refreshToken');
-		localStorage.removeItem('role');
-		setLogged(false);
-		window.location.reload();
-	};
-	return onLogout;
-};
-
 const Promotion: React.FC = () => {
-	const setLogged = useSetRecoilState(HasToken);
-
-	const onLogout = TryLogout(setLogged);
-
 	const [disLeft, setDisLeft] = useState('none');
 	const [disRight, setDisRIght] = useState('none');
 	const [counter, setCounter] = useState<number>(0);
@@ -59,18 +36,9 @@ const Promotion: React.FC = () => {
 			<S.Positioner>
 				<S.Header>
 					<TextLogo />
-					{!isLogin() ? (
-						<S.BtnWrapper>
-							<S.SignBtn to="/signin">로그인</S.SignBtn>
-							<S.SignBtn to="/signup">회원가입</S.SignBtn>
-						</S.BtnWrapper>
-					) : (
-						<S.BtnWrapper>
-							<S.SignBtn to="/" onClick={onLogout}>
-								로그아웃
-							</S.SignBtn>
-						</S.BtnWrapper>
-					)}
+					<S.BtnWrapper>
+						<S.SignBtn to="/signin">로그인</S.SignBtn>
+					</S.BtnWrapper>
 				</S.Header>
 
 				<S.ProductBodyScrollable>
@@ -103,7 +71,7 @@ const Promotion: React.FC = () => {
 					</S.Products>
 
 					<S.SlideBtn
-						left="1vw"
+						left="2.5vw"
 						display={disLeft}
 						onClick={leftBtnClickHandler}
 					>
@@ -118,13 +86,13 @@ const Promotion: React.FC = () => {
 					</S.SlideBtn>
 
 					<S.UnderBar
-						left="44%"
+						left="45%"
 						CurrentCounter={counter}
 						n={0}
 						onClick={() => underBarClick(0)}
 					/>
 					<S.UnderBar
-						left="49.5%"
+						left="48.5%"
 						CurrentCounter={counter}
 						n={1}
 						onClick={() => underBarClick(1)}
