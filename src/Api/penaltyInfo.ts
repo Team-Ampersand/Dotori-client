@@ -51,6 +51,7 @@ export const updatePenaltyInfo = async (
 			PenaltyController.updatePenaltyInfo(role),
 			{ date: date, rule: rule, stuNum: stuNum }
 		);
+		toast.success('규정위반 내역을 추가했어요');
 		return { data };
 	} catch (e: any) {
 		if (e.message === 'Request failed with status code 404') {

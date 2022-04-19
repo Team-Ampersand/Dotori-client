@@ -12,7 +12,7 @@ export const LinkWrapper = styled(Link)<StyleProps>`
 	width: 100%;
 	align-items: center;
 	${(props) => (props.sidebarColor ? 'color: #9ECFF2' : 'color: #BBBBBE')};
-	margin-bottom: 28%;
+	margin-bottom: 20%;
 
 	svg {
 		width: 25px;
