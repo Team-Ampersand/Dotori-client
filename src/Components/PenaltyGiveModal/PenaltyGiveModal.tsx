@@ -266,7 +266,6 @@ const GiveModal: React.FC<ModalProps> = ({
 
 	const givePenaltyUpdate = async () => {
 		await updatePenaltyInfo(role, date, penaltySelect, stuNum);
-		toast.success('규정위반 내역을 추가했어요');
 	};
 
 	const [date, setDate] = useState('');
