@@ -16,7 +16,7 @@ interface BtnProps {
 
 export const Container = styled(Link)`
 	width: 95%;
-	height: 7.3vh;
+	height: 8.7vh;
 	background-color: #fff;
 	box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.15);
 	border-radius: 20px;
