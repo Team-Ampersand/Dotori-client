@@ -56,10 +56,6 @@ const CheckMySong: React.FC<CheckMySongProps> = ({ songlists }) => {
 		else return false;
 	};
 
-	useEffect(() => {
-		mutate(`/${role}/music?date=${playlistDate}`);
-	}, []);
-
 	if (!data) return <div />;
 	if (error) return <div></div>;
 
