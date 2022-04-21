@@ -92,8 +92,7 @@ const Selfstudyboard: React.FC = () => {
 			info.selfStudy_status === 'CAN' &&
 			parseInt(info.count) < 50 &&
 			can.indexOf(today) !== -1 &&
-			hours >= 20 &&
-			hours < 21
+			hours === 20
 		) {
 			return (
 				<S.StudyButton
@@ -104,6 +103,18 @@ const Selfstudyboard: React.FC = () => {
 					count={parseInt(info.count)}
 				>
 					신청
+				</S.StudyButton>
+			);
+		} else if (info.selfStudy_status === 'APPLIED' && hours !== 20) {
+			return (
+				<S.StudyButton
+					onClick={() => {
+						toast.info('신청시간이 넘어 취소 하실 수 없어요');
+					}}
+					Clicked={info.selfStudy_status}
+					count={parseInt(info.count)}
+				>
+					신청취소
 				</S.StudyButton>
 			);
 		} else if (info.selfStudy_status === 'APPLIED') {
@@ -124,7 +135,7 @@ const Selfstudyboard: React.FC = () => {
 					신청취소
 				</S.StudyButton>
 			);
-		} else if (cant.indexOf(today) !== -1 || hours < 20 || hours >= 21) {
+		} else if (cant.indexOf(today) !== -1 || hours !== 20) {
 			return (
 				<S.StudyButton
 					Clicked={info.selfStudy_status}
@@ -161,15 +172,17 @@ const Selfstudyboard: React.FC = () => {
 				</S.StudyButton>
 			);
 		} else {
-			<S.StudyButton
-				Clicked={info.selfStudy_status}
-				onClick={() => {
-					toast.info('자습을 신청하실 수 있는 시간이 아니에요');
-				}}
-				count={parseInt(info.count)}
-			>
-				신청
-			</S.StudyButton>;
+			return (
+				<S.StudyButton
+					Clicked={info.selfStudy_status}
+					onClick={() => {
+						toast.info('자습을 신청하실 수 있는 시간이 아니에요');
+					}}
+					count={parseInt(info.count)}
+				>
+					신청
+				</S.StudyButton>
+			);
 		}
 	};
 
