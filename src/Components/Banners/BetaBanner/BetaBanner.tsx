@@ -74,7 +74,8 @@ const BetaBanner: React.FC = () => {
 		<S.Postioner>
 			<S.StyledSlider {...settings}>
 				<S.TextWrapper>
-					{new Date(board.lastBoardWriteDate).getMonth() >=
+					{board &&
+					new Date(board.lastBoardWriteDate).getMonth() >=
 						new Date().getMonth() &&
 					new Date(board.lastBoardWriteDate).getDate() + 3 >
 						new Date().getDate() ? (

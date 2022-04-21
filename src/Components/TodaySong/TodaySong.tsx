@@ -58,7 +58,9 @@ const TodaySong: React.FC = () => {
 					<I.Calander onClick={() => setCalendarOpen(!calendarOpen)} />
 				</S.PlaylistContainer>
 				<S.AppliedSongCount>
-					{`신청된 음악 : ${songlist === undefined ? 0 : songlist.length} 개 `}
+					{`신청된 음악 : ${
+						data.data.data === undefined ? 0 : data.data.data.length
+					} 개 `}
 				</S.AppliedSongCount>
 				{calendarOpen && <CalendarModal visible={calendarOpen} />}
 				<S.SongContainer>

@@ -3,11 +3,13 @@ import { useRole } from 'Hooks/useRole';
 import React from 'react';
 import * as S from './Style';
 import * as I from 'Assets/Svg/index';
+import { mutate } from 'swr';
 
 interface ModifyListProps {
 	modifyList: any;
 	role: string | null;
 	modifyMessage: any;
+	stuNum: string;
 }
 
 const returnPenaltyValue = (penaltyType: string) => {
@@ -75,7 +77,7 @@ const returnPenaltyValue = (penaltyType: string) => {
 
 const ModifyList: React.FC<ModifyListProps> = ({
 	modifyList,
-
+	stuNum,
 	modifyMessage,
 }) => {
 	const role = useRole();
@@ -88,7 +90,6 @@ const ModifyList: React.FC<ModifyListProps> = ({
 			const onDelete = async () => {
 				if (window.confirm('정말 삭제하시겠어요?')) {
 					await deletePenalty(item.id);
-					window.location.reload();
 				}
 			};
 			return (
@@ -108,8 +109,7 @@ const ModifyList: React.FC<ModifyListProps> = ({
 				<S.Category>
 					{modifyMessage === '규정위반 내역이 없습니다.' ? (
 						<S.CategoryException>
-							<I.TextLogo />
-							이 학생은 규정위반 내역이 없습니다
+							<I.TextLogo />이 학생은 규정위반 내역이 없습니다
 						</S.CategoryException>
 					) : (
 						ModifyPenaltyList

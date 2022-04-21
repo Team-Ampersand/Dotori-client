@@ -76,10 +76,7 @@ export const Meal = styled.div`
 		font-size: 20px;
 	}
 	span {
-		margin-bottom: 1vh;
 		font-size: 40px;
-		display: flex;
-		justify-content: center;
 		font-weight: bold;
 	}
 `;

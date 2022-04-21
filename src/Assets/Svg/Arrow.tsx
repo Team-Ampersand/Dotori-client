@@ -2,7 +2,7 @@ import * as React from 'react';
 
 function Arrow(props: React.SVGProps<SVGSVGElement>) {
 	return (
-		<svg viewBox="0 0 80 80" width="7vw" height="7vw" fill="none" {...props}>
+		<svg viewBox="0 0 80 80" width="4vw" height="4vw" fill="none" {...props}>
 			<path
 				transform="rotate(-90 0 40)"
 				fill="url(#prefix__pattern88)"

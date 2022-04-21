@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Postioner = styled.div`
 	width: 100%;
-	height: 530px;
+	height: 540px;
 	display: flex;
 	flex-direction: column;
 	background-color: #ffffff;
@@ -16,7 +16,6 @@ export const Postioner = styled.div`
 `;
 
 export const TextContainer = styled.div`
-	height: 60%;
 	p {
 		margin-left: 6.5%;
 		margin-top: 2%;
@@ -30,19 +29,18 @@ export const TextContainer = styled.div`
 
 export const InputWrapper = styled.div`
 	width: 100%;
-	height: 200px;
 	margin-left: 6.5%;
-	margin-top: 42px;
 
 	p {
 		font-weight: bold;
 		font-size: 16px;
 		line-height: 24px;
-		margin-bottom: 1vh;
+		margin-bottom: 1%;
+		margin-top: 5%;
 	}
 	input {
 		width: 75%;
-		height: 40.05px;
+		height: 35%;
 		font-size: 15px;
 		padding-left: 10px;
 		border: 2px solid #9ecff2;

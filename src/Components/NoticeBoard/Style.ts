@@ -17,6 +17,7 @@ export const Container = styled.div`
 	flex-direction: column;
 	align-items: center;
 	position: relative;
+	box-shadow: 0 0 13px rgba(0, 0, 0, 0.12);
 `;
 
 export const ExceptionWrapper = styled(Container)`

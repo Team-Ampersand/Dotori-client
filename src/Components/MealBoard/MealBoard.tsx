@@ -82,7 +82,7 @@ const MealBoard: React.FC = () => {
 
 	const returnMealDate = () => {
 		let hours = new Date().getHours();
-		if (hours > 19) {
+		if (hours >= 19) {
 			currentDate.setDate(currentDate.getDate() + 1);
 			return { datestr: getDateStr(currentDate), day: currentDate.getDay() };
 		} else {

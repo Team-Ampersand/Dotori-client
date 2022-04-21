@@ -72,9 +72,7 @@ const Sidebar: React.FC = () => {
 					navigate('/home');
 				}}
 			>
-				{/* <S.Logo> */}
 				<Logo />
-				{/* </S.Logo> */}
 			</S.LogoWrapper>
 			{mappingSidebarMenu}
 		</S.Postioner>

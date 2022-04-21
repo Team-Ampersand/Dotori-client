@@ -60,7 +60,7 @@ export const BtnWrapper = styled.div`
 `;
 
 export const GiveBtn = styled.button`
-	width: 44vh;
+	width: 48vh;
 	height: 50px;
 	border-radius: 10px;
 	border: none;
