@@ -47,7 +47,7 @@ const returnMealdata = async (
 
 const returnMealcode = () => {
 	let hours = new Date().getHours();
-	if (hours > 19) {
+	if (hours >= 19) {
 		return 0;
 	} else if (hours < 8 && hours >= 0) {
 		return 0;
