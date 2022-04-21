@@ -6,7 +6,7 @@ type StyleProps = {
 
 export const Postioner = styled.div`
 	width: 100%;
-	height: 900px;
+	height: 100%;
 	display: flex;
 `;
 
@@ -23,17 +23,15 @@ export const TodaySongWrapper = styled.div`
 export const PlaylistContainer = styled.div`
 	width: 100%;
 	height: 10%;
-	display: flex;
 	position: sticky;
-	top: 0;
 	border-radius: 20px 20px 0px 0px;
 	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
 	background-color: #fff;
-	justify-content: space-between;
+	display: flex;
 	align-items: center;
-
+	justify-content: center;
+	padding: 20px;
 	h3 {
-		margin-left: 28vh;
 		font-size: 26px;
 		font-weight: 800;
 		color: #424242;
@@ -41,13 +39,15 @@ export const PlaylistContainer = styled.div`
 	}
 	svg {
 		cursor: pointer;
-		margin-right: 4vh;
+		position: absolute;
+		right: 3%;
+		top: 40%;
 	}
 `;
 
 export const SongContainer = styled.div`
 	padding-top: 20px;
-	height: 90%;
+	height: 890px;
 	overflow-y: scroll;
 `;
 

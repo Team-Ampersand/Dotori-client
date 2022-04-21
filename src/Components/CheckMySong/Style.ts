@@ -2,12 +2,11 @@ import styled from 'styled-components';
 
 export const Positioner = styled.div`
 	width: 100%;
-	height: 300px;
+	height: 340px;
 	display: grid;
-	margin-top: 68px;
 	background-color: #ffffff;
 	border-radius: 20px;
-
+	margin-top: 8%;
 	label {
 		font-weight: 700;
 		font-size: 15px;
