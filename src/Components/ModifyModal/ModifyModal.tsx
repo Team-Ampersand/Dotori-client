@@ -28,7 +28,7 @@ const ModifyModal: React.FC<ModalProps> = ({
 			res && setModifyList(res.data.data);
 			res && setModifyMessage(res.data.message);
 		});
-	}, []);
+	}, [modifyList]);
 
 	useEffect(() => {
 		window.history.pushState({ page: 'modal' }, document.title);
@@ -52,6 +52,7 @@ const ModifyModal: React.FC<ModalProps> = ({
 						}
 						role={role}
 						modifyMessage={modifyMessage}
+						stuNum={stuNum}
 					/>
 					<S.BtnWrapper>
 						<S.CompleteBtn onClick={onCancle}>확인</S.CompleteBtn>

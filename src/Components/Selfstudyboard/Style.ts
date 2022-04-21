@@ -53,7 +53,7 @@ export const StudyContent = styled.div`
 		font-size: 18px;
 	}
 	span {
-		font-size: 5em;
+		font-size: 55px;
 		font-weight: bold;
 	}
 	p {
@@ -87,8 +87,7 @@ export const StudyButton = styled.button<StyleProps>`
 		if (
 			props.Clicked === 'CAN' &&
 			props.count < 50 &&
-			new Date().getHours() >= 20 &&
-			new Date().getHours() < 21 &&
+			new Date().getHours() === 20 &&
 			['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1
 		) {
 			return '#9ECFF2';
@@ -99,8 +98,7 @@ export const StudyButton = styled.button<StyleProps>`
 		} else if (
 			props.Clicked === 'CANT' ||
 			props.count === 50 ||
-			new Date().getHours() < 20 ||
-			new Date().getHours() >= 21 ||
+			new Date().getHours() !== 20 ||
 			['금', '토', '일'].indexOf(ManufactureDate('W')) !== -1
 		) {
 			return '#CACACA';
@@ -126,8 +124,7 @@ export const StudyButton = styled.button<StyleProps>`
 			if (
 				props.Clicked === 'CAN' &&
 				props.count < 50 &&
-				new Date().getHours() >= 20 &&
-				new Date().getHours() < 21 &&
+				new Date().getHours() === 20 &&
 				['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1
 			) {
 				return '#fff';
@@ -139,8 +136,7 @@ export const StudyButton = styled.button<StyleProps>`
 			if (
 				props.Clicked === 'CAN' &&
 				props.count < 50 &&
-				new Date().getHours() >= 20 &&
-				new Date().getHours() < 21 &&
+				new Date().getHours() === 20 &&
 				['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1
 			) {
 				return '#9ECFF2';
@@ -153,8 +149,7 @@ export const StudyButton = styled.button<StyleProps>`
 				if (
 					props.Clicked === 'CAN' &&
 					props.count < 50 &&
-					new Date().getHours() >= 20 &&
-					new Date().getHours() < 21 &&
+					new Date().getHours() === 20 &&
 					['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1
 				) {
 					return '#9ECFF2';

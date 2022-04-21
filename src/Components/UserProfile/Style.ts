@@ -192,9 +192,11 @@ export const PenaltyBtn = styled.button`
 	color: white;
 	border-radius: 10px;
 	margin-top: 30px;
+	font-weight: bold;
+
 	&:hover {
 		background: #ffffff;
 		color: #9ecff2;
-		border: 1px solid #9ecff2;
+		border: 2px solid #9ecff2;
 	}
 `;

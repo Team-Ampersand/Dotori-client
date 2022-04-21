@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 export const Postioner = styled.div`
 	width: 100%;
-	height: 100%;
+	height: 80%;
 	background-color: #fff;
 	border-radius: 20px;
 	margin-top: 2rem;
-	max-height: 794px;
+	box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.12);
 `;
 
 export const TableHeader = styled.div`

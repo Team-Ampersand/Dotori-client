@@ -65,8 +65,7 @@ const MassageBoard: React.FC = () => {
 			info.status === 'CAN' &&
 			parseInt(info.count) < 5 &&
 			can.indexOf(today) !== -1 &&
-			hours >= 20 &&
-			hours < 21 &&
+			hours === 20 &&
 			minutes >= 20
 		) {
 			return (
@@ -78,6 +77,18 @@ const MassageBoard: React.FC = () => {
 					count={parseInt(info.count)}
 				>
 					신청
+				</S.MassageButton>
+			);
+		} else if (info.status === 'APPLIED' && hours === 20 && minutes >= 20) {
+			return (
+				<S.MassageButton
+					onClick={() => {
+						toast.info('신청시간이 넘어 취소 하실 수 없어요');
+					}}
+					status={info.status}
+					count={parseInt(info.count)}
+				>
+					신청취소
 				</S.MassageButton>
 			);
 		} else if (info.status === 'APPLIED') {
@@ -94,24 +105,7 @@ const MassageBoard: React.FC = () => {
 					신청취소
 				</S.MassageButton>
 			);
-		} else if (info.status === 'IMPOSSIBLE') {
-			return (
-				<S.MassageButton
-					onClick={() =>
-						toast.info('안마의자 신청은 신청일로 부터 한달 뒤 신청 가능해요')
-					}
-					status={info.status}
-					count={parseInt(info.count)}
-				>
-					신청
-				</S.MassageButton>
-			);
-		} else if (
-			cant.indexOf(today) !== -1 ||
-			hours < 20 ||
-			hours >= 21 ||
-			minutes < 20
-		) {
+		} else if (cant.indexOf(today) !== -1 || hours !== 20 || minutes < 20) {
 			return (
 				<S.MassageButton
 					onClick={() => toast.info('안마의자 신청이 가능한 시간이 아니에요')}
@@ -142,13 +136,15 @@ const MassageBoard: React.FC = () => {
 				</S.MassageButton>
 			);
 		} else {
-			<S.MassageButton
-				onClick={() => toast.info('안마의자 신청이 불가능해요')}
-				status={info.status}
-				count={parseInt(info.count)}
-			>
-				신청
-			</S.MassageButton>;
+			return (
+				<S.MassageButton
+					onClick={() => toast.info('안마의자 신청이 불가능해요')}
+					status={info.status}
+					count={parseInt(info.count)}
+				>
+					신청
+				</S.MassageButton>
+			);
 		}
 	};
 
