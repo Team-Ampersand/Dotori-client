@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Positioner = styled.div`
 	width: 100%;
-	height: 300px;
+	height: 330px;
 	display: grid;
 	margin-top: 68px;
 	background-color: #ffffff;

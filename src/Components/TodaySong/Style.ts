@@ -6,7 +6,7 @@ type StyleProps = {
 
 export const Postioner = styled.div`
 	width: 100%;
-	height: 900px;
+	height: 930px;
 	display: flex;
 `;
 
