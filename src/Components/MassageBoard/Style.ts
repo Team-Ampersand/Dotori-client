@@ -65,7 +65,7 @@ export const MassageContent = styled.div`
 		font-size: 18px;
 	}
 	span {
-		font-size: 5em;
+		font-size: 55px;
 		font-weight: bold;
 	}
 	p {
@@ -99,8 +99,7 @@ export const MassageButton = styled.button<StyleProps>`
 		if (
 			props.status === 'CAN' &&
 			props.count < 5 &&
-			new Date().getHours() >= 20 &&
-			new Date().getHours() < 21 &&
+			new Date().getHours() === 20 &&
 			['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1 &&
 			new Date().getMinutes() >= 20
 		) {
@@ -112,8 +111,7 @@ export const MassageButton = styled.button<StyleProps>`
 		} else if (
 			props.status === 'CANT' ||
 			props.count === 5 ||
-			new Date().getHours() < 20 ||
-			new Date().getHours() >= 21 ||
+			new Date().getHours() !== 20 ||
 			['금', '토', '일'].indexOf(ManufactureDate('W')) !== -1 ||
 			new Date().getMinutes() < 20
 		) {
@@ -142,23 +140,21 @@ export const MassageButton = styled.button<StyleProps>`
 		background-color: ${(props) => {
 			if (
 				props.status === 'CAN' &&
-				props.count < 50 &&
-				new Date().getHours() >= 20 &&
-				new Date().getHours() < 21 &&
-				new Date().getMinutes() < 20 &&
+				props.count < 5 &&
+				new Date().getHours() === 20 &&
+				new Date().getMinutes() <= 20 &&
 				['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1
 			) {
 				return '#fff';
 			} else {
-				return '#CACACA';
+				return '#cacaca';
 			}
 		}};
 		color: ${(props) => {
 			if (
 				props.status === 'CAN' &&
 				props.count < 5 &&
-				new Date().getHours() >= 20 &&
-				new Date().getHours() < 21 &&
+				new Date().getHours() === 20 &&
 				['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1 &&
 				new Date().getMinutes() >= 20
 			) {
@@ -172,8 +168,7 @@ export const MassageButton = styled.button<StyleProps>`
 				if (
 					props.status === 'CAN' &&
 					props.count < 5 &&
-					new Date().getHours() >= 20 &&
-					new Date().getHours() < 21 &&
+					new Date().getHours() === 20 &&
 					['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1 &&
 					new Date().getMinutes() >= 20
 				) {
