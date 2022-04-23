@@ -317,7 +317,7 @@ const GiveModal: React.FC<ModalProps> = ({
 						{penaltySelect.length === 0 ? (
 							<S.ExceptionContainer>
 								<I.TextLogo />
-								TIP! 태그를 선택하시면 삭제하실 수 있어요.
+								TIP! 태그를 클릭하시면 삭제하실 수 있어요
 							</S.ExceptionContainer>
 						) : (
 							<S.TagContainer>

@@ -49,8 +49,12 @@ export const DateWrapper = styled.div`
 `;
 
 export const Date = styled.input`
-	width: 50%;
+	width: 100%;
 	height: 40px;
+	font-size: 30px;
+	border-radius: 10px;
+	padding: 10px;
+	border: 1px solid #c4c4c4;
 `;
 
 export const BtnWrapper = styled.div`
@@ -91,6 +95,7 @@ export const SelectWrapper = styled.div`
 
 export const SelectBox = styled.ul`
 	width: 100%;
+	height: auto;
 	border: 1px solid #c4c4c4;
 	border-radius: 15px 0 0 15px;
 	list-style: none;
@@ -106,6 +111,10 @@ export const SelectBox = styled.ul`
 		background: #f1f1f1;
 	}
 	li {
+		display: block;
+		overflow: hidden;
+    text-overflow: ellipsis;
+		white-space: nowrap;
 		width: 100%;
 		height: 30px;
 		line-height: 30px;
