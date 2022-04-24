@@ -56,7 +56,7 @@ const PenaltyBreakDown: React.FC<PenaltyBreakDownProps> = ({
 						return '사용 - 담배';
 					case 'USE_MEANDERING_APPARATUS':
 						return '사용 - 사행성기구';
-					case 'EAT_FOOT':
+					case 'EAT_FOOD':
 						return '사용 - 음식';
 					case 'MANAGER_GUIDANCE':
 						return '사감의 학습 및 생활지도 불이행';
@@ -152,7 +152,7 @@ const PenaltyBreakDown: React.FC<PenaltyBreakDownProps> = ({
 								item[0] === 'DRINKING_ALCOHOL' ||
 								item[0] === 'USE_TOBACCO' ||
 								item[0] === 'USE_MEANDERING_APPARATUS' ||
-								item[0] === 'EAT_FOOT' ? (
+								item[0] === 'EAT_FOOD' ? (
 									<S.SmallCategories>
 										<S.NameWrapper>{returnPenaltyValue(item[0])}</S.NameWrapper>
 										<S.CntWrapper>{item[1].cnt}회</S.CntWrapper>

@@ -36,7 +36,7 @@ const returnPenaltyValue = (penaltyType: string) => {
 			return '사용 - 담배';
 		case 'USE_MEANDERING_APPARATUS':
 			return '사용 - 사행성기구';
-		case 'EAT_FOOT':
+		case 'EAT_FOOD':
 			return '사용 - 음식';		
 		case 'MANAGER_GUIDANCE':
 			return '사감의 학습 및 생활지도 불이행';
