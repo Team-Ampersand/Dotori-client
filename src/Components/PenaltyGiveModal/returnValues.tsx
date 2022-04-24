@@ -23,7 +23,7 @@ export const returnPenaltyValue = (penaltyType: string) => {
     case '사용 - 사행성기구':
       return 'USE_MEANDERING_APPARATUS';
     case '사용 - 음식':
-      return 'EAT_FOOT';	
+      return 'EAT_FOOD';	
     case '사감의 학습 및 생활지도 불이행':
       return 'MANAGER_GUIDANCE';
     case '지각':
@@ -97,7 +97,7 @@ export const returnPenaltyValueReverse = (penaltyType: string) => {
       return '사용 - 담배';
     case 'USE_MEANDERING_APPARATUS':
       return '사용 - 사행성기구';
-    case 'EAT_FOOT':
+    case 'EAT_FOOD':
       return '사용 - 음식';	
     case 'MANAGER_GUIDANCE':
       return '사감의 학습 및 생활지도 불이행';
