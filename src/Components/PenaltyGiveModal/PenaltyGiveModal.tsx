@@ -20,6 +20,7 @@ interface ModalProps {
 
 const FieldList = [
 	'금지 물품 반입',
+	'금지 물품 사용',
 	'사감 지도 불이행',
 	'시간 관 소홀 및 이탈 행위',
 	'물품 훼손 및 절도',
@@ -32,7 +33,8 @@ const FieldList = [
 ];
 
 const PenaltyList = {
-	Ban: ['화기류', '흉기', '주류', '담배', '사행성기구', '음식'],
+	TakeBan: ['반입 - 화기류', '반입 - 흉기', '반입 - 주류', '반입 - 담배', '반입 - 사행성기구', '반입 - 음식'],
+	UseBan: ['사용 - 화기류', '사용 - 흉기', '사용 - 주류', '사용 - 담배', '사용 - 사행성기구', '사용 - 음식'],
 	Unfulfill: ['사감의 학습 및 생활지도 불이행'],
 	Time: ['지각', '외출', '외박'],
 	Damage: ['물품훼손', '절도', '갈취'],
@@ -90,7 +92,24 @@ const GiveModal: React.FC<ModalProps> = ({
 	const mappingPenaltyList = (currentField: string) => {
 		switch (currentField) {
 			case '금지 물품 반입':
-				return PenaltyList.Ban.map((penalty, idx) => (
+				return PenaltyList.TakeBan.map((penalty, idx) => (
+					<li
+						key={idx}
+						onClick={() => {
+							handleSelect(
+								penaltySelect,
+								setPenaltySelect,
+								returnPenaltyValue(penalty)
+							);
+							setCurrentPenalty(penalty);
+						}}
+						className={returnSelect(penaltySelect, penalty, currentPenalty)}
+					>
+						{penalty}
+					</li>
+				));
+			case '금지 물품 사용':
+				return PenaltyList.UseBan.map((penalty, idx) => (
 					<li
 						key={idx}
 						onClick={() => {
@@ -317,7 +336,7 @@ const GiveModal: React.FC<ModalProps> = ({
 						{penaltySelect.length === 0 ? (
 							<S.ExceptionContainer>
 								<I.TextLogo />
-								TIP! 태그를 선택하시면 삭제하실 수 있어요.
+								TIP! 태그를 클릭하시면 삭제하실 수 있어요
 							</S.ExceptionContainer>
 						) : (
 							<S.TagContainer>

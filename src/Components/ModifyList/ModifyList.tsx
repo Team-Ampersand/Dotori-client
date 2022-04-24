@@ -15,17 +15,29 @@ interface ModifyListProps {
 const returnPenaltyValue = (penaltyType: string) => {
 	switch (penaltyType) {
 		case 'FIREARMS':
-			return '화기류';
+			return '반입 - 화기류';
 		case 'WEAPON':
-			return '흉기';
+			return '반입 - 흉기';
 		case 'ALCOHOL':
-			return '주류';
+			return '반입 - 주류';
 		case 'TOBACCO':
-			return '담배';
+			return '반입 - 담배';
 		case 'MEANDERING_APPARATUS':
-			return '사행성기구';
+			return '반입 - 사행성기구';
 		case 'FOOD':
-			return '음식';
+			return '반입 - 음식';
+		case 'USE_FIREARMS':
+			return '사용 - 화기류';
+		case 'USE_WEAPON':
+			return '사용 - 흉기';
+		case 'DRINKING_ALCOHOL':
+			return '사용 - 주류';
+		case 'USE_TOBACCO':
+			return '사용 - 담배';
+		case 'USE_MEANDERING_APPARATUS':
+			return '사용 - 사행성기구';
+		case 'EAT_FOOT':
+			return '사용 - 음식';		
 		case 'MANAGER_GUIDANCE':
 			return '사감의 학습 및 생활지도 불이행';
 		case 'TIME':
