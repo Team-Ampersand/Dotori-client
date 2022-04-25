@@ -132,6 +132,9 @@ export const SelfstudyController = {
 	studyRank: (role: string) => {
 		return `/${role}/selfstudy/rank`;
 	},
+	studySearch: (role: string, stuName: string) => {
+		return `/${role}/selfstudy?memberName=${stuName}`;
+	},
 };
 
 //기상송 신청

@@ -73,3 +73,16 @@ export const studyRank = async (role: string) => {
 		return { data };
 	} catch (e) {}
 };
+
+export const studySearch = async (role: string, stuName: string) => {
+	try {
+		const { data } = await apiClient.get(
+			SelfstudyController.studySearch(role, stuName)
+		);
+		return { data };
+	} catch (e: any) {
+		if (e.message === 'Request failed with status code 404') {
+			toast.warning('해당 학생을 찾을 수 없어요');
+		}
+	}
+};
