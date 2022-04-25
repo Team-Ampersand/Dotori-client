@@ -33,22 +33,12 @@ const SelfstudyTable: React.FC = () => {
 					});
 				}
 			} else toast.warning('학년을 선택해주세요');
-		} else {
-			studyRank(role).then((res) => {
-				res && setUserList(res.data.data);
-				setClassLookuped(false);
-			});
-		}
+		} else toast.warning('학년 반을 선택해주세요');
 	};
 
 	const onSearch = async () => {
-		if (stuName === '') {
-			toast.warning('이름을 입력해주세요');
-			return;
-		}
 		studySearch(role, stuName).then((res) => {
 			setUserList(res?.data.data);
-			setClassLookuped(true);
 		});
 	};
 	return (
