@@ -3,10 +3,8 @@ import styled from 'styled-components';
 export const Postioner = styled.div`
 	width: 100%;
 	height: 100%;
-	background-color: #fff;
-	border-radius: 20px;
-	margin-top: 2rem;
-	max-height: 794px;
+	display: flex;
+	flex-direction: column;
 `;
 
 export const TableHeader = styled.div`
@@ -24,7 +22,11 @@ export const TableHeader = styled.div`
 
 export const Content = styled.div`
 	width: 100%;
-	height: 100%;
+	height: 80%;
+	background-color: #fff;
+	border-radius: 20px;
+	margin-top: 2rem;
+	box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.12);
 	display: grid;
 	grid-template-columns: repeat(6, 1fr);
 	grid-column-gap: 1rem;
@@ -57,6 +59,10 @@ export const Content = styled.div`
 export const ExceptionWrapper = styled.div`
 	width: 100%;
 	height: 100%;
+	background-color: #fff;
+	border-radius: 20px;
+	margin-top: 2rem;
+	box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.12);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -65,4 +71,48 @@ export const ExceptionWrapper = styled.div`
 	span {
 		font-size: 23px;
 	}
+`;
+
+export const SearchBox = styled.div`
+	display: flex;
+	background-color: #fff;
+	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+	width: 300px;
+	height: 70px;
+	border-radius: 10px;
+	justify-content: space-around;
+	align-items: center;
+	border: none;
+	margin-left: 50px;
+	margin-top: 19px;
+`;
+
+export const Search = styled.input`
+	display: flex;
+	width: 50%;
+	height: 90%;
+	border: none;
+	border-radius: 20px;
+	font-size: 18px;
+`;
+
+export const SearchBtn = styled.button`
+	width: 90px;
+	height: 40px;
+	border-radius: 3px;
+	border: none;
+	color: #fff;
+	font-size: 18px;
+	font-weight: bold;
+	outline: none;
+	background-color: #9ecff2;
+	&:hover {
+		background-color: #fff;
+		color: #9ecff2;
+		border: 2px solid #9ecff2;
+	}
+`;
+
+export const SearchContainer = styled.div`
+	display: flex;
 `;

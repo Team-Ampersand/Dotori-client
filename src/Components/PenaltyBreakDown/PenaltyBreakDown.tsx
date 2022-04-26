@@ -17,7 +17,8 @@ const PenaltyBreakDown: React.FC<PenaltyBreakDownProps> = ({
 	};
 
 	const [all, setAll] = useState(true);
-	const [ban, setBan] = useState(false);
+	const [takeban, setTakeBan] = useState(false);
+	const [useban, setUseBan] = useState(false);
 	const [unfulfill, setUnfulfill] = useState(false);
 	const [time, setTime] = useState(false);
 	const [damage, setDamage] = useState(false);
@@ -34,17 +35,29 @@ const PenaltyBreakDown: React.FC<PenaltyBreakDownProps> = ({
 			const returnPenaltyValue = (penaltyType: string) => {
 				switch (penaltyType) {
 					case 'FIREARMS':
-						return '화기류';
+						return '반입 - 화기류';
 					case 'WEAPON':
-						return '흉기';
+						return '반입 - 흉기';
 					case 'ALCOHOL':
-						return '주류';
+						return '반입 - 주류';
 					case 'TOBACCO':
-						return '담배';
+						return '반입 - 담배';
 					case 'MEANDERING_APPARATUS':
-						return '사행성기구';
+						return '반입 - 사행성기구';
 					case 'FOOD':
-						return '음식';
+						return '반입 - 음식';
+					case 'USE_FIREARMS':
+						return '사용 - 화기류';
+					case 'USE_WEAPON':
+						return '사용 - 흉기';
+					case 'DRINKING_ALCOHOL':
+						return '사용 - 주류';
+					case 'USE_TOBACCO':
+						return '사용 - 담배';
+					case 'USE_MEANDERING_APPARATUS':
+						return '사용 - 사행성기구';
+					case 'EAT_FOOD':
+						return '사용 - 음식';
 					case 'MANAGER_GUIDANCE':
 						return '사감의 학습 및 생활지도 불이행';
 					case 'TIME':
@@ -114,7 +127,7 @@ const PenaltyBreakDown: React.FC<PenaltyBreakDownProps> = ({
 									</S.SmallCategories>
 								) : null
 							) : null}
-							{ban ? (
+							{takeban ? (
 								item[0] === 'FIREARMS' ||
 								item[0] === 'WEAPON' ||
 								item[0] === 'ALCOHOL' ||
@@ -133,6 +146,25 @@ const PenaltyBreakDown: React.FC<PenaltyBreakDownProps> = ({
 									</S.SmallCategories>
 								) : null
 							) : null}
+							{useban ? (
+								item[0] === 'USE_FIREARMS' ||
+								item[0] === 'USE_WEAPON' ||
+								item[0] === 'DRINKING_ALCOHOL' ||
+								item[0] === 'USE_TOBACCO' ||
+								item[0] === 'USE_MEANDERING_APPARATUS' ||
+								item[0] === 'EAT_FOOD' ? (
+									<S.SmallCategories>
+										<S.NameWrapper>{returnPenaltyValue(item[0])}</S.NameWrapper>
+										<S.CntWrapper>{item[1].cnt}회</S.CntWrapper>
+										<S.DateWrapper
+											onClick={handleMoreBtn}
+											className={closed ? '' : 'close'}
+										>
+											{item[1].date.sort().join('\n')}
+										</S.DateWrapper>
+									</S.SmallCategories>
+								) : null
+							) : null}							
 							{unfulfill ? (
 								item[0] === 'MANAGER_GUIDANCE' ? (
 									<S.SmallCategories>
@@ -283,7 +315,8 @@ const PenaltyBreakDown: React.FC<PenaltyBreakDownProps> = ({
 								isPenalty={all === true}
 								onClick={() => {
 									setAll(true);
-									setBan(false);
+									setTakeBan(false);
+									setUseBan(false);
 									setUnfulfill(false);
 									setTime(false);
 									setDamage(false);
@@ -300,10 +333,11 @@ const PenaltyBreakDown: React.FC<PenaltyBreakDownProps> = ({
 						</S.LargeCategories>
 						<S.LargeCategories>
 							<S.TextWrapper
-								isPenalty={ban === true}
+								isPenalty={takeban === true}
 								onClick={() => {
-									setBan(true);
+									setTakeBan(true);
 									setAll(false);
+									setUseBan(false);
 									setUnfulfill(false);
 									setTime(false);
 									setDamage(false);
@@ -320,11 +354,33 @@ const PenaltyBreakDown: React.FC<PenaltyBreakDownProps> = ({
 						</S.LargeCategories>
 						<S.LargeCategories>
 							<S.TextWrapper
+								isPenalty={useban === true}
+								onClick={() => {
+									setUseBan(true);
+									setAll(false);
+									setTakeBan(false);
+									setUnfulfill(false);
+									setTime(false);
+									setDamage(false);
+									setSleep(false);
+									setHygiene(false);
+									setAffection(false);
+									setEntry(false);
+									setLearn(false);
+									setOutside(false);
+								}}
+							>
+								금지 물품 사용
+							</S.TextWrapper>
+						</S.LargeCategories>
+						<S.LargeCategories>
+							<S.TextWrapper
 								isPenalty={unfulfill === true}
 								onClick={() => {
 									setUnfulfill(true);
 									setAll(false);
-									setBan(false);
+									setTakeBan(false);
+									setUseBan(false);
 									setTime(false);
 									setDamage(false);
 									setSleep(false);
@@ -344,7 +400,8 @@ const PenaltyBreakDown: React.FC<PenaltyBreakDownProps> = ({
 								onClick={() => {
 									setTime(true);
 									setAll(false);
-									setBan(false);
+									setTakeBan(false);
+									setUseBan(false);
 									setUnfulfill(false);
 									setDamage(false);
 									setSleep(false);
@@ -364,7 +421,8 @@ const PenaltyBreakDown: React.FC<PenaltyBreakDownProps> = ({
 								onClick={() => {
 									setDamage(true);
 									setAll(false);
-									setBan(false);
+									setTakeBan(false);
+									setUseBan(false);
 									setUnfulfill(false);
 									setTime(false);
 									setSleep(false);
@@ -384,7 +442,8 @@ const PenaltyBreakDown: React.FC<PenaltyBreakDownProps> = ({
 								onClick={() => {
 									setSleep(true);
 									setAll(false);
-									setBan(false);
+									setTakeBan(false);
+									setUseBan(false);
 									setUnfulfill(false);
 									setTime(false);
 									setDamage(false);
@@ -404,7 +463,8 @@ const PenaltyBreakDown: React.FC<PenaltyBreakDownProps> = ({
 								onClick={() => {
 									setHygiene(true);
 									setAll(false);
-									setBan(false);
+									setTakeBan(false);
+									setUseBan(false);
 									setUnfulfill(false);
 									setTime(false);
 									setDamage(false);
@@ -424,7 +484,8 @@ const PenaltyBreakDown: React.FC<PenaltyBreakDownProps> = ({
 								onClick={() => {
 									setAffection(true);
 									setAll(false);
-									setBan(false);
+									setTakeBan(false);
+									setUseBan(false);
 									setUnfulfill(false);
 									setTime(false);
 									setDamage(false);
@@ -444,7 +505,8 @@ const PenaltyBreakDown: React.FC<PenaltyBreakDownProps> = ({
 								onClick={() => {
 									setEntry(true);
 									setAll(false);
-									setBan(false);
+									setTakeBan(false);
+									setUseBan(false);
 									setUnfulfill(false);
 									setTime(false);
 									setDamage(false);
@@ -464,7 +526,8 @@ const PenaltyBreakDown: React.FC<PenaltyBreakDownProps> = ({
 								onClick={() => {
 									setLearn(true);
 									setAll(false);
-									setBan(false);
+									setTakeBan(false);
+									setUseBan(false);
 									setUnfulfill(false);
 									setTime(false);
 									setDamage(false);
@@ -484,7 +547,8 @@ const PenaltyBreakDown: React.FC<PenaltyBreakDownProps> = ({
 								onClick={() => {
 									setOutside(true);
 									setAll(false);
-									setBan(false);
+									setTakeBan(false);
+									setUseBan(false);
 									setUnfulfill(false);
 									setTime(false);
 									setDamage(false);

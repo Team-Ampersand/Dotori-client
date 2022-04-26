@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import * as S from './Style';
 import { studyRank } from 'Api/selfStudy';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { classLookuped, list } from 'Atoms';
 import { useRole } from 'Hooks/useRole';
 import {
@@ -103,12 +103,15 @@ const ReturnUserObj = async (role: string) => {
 const List: React.FC = () => {
 	const [userlist, setUserList] = useRecoilState(list);
 	const role = useRole();
-	const ClassLookuped = useRecoilValue(classLookuped);
+	const [ClassLookuped, setClassLookuped] = useRecoilState(classLookuped);
 
 	useEffect(() => {
 		ReturnUserObj(role).then((res) => {
 			setUserList(res?.data.data);
 		});
+		return () => {
+			setClassLookuped(false);
+		};
 	}, []);
 
 	return (

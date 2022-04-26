@@ -20,7 +20,7 @@ const returnMealdata = async (
 	try {
 		const result = !!data.mealServiceDietInfo[1].row[mealCode]
 			? data.mealServiceDietInfo[1].row[mealCode].DDISH_NM.toString()
-					.replace(/[*<br/>0-9a-z.]/g, '0')
+					.replace(/[*<br/>0-9a-z.() ]/g, '0')
 					.split('0')
 					.filter((value) => {
 						return value !== '';
@@ -47,7 +47,7 @@ const returnMealdata = async (
 
 const returnMealcode = () => {
 	let hours = new Date().getHours();
-	if (hours > 19) {
+	if (hours >= 19) {
 		return 0;
 	} else if (hours < 8 && hours >= 0) {
 		return 0;
@@ -82,7 +82,7 @@ const MealBoard: React.FC = () => {
 
 	const returnMealDate = () => {
 		let hours = new Date().getHours();
-		if (hours > 19) {
+		if (hours >= 19) {
 			currentDate.setDate(currentDate.getDate() + 1);
 			return { datestr: getDateStr(currentDate), day: currentDate.getDay() };
 		} else {

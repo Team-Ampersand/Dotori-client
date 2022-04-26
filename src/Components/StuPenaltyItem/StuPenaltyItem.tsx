@@ -29,6 +29,8 @@ const StuPenaltyItem: React.FC<StuPenaltyItemProps> = ({
 		switch (penaltyIconType) {
 			case '금지 물품 반입':
 				return <I.Ban />;
+			case '금지 물품 사용':
+				return <I.Ban />;
 			case '사감 지도 불이행':
 				return <I.Unfulfill />;
 			case '시간 관 소홀 및 이탈 행위':
