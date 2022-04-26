@@ -7,7 +7,7 @@ import { SongRequest, TodaySong, Sidebar } from '../../Components';
 import * as S from './Style';
 
 const SongPage = () => {
-	const [songlist, setSongList] = useRecoilState(setList);
+	const [songlist] = useRecoilState(setList);
 	return (
 		<S.Positioner>
 			<Sidebar />
