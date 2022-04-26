@@ -2,56 +2,55 @@ import styled from 'styled-components';
 
 export const Postioner = styled.div`
 	width: 100%;
-	height: 540px;
-	display: flex;
-	flex-direction: column;
+	height: 50%;
 	background-color: #ffffff;
 	border-radius: 20px;
+`;
+
+export const TextContainer = styled.div`
+	padding: 5%;
+	height: 60%;
 	label {
-		margin: 4.5% 6.5%;
 		font-weight: bold;
 		font-size: 26px;
 		color: #6d92c4;
 	}
-`;
 
-export const TextContainer = styled.div`
 	p {
-		margin-left: 6.5%;
+		line-height: 20px;
 		margin-top: 2%;
-	}
-
-	hr {
-		margin-top: 7%;
-		border: 1px solid #d8d8d8;
 	}
 `;
 
 export const InputWrapper = styled.div`
 	width: 100%;
-	margin-left: 6.5%;
+	height: 40%;
+	padding: 7.5% 0 5% 5%;
+	box-shadow: 0px -4px 12px rgba(0, 0, 0, 0.08);
+	border-radius: 0px 0px 20px 20px;
 
 	p {
 		font-weight: bold;
 		font-size: 16px;
-		line-height: 24px;
-		margin-bottom: 1%;
-		margin-top: 5%;
+		margin-bottom: 2%;
 	}
+
 	input {
-		width: 75%;
-		height: 35%;
+		width: 81%;
+		height: 32%;
 		font-size: 15px;
 		padding-left: 10px;
 		border: 2px solid #9ecff2;
 		box-sizing: border-box;
 		border-radius: 5px;
 	}
+
 	input:focus::-webkit-input-placeholder {
 		color: gray;
 		font-size: 15px;
 		padding: 2px;
 	}
+
 	button {
 		margin-left: 2%;
 		width: 91px;
