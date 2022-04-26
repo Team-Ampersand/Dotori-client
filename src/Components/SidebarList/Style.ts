@@ -9,8 +9,18 @@ export const MenuWrapper = styled.div<StyleProps>`
 	width: calc(100% - 43px);
 	display: flex;
 	flex-direction: column;
-	margin-left: 43px;
-	align-self: center;
 	justify-content: flex-start;
-	margin-top: 4rem;
+	align-items: center;
+	margin-left: 43px;
+	margin-top: 4vw;
+
+	@media (max-width: 1920px) {
+		margin-left: 50px;
+	}
+	@media (max-width: 1400px) {
+		margin-left: 40px;
+	}
+	@media (max-width: 700px) {
+		margin-left: 10px;
+	}
 `;
