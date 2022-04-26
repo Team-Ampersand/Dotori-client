@@ -68,11 +68,11 @@ const UserProfile: React.FC = () => {
 				<S.Content>
 					<S.UserWrapper>
 						{profile?.gender === 'PENDING' ? (
-							<Profile width={160} height={160} />
+							<Profile />
 						) : profile?.gender === 'MAN' ? (
-							<Male width={160} height={160} />
+							<Male />
 						) : (
-							<Female width={160} height={160} />
+							<Female />
 						)}
 						<div>
 							<span className="name">{profile?.memberName}</span>
