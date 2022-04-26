@@ -1,20 +1,12 @@
-import { dateMusic } from 'Api/music';
-import { setList, showPlaylistDate } from 'Atoms';
+import { showPlaylistDate } from 'Atoms';
 import SongItem from 'Components/SongItem/SongItem';
 import { useDecode } from 'Hooks/useDecode';
 import { useRole } from 'Hooks/useRole';
-import React, { useEffect, useState } from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import useSWR, { mutate } from 'swr';
-import { DateFormatter } from 'Utils/DateFormatter';
+import { useRecoilValue } from 'recoil';
+import useSWR from 'swr';
 import { apiClient } from 'Utils/Libs/apiClient';
 import { MusicController } from 'Utils/Libs/requestUrls';
 import * as S from './Style';
-
-type MySongObj = {
-	email: string;
-};
-
 interface MusicType {
 	data: {
 		data: [
@@ -28,7 +20,6 @@ interface MusicType {
 		];
 	};
 }
-
 interface MusicData {
 	createdDate: Date;
 	email: string;
