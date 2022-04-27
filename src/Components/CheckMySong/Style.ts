@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
 export const Positioner = styled.div`
-	margin-top: 10%;
 	width: 100%;
-	height: 36.6%;
+	height: 35%;
 	background-color: #ffffff;
 	border-radius: 20px;
 	padding: 4%;
