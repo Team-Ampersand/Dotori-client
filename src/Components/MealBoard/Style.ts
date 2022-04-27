@@ -38,7 +38,7 @@ export const DayWrapper = styled.div`
 	width: 70%;
 	display: flex;
 	justify-content: flex-end;
-	gap: 5px;
+	gap: 10px;
 
 	span {
 		cursor: pointer;
