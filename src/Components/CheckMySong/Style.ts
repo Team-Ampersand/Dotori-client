@@ -5,19 +5,20 @@ export const Positioner = styled.div`
 	height: 35%;
 	background-color: #ffffff;
 	border-radius: 20px;
-	padding: 4%;
 
 	label {
+		display: inline-block;
 		font-weight: 700;
 		font-size: 15px;
+		margin-top: 4%;
+		margin-left: 5%;
 	}
 `;
 
 export const SongContainer = styled.div`
 	width: 100%;
-	height: 100%;
+	height: 90%;
 	display: flex;
-	text-align: center;
 	justify-content: center;
 	align-items: center;
 
@@ -25,5 +26,6 @@ export const SongContainer = styled.div`
 		font-weight: 700;
 		font-size: 14px;
 		color: #8c8c8c;
+		text-align: center;
 	}
 `;
