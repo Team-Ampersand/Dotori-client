@@ -10,15 +10,38 @@ export const Postioner = styled.div`
 export const TextContainer = styled.div`
 	padding: 5%;
 	height: 60%;
+
+	@media screen and (max-width: 1400px){
+		height: 65%;
+	}
+	@media screen and (max-width: 700px){
+		height: 70%;
+	}
+
 	label {
 		font-weight: bold;
-		font-size: 26px;
+		font-size: 25px;
 		color: #6d92c4;
+
+		@media screen and (max-width: 1400px) {  
+			font-size: 20px;
+    	}
+		@media screen and (max-width: 700px) {  
+			font-size: 18px;
+    	}
 	}
 
 	p {
-		line-height: 20px;
+		line-height: 18px;
 		margin-top: 2%;
+
+		@media screen and (max-width: 1400px) {  
+			font-size: 13px;
+   		}
+
+		@media screen and (max-width: 700px) {  
+			font-size: 10px;
+    	}
 	}
 `;
 
@@ -29,6 +52,15 @@ export const InputWrapper = styled.div`
 	box-shadow: 0px -4px 12px rgba(0, 0, 0, 0.08);
 	border-radius: 0px 0px 20px 20px;
 
+	
+	@media screen and (max-width: 1400px) {  
+		display: flex;
+		flex-direction: column;
+    }
+	@media screen and (max-width: 700px) {  
+		
+    }
+
 	p {
 		font-weight: bold;
 		font-size: 16px;
@@ -38,11 +70,20 @@ export const InputWrapper = styled.div`
 	input {
 		width: 81%;
 		height: 32%;
+		max-height: 30px;
 		font-size: 15px;
 		padding-left: 10px;
 		border: 2px solid #9ecff2;
 		box-sizing: border-box;
 		border-radius: 5px;
+		margin-bottom: 5px;
+
+		@media screen and (max-width: 1400px) {  
+			height: 100%;
+   		}
+		@media screen and (max-width: 700px) {  
+
+    	}
 	}
 
 	input:focus::-webkit-input-placeholder {
@@ -63,6 +104,14 @@ export const InputWrapper = styled.div`
 		font-size: 15px;
 		font-weight: bold;
 		color: white;
+
+		@media screen and (max-width: 1400px) {  
+			
+    	}
+		@media screen and (max-width: 700px) {  
+			height: 30px;
+   		}
+	}
 	}
 
 	button:hover {

@@ -5,14 +5,13 @@ type StyleProps = {
 };
 
 export const Postioner = styled.div`
-	width: 100%;
+	width: 50%;
 	height: 100%;
 	display: flex;
 `;
 
 export const TodaySongWrapper = styled.div`
 	width: 100%;
-	min-width: 345px;
 	height: 95%;
 	display: flex;
 	flex-direction: column;
@@ -31,17 +30,32 @@ export const PlaylistContainer = styled.div`
 	align-items: center;
 	justify-content: center;
 	padding: 20px;
+
 	h3 {
 		font-size: 26px;
 		font-weight: 800;
 		color: #424242;
 		text-align: center;
+
+		@media screen and (max-width: 1400px) {  
+			font-size: 20px;
+			width: 90%;
+    	}
+		@media screen and (max-width: 700px) {  
+			font-size: 15px;
+   		}
 	}
+	
 	svg {
 		cursor: pointer;
 		position: absolute;
 		right: 3%;
 		top: 40%;
+		font-size: 16px;
+
+		@media screen and (max-width: 1400px) {
+			font-size: 14px;
+		}
 	}
 `;
 
