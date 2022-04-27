@@ -29,11 +29,7 @@ export const TextWrapper = styled.div`
 	p {
 		font-size: 16px;
 		color: #858585;
-	}
-	span {
-		font-weight: 600;
-		font-size: 18px;
-		line-height: 32px;
+
 		@media (max-width: 1920px) {
 			font-size: 18px;
 		}
@@ -41,6 +37,23 @@ export const TextWrapper = styled.div`
 			font-size: 13px;
 		}
 		@media (max-width: 700px) {
+			font-size: 5px;
+		}
+	}
+	span {
+		font-weight: 600;
+		font-size: 18px;
+		line-height: 32px;
+		@media (max-width: 1920px) {
+			line-height: 34px;
+			font-size: 18px;
+		}
+		@media (max-width: 1400px) {
+			line-height: 32px;
+			font-size: 13px;
+		}
+		@media (max-width: 700px) {
+			line-height: 25px;
 			font-size: 5px;
 		}
 	}
