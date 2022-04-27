@@ -24,7 +24,7 @@ export const TextContainer = styled.div`
 
 export const InputWrapper = styled.div`
 	width: 100%;
-	height: 40%;
+	height: 44%;
 	padding: 7.5% 0 5% 5%;
 	box-shadow: 0px -4px 12px rgba(0, 0, 0, 0.08);
 	border-radius: 0px 0px 20px 20px;
