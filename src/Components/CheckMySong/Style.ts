@@ -1,25 +1,30 @@
 import styled from 'styled-components';
 
 export const Positioner = styled.div`
+	margin-top: 10%;
 	width: 100%;
-	height: 340px;
-	display: grid;
+	height: 36.6%;
 	background-color: #ffffff;
 	border-radius: 20px;
-	margin-top: 8%;
+	padding: 4%;
+
 	label {
 		font-weight: 700;
 		font-size: 15px;
-		margin-top: 5%;
-		margin-left: 4.5%;
 	}
 `;
 
 export const SongContainer = styled.div`
+	width: 100%;
+	height: 100%;
+	display: flex;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+
 	p {
 		font-weight: 700;
 		font-size: 14px;
 		color: #8c8c8c;
-		text-align: center;
 	}
 `;

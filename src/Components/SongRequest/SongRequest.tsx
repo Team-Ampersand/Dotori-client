@@ -109,8 +109,8 @@ const SongRequest: React.FC = () => {
 
 	return (
 		<S.Postioner>
-			<label>※ 음악 신청 시 공지사항</label>
 			<S.TextContainer>
+				<label>※ 음악 신청 시 공지사항</label>
 				<p>
 					1. 기상 음악 순서는 신청 순서와는 별개로 사감선생님께서 정하십니다.
 				</p>
@@ -121,9 +121,7 @@ const SongRequest: React.FC = () => {
 				<p>3. 기상 음악과 관련 없는 영상을 올렸을 시 삭제될 수 있습니다.</p>
 				<p>4. 노래 신청은 1일 1곡만 가능합니다.</p>
 				<p>5. 노래 신청은 취소 후 재신청이 가능합니다.</p>
-				<hr />
 			</S.TextContainer>
-
 			<S.InputWrapper>
 				<p>기상음악 신청</p>
 				{returnBtn(url, setUrl, songInput, role, playlistDate)}

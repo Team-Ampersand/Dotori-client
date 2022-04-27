@@ -13,7 +13,7 @@ export const Postioner = styled.div`
 export const TodaySongWrapper = styled.div`
 	width: 100%;
 	min-width: 345px;
-	height: 100%;
+	height: 95%;
 	display: flex;
 	flex-direction: column;
 	background-color: #ffffff;
@@ -72,18 +72,17 @@ export const NoSongText = styled.div`
 	}
 `;
 
-export const AppliedSongCount = styled.p`
-	font-size: 14px;
-	font-weight: 600;
-	color: #969696;
-	margin-top: 1vh;
-	margin-left: 61vh;
-`;
+export const AppliedSongCount = styled.div`
+	height: 3%;
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 2%;
+	margin-right: 5%;
+	background-color: transparent;
 
-export const Container = styled.div`
-	width: 100%;
-	height: 100%;
-	display: grid;
-
-	margin-left: 3%;
+	p {
+		font-size: 14px;
+		font-weight: 600;
+		color: #969696;
+	}
 `;

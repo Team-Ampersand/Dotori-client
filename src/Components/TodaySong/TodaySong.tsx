@@ -50,6 +50,7 @@ const TodaySong: React.FC = () => {
 
 	if (!data) return <div></div>;
 	if (error) return <div></div>;
+
 	return (
 		<S.Postioner>
 			<S.TodaySongWrapper>
@@ -58,9 +59,11 @@ const TodaySong: React.FC = () => {
 					<I.Calander onClick={() => setCalendarOpen(!calendarOpen)} />
 				</S.PlaylistContainer>
 				<S.AppliedSongCount>
-					{`신청된 음악 : ${
-						data.data.data === undefined ? 0 : data.data.data.length
-					} 개 `}
+					<p>
+						{`신청된 음악 : ${
+							data.data.data === undefined ? 0 : data.data.data.length
+						} 개 `}
+					</p>
 				</S.AppliedSongCount>
 				{calendarOpen && <CalendarModal visible={calendarOpen} />}
 				<S.SongContainer>
@@ -85,10 +88,6 @@ const TodaySong: React.FC = () => {
 					)}
 				</S.SongContainer>
 			</S.TodaySongWrapper>
-			<S.Container>
-				<SongRequest />
-				<CheckMySong songlists={songlist} />
-			</S.Container>
 		</S.Postioner>
 	);
 };
