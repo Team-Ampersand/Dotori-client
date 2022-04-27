@@ -13,4 +13,8 @@ export const MenuWrapper = styled.div<StyleProps>`
 	align-self: center;
 	justify-content: flex-start;
 	margin-top: 4rem;
+
+	@media screen and (max-width: 700px) {
+		margin-left: 10px;
+	}
 `;
