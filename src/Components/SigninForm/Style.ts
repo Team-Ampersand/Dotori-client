@@ -111,7 +111,7 @@ export const ButtonStyle = styled.button`
 	margin-top: 3rem;
 	width: 100%;
 	height: 5.5vh;
-	border-radius: 5px;
+	border-radius: 10px;
 	outline: none;
 	border: none;
 	background-color: #9ecff2;

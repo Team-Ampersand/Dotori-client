@@ -187,7 +187,7 @@ export const ButtonStyle = styled.button<StyleProps>`
 	margin-top: 2vh;
 	width: calc(29vw + 10px);
 	height: 5.5vh;
-	border-radius: 5px;
+	border-radius: 10px;
 	outline: none;
 	border: none;
 	background-color: ${(props) => (props.displayed ? '#617be3' : '#e5e5e5')};
@@ -225,7 +225,7 @@ export const CertifyButton = styled.button<StyleProps>`
 	width: 4.3vw;
 	margin-top: 1vh;
 	height: 5.5vh;
-	border-radius: 5px;
+	border-radius: 10px;
 	outline: none;
 	border: none;
 	background-color: #9ecff2;
