@@ -6,7 +6,7 @@ export const SearchBox = styled.div`
 	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
 	width: 322px;
 	height: 70px;
-	border-radius: 20px;
+	border-radius: 10px;
 	justify-content: space-around;
 	align-items: center;
 	margin-top: 20px;
