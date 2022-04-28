@@ -10,9 +10,18 @@ export const Container = styled.li`
 	align-items: center;
 	justify-content: space-between;
 	padding: 0 30px;
-	.Icon{
-		margin-left: 20px;		
+	.Icon {
+		margin-left: 20px;
 	}
+	@media (max-width: 1920px) {
+		padding: 0 30px 0 0;
+	}
+	@media (max-width: 1400px) {
+		padding: 0 20px 0 0;
+	}
+	@media (max-width: 700px) {
+		padding: 0 10px 0 0;
+	} ;
 `;
 
 export const StuInfoWrapper = styled.div`
@@ -27,6 +36,18 @@ export const StuNumStyle = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	@media (max-width: 1920px) {
+		font-size: 24px;
+		width: 200px;
+	}
+	@media (max-width: 1400px) {
+		font-size: 20px;
+		width: 150px;
+	}
+	@media (max-width: 700px) {
+		font-size: 12px;
+		width: 90px;
+	} ;
 `;
 
 export const NameStyle = styled.div`
@@ -35,12 +56,36 @@ export const NameStyle = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	@media (max-width: 1920px) {
+		font-size: 24px;
+		width: auto;
+	}
+	@media (max-width: 1400px) {
+		font-size: 20px;
+		width: auto;
+	}
+	@media (max-width: 700px) {
+		font-size: 12px;
+		width: auto;
+	} ;
 `;
 
 export const PenaltyStyle = styled.div`
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
+	@media (max-width: 1920px) {
+		font-size: 15px;
+		margin-left: 20px;
+	}
+	@media (max-width: 1400px) {
+		font-size: 13px;
+		margin-left: 10px;
+	}
+	@media (max-width: 700px) {
+		font-size: 10px;
+		margin-left: 5px;
+	} ;
 `;
 
 export const PenaltyIconWrapper = styled.div`
@@ -77,6 +122,21 @@ export const CheckBtn = styled.button`
 		color: #b3b3b3;
 		background-color: #fff;
 	}
+	@media (max-width: 1920px) {
+		width: 120px;
+		height: 40px;
+		font-size: 16px;
+	}
+	@media (max-width: 1400px) {
+		width: 100px;
+		height: 35px;
+		font-size: 14px;
+	}
+	@media (max-width: 700px) {
+		width: 70px;
+		height: 25px;
+		font-size: 10px;
+	} ;
 `;
 
 export const EditModifyBtn = styled.button`
@@ -94,6 +154,24 @@ export const EditModifyBtn = styled.button`
 		background-color: transparent;
 		color: #9ecff2;
 	}
+	@media (max-width: 1920px) {
+		width: 80px;
+		height: 40px;
+		font-size: 20px;
+		margin-right: 20px;
+	}
+	@media (max-width: 1400px) {
+		width: 70px;
+		height: 35px;
+		font-size: 16px;
+		margin-right: 15px;
+	}
+	@media (max-width: 700px) {
+		width: 45px;
+		height: 25px;
+		font-size: 10px;
+		margin-right: 10px;
+	} ;
 `;
 
 export const BtnWrapper = styled.div`

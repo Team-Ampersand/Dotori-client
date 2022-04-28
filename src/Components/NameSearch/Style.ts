@@ -15,6 +15,18 @@ export const SearchBox = styled.div`
 	::placeholder {
 		font-size: 18px;
 	}
+	@media (max-width: 1920px) {
+		width: 322px;
+		height: 70px;
+	}
+	@media (max-width: 1400px) {
+		width: 280px;
+		height: 60px;
+	}
+	@media (max-width: 700px) {
+		width: 160px;
+		height: 45px;
+	} ;
 `;
 
 export const Search = styled.input`
@@ -26,6 +38,23 @@ export const Search = styled.input`
 	::placeholder {
 		font-size: 18px;
 	}
+	@media (max-width: 1920px) {
+		::placeholder {
+			font-size: 18px;
+		}
+	}
+	@media (max-width: 1400px) {
+		::placeholder {
+			font-size: 16px;
+		}
+	}
+	@media (max-width: 700px) {
+		::placeholder {
+			font-size: 8px;
+		}
+		width: 93px;
+		height: 30px;
+	} ;
 `;
 
 export const Btn = styled.button`
@@ -43,4 +72,19 @@ export const Btn = styled.button`
 		color: #9ecff2;
 		border: 2px solid #9ecff2;
 	}
+	@media (max-width: 1920px) {
+		font-size: 18px;
+		width: 90px;
+		height: 40px;
+	}
+	@media (max-width: 1400px) {
+		font-size: 16px;
+		width: 70px;
+		height: 35px;
+	}
+	@media (max-width: 700px) {
+		width: 40px;
+		height: 25px;
+		font-size: 8px;
+	} ;
 `;
