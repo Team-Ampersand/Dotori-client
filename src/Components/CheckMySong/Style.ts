@@ -10,6 +10,13 @@ export const Positioner = styled.div`
 	label {
 		font-weight: 700;
 		font-size: 15px;
+
+		@media screen and (max-width: 1400px) {
+			font-size: 14px;
+		}
+		@media screen and (max-width: 700px) {
+			font-size: 13px;
+		}
 	}
 `;
 
@@ -24,5 +31,12 @@ export const SongContainer = styled.div`
 		font-weight: 700;
 		font-size: 14px;
 		color: #8c8c8c;
+
+		@media screen and (max-width: 1400px) {
+			font-size: 12px;
+		}
+		@media screen and (max-width: 700px) {
+			font-size: 11px;
+		}
 	}
 `;

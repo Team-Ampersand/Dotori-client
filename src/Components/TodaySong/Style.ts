@@ -5,7 +5,7 @@ type StyleProps = {
 };
 
 export const Postioner = styled.div`
-	width: 50%;
+	width: 100%;
 	height: 100%;
 	display: flex;
 `;
@@ -83,6 +83,13 @@ export const NoSongText = styled.div`
 	p {
 		font-size: 23px;
 		margin-bottom: 4rem;
+
+		@media screen and (max-width: 1400px) {
+			font-size: 19px;
+		}
+		@media screen and (max-width: 700px) {
+			font-size: 16px;
+		}
 	}
 `;
 

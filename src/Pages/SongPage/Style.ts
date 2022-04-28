@@ -7,7 +7,7 @@ export const Positioner = styled.div`
 `;
 
 export const Container = styled.div`
-	width: 50%;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	row-gap: 10%;

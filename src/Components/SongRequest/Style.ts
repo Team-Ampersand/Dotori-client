@@ -27,7 +27,7 @@ export const TextContainer = styled.div`
 			font-size: 20px;
     	}
 		@media screen and (max-width: 700px) {  
-			font-size: 18px;
+			font-size: 16px;
     	}
 	}
 
@@ -78,9 +78,6 @@ export const InputWrapper = styled.div`
 		@media screen and (max-width: 1400px) {  
 			height: 100%;
    		}
-		@media screen and (max-width: 700px) {  
-
-    	}
 	}
 
 	input:focus::-webkit-input-placeholder {
@@ -106,7 +103,7 @@ export const InputWrapper = styled.div`
 			height: 30px;
    		}
 	}
-	}
+	
 
 	button:hover {
 		color: #9ecff2;
