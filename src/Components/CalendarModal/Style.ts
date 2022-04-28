@@ -38,9 +38,8 @@ export const CalendarOverlay = styled.div<StyleProps>`
 export const CalendarWrapper = styled.div`
 	font-size: 16px;
 	position: absolute;
-	top: 1px;
-	left: 720px;
-
+	top: 1%;
+	left: 93%;
 	.react-calendar {
 		width: 400px;
 		max-width: 100%;
