@@ -25,11 +25,4 @@ export const MenuTitle = styled.span`
 	font-size: 22px;
 	font-weight: bold;
 	margin-left: 21px;
-
-	@media screen and (max-width: 1400px){
-		font-size: 18px;
-	}
-	@media screen and (max-width: 700px){
-		font-size: 14px;
-	}
 `;
