@@ -11,6 +11,14 @@ export const SelectWrapper = styled.div`
 	margin-top: 20px;
 	justify-content: center;
 	align-items: center;
+
+	@media screen and (max-width: 1400px){
+		width: 350px;
+	}
+	@media screen and (max-width: 700px){
+		width: 300px;
+		padding: 0 10px;
+	}
 `;
 
 export const SelectBox = styled.select`
@@ -22,14 +30,40 @@ export const SelectBox = styled.select`
 	height: 40px;
 	text-align: center;
 	color: #898989;
+
+	@media screen and (max-width: 1400px) {
+		width: 66px;
+		height: 30px;
+		font-size: 14px;
+	}
+	@media screen and (max-width: 700px) {
+		width: 60px;
+		height: 30px;
+		font-size: 14px;	
+	}
 `;
 
 export const Option = styled.option``;
 
 export const Label = styled.div`
-	margin: 0 20px 0 20px;
+	margin: 0 20px;
 	font-size: 20px;
 	font-weight: bold;
+
+	@media screen and (max-width: 1400px){
+		font-size: 14px;
+		margin: 0 10px;
+		width: 28px;
+
+		&:nth-child(4) {
+			margin: 0 0px 0 10px;
+		}
+	}
+	@media screen and (max-width: 700px){
+		font-size: 12px;
+		margin: 0 10px;
+		width: 24px;
+	}
 `;
 
 export const Btn = styled.button`
@@ -46,5 +80,16 @@ export const Btn = styled.button`
 		background-color: #fff;
 		color: #9ecff2;
 		border: 2px solid #9ecff2;
+	}
+
+	@media screen and (max-width: 1400px) {
+		width: 66px;
+		height: 32px;
+		font-size: 14px;
+	}
+	@media screen and (max-width: 700px) {
+		width: 60px;
+		height: 28px;
+		font-size: 14px;
 	}
 `;
