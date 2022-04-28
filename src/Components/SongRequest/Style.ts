@@ -57,9 +57,6 @@ export const InputWrapper = styled.div`
 		display: flex;
 		flex-direction: column;
     }
-	@media screen and (max-width: 700px) {  
-		
-    }
 
 	p {
 		font-weight: bold;
@@ -105,9 +102,6 @@ export const InputWrapper = styled.div`
 		font-weight: bold;
 		color: white;
 
-		@media screen and (max-width: 1400px) {  
-			
-    	}
 		@media screen and (max-width: 700px) {  
 			height: 30px;
    		}
