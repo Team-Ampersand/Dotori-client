@@ -23,10 +23,32 @@ export const Title = styled.div`
 	font-weight: bold;
 	margin-bottom: 1rem;
 
+	@media (max-width: 1920px) {
+		font-size: 60px;
+	}
+
+	@media (max-width: 1400px) {
+		font-size: 50px;
+	}
+	@media (max-width: 700px) {
+		font-size: 25px;
+	}
+
 	strong {
 		font-size: 18px;
 		margin-left: 14.5px;
 		font-weight: 500;
+
+		@media (max-width: 1920px) {
+			font-size: 22px;
+		}
+
+		@media (max-width: 1400px) {
+			font-size: 18px;
+		}
+		@media (max-width: 700px) {
+			font-size: 10px;
+		}
 	}
 `;
 

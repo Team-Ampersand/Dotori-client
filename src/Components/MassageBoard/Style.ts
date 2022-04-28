@@ -25,19 +25,41 @@ export const MassageHeader = styled.div`
 	margin-bottom: 2rem;
 
 	h2 {
+		width: 60%;
 		font-size: 20px;
+		@media (max-width: 1920px) {
+			font-size: 22px;
+		}
+		@media (max-width: 1400px) {
+			font-size: 18px;
+		}
+		@media (max-width: 700px) {
+			font-size: 12px;
+		}
 	}
 
 	div {
-		width: 82px;
+		width: 92px;
 		display: flex;
 		cursor: pointer;
-		justify-content: space-between;
+		justify-content: flex-end;
 		align-items: center;
+		gap: 5px;
 		text-decoration: none;
 		span {
 			font-size: 18px;
 			color: #ababab;
+
+			@media (max-width: 1920px) {
+				font-size: 17px;
+			}
+
+			@media (max-width: 1400px) {
+				font-size: 13px;
+			}
+			@media (max-width: 700px) {
+				font-size: 10px;
+			}
 		}
 	}
 `;
@@ -67,11 +89,33 @@ export const MassageContent = styled.div`
 	span {
 		font-size: 55px;
 		font-weight: bold;
+
+		@media (max-width: 1920px) {
+			font-size: 65px;
+		}
+
+		@media (max-width: 1400px) {
+			font-size: 55px;
+		}
+		@media (max-width: 700px) {
+			font-size: 30px;
+		}
 	}
 	p {
 		font-size: 16px;
 		font-weight: 500;
 		color: #a1a1a1;
+
+		@media (max-width: 1920px) {
+			font-size: 15px;
+		}
+
+		@media (max-width: 1400px) {
+			font-size: 15px;
+		}
+		@media (max-width: 700px) {
+			font-size: 6px;
+		}
 	}
 `;
 
@@ -132,7 +176,7 @@ export const MassageButton = styled.button<StyleProps>`
 			return 'none';
 		}
 	}};
-	border-radius: 8px;
+	border-radius: 5px;
 	font-size: 18px;
 	font-weight: bold;
 
@@ -180,6 +224,23 @@ export const MassageButton = styled.button<StyleProps>`
 				}
 			}};
 	}
+
+	@media (max-width: 1920px) {
+		width: 8rem;
+		height: 2.2rem;
+		font-size: 20px;
+	}
+
+	@media (max-width: 1400px) {
+		width: 6.5rem;
+		height: 2rem;
+		font-size: 18px;
+	}
+	@media (max-width: 700px) {
+		width: 4.5rem;
+		height: 1.5rem;
+		font-size: 12px;
+	}
 `;
 
 export const Explain = styled.div`
@@ -187,11 +248,24 @@ export const Explain = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	text-align: center;
 `;
 
 export const Alert = styled.div`
 	font-size: 13px;
+	text-align: center;
 	color: #6d92c4;
+
+	@media (max-width: 1920px) {
+		font-size: 13px;
+	}
+
+	@media (max-width: 1400px) {
+		font-size: 6px;
+	}
+	@media (max-width: 700px) {
+		font-size: 5px;
+	}
 `;
 
 export const ExceptionWrapper = styled.div`

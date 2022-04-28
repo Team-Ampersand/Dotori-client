@@ -13,6 +13,29 @@ export const Positioner = styled.div`
 	min-height: 100vh;
 `;
 
+export const LogoWrapper = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 2rem;
+
+	svg {
+		width: 100%;
+		@media (max-width: 1920px) {
+			width: 100%;
+		}
+
+		@media (max-width: 1400px) {
+			width: 80%;
+			margin-bottom: -2rem;
+		}
+		@media (max-width: 700px) {
+			width: 50%;
+			margin-bottom: -5rem;
+		}
+	}
+`;
+
 export const GradeWrapper = styled.div`
 	display: flex;
 	flex-direction: row;
@@ -35,7 +58,7 @@ export const SelectContainer = styled.div`
 	margin-top: 1.5vh;
 	select {
 		margin-left: 2vw;
-		width: 23.5vw;
+		width: 23.8vw;
 		height: 4.5vh;
 		border: 2px;
 		border-radius: 10px;
@@ -53,11 +76,31 @@ export const SigninContainer = styled.div`
 	margin-top: 3vh;
 	span {
 		color: #969696;
+		@media (max-width: 1920px) {
+			font-size: 16px;
+		}
+
+		@media (max-width: 1400px) {
+			font-size: 13px;
+		}
+		@media (max-width: 700px) {
+			font-size: 8px;
+		}
 	}
 	a {
 		margin-left: 5px;
 		text-decoration: none;
 		color: #9ecff2;
+		@media (max-width: 1920px) {
+			font-size: 16px;
+		}
+
+		@media (max-width: 1400px) {
+			font-size: 13px;
+		}
+		@media (max-width: 700px) {
+			font-size: 8px;
+		}
 	}
 `;
 
@@ -78,11 +121,11 @@ export const EmailContainer = styled.div`
 	flex-direction: row;
 	align-items: center;
 	input {
-		width: 24vw;
-		margin-right: 1.33vh;
+		width: 23vw;
+		margin-right: 1vw;
 	}
 	button {
-		width: 4.3vw;
+		width: 5vw;
 		margin-top: 1vh;
 		height: 5.5vh;
 		border-radius: 9px;
@@ -91,6 +134,21 @@ export const EmailContainer = styled.div`
 		background-color: #9ecff2;
 		color: #fff;
 		transition: 0.5s;
+		font-size: 16px;
+
+		@media (max-width: 1920px) {
+			font-size: 20px;
+			height: 5.5vh;
+		}
+
+		@media (max-width: 1400px) {
+			font-size: 16px;
+			height: 5vh;
+		}
+		@media (max-width: 700px) {
+			font-size: 6px;
+			height: 3.5vh;
+		}
 	}
 	button:hover {
 		background-color: #fff;
@@ -109,11 +167,25 @@ export const InputStyle = styled.input<StyleProps>`
 	margin-top: 1vh;
 	font-size: 16px;
 	display: ${(props) => (props.displayed ? 'none' : 'flex')};
+
+	@media (max-width: 1920px) {
+		font-size: 16px;
+		height: 5vh;
+	}
+
+	@media (max-width: 1400px) {
+		font-size: 14px;
+		height: 4.5vh;
+	}
+	@media (max-width: 700px) {
+		font-size: 10px;
+		height: 3vh;
+	}
 `;
 
 export const ButtonStyle = styled.button<StyleProps>`
 	margin-top: 2vh;
-	width: 29.5vw;
+	width: calc(29vw + 10px);
 	height: 5.5vh;
 	border-radius: 10px;
 	outline: none;
@@ -123,6 +195,23 @@ export const ButtonStyle = styled.button<StyleProps>`
 	font-size: 18px;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 	position: relative;
+
+	@media (max-width: 1920px) {
+		font-size: 22px;
+		margin-top: 3rem;
+		height: 5.5vh;
+	}
+
+	@media (max-width: 1400px) {
+		font-size: 18px;
+		margin-top: 2rem;
+		height: 4.5vh;
+	}
+	@media (max-width: 700px) {
+		font-size: 15px;
+		margin-top: 1rem;
+		height: 3vh;
+	}
 `;
 
 export const ArrowWrapper = styled.div`
@@ -136,7 +225,7 @@ export const CertifyButton = styled.button<StyleProps>`
 	width: 4.3vw;
 	margin-top: 1vh;
 	height: 5.5vh;
-	border-radius: 9px;
+	border-radius: 10px;
 	outline: none;
 	border: none;
 	background-color: #9ecff2;
@@ -167,5 +256,5 @@ export const InputWrapper = styled.div`
 		label {
 			top: 18px;
 		}
-	} ;
+	}
 `;

@@ -89,7 +89,9 @@ const SignupForm: React.FC = () => {
 	} = TrySignup();
 	return (
 		<S.Positioner>
-			<DotoriLogoV2 />
+			<S.LogoWrapper>
+				<DotoriLogoV2 />
+			</S.LogoWrapper>
 			<S.EmailContainer>
 				<S.InputWrapper>
 					<S.InputStyle
