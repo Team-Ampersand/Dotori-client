@@ -24,10 +24,6 @@ export const StuBoxContainer = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	@media (max-width: 1920px) {
-		height: 75px;
-		margin: 20px 40px;
-	}
 	@media (max-width: 1400px) {
 		height: 60px;
 		margin: 15px 30px;
@@ -84,11 +80,6 @@ export const CheckBox = styled.input`
 	width: 30px;
 	height: 30px;
 	background-color: rgba(15, 76, 129, 1);
-	@media (max-width: 1920px) {
-		margin-left: 20px;
-		width: 30px;
-		height: 30px;
-	}
 	@media (max-width: 1400px) {
 		margin-left: 15px;
 		width: 25px;
@@ -115,8 +106,6 @@ export const SelectStu = styled.div`
 	padding-left: 10px;
 	border-radius: 10px;
 	@media (max-width: 1920px) {
-		width: auto;
-		height: 64px;
 		text-align: center;
 		padding: 0 20px;
 		font-size: 18px;

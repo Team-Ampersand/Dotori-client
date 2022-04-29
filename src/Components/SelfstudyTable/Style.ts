@@ -93,8 +93,6 @@ export const SearchBox = styled.div`
 	margin-left: 50px;
 	margin-top: 19px;
 	@media (max-width: 1920px) {
-		width: 300px;
-		height: 70px;
 		margin-left: 1vh;
 	}
 	@media (max-width: 1400px) {

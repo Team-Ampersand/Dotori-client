@@ -15,10 +15,6 @@ export const SearchBox = styled.div`
 	::placeholder {
 		font-size: 18px;
 	}
-	@media (max-width: 1920px) {
-		width: 322px;
-		height: 70px;
-	}
 	@media (max-width: 1400px) {
 		width: 280px;
 		height: 60px;
@@ -37,11 +33,6 @@ export const Search = styled.input`
 	border-radius: 20px;
 	::placeholder {
 		font-size: 18px;
-	}
-	@media (max-width: 1920px) {
-		::placeholder {
-			font-size: 18px;
-		}
 	}
 	@media (max-width: 1400px) {
 		::placeholder {
@@ -71,11 +62,6 @@ export const Btn = styled.button`
 		background-color: #fff;
 		color: #9ecff2;
 		border: 2px solid #9ecff2;
-	}
-	@media (max-width: 1920px) {
-		font-size: 18px;
-		width: 90px;
-		height: 40px;
 	}
 	@media (max-width: 1400px) {
 		font-size: 16px;

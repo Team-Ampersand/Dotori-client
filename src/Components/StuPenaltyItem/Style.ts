@@ -36,10 +36,6 @@ export const StuNumStyle = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	@media (max-width: 1920px) {
-		font-size: 24px;
-		width: 200px;
-	}
 	@media (max-width: 1400px) {
 		font-size: 20px;
 		width: 150px;
@@ -57,7 +53,6 @@ export const NameStyle = styled.div`
 	justify-content: center;
 	align-items: center;
 	@media (max-width: 1920px) {
-		font-size: 24px;
 		width: auto;
 	}
 	@media (max-width: 1400px) {
@@ -122,11 +117,6 @@ export const CheckBtn = styled.button`
 		color: #b3b3b3;
 		background-color: #fff;
 	}
-	@media (max-width: 1920px) {
-		width: 120px;
-		height: 40px;
-		font-size: 16px;
-	}
 	@media (max-width: 1400px) {
 		width: 100px;
 		height: 35px;
@@ -155,10 +145,7 @@ export const EditModifyBtn = styled.button`
 		color: #9ecff2;
 	}
 	@media (max-width: 1920px) {
-		width: 80px;
-		height: 40px;
 		font-size: 20px;
-		margin-right: 20px;
 	}
 	@media (max-width: 1400px) {
 		width: 70px;

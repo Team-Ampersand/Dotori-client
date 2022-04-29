@@ -17,11 +17,6 @@ export const BreakDownBtn = styled.button`
 		color: #f38d8d;
 		border: 2px solid #f38d8d;
 	}
-	@media (max-width: 1920px) {
-		font-size: 20px;
-		width: 211px;
-		height: 64px;
-	}
 	@media (max-width: 1400px) {
 		font-size: 16px;
 		width: 170px;
