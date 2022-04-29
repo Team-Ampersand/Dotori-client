@@ -17,6 +17,14 @@ export const BreakDownWrapper = styled.div`
 	height: 750px;
 	border: 2px solid rgba(0, 0, 0, 1);
 	border-radius: 40px;
+	@media (max-width: 1400px) {
+		width: 510px;
+		height: 660px;
+	}
+	@media (max-width: 700px) {
+		width: 420px;
+		height: 570px;
+	}
 `;
 
 export const Header = styled.div`
@@ -29,6 +37,12 @@ export const Header = styled.div`
 	font-weight: 700;
 	line-height: 35px;
 	text-align: center;
+	@media (max-width: 1400px) {
+		font-size: 27px;
+	}
+	@media (max-width: 700px) {
+		font-size: 23px;
+	}
 `;
 
 export const Category = styled.div`
@@ -43,6 +57,14 @@ export const Category = styled.div`
 		display: -webkit-box;
 		-webkit-line-clamp: 2;
 		-webkit-box-orient: vertical;
+	}
+	@media (max-width: 1400px) {
+		font-size: 15px;
+		height: 78%;
+	}
+	@media (max-width: 700px) {
+		font-size: 12px;
+		height: 75%;
 	}
 `;
 
@@ -74,6 +96,14 @@ export const SmallCategoriesWrapper = styled.ul`
 	margin-left: 2.5vh;
 	overflow-y: scroll;
 	row-gap: 50px;
+	@media (max-width: 1400px) {
+		font-size: 15px;
+		margin-left: 1.5vh;
+	}
+	@media (max-width: 700px) {
+		row-gap: 30px;
+		margin-left: 0.7vh;
+	}
 `;
 
 export const ExceptionWrapper = styled.div`
@@ -90,6 +120,12 @@ export const SmallCategories = styled.div`
 	justify-content: space-between;
 	width: 100%;
 	font-size: 14px;
+	@media (max-width: 1400px) {
+		font-size: 12px;
+	}
+	@media (max-width: 700px) {
+		font-size: 10px;
+	}
 `;
 
 export const None = styled.div`
@@ -102,12 +138,18 @@ export const NameWrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	width: 200px;
+	@media (max-width: 1400px) {
+		width: 180px;
+	}
+	@media (max-width: 700px) {
+		width: 150px;
+	}
 `;
 
 export const CntWrapper = styled.div`
 	display: flex;
 	justify-content: center;
-	width: 40px;
+	width: 60px;
 `;
 
 export const DateWrapper = styled.div`
@@ -116,4 +158,10 @@ export const DateWrapper = styled.div`
 	width: 90px;
 	cursor: pointer;
 	height: auto;
+	@media (max-width: 1400px) {
+		font-size: 11px;
+	}
+	@media (max-width: 700px) {
+		font-size: 8px;
+	}
 `;
