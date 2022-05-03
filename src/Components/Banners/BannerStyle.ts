@@ -16,15 +16,46 @@ export const TextWrapper = styled.div`
 	h2 {
 		font-size: 28px;
 		font-weight: bold;
+		@media (max-width: 1920px) {
+			font-size: 28px;
+		}
+		@media (max-width: 1400px) {
+			font-size: 23px;
+		}
+		@media (max-width: 700px) {
+			font-size: 15px;
+		}
 	}
 	p {
 		font-size: 16px;
 		color: #858585;
+
+		@media (max-width: 1920px) {
+			font-size: 18px;
+		}
+		@media (max-width: 1400px) {
+			font-size: 13px;
+		}
+		@media (max-width: 700px) {
+			font-size: 5px;
+		}
 	}
 	span {
 		font-weight: 600;
 		font-size: 18px;
 		line-height: 32px;
+		@media (max-width: 1920px) {
+			line-height: 34px;
+			font-size: 18px;
+		}
+		@media (max-width: 1400px) {
+			line-height: 32px;
+			font-size: 13px;
+		}
+		@media (max-width: 700px) {
+			line-height: 25px;
+			font-size: 5px;
+		}
 	}
 `;
 
