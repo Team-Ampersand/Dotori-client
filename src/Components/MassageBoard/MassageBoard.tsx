@@ -79,7 +79,7 @@ const MassageBoard: React.FC = () => {
 					신청
 				</S.MassageButton>
 			);
-		} else if (info.status === 'APPLIED' && hours === 20 && minutes >= 20) {
+		} else if (info.status === 'APPLIED' && hours === 20 && minutes <= 20) {
 			return (
 				<S.MassageButton
 					onClick={() => {
