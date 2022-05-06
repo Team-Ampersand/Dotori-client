@@ -78,7 +78,6 @@ export const Btn = styled.button`
 		color: #9ecff2;
 		border: 2px solid #9ecff2;
 	}
-
 	@media (max-width: 1400px) {
 		font-size: 16px;
 		width: 70px;
