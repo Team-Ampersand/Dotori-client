@@ -88,4 +88,3 @@ export const Btn = styled.button`
 		width: 45px;
 		height: 25px;
 	} ;
-`;
