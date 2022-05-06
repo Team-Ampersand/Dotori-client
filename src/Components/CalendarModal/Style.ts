@@ -40,6 +40,11 @@ export const CalendarWrapper = styled.div`
 	position: absolute;
 	top: 1%;
 	left: 93%;
+
+	@media screen and (max-width: 1400px) {
+		left: auto;
+		right: -27vw;
+	}
 	.react-calendar {
 		width: 400px;
 		max-width: 100%;
@@ -50,6 +55,10 @@ export const CalendarWrapper = styled.div`
 		box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 		font-family: Arial, Helvetica, sans-serif;
 		line-height: 1.125em;
+
+		@media screen and (max-width: 1400px) {
+			width: 380px;
+		}
 	}
 	.react-calendar__navigation button {
 		color: #6d92c4;

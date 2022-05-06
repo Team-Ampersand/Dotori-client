@@ -12,6 +12,13 @@ export const Positioner = styled.div`
 		font-size: 15px;
 		margin-top: 4%;
 		margin-left: 5%;
+    
+    @media screen and (max-width: 1400px) {
+			font-size: 14px;
+		}
+		@media screen and (max-width: 700px) {
+			font-size: 13px;
+		}
 	}
 `;
 
@@ -27,5 +34,12 @@ export const SongContainer = styled.div`
 		font-size: 14px;
 		color: #8c8c8c;
 		text-align: center;
+    
+    @media screen and (max-width: 1400px) {
+			font-size: 12px;
+		}
+		@media screen and (max-width: 700px) {
+			font-size: 11px;
+		}
 	}
 `;
