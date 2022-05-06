@@ -78,4 +78,14 @@ export const Btn = styled.button`
 		color: #9ecff2;
 		border: 2px solid #9ecff2;
 	}
+	@media (max-width: 1400px) {
+		font-size: 16px;
+		width: 70px;
+		height: 35px;
+	}
+	@media (max-width: 700px) {
+		font-size: 8px;
+		width: 45px;
+		height: 25px;
+	} ;
 `;
