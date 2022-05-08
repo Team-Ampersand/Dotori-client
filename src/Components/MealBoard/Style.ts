@@ -19,6 +19,15 @@ export const TitleContainer = styled.div`
 
 	h2 {
 		font-size: 20px;
+		@media (max-width: 1920px) {
+			font-size: 22px;
+		}
+		@media (max-width: 1400px) {
+			font-size: 18px;
+		}
+		@media (max-width: 700px) {
+			font-size: 12px;
+		}
 	}
 	strong {
 		font-size: 18px;
@@ -26,13 +35,25 @@ export const TitleContainer = styled.div`
 `;
 
 export const DayWrapper = styled.div`
-	width: 30%;
+	width: 70%;
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-end;
+	gap: 10px;
 
 	span {
 		cursor: pointer;
 		font-size: 18px;
+
+		@media (max-width: 1920px) {
+			font-size: 17px;
+		}
+
+		@media (max-width: 1400px) {
+			font-size: 13px;
+		}
+		@media (max-width: 700px) {
+			font-size: 5px;
+		}
 	}
 `;
 
@@ -74,10 +95,31 @@ export const Meal = styled.div`
 
 	p {
 		font-size: 20px;
+		@media (max-width: 1920px) {
+			font-size: 20px;
+		}
+
+		@media (max-width: 1400px) {
+			font-size: 13px;
+		}
+		@media (max-width: 700px) {
+			font-size: 10px;
+		}
 	}
 	span {
 		font-size: 40px;
 		font-weight: bold;
+
+		@media (max-width: 1920px) {
+			font-size: 40px;
+		}
+
+		@media (max-width: 1400px) {
+			font-size: 30px;
+		}
+		@media (max-width: 700px) {
+			font-size: 20px;
+		}
 	}
 `;
 
@@ -110,6 +152,17 @@ export const DateWrapper = styled.div`
 	font-size: 18px;
 	margin-top: 3.25rem;
 	color: #5b5b5b;
+
+	@media (max-width: 1920px) {
+		font-size: 17px;
+	}
+
+	@media (max-width: 1400px) {
+		font-size: 13px;
+	}
+	@media (max-width: 700px) {
+		font-size: 10px;
+	}
 `;
 
 export const ReverseArrow = styled.div`

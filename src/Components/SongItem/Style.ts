@@ -16,6 +16,10 @@ export const Positioner = styled.a`
 	justify-content: flex-start;
 	margin-bottom: 3vh;
 	text-decoration: none;
+
+	@media screen and (max-width: 1400px) {
+		height: 110px;
+	}
 `;
 
 export const ImgContainer = styled.div<StyleProps>`
@@ -56,6 +60,13 @@ export const TitleContainer = styled.span`
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
 
+	@media screen and (max-width: 1400px){
+		font-size: 14px;
+	}
+	@media screen and (max-width: 700px){
+		font-size: 12px;
+	}
+
 	a {
 		color: #333;
 		text-decoration: none;
@@ -71,9 +82,18 @@ export const AuthorContainer = styled.span`
 export const DateContainer = styled.span`
 	font-size: 12px;
 	color: #c4c4c4;
-	margin-top: 10%;
-	width: 7.8%;
-	margin-left: 11%;
+	width: 10%;
+	min-width: 38px;
+	margin: 10% 8px 0 10%;
+
+	@media screen and (max-width: 1400px){
+		font-size: 11px;
+		margin: 17% 8px 0 10%;
+	}
+	@media screen and (max-width: 700px){
+		font-size: 10px;
+		margin: 28% 8px 0 10%;
+	}
 `;
 
 export const DeleteContainer = styled.div`
@@ -82,4 +102,5 @@ export const DeleteContainer = styled.div`
 	position: relative;
 	margin-bottom: 9%;
 	margin-left: -4%;
+	margin: 0 3% 9% -4%;
 `;

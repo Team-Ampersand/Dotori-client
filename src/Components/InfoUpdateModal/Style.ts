@@ -30,6 +30,10 @@ export const Container = styled.div`
 	height: 450px;
 	display: flex;
 	justify-content: center;
+
+	@media screen and (max-width: 1400px) {
+		width: 350px;
+	}
 `;
 
 export const ChangerContainer = styled.div`
@@ -43,6 +47,10 @@ export const ChangerItem = styled.div`
 	display: flex;
 	justify-content: space-between;
 	margin-top: 30px;
+
+	@media screen and (max-width: 1400px) {
+		justify-content: space-around;
+	}
 `;
 
 export const StuNumInput = styled.input`
@@ -50,6 +58,11 @@ export const StuNumInput = styled.input`
 	height: 30px;
 	text-align: center;
 	font-size: 24px;
+
+	@media screen and (max-width: 1400px) {
+		width: 80px;
+		font-size: 20px;
+	}
 `;
 
 export const StuNameInput = styled.input`
@@ -57,6 +70,11 @@ export const StuNameInput = styled.input`
 	height: 30px;
 	text-align: center;
 	font-size: 24px;
+
+	@media screen and (max-width: 1400px) {
+		width: 80px;
+		font-size: 20px;
+	}
 `;
 
 export const StuRoleSelect = styled.select`
@@ -64,6 +82,11 @@ export const StuRoleSelect = styled.select`
 	height: 35px;
 	text-align: center;
 	font-size: 24px;
+
+	@media screen and (max-width: 1400px) {
+		width: 90px;
+		font-size: 20px;
+	}
 `;
 
 export const BtnWrapper = styled.div`
@@ -118,5 +141,9 @@ export const UpdateBtn = styled.button`
 		background-color: #fff;
 		color: #9ecff2;
 		border: 2px solid #9ecff2;
+	}
+
+	@media screen and (max-width: 1400px) {
+		font-size: 16px;
 	}
 `;

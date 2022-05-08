@@ -74,20 +74,31 @@ export const SearchBox = styled.div`
 	width: 300px;
 	height: 70px;
 	border-radius: 20px;
-	justify-content: space-around;
+	justify-content: space-evenly;
 	align-items: center;
 	border: none;
 	margin-left: 50px;
 	margin-top: 19px;
+
+	@media screen and (max-width: 1400px) {
+		margin-left: 30px;
+	}
 `;
 
 export const Search = styled.input`
 	display: flex;
-	width: 50%;
+	width: 56%;
 	height: 90%;
 	border: none;
 	border-radius: 20px;
 	font-size: 18px;
+
+	@media screen and (max-width: 1400px) {
+		font-size: 15px;
+	}
+	@media screen and (max-width: 700px) {
+		font-size: 12px;
+	}
 `;
 
 export const SearchBtn = styled.button`
@@ -104,5 +115,16 @@ export const SearchBtn = styled.button`
 		background-color: #fff;
 		color: #9ecff2;
 		border: 2px solid #9ecff2;
+	}
+
+	@media screen and (max-width: 1400px) {
+		width: 66px;
+		height: 32px;
+		font-size: 14px;
+	}
+	@media screen and (max-width: 700px) {
+		width: 60px;
+		height: 30px;
+		font-size: 14px;
 	}
 `;
