@@ -70,6 +70,13 @@ export const ExceptionWrapper = styled.div`
 
 	span {
 		font-size: 23px;
+		@media (max-width: 1400px) {
+			font-size: 20px;
+		}
+		font-size: 23px;
+		@media (max-width: 700px) {
+			font-size: 17px;
+		}
 	}
 `;
 
@@ -85,6 +92,19 @@ export const SearchBox = styled.div`
 	border: none;
 	margin-left: 50px;
 	margin-top: 19px;
+	@media (max-width: 1920px) {
+		margin-left: 1vh;
+	}
+	@media (max-width: 1400px) {
+		width: 280px;
+		height: 60px;
+		margin-left: 1vh;
+	}
+	@media (max-width: 700px) {
+		width: 160px;
+		height: 45px;
+		margin-left: 1vh;
+	} ;
 `;
 
 export const Search = styled.input`
@@ -94,6 +114,19 @@ export const Search = styled.input`
 	border: none;
 	border-radius: 20px;
 	font-size: 18px;
+	@media (max-width: 1400px) {
+		::placeholder {
+			font-size: 16px;
+		}
+		font-size: 16px;
+	}
+	@media (max-width: 700px) {
+		::placeholder {
+			font-size: 8px;
+		}
+		font-size: 8px;
+		width: 93px;
+	} ;
 `;
 
 export const SearchBtn = styled.button`
@@ -111,6 +144,16 @@ export const SearchBtn = styled.button`
 		color: #9ecff2;
 		border: 2px solid #9ecff2;
 	}
+	@media (max-width: 1400px) {
+		font-size: 16px;
+		width: 70px;
+		height: 35px;
+	}
+	@media (max-width: 700px) {
+		width: 40px;
+		height: 25px;
+		font-size: 8px;
+	} ;
 `;
 
 export const SearchContainer = styled.div`

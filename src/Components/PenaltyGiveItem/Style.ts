@@ -17,4 +17,14 @@ export const BreakDownBtn = styled.button`
 		color: #f38d8d;
 		border: 2px solid #f38d8d;
 	}
+	@media (max-width: 1400px) {
+		font-size: 16px;
+		width: 170px;
+		height: 56px;
+	}
+	@media (max-width: 700px) {
+		font-size: 8px;
+		width: 60px;
+		height: 45px;
+	} ;
 `;
