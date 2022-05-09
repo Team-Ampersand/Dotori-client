@@ -10,6 +10,6 @@ export const Container = styled.div`
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-	row-gap: 10%;
+	row-gap: 5%;
 	margin-left: 3%;
 `;

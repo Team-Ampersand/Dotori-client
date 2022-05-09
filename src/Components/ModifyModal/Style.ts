@@ -30,6 +30,14 @@ export const Container = styled.div`
 	height: 800px;
 	display: flex;
 	justify-content: center;
+	@media (max-width: 1400px) {
+		width: 550px;
+		height: 700px;
+	}
+	@media (max-width: 700px) {
+		width: 450px;
+		height: 600px;
+	}
 `;
 
 export const BtnWrapper = styled.div`
@@ -54,6 +62,16 @@ export const CompleteBtn = styled.button`
 		background-color: black;
 		color: white;
 	}
+	@media (max-width: 1400px) {
+		width: 85px;
+		height: 35px;
+		font-size: 16px;
+	}
+	@media (max-width: 700px) {
+		width: 70px;
+		height: 30px;
+		font-size: 12px;
+	}
 `;
 
 export const DeleteBtn = styled.button`
@@ -69,5 +87,11 @@ export const DeleteBtn = styled.button`
 		background-color: #fff;
 		color: #ff5252;
 		border: 2px solid #ff5252;
+	}
+	@media (max-width: 1400px) {
+		font-size: 14px;
+	}
+	@media (max-width: 700px) {
+		font-size: 12px;
 	}
 `;

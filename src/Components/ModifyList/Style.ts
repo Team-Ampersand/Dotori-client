@@ -13,6 +13,14 @@ export const ModifyWrapper = styled.div`
 	height: 750px;
 	border: 2px solid rgba(0, 0, 0, 1);
 	border-radius: 40px;
+	@media (max-width: 1400px) {
+		width: 510px;
+		height: 660px;
+	}
+	@media (max-width: 700px) {
+		width: 420px;
+		height: 570px;
+	}
 `;
 
 export const Header = styled.div`
@@ -25,6 +33,12 @@ export const Header = styled.div`
 	font-weight: 700;
 	line-height: 35px;
 	text-align: center;
+	@media (max-width: 1400px) {
+		font-size: 27px;
+	}
+	@media (max-width: 700px) {
+		font-size: 23px;
+	}
 `;
 
 export const Category = styled.div`
@@ -61,6 +75,9 @@ export const DateWrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	width: 100px;
+	@media (max-width: 700px) {
+		font-size: 12px;
+	}
 `;
 
 export const ItemWrapper = styled.div`
@@ -69,6 +86,9 @@ export const ItemWrapper = styled.div`
 	align-items: center;
 	width: 200px;
 	font-size: 16px;
+	@media (max-width: 700px) {
+		font-size: 12px;
+	}
 `;
 
 export const DeleteBtn = styled.button`
@@ -84,5 +104,10 @@ export const DeleteBtn = styled.button`
 		background-color: #fff;
 		color: #f38d8d;
 		border: 2px solid #f38d8d;
+	}
+	@media (max-width: 700px) {
+		font-size: 12px;
+		width: 50px;
+		height: 25px;
 	}
 `;
