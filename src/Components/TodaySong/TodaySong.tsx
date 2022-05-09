@@ -12,6 +12,7 @@ import useSWR, { mutate } from 'swr';
 import { apiClient } from 'Utils/Libs/apiClient';
 import { MusicController } from 'Utils/Libs/requestUrls';
 import { DateFormatter } from 'Utils/DateFormatter';
+import { ManufactureDate } from 'Utils/ManufactureDate';
 
 interface MusicType {
 	data: {
@@ -29,7 +30,7 @@ interface MusicType {
 
 const TodaySong: React.FC = () => {
 	const [songlist, setSongList] = useRecoilState(setList);
-	const [playlistDate] = useRecoilState(showPlaylistDate);
+	const [playlistDate, setPlaylistDate] = useRecoilState(showPlaylistDate);
 	const [calendarOpen, setCalendarOpen] = useRecoilState(isCalendarOpen);
 	const role = useRole();
 	const { data, error } = useSWR<MusicType>(
@@ -42,6 +43,11 @@ const TodaySong: React.FC = () => {
 	};
 
 	useEffect(() => {
+		setPlaylistDate(
+			`${ManufactureDate('Y')}-${('0' + ManufactureDate('M')).slice(-2)}-${(
+				'0' + ManufactureDate('D')
+			).slice(-2)}`
+		);
 		getDateMusic(playlistDate).then((res) => {
 			setSongList(res?.data.data);
 			mutate(`/${role}/music?date=${playlistDate}`);

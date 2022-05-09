@@ -38,14 +38,13 @@ export const CalendarOverlay = styled.div<StyleProps>`
 export const CalendarWrapper = styled.div`
 	font-size: 16px;
 	position: absolute;
-	top: 1px;
-	left: 37.5vw;
+	top: 1%;
+	left: 93%;
 
-	@media screen and (max-width: 1400px){
+	@media screen and (max-width: 1400px) {
 		left: auto;
 		right: -27vw;
 	}
-
 	.react-calendar {
 		width: 400px;
 		max-width: 100%;
@@ -57,7 +56,7 @@ export const CalendarWrapper = styled.div`
 		font-family: Arial, Helvetica, sans-serif;
 		line-height: 1.125em;
 
-		@media screen and (max-width: 1400px){
+		@media screen and (max-width: 1400px) {
 			width: 380px;
 		}
 	}
