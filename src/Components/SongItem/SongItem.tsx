@@ -73,24 +73,26 @@ const SongItem: React.FC<SongItemProps> = ({
 				<S.TitleContainer>{title}</S.TitleContainer>
 				<S.AuthorContainer>{memberName}</S.AuthorContainer>
 			</S.Container>
-			<S.DateContainer>{showMusicDataFormatter(createdDate)}</S.DateContainer>
-			{role === 'admin' ||
-			role === 'developer' ||
-			role === 'councillor' ||
-			email === user.sub ? (
-				<S.DeleteContainer
-					onClick={(e) => {
-						e.preventDefault();
-						window.confirm('삭제 하시겠습니까?')
-							? DeleteMusic(id, role, playlistDate)
-							: toast.info('삭제 하지 않았어요.');
-					}}
-				>
-					<I.DeleteButton />
-				</S.DeleteContainer>
-			) : (
-				''
-			)}
+			<S.RightContainer>
+				{role === 'admin' ||
+				role === 'developer' ||
+				role === 'councillor' ||
+				email === user.sub ? (
+					<S.DeleteContainer
+						onClick={(e) => {
+							e.preventDefault();
+							window.confirm('삭제 하시겠습니까?')
+								? DeleteMusic(id, role, playlistDate)
+								: toast.info('삭제 하지 않았어요.');
+						}}
+					>
+						<I.DeleteButton />
+					</S.DeleteContainer>
+				) : (
+					''
+				)}
+				<S.DateContainer>{showMusicDataFormatter(createdDate)}</S.DateContainer>
+			</S.RightContainer>
 		</S.Positioner>
 	);
 };
