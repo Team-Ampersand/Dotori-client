@@ -36,7 +36,7 @@ export const ImgContainer = styled.div<StyleProps>`
 `;
 
 export const Container = styled.div`
-	width: 51%;
+	width: 65%;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -60,10 +60,10 @@ export const TitleContainer = styled.span`
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
 
-	@media screen and (max-width: 1400px){
+	@media screen and (max-width: 1400px) {
 		font-size: 14px;
 	}
-	@media screen and (max-width: 700px){
+	@media screen and (max-width: 700px) {
 		font-size: 12px;
 	}
 
@@ -79,28 +79,29 @@ export const AuthorContainer = styled.span`
 	margin-top: 4%;
 `;
 
+export const RightContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+`;
+
 export const DateContainer = styled.span`
 	font-size: 12px;
 	color: #c4c4c4;
-	width: 10%;
-	min-width: 38px;
-	margin: 10% 8px 0 10%;
 
-	@media screen and (max-width: 1400px){
+	@media screen and (max-width: 1400px) {
 		font-size: 11px;
 		margin: 17% 8px 0 10%;
 	}
-	@media screen and (max-width: 700px){
+	@media screen and (max-width: 700px) {
 		font-size: 10px;
 		margin: 28% 8px 0 10%;
 	}
 `;
 
 export const DeleteContainer = styled.div`
+	height: 80px;
+	margin-left: 70%;
 	cursor: pointer;
 	color: #909090;
 	position: relative;
-	margin-bottom: 9%;
-	margin-left: -4%;
-	margin: 0 3% 9% -4%;
 `;
