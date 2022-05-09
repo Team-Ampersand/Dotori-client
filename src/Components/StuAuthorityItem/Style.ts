@@ -8,7 +8,7 @@ interface StyleProps {
 export const Container = styled.li`
 	width: 95%;
 	list-style: none;
-	margin: 30px 40px;
+	margin: 30px auto;
 	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
 	border-radius: 20px;
 	height: 80px;
@@ -18,46 +18,87 @@ export const Container = styled.li`
 `;
 
 export const StuInfoWrapper = styled.div`
+	width: 58.8%;
 	display: flex;
 	flex-direction: row;
+
+	@media screen and (max-width: 1400px){
+		width: 55%;
+	}
+	@media screen and (max-width: 1400px){
+		width: 60%;
+	}
 `;
 
 export const StuNumStyle = styled.div<StyleProps>`
 	font-size: 18px;
-	width: 200px;
+	flex: 1;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	color: ${(props) => props.genderColor};
+
+	@media screen and (max-width: 1400px) {
+		font-size: 14px;
+	}
+	@media screen and (max-width: 700px){
+		font-size: 12px;
+	}
 `;
 
 export const NameStyle = styled.div`
 	font-size: 18px;
-	width: 280px;
+	flex: 1.4;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
+	@media screen and (max-width: 1400px) {
+		font-size: 14px;
+		flex: 1;
+	}
+	@media screen and (max-width: 700px) {
+		font-size: 12px;
+	}
 `;
 
 export const AuthorityStyle = styled.div`
 	font-size: 18px;
-	width: 200px;
+	flex: 1;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
+	@media screen and (max-width: 1400px) {
+		font-size: 14px;
+		flex: 1.3;
+	}
+	@media screen and (max-width: 700px) {
+		font-size: 12px;
+		flex: 1.5;
+	}
 `;
 
 export const SelfStudyStyle = styled.div<StyleProps>`
 	font-size: 18px;
-	width: 200px;
+	flex: 1;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	color: ${(props) => props.selfStudyColor};
+
+	@media screen and (max-width: 1400px) {
+		font-size: 14px;
+		flex: 1.3;
+	}
+	@media screen and (max-width: 700px) {
+		font-size: 12px;
+		flex: 1.5;
+	}
 `;
 
 export const BanBtn = styled.button`
-	width: 108px;
+	flex: 1;
 	height: 36px;
 	margin-right: 20px;
 	font-size: 18px;
@@ -72,10 +113,21 @@ export const BanBtn = styled.button`
 		color: #ed7878;
 		background-color: #fff;
 	}
+
+	@media screen and (max-width: 1400px) {
+		font-size: 14px;
+		margin-right: 15px;
+		min-width: 75px;
+	}
+	@media screen and (max-width: 700px) {
+		height: 30px;
+		font-size: 12px;
+		margin-right: 10px;
+	}
 `;
 
 export const BanCancelBtn = styled.button`
-	width: 108px;
+	flex: 1;
 	height: 36px;
 	margin-right: 20px;
 	font-size: 18px;
@@ -90,10 +142,22 @@ export const BanCancelBtn = styled.button`
 		color: #668ae7;
 		background-color: #fff;
 	}
+
+	@media screen and (max-width: 1400px) {
+		font-size: 14px;
+		margin-right: 15px;
+		min-width: 75px;
+		max-width: 120px;
+	}
+	@media screen and (max-width: 700px) {
+		height: 30px;
+		font-size: 12px;
+		margin-right: 10px;
+	}
 `;
 
 export const EditBtn = styled.button`
-	width: 108px;
+	flex: 1;
 	height: 36px;
 	margin-right: 30px;
 	font-size: 18px;
@@ -108,6 +172,25 @@ export const EditBtn = styled.button`
 		color: #b8b8b8;
 		background-color: #fff;
 	}
+
+	@media screen and (max-width: 1400px) {
+		font-size: 14px;
+		margin-right: 16px;
+		min-width: 75px;
+		max-width: 120px;
+	}
+	@media screen and (max-width: 700px) {
+		height: 30px;
+		font-size: 12px;
+		margin-right: 10px;
+	}
 `;
 
-export const BtnWrapper = styled.div``;
+export const BtnWrapper = styled.div`
+	width: 266px;
+	align-items: center;
+
+	@media screen and (max-width: 1400px) {
+		width: 188px;
+	}
+`;

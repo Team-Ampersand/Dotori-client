@@ -11,6 +11,9 @@ export const Wrapper = styled.div`
 	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
 	border-radius: 20px;
 	position: relative;
+	@media (max-width: 700px) {
+		width: 90%;
+	} ;
 `;
 
 export const StuNum = styled.span`

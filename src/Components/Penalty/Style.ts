@@ -24,6 +24,14 @@ export const StuBoxContainer = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	@media (max-width: 1400px) {
+		height: 60px;
+		margin: 15px 30px;
+	}
+	@media (max-width: 700px) {
+		height: 45px;
+		margin: 10px 15px;
+	} ;
 `;
 
 export const SelectBoxWrapper = styled.div`
@@ -72,6 +80,16 @@ export const CheckBox = styled.input`
 	width: 30px;
 	height: 30px;
 	background-color: rgba(15, 76, 129, 1);
+	@media (max-width: 1400px) {
+		margin-left: 15px;
+		width: 25px;
+		height: 25px;
+	}
+	@media (max-width: 700px) {
+		margin-left: 10px;
+		width: 15px;
+		height: 15px;
+	} ;
 `;
 
 export const SelectStu = styled.div`
@@ -87,6 +105,25 @@ export const SelectStu = styled.div`
 	padding-right: 20px;
 	padding-left: 10px;
 	border-radius: 10px;
+	@media (max-width: 1920px) {
+		text-align: center;
+		padding: 0 20px;
+		font-size: 18px;
+	}
+	@media (max-width: 1400px) {
+		width: auto;
+		height: 56px;
+		text-align: center;
+		padding: 0 10px;
+		font-size: 16px;
+	}
+	@media (max-width: 700px) {
+		width: 70px;
+		height: 45px;
+		text-align: center;
+		padding: 0 5px;
+		font-size: 8px;
+	} ;
 `;
 
 export const SelectStus = styled.div`
@@ -97,4 +134,13 @@ export const SelectStus = styled.div`
 	border-radius: 20px;
 	font-size: 16px;
 	font-weight: 700;
+	@media (max-width: 1920px) {
+		font-size: 18px;
+	}
+	@media (max-width: 1400px) {
+		font-size: 16px;
+	}
+	@media (max-width: 700px) {
+		font-size: 8px;
+	} ;
 `;
