@@ -2,7 +2,7 @@ import * as React from 'react';
 
 function Female(props: React.SVGProps<SVGSVGElement>) {
 	return (
-		<svg width={160} height={160} fill="none" {...props}>
+		<svg width={160} height={160} viewBox="0 0 160 160" fill="none" {...props}>
 			<circle cx={80} cy={80} r={80} fill="#FFD3D3" />
 			<path
 				fill="url(#prefix__pattern25679)"
