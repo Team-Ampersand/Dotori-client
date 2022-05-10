@@ -39,7 +39,6 @@ import Delete from './Delete';
 import DeleteButton from './DeleteButton';
 import PrevBarImg from './PreBar';
 import NextBarImg from './NextBar';
-import PromotionImg from './Promotion';
 import Arrow from './Arrow';
 import Arrow2 from './Arrow2';
 import X from './X';
@@ -93,7 +92,6 @@ export {
 	DeleteButton,
 	PrevBarImg,
 	NextBarImg,
-	PromotionImg,
 	Arrow,
 	Arrow2,
 	X,
