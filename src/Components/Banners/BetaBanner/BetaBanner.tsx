@@ -99,7 +99,7 @@ const BetaBanner: React.FC = () => {
 						<span>
 							오늘의 청소학년은 <strong>{grade}학년</strong> 이에요
 						</span>
-						{grade === 1 && <h4>오늘은 여학생 청소하는 날이에요</h4>}
+						{grade === 1 && <span>오늘은 여학생 청소하는 날이에요</span>}
 					</S.TextWrapper>
 				) : (
 					<S.TextWrapper>
