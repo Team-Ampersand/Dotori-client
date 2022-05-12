@@ -9,7 +9,7 @@ interface studentList {
 	stuNum: number;
 	memberName: string;
 	roles: Array<any>;
-	selfStudy: string;
+	selfStudyStatus: string;
 	gender: string;
 }
 
@@ -79,7 +79,7 @@ const Authorzation: React.FC = () => {
 							stuNum={String(stu.stuNum)}
 							memberName={stu.memberName}
 							authority={stu.roles[0]}
-							selfStudy={stu.selfStudy}
+							selfStudyStatus={stu.selfStudyStatus}
 							gender={stu.gender}
 						/>
 					))}

@@ -9,7 +9,7 @@ interface StuAuthorityItemProps {
 	stuNum: string;
 	memberName: string;
 	authority: string;
-	selfStudy: string;
+	selfStudyStatus: string;
 	gender: string;
 }
 
@@ -74,12 +74,12 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
 	stuNum,
 	memberName,
 	authority,
-	selfStudy,
+	selfStudyStatus,
 	gender,
 }) => {
 	const role = useRole();
 	useEffect(() => {
-		if (returnSelfStudyValue(selfStudy) === '신청 불가능') {
+		if (returnSelfStudyValue(selfStudyStatus) === '신청 불가능') {
 			setSelfStudyState(false);
 		}
 	}, []);
@@ -113,12 +113,12 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
 					<S.StuNumStyle genderColor={returnGenderColor(gender)}>
 						{stuNum}
 					</S.StuNumStyle>
-					<S.NameStyle onClick={() => console.log(selfStudy)}>
+					<S.NameStyle>
 						{memberName}
 					</S.NameStyle>
 					<S.AuthorityStyle>{returnRoleValue(authority)}</S.AuthorityStyle>
-					<S.SelfStudyStyle selfStudyColor={returnSelfStudyColor(selfStudy)}>
-						{returnSelfStudyValue(selfStudy)}
+					<S.SelfStudyStyle selfStudyColor={returnSelfStudyColor(selfStudyStatus)}>
+						{returnSelfStudyValue(selfStudyStatus)}
 					</S.SelfStudyStyle>
 				</S.StuInfoWrapper>
 				<S.BtnWrapper>
