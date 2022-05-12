@@ -21,8 +21,9 @@ export const Header = styled.div`
 
 	h3 {
 		width: 120px;
+		font-size: 22px;
 		@media (max-width: 1920px) {
-			font-size: 22px;
+			font-size: 20px;
 		}
 		@media (max-width: 1400px) {
 			font-size: 18px;
@@ -42,9 +43,8 @@ export const LogoutWrapper = styled.div`
 		font-size: 18px;
 		margin-left: 13px;
 		color: #ababab;
-
 		@media (max-width: 1920px) {
-			font-size: 17px;
+			font-size: 15px;
 		}
 
 		@media (max-width: 1400px) {
@@ -82,11 +82,11 @@ export const UserWrapper = styled.div`
 	svg {
 		width: 100%;
 		@media (max-width: 1920px) {
-			width: 100%;
+			width: 40%;
 		}
 
 		@media (max-width: 1400px) {
-			width: 55%;
+			width: 45%;
 		}
 		@media (max-width: 700px) {
 			width: 100%;
@@ -95,8 +95,9 @@ export const UserWrapper = styled.div`
 
 	a {
 		font-weight: bold;
+		font-size: 16px;
 		@media (max-width: 1920px) {
-			font-size: 16px;
+			font-size: 14px;
 		}
 
 		@media (max-width: 1400px) {
@@ -120,7 +121,16 @@ export const UserWrapper = styled.div`
 		.name {
 			font-size: 20px;
 			font-weight: bold;
-			width: 5.7vw;
+			width: 5vw;
+			@media (max-width: 1920px) {
+				font-size: 18px;
+			}
+			@media (max-width: 1400px) {
+				font-size: 14px;
+			}
+			@media (max-width: 700px) {
+				font-size: 7px;
+			}
 		}
 
 		.grade {
@@ -128,38 +138,14 @@ export const UserWrapper = styled.div`
 			color: #bbbbbe;
 			font-weight: bold;
 			margin-left: 14px;
-		}
-	}
-
-	@media (max-width: 1920px) {
-		div {
-			.name {
-				font-size: 25px;
+			@media (max-width: 1920px) {
+				font-size: 16px;
 			}
-			.grade {
-				font-size: 23px;
-				margin-left: 14px;
+			@media (max-width: 1400px) {
+				font-size: 13px;
 			}
-		}
-	}
-
-	@media (max-width: 1400px) {
-		div {
-			.name {
-				font-size: 18px;
-			}
-			.grade {
-				font-size: 18px;
-			}
-		}
-	}
-	@media (max-width: 700px) {
-		div {
-			.name {
-				font-size: 10px;
-			}
-			.grade {
-				font-size: 8px;
+			@media (max-width: 700px) {
+				font-size: 7px;
 			}
 		}
 	}
@@ -228,7 +214,7 @@ export const Policy = styled.div`
 		text-align: center;
 
 		@media (max-width: 1920px) {
-			font-size: 14px;
+			font-size: 12px;
 		}
 		@media (max-width: 1400px) {
 			font-size: 10px;
@@ -244,13 +230,13 @@ export const Policy = styled.div`
 		text-align: center;
 
 		@media (max-width: 1920px) {
-			font-size: 14px;
-		}
-		@media (max-width: 1400px) {
 			font-size: 10px;
 		}
-		@media (max-width: 700px) {
+		@media (max-width: 1400px) {
 			font-size: 8px;
+		}
+		@media (max-width: 700px) {
+			font-size: 6px;
 		}
 
 		strong {
@@ -283,19 +269,19 @@ export const PenaltyBtn = styled.button`
 	font-weight: bold;
 
 	@media (max-width: 1920px) {
-		font-size: 19px;
-		width: 170px;
-		height: 46px;
-	}
-	@media (max-width: 1400px) {
-		font-size: 14px;
-		width: 132px;
+		font-size: 16px;
+		width: 137px;
 		height: 36px;
 	}
+	@media (max-width: 1400px) {
+		font-size: 12px;
+		width: 102px;
+		height: 30px;
+	}
 	@media (max-width: 700px) {
-		font-size: 8px;
+		font-size: 5px;
 		width: 80px;
-		height: 26px;
+		height: 25px;
 	}
 
 	&:hover {
