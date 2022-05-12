@@ -27,10 +27,10 @@ export const StudyHeader = styled.div`
 	h2 {
 		font-size: 20px;
 		@media (max-width: 1920px) {
-			font-size: 22px;
+			font-size: 18px;
 		}
 		@media (max-width: 1400px) {
-			font-size: 18px;
+			font-size: 16px;
 		}
 		@media (max-width: 700px) {
 			font-size: 12px;
@@ -38,7 +38,7 @@ export const StudyHeader = styled.div`
 	}
 
 	a {
-		width: 92px;
+		width: 10vw;
 		display: flex;
 		justify-content: flex-end;
 		align-items: center;
@@ -50,9 +50,8 @@ export const StudyHeader = styled.div`
 			color: #ababab;
 
 			@media (max-width: 1920px) {
-				font-size: 17px;
+				font-size: 16px;
 			}
-
 			@media (max-width: 1400px) {
 				font-size: 13px;
 			}
@@ -78,11 +77,10 @@ export const StudyContent = styled.div`
 		font-weight: bold;
 
 		@media (max-width: 1920px) {
-			font-size: 65px;
+			font-size: 52px;
 		}
-
 		@media (max-width: 1400px) {
-			font-size: 55px;
+			font-size: 45px;
 		}
 		@media (max-width: 700px) {
 			font-size: 30px;
@@ -94,11 +92,11 @@ export const StudyContent = styled.div`
 		text-align: center;
 		color: #a1a1a1;
 		@media (max-width: 1920px) {
-			font-size: 15px;
+			font-size: 14px;
 		}
 
 		@media (max-width: 1400px) {
-			font-size: 15px;
+			font-size: 11px;
 		}
 		@media (max-width: 700px) {
 			font-size: 6px;
@@ -126,6 +124,9 @@ export const ActiveProgress = styled.div<StyleProps>`
 export const StudyButton = styled.button<StyleProps>`
 	width: 7rem;
 	height: 2.125rem;
+	font-size: 18px;
+	border-radius: 5px;
+	font-weight: bold;
 	background-color: ${(props) => {
 		if (
 			props.Clicked === 'CAN' &&
@@ -158,9 +159,6 @@ export const StudyButton = styled.button<StyleProps>`
 			return '#fff';
 		}
 	}};
-	border-radius: 5px;
-	font-size: 18px;
-	font-weight: bold;
 
 	&:hover {
 		background-color: ${(props) => {
@@ -201,15 +199,15 @@ export const StudyButton = styled.button<StyleProps>`
 	}
 
 	@media (max-width: 1920px) {
-		width: 8rem;
-		height: 2.2rem;
-		font-size: 20px;
+		width: 7rem;
+		height: 2.125rem;
+		font-size: 18px;
 	}
 
 	@media (max-width: 1400px) {
-		width: 6.5rem;
-		height: 2rem;
-		font-size: 18px;
+		width: 6rem;
+		height: 1.6rem;
+		font-size: 16px;
 	}
 	@media (max-width: 700px) {
 		width: 4.5rem;
