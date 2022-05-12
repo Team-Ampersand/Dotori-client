@@ -113,7 +113,7 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
 					<S.StuNumStyle genderColor={returnGenderColor(gender)}>
 						{stuNum}
 					</S.StuNumStyle>
-					<S.NameStyle onClick={() => console.log(selfStudyStatus)}>
+					<S.NameStyle>
 						{memberName}
 					</S.NameStyle>
 					<S.AuthorityStyle>{returnRoleValue(authority)}</S.AuthorityStyle>
