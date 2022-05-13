@@ -39,7 +39,7 @@ export const MassageHeader = styled.div`
 	}
 
 	div {
-		width: 92px;
+		width: 10vw;
 		display: flex;
 		cursor: pointer;
 		justify-content: flex-end;
