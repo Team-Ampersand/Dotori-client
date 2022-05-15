@@ -84,36 +84,32 @@ export const SearchBox = styled.div`
 	display: flex;
 	background-color: #fff;
 	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
-	width: 300px;
+	width: 322px;
 	height: 70px;
 	border-radius: 10px;
 	justify-content: space-around;
 	align-items: center;
 	border: none;
-	margin-left: 50px;
-	margin-top: 19px;
-	@media (max-width: 1920px) {
-		margin-left: 1vh;
-	}
+	margin-left: 1vh;
+	margin-top: 20px;
 	@media (max-width: 1400px) {
 		width: 280px;
 		height: 60px;
-		margin-left: 1vh;
 	}
 	@media (max-width: 700px) {
 		width: 160px;
 		height: 45px;
-		margin-left: 1vh;
 	} ;
 `;
 
 export const Search = styled.input`
 	display: flex;
-	width: 50%;
+	width: 53%;
 	height: 90%;
 	border: none;
 	border-radius: 20px;
 	font-size: 18px;
+	justify-content: center;
 	@media (max-width: 1400px) {
 		::placeholder {
 			font-size: 16px;
