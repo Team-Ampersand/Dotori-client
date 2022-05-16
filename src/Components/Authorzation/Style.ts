@@ -73,7 +73,7 @@ export const SearchBox = styled.div`
 	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
 	width: 300px;
 	height: 70px;
-	border-radius: 20px;
+	border-radius: 10px;
 	justify-content: space-evenly;
 	align-items: center;
 	border: none;
@@ -82,7 +82,13 @@ export const SearchBox = styled.div`
 
 	@media screen and (max-width: 1400px) {
 		margin-left: 30px;
+		width: 280px;
+        height: 60px;
 	}
+	@media (max-width: 700px) {
+        width: 180px;
+        height: 45px;
+    } ;
 `;
 
 export const Search = styled.input`
@@ -98,6 +104,8 @@ export const Search = styled.input`
 	}
 	@media screen and (max-width: 700px) {
 		font-size: 12px;
+		width: 113px;
+        /* height: 30px; */
 	}
 `;
 
@@ -118,13 +126,13 @@ export const SearchBtn = styled.button`
 	}
 
 	@media screen and (max-width: 1400px) {
-		width: 66px;
-		height: 32px;
+		width: 70px;
+        height: 35px;
 		font-size: 14px;
 	}
 	@media screen and (max-width: 700px) {
-		width: 60px;
-		height: 30px;
-		font-size: 14px;
+		width: 40px;
+        height: 25px;
+		font-size: 10px;
 	}
 `;
