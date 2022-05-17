@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { stringLength } from '@firebase/util';
 
 type StyleProps = {
 	CurrentCounter: number;
@@ -101,11 +102,6 @@ export const Products = styled.div`
 	);
 	transition: all ease-in-out 0.3s 0s;
 	height: 100%;
-
-	svg {
-		position: fixed;
-		bottom: 0;
-	}
 `;
 
 export const Product = styled.div`
@@ -114,10 +110,11 @@ export const Product = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-
-	svg {
-		margin-top: 10vh;
-	}
+`;
+export const PromotionImg = styled.img`
+	width: 65vw;
+	position: fixed;
+	bottom: 0;
 `;
 
 export const SlideBtn = styled.div`
