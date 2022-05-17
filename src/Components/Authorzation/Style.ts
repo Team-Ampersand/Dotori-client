@@ -105,7 +105,6 @@ export const Search = styled.input`
 	@media screen and (max-width: 700px) {
 		font-size: 12px;
 		width: 113px;
-        /* height: 30px; */
 	}
 `;
 
