@@ -20,10 +20,10 @@ export const TitleContainer = styled.div`
 	h2 {
 		font-size: 20px;
 		@media (max-width: 1920px) {
-			font-size: 22px;
+			font-size: 18px;
 		}
 		@media (max-width: 1400px) {
-			font-size: 18px;
+			font-size: 16px;
 		}
 		@media (max-width: 700px) {
 			font-size: 12px;
@@ -45,7 +45,7 @@ export const DayWrapper = styled.div`
 		font-size: 18px;
 
 		@media (max-width: 1920px) {
-			font-size: 17px;
+			font-size: 16px;
 		}
 
 		@media (max-width: 1400px) {
@@ -96,7 +96,7 @@ export const Meal = styled.div`
 	p {
 		font-size: 20px;
 		@media (max-width: 1920px) {
-			font-size: 20px;
+			font-size: 18px;
 		}
 
 		@media (max-width: 1400px) {
@@ -111,7 +111,7 @@ export const Meal = styled.div`
 		font-weight: bold;
 
 		@media (max-width: 1920px) {
-			font-size: 40px;
+			font-size: 35px;
 		}
 
 		@media (max-width: 1400px) {
