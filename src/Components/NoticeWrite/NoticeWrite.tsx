@@ -102,22 +102,24 @@ const NoticeWrite: React.FC = () => {
 									</S.Img>
 								</div>
 							</S.ImgContainer>
-							<S.ImgBtnWrapper>
-								<input
-									id="select-file"
-									name="imgUpload"
-									type="file"
-									accept="image/*"
-									onChange={saveFileImage}
-								/>
-								<label htmlFor="select-file">이미지 선택</label>
-								<button onClick={() => deleteFileImage()}>이미지 삭제</button>
-							</S.ImgBtnWrapper>
-							<S.AuthorContainer>
-								<S.AuthorWrapper>
-									작성자 : {returnAuthorValue(role)}
-								</S.AuthorWrapper>
-							</S.AuthorContainer>
+							<S.SelectImgContainer>
+								<S.ImgBtnWrapper>
+									<input
+										id="select-file"
+										name="imgUpload"
+										type="file"	
+										accept="image/*"
+										onChange={saveFileImage}
+									/>
+									<label htmlFor="select-file">이미지 선택</label>
+									<button onClick={() => deleteFileImage()}>이미지 삭제</button>
+								</S.ImgBtnWrapper>
+								<S.AuthorContainer>
+									<S.AuthorWrapper>
+										작성자 : {returnAuthorValue(role)}
+									</S.AuthorWrapper>
+								</S.AuthorContainer>
+							</S.SelectImgContainer>
 						</S.ContentWrapper>
 					</S.ContentContainer>
 				</S.Container>
