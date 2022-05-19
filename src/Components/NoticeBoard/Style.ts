@@ -48,8 +48,7 @@ export const PageBtnWrapper = styled.div`
 	label {
 		text-align: center;
 		font-size: 25px;
-		font-weight: 800;
-		font-weight: lighter;
+		font-weight: 600;
 		border-radius: 50px;
 	}
 `;
