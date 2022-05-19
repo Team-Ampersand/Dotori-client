@@ -5,12 +5,12 @@ export const Positioner = styled.div`
 	width: 100%;
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 `;
 
 export const Container = styled.div`
 	width: 100%;
-	height: 79vh;
-	margin-top: 1.8vh;
+	height: 94%;
 	background: #fff;
 	border-radius: 20px;
 	display: flex;
