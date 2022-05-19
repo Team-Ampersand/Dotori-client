@@ -31,7 +31,6 @@ export const ExceptionWrapper = styled(Container)`
 
 export const PageBtnWrapper = styled.div`
 	display: flex;
-	/* justify-content: space-around; */
 	column-gap: 30px;
 	align-items: center;
 	position: absolute;
@@ -82,6 +81,13 @@ export const WriteBtn = styled.button`
 		background-color: #fff;
 		color: #9ecff2;
 		border: 2px solid #9ecff2;
+	}
+
+	@media (max-width: 700px) {
+		width: 75px;
+		height: 34px;
+		font-size: 16px;
+		margin-right: 1.2vw;
 	}
 `;
 
