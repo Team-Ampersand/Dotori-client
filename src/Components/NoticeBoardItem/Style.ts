@@ -14,6 +14,7 @@ interface BtnProps {
 	BtnColor: string;
 }
 
+
 export const Container = styled(Link)`
 	width: 95%;
 	height: 8.7vh;
@@ -29,6 +30,14 @@ export const Container = styled(Link)`
 	&:hover {
 		background-color: ${darken(0.05, '#fff')};
 	}
+
+	@media(max-width: 1400px){
+		height: 8vh;
+		padding: 0 1%;
+	}
+	@media(max-width: 700px){
+		padding: 0 2%;
+	}
 `;
 
 export const AuthorStyle = styled.div<AuthorProps>`
@@ -36,10 +45,16 @@ export const AuthorStyle = styled.div<AuthorProps>`
 		color: ${(props) => props.AuthorColor};
 		font-size: 1.5em;
 		font-weight: bold;
+
+		@media (max-width: 1400px){
+			font-size: 1.2rem;
+		}
+		@media (max-width: 700px){
+			font-size: 1.1rem;
+		}
 	}
 	display: flex;
 	justify-content: center;
-	/* border: 1px solid red; */
 	width: 20%;
 `;
 
@@ -47,11 +62,17 @@ export const TitleStyle = styled.div`
 	span {
 		color: #000;
 		font-size: 1.375em;
+
+		@media (max-width: 1400px){
+			font-size: 1.125rem;
+		}
+		@media (max-width: 700px){
+			font-size: 0.875rem;
+		}
 	}
 	display: flex;
 	justify-content: flex-start;
 	flex-wrap: wrap;
-	/* border: 1px solid blue; */
 	width: 65%;
 `;
 
@@ -61,11 +82,18 @@ export const DateStyle = styled.div<EditProps>`
 		font-size: 15px;
 		font-weight: 600;
 		line-height: 18px;
+
+		@media (max-width: 1400px){
+			font-size: 14px;
+			margin-right: 10px;
+		}
+		@media (max-width: 700px){
+			font-size: 13px;
+		}
 	}
 	display: flex;
 	justify-content: center;
-	/* border: 1px solid black; */
-	width: 15%;
+	width: 20%;
 
 	${(props) =>
 		props.edit &&
@@ -97,5 +125,16 @@ export const Btn = styled.button`
 		background-color: #fff;
 		color: #f38d8d;
 		border: 2px solid #f38d8d;
+	}
+
+	@media (max-width: 1400px) {
+		width: 75px;
+		height: 38px;
+		font-size: 16px;
+	}
+	@media (max-width: 700px) {
+		width: 70px;
+		height: 36px;
+		font-size: 15px;
 	}
 `;

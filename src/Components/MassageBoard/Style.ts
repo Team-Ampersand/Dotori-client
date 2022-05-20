@@ -28,10 +28,10 @@ export const MassageHeader = styled.div`
 		width: 60%;
 		font-size: 20px;
 		@media (max-width: 1920px) {
-			font-size: 22px;
+			font-size: 18px;
 		}
 		@media (max-width: 1400px) {
-			font-size: 18px;
+			font-size: 16px;
 		}
 		@media (max-width: 700px) {
 			font-size: 12px;
@@ -39,7 +39,7 @@ export const MassageHeader = styled.div`
 	}
 
 	div {
-		width: 92px;
+		width: 10vw;
 		display: flex;
 		cursor: pointer;
 		justify-content: flex-end;
@@ -51,9 +51,8 @@ export const MassageHeader = styled.div`
 			color: #ababab;
 
 			@media (max-width: 1920px) {
-				font-size: 17px;
+				font-size: 16px;
 			}
-
 			@media (max-width: 1400px) {
 				font-size: 13px;
 			}
@@ -91,11 +90,10 @@ export const MassageContent = styled.div`
 		font-weight: bold;
 
 		@media (max-width: 1920px) {
-			font-size: 65px;
+			font-size: 52px;
 		}
-
 		@media (max-width: 1400px) {
-			font-size: 55px;
+			font-size: 45px;
 		}
 		@media (max-width: 700px) {
 			font-size: 30px;
@@ -107,11 +105,11 @@ export const MassageContent = styled.div`
 		color: #a1a1a1;
 
 		@media (max-width: 1920px) {
-			font-size: 15px;
+			font-size: 14px;
 		}
 
 		@media (max-width: 1400px) {
-			font-size: 15px;
+			font-size: 11px;
 		}
 		@media (max-width: 700px) {
 			font-size: 6px;
@@ -186,7 +184,7 @@ export const MassageButton = styled.button<StyleProps>`
 				props.status === 'CAN' &&
 				props.count < 5 &&
 				new Date().getHours() === 20 &&
-				new Date().getMinutes() <= 20 &&
+				new Date().getMinutes() >= 20 &&
 				['월', '화', '수', '목'].indexOf(ManufactureDate('W')) !== -1
 			) {
 				return '#fff';
@@ -226,15 +224,15 @@ export const MassageButton = styled.button<StyleProps>`
 	}
 
 	@media (max-width: 1920px) {
-		width: 8rem;
-		height: 2.2rem;
-		font-size: 20px;
+		width: 7rem;
+		height: 2.125rem;
+		font-size: 18px;
 	}
 
 	@media (max-width: 1400px) {
-		width: 6.5rem;
-		height: 2rem;
-		font-size: 18px;
+		width: 6rem;
+		height: 1.6rem;
+		font-size: 16px;
 	}
 	@media (max-width: 700px) {
 		width: 4.5rem;
@@ -257,7 +255,7 @@ export const Alert = styled.div`
 	color: #6d92c4;
 
 	@media (max-width: 1920px) {
-		font-size: 13px;
+		font-size: 12px;
 	}
 
 	@media (max-width: 1400px) {

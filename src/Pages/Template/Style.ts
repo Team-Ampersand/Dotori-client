@@ -22,6 +22,7 @@ export const Title = styled.div`
 	font-size: 50px;
 	font-weight: bold;
 	margin-bottom: 1rem;
+	margin-left: 1rem;
 
 	@media (max-width: 1920px) {
 		font-size: 60px;

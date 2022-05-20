@@ -1,6 +1,7 @@
 import * as S from './Style';
 import React, { useState } from 'react';
-import { TextLogo, Arrow, Arrow2, PromotionImg } from 'Assets/Svg';
+import { TextLogo, Arrow, Arrow2 } from 'Assets/Svg';
+import promotionUrl from '../../Assets/Promotion.png';
 import { useEffect } from 'react';
 
 const Promotion: React.FC = () => {
@@ -44,7 +45,7 @@ const Promotion: React.FC = () => {
 				<S.ProductBodyScrollable>
 					<S.Products CurrentCounter={counter}>
 						<S.Product>
-							<PromotionImg />
+							<S.PromotionImg src={promotionUrl} />
 						</S.Product>
 						<S.Product>
 							<S.Dotory2Page>

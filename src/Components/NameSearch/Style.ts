@@ -27,7 +27,7 @@ export const SearchBox = styled.div`
 
 export const Search = styled.input`
 	display: flex;
-	width: 150px;
+	width: 53%;
 	height: 50px;
 	border: none;
 	border-radius: 20px;

@@ -16,11 +16,12 @@ export const TextWrapper = styled.div`
 	h2 {
 		font-size: 28px;
 		font-weight: bold;
+		margin-bottom: 5px;
 		@media (max-width: 1920px) {
-			font-size: 28px;
+			font-size: 25px;
 		}
 		@media (max-width: 1400px) {
-			font-size: 23px;
+			font-size: 20px;
 		}
 		@media (max-width: 700px) {
 			font-size: 15px;
@@ -31,10 +32,10 @@ export const TextWrapper = styled.div`
 		color: #858585;
 
 		@media (max-width: 1920px) {
-			font-size: 18px;
+			font-size: 15px;
 		}
 		@media (max-width: 1400px) {
-			font-size: 13px;
+			font-size: 12px;
 		}
 		@media (max-width: 700px) {
 			font-size: 5px;
@@ -43,17 +44,13 @@ export const TextWrapper = styled.div`
 	span {
 		font-weight: 600;
 		font-size: 18px;
-		line-height: 32px;
 		@media (max-width: 1920px) {
-			line-height: 34px;
-			font-size: 18px;
+			font-size: 15px;
 		}
 		@media (max-width: 1400px) {
-			line-height: 32px;
-			font-size: 13px;
+			font-size: 12px;
 		}
 		@media (max-width: 700px) {
-			line-height: 25px;
 			font-size: 5px;
 		}
 	}

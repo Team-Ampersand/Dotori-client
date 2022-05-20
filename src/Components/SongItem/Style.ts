@@ -36,7 +36,7 @@ export const ImgContainer = styled.div<StyleProps>`
 `;
 
 export const Container = styled.div`
-	width: 65%;
+	width: 63%;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -86,6 +86,7 @@ export const RightContainer = styled.div`
 
 export const DateContainer = styled.span`
 	font-size: 12px;
+	min-width: 40px;
 	color: #c4c4c4;
 
 	@media screen and (max-width: 1400px) {
@@ -100,7 +101,7 @@ export const DateContainer = styled.span`
 
 export const DeleteContainer = styled.div`
 	height: 80px;
-	margin-left: 70%;
+	margin-left: 60%;
 	cursor: pointer;
 	color: #909090;
 	position: relative;
