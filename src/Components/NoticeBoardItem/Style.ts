@@ -19,7 +19,7 @@ export const Container = styled(Link)`
 	width: 95%;
 	height: 8.7vh;
 	background-color: #fff;
-	box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.15);
+	box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
 	border-radius: 20px;
 	margin-top: 2.7vh;
 	text-decoration: none;
@@ -28,7 +28,8 @@ export const Container = styled(Link)`
 	flex-direction: row;
 	align-items: center;
 	&:hover {
-		background-color: ${darken(0.05, '#fff')};
+		box-shadow: inset 1px 1px 1em rgba(0, 0, 0, 0.1);
+		background-color: #F6FCFF;
 	}
 
 	@media(max-width: 1400px){
