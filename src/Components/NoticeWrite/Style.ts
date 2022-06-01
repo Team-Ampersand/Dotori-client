@@ -22,6 +22,11 @@ export const ContentContainer = styled.div`
 	height: 95%;
 	display: flex;
 	align-items: flex-start;
+	gap: 10px;
+
+	@media (max-width: 1200px) {
+		flex-direction: column;
+	}
 `;
 
 export const InputWrapper = styled.div`
@@ -30,6 +35,10 @@ export const InputWrapper = styled.div`
 	width: 100%;
 	height: 100%;
 	padding-bottom: 30px;
+
+	@media (max-width: 1200px) {
+		height: 120%;
+	}
 `;
 
 export const TitleInput = styled.input`
@@ -46,6 +55,18 @@ export const TitleInput = styled.input`
 	font-weight: 400;
 	&:focus::-webkit-input-placeholder {
 		color: transparent;
+	}
+	
+	@media (max-width: 1400px) {
+		font-size: 23px;
+		padding: 0 4%;
+	}
+	@media (max-width: 1200px) {
+	}
+	@media (max-width: 700px) {
+		font-size: 20px;
+		padding: 0 3%;
+		width: 92%;
 	}
 `;
 
@@ -64,14 +85,30 @@ export const ContentInput = styled.textarea`
 	&:focus::-webkit-input-placeholder {
 		color: transparent;
 	}
+
+	@media (max-width: 1400px) {
+		font-size: 1.1rem;
+		padding: 30px 4% 10px 4%;
+	}
+	@media (max-width: 1200px) {
+	}
+	@media (max-width: 700px) {
+		font-size: 0.9rem;
+	}
 `;
 
 export const ContentWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	width: 700px;
-	height: 95%;
+	width: 50%;
+	height: 93.8%;
+
+	@media (max-width: 1200px) {
+		flex-direction: row;
+		width: 100%;
+		gap: 10px;
+	}
 `;
 
 export const ImgContainer = styled.div`
@@ -100,15 +137,38 @@ export const Img = styled.div`
 	justify-content: center;
 	align-items: center;
 	overflow: hidden;
+
+	@media (max-width: 1200px) {
+		padding: 0 10px;
+	}
+
 	img {
 		width: 100%;
 		height: 100%;
+
+		@media (max-width: 1200px) {
+			max-height: 250px;
+		}
 	}
 	p {
 		font-size: 18px;
 		font-weight: 500;
+
+		@media (max-width: 1200px) {
+			font-size: 17px;
+		}
 	}
 `;
+
+export const SelectImgContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+
+	@media (max-width: 1200px) {
+		height: 80%;
+		justify-content: space-between;
+	}
+`
 
 export const ImgBtnWrapper = styled.div`
 	width: 100%;
@@ -117,6 +177,16 @@ export const ImgBtnWrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	column-gap: 30px;
+
+	@media (max-width: 1400px) {
+		column-gap: 24px;
+	}
+	@media (max-width: 1200px) {
+		flex-direction: column;
+		gap: 20px;
+		height: 100%;
+	}
+
 	input {
 		display: none;
 	}
@@ -139,6 +209,10 @@ export const ImgBtnWrapper = styled.div`
 			box-shadow: 0px 0px 13px 0px #0000001f;
 			color: #a7a7a7;
 		}
+
+		@media (max-width: 1400px) {
+			width: 130px;
+		}
 	}
 	button {
 		width: 135px;
@@ -156,6 +230,10 @@ export const ImgBtnWrapper = styled.div`
 			border: 2px solid #f59d9d;
 			color: #f59d9d;
 		}
+
+		@media (max-width: 1400px) {
+			width: 130px;
+		}
 	}
 `;
 
@@ -167,6 +245,13 @@ export const BtnWrapper = styled.div`
 	column-gap: 30px;
 	margin-bottom: 20px;
 	padding-right: 45px;
+
+	@media (max-width: 1400px) {
+		padding-right: 40px;
+	}
+	@media (max-width: 700px) {
+		padding-right: 35px;
+	}
 `;
 
 export const Btn = styled.button`
@@ -183,6 +268,12 @@ export const Btn = styled.button`
 	&:hover {
 		background-color: #fff;
 		color: #9ecff2;
+	}
+
+	@media (max-width: 700px) {
+		width: 100px;
+		height: 36px;
+		font-size: 15px;
 	}
 `;
 
@@ -201,6 +292,12 @@ export const DeleteBtn = styled.button`
 		background-color: #fff;
 		color: #f59d9d;
 	}
+
+	@media (max-width: 700px) {
+		width: 100px;
+		height: 36px;
+		font-size: 15px;
+	}
 `;
 
 export const AuthorContainer = styled.div`
@@ -208,15 +305,25 @@ export const AuthorContainer = styled.div`
 	justify-content: flex-start;
 	align-items: center;
 	width: 95%;
-	height: 76px;
+	min-height: 76px;
 	border-radius: 13px;
 	background-color: #fff;
 	color: #9f9f9f;
 	font-size: 23px;
 	font-weight: 600;
 	box-shadow: 0px 0px 13px 0px #0000001f;
+
+	@media (max-width: 700px) {
+		font-size: 20px;
+		min-height: 72px;
+	}
 `;
 
 export const AuthorWrapper = styled.div`
 	padding-left: 30px;
+
+	@media (max-width: 1400px) {
+		width: 250px;
+		padding-left: 20px;
+	}
 `;

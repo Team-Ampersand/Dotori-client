@@ -36,7 +36,7 @@ export const ImgContainer = styled.div<StyleProps>`
 `;
 
 export const Container = styled.div`
-	width: 65%;
+	width: 63%;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
