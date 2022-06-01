@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { CSVLink } from "react-csv";
 
 export const Positioner = styled.div`
 	height: 100%;
@@ -143,4 +144,28 @@ export const SelectStus = styled.div`
 	@media (max-width: 700px) {
 		font-size: 8px;
 	} ;
+`;
+
+
+export const CsvLink = styled(CSVLink)`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 211px;
+	height: 64px;
+	background-color: #20c997;
+	margin-top: 20px;
+	margin-left: 1vh;
+	border: none;
+	color: #ffffff;
+	border-radius: 10px;
+	font-size: 20px;
+	font-weight: 550;
+	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+	text-decoration: none;
+	&:hover {
+		background-color: #fff;
+		color: #20c997;
+		border: 2px solid #20c997;
+	}
 `;
