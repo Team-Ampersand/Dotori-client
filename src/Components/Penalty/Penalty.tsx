@@ -4,8 +4,6 @@ import * as S from './Style';
 import { getStuInfo, getClassStuInfo, searchName } from 'Api/penaltyInfo';
 import { useRole } from 'Hooks/useRole';
 import { Classification, NameSearch, PenaltyGiveItem, StuPenaltyItem } from 'Components';
-import { CSVLink } from "react-csv";
-import json2csv from "json2csv";
 
 interface studentList {
 	id: number;

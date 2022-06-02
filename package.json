@@ -28,6 +28,7 @@
     "react-beforeunload": "^2.5.1",
     "react-calendar": "^3.5.0",
     "react-cookie": "^4.1.1",
+    "react-csv": "^2.2.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.2.2",
     "react-scripts": "4.0.3",
@@ -46,7 +47,7 @@
     "appId": "com.dotori.electron",
     "asar": true,
     "mac": {
-			"icon": "./public/icons/mac/icon.icns",
+      "icon": "./public/icons/mac/icon.icns",
       "target": [
         "default"
       ]
@@ -55,7 +56,7 @@
       "title": "Dotori"
     },
     "win": {
-			"icon": "./public/icons/png/256x256.png",
+      "icon": "./public/icons/png/256x256.png",
       "target": [
         "nsis"
       ]
@@ -64,8 +65,8 @@
       "oneClick": false,
       "allowToChangeInstallationDirectory": false,
       "createDesktopShortcut": true,
-			"perMachine": true,
-			"language": 1042,
+      "perMachine": true,
+      "language": 1042,
       "shortcutName": "Dotori",
       "artifactName": "Dotori-${version}.${ext}",
       "uninstallDisplayName": "Dotori"
@@ -82,10 +83,10 @@
     "eject": "react-scripts eject",
     "react-start": "BROWSER=none yarn start",
     "electron-start": "ELECTRON_START_URL=https://dotori-gsm.com/ electron .",
-		"electron-mac": "electron-builder --mac",
-		"electron-win32": "electron-builder --win --ia32",
-		"electron-win64": "electron-builder --win --x64",
-		"electron-all": "yarn electron-mac && yarn electron-win32 && yarn electron-win64"
+    "electron-mac": "electron-builder --mac",
+    "electron-win32": "electron-builder --win --ia32",
+    "electron-win64": "electron-builder --win --x64",
+    "electron-all": "yarn electron-mac && yarn electron-win32 && yarn electron-win64"
   },
   "eslintConfig": {
     "extends": [
