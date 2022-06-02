@@ -31,6 +31,8 @@ import StuAuthorityItem from 'Components/StuAuthorityItem/StuAuthorityItem';
 import Skelethon from 'Components/Skelethon/Skelethon';
 import NameSearch from 'Components/NameSearch/NameSearch';
 import Gender from 'Components/Gender/Gender';
+import PenaltyGiveItem from 'Components/PenaltyGiveItem/PenaltyGiveItem';
+import StuPenaltyItem from 'Components/StuPenaltyItem/StuPenaltyItem';
 
 export {
 	Sidebar,
@@ -59,6 +61,8 @@ export {
 	Withdrawl,
 	InfoUpdateModal,
 	Penalty,
+	PenaltyGiveItem,
+	StuPenaltyItem,
 	MassageBoard,
 	MassageTable,
 	PenaltyInfoModal,

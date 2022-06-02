@@ -1,11 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useCallback } from 'react';
 import * as S from './Style';
-import StuPenaltyItem from '../StuPenaltyItem/StuPenaltyItem';
 import { getStuInfo, getClassStuInfo, searchName } from 'Api/penaltyInfo';
-import PenaltyGiveItem from 'Components/PenaltyGiveItem/PenaltyGiveItem';
 import { useRole } from 'Hooks/useRole';
-import { Classification, NameSearch } from 'Components';
+import { Classification, NameSearch, PenaltyGiveItem, StuPenaltyItem } from 'Components';
 
 interface studentList {
 	id: number;
@@ -73,6 +71,12 @@ const Penalty: React.FC = () => {
 		},
 		[checkItems]
 	);
+	const csvData = (stuNum, memberName, ruleBigViolationList) => {
+		return [
+		{ 학번: `${stuNum}`, 이름: `${memberName}`, 규정위반내역: `${ruleBigViolationList}`}
+		];
+	}
+	console.log(studentList && studentList.map((stu) => csvData(stu.stuNum, stu.memberName, stu.ruleBigViolationList)[0]));
 
 	useEffect(() => {
 		GetStuInfo().then((res) => {
@@ -96,6 +100,11 @@ const Penalty: React.FC = () => {
 					handleKeyPress={handleKeyPress}
 				/>
 				<PenaltyGiveItem checked={checkItems} setCheckItems={setCheckItems} />
+				<S.CsvLink 
+					data={studentList.map((stu) => csvData(stu.stuNum, stu.memberName, stu.ruleBigViolationList)[0])}
+					filename="규정위반내역.xlsx"
+				>엑셀 다운로드
+				</S.CsvLink>
 				<S.SelectStu>
 					<S.SelectStus>선택된 학생</S.SelectStus>
 					{checkItems.join(', ')}
