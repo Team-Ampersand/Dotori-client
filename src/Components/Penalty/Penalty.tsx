@@ -76,7 +76,6 @@ const Penalty: React.FC = () => {
 		{ 학번: `${stuNum}`, 이름: `${memberName}`, 규정위반내역: `${ruleBigViolationList}`}
 		];
 	}
-	console.log(studentList && studentList.map((stu) => csvData(stu.stuNum, stu.memberName, stu.ruleBigViolationList)[0]));
 
 	useEffect(() => {
 		GetStuInfo().then((res) => {
@@ -102,7 +101,7 @@ const Penalty: React.FC = () => {
 				<PenaltyGiveItem checked={checkItems} setCheckItems={setCheckItems} />
 				<S.CsvLink 
 					data={studentList.map((stu) => csvData(stu.stuNum, stu.memberName, stu.ruleBigViolationList)[0])}
-					filename="규정위반내역.xlsx"
+					filename="규정위반내역.csv"
 				>엑셀 다운로드
 				</S.CsvLink>
 				<S.SelectStu>
