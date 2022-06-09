@@ -73,7 +73,7 @@ const Penalty: React.FC = () => {
 	);
 	const csvData = (stuNum, memberName, ruleBigViolationList) => {
 		return [
-		{ 학번: `${stuNum}`, 이름: `${memberName}`, 규정위반내역: `${ruleBigViolationList}`}
+			{ 학번: `${stuNum}`, 이름: `${memberName}`, 규정위반내역: `${ruleBigViolationList}` }
 		];
 	}
 
@@ -99,7 +99,7 @@ const Penalty: React.FC = () => {
 					handleKeyPress={handleKeyPress}
 				/>
 				<PenaltyGiveItem checked={checkItems} setCheckItems={setCheckItems} />
-				<S.CsvLink 
+				<S.CsvLink
 					data={studentList.map((stu) => csvData(stu.stuNum, stu.memberName, stu.ruleBigViolationList)[0])}
 					filename="규정위반내역.csv"
 				>엑셀 다운로드
