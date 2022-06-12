@@ -23,6 +23,7 @@ interface MusicType {
 				id: number;
 				memberName: string;
 				url: string;
+				stuNum: string;
 			}
 		];
 	};
@@ -66,9 +67,8 @@ const TodaySong: React.FC = () => {
 				</S.PlaylistContainer>
 				<S.AppliedSongCount>
 					<p>
-						{`신청된 음악 : ${
-							data.data.data === undefined ? 0 : data.data.data.length
-						} 개 `}
+						{`신청된 음악 : ${data.data.data === undefined ? 0 : data.data.data.length
+							} 개 `}
 					</p>
 				</S.AppliedSongCount>
 				{calendarOpen && <CalendarModal visible={calendarOpen} />}
@@ -83,6 +83,7 @@ const TodaySong: React.FC = () => {
 									memberName={data.memberName}
 									email={data.email}
 									key={`${idx}`}
+									stuNum={data.stuNum}
 								/>
 							);
 						})
