@@ -16,6 +16,7 @@ interface MusicType {
 				id: number;
 				memberName: string;
 				url: string;
+				stuNum: string;
 			}
 		];
 	};
@@ -66,6 +67,7 @@ const CheckMySong: React.FC<CheckMySongProps> = ({ songlists }) => {
 									memberName={item.memberName}
 									email={item.email}
 									key={`${idx}`}
+									stuNum={item.stuNum}
 								/>
 							);
 						})

@@ -20,6 +20,7 @@ type SongItemProps = {
 	url: string;
 	memberName: string;
 	email: string;
+	stuNum: string;
 };
 
 const songTitle = async (url: string) => {
@@ -53,6 +54,7 @@ const SongItem: React.FC<SongItemProps> = ({
 	url,
 	memberName,
 	email,
+	stuNum,
 }) => {
 	const [title, setTitle] = useState('');
 	const playlistDate = useRecoilValue(showPlaylistDate);
@@ -71,13 +73,13 @@ const SongItem: React.FC<SongItemProps> = ({
 			<S.ImgContainer thumbnail={videoId} />
 			<S.Container>
 				<S.TitleContainer>{title}</S.TitleContainer>
-				<S.AuthorContainer>{memberName}</S.AuthorContainer>
+				<S.AuthorContainer>{stuNum} {memberName}</S.AuthorContainer>
 			</S.Container>
 			<S.RightContainer>
 				{role === 'admin' ||
-				role === 'developer' ||
-				role === 'councillor' ||
-				email === user.sub ? (
+					role === 'developer' ||
+					role === 'councillor' ||
+					email === user.sub ? (
 					<S.DeleteContainer
 						onClick={(e) => {
 							e.preventDefault();
