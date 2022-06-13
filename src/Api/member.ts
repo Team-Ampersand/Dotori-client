@@ -59,15 +59,22 @@ export const withdrawal = async (email: string, password: string) => {
 
 export const passwordChange = async (
 	currentPassword: string,
-	newPassword: string
+	newPassword: string,
+	navigate
 ) => {
 	try {
 		const { data } = await apiClient.put(MemberController.change(), {
 			currentPassword: currentPassword,
 			newPassword: newPassword,
 		});
+		toast.success('비밀번호가 변경되었어요');
+		navigate('/home');
 		return { data };
-	} catch (e) {}
+	} catch (e: any) {
+		if (e.message === 'Request failed with status code 400') {
+			toast.warning('입력해주신 정보를 다시 확인해주세요');
+		}
+	}
 };
 
 export const authPassword = async (email: string, setDisplayed) => {
