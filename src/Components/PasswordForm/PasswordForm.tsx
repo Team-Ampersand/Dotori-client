@@ -11,16 +11,20 @@ const AuthPassword = async (id: string, setDisabled, setDisplayed) => {
 	setDisabled(false);
 };
 
-const FindPassword = async (newPw: string, emailCode, navigate) => {
-	await findPassword(newPw, emailCode);
-	toast.success('비밀번호가 변경 되었어요!');
-	navigate('/signin');
+const FindPassword = async (
+	newPw: string,
+	emailCode: string,
+	navigate: NavigateFunction
+) => {
+	try {
+		await findPassword(newPw, emailCode);
+		toast.success('비밀번호가 변경 되었어요!');
+		navigate('/signin');
+	} catch (e) {}
 };
 
 const changePassword = async (password: string, newPw: string, navigate) => {
-	await passwordChange(password, newPw);
-	toast.success('비밀번호가 변경되었어요');
-	navigate('/home');
+	await passwordChange(password, newPw, navigate);
 };
 
 const returnPassworForm = (
