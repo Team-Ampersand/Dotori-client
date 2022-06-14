@@ -22,17 +22,17 @@ export const Positioner = styled.a`
 	}
 `;
 
-export const ImgContainer = styled.div<StyleProps>`
+export const ImgContainer = styled.div`
 	width: 150.42px;
 	height: 90px;
-	background-size: 150.42px 90px;
-	border-radius: 5px;
 	margin-left: 3%;
+`;
 
-	background-repeat: no-repeat;
-	background-image: url(${(props) => {
-		return `https://img.youtube.com/vi/${props.thumbnail}/sddefault.jpg`;
-	}});
+export const Image = styled.img`
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 5px;
 `;
 
 export const Container = styled.div`

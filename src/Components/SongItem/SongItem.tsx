@@ -70,16 +70,23 @@ const SongItem: React.FC<SongItemProps> = ({
 
 	return (
 		<S.Positioner href={url} target="_blank" rel="noreferrer">
-			<S.ImgContainer thumbnail={videoId} />
+			<S.ImgContainer>
+				<S.Image
+					src={`https://img.youtube.com/vi/${videoId}/sddefault.jpg`}
+					alt="신청한 노래의 이미지입니다."
+				/>
+			</S.ImgContainer>
 			<S.Container>
 				<S.TitleContainer>{title}</S.TitleContainer>
-				<S.AuthorContainer>{stuNum} {memberName}</S.AuthorContainer>
+				<S.AuthorContainer>
+					{stuNum} {memberName}
+				</S.AuthorContainer>
 			</S.Container>
 			<S.RightContainer>
 				{role === 'admin' ||
-					role === 'developer' ||
-					role === 'councillor' ||
-					email === user.sub ? (
+				role === 'developer' ||
+				role === 'councillor' ||
+				email === user.sub ? (
 					<S.DeleteContainer
 						onClick={(e) => {
 							e.preventDefault();
