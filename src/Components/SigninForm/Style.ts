@@ -173,38 +173,26 @@ export const InputWrapper = styled.div`
 	label {
 		opacity: 0.5;
 		position: absolute;
-		top: 25px;
+		top: 2.6vh;
 		left: 80px;
 		font-size: 16px;
 
 		@media (max-width: 1920px) {
 			font-size: 16px;
 			position: absolute;
-			top: 25px;
 			left: 80px;
 		}
 
 		@media (max-width: 1400px) {
 			font-size: 14px;
 			position: absolute;
-			top: 20px;
 			left: 70px;
 		}
 		@media (max-width: 700px) {
 			font-size: 10px;
 			position: absolute;
-			top: 13px;
+			top: 1.9vh;
 			left: 50px;
-		}
-	}
-	@media screen and (min-height: 1073px) {
-		label {
-			top: 27px;
-		}
-	}
-	@media screen and (max-height: 766px) {
-		label {
-			top: 18px;
 		}
 	}
 `;
