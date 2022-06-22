@@ -239,22 +239,30 @@ export const InputWrapper = styled.div`
 		display: none;
 		opacity: 0.5;
 		position: absolute;
-		top: 27px;
+		top: 2.8vh;
 		left: 70px;
 		transition: all 0.5s ease;
+
+		@media (max-width: 1920px) {
+			font-size: 16px;
+			position: absolute;
+			left: 80px;
+		}
+
+		@media (max-width: 1400px) {
+			font-size: 14px;
+			position: absolute;
+			left: 70px;
+		}
+		@media (max-width: 700px) {
+			font-size: 10px;
+			position: absolute;
+			top: 1.9vh;
+			left: 50px;
+		}
 	}
 	input:focus + label,
 	input:valid + label {
 		display: flex;
-	}
-	@media screen and (min-height: 1073px) {
-		label {
-			top: 30px;
-		}
-	}
-	@media screen and (max-height: 766px) {
-		label {
-			top: 18px;
-		}
 	}
 `;
