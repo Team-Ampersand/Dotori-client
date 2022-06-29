@@ -20,8 +20,8 @@ const returnMealdata = async (
 	try {
 		const result = !!data.mealServiceDietInfo[1].row[mealCode]
 			? data.mealServiceDietInfo[1].row[mealCode].DDISH_NM.toString()
-					.replace(/(\(조|석\))*([*<br/>0-9a-z.() ])/g, '0')
-					.split('0')
+					.replace(/([조석완별달])*(\d)*([*<br/>a-z.() ])/g, '`')
+					.split('`')
 					.filter((value) => {
 						return value !== '';
 					})
