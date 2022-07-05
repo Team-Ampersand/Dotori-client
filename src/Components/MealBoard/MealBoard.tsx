@@ -95,14 +95,28 @@ const MealBoard: React.FC = () => {
 
 	let week = ['일', '월', '화', '수', '목', '금', '토'];
 
-	const nextDay = () => {
-		currentDate.setDate(currentDate.getDate() + 1);
-		setDate({ datestr: getDateStr(currentDate), day: currentDate.getDay() });
+	const nextMeal = () => {
+		if (mealCode === 0) {
+			setMealCode(1);
+		} else if (mealCode === 1) {
+			setMealCode(2);
+		} else {
+			currentDate.setDate(currentDate.getDate() + 1);
+			setDate({ datestr: getDateStr(currentDate), day: currentDate.getDay() });
+			setMealCode(0);
+		}
 	};
 
-	const prevDay = () => {
-		currentDate.setDate(currentDate.getDate() - 1);
-		setDate({ datestr: getDateStr(currentDate), day: currentDate.getDay() });
+	const prevMeal = () => {
+		if (mealCode === 0) {
+			currentDate.setDate(currentDate.getDate() - 1);
+			setDate({ datestr: getDateStr(currentDate), day: currentDate.getDay() });
+			setMealCode(2);
+		} else if (mealCode === 1) {
+			setMealCode(0);
+		} else {
+			setMealCode(1);
+		}
 	};
 
 	useEffect(() => {
@@ -148,7 +162,7 @@ const MealBoard: React.FC = () => {
 			</S.DateWrapper>
 			<S.MealContainer>
 				<S.ReverseArrow>
-					<LargeArrowDown onClick={prevDay} />
+					<LargeArrowDown onClick={prevMeal} />
 				</S.ReverseArrow>
 				{list &&
 					list.map((item: listtype, index) => (
@@ -159,7 +173,7 @@ const MealBoard: React.FC = () => {
 							})}
 						</S.Meal>
 					))}
-				<LargeArrowDown onClick={nextDay} />
+				<LargeArrowDown onClick={nextMeal} />
 			</S.MealContainer>
 		</S.Positioner>
 	);
