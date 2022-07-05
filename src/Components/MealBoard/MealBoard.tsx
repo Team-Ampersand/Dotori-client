@@ -96,14 +96,12 @@ const MealBoard: React.FC = () => {
 	let week = ['일', '월', '화', '수', '목', '금', '토'];
 
 	const nextMeal = () => {
-		if (mealCode === 0) {
-			setMealCode(1);
-		} else if (mealCode === 1) {
-			setMealCode(2);
-		} else {
+		if (mealCode === 2) {
 			currentDate.setDate(currentDate.getDate() + 1);
 			setDate({ datestr: getDateStr(currentDate), day: currentDate.getDay() });
 			setMealCode(0);
+		} else {
+			setMealCode(mealCode + 1);
 		}
 	};
 
@@ -112,10 +110,8 @@ const MealBoard: React.FC = () => {
 			currentDate.setDate(currentDate.getDate() - 1);
 			setDate({ datestr: getDateStr(currentDate), day: currentDate.getDay() });
 			setMealCode(2);
-		} else if (mealCode === 1) {
-			setMealCode(0);
 		} else {
-			setMealCode(1);
+			setMealCode(mealCode - 1);
 		}
 	};
 
