@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import * as S from './Style';
 import * as I from '../../Assets/Svg/index';
 import { SongItem } from '../';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import { isCalendarOpen, setList, showPlaylistDate } from 'Atoms';
 import { dateMusic } from 'Api/music';
 import CalendarModal from 'Components/CalendarModal/CalendarModal';
@@ -11,7 +11,6 @@ import useSWR, { mutate } from 'swr';
 import { apiClient } from 'Utils/Libs/apiClient';
 import { MusicController } from 'Utils/Libs/requestUrls';
 import { ManufactureDate } from 'Utils/ManufactureDate';
-import { ThemeConsumer } from 'styled-components';
 
 interface MusicType {
 	data: {
@@ -29,7 +28,7 @@ interface MusicType {
 }
 
 const TodaySong: React.FC = () => {
-	const [, setSongList] = useRecoilState(setList);
+	const setSongList = useSetRecoilState(setList);
 	const [playlistDate, setPlaylistDate] = useRecoilState(showPlaylistDate);
 	const [calendarOpen, setCalendarOpen] = useRecoilState(isCalendarOpen);
 	const role = useRole();
@@ -94,7 +93,6 @@ const TodaySong: React.FC = () => {
 				</S.SongContainer>
 			</S.TodaySongWrapper>
 		</S.Postioner>
-
 	);
 };
 
