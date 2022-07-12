@@ -1,17 +1,15 @@
 import React, { useEffect } from 'react';
 import * as S from './Style';
 import * as I from '../../Assets/Svg/index';
-import { SongItem, SongRequest } from '../';
-import { useRecoilState } from 'recoil';
+import { SongItem } from '../';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import { isCalendarOpen, setList, showPlaylistDate } from 'Atoms';
 import { dateMusic } from 'Api/music';
 import CalendarModal from 'Components/CalendarModal/CalendarModal';
 import { useRole } from 'Hooks/useRole';
-import CheckMySong from 'Components/CheckMySong/CheckMySong';
 import useSWR, { mutate } from 'swr';
 import { apiClient } from 'Utils/Libs/apiClient';
 import { MusicController } from 'Utils/Libs/requestUrls';
-import { DateFormatter } from 'Utils/DateFormatter';
 import { ManufactureDate } from 'Utils/ManufactureDate';
 
 interface MusicType {
@@ -30,7 +28,7 @@ interface MusicType {
 }
 
 const TodaySong: React.FC = () => {
-	const [songlist, setSongList] = useRecoilState(setList);
+	const setSongList = useSetRecoilState(setList);
 	const [playlistDate, setPlaylistDate] = useRecoilState(showPlaylistDate);
 	const [calendarOpen, setCalendarOpen] = useRecoilState(isCalendarOpen);
 	const role = useRole();
@@ -55,8 +53,7 @@ const TodaySong: React.FC = () => {
 		});
 	}, []);
 
-	if (!data) return <div></div>;
-	if (error) return <div></div>;
+	if (error) return <div></div>
 
 	return (
 		<S.Postioner>
@@ -67,14 +64,14 @@ const TodaySong: React.FC = () => {
 				</S.PlaylistContainer>
 				<S.AppliedSongCount>
 					<p>
-						{`신청된 음악 : ${data.data.data === undefined ? 0 : data.data.data.length
+						{`신청된 음악 : ${data?.data.data === undefined ? 0 : data?.data.data.length
 							} 개 `}
 					</p>
 				</S.AppliedSongCount>
 				{calendarOpen && <CalendarModal visible={calendarOpen} />}
 				<S.SongContainer>
-					{data.data.data ? (
-						data.data.data.map((data, idx) => {
+					{data?.data.data ? (
+						data?.data.data.map((data, idx) => {
 							return (
 								<SongItem
 									url={data.url}
