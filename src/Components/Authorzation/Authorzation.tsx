@@ -28,9 +28,10 @@ const Authorzation: React.FC = () => {
 	const onSubmit = () => {
 		if (parseInt(stuGrade + stuClass) > 0) {
 			try {
-				GetClassStuInfo().then((res) => {
-					res && setStudentList(res.data.data);
-				});
+				!/0[1-3]/.test(stuGrade + stuClass) ?
+					GetClassStuInfo().then((res) => {
+						res && setStudentList(res.data.data);
+					}) : setStudentList([]);
 			} catch (e: any) {
 				throw Error(e);
 			}
