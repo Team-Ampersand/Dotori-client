@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as S from './Style';
-import { getClassStuInfo, searchName } from 'Api/stuInfo';
+import { getClassStuInfo, getStuInfo, searchName } from 'Api/stuInfo';
 import { useRole } from 'Hooks/useRole';
 import { Classification, StuAuthorityItem } from 'Components';
 
@@ -17,24 +17,23 @@ const Authorzation: React.FC = () => {
 	const [studentList, setStudentList] = useState<studentList[]>([]);
 	const role = useRole();
 
-	const GetClassStuInfo = async () => {
-		return await getClassStuInfo(role, parseInt(stuGrade + stuClass));
+	const GetClassStuInfo = async (all: boolean) => {
+		return await all ? getClassStuInfo(role, parseInt(stuGrade + stuClass)) : getStuInfo(role);
 	};
 
-	const [stuGrade, setStuGrade] = useState<string>('');
+	const [stuGrade, setStuGrade] = useState<string>('0');
 	const [stuClass, setStuClass] = useState<string>('');
 	const [stuName, setStuName] = useState<string>('');
 
 	const onSubmit = () => {
-		if (parseInt(stuGrade + stuClass) > 0) {
-			try {
-				GetClassStuInfo().then((res) => {
+		try {
+			!/0[1-3]/.test(stuGrade + stuClass) ?
+				GetClassStuInfo(parseInt(stuGrade + stuClass) > 0).then((res) => {
 					res && setStudentList(res.data.data);
-				});
-			} catch (e: any) {
-				throw Error(e);
-			}
-		} else return;
+				}) : setStudentList([])
+		} catch (e: any) {
+			throw Error(e);
+		}
 	};
 
 	const nameSearch = async () => {
@@ -46,6 +45,8 @@ const Authorzation: React.FC = () => {
 			res && setStudentList(res.data.data);
 		});
 	};
+
+	useEffect(() => onSubmit(), []);
 
 	return (
 		<S.Positioner>
@@ -73,6 +74,7 @@ const Authorzation: React.FC = () => {
 			<S.AuthorizationBoard>
 				{studentList &&
 					studentList.map((stu) => (
+						!/0\d{3}/.test(String(stu.stuNum)) &&
 						<StuAuthorityItem
 							key={stu.id}
 							stuId={stu.id}
