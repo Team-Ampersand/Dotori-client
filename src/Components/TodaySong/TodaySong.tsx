@@ -53,8 +53,6 @@ const TodaySong: React.FC = () => {
 		});
 	}, []);
 
-	if (error) return <div></div>
-
 	return (
 		<S.Postioner>
 			<S.TodaySongWrapper>
@@ -70,7 +68,7 @@ const TodaySong: React.FC = () => {
 				</S.AppliedSongCount>
 				{calendarOpen && <CalendarModal visible={calendarOpen} />}
 				<S.SongContainer>
-					{data?.data.data ? (
+					{data && !error && data?.data.data ? (
 						data?.data.data.map((data, idx) => {
 							return (
 								<SongItem
