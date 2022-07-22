@@ -29,7 +29,7 @@ const Penalty: React.FC = () => {
 	};
 
 	const onSubmit = () => {
-		if (stuGrade + stuClass === '00') {
+		if (stuGrade + stuClass === '0') {
 			GetStuInfo().then((res) => {
 				res && setStudentList(res.data.list);
 			});
