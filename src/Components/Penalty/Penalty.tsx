@@ -14,7 +14,7 @@ interface studentList {
 
 const Penalty: React.FC = () => {
 	const [studentList, setStudentList] = useState<studentList[]>([]);
-	const [stuGrade, setStuGrade] = useState('');
+	const [stuGrade, setStuGrade] = useState('0');
 	const [stuClass, setStuClass] = useState('');
 	const [stuName, setStuName] = useState<string>('');
 	const [checkItems, setCheckItems] = useState<Array<string>>([]);
@@ -36,9 +36,10 @@ const Penalty: React.FC = () => {
 		}
 		if (parseInt(stuGrade + stuClass) > 0) {
 			try {
+				!/0[1-3]/.test(stuGrade + stuClass) ?
 				GetClassStuInfo().then((res) => {
 					res && setStudentList(res.data.list);
-				});
+				}) : setStudentList([]);
 			} catch (e: any) {
 				throw Error(e);
 			}
