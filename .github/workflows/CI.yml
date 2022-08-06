@@ -12,6 +12,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Create .env
+      run: |
+        touch .env
+        echo "${{ secrets.ENV }}" >> .env
+
     - name: Checkout source code.   # Repo checkout
       uses: actions/checkout@v2
       
