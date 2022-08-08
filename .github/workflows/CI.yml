@@ -40,7 +40,7 @@ jobs:
         yarn install --frozen-lockfile
 
     - name: Build                   # React Build
-      run: yarn build
+      run: yarn run build
 
     - name: Dotori Client CI Success Discord Notification
       uses: sarisia/actions-status-discord@v1
