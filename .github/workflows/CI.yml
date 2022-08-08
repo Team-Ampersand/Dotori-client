@@ -35,7 +35,9 @@ jobs:
       run: node -v
 
     - name: Install Dependencies    # 의존 파일 설치
-      run: yarn install --frozen-lockfile
+      run: |
+        yarn install
+        yarn install --frozen-lockfile
 
     - name: Build                   # React Build
       run: yarn build
