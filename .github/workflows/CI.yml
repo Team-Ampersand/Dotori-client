@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - name: Create .env
-      run: 
+      run: |
         echo "GENERATE_SOURCEMAP=${{secrets.GENERATE_SOURCEMAP}}" >> .env
         echo "REACT_APP_NEIS_API_KEY=${{secrets.REACT_APP_NEIS_API_KEY}}" >> .env
         echo "REACT_APP_FIREBASE_API_KEY=${{secrets.REACT_APP_FIREBASE_API_KEY}}" >> .env
