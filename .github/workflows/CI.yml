@@ -36,12 +36,12 @@ jobs:
       if: ${{ success() }}
       with:
         title: 🎉 Dotori Client CI 🐿
-        webhook: ${{ secrets.DISCORD_WEBHOOK }}
+        webhook: ${{ secrets.DISCORD_WEBHOOK_CI }}
         color: 00FF00
     - name: Dotori Client CI Fail Discord Notification
       uses: sarisia/actions-status-discord@v1
       if: ${{ failure() }}
       with:
         title: ❌ Dotori Client CI 🐿
-        webhook: ${{ secrets.DISCORD_WEBHOOK }}
+        webhook: ${{ secrets.DISCORD_WEBHOOK_CI }}
         color: FF0000
