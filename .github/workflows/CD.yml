@@ -23,9 +23,6 @@ jobs:
       - name: Build                   # React Build
         run: 
           CI=false yarn build
-      
-      - name: Upload to S3
-        run: 
 
       - name: Code Deploy                  # Upload build file to S3
         env:
