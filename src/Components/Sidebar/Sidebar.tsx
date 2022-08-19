@@ -45,12 +45,12 @@ const sidebarMenuData = [
 				menuTitle: '규정 위반',
 				show: ['admin'],
 			},
-			{
-				router: '/',
-				menuIcon: '',
-				menuTitle: '테스트',
-				show: ['admin', 'councillor', 'developer', 'member'],
-			},
+			// {
+			// 	router: '/',
+			// 	menuIcon: '',
+			// 	menuTitle: '테스트',
+			// 	show: ['admin', 'councillor', 'developer', 'member'],
+			// },
 		],
 	},
 ];
