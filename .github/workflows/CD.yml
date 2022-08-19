@@ -26,7 +26,7 @@ jobs:
 
       - name: Upload to S3               # Upload build file to S3
         run: |
-          aws s3 sync build/ s3://client-cd-test --delete
+          aws s3 sync --region ap-northeast-2 build/ s3://client-cd-test --delete
 
       - name: Dotori Client CD Success Discord Notification
         uses: sarisia/actions-status-discord@v1
