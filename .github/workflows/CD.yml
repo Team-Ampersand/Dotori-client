@@ -24,13 +24,6 @@ jobs:
         run: 
           CI=false yarn build
 
-      - name: Configure AWS Credentials # AWS 접근 허용
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
-
       - name: Upload to S3               # Upload build file to S3
         run: |
           aws s3 sync build/ s3://client-cd-test --delete
