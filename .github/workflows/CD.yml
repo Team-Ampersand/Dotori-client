@@ -15,6 +15,7 @@ jobs:
         run: |
           touch .env
           echo "${{secrets.ENV}}" >> .env
+          cat .env
 
       - name: Checkout source code.   # Repo checkout
         uses: actions/checkout@v2
