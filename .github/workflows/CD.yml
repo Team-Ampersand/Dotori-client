@@ -13,17 +13,17 @@ jobs:
     steps:
       - name: Create .env             # .env 파일 설정
         run: |
-        echo "GENERATE_SOURCEMAP=${{secrets.GENERATE_SOURCEMAP}}" >> .env
-        echo "REACT_APP_NEIS_API_KEY=${{secrets.REACT_APP_NEIS_API_KEY}}" >> .env
-        echo "REACT_APP_FIREBASE_API_KEY=${{secrets.REACT_APP_FIREBASE_API_KEY}}" >> .env
-        echo "REACT_APP_FIREBASE_AUTH_DOMAIN=${{secrets.REACT_APP_FIREBASE_AUTH_DOMAIN}}" >> .env
-        echo "REACT_APP_FIREBASE_PROJECT_ID=${{secrets.REACT_APP_FIREBASE_PROJECT_ID}}" >> .env
-        echo "REACT_APP_FIREBASE_STORAGE_BUCKET=${{secrets.REACT_APP_FIREBASE_STORAGE_BUCKET}}" >> .env
-        echo "REACT_APP_FIREBASE_MESSAGING_SENDER_ID=${{secrets.REACT_APP_FIREBASE_MESSAGING_SENDER_ID}}" >> .env
-        echo "REACT_APP_FIREBASE_APP_ID=${{secrets.REACT_APP_FIREBASE_APP_ID}}" >> .env
-        echo "REACT_APP_FIREBASE_MEASUREMENT_ID=${{secrets.REACT_APP_FIREBASE_MEASUREMENT_ID}}" >> .env
-        echo "REACT_APP_YOUTUBE_API_KEY=${{secrets.REACT_APP_YOUTUBE_API_KEY}}" >> .env
-        cat .env
+          echo "GENERATE_SOURCEMAP=${{secrets.GENERATE_SOURCEMAP}}" >> .env
+          echo "REACT_APP_NEIS_API_KEY=${{secrets.REACT_APP_NEIS_API_KEY}}" >> .env
+          echo "REACT_APP_FIREBASE_API_KEY=${{secrets.REACT_APP_FIREBASE_API_KEY}}" >> .env
+          echo "REACT_APP_FIREBASE_AUTH_DOMAIN=${{secrets.REACT_APP_FIREBASE_AUTH_DOMAIN}}" >> .env
+          echo "REACT_APP_FIREBASE_PROJECT_ID=${{secrets.REACT_APP_FIREBASE_PROJECT_ID}}" >> .env
+          echo "REACT_APP_FIREBASE_STORAGE_BUCKET=${{secrets.REACT_APP_FIREBASE_STORAGE_BUCKET}}" >> .env
+          echo "REACT_APP_FIREBASE_MESSAGING_SENDER_ID=${{secrets.REACT_APP_FIREBASE_MESSAGING_SENDER_ID}}" >> .env
+          echo "REACT_APP_FIREBASE_APP_ID=${{secrets.REACT_APP_FIREBASE_APP_ID}}" >> .env
+          echo "REACT_APP_FIREBASE_MEASUREMENT_ID=${{secrets.REACT_APP_FIREBASE_MEASUREMENT_ID}}" >> .env
+          echo "REACT_APP_YOUTUBE_API_KEY=${{secrets.REACT_APP_YOUTUBE_API_KEY}}" >> .env
+          cat .env
 
       - name: Checkout source code.   # Repo checkout
         uses: actions/checkout@v2
