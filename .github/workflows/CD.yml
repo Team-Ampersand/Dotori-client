@@ -13,8 +13,8 @@ jobs:
     steps:
       - name: Create .env             # .env 파일 설정
         run: |
-        touch .env
-        echo "${{secrets.ENV}}" >> .env
+          touch .env
+          echo "${{secrets.ENV}}" >> .env
 
       - name: Checkout source code.   # Repo checkout
         uses: actions/checkout@v2
