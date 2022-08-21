@@ -19,6 +19,7 @@ jobs:
           touch .env
           echo "${{secrets.ENV}}" >> .env
           cat .env
+          ls -al
           
       - name: Check Node v            # Node v 확인
         run: node -v
@@ -27,7 +28,8 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Build                   # React Build
-        run: 
+        run:
+          ls -al 
           CI=false yarn build
 
       - name: Configure AWS Credentials # AWS 자격 증명ㄴ

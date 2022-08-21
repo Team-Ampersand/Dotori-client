@@ -1,8 +1,6 @@
 name: Dotori Client CI
 
 on:
-  push:
-    branches: [ "feature/cicd" ]
   pull_request:
     branches: [ "feature/cicd" ]
 
