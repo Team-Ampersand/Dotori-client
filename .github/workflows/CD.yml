@@ -11,15 +11,15 @@ jobs:
 
 
     steps:
+      - name: Checkout source code.   # Repo checkout
+        uses: actions/checkout@v2
+      
       - name: Create .env             # .env 파일 설정
         run: |
           touch .env
           echo "${{secrets.ENV}}" >> .env
           cat .env
-
-      - name: Checkout source code.   # Repo checkout
-        uses: actions/checkout@v2
-      
+          
       - name: Check Node v            # Node v 확인
         run: node -v
 
