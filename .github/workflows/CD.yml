@@ -28,11 +28,11 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Build                   # React Build
-        run:
+        run: |
           ls -al 
           CI=false yarn build
 
-      - name: Configure AWS Credentials # AWS 자격 증명ㄴ
+      - name: Configure AWS Credentials # AWS 자격 증명 
         uses: aws-actions/configure-aws-credentials@b8c74de753fbcb4868bf2011fb2e15826ce973af
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
