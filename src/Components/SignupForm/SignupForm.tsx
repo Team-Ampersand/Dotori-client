@@ -95,7 +95,7 @@ const SignupForm: React.FC = () => {
 			<S.EmailContainer>
 				<S.InputWrapper>
 					<S.InputStyle
-						placeholder="이메일을 입력하세요"
+						placeholder="네네"
 						type="text"
 						displayed={false}
 						onChange={(e) => setId(e.target.value)}
