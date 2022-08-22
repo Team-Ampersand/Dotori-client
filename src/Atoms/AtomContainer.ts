@@ -57,3 +57,8 @@ export const classLookuped = atom<boolean>({
 	key: 'classLookuped',
 	default: false,
 });
+
+export const selectDate = atom<Date>({
+	key: 'selectDate',
+	default: new Date(),
+})
