@@ -1,0 +1,67 @@
+name: Dotori Client CD
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  
+  build:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+
+    steps:
+      - name: Checkout source code.   # Repo checkout
+        uses: actions/checkout@v2
+      
+      - name: Create .env             # .env 파일 설정
+        run: |
+          touch .env
+          echo "${{secrets.ENV}}" >> .env
+          
+      - name: Check Node v            # Node v 확인
+        run: node -v
+
+      - name: Install Dependencies    # 의존 파일 설치
+        run: yarn install --frozen-lockfile
+
+      - name: Build                   # React Build
+        run: 
+          CI=false yarn build
+
+      - name: Configure AWS Credentials # AWS 자격 증명 
+        uses: aws-actions/configure-aws-credentials@b8c74de753fbcb4868bf2011fb2e15826ce973af
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: mv .env to S3
+        run: mv .env ./build
+
+      - name: Upload to S3            # Upload build file to S3
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          aws s3 sync --region ap-northeast-2 build/ s3://dotori-gsm.com --delete
+
+      - name: Invalidate CloudFront Cache       # CloudFront에서 캐시를 갱신하기 위해 invalidation을 실행
+        run: aws cloudfront create-invalidation --distribution-id ${{secrets.AWS_DISTRIBUTION_ID}} --paths "/*"
+
+      - name: Dotori Client CD Success Discord Notification
+        uses: sarisia/actions-status-discord@v1
+        if: ${{ success() }}
+        with:
+          title: 🎉 Dotori Client CD 🐿
+          webhook: ${{ secrets.DISCORD_WEBHOOK_CD }}
+          color: 00FF00
+        
+      - name: Dotori Client CD Fail Discord Notification
+        uses: sarisia/actions-status-discord@v1
+        if: ${{ failure() }}
+        with:
+          title: ❌ Dotori Client CD 🐿
+          webhook: ${{ secrets.DISCORD_WEBHOOK_CD }}
+          color: FF0000

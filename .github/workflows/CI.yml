@@ -1,0 +1,47 @@
+name: Dotori Client CI
+
+on:
+  pull_request:
+    branches: [ master, develop ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Create .env             # .env 파일 설정
+      run: |
+        touch .env
+        echo "${{secrets.ENV}}" >> .env
+
+    - name: Checkout source code.   # Repo checkout
+      uses: actions/checkout@v2
+      
+    - name: Check Node v            # Node v 확인
+      run: node -v
+
+    - name: Install Dependencies    # 의존 파일 설치
+      run: |
+        yarn install
+        yarn install --frozen-lockfile
+
+    - name: Build                   # React Build
+      run: 
+        CI=false yarn run build
+
+    - name: Dotori Client CI Success Discord Notification
+      uses: sarisia/actions-status-discord@v1
+      if: ${{ success() }}
+      with:
+        title: 🎉 Dotori Client CI 🐿
+        webhook: ${{ secrets.DISCORD_WEBHOOK_CI }}
+        color: 00FF00
+    - name: Dotori Client CI Fail Discord Notification
+      uses: sarisia/actions-status-discord@v1
+      if: ${{ failure() }}
+      with:
+        title: ❌ Dotori Client CI 🐿
+        webhook: ${{ secrets.DISCORD_WEBHOOK_CI }}
+        color: FF0000
+        
