@@ -2,12 +2,12 @@ name: Dotori Client CD
 
 on:
   push:
-    branches: [ feature/cicd ]
+    branches: [ master ]
 
 jobs:
   
   build:
-    # if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
 
@@ -45,10 +45,10 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
-          aws s3 sync --region ap-northeast-2 build/ s3://client-cd-test --delete
+          aws s3 sync --region ap-northeast-2 build/ s3://dotori-gsm.com --delete
 
       - name: Invalidate CloudFront Cache       # CloudFront에서 캐시를 갱신하기 위해 invalidation을 실행
-        run: aws cloudfront create-invalidation --distribution-id ${{secrets.DEV_AWS_DISTRIBUTION_ID}} --paths "/*"
+        run: aws cloudfront create-invalidation --distribution-id ${{secrets.AWS_DISTRIBUTION_ID}} --paths "/*"
 
       - name: Dotori Client CD Success Discord Notification
         uses: sarisia/actions-status-discord@v1

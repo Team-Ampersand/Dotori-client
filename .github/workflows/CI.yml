@@ -2,7 +2,7 @@ name: Dotori Client CI
 
 on:
   pull_request:
-    branches: [ "feature/cicd" ]
+    branches: [ master, develop ]
 
 jobs:
 
@@ -44,3 +44,4 @@ jobs:
         title: ❌ Dotori Client CI 🐿
         webhook: ${{ secrets.DISCORD_WEBHOOK_CI }}
         color: FF0000
+        
