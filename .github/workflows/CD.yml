@@ -18,8 +18,6 @@ jobs:
         run: |
           touch .env
           echo "${{secrets.ENV}}" >> .env
-          cat .env
-          ls -al
           
       - name: Check Node v            # Node v 확인
         run: node -v
@@ -28,8 +26,7 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Build                   # React Build
-        run: |
-          ls -al 
+        run: 
           CI=false yarn build
 
       - name: Configure AWS Credentials # AWS 자격 증명 
@@ -38,7 +35,7 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
-          
+
       - name: mv .env to S3
         run: mv .env ./build
 
@@ -47,7 +44,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
-          aws s3 cp --recursive --region ap-northeast-2 build s3://client-cd-test
+          aws s3 cp --recursive --region ap-northeast-2 build s3://client-cd
 
       - name: Dotori Client CD Success Discord Notification
         uses: sarisia/actions-status-discord@v1
