@@ -5,6 +5,7 @@ import {
 	showPlaylistDate,
 	setList,
 	classLookuped,
+	selectDate,
 } from './AtomContainer';
 
 export {
@@ -14,4 +15,5 @@ export {
 	showPlaylistDate,
 	setList,
 	classLookuped,
+	selectDate,
 };
