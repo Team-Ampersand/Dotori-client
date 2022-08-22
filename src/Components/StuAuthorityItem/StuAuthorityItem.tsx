@@ -113,11 +113,11 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
 					<S.StuNumStyle genderColor={returnGenderColor(gender)}>
 						{stuNum}
 					</S.StuNumStyle>
-					<S.NameStyle>
-						{memberName}
-					</S.NameStyle>
+					<S.NameStyle>{memberName}</S.NameStyle>
 					<S.AuthorityStyle>{returnRoleValue(authority)}</S.AuthorityStyle>
-					<S.SelfStudyStyle selfStudyColor={returnSelfStudyColor(selfStudyStatus)}>
+					<S.SelfStudyStyle
+						selfStudyColor={returnSelfStudyColor(selfStudyStatus)}
+					>
 						{returnSelfStudyValue(selfStudyStatus)}
 					</S.SelfStudyStyle>
 				</S.StuInfoWrapper>
@@ -126,7 +126,7 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
 						<S.BanBtn onClick={BanSelfStudy}>자습 금지</S.BanBtn>
 					) : (
 						<S.BanCancelBtn onClick={BanCancelSelfStudy}>
-							금지 취소
+							금지 취소 테스트
 						</S.BanCancelBtn>
 					)}
 					<S.EditBtn onClick={() => setEditState(!editState)}>
