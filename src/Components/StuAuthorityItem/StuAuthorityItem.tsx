@@ -126,7 +126,7 @@ const StuAuthorityItem: React.FC<StuAuthorityItemProps> = ({
 						<S.BanBtn onClick={BanSelfStudy}>자습 금지</S.BanBtn>
 					) : (
 						<S.BanCancelBtn onClick={BanCancelSelfStudy}>
-							금지 취소 테스트
+							금지 취소
 						</S.BanCancelBtn>
 					)}
 					<S.EditBtn onClick={() => setEditState(!editState)}>
