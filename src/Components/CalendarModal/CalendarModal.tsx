@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Calendar from 'react-calendar';
 import { dateMusic } from 'Api/music';
 import * as S from './Style';
@@ -23,6 +23,15 @@ const CalendarModal: React.FC<calendar> = ({ visible }) => {
 	const [select, setSelect] = useRecoilState(selectDate);
 	const role = useRole();
 
+	useEffect(() => {
+		getDateMusic(DateFormatter(select), role).then((res) => {
+			console.log(select);
+			setSongList(res?.data.data);
+			setPlaylistDate(DateFormatter(select));
+			mutate(`/${role}/music?date=${playlistDate}`);
+		})
+	}, [select])
+
 	return (
 		<>
 			{calendarOpen && (
@@ -34,12 +43,7 @@ const CalendarModal: React.FC<calendar> = ({ visible }) => {
 					<S.CalendarWrapper>
 						<Calendar
 							onChange={(value) => {
-								setSelect(new Date(value.getFullYear(), value.getMonth(), value.getDate()));
-								getDateMusic(DateFormatter(value), role).then((res) => {
-									setSongList(res?.data.data);
-									setPlaylistDate(DateFormatter(value));
-									mutate(`/${role}/music?date=${playlistDate}`);
-								})
+								setSelect(value);
 							}}
 							calendarType="US"
 							value={select}
