@@ -25,7 +25,6 @@ const CalendarModal: React.FC<calendar> = ({ visible }) => {
 
 	useEffect(() => {
 		getDateMusic(DateFormatter(select), role).then((res) => {
-			console.log(select);
 			setSongList(res?.data.data);
 			setPlaylistDate(DateFormatter(select));
 			mutate(`/${role}/music?date=${playlistDate}`);
