@@ -3,7 +3,7 @@ import * as S from './Style';
 import * as I from '../../Assets/Svg/index';
 import { SongItem } from '../';
 import { useRecoilState, useSetRecoilState } from 'recoil';
-import { isCalendarOpen, setList, showPlaylistDate } from 'Atoms';
+import { isCalendarOpen, selectDate, setList, showPlaylistDate } from 'Atoms';
 import { dateMusic } from 'Api/music';
 import CalendarModal from 'Components/CalendarModal/CalendarModal';
 import { useRole } from 'Hooks/useRole';
@@ -31,6 +31,7 @@ const TodaySong: React.FC = () => {
 	const setSongList = useSetRecoilState(setList);
 	const [playlistDate, setPlaylistDate] = useRecoilState(showPlaylistDate);
 	const [calendarOpen, setCalendarOpen] = useRecoilState(isCalendarOpen);
+	const setSelect = useSetRecoilState(selectDate);
 	const role = useRole();
 	const { data, error } = useSWR<MusicType>(
 		MusicController.dateMusic(role, playlistDate),
@@ -42,6 +43,7 @@ const TodaySong: React.FC = () => {
 	};
 
 	useEffect(() => {
+		setSelect(new Date());
 		setPlaylistDate(
 			`${ManufactureDate('Y')}-${('0' + ManufactureDate('M')).slice(-2)}-${(
 				'0' + ManufactureDate('D')
