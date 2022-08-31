@@ -9,7 +9,7 @@ const NoticePage: React.FC = () => {
 	const { board_key }: any = useParams();
 	const [title, setTitle] = useState<string>('');
 	const [content, setContent] = useState<string>('');
-	const [imgUrl, setImgUrl] = useState<string>('');
+	const [imgUrl, setImgUrl] = useState<string[]>([]);
 	const [date, setDate] = useState<string>('');
 	const [roles, setRoles] = useState<string>('');
 	const role = useRole();
@@ -40,7 +40,7 @@ const NoticePage: React.FC = () => {
 				setRoles(res.roles);
 				setUpdateTitle(res.title);
 				setUpdateContent(res.content);
-				setImgUrl(res.url);
+				setImgUrl(res.boardImages);
 			});
 	}, []);
 	const [updateTitle, setUpdateTitle] = useState<string>('');
@@ -89,7 +89,7 @@ const NoticePage: React.FC = () => {
 							))}
 						</S.TextWrapper>
 					)}
-					{imgUrl && <S.ImgWrapper alt="notice" src={imgUrl} />}
+					{imgUrl && imgUrl.map(({ url }: string) => <S.ImgWrapper alt="notice" src={url} />)}
 				</S.ContentWrapper>
 				<S.Footer>작성자 : {returnAuthorValue(roles[0])}</S.Footer>
 				{role !== 'member' &&

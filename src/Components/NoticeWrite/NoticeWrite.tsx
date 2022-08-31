@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import * as S from './Style';
 import * as I from '../../Assets/Svg/index';
 import { useNavigate } from 'react-router-dom';
@@ -7,10 +7,10 @@ import { noticeWrite } from '../../Api/notice';
 import { useRole } from 'Hooks/useRole';
 
 const NoticeWrite: React.FC = () => {
-	const [title, setTitle] = useState('');
-	const [content, setContent] = useState('');
-	const [postFile, setPostFile] = useState('');
-	const [fileImage, setFileImage] = useState('');
+	const [title, setTitle] = useState<string>('');
+	const [content, setContent] = useState<string>('');
+	const [postFile, setPostFile]: any = useState([]);
+	const [fileImage, setFileImage]: any = useState([]);
 	const navigate = useNavigate();
 	const role = useRole();
 
@@ -32,27 +32,19 @@ const NoticeWrite: React.FC = () => {
 		setContent(e.target.value);
 	};
 
-	useEffect(() => {
-		setPostFile(postFile);
-	}, [postFile]);
-
 	const saveFileImage = (e) => {
-		setPostFile(e.target.files[0]);
-		setFileImage(URL.createObjectURL(e.target.files[0]));
+		if (e.target.files[0]) {
+			setPostFile(postFile => [...postFile, e.target.files[0]]);
+			setFileImage(fileImage => [...fileImage, URL.createObjectURL(e.target.files[0])]);
+		}
 	};
 	const deleteFileImage = () => {
-		URL.revokeObjectURL(fileImage);
-		setPostFile('');
-		setFileImage('');
-	};
-
-	const [shouldConfirmState, setShouldConfirmState] = useState(true);
-	const confirm = () => {
-		setShouldConfirmState(false);
+		fileImage.map((item) => URL.revokeObjectURL(item));
+		setPostFile([]);
+		setFileImage([]);
 	};
 
 	const createNotice = async (e) => {
-		confirm();
 		const res = await noticeWrite(role, title, content, postFile);
 		if (title && content === '') {
 			return;
@@ -91,14 +83,20 @@ const NoticeWrite: React.FC = () => {
 							<S.ImgContainer>
 								<div>
 									<S.Img>
-										{fileImage ? (
-											<img alt="notice" src={fileImage} />
-										) : (
-											<S.LogoImg>
-												<I.TextLogo />
-												<p>이미지가 선택되지 않았어요</p>
-											</S.LogoImg>
-										)}
+										{fileImage ?
+											(
+												[...fileImage].map((item, key) => {
+													return (
+														<img alt="notice" src={item} key={key} />
+													)
+												})
+											) : (
+												<S.LogoImg>
+													<I.TextLogo />
+													<p>이미지가 선택되지 않았어요</p>
+												</S.LogoImg>
+											)
+										}
 									</S.Img>
 								</div>
 							</S.ImgContainer>
@@ -107,7 +105,7 @@ const NoticeWrite: React.FC = () => {
 									<input
 										id="select-file"
 										name="imgUpload"
-										type="file"	
+										type="file"
 										accept="image/*"
 										onChange={saveFileImage}
 									/>
