@@ -1,14 +1,8 @@
 import styled from 'styled-components';
 
-type StyleProps = {
-	borderColor: string;
-};
-
 export const Positioner = styled.div`
 	width: 100%;
 	height: 100%;
-	background: #ffffff;
-	border-radius: 20px;
 `;
 
 export const Content = styled.div`
@@ -20,27 +14,36 @@ export const Content = styled.div`
 	align-items: center;
 	-ms-overflow-style: none;
 	scrollbar-width: none;
-	border-radius: 10px;
+	border-radius: 20px;
+	box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.12);
+	background-color: #fff;
 `;
 
-export const Wrapper = styled.div<StyleProps>`
-	width: 30vw;
-	height: 75px;
+export const Wrapper = styled.div`
+	width: 250px;
+	height: 310px;
 	display: flex;
 	justify-content: space-around;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	background-color: #fff;
 	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
 	border-radius: 20px;
-	margin-top: 2.7vh;
-	margin-bottom: 2vh;
-	border: 2px solid ${(props) => props.borderColor};
-	div {
-		font-size: 18px;
-		color: #000;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
+	position: relative;
+	@media (max-width: 700px) {
+		width: 90%;
+	} ;
+`;
+
+export const StuNum = styled.span`
+	font-size: 13px;
+	color: #878787;
+	margin-top: 1rem;
+`;
+
+export const Name = styled.span`
+	font-size: 17px;
 `;
 
 export const ExceptionWrapper = styled.div`
