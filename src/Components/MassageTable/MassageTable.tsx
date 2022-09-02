@@ -1,5 +1,5 @@
 import { massageLookup } from 'Api/massage';
-import { TextLogo } from 'Assets/Svg';
+import { SmallMale, TextLogo } from 'Assets/Svg';
 import Logo from 'Assets/Svg/Logo';
 import { HasToken } from 'Atoms';
 import { useRole } from 'Hooks/useRole';
@@ -64,9 +64,10 @@ const MassageTable = () => {
 				{list ? (
 					list &&
 					list.map((item, index) => (
-						<S.Wrapper borderColor={returnBorderColor(item.stuNum)} key={index}>
-							<div>{item.memberName}</div>
-							<div>{item.stuNum}</div>
+						<S.Wrapper key={index}>
+							<SmallMale />
+							<S.StuNum>{item.stuNum}</S.StuNum>
+							<S.Name>{item.memberName}</S.Name>
 						</S.Wrapper>
 					))
 				) : (
