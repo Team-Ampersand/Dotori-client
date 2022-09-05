@@ -5,11 +5,16 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useRole } from 'Hooks/useRole';
 import { getNoticeItem, noticeUpdate } from 'Api/notice';
 
+interface imgType {
+	id: any;
+	url: string;
+}
+
 const NoticePage: React.FC = () => {
 	const { board_key }: any = useParams();
 	const [title, setTitle] = useState<string>('');
 	const [content, setContent] = useState<string>('');
-	const [imgUrl, setImgUrl] = useState<string[]>([]);
+	const [imgUrl, setImgUrl] = useState<imgType[]>([]);
 	const [date, setDate] = useState<string>('');
 	const [roles, setRoles] = useState<string>('');
 	const role = useRole();
@@ -52,6 +57,11 @@ const NoticePage: React.FC = () => {
 		window.location.reload();
 	};
 
+	const settings = {
+		dots: true,
+		arrows: false,
+	}
+
 	return (
 		<S.Positioner>
 			<S.Container>
@@ -89,7 +99,9 @@ const NoticePage: React.FC = () => {
 							))}
 						</S.TextWrapper>
 					)}
-					{imgUrl && imgUrl.map(({ url }: string) => <S.ImgWrapper alt="notice" src={url} />)}
+					<S.StyledSlider {...settings}>
+						{imgUrl && imgUrl.map((img) => <S.ImgWrapper alt="notice" src={img.url} />)}
+					</S.StyledSlider>
 				</S.ContentWrapper>
 				<S.Footer>작성자 : {returnAuthorValue(roles[0])}</S.Footer>
 				{role !== 'member' &&

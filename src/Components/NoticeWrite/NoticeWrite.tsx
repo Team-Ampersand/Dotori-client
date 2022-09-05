@@ -14,6 +14,11 @@ const NoticeWrite: React.FC = () => {
 	const navigate = useNavigate();
 	const role = useRole();
 
+	const settings = {
+		arrows: false,
+		dots: true,
+	}
+
 	const returnAuthorValue = (authorType: string) => {
 		switch (authorType) {
 			case 'admin':
@@ -42,6 +47,7 @@ const NoticeWrite: React.FC = () => {
 		fileImage.map((item) => URL.revokeObjectURL(item));
 		setPostFile([]);
 		setFileImage([]);
+		(document.getElementsByName("imgUpload")[0] as HTMLInputElement).value = "";
 	};
 
 	const createNotice = async (e) => {
@@ -81,24 +87,28 @@ const NoticeWrite: React.FC = () => {
 						</S.InputWrapper>
 						<S.ContentWrapper>
 							<S.ImgContainer>
-								<div>
-									<S.Img>
-										{fileImage ?
-											(
+								{fileImage[0] !== undefined ?
+									(
+										<S.Img>
+											<S.StyledSlider {...settings}>{
 												[...fileImage].map((item, key) => {
 													return (
 														<img alt="notice" src={item} key={key} />
 													)
 												})
-											) : (
+											}</S.StyledSlider>
+										</S.Img>
+									) : (
+										<div>
+											<S.Img>
 												<S.LogoImg>
 													<I.TextLogo />
 													<p>이미지가 선택되지 않았어요</p>
 												</S.LogoImg>
-											)
-										}
-									</S.Img>
-								</div>
+											</S.Img>
+										</div>
+									)
+								}
 							</S.ImgContainer>
 							<S.SelectImgContainer>
 								<S.ImgBtnWrapper>

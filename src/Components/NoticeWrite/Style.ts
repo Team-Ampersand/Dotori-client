@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 export const Positioner = styled.div`
 	height: 100%;
@@ -61,8 +64,6 @@ export const TitleInput = styled.input`
 		font-size: 23px;
 		padding: 0 4%;
 	}
-	@media (max-width: 1200px) {
-	}
 	@media (max-width: 700px) {
 		font-size: 20px;
 		padding: 0 3%;
@@ -90,8 +91,6 @@ export const ContentInput = styled.textarea`
 		font-size: 1.1rem;
 		padding: 30px 4% 10px 4%;
 	}
-	@media (max-width: 1200px) {
-	}
 	@media (max-width: 700px) {
 		font-size: 0.9rem;
 	}
@@ -106,7 +105,7 @@ export const ContentWrapper = styled.div`
 
 	@media (max-width: 1200px) {
 		flex-direction: row;
-		width: 100%;
+		width: 99%;
 		gap: 10px;
 	}
 `;
@@ -117,9 +116,17 @@ export const ImgContainer = styled.div`
 	align-items: center;
 	width: 95%;
 	height: 80%;
+	max-width: 500px;
 	border-radius: 15px;
 	background-color: #fff;
 	box-shadow: 0px 0px 13px 0px #0000001f;
+
+	@media (max-width: 1200px){
+		max-width: 670px;
+	}
+	@media (max-width: 780px){
+		width: 80%
+	}
 `;
 
 export const LogoImg = styled.div`
@@ -131,7 +138,9 @@ export const LogoImg = styled.div`
 
 export const Img = styled.div`
 	padding: 0 20px;
+	width: 100%;
 	height: 100%;
+	max-height: 545px;
 	border-radius: 10px;
 	display: flex;
 	justify-content: center;
@@ -139,15 +148,14 @@ export const Img = styled.div`
 	overflow: hidden;
 
 	@media (max-width: 1200px) {
-		padding: 0 10px;
+		padding: 5px 0 10px 0;
 	}
-
+	
 	img {
-		width: 100%;
-		height: 100%;
+		object-fit: contain;
 
 		@media (max-width: 1200px) {
-			max-height: 250px;
+			max-height: 240px;
 		}
 	}
 	p {
@@ -159,6 +167,35 @@ export const Img = styled.div`
 		}
 	}
 `;
+
+export const StyledSlider = styled(Slider)`
+	width: 24vw;
+	
+	@media (max-width: 1200px) {
+		width: 36vw;
+	}
+
+	.slick-track {
+		display: flex;
+		align-items: center;
+	}
+
+	.slick-dots{
+		height: 10px;
+		@media (max-width: 1200px){
+			top: auto;
+			bottom: 2px;
+		}
+	}
+
+	.slick-dots li button:focus:before{
+		opacity: .25;
+	}
+
+	.slick-dots li.slick-active button:before{
+		opacity: .75;
+	}
+`
 
 export const SelectImgContainer = styled.div`
 	display: flex;
