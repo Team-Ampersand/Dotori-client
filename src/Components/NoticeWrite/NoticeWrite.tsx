@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import * as S from './Style';
 import * as I from '../../Assets/Svg/index';
 import { useNavigate } from 'react-router-dom';
@@ -13,6 +13,7 @@ const NoticeWrite: React.FC = () => {
 	const [fileImage, setFileImage]: any = useState([]);
 	const navigate = useNavigate();
 	const role = useRole();
+	const ref = useRef<any>();
 
 	const settings = {
 		arrows: false,
@@ -47,7 +48,7 @@ const NoticeWrite: React.FC = () => {
 		fileImage.map((item) => URL.revokeObjectURL(item));
 		setPostFile([]);
 		setFileImage([]);
-		(document.getElementsByName("imgUpload")[0] as HTMLInputElement).value = "";
+		ref.current.value = "";
 	};
 
 	const createNotice = async (e) => {
@@ -118,6 +119,7 @@ const NoticeWrite: React.FC = () => {
 										type="file"
 										accept="image/*"
 										onChange={saveFileImage}
+										ref={ref}
 									/>
 									<label htmlFor="select-file">이미지 선택</label>
 									<button onClick={() => deleteFileImage()}>이미지 삭제</button>
