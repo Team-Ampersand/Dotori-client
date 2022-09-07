@@ -13,6 +13,7 @@ export const Postioner = styled.div`
 `;
 
 export const TextWrapper = styled.div`
+outline: none;
 	h2 {
 		font-size: 28px;
 		font-weight: bold;
