@@ -135,6 +135,10 @@ export const SelfstudyController = {
 	studySearch: (role: string, stuName: string) => {
 		return `/${role}/selfstudy?memberName=${stuName}`;
 	},
+	//자습신청한 학생 자습 내려왔는지 체크
+	studyCheck: (role: string, memberId: number) => {
+		return `/${role}/selfstudy/check/${memberId}`;
+	},
 };
 
 //기상송 신청
