@@ -100,7 +100,5 @@ export const studyCheck = async (
 			}
 		);
 		return { data };
-	} catch (e: any) {
-		console.log(e.message);
-	}
+	} catch (e: any) {}
 };
