@@ -5,11 +5,16 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useRole } from 'Hooks/useRole';
 import { getNoticeItem, noticeUpdate } from 'Api/notice';
 
+interface imgType {
+	id: any;
+	url: string;
+}
+
 const NoticePage: React.FC = () => {
 	const { board_key }: any = useParams();
 	const [title, setTitle] = useState<string>('');
 	const [content, setContent] = useState<string>('');
-	const [imgUrl, setImgUrl] = useState<string>('');
+	const [imgUrl, setImgUrl] = useState<imgType[]>([]);
 	const [date, setDate] = useState<string>('');
 	const [roles, setRoles] = useState<string>('');
 	const role = useRole();
@@ -40,7 +45,7 @@ const NoticePage: React.FC = () => {
 				setRoles(res.roles);
 				setUpdateTitle(res.title);
 				setUpdateContent(res.content);
-				setImgUrl(res.url);
+				setImgUrl(res.boardImages);
 			});
 	}, []);
 	const [updateTitle, setUpdateTitle] = useState<string>('');
@@ -51,6 +56,11 @@ const NoticePage: React.FC = () => {
 		setUpdateState(false);
 		window.location.reload();
 	};
+
+	const settings = {
+		dots: true,
+		arrows: false,
+	}
 
 	return (
 		<S.Positioner>
@@ -89,7 +99,9 @@ const NoticePage: React.FC = () => {
 							))}
 						</S.TextWrapper>
 					)}
-					{imgUrl && <S.ImgWrapper alt="notice" src={imgUrl} />}
+					<S.StyledSlider {...settings}>
+						{imgUrl && imgUrl.map((img) => <S.ImgWrapper alt="notice" src={img.url} />)}
+					</S.StyledSlider>
 				</S.ContentWrapper>
 				<S.Footer>작성자 : {returnAuthorValue(roles[0])}</S.Footer>
 				{role !== 'member' &&

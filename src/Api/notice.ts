@@ -27,7 +27,7 @@ export const getNoticeDetail = async (role: string, page: number) => {
 			noticeController.getNoticeDetail(role, page)
 		);
 		return { data };
-	} catch (e) {}
+	} catch (e) { }
 };
 
 export const getNoticeItem = async (role: string, boardId: number) => {
@@ -36,18 +36,18 @@ export const getNoticeItem = async (role: string, boardId: number) => {
 			noticeController.getNoticeItem(role, boardId)
 		);
 		return { data };
-	} catch (e: any) {}
+	} catch (e: any) { }
 };
 
 export const noticeWrite = async (
 	role: string,
 	title: string,
 	content: string,
-	img: string
+	img: string[],
 ) => {
 	try {
 		let formData = new FormData();
-		formData.append('files', img);
+		img.map(item => formData.append('files', item));
 		let boardDto = {
 			title: title,
 			content: content,

@@ -5,3 +5,8 @@ export const Positioner = styled.div`
 	height: 100%;
 	display: flex;
 `;
+
+export const Container = styled.div`
+	width: 100%;
+	height: 100%;
+`;

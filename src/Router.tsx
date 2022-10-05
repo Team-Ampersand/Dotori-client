@@ -18,6 +18,8 @@ const SelfStudyPage = lazy(
 			/* webpackChunkName: "selfstudy" */ './Pages/SelfStudyPage/SelfStudyPage'
 		)
 );
+const MassagePage = lazy(() => import('./Pages/MassagePage/MassagePage'));
+
 const NoticePage = lazy(
 	() => import(/* webpackChunkName: "notice" */ './Pages/NoticePage/NoticePage')
 );
@@ -98,6 +100,14 @@ const Router: React.FC = () => {
 				element={
 					<PrivateRoute>
 						<SelfStudyPage />
+					</PrivateRoute>
+				}
+			/>
+			<Route
+				path="/massage"
+				element={
+					<PrivateRoute>
+						<MassagePage />
 					</PrivateRoute>
 				}
 			/>

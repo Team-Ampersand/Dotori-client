@@ -6,6 +6,7 @@ type User = {
 	stuNum: string;
 	memberName: string;
 	gender: string;
+	selfStudyCheck: boolean;
 };
 
 type lists = {
