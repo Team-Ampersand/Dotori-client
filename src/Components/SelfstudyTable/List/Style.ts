@@ -31,3 +31,9 @@ export const Medal = styled.div`
 	top: 10px;
 	left: 10px;
 `;
+
+export const Checkbox = styled.div`
+	position: absolute;
+	top: 10px;
+	right: 10px;
+`;

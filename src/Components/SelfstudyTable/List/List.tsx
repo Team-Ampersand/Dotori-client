@@ -13,85 +13,29 @@ import {
 	BronzeMedal,
 	Trash,
 } from 'Assets/Svg';
+import SelfstudyCheck from '../SelfstudyCheck/SelfstudyCheck';
 
 const userOBJ = [
 	{
-		id: 0,
+		id: '1',
 		gender: 'MAN',
-		stuNum: '3214',
-		memberName: '임창규',
+		stuNum: '2201',
+		memberName: '강경민',
+		selfStudyCheck: false,
 	},
 	{
-		id: 0,
+		id: '14',
 		gender: 'MAN',
-		stuNum: '3214',
-		memberName: '임창규',
+		stuNum: '2215',
+		memberName: '손정민',
+		selfStudyCheck: true,
 	},
 	{
-		id: 0,
+		id: '13',
 		gender: 'MAN',
-		stuNum: '3214',
-		memberName: '임창규',
-	},
-	{
-		id: 0,
-		gender: 'MAN',
-		stuNum: '3214',
-		memberName: '임창규',
-	},
-	{
-		id: 0,
-		gender: 'MAN',
-		stuNum: '3214',
-		memberName: '임창규',
-	},
-	{
-		id: 0,
-		gender: 'MAN',
-		stuNum: '3214',
-		memberName: '임창규',
-	},
-	{
-		id: 0,
-		gender: 'MAN',
-		stuNum: '3214',
-		memberName: '임창규',
-	},
-	{
-		id: 0,
-		gender: 'MAN',
-		stuNum: '3214',
-		memberName: '임창규',
-	},
-	{
-		id: 0,
-		gender: 'MAN',
-		stuNum: '3214',
-		memberName: '임창규',
-	},
-	{
-		id: 0,
-		gender: 'MAN',
-		stuNum: '3214',
-		memberName: '임창규',
-	},
-	{
-		id: 0,
-		gender: 'MAN',
-		stuNum: '3214',
-		memberName: '임창규',
-	},
-	{
-		id: 0,
-		gender: 'MAN',
-		stuNum: '3214',
-		memberName: '임창규',
-	},
-	{
-		id: 0,
-		gender: 'MAN',
-		stuNum: '3214',
-		memberName: '임창규',
+		stuNum: '2308',
+		memberName: '유환빈',
+		selfStudyCheck: false,
 	},
 ];
 
@@ -131,6 +75,16 @@ const List: React.FC = () => {
 									idx === (userlist && userlist.length - 1) && <Trash />
 								))}
 						</S.Medal>
+						{!(role === 'member') && (
+							<S.Checkbox>
+								<SelfstudyCheck
+									id={item.id}
+									role={role}
+									state={item.selfStudyCheck}
+									returnUserObj={ReturnUserObj}
+								/>
+							</S.Checkbox>
+						)}
 						{item.gender === 'PENDING' ? (
 							<Profile width={110} height={110} />
 						) : item.gender === 'MAN' ? (

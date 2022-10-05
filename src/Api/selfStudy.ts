@@ -86,3 +86,19 @@ export const studySearch = async (role: string, stuName: string) => {
 		}
 	}
 };
+
+export const studyCheck = async (
+	role: string,
+	memberId: number,
+	check: boolean
+) => {
+	try {
+		const { data } = await apiClient.patch(
+			SelfstudyController.studyCheck(role, memberId),
+			{
+				selfStudyCheck: check,
+			}
+		);
+		return { data };
+	} catch (e: any) {}
+};
