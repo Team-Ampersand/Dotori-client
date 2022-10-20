@@ -100,7 +100,7 @@ const MassageBoard: React.FC = () => {
 					status={info.status}
 					count={parseInt(info.count)}
 				>
-					신청
+					신청불가
 				</S.MassageButton>
 			);
 		} else if (parseInt(info.count) === 5) {
@@ -110,7 +110,7 @@ const MassageBoard: React.FC = () => {
 					status={info.status}
 					count={parseInt(info.count)}
 				>
-					신청
+					신청불가
 				</S.MassageButton>
 			);
 		} else if (info.status === 'CANT') {
@@ -120,7 +120,7 @@ const MassageBoard: React.FC = () => {
 					status={info.status}
 					count={parseInt(info.count)}
 				>
-					신청
+					신청불가
 				</S.MassageButton>
 			);
 		} else {
@@ -130,7 +130,7 @@ const MassageBoard: React.FC = () => {
 					status={info.status}
 					count={parseInt(info.count)}
 				>
-					신청
+					신청불가
 				</S.MassageButton>
 			);
 		}
