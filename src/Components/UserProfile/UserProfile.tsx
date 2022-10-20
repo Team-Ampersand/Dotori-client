@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './Style';
-import { Logout, Profile, Male, Female } from '../../Assets/Svg';
+import { Profile, Male, Female } from '../../Assets/Svg';
 import { logout } from '../../Api/member';
 import { mypage } from '../../Api/mypage';
-import { useSetRecoilState } from 'recoil';
-import { HasToken } from '../../Atoms';
+import {  useSetRecoilState } from 'recoil';
+import { HasToken , Gender } from '../../Atoms';
 import { useNavigate, Link } from 'react-router-dom';
 import { PenaltyInfoModal } from 'Components';
 import { ManufactureDate } from 'Utils/ManufactureDate';
@@ -45,12 +45,14 @@ const UserProfile: React.FC = () => {
 	const [profile, setProfile] = useState<UserProfileType>();
 	const onLogout = TryLogout();
 	const [modalState, setModalState] = useState(false);
+	const setGender = useSetRecoilState(Gender);
 
 	const closeModal = () => setModalState(false);
 
 	useEffect(() => {
 		myPage().then((res: any) => {
 			setProfile(res.data.data);
+			setGender(res.data.data.gender);
 		});
 	}, []);
 	return (

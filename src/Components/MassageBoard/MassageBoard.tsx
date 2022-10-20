@@ -6,6 +6,8 @@ import * as S from './Style';
 import { Arrowdown } from 'Assets/Svg';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { Gender } from 'Atoms';
 
 const returnRoomStatusNumber = (compareMax: number, compareMin: number) => {
 	if (compareMax / 2 > compareMin) {
@@ -40,11 +42,14 @@ const MassageBoard: React.FC = () => {
 	let cant = ['금', '토', '일'];
 	let hours = new Date().getHours();
 	let minutes = new Date().getMinutes();
+	const  gender = useRecoilValue(Gender);
 
 	const returnButton = () => {
 		if (role === 'admin') {
 			return <p>사감 선생님은 안마의자 신청을 하지 않으셔도 됩니다</p>;
-		} else if (
+		} else if(gender === "WOMAN"){
+			return <p>여학생의 경우 여자 사감선생님께 별도로 신청해주시기 바랍니다.</p>
+		}else if (
 			info.status === 'CAN' &&
 			parseInt(info.count) < 5 &&
 			can.indexOf(today) !== -1 &&
@@ -164,9 +169,6 @@ const MassageBoard: React.FC = () => {
 							? '20:20 ~ 21:00 에 안마의자 신청이 가능해요'
 							: '안마의자 신청 시간이에요'}
 					</p>
-					<S.Alert>
-						※ 여학생의 경우 여자 사감선생님께 별도로 신청해주시기 바랍니다.
-					</S.Alert>
 				</S.Explain>
 			</S.MassageContent>
 		</S.Positioner>
