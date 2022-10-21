@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './Style';
-import { Profile, Male, Female } from '../../Assets/Svg';
+import { Logout, Profile, Male, Female } from '../../Assets/Svg';
 import { logout } from '../../Api/member';
 import { mypage } from '../../Api/mypage';
-import {  useSetRecoilState } from 'recoil';
-import { HasToken , Gender } from '../../Atoms';
+import { useSetRecoilState } from 'recoil';
+import { HasToken , Gender} from '../../Atoms';
 import { useNavigate, Link } from 'react-router-dom';
 import { PenaltyInfoModal } from 'Components';
 import { ManufactureDate } from 'Utils/ManufactureDate';
