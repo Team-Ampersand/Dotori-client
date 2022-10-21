@@ -6,7 +6,6 @@ import {
 	setList,
 	classLookuped,
 	selectDate,
-	Gender,
 } from './AtomContainer';
 
 export {
@@ -17,5 +16,4 @@ export {
 	setList,
 	classLookuped,
 	selectDate,
-	Gender,
 };
