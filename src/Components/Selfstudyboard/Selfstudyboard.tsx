@@ -168,7 +168,7 @@ const Selfstudyboard: React.FC = () => {
 					}}
 					count={parseInt(info.count)}
 				>
-					신청불가
+					신청
 				</S.StudyButton>
 			);
 		} else {
