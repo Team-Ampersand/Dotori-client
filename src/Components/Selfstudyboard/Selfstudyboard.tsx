@@ -85,7 +85,7 @@ const Selfstudyboard: React.FC = () => {
 						toast.info('자습 신청이 금지되었어요');
 					}}
 				>
-					신청불가
+					자습불가
 				</S.StudyButton>
 			);
 		} else if (
@@ -144,7 +144,7 @@ const Selfstudyboard: React.FC = () => {
 					}}
 					count={parseInt(info.count)}
 				>
-					신청불가
+					신청
 				</S.StudyButton>
 			);
 		} else if (parseInt(info.count) === 50) {
@@ -156,7 +156,7 @@ const Selfstudyboard: React.FC = () => {
 					}}
 					count={parseInt(info.count)}
 				>
-					신청불가
+					신청
 				</S.StudyButton>
 			);
 		} else if (info.selfStudy_status === 'CANT') {
@@ -180,7 +180,7 @@ const Selfstudyboard: React.FC = () => {
 					}}
 					count={parseInt(info.count)}
 				>
-					신청불가
+					신청
 				</S.StudyButton>
 			);
 		}
