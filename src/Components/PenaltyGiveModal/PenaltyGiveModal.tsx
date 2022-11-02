@@ -7,7 +7,10 @@ import { updatePenaltyInfo } from 'Api/penaltyInfo';
 import { useRole } from 'Hooks/useRole';
 import { useRecoilState } from 'recoil';
 import PenaltyGiveTagItem from 'Components/PenaltyGiveTagItem/PenaltyGiveTagItem';
-import { returnPenaltyValue, returnPenaltyValueReverse } from './returnValues';
+import {
+	returnPenaltyValuesKorean,
+	returnPenaltyValuesEnglish,
+} from 'Utils/Libs/returnPenaltyValues';
 import { fieldSelected, penaltySelected } from '../../Atoms/AtomContainer';
 import { toast } from 'react-toastify';
 
@@ -33,8 +36,22 @@ const FieldList = [
 ];
 
 const PenaltyList = {
-	TakeBan: ['반입 - 화기류', '반입 - 흉기', '반입 - 주류', '반입 - 담배', '반입 - 사행성기구', '반입 - 음식'],
-	UseBan: ['사용 - 화기류', '사용 - 흉기', '사용 - 주류', '사용 - 담배', '사용 - 사행성기구', '사용 - 음식'],
+	TakeBan: [
+		'반입 - 화기류',
+		'반입 - 흉기',
+		'반입 - 주류',
+		'반입 - 담배',
+		'반입 - 사행성기구',
+		'반입 - 음식',
+	],
+	UseBan: [
+		'사용 - 화기류',
+		'사용 - 흉기',
+		'사용 - 주류',
+		'사용 - 담배',
+		'사용 - 사행성기구',
+		'사용 - 음식',
+	],
 	Unfulfill: ['사감의 학습 및 생활지도 불이행'],
 	Time: ['지각', '외출', '외박'],
 	Damage: ['물품훼손', '절도', '갈취'],
@@ -99,7 +116,7 @@ const GiveModal: React.FC<ModalProps> = ({
 							handleSelect(
 								penaltySelect,
 								setPenaltySelect,
-								returnPenaltyValue(penalty)
+								returnPenaltyValuesEnglish[penalty]
 							);
 							setCurrentPenalty(penalty);
 						}}
@@ -116,7 +133,7 @@ const GiveModal: React.FC<ModalProps> = ({
 							handleSelect(
 								penaltySelect,
 								setPenaltySelect,
-								returnPenaltyValue(penalty)
+								returnPenaltyValuesEnglish[penalty]
 							);
 							setCurrentPenalty(penalty);
 						}}
@@ -133,7 +150,7 @@ const GiveModal: React.FC<ModalProps> = ({
 							handleSelect(
 								penaltySelect,
 								setPenaltySelect,
-								returnPenaltyValue(penalty)
+								returnPenaltyValuesEnglish[penalty]
 							);
 							setCurrentPenalty(penalty);
 						}}
@@ -150,7 +167,7 @@ const GiveModal: React.FC<ModalProps> = ({
 							handleSelect(
 								penaltySelect,
 								setPenaltySelect,
-								returnPenaltyValue(penalty)
+								returnPenaltyValuesEnglish[penalty]
 							);
 							setCurrentPenalty(penalty);
 						}}
@@ -167,7 +184,7 @@ const GiveModal: React.FC<ModalProps> = ({
 							handleSelect(
 								penaltySelect,
 								setPenaltySelect,
-								returnPenaltyValue(penalty)
+								returnPenaltyValuesEnglish[penalty]
 							);
 							setCurrentPenalty(penalty);
 						}}
@@ -184,7 +201,7 @@ const GiveModal: React.FC<ModalProps> = ({
 							handleSelect(
 								penaltySelect,
 								setPenaltySelect,
-								returnPenaltyValue(penalty)
+								returnPenaltyValuesEnglish[penalty]
 							);
 							setCurrentPenalty(penalty);
 						}}
@@ -201,7 +218,7 @@ const GiveModal: React.FC<ModalProps> = ({
 							handleSelect(
 								penaltySelect,
 								setPenaltySelect,
-								returnPenaltyValue(penalty)
+								returnPenaltyValuesEnglish[penalty]
 							);
 							setCurrentPenalty(penalty);
 						}}
@@ -218,7 +235,7 @@ const GiveModal: React.FC<ModalProps> = ({
 							handleSelect(
 								penaltySelect,
 								setPenaltySelect,
-								returnPenaltyValue(penalty)
+								returnPenaltyValuesEnglish[penalty]
 							);
 							setCurrentPenalty(penalty);
 						}}
@@ -235,7 +252,7 @@ const GiveModal: React.FC<ModalProps> = ({
 							handleSelect(
 								penaltySelect,
 								setPenaltySelect,
-								returnPenaltyValue(penalty)
+								returnPenaltyValuesEnglish[penalty]
 							);
 							setCurrentPenalty(penalty);
 						}}
@@ -252,7 +269,7 @@ const GiveModal: React.FC<ModalProps> = ({
 							handleSelect(
 								penaltySelect,
 								setPenaltySelect,
-								returnPenaltyValue(penalty)
+								returnPenaltyValuesEnglish[penalty]
 							);
 							setCurrentPenalty(penalty);
 						}}
@@ -269,7 +286,7 @@ const GiveModal: React.FC<ModalProps> = ({
 							handleSelect(
 								penaltySelect,
 								setPenaltySelect,
-								returnPenaltyValue(penalty)
+								returnPenaltyValuesEnglish[penalty]
 							);
 							setCurrentPenalty(penalty);
 						}}
@@ -348,7 +365,7 @@ const GiveModal: React.FC<ModalProps> = ({
 													handleDelete(penaltySelect, setPenaltySelect, penalty)
 												}
 											>
-												{returnPenaltyValueReverse(penalty)}
+												{returnPenaltyValuesKorean[penalty]}
 											</S.TagWrapper>
 										</PenaltyGiveTagItem>
 									);
