@@ -12,7 +12,7 @@ import Classification from './Classification/Classification';
 import SelfstudyTable from './SelfstudyTable/SelfstudyTable';
 import SongRequest from './SongRequest/SongRequest';
 import TodaySong from './TodaySong/TodaySong';
-import Authorzation from './Authorzation/Authorzation';
+import Authorization from './Authorization/Authorization';
 import InfoUpdateModal from './InfoUpdateModal/InfoUpdateModal';
 import ChangeInput from './ChangeInput/ChangeInput';
 import ChangeSelect from './ChangeSelect/ChangeSelect';
@@ -49,7 +49,7 @@ export {
 	SelfstudyTable,
 	SongRequest,
 	TodaySong,
-	Authorzation,
+	Authorization,
 	ChangeInput,
 	ChangeSelect,
 	SigninForm,
