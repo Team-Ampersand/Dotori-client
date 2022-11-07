@@ -7,19 +7,23 @@ import { useSetRecoilState } from 'recoil';
 import { signin } from '../../Api/member';
 import { toast } from 'react-toastify';
 
+type user = {
+	id: string;
+	password: string;
+};
+
 const TrySignin = () => {
-	const [id, setId] = useState('');
-	const [password, setPassword] = useState('');
+	const [user, setUser] = useState<user>({} as user);
 	const setLogged = useSetRecoilState(HasToken);
 	const navigate = useNavigate();
 
 	const onSignin = async () => {
-		if (id === '') {
+		if (user.id === '') {
 			return toast.warning('이메일을 입력해주세요');
-		} else if (password === '') {
+		} else if (user.password === '') {
 			return toast.warning('비밀번호를 입력해주세요');
 		}
-		const { data }: any = await signin(id + '@gsm.hs.kr', password);
+		const { data }: any = await signin(user.id + '@gsm.hs.kr', user.password);
 
 		localStorage.setItem('Dotori_accessToken', data.data.token.accessToken);
 		localStorage.setItem('Dotori_refreshToken', data.data.token.refreshToken);
@@ -31,11 +35,11 @@ const TrySignin = () => {
 			navigate('/home');
 		}
 	};
-	return [setId, setPassword, onSignin];
+	return { setUser, user, onSignin };
 };
 
 const SigninForm: React.FC = () => {
-	const [setId, setPassword, onSignin] = TrySignin();
+	const { setUser, user, onSignin } = TrySignin();
 
 	return (
 		<>
@@ -49,9 +53,11 @@ const SigninForm: React.FC = () => {
 						placeholder="아이디"
 						type="text"
 						displayed={false}
-						onChange={({ target: { value } }) => setId(value)}
-						onKeyPress={(e) => {
-							if (e.key === 'Enter') onSignin('');
+						onChange={({ target: { value } }) =>
+							setUser({ ...user, id: value })
+						}
+						onKeyPress={(e: React.KeyboardEvent<HTMLInputElement>) => {
+							if (e.key === 'Enter') onSignin();
 						}}
 						maxLength={6}
 					/>
@@ -60,14 +66,16 @@ const SigninForm: React.FC = () => {
 					placeholder="비밀번호"
 					type="password"
 					displayed={false}
-					onChange={({ target: { value } }) => setPassword(value)}
+					onChange={({ target: { value } }) =>
+						setUser({ ...user, password: value })
+					}
 					onKeyPress={(e) => {
-						if (e.key === 'Enter') onSignin('');
+						if (e.key === 'Enter') onSignin();
 					}}
 				/>
 				<S.ButtonStyle
 					onClick={() => {
-						onSignin('');
+						onSignin();
 					}}
 				>
 					로그인
