@@ -5,6 +5,14 @@ import { authPassword, findPassword, passwordChange } from 'Api/member';
 import { Link, NavigateFunction, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+type UserType = {
+	id: string;
+	emailCode: string;
+	password: string;
+	newPassword: string;
+	rePassword: string;
+};
+
 const AuthPassword = async (id: string, setDisabled, setDisplayed) => {
 	await authPassword(id + '@gsm.hs.kr', setDisplayed);
 	toast.info('이메일을 확인해주세요');
@@ -28,26 +36,12 @@ const changePassword = async (password: string, newPw: string, navigate) => {
 };
 
 const returnPassworForm = (
-	setPassword: {
-		(value: React.SetStateAction<string>): void;
-		(arg0: string): void;
-	},
-	setNewPw: {
-		(value: React.SetStateAction<string>): void;
-		(arg0: string): void;
-	},
-	setRepassword: React.Dispatch<React.SetStateAction<string>>,
 	setDisabled: React.Dispatch<React.SetStateAction<boolean>>,
-	setId: React.Dispatch<React.SetStateAction<string>>,
 	setDisplayed: React.Dispatch<React.SetStateAction<boolean>>,
-	setEmailCode: React.Dispatch<React.SetStateAction<string>>,
-	password: string,
-	newPw: string,
-	repassword: string,
+	setUser: React.Dispatch<React.SetStateAction<UserType>>,
+	user: UserType,
 	disabled: boolean | undefined,
-	id: string,
 	displayed: boolean | undefined,
-	emailCode: string,
 	navigate: NavigateFunction
 ) => {
 	if (window.location.pathname === '/password') {
@@ -60,14 +54,16 @@ const returnPassworForm = (
 							placeholder="이메일"
 							type="text"
 							maxLength={6}
-							onChange={({ target: { value } }) => setId(value)}
+							onChange={({ target: { value } }) =>
+								setUser({ ...user, id: value })
+							}
 							disabled={disabled}
 						/>
 					</S.InputWrapper>
 
 					<button
 						onClick={() => {
-							AuthPassword(id, setDisabled, setDisplayed);
+							AuthPassword(user.id, setDisabled, setDisplayed);
 							setDisplayed(false);
 						}}
 					>
@@ -78,25 +74,31 @@ const returnPassworForm = (
 					placeholder="이메일코드"
 					type="text"
 					displayed={displayed}
-					onChange={({ target: { value } }) => setEmailCode(value)}
+					onChange={({ target: { value } }) =>
+						setUser({ ...user, emailCode: value })
+					}
 				/>
 				<S.InputStyle
 					placeholder="새로운 비밀번호"
 					type="password"
 					displayed={false}
-					onChange={({ target: { value } }) => setNewPw(value)}
+					onChange={({ target: { value } }) =>
+						setUser({ ...user, newPassword: value })
+					}
 				/>
 				<S.InputStyle
 					placeholder="새로운 비밀번호 재입력"
 					type="password"
 					displayed={false}
-					onChange={({ target: { value } }) => setRepassword(value)}
+					onChange={({ target: { value } }) =>
+						setUser({ ...user, rePassword: value })
+					}
 				/>
 				<S.ButtonStyle
 					onClick={() => {
-						if (newPw !== repassword)
+						if (user.newPassword !== user.rePassword) {
 							toast.warning('입력한 비밀번호가 서로 달라요');
-						else FindPassword(newPw, emailCode, navigate);
+						} else FindPassword(user.newPassword, user.emailCode, navigate);
 					}}
 				>
 					비밀번호 변경
@@ -115,25 +117,31 @@ const returnPassworForm = (
 					placeholder="현재 비밀번호"
 					type="password"
 					displayed={false}
-					onChange={({ target: { value } }) => setPassword(value)}
+					onChange={({ target: { value } }) =>
+						setUser({ ...user, password: value })
+					}
 				/>
 				<S.InputStyle
 					placeholder="새로운 비밀번호"
 					type="password"
 					displayed={false}
-					onChange={({ target: { value } }) => setNewPw(value)}
+					onChange={({ target: { value } }) =>
+						setUser({ ...user, newPassword: value })
+					}
 				/>
 				<S.InputStyle
 					placeholder="새로운 비밀번호 재입력"
 					type="password"
 					displayed={false}
-					onChange={({ target: { value } }) => setRepassword(value)}
+					onChange={({ target: { value } }) =>
+						setUser({ ...user, rePassword: value })
+					}
 				/>
 				<S.ButtonStyle
 					onClick={() => {
-						if (newPw !== repassword)
+						if (user.newPassword !== user.rePassword)
 							toast.warning('입력한 비밀번호가 서로 달라요');
-						else changePassword(password, newPw, navigate);
+						else changePassword(user.password, user.newPassword, navigate);
 					}}
 				>
 					비밀번호 변경
@@ -150,11 +158,7 @@ const returnPassworForm = (
 
 const PasswordForm: React.FC = () => {
 	const navigate = useNavigate();
-	const [id, setId] = useState('');
-	const [emailCode, setEmailCode] = useState('');
-	const [password, setPassword] = useState('');
-	const [newPw, setNewPw] = useState('');
-	const [repassword, setRepassword] = useState('');
+	const [user, setUser] = useState<UserType>({} as UserType);
 	const [displayed, setDisplayed] = useState(true);
 	const [disabled, setDisabled] = useState(false);
 
@@ -162,20 +166,12 @@ const PasswordForm: React.FC = () => {
 		<S.Positioner>
 			<DotoriLogoV2 />
 			{returnPassworForm(
-				setPassword,
-				setNewPw,
-				setRepassword,
 				setDisabled,
-				setId,
 				setDisplayed,
-				setEmailCode,
-				password,
-				newPw,
-				repassword,
+				setUser,
+				user,
 				disabled,
-				id,
 				displayed,
-				emailCode,
 				navigate
 			)}
 		</S.Positioner>
