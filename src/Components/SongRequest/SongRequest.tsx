@@ -62,8 +62,7 @@ const returnBtn = (
 							if (url === '') {
 								toast.warning('아무것도 입력하지 않았어요');
 							} else if (CheckUrl(url)) {
-								if (!url.match("//")) setUrl("//" + url)
-								musicApply(url, role).then(async (res) => {
+								musicApply(CheckProtocol(url), role).then(async (res) => {
 									mutate(`/${role}/music?date=${playlistDate}`);
 									setUrl('');
 								});
@@ -79,8 +78,7 @@ const returnBtn = (
 						if (url === '') {
 							toast.warning('아무것도 입력하지 않았어요');
 						} else if (CheckUrl(url)) {
-							if (!url.match("//")) setUrl("//" + url)
-							musicApply(url, role).then(() => {
+							musicApply(CheckProtocol(url), role).then(async (res) => {
 								mutate(`/${role}/music?date=${playlistDate}`);
 								setUrl('');
 							});
@@ -136,5 +134,9 @@ export const CheckUrl = (url) => {
 		/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/;
 	return regex.test(url);
 };
+
+export const CheckProtocol = (url) => {
+	return url.match("//") ? url : "//" + url
+}
 
 export default SongRequest;
