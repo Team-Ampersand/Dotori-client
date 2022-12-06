@@ -9,7 +9,7 @@ interface TextInputProps {
 const ChangeInput: React.FC<TextInputProps> = ({ init, type }) => {
 	const [text, setText] = useState(init);
 
-	const handleChange = (e) => {
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setText(e.target.value);
 	};
 
