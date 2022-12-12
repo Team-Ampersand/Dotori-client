@@ -21,8 +21,21 @@ const returnBtn = (
 	playlistDate: string
 ) => {
 	const today = ManufactureDate('W');
-
 	let cant = ['금', '토'];
+
+	const musicSubmit = () => {
+		if (url === '') {
+			toast.warning('아무것도 입력하지 않았어요');
+		} else if (CheckUrl(url)) {
+			musicApply(CheckProtocol(url), role).then(async (res) => {
+				mutate(`/${role}/music?date=${playlistDate}`);
+				setUrl('');
+			});
+		} else {
+			toast.warning('유튜브 링크만 추가하실 수 있어요');
+		}
+	}
+
 	if (role === 'admin') {
 		return (
 			<>
@@ -58,37 +71,12 @@ const returnBtn = (
 					onChange={({ target: { value } }) => setUrl(value)}
 					ref={songInput}
 					onKeyPress={(e) => {
-						if (e.key === 'Enter') {
-							if (url === '') {
-								toast.warning('아무것도 입력하지 않았어요');
-							} else if (CheckUrl(url)) {
-								musicApply(url, role).then(async (res) => {
-									mutate(`/${role}/music?date=${playlistDate}`);
-									setUrl('');
-								});
-							} else {
-								toast.warning('유튜브 링크만 추가하실 수 있어요');
-							}
-						}
+						if (e.key === 'Enter')
+							musicSubmit()
 					}}
 					value={url}
 				/>
-				<button
-					onClick={() => {
-						if (url === '') {
-							toast.warning('아무것도 입력하지 않았어요');
-						} else if (CheckUrl(url)) {
-							musicApply(url, role).then(() => {
-								mutate(`/${role}/music?date=${playlistDate}`);
-								setUrl('');
-							});
-						} else {
-							toast.warning('유튜브 링크만 추가하실 수 있어요');
-						}
-					}}
-				>
-					신청하기
-				</button>
+				<button onClick={musicSubmit}>신청하기</button>
 			</>
 		);
 	}
@@ -129,10 +117,14 @@ const SongRequest: React.FC = () => {
 	);
 };
 
-export const CheckUrl = (url) => {
+const CheckUrl = (url) => {
 	let regex =
 		/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/;
 	return regex.test(url);
 };
+
+const CheckProtocol = (url) => {
+	return url.match("//") ? url : "//" + url
+}
 
 export default SongRequest;
