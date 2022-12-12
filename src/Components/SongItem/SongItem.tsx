@@ -4,10 +4,7 @@ import * as I from '../../Assets/Svg/index';
 import axios from 'axios';
 import { deleteMusic } from 'Api/music';
 import { useDecode } from '../../Hooks/useDecode';
-import {
-	DateFormatter,
-	showMusicDataFormatter,
-} from '../../Utils/DateFormatter';
+import { showMusicDataFormatter } from '../../Utils/DateFormatter';
 import { useRole } from 'Hooks/useRole';
 import { toast } from 'react-toastify';
 import { mutate } from 'swr';
@@ -48,6 +45,13 @@ const DeleteMusic = async (id: number, role: string, playlistDate: string) => {
 	mutate(`/${role}/music?date=${playlistDate}`);
 };
 
+const onDelete = (e: any, id: number, role: string, playlistDate: string) => {
+	e.preventDefault();
+	window.confirm('삭제 하시겠습니까?')
+		? DeleteMusic(id, role, playlistDate)
+		: toast.info('삭제 하지 않았어요.');
+}
+
 const SongItem: React.FC<SongItemProps> = ({
 	createdDate,
 	id,
@@ -72,7 +76,7 @@ const SongItem: React.FC<SongItemProps> = ({
 		<S.Positioner href={url} target="_blank" rel="noreferrer">
 			<S.ImgContainer>
 				<S.Image
-					src={`https://img.youtube.com/vi/${videoId}/sddefault.jpg`}
+					src={`https://img.youtube.com/vi/${videoId}/0.jpg`}
 					alt="신청한 노래의 이미지입니다."
 				/>
 			</S.ImgContainer>
@@ -84,16 +88,11 @@ const SongItem: React.FC<SongItemProps> = ({
 			</S.Container>
 			<S.RightContainer>
 				{role === 'admin' ||
-				role === 'developer' ||
-				role === 'councillor' ||
-				email === user.sub ? (
+					role === 'developer' ||
+					role === 'councillor' ||
+					email === user.sub ? (
 					<S.DeleteContainer
-						onClick={(e) => {
-							e.preventDefault();
-							window.confirm('삭제 하시겠습니까?')
-								? DeleteMusic(id, role, playlistDate)
-								: toast.info('삭제 하지 않았어요.');
-						}}
+						onClick={(e) => { onDelete(e, id, role, playlistDate) }}
 					>
 						<I.DeleteButton />
 					</S.DeleteContainer>
