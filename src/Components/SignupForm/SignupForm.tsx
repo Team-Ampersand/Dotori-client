@@ -54,17 +54,19 @@ const TrySignup = () => {
 	};
 
 	const emailCertify = async () => {
-		await auth(userRegister.id + '@gsm.hs.kr');
-		toast.success('인증번호가 위의 이메일로 전송 되었어요');
+		const isSuccess = await auth(userRegister.id + '@gsm.hs.kr');
+		if(isSuccess) setClicked(false)
 	};
 
 	const AuthCheck = async (setDisabled) => {
 		if (userRegister.emailCode === '') {
 			return toast.warning('아무것도 입력하지 않으셨어요');
 		}
-		await authCheck(userRegister.emailCode);
-		setDisabled(true);
-		toast.info('인증이 완료 되었어요');
+		const isSuccess = await authCheck(userRegister.emailCode);
+		if(isSuccess) {
+			setDisabled(true);
+			toast.info('인증이 완료 되었어요');
+		}
 	};
 
 	return {
@@ -74,7 +76,6 @@ const TrySignup = () => {
 		emailCertify,
 		AuthCheck,
 		clicked,
-		setClicked,
 		disabled,
 		setDisabled,
 	};
@@ -88,7 +89,6 @@ const SignupForm: React.FC = () => {
 		emailCertify,
 		AuthCheck,
 		clicked,
-		setClicked,
 		disabled,
 		setDisabled,
 	} = TrySignup();
@@ -117,7 +117,6 @@ const SignupForm: React.FC = () => {
 						if (userRegister.id === '') {
 							toast.warning('이메일을 입력하지 않았어요');
 						} else {
-							setClicked(false);
 							emailCertify();
 						}
 					}}
