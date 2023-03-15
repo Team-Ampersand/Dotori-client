@@ -125,7 +125,7 @@ export const auth = async (email: string) => {
 export const authCheck = async (emailCode: string) => {
 	try {
 		await apiClient.post(MemberController.authcheck(), {
-			emailCode: emailCode,
+			key: emailCode,
 		});
 		return true;
 	} catch (e: any) {
