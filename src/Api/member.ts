@@ -109,23 +109,30 @@ export const findPassword = async (newPassword: string, emailCode: string) => {
 
 export const auth = async (email: string) => {
 	try {
-		const { data } = await apiClient.post(MemberController.auth(), {
+		await apiClient.post(MemberController.auth(), {
 			email: email,
 		});
-		return { data };
-	} catch (e: any) {}
+		toast.success('인증번호가 위의 이메일로 전송 되었어요');
+		return true;
+	} catch (e: any) {
+		if (e.message === 'Request failed with status code 409') {
+			toast.warning('이미 가입된 유저에요');
+		}
+		return false;
+	}
 };
 
 export const authCheck = async (emailCode: string) => {
 	try {
-		const { data } = await apiClient.post(MemberController.authcheck(), {
+		await apiClient.post(MemberController.authcheck(), {
 			emailCode: emailCode,
 		});
-		return { data };
+		return true;
 	} catch (e: any) {
 		if (e.message === 'Request failed with status code 400') {
 			toast.warning('인증 키가 일치하지 않아요');
 		}
+		return false;
 	}
 };
 

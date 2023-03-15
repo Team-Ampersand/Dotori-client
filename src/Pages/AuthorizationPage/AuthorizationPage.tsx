@@ -1,6 +1,6 @@
 import React from 'react';
 import PageTemplate from 'Pages/Template/PageTemplate';
-import Authorization from '../../Components/Authorzation/Authorzation';
+import Authorization from '../../Components/Authorization/Authorization';
 import { Sidebar } from '../../Components';
 import * as S from './Style';
 
